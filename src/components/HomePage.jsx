@@ -21,7 +21,7 @@ export default function HomePage() {
     <div className="container">
       {/* Hero */}
       <div style={{
-        background: 'linear-gradient(135deg, var(--red) 0%, #C4222E 100%)',
+        background: 'linear-gradient(135deg, #5BAEE8 0%, #2E86C1 100%)',
         borderRadius: 'var(--radius-xl)',
         padding: '28px 24px',
         marginTop: 20,
@@ -66,7 +66,7 @@ export default function HomePage() {
             emoji="🎯"
             title="Lëtz Quiz"
             description={t('quiz.subtitle')}
-            color="#FEE2E2"
+            color="#DBEAFE"
             badge={quizPlayedToday ? '✓ Done' : 'Daily'}
           />
           <GameCard
@@ -143,7 +143,7 @@ export default function HomePage() {
           </div>
         </div>
         <a
-          href="https://luxembourg.public.lu/en/vivre/biergerpakt.html"
+          href="https://biergerpakt.zesummeliewen.lu/en/"
           target="_blank"
           rel="noreferrer"
           style={{
