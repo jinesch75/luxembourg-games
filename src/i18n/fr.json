@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "quiz": "Lëtz Quiz",
+    "geo": "Lëtz Géo",
+    "connect": "Lëtz Connect",
+    "info": "Info Hub"
+  },
+  "home": {
+    "headline": "Découvrez le Luxembourg",
+    "tagline": "Jouez, apprenez et rencontrez — où que vous soyez",
+    "gamesTitle": "Choisissez un jeu",
+    "biergerpaktBanner": "Découvrez le Biergerpakt — un programme pour rencontrer des gens et explorer le Luxembourg ensemble.",
+    "biergerpaktCta": "En savoir plus",
+    "statsTitle": "Le Luxembourg en chiffres",
+    "stat1Label": "Résidents",
+    "stat1Value": "~680 000",
+    "stat2Label": "Nationalités",
+    "stat2Value": "170+",
+    "stat3Label": "Frontaliers",
+    "stat3Value": "~220 000",
+    "stat4Label": "Langues officielles",
+    "stat4Value": "3",
+    "sourcesTitle": "Sources fiables",
+    "dailyReminderTitle": "Revenez chaque jour !",
+    "dailyReminderText": "De nouvelles questions chaque jour. Un nouveau puzzle Lëtz Connect chaque semaine."
+  },
+  "quiz": {
+    "title": "Lëtz Quiz",
+    "subtitle": "5 questions par jour — tout sur le Luxembourg",
+    "startBtn": "Commencer le quiz du jour",
+    "question": "Question",
+    "of": "sur",
+    "next": "Question suivante",
+    "finish": "Voir mes résultats",
+    "correct": "Correct !",
+    "incorrect": "Pas tout à fait…",
+    "explanation": "Le saviez-vous ?",
+    "learnMore": "En savoir plus",
+    "results": "Vos résultats",
+    "score": "Vous avez obtenu",
+    "outOf": "sur",
+    "perfect": "Score parfait ! Vous connaissez vraiment le Luxembourg !",
+    "great": "Bravo ! Continuez à explorer !",
+    "good": "Bon effort — continuez à apprendre !",
+    "tryAgain": "C'est en jouant qu'on apprend !",
+    "playAgain": "Jouer demain",
+    "streak": "Jours consécutifs",
+    "categories": {
+      "language": "Langue",
+      "history": "Histoire",
+      "culture": "Culture",
+      "people": "Personnalités",
+      "institutions": "Institutions",
+      "economy": "Économie"
+    },
+    "alreadyPlayed": "Vous avez déjà joué aujourd'hui !",
+    "comeBackTomorrow": "Revenez demain pour de nouvelles questions.",
+    "shareResult": "Partager mon résultat"
+  },
+  "geo": {
+    "title": "Lëtz Géo",
+    "subtitle": "Pouvez-vous le trouver sur la carte ?",
+    "instructions": "Lisez l'indice, puis appuyez sur la carte là où vous pensez que le lieu se trouve.",
+    "guess": "Confirmer ma réponse",
+    "nextRound": "Lieu suivant",
+    "finish": "Voir les résultats",
+    "distance": "Vous étiez à",
+    "away": "de distance",
+    "perfect": "Parfait !",
+    "great": "Très proche !",
+    "good": "Pas mal !",
+    "ok": "Continuez à pratiquer !",
+    "results": "Résultats",
+    "totalScore": "Score total",
+    "playAgain": "Rejouer",
+    "round": "Lieu",
+    "clue": "Indice",
+    "about": "À propos de ce lieu",
+    "learnMore": "Découvrir davantage",
+    "tapMap": "Appuyez sur la carte pour placer votre épingle",
+    "noPin": "Placez d'abord une épingle sur la carte !",
+    "km": "km",
+    "m": "m",
+    "points": "points"
+  },
+  "connect": {
+    "title": "Lëtz Connect",
+    "subtitle": "Regroupez les 16 éléments en 4 catégories",
+    "instructions": "Appuyez sur 4 éléments qui partagent un thème, puis appuyez sur Valider.",
+    "submit": "Valider",
+    "deselect": "Tout désélectionner",
+    "oneAway": "À une erreur près…",
+    "wrong": "Pas tout à fait — réessayez !",
+    "correct": "Correct !",
+    "alreadyFound": "Déjà trouvé !",
+    "results": "Puzzle terminé !",
+    "attemptsLeft": "erreurs restantes",
+    "noAttempts": "Plus d'essais — voir la solution.",
+    "weeklyPuzzle": "Puzzle de la semaine",
+    "newPuzzle": "Nouveau puzzle chaque lundi",
+    "solved": "Vous avez résolu le puzzle !",
+    "solvedWith": "Résolu en",
+    "mistakes": "erreurs",
+    "playAgain": "Essayez le puzzle de la semaine dernière",
+    "difficulty": {
+      "yellow": "Facile",
+      "green": "Moyen",
+      "blue": "Difficile",
+      "purple": "Expert"
+    }
+  },
+  "info": {
+    "title": "Info Hub",
+    "subtitle": "Faits, statistiques, liens et plus sur le Luxembourg",
+    "biergerpakt": {
+      "title": "Qu'est-ce que le Biergerpakt ?",
+      "text": "Le Biergerpakt (Pacte citoyens) est un programme gouvernemental visant à favoriser le vivre ensemble interculturel au Luxembourg. Il met en relation les nouveaux arrivants et les résidents de longue date à travers des activités, des événements et des expériences partagées.",
+      "cta": "Découvrir le Biergerpakt"
+    },
+    "stats": {
+      "title": "Le Luxembourg en chiffres",
+      "source": "Source : STATEC"
+    },
+    "links": {
+      "title": "Liens utiles",
+      "visit": "Visit Luxembourg",
+      "gov": "Portail gouvernemental",
+      "statec": "Statistiques (STATEC)",
+      "biergerpakt": "Programme Biergerpakt"
+    },
+    "languages": {
+      "title": "Les langues du Luxembourg",
+      "text": "Le Luxembourg possède trois langues officielles : le luxembourgeois, le français et l'allemand. Le luxembourgeois (Lëtzebuergesch) est la langue nationale et un symbole de l'identité culturelle. Beaucoup de résidents parlent également l'anglais et le portugais."
+    },
+    "intercultural": {
+      "title": "Le vivre ensemble interculturel",
+      "text": "Près de la moitié des résidents du Luxembourg sont des ressortissants étrangers. Cette riche diversité est l'une des plus grandes forces du Luxembourg. Vivre et travailler ensemble à travers les cultures exige compréhension, respect et curiosité."
+    }
+  },
+  "footer": {
+    "madeWith": "Fait avec ❤️ pour le Luxembourg",
+    "sources": "Sources",
+    "disclaimer": "Cette plateforme est un outil éducatif et n'est pas affiliée au gouvernement luxembourgeois."
+  },
+  "common": {
+    "loading": "Chargement…",
+    "error": "Une erreur s'est produite.",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "share": "Partager",
+    "copied": "Copié !",
+    "language": "Langue",
+    "back": "Retour",
+    "home": "Accueil"
+  }
+}

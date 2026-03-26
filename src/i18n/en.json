@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Home",
+    "quiz": "Lëtz Quiz",
+    "geo": "Lëtz Géo",
+    "connect": "Lëtz Connect",
+    "info": "Info Hub"
+  },
+  "home": {
+    "headline": "Discover Luxembourg",
+    "tagline": "Play, learn, and connect — wherever you are",
+    "gamesTitle": "Choose a game",
+    "biergerpaktBanner": "Discover the Biergerpakt — a programme that helps you meet people and explore Luxembourg together.",
+    "biergerpaktCta": "Learn more",
+    "statsTitle": "Luxembourg at a glance",
+    "stat1Label": "Residents",
+    "stat1Value": "~680,000",
+    "stat2Label": "Nationalities",
+    "stat2Value": "170+",
+    "stat3Label": "Cross-border workers",
+    "stat3Value": "~220,000",
+    "stat4Label": "Official languages",
+    "stat4Value": "3",
+    "sourcesTitle": "Reliable sources",
+    "dailyReminderTitle": "Come back daily!",
+    "dailyReminderText": "New quiz questions every day. New Lëtz Connect puzzle every week."
+  },
+  "quiz": {
+    "title": "Lëtz Quiz",
+    "subtitle": "5 questions a day — all about Luxembourg",
+    "startBtn": "Start today's quiz",
+    "question": "Question",
+    "of": "of",
+    "next": "Next question",
+    "finish": "See my results",
+    "correct": "Correct!",
+    "incorrect": "Not quite…",
+    "explanation": "Did you know?",
+    "learnMore": "Learn more",
+    "results": "Your results",
+    "score": "You got",
+    "outOf": "out of",
+    "perfect": "Perfect score! You really know Luxembourg!",
+    "great": "Great job! Keep exploring!",
+    "good": "Good effort — keep learning!",
+    "tryAgain": "Practice makes perfect!",
+    "playAgain": "Play tomorrow",
+    "streak": "Day streak",
+    "categories": {
+      "language": "Language",
+      "history": "History",
+      "culture": "Culture",
+      "people": "Famous People",
+      "institutions": "Institutions",
+      "economy": "Economy"
+    },
+    "alreadyPlayed": "You've already played today!",
+    "comeBackTomorrow": "Come back tomorrow for a new set of questions.",
+    "shareResult": "Share my result"
+  },
+  "geo": {
+    "title": "Lëtz Géo",
+    "subtitle": "Can you find it on the map?",
+    "instructions": "Read the clue, then tap on the map where you think the location is.",
+    "guess": "Confirm my guess",
+    "nextRound": "Next location",
+    "finish": "See results",
+    "distance": "You were",
+    "away": "away",
+    "perfect": "Spot on!",
+    "great": "Very close!",
+    "good": "Not bad!",
+    "ok": "Keep practising!",
+    "results": "Round results",
+    "totalScore": "Total score",
+    "playAgain": "Play again",
+    "round": "Location",
+    "clue": "Clue",
+    "about": "About this place",
+    "learnMore": "Discover more",
+    "tapMap": "Tap the map to place your pin",
+    "noPin": "Place a pin on the map first!",
+    "km": "km",
+    "m": "m",
+    "points": "points"
+  },
+  "connect": {
+    "title": "Lëtz Connect",
+    "subtitle": "Group the 16 items into 4 categories",
+    "instructions": "Tap 4 items that share a theme, then press Submit.",
+    "submit": "Submit",
+    "deselect": "Deselect all",
+    "oneAway": "One away…",
+    "wrong": "Not quite — try again!",
+    "correct": "Correct!",
+    "alreadyFound": "Already found!",
+    "results": "Puzzle complete!",
+    "attemptsLeft": "mistakes left",
+    "noAttempts": "No more attempts — see the solution.",
+    "weeklyPuzzle": "Weekly puzzle",
+    "newPuzzle": "New puzzle every Monday",
+    "solved": "You solved it!",
+    "solvedWith": "Solved in",
+    "mistakes": "mistakes",
+    "playAgain": "Try last week's puzzle",
+    "difficulty": {
+      "yellow": "Straightforward",
+      "green": "Medium",
+      "blue": "Tricky",
+      "purple": "Expert"
+    }
+  },
+  "info": {
+    "title": "Info Hub",
+    "subtitle": "Facts, stats, links and more about Luxembourg",
+    "biergerpakt": {
+      "title": "What is the Biergerpakt?",
+      "text": "The Biergerpakt (Citizens' Pact) is a government programme designed to foster intercultural living-together in Luxembourg. It connects newcomers and long-term residents through activities, events, and shared experiences — helping everyone feel at home.",
+      "cta": "Discover the Biergerpakt"
+    },
+    "stats": {
+      "title": "Luxembourg in numbers",
+      "source": "Source: STATEC"
+    },
+    "links": {
+      "title": "Useful links",
+      "visit": "Visit Luxembourg",
+      "gov": "Government portal",
+      "statec": "Statistics (STATEC)",
+      "biergerpakt": "Biergerpakt programme"
+    },
+    "languages": {
+      "title": "Luxembourg's languages",
+      "text": "Luxembourg has three official languages: Luxembourgish, French, and German. Luxembourgish (Lëtzebuergesch) is the national language and a symbol of cultural identity. Many residents also speak English and Portuguese."
+    },
+    "intercultural": {
+      "title": "Intercultural living-together",
+      "text": "Nearly half of Luxembourg's residents are foreign nationals. This rich diversity is one of Luxembourg's greatest strengths. Living and working together across cultures requires understanding, respect, and curiosity — exactly what these games are designed to encourage."
+    }
+  },
+  "footer": {
+    "madeWith": "Made with ❤️ for Luxembourg",
+    "sources": "Sources",
+    "disclaimer": "This platform is an educational tool and is not affiliated with the Luxembourg government."
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong.",
+    "retry": "Try again",
+    "close": "Close",
+    "share": "Share",
+    "copied": "Copied!",
+    "language": "Language",
+    "back": "Back",
+    "home": "Home"
+  }
+}

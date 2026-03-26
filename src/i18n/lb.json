@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Haaptseite",
+    "quiz": "Lëtz Quiz",
+    "geo": "Lëtz Géo",
+    "connect": "Lëtz Connect",
+    "info": "Info Hub"
+  },
+  "home": {
+    "headline": "Lëtzebuerg entdecken",
+    "tagline": "Spillen, léieren a Leit kennenléieren — wou och ëmmer Dir sidd",
+    "gamesTitle": "Wielt e Spill",
+    "biergerpaktBanner": "Entdeckt de Biergerpakt — e Programm fir Leit ze treffen a Lëtzebuerg zesummen z'entdecken.",
+    "biergerpaktCta": "Méi erfahren",
+    "statsTitle": "Lëtzebuerg am Iwwerbléck",
+    "stat1Label": "Awunner",
+    "stat1Value": "~680.000",
+    "stat2Label": "Nationalitéiten",
+    "stat2Value": "170+",
+    "stat3Label": "Grenzgänger",
+    "stat3Value": "~220.000",
+    "stat4Label": "Amtssprochen",
+    "stat4Value": "3",
+    "sourcesTitle": "Zouverlässeg Quellen",
+    "dailyReminderTitle": "All Dag zeréckkomm!",
+    "dailyReminderText": "All Dag nei Quizfroe. All Woch e neie Lëtz Connect-Puzzle."
+  },
+  "quiz": {
+    "title": "Lëtz Quiz",
+    "subtitle": "5 Froe pro Dag — alles iwwer Lëtzebuerg",
+    "startBtn": "Haitege Quiz starten",
+    "question": "Fro",
+    "of": "vun",
+    "next": "Nächst Fro",
+    "finish": "Meng Resultater gesinn",
+    "correct": "Richteg!",
+    "incorrect": "Net ganz richteg…",
+    "explanation": "Wousst Dir?",
+    "learnMore": "Méi erfahren",
+    "results": "Är Resultater",
+    "score": "Dir hutt",
+    "outOf": "vun",
+    "perfect": "Perfekt! Dir kennt Lëtzebuerg wierklech!",
+    "great": "Super! Weider entdecken!",
+    "good": "Gutt gemaach — weider léieren!",
+    "tryAgain": "Iwwung mécht de Meeschter!",
+    "playAgain": "Muer spillen",
+    "streak": "Deeg hannerztenee",
+    "categories": {
+      "language": "Sprooch",
+      "history": "Geschicht",
+      "culture": "Kultur",
+      "people": "Bekannt Persoune",
+      "institutions": "Institutiounen",
+      "economy": "Wirtschaft"
+    },
+    "alreadyPlayed": "Dir hutt haut scho gespillt!",
+    "comeBackTomorrow": "Kommt muer fir nei Froe erëm.",
+    "shareResult": "Meng Resultat deelen"
+  },
+  "geo": {
+    "title": "Lëtz Géo",
+    "subtitle": "Kënnt Dir et op der Kaart fannen?",
+    "instructions": "Liest den Hinweis, dann tippt op d'Kaart wou Dir mengt datt de Plaz ass.",
+    "guess": "Meng Äntwert confirméieren",
+    "nextRound": "Nächste Plaz",
+    "finish": "Resultater gesinn",
+    "distance": "Dir waart",
+    "away": "ewech",
+    "perfect": "Genau!",
+    "great": "Ganz no!",
+    "good": "Net schlecht!",
+    "ok": "Weider üben!",
+    "results": "Resultater",
+    "totalScore": "Gesamtpunkte",
+    "playAgain": "Nach eng Kéier spillen",
+    "round": "Plaz",
+    "clue": "Hinweis",
+    "about": "Iwwer dëse Plaz",
+    "learnMore": "Méi entdecken",
+    "tapMap": "Tippt op d'Kaart fir Är Markéierung ze setzen",
+    "noPin": "Setzt éischt eng Markéierung op d'Kaart!",
+    "km": "km",
+    "m": "m",
+    "points": "Punkten"
+  },
+  "connect": {
+    "title": "Lëtz Connect",
+    "subtitle": "Gruppéiert déi 16 Elementer an 4 Kategorien",
+    "instructions": "Tippt op 4 Elementer déi en Thema deelen, dann dréckt Confirméieren.",
+    "submit": "Confirméieren",
+    "deselect": "Alles ofwielen",
+    "oneAway": "Ee falsch…",
+    "wrong": "Net ganz — probéiert nach eng Kéier!",
+    "correct": "Richteg!",
+    "alreadyFound": "Schonn fonnt!",
+    "results": "Puzzle fäerdeg!",
+    "attemptsLeft": "Versich iwwreg",
+    "noAttempts": "Keng Versich méi — Léisung weisen.",
+    "weeklyPuzzle": "Wöchentleche Puzzle",
+    "newPuzzle": "Neie Puzzle all Méindeg",
+    "solved": "Dir hutt et geléist!",
+    "solvedWith": "Geléist mat",
+    "mistakes": "Feeler",
+    "playAgain": "Leschter Woch säi Puzzle probéieren",
+    "difficulty": {
+      "yellow": "Einfach",
+      "green": "Mëttel",
+      "blue": "Schwéier",
+      "purple": "Expert"
+    }
+  },
+  "info": {
+    "title": "Info Hub",
+    "subtitle": "Fakten, Statistiken, Linken a méi iwwer Lëtzebuerg",
+    "biergerpakt": {
+      "title": "Wat ass de Biergerpakt?",
+      "text": "De Biergerpakt ass e Regierungsprogramm dat d'interkulturelt Zesummeliewen zu Lëtzebuerg fërdere soll. Hien verbënnt Newcomer a laangjärege Awunner duerch Aktivitéiten, Evenementer a gemeinsame Erfahrungen.",
+      "cta": "De Biergerpakt entdecken"
+    },
+    "stats": {
+      "title": "Lëtzebuerg a Zuelen",
+      "source": "Quell: STATEC"
+    },
+    "links": {
+      "title": "Nëtzlech Linken",
+      "visit": "Visit Luxembourg",
+      "gov": "Regierungsportal",
+      "statec": "Statistiken (STATEC)",
+      "biergerpakt": "Biergerpakt-Programm"
+    },
+    "languages": {
+      "title": "Lëtzebuerg seng Sprochen",
+      "text": "Lëtzebuerg huet dräi Amtssprochen: Lëtzebuergesch, Franséisch a Däitsch. Lëtzebuergesch ass d'Nationalsprooch a e Symbol vun der kultureller Identitéit."
+    },
+    "intercultural": {
+      "title": "Interkulturellt Zesummeliewen",
+      "text": "Bal d'Halschent vun den Awunner Lëtzebuerg sinn auslännesch Staatsbierger. Dës räich Diversitéit ass eng vun de gréisste Stärken Lëtzebuerg. Zesummen ze liewen a ze schaffen iwwer Kulturen eraus erfuerdert Verständnis, Respekt a Niegeschier."
+    }
+  },
+  "footer": {
+    "madeWith": "Mat ❤️ fir Lëtzebuerg gemaach",
+    "sources": "Quellen",
+    "disclaimer": "Dës Plattform ass en Erzéiungsinstrument an ass net mat der Lëtzebuerger Regierung verbonnen."
+  },
+  "common": {
+    "loading": "Gëtt gelueden…",
+    "error": "Eppes ass schif gaangen.",
+    "retry": "Nach eng Kéier probéieren",
+    "close": "Zoumaachen",
+    "share": "Deelen",
+    "copied": "Kopéiert!",
+    "language": "Sprooch",
+    "back": "Zréck",
+    "home": "Haaptseite"
+  }
+}

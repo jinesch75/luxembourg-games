@@ -1,0 +1,157 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "quiz": "Lëtz Quiz",
+    "geo": "Lëtz Géo",
+    "connect": "Lëtz Connect",
+    "info": "Info Hub"
+  },
+  "home": {
+    "headline": "Luxemburg entdecken",
+    "tagline": "Spielen, lernen und begegnen — wo immer Sie sind",
+    "gamesTitle": "Wähle ein Spiel",
+    "biergerpaktBanner": "Entdecke den Biergerpakt — ein Programm, das dir hilft, Menschen zu treffen und Luxemburg gemeinsam zu erkunden.",
+    "biergerpaktCta": "Mehr erfahren",
+    "statsTitle": "Luxemburg auf einen Blick",
+    "stat1Label": "Einwohner",
+    "stat1Value": "~680.000",
+    "stat2Label": "Nationalitäten",
+    "stat2Value": "170+",
+    "stat3Label": "Grenzpendler",
+    "stat3Value": "~220.000",
+    "stat4Label": "Amtssprachen",
+    "stat4Value": "3",
+    "sourcesTitle": "Zuverlässige Quellen",
+    "dailyReminderTitle": "Täglich zurückkehren!",
+    "dailyReminderText": "Täglich neue Quizfragen. Jede Woche ein neues Lëtz Connect-Rätsel."
+  },
+  "quiz": {
+    "title": "Lëtz Quiz",
+    "subtitle": "5 Fragen pro Tag — alles über Luxemburg",
+    "startBtn": "Heutiges Quiz starten",
+    "question": "Frage",
+    "of": "von",
+    "next": "Nächste Frage",
+    "finish": "Ergebnisse anzeigen",
+    "correct": "Richtig!",
+    "incorrect": "Nicht ganz…",
+    "explanation": "Wusstest du?",
+    "learnMore": "Mehr erfahren",
+    "results": "Deine Ergebnisse",
+    "score": "Du hast",
+    "outOf": "von",
+    "perfect": "Perfekte Punktzahl! Du kennst Luxemburg wirklich!",
+    "great": "Großartig! Weiter erkunden!",
+    "good": "Gute Arbeit — weiter lernen!",
+    "tryAgain": "Übung macht den Meister!",
+    "playAgain": "Morgen spielen",
+    "streak": "Tage in Folge",
+    "categories": {
+      "language": "Sprache",
+      "history": "Geschichte",
+      "culture": "Kultur",
+      "people": "Berühmte Personen",
+      "institutions": "Institutionen",
+      "economy": "Wirtschaft"
+    },
+    "alreadyPlayed": "Du hast heute bereits gespielt!",
+    "comeBackTomorrow": "Komm morgen für neue Fragen wieder.",
+    "shareResult": "Ergebnis teilen"
+  },
+  "geo": {
+    "title": "Lëtz Géo",
+    "subtitle": "Kannst du es auf der Karte finden?",
+    "instructions": "Lies den Hinweis und tippe dann auf die Karte, wo du glaubst, dass der Ort liegt.",
+    "guess": "Meine Antwort bestätigen",
+    "nextRound": "Nächster Ort",
+    "finish": "Ergebnisse anzeigen",
+    "distance": "Du warst",
+    "away": "entfernt",
+    "perfect": "Genau getroffen!",
+    "great": "Sehr nah!",
+    "good": "Nicht schlecht!",
+    "ok": "Weiter üben!",
+    "results": "Rundenergebnisse",
+    "totalScore": "Gesamtpunktzahl",
+    "playAgain": "Nochmal spielen",
+    "round": "Ort",
+    "clue": "Hinweis",
+    "about": "Über diesen Ort",
+    "learnMore": "Mehr entdecken",
+    "tapMap": "Tippe auf die Karte, um deine Markierung zu setzen",
+    "noPin": "Setze zuerst eine Markierung auf der Karte!",
+    "km": "km",
+    "m": "m",
+    "points": "Punkte"
+  },
+  "connect": {
+    "title": "Lëtz Connect",
+    "subtitle": "Gruppiere die 16 Elemente in 4 Kategorien",
+    "instructions": "Tippe auf 4 Elemente, die ein Thema teilen, dann drücke Bestätigen.",
+    "submit": "Bestätigen",
+    "deselect": "Alle abwählen",
+    "oneAway": "Nur eine falsch…",
+    "wrong": "Nicht ganz — versuch es nochmal!",
+    "correct": "Richtig!",
+    "alreadyFound": "Bereits gefunden!",
+    "results": "Rätsel abgeschlossen!",
+    "attemptsLeft": "Versuche übrig",
+    "noAttempts": "Keine Versuche mehr — Lösung anzeigen.",
+    "weeklyPuzzle": "Wöchentliches Rätsel",
+    "newPuzzle": "Neues Rätsel jeden Montag",
+    "solved": "Du hast es gelöst!",
+    "solvedWith": "Gelöst mit",
+    "mistakes": "Fehlern",
+    "playAgain": "Letztwöchiges Rätsel versuchen",
+    "difficulty": {
+      "yellow": "Einfach",
+      "green": "Mittel",
+      "blue": "Schwierig",
+      "purple": "Experte"
+    }
+  },
+  "info": {
+    "title": "Info Hub",
+    "subtitle": "Fakten, Statistiken, Links und mehr über Luxemburg",
+    "biergerpakt": {
+      "title": "Was ist der Biergerpakt?",
+      "text": "Der Biergerpakt (Bürgerpakt) ist ein Regierungsprogramm, das das interkulturelle Miteinander in Luxemburg fördern soll. Er verbindet Neuzugezogene und langjährige Bewohner durch Aktivitäten, Veranstaltungen und gemeinsame Erfahrungen.",
+      "cta": "Biergerpakt entdecken"
+    },
+    "stats": {
+      "title": "Luxemburg in Zahlen",
+      "source": "Quelle: STATEC"
+    },
+    "links": {
+      "title": "Nützliche Links",
+      "visit": "Visit Luxembourg",
+      "gov": "Regierungsportal",
+      "statec": "Statistiken (STATEC)",
+      "biergerpakt": "Biergerpakt-Programm"
+    },
+    "languages": {
+      "title": "Luxemburgs Sprachen",
+      "text": "Luxemburg hat drei Amtssprachen: Luxemburgisch, Französisch und Deutsch. Luxemburgisch (Lëtzebuergesch) ist die Nationalsprache und ein Symbol der kulturellen Identität. Viele Einwohner sprechen auch Englisch und Portugiesisch."
+    },
+    "intercultural": {
+      "title": "Interkulturelles Miteinander",
+      "text": "Fast die Hälfte der Einwohner Luxemburgs sind ausländische Staatsangehörige. Diese reiche Vielfalt ist eine der größten Stärken Luxemburgs. Gemeinsames Leben und Arbeiten über Kulturen hinweg erfordert Verständnis, Respekt und Neugier."
+    }
+  },
+  "footer": {
+    "madeWith": "Mit ❤️ für Luxemburg gemacht",
+    "sources": "Quellen",
+    "disclaimer": "Diese Plattform ist ein Bildungswerkzeug und ist nicht mit der luxemburgischen Regierung verbunden."
+  },
+  "common": {
+    "loading": "Wird geladen…",
+    "error": "Etwas ist schiefgelaufen.",
+    "retry": "Nochmal versuchen",
+    "close": "Schließen",
+    "share": "Teilen",
+    "copied": "Kopiert!",
+    "language": "Sprache",
+    "back": "Zurück",
+    "home": "Startseite"
+  }
+}
