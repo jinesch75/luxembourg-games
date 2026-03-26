@@ -44,7 +44,7 @@ export default function Navbar() {
             fontSize: '1.1rem',
             letterSpacing: '-0.02em'
           }}>
-            Lëtz Play
+            Biergerpakt Games
           </span>
         </Link>
         <LanguageSelector />

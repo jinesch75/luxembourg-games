@@ -46,7 +46,7 @@ const LINKS = [
     category: 'Intercultural Living-together',
     icon: '🤝',
     items: [
-      { label: 'Biergerpakt — Citizens\' Pact', href: 'https://luxembourg.public.lu/en/vivre/biergerpakt.html', desc: 'Activities, events, and community connections' },
+      { label: 'Biergerpakt — Citizens\' Pact', href: '__biergerpakt__', desc: 'Activities, events, and community connections' },
       { label: 'OLAI — Office for Reception and Integration', href: 'https://olai.public.lu/en.html', desc: 'Support for newcomers in Luxembourg' },
       { label: 'Info-migrants Luxembourg', href: 'https://www.infomigrants.net/en/country/luxembourg', desc: 'Practical information for people moving to Luxembourg' }
     ]
@@ -72,9 +72,17 @@ const LANGUAGE_PHRASES = [
   { lb: 'Wéi vill kascht dat?', fr: 'Combien ça coûte?', de: 'Wie viel kostet das?', meaning: 'How much does it cost?' }
 ]
 
+const BIERGERPAKT_URLS = {
+  en: 'https://biergerpakt.zesummeliewen.lu/en/',
+  fr: 'https://biergerpakt.zesummeliewen.lu',
+  de: 'https://biergerpakt.zesummeliewen.lu/de/',
+  lb: 'https://biergerpakt.zesummeliewen.lu/lu/'
+}
+
 export default function InfoHub() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [activeTab, setActiveTab] = useState('biergerpakt')
+  const biergerpaktUrl = BIERGERPAKT_URLS[i18n.language] || BIERGERPAKT_URLS.en
 
   const tabs = [
     { id: 'biergerpakt', label: 'Biergerpakt', icon: '🤝' },
@@ -126,7 +134,7 @@ export default function InfoHub() {
             <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, lineHeight: 1.6 }}>
               {t('info.biergerpakt.text')}
             </p>
-            <a href="https://luxembourg.public.lu/en/vivre/biergerpakt.html"
+            <a href={biergerpaktUrl}
               target="_blank" rel="noreferrer"
               style={{
                 display: 'block', marginTop: 20,
@@ -237,7 +245,7 @@ export default function InfoHub() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {section.items.map(link => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer"
+                  <a key={link.href} href={link.href === '__biergerpakt__' ? biergerpaktUrl : link.href} target="_blank" rel="noreferrer"
                     style={{
                       display: 'block', background: 'white', border: '1px solid var(--border)',
                       borderRadius: 'var(--radius)', padding: '14px 16px', textDecoration: 'none',

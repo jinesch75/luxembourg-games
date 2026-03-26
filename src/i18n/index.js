@@ -6,7 +6,6 @@ import en from './en.json'
 import fr from './fr.json'
 import de from './de.json'
 import lb from './lb.json'
-import pt from './pt.json'
 
 i18n
   .use(LanguageDetector)
@@ -16,11 +15,10 @@ i18n
       en: { translation: en },
       fr: { translation: fr },
       de: { translation: de },
-      lb: { translation: lb },
-      pt: { translation: pt }
+      lb: { translation: lb }
     },
     fallbackLng: 'en',
-    supportedLngs: ['en', 'fr', 'de', 'lb', 'pt'],
+    supportedLngs: ['en', 'fr', 'de', 'lb'],
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
@@ -37,6 +35,5 @@ export const LANGUAGES = [
   { code: 'en', label: 'English',       flag: '🇬🇧' },
   { code: 'fr', label: 'Français',      flag: '🇫🇷' },
   { code: 'de', label: 'Deutsch',       flag: '🇩🇪' },
-  { code: 'lb', label: 'Lëtzebuergesch', flag: '🇱🇺' },
-  { code: 'pt', label: 'Português',     flag: '🇵🇹' }
+  { code: 'lb', label: 'Lëtzebuergesch', flag: '🇱🇺' }
 ]
