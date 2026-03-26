@@ -545,12 +545,15 @@ export const QUESTIONS = [
 
 /**
  * Picks 5 questions for a given day index, ensuring category variety.
+ * @param {number} dayIdx
+ * @param {Array}  [questionsPool]  optional override (from admin/server)
  */
-export function getDailyQuestions(dayIdx) {
+export function getDailyQuestions(dayIdx, questionsPool = null) {
+  const pool = questionsPool || QUESTIONS
   const categories = ['language', 'history', 'culture', 'people', 'institutions', 'economy']
   const byCategory = {}
   categories.forEach(c => {
-    byCategory[c] = QUESTIONS.filter(q => q.category === c)
+    byCategory[c] = pool.filter(q => q.category === c)
   })
 
   // Seed-based selection using day index
@@ -562,8 +565,9 @@ export function getDailyQuestions(dayIdx) {
   const catOrder = categories.slice((seed % 6)).concat(categories.slice(0, seed % 6))
   for (let i = 0; i < 5; i++) {
     const cat = catOrder[i % categories.length]
-    const pool = byCategory[cat]
-    const q = pool[(seed * (i + 1) * 7) % pool.length]
+    const catPool = byCategory[cat]
+    if (!catPool || catPool.length === 0) continue
+    const q = catPool[(seed * (i + 1) * 7) % catPool.length]
     selected.push(q)
     usedCategories.add(cat)
   }

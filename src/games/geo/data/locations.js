@@ -109,9 +109,12 @@ export const LOCATIONS = [
 
 /**
  * Returns 5 locations for a play session (semi-random, seeded by day).
+ * @param {number} seed
+ * @param {Array}  [locationsPool]  optional override (from admin/server)
  */
-export function getSessionLocations(seed = 0) {
-  const shuffled = [...LOCATIONS].sort((a, b) => {
+export function getSessionLocations(seed = 0, locationsPool = null) {
+  const pool = locationsPool || LOCATIONS
+  const shuffled = [...pool].sort((a, b) => {
     const h = (str) => str.split('').reduce((acc, c) => acc * 31 + c.charCodeAt(0), seed) % 1000
     return h(a.id + seed) - h(b.id + seed)
   })

@@ -139,9 +139,12 @@ export const PUZZLES = [
 
 /**
  * Get the current week's puzzle (rotates through available puzzles).
+ * @param {number} weekIdx
+ * @param {Array}  [puzzlesPool]  optional override (from admin/server)
  */
-export function getCurrentPuzzle(weekIdx) {
-  return PUZZLES[weekIdx % PUZZLES.length]
+export function getCurrentPuzzle(weekIdx, puzzlesPool = null) {
+  const pool = puzzlesPool || PUZZLES
+  return pool[weekIdx % pool.length]
 }
 
 export const COLOR_META = {

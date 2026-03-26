@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getCurrentPuzzle, COLOR_META } from './data/puzzles'
+import { getCurrentPuzzle, COLOR_META, PUZZLES } from './data/puzzles'
 import { weekIndex } from '../../utils/dateUtils'
+import { useGameContent } from '../../hooks/useGameContent'
+import { trackGameEvent } from '../../utils/analytics'
 
 const MAX_ATTEMPTS = 4
 
@@ -17,7 +19,10 @@ function shuffle(arr, seed) {
 
 export default function ConnectGame() {
   const { t } = useTranslation()
-  const [puzzle] = useState(() => getCurrentPuzzle(weekIndex()))
+
+  // Use server-side content override if available
+  const allPuzzles = useGameContent('puzzles', PUZZLES)
+  const puzzle     = useMemo(() => getCurrentPuzzle(weekIndex(), allPuzzles), [allPuzzles])
 
   // Build flat list of all items with their group info
   const allItems = puzzle.groups.flatMap(g =>
@@ -27,6 +32,14 @@ export default function ConnectGame() {
   const [tiles, setTiles]           = useState(() => shuffle(allItems.map(i => i.item), weekIndex() * 17))
   const [selected, setSelected]     = useState([])
   const [solved, setSolved]         = useState([]) // array of colors solved
+
+  // If the puzzle changes due to a server-side override, re-initialise tiles
+  useEffect(() => {
+    const freshItems = puzzle.groups.flatMap(g => g.items.map(item => item))
+    setTiles(shuffle(freshItems, weekIndex() * 17))
+    setSolved([])
+    setSelected([])
+  }, [puzzle.id])
   const [attempts, setAttempts]     = useState(0)
   const [message, setMessage]       = useState(null)
   const [shakeItems, setShakeItems] = useState([])
@@ -62,6 +75,7 @@ export default function ConnectGame() {
 
       // Check if all solved
       if (solved.length + 1 >= puzzle.groups.length) {
+        trackGameEvent('connect', 'complete', { solved: solved.length + 1, mistakes })
         setTimeout(() => setStep('done'), 800)
       }
     } else {
@@ -87,7 +101,7 @@ export default function ConnectGame() {
     }
   }
 
-  if (step === 'intro') return <Intro puzzle={puzzle} t={t} onStart={() => setStep('game')} />
+  if (step === 'intro') return <Intro puzzle={puzzle} t={t} onStart={() => { trackGameEvent('connect', 'start'); setStep('game') }} />
   if (step === 'done')  return <Done  puzzle={puzzle} solved={solved} mistakes={mistakes} t={t} allItems={allItems} onReplay={() => {
     setSolved([]); setSelected([]); setAttempts(0); setMistakes(0); setMessage(null); setStep('game')
   }} />

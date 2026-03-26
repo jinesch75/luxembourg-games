@@ -1,5 +1,11 @@
 node_modules/
 dist/
+
+# Runtime data — lives on the Railway persistent volume, never in git.
+# Committing these would overwrite live admin edits on every redeploy.
+data/analytics.json
+data/content.json
+
 .env
 .env.local
 .env.production

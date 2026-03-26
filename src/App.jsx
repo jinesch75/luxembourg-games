@@ -6,6 +6,7 @@ import QuizGame from './games/quiz/QuizGame'
 import GeoGame from './games/geo/GeoGame'
 import ConnectGame from './games/connect/ConnectGame'
 import InfoHub from './components/InfoHub'
+import AdminPage from './components/admin/AdminPage'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/geo"     element={<GeoGame />} />
           <Route path="/connect" element={<ConnectGame />} />
           <Route path="/info"    element={<InfoHub />} />
+          <Route path="/admin"   element={<AdminPage />} />
         </Routes>
       </main>
       <Footer />

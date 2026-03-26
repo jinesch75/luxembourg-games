@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { todayStr, dayIndex, isToday } from '../../utils/dateUtils'
-import { getDailyQuestions } from './data/questions'
+import { getDailyQuestions, QUESTIONS } from './data/questions'
+import { useGameContent } from '../../hooks/useGameContent'
+import { trackGameEvent } from '../../utils/analytics'
 
 const CAT_COLORS = {
   language:     { bg: '#F3E8FF', text: '#7C3AED', icon: '🗣️' },
@@ -18,7 +20,9 @@ export default function QuizGame() {
   const [quizState, setQuizState] = useLocalStorage('letz-quiz-state', null)
   const [streak, setStreak]       = useLocalStorage('letz-streak', { count: 0, lastDate: null })
 
-  const [questions]  = useState(() => getDailyQuestions(dayIndex()))
+  // Use server-side content override if available, else fall back to bundled data
+  const allQuestions = useGameContent('questions', QUESTIONS)
+  const questions    = useMemo(() => getDailyQuestions(dayIndex(), allQuestions), [allQuestions])
   const [step, setStep]           = useState('intro') // intro | question | result | done
   const [currentIdx, setCurrentIdx] = useState(0)
   const [selected, setSelected]   = useState(null)
@@ -27,6 +31,11 @@ export default function QuizGame() {
   const [copied, setCopied]       = useState(false)
 
   const alreadyPlayed = quizState && isToday(quizState.date)
+
+  // Track game start
+  useEffect(() => {
+    if (step === 'question') trackGameEvent('quiz', 'start')
+  }, [step === 'question'])
 
   // Update streak when done
   useEffect(() => {
@@ -87,6 +96,7 @@ export default function QuizGame() {
     if (currentIdx + 1 >= questions.length) {
       const score = newAnswers.filter(Boolean).length
       setQuizState({ date: todayStr(), score, total: questions.length })
+      trackGameEvent('quiz', 'complete', { score, total: questions.length })
       setStep('done')
     } else {
       setCurrentIdx(i => i + 1)

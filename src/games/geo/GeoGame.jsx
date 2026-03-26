@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MapContainer, TileLayer, Marker, useMapEvents, Circle, Polyline } from 'react-leaflet'
 import L from 'leaflet'
-import { getSessionLocations, calcDistance, distanceToScore } from './data/locations'
+import { getSessionLocations, calcDistance, distanceToScore, LOCATIONS } from './data/locations'
 import { dayIndex } from '../../utils/dateUtils'
+import { useGameContent } from '../../hooks/useGameContent'
+import { trackGameEvent } from '../../utils/analytics'
 
 // Fix leaflet default icons
 delete L.Icon.Default.prototype._getIconUrl
@@ -34,7 +36,10 @@ function ClickHandler({ onMapClick }) {
 
 export default function GeoGame() {
   const { t } = useTranslation()
-  const [locations] = useState(() => getSessionLocations(dayIndex()))
+
+  // Use server-side content override if available
+  const allLocations = useGameContent('locations', LOCATIONS)
+  const locations    = useMemo(() => getSessionLocations(dayIndex(), allLocations), [allLocations])
   const [step, setStep]           = useState('intro')
   const [roundIdx, setRoundIdx]   = useState(0)
   const [userPin, setUserPin]     = useState(null)
@@ -63,6 +68,9 @@ export default function GeoGame() {
     const pts = distanceToScore(km)
     setRoundScores(prev => [...prev, { km, pts }])
     if (roundIdx + 1 >= locations.length) {
+      const finalScores = [...roundScores, { km, pts }]
+      const total = finalScores.reduce((s, r) => s + r.pts, 0)
+      trackGameEvent('geo', 'complete', { score: total, rounds: locations.length })
       setStep('done')
     } else {
       setRoundIdx(i => i + 1)
@@ -71,7 +79,7 @@ export default function GeoGame() {
     }
   }
 
-  if (step === 'intro') return <Intro t={t} onStart={() => setStep('game')} />
+  if (step === 'intro') return <Intro t={t} onStart={() => { trackGameEvent('geo', 'start'); setStep('game') }} />
   if (step === 'done')  return <Done  scores={roundScores} locations={locations} t={t} onReplay={() => { setStep('game'); setRoundIdx(0); setUserPin(null); setRevealed(false); setRoundScores([]) }} />
 
   const currentKm     = revealed && userPin ? calcDistance(userPin[0], userPin[1], loc.coords[0], loc.coords[1]) : null
