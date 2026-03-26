@@ -16,57 +16,12 @@ const STATS = [
   { icon: '🎓', label: 'University of Luxembourg founded', value: '2003', source: 'Uni.lu' }
 ]
 
-const LINKS = [
-  {
-    category: 'Tourism & Discovery',
-    icon: '🏔️',
-    items: [
-      { label: 'Visit Luxembourg — official tourism', href: 'https://www.visitluxembourg.com/', desc: 'Places, events, hiking trails, itineraries' },
-      { label: 'Luxembourg City Tourist Office', href: 'https://www.lcto.lu/en', desc: 'Explore the capital city' }
-    ]
-  },
-  {
-    category: 'Government & Services',
-    icon: '🏛️',
-    items: [
-      { label: 'Gouvernement.lu — official portal', href: 'https://luxembourg.public.lu/en.html', desc: 'Government services, living in Luxembourg' },
-      { label: 'Guichet.lu — administrative guide', href: 'https://guichet.public.lu/en.html', desc: 'Step-by-step guides for administrative procedures' },
-      { label: 'ADEM — employment agency', href: 'https://adem.public.lu/en.html', desc: 'Find work, unemployment support' }
-    ]
-  },
-  {
-    category: 'Statistics & Data',
-    icon: '📊',
-    items: [
-      { label: 'STATEC — official statistics', href: 'https://statistiques.public.lu/en/statistique-publique/statec.html', desc: 'Population, economy, employment data' },
-      { label: 'Open Data Luxembourg', href: 'https://data.public.lu/en/', desc: 'Government open data portal' }
-    ]
-  },
-  {
-    category: 'Intercultural Living-together',
-    icon: '🤝',
-    items: [
-      { label: 'Biergerpakt — Citizens\' Pact', href: '__biergerpakt__', desc: 'Activities, events, and community connections' },
-      { label: 'OLAI — Office for Reception and Integration', href: 'https://olai.public.lu/en.html', desc: 'Support for newcomers in Luxembourg' },
-      { label: 'Info-migrants Luxembourg', href: 'https://www.infomigrants.net/en/country/luxembourg', desc: 'Practical information for people moving to Luxembourg' }
-    ]
-  },
-  {
-    category: 'Culture & Heritage',
-    icon: '🎭',
-    items: [
-      { label: 'MNHA — National Museum of History & Art', href: 'https://www.mnha.lu/en', desc: 'Luxembourg\'s leading cultural museum' },
-      { label: 'Mudam Luxembourg — Modern Art', href: 'https://www.mudam.com/en', desc: 'Contemporary art museum on Kirchberg plateau' },
-      { label: 'Luxembourg tradition & folklore', href: 'https://luxembourg.public.lu/en/culture/traditions.html', desc: 'Festivals, customs, and cultural heritage' }
-    ]
-  }
-]
 
 const LANGUAGE_PHRASES = [
   { lb: 'Moien', fr: 'Bonjour', de: 'Guten Morgen', meaning: 'Hello / Good morning' },
   { lb: 'Äddi', fr: 'Au revoir', de: 'Auf Wiedersehen', meaning: 'Goodbye' },
   { lb: 'Merci villmools', fr: 'Merci beaucoup', de: 'Vielen Dank', meaning: 'Thank you very much' },
-  { lb: 'Wéi geet\'s?', fr: 'Comment ça va?', de: 'Wie geht es Ihnen?', meaning: 'How are you?' },
+  { lb: 'Wéi geet et?', fr: 'Comment ça va?', de: 'Wie geht es Ihnen?', meaning: 'How are you?' },
   { lb: 'Ech hunn dech gär', fr: 'Je t\'aime', de: 'Ich liebe dich', meaning: 'I love you' },
   { lb: 'Wou ass...?', fr: 'Où est...?', de: 'Wo ist...?', meaning: 'Where is...?' },
   { lb: 'Wéi vill kascht dat?', fr: 'Combien ça coûte?', de: 'Wie viel kostet das?', meaning: 'How much does it cost?' }
@@ -79,15 +34,22 @@ const BIERGERPAKT_URLS = {
   lb: 'https://biergerpakt.zesummeliewen.lu/lu/'
 }
 
+const LUXEMBOURGISH_URLS = {
+  en: 'https://luxembourg.public.lu/en/society-and-culture/languages/luxembourgish-language-history.html',
+  fr: 'https://luxembourg.public.lu/fr/societe-et-culture/langues/luxembourgeois-langue-histoire.html',
+  de: 'https://luxembourg.public.lu/de/gesellschaft-und-kultur/sprachen/luxemburgisch-sprache-geschichte.html',
+  lb: 'https://luxembourg.public.lu/fr/societe-et-culture/langues/luxembourgeois-langue-histoire.html'
+}
+
 export default function InfoHub() {
   const { t, i18n } = useTranslation()
   const [activeTab, setActiveTab] = useState('biergerpakt')
   const biergerpaktUrl = BIERGERPAKT_URLS[i18n.language] || BIERGERPAKT_URLS.en
+  const luxembourgishUrl = LUXEMBOURGISH_URLS[i18n.language] || LUXEMBOURGISH_URLS.en
 
   const tabs = [
     { id: 'biergerpakt', label: 'Biergerpakt', icon: '🤝' },
     { id: 'stats',       label: 'Stats',       icon: '📊' },
-    { id: 'links',       label: 'Links',       icon: '🔗' },
     { id: 'language',    label: 'Language',    icon: '🗣️' }
   ]
 
@@ -234,33 +196,6 @@ export default function InfoHub() {
         </div>
       )}
 
-      {/* Links */}
-      {activeTab === 'links' && (
-        <div className="animate-fade-in">
-          <h2 style={{ marginBottom: 16 }}>{t('info.links.title')}</h2>
-          {LINKS.map(section => (
-            <div key={section.category} style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 10 }}>
-                {section.icon} {section.category}
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                {section.items.map(link => (
-                  <a key={link.href} href={link.href === '__biergerpakt__' ? biergerpaktUrl : link.href} target="_blank" rel="noreferrer"
-                    style={{
-                      display: 'block', background: 'white', border: '1px solid var(--border)',
-                      borderRadius: 'var(--radius)', padding: '14px 16px', textDecoration: 'none',
-                      color: 'var(--text)'
-                    }}>
-                    <div style={{ fontWeight: 600, marginBottom: 2, color: 'var(--accent)' }}>{link.label}</div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{link.desc}</div>
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
       {/* Language */}
       {activeTab === 'language' && (
         <div className="animate-fade-in">
@@ -318,7 +253,7 @@ export default function InfoHub() {
             ))}
           </div>
 
-          <a href="https://luxembourg.public.lu/en/vivre/luxembourgeois.html"
+          <a href={luxembourgishUrl}
             target="_blank" rel="noreferrer"
             className="btn btn-outline btn-full">
             Learn more about Luxembourgish →
