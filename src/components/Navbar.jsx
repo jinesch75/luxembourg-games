@@ -10,8 +10,7 @@ export default function Navbar() {
     { path: '/',           icon: '🏠', label: t('nav.home') },
     { path: '/quiz',       icon: '🎯', label: 'Quiz' },
     { path: '/geo',        icon: '🗺️', label: 'Géo' },
-    { path: '/connect',    icon: '🔗', label: 'Connect' },
-    { path: '/challenge',  icon: '🌍', label: 'Challenge' },
+    { path: '/challenge',  icon: '🌍', label: 'Activities' },
     { path: '/info',       icon: 'ℹ️', label: 'Info' }
   ]
 

@@ -3,7 +3,7 @@
     "home": "Home",
     "quiz": "Lëtz Quiz",
     "geo": "Lëtz Géo",
-    "connect": "Lëtz Connect",
+    "challenge": "Activities",
     "info": "Info Hub"
   },
   "home": {
@@ -20,15 +20,12 @@
     "stat3Label": "Cross-border workers",
     "stat3Value": "~220,000",
     "stat4Label": "Official languages",
-    "stat4Value": "3",
-    "sourcesTitle": "Reliable sources",
-    "dailyReminderTitle": "Come back daily!",
-    "dailyReminderText": "New quiz questions every day. New Lëtz Connect puzzle every week."
+    "stat4Value": "3"
   },
   "quiz": {
     "title": "Lëtz Quiz",
-    "subtitle": "5 questions a day — all about Luxembourg",
-    "startBtn": "Start today's quiz",
+    "subtitle": "Test your knowledge of Luxembourg",
+    "startBtn": "Start the quiz",
     "question": "Question",
     "of": "of",
     "next": "Next question",
@@ -44,7 +41,7 @@
     "great": "Great job! Keep exploring!",
     "good": "Good effort — keep learning!",
     "tryAgain": "Practice makes perfect!",
-    "playAgain": "Play tomorrow",
+    "playAgain": "Play again",
     "streak": "Day streak",
     "categories": {
       "language": "Language",
@@ -54,8 +51,6 @@
       "institutions": "Institutions",
       "economy": "Economy"
     },
-    "alreadyPlayed": "You've already played today!",
-    "comeBackTomorrow": "Come back tomorrow for a new set of questions.",
     "shareResult": "Share my result"
   },
   "geo": {
@@ -84,31 +79,9 @@
     "m": "m",
     "points": "points"
   },
-  "connect": {
-    "title": "Lëtz Connect",
-    "subtitle": "Group the 16 items into 4 categories",
-    "instructions": "Tap 4 items that share a theme, then press Submit.",
-    "submit": "Submit",
-    "deselect": "Deselect all",
-    "oneAway": "One away…",
-    "wrong": "Not quite — try again!",
-    "correct": "Correct!",
-    "alreadyFound": "Already found!",
-    "results": "Puzzle complete!",
-    "attemptsLeft": "mistakes left",
-    "noAttempts": "No more attempts — see the solution.",
-    "weeklyPuzzle": "Weekly puzzle",
-    "newPuzzle": "New puzzle every Monday",
-    "solved": "You solved it!",
-    "solvedWith": "Solved in",
-    "mistakes": "mistakes",
-    "playAgain": "Try last week's puzzle",
-    "difficulty": {
-      "yellow": "Straightforward",
-      "green": "Medium",
-      "blue": "Tricky",
-      "purple": "Expert"
-    }
+  "challenge": {
+    "title": "Intercultural Activities",
+    "subtitle": "Ideas for connecting across cultures in Luxembourg"
   },
   "info": {
     "title": "Info Hub",
@@ -135,37 +108,7 @@
     },
     "intercultural": {
       "title": "Intercultural living-together",
-      "text": "Nearly half of Luxembourg's residents are foreign nationals. This rich diversity is one of Luxembourg's greatest strengths. Living and working together across cultures requires understanding, respect, and curiosity — exactly what these games are designed to encourage."
-    }
-  },
-  "challenge": {
-    "title": "Intercultural Challenge",
-    "subtitle": "Real-life missions to explore & connect in Luxembourg",
-    "thisWeek": "This week's theme",
-    "startMissions": "Start this week's missions",
-    "continueMissions": "Continue missions",
-    "done": "done",
-    "markDone": "Mark as complete",
-    "openBiergerpakt": "Open on Biergerpakt",
-    "weekComplete": "Week complete!",
-    "missionsCompleted": "Missions completed",
-    "totalXp": "Total XP earned",
-    "weeksCompleted": "Weeks completed",
-    "newMissionsNote": "New missions every Monday",
-    "discoverBiergerpakt": "Discover more on Biergerpakt",
-    "reviewMissions": "Review this week's missions",
-    "biergerpaktNote": "Some missions are linked to the Biergerpakt programme — Luxembourg's initiative for intercultural connection.",
-    "categories": {
-      "language": "Language",
-      "visit": "Explore",
-      "connect": "Connect",
-      "culture": "Culture",
-      "biergerpakt": "Biergerpakt"
-    },
-    "difficulty": {
-      "easy": "Easy",
-      "medium": "Medium",
-      "hard": "Challenge"
+      "text": "Nearly half of Luxembourg's residents are foreign nationals. This rich diversity is one of Luxembourg's greatest strengths. Living and working together across cultures requires understanding, respect, and curiosity — exactly what these activities are designed to encourage."
     }
   },
   "footer": {

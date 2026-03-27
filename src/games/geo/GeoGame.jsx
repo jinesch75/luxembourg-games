@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useRef, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MapContainer, TileLayer, Marker, useMapEvents, Circle, Polyline } from 'react-leaflet'
 import L from 'leaflet'
 import { getSessionLocations, calcDistance, distanceToScore, LOCATIONS } from './data/locations'
-import { dayIndex } from '../../utils/dateUtils'
 import { useGameContent } from '../../hooks/useGameContent'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { trackGameEvent } from '../../utils/analytics'
 
 // Fix leaflet default icons
@@ -34,18 +34,89 @@ function ClickHandler({ onMapClick }) {
   return null
 }
 
+// ─── Level system ──────────────────────────────────────────────────────────────
+const GEO_LEVELS = [
+  { id: 1, name: 'Tourist',     icon: '🗺️', minPoints: 0,     color: '#6B7280', bg: '#F3F4F6' },
+  { id: 2, name: 'Wanderer',    icon: '🧭', minPoints: 1000,  color: '#059669', bg: '#D1FAE5' },
+  { id: 3, name: 'Navigator',   icon: '📍', minPoints: 3000,  color: '#2563EB', bg: '#DBEAFE' },
+  { id: 4, name: 'Explorer',    icon: '🌟', minPoints: 6000,  color: '#7C3AED', bg: '#F3E8FF' },
+  { id: 5, name: 'Geographer',  icon: '🏆', minPoints: 10000, color: '#D97706', bg: '#FEF3C7' },
+]
+
+function getGeoLevel(totalPoints) {
+  let level = GEO_LEVELS[0]
+  for (const l of GEO_LEVELS) {
+    if (totalPoints >= l.minPoints) level = l
+  }
+  return level
+}
+
+function GeoLevelBadges({ totalPoints }) {
+  const currentLevel = getGeoLevel(totalPoints)
+  return (
+    <div style={{ display: 'flex', gap: 6, justifyContent: 'space-between' }}>
+      {GEO_LEVELS.map(level => {
+        const isUnlocked = totalPoints >= level.minPoints
+        const isCurrent = level.id === currentLevel.id
+        return (
+          <div
+            key={level.id}
+            title={`${level.name} (${level.minPoints.toLocaleString()}+ pts)`}
+            style={{
+              flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
+              gap: 4, opacity: isUnlocked ? 1 : 0.3,
+              transform: isCurrent ? 'scale(1.15)' : 'scale(1)',
+              transition: 'transform 0.2s'
+            }}
+          >
+            <div style={{
+              width: 36, height: 36, borderRadius: '50%',
+              background: isUnlocked ? level.bg : 'var(--gray-100)',
+              border: isCurrent ? `2px solid ${level.color}` : '2px solid transparent',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '1rem',
+              boxShadow: isCurrent ? `0 0 8px ${level.color}40` : 'none'
+            }}>
+              {isUnlocked ? level.icon : '🔒'}
+            </div>
+            <div style={{
+              fontSize: '0.55rem', fontWeight: isCurrent ? 800 : 500,
+              color: isCurrent ? level.color : 'var(--text-muted)',
+              textAlign: 'center', lineHeight: 1.2
+            }}>
+              {level.name}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+// ─── Main Component ────────────────────────────────────────────────────────────
 export default function GeoGame() {
   const { t } = useTranslation()
 
+  // Persistent progress
+  const [geoProgress, setGeoProgress] = useLocalStorage('letz-geo-progress', {
+    totalPoints: 0,
+    sessionsPlayed: 0,
+  })
+
+  // Random seed per session
+  const [sessionSeed] = useState(() => Math.floor(Math.random() * 99999) + 1)
+
   // Use server-side content override if available
   const allLocations = useGameContent('locations', LOCATIONS)
-  const locations    = useMemo(() => getSessionLocations(dayIndex(), allLocations), [allLocations])
+  const locations    = useMemo(() => getSessionLocations(sessionSeed, allLocations), [sessionSeed, allLocations])
+
   const [step, setStep]           = useState('intro')
   const [roundIdx, setRoundIdx]   = useState(0)
   const [userPin, setUserPin]     = useState(null)
   const [revealed, setRevealed]   = useState(false)
   const [roundScores, setRoundScores] = useState([])
   const [shake, setShake]         = useState(false)
+  const [newLevelUnlocked, setNewLevelUnlocked] = useState(null)
   const mapRef = useRef(null)
 
   const loc = locations[roundIdx]
@@ -66,11 +137,27 @@ export default function GeoGame() {
   const handleNext = () => {
     const km = calcDistance(userPin[0], userPin[1], loc.coords[0], loc.coords[1])
     const pts = distanceToScore(km)
-    setRoundScores(prev => [...prev, { km, pts }])
+    const newScores = [...roundScores, { km, pts }]
+    setRoundScores(newScores)
+
     if (roundIdx + 1 >= locations.length) {
-      const finalScores = [...roundScores, { km, pts }]
-      const total = finalScores.reduce((s, r) => s + r.pts, 0)
-      trackGameEvent('geo', 'complete', { score: total, rounds: locations.length })
+      const sessionTotal = newScores.reduce((s, r) => s + r.pts, 0)
+      const prevTotal = geoProgress.totalPoints || 0
+      const updatedTotal = prevTotal + sessionTotal
+
+      // Check for level up
+      const prevLevel = getGeoLevel(prevTotal)
+      const newLevel  = getGeoLevel(updatedTotal)
+      if (newLevel.id > prevLevel.id) {
+        setNewLevelUnlocked(newLevel)
+      }
+
+      setGeoProgress(prev => ({
+        totalPoints: updatedTotal,
+        sessionsPlayed: (prev.sessionsPlayed || 0) + 1,
+      }))
+
+      trackGameEvent('geo', 'complete', { score: sessionTotal, rounds: locations.length })
       setStep('done')
     } else {
       setRoundIdx(i => i + 1)
@@ -79,8 +166,37 @@ export default function GeoGame() {
     }
   }
 
-  if (step === 'intro') return <Intro t={t} onStart={() => { trackGameEvent('geo', 'start'); setStep('game') }} />
-  if (step === 'done')  return <Done  scores={roundScores} locations={locations} t={t} onReplay={() => { setStep('game'); setRoundIdx(0); setUserPin(null); setRevealed(false); setRoundScores([]) }} />
+  const handleReplay = () => {
+    setStep('intro')
+    setRoundIdx(0)
+    setUserPin(null)
+    setRevealed(false)
+    setRoundScores([])
+    setNewLevelUnlocked(null)
+  }
+
+  if (step === 'intro') {
+    return (
+      <Intro
+        t={t}
+        totalPoints={geoProgress.totalPoints || 0}
+        onStart={() => { trackGameEvent('geo', 'start'); setStep('game') }}
+      />
+    )
+  }
+
+  if (step === 'done') {
+    return (
+      <Done
+        scores={roundScores}
+        locations={locations}
+        t={t}
+        totalPoints={geoProgress.totalPoints || 0}
+        newLevelUnlocked={newLevelUnlocked}
+        onReplay={handleReplay}
+      />
+    )
+  }
 
   const currentKm     = revealed && userPin ? calcDistance(userPin[0], userPin[1], loc.coords[0], loc.coords[1]) : null
   const currentScore  = currentKm !== null ? distanceToScore(currentKm) : null
@@ -220,7 +336,10 @@ export default function GeoGame() {
   )
 }
 
-function Intro({ t, onStart }) {
+// ─── Intro Screen ──────────────────────────────────────────────────────────────
+function Intro({ t, totalPoints, onStart }) {
+  const currentLevel = getGeoLevel(totalPoints)
+  const nextLevel = GEO_LEVELS.find(l => l.minPoints > totalPoints)
   return (
     <div className="container" style={{ paddingTop: 24 }}>
       <div style={{
@@ -232,6 +351,31 @@ function Intro({ t, onStart }) {
         <h1 style={{ color: 'white', marginBottom: 8 }}>{t('geo.title')}</h1>
         <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0 }}>{t('geo.subtitle')}</p>
       </div>
+
+      {/* Level display */}
+      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>
+          Your Explorer Level
+        </div>
+        <GeoLevelBadges totalPoints={totalPoints} />
+        <div style={{
+          marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center'
+        }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+            {currentLevel.icon} {currentLevel.name}
+          </div>
+          <div style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
+            {(totalPoints || 0).toLocaleString()} pts
+          </div>
+        </div>
+        {nextLevel && (
+          <div style={{ marginTop: 8, fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center' }}>
+            {(nextLevel.minPoints - totalPoints).toLocaleString()} pts to unlock {nextLevel.icon} {nextLevel.name}
+          </div>
+        )}
+      </div>
+
       <div className="card" style={{ marginBottom: 20 }}>
         <p style={{ color: 'var(--gray-700)', margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
           {t('geo.instructions')}
@@ -252,21 +396,68 @@ function Intro({ t, onStart }) {
   )
 }
 
-function Done({ scores, locations, t, onReplay }) {
-  const total = scores.reduce((s, r) => s + r.pts, 0)
+// ─── Done Screen ───────────────────────────────────────────────────────────────
+function Done({ scores, locations, t, totalPoints, newLevelUnlocked, onReplay }) {
+  const sessionTotal = scores.reduce((s, r) => s + r.pts, 0)
   const maxTotal = scores.length * 1000
+  const currentLevel = getGeoLevel(totalPoints)
+  const nextLevel = GEO_LEVELS.find(l => l.minPoints > totalPoints)
+
   return (
     <div className="container" style={{ paddingTop: 24 }}>
+      {/* Level up celebration */}
+      {newLevelUnlocked && (
+        <div className="animate-slide-up" style={{
+          background: `linear-gradient(135deg, ${newLevelUnlocked.color}CC 0%, ${newLevelUnlocked.color} 100%)`,
+          borderRadius: 'var(--radius-xl)', padding: '20px 24px', marginBottom: 20,
+          color: 'white', textAlign: 'center'
+        }}>
+          <div style={{ fontSize: '3rem', marginBottom: 8 }}>{newLevelUnlocked.icon}</div>
+          <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>
+            Level Up! {newLevelUnlocked.name} unlocked!
+          </div>
+          <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>
+            You've reached Level {newLevelUnlocked.id}
+          </div>
+        </div>
+      )}
+
       <div style={{
         background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)',
         borderRadius: 'var(--radius-xl)', padding: '28px 24px', marginBottom: 24,
         color: 'white', textAlign: 'center'
       }}>
         <div style={{ fontSize: '3.5rem', marginBottom: 8 }}>🗺️</div>
-        <div style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1 }}>{total.toLocaleString()}</div>
+        <div style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1 }}>{sessionTotal.toLocaleString()}</div>
         <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>/ {maxTotal.toLocaleString()} {t('geo.points')}</div>
         <div style={{ marginTop: 8, color: 'rgba(255,255,255,0.85)' }}>{t('geo.results')}</div>
       </div>
+
+      {/* Level progress */}
+      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>
+          Your Explorer Level
+        </div>
+        <GeoLevelBadges totalPoints={totalPoints} />
+        <div style={{
+          marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center'
+        }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+            +{sessionTotal.toLocaleString()} pts this session
+          </div>
+          <div style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
+            {totalPoints.toLocaleString()} total
+          </div>
+        </div>
+        {nextLevel && (
+          <div style={{ marginTop: 8, fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center' }}>
+            {(nextLevel.minPoints - totalPoints).toLocaleString()} pts to {nextLevel.icon} {nextLevel.name}
+          </div>
+        )}
+      </div>
+
+      {/* Round breakdown */}
       <div className="card" style={{ marginBottom: 20 }}>
         {scores.map((s, i) => (
           <div key={i} style={{
@@ -290,8 +481,9 @@ function Done({ scores, locations, t, onReplay }) {
           </div>
         ))}
       </div>
+
       <button onClick={onReplay} className="btn btn-full" style={{ background: '#059669', color: 'white' }}>
-        {t('geo.playAgain')}
+        🔄 {t('geo.playAgain')}
       </button>
     </div>
   )

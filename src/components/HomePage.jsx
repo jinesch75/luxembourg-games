@@ -1,14 +1,9 @@
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import GameCard from './GameCard'
-import { useLocalStorage } from '../hooks/useLocalStorage'
-import { isToday } from '../utils/dateUtils'
 
 export default function HomePage() {
   const { t } = useTranslation()
-  const [quizState] = useLocalStorage('letz-quiz-state', null)
-  const [streak] = useLocalStorage('letz-streak', { count: 0, lastDate: null })
-
-  const quizPlayedToday = quizState && isToday(quizState.date)
 
   const stats = [
     { label: t('home.stat1Label'), value: t('home.stat1Value'), icon: '👥' },
@@ -40,21 +35,6 @@ export default function HomePage() {
         <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.95rem' }}>
           {t('home.tagline')}
         </p>
-        {streak.count >= 2 && (
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            marginTop: 16,
-            background: 'rgba(255,255,255,0.2)',
-            borderRadius: 999,
-            padding: '6px 14px',
-            fontSize: '0.85rem',
-            fontWeight: 700
-          }}>
-            🔥 {streak.count} {t('quiz.streak')}
-          </div>
-        )}
       </div>
 
       {/* Games */}
@@ -67,7 +47,6 @@ export default function HomePage() {
             title="Lëtz Quiz"
             description={t('quiz.subtitle')}
             color="#DBEAFE"
-            badge={quizPlayedToday ? '✓ Done' : 'Daily'}
           />
           <GameCard
             path="/geo"
@@ -77,26 +56,17 @@ export default function HomePage() {
             color="#D1FAE5"
           />
           <GameCard
-            path="/connect"
-            emoji="🔗"
-            title="Lëtz Connect"
-            description={t('connect.subtitle')}
-            color="#EDE9FE"
-            badge="Weekly"
-          />
-          <GameCard
             path="/challenge"
             emoji="🌍"
-            title="Intercultural Challenge"
+            title="Intercultural Activities"
             description={t('challenge.subtitle')}
-            color="#D1FAE5"
-            badge="Weekly"
+            color="#E0F2FE"
           />
         </div>
       </div>
 
       {/* Stats */}
-      <div style={{ marginBottom: 28 }}>
+      <div style={{ marginBottom: 8 }}>
         <div className="section-title">{t('home.statsTitle')}</div>
         <div style={{
           display: 'grid',
@@ -130,6 +100,23 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* More stats link */}
+      <div style={{ marginBottom: 28 }}>
+        <Link
+          to="/info?tab=stats"
+          style={{
+            display: 'flex', alignItems: 'center', gap: 10,
+            background: 'white', border: '1px solid var(--border)',
+            borderRadius: 'var(--radius)', padding: '12px 16px',
+            textDecoration: 'none', color: 'var(--text)',
+            fontSize: '0.88rem', fontWeight: 500
+          }}
+        >
+          <span style={{ fontSize: '1.2rem' }}>📊</span>
+          <span style={{ flex: 1 }}>More statistics about Luxembourg →</span>
+        </Link>
+      </div>
+
       {/* Biergerpakt Banner */}
       <div style={{
         background: 'linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%)',
@@ -150,10 +137,8 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-        <a
-          href="https://biergerpakt.zesummeliewen.lu/en/"
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          to="/info?tab=biergerpakt"
           style={{
             background: 'rgba(255,255,255,0.2)',
             border: '1px solid rgba(255,255,255,0.3)',
@@ -168,65 +153,7 @@ export default function HomePage() {
           }}
         >
           {t('home.biergerpaktCta')} →
-        </a>
-      </div>
-
-      {/* Daily reminder */}
-      <div style={{
-        background: '#FFFBEB',
-        border: '1px solid #FDE68A',
-        borderRadius: 'var(--radius)',
-        padding: 16,
-        marginBottom: 28,
-        display: 'flex',
-        gap: 12,
-        alignItems: 'flex-start'
-      }}>
-        <span style={{ fontSize: '1.4rem' }}>⚡</span>
-        <div>
-          <div style={{ fontWeight: 600, marginBottom: 2, color: '#92400E' }}>
-            {t('home.dailyReminderTitle')}
-          </div>
-          <div style={{ fontSize: '0.85rem', color: '#78350F' }}>
-            {t('home.dailyReminderText')}
-          </div>
-        </div>
-      </div>
-
-      {/* Sources */}
-      <div style={{ marginBottom: 28 }}>
-        <div className="section-title">{t('home.sourcesTitle')}</div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {[
-            { label: 'Visit Luxembourg', href: 'https://www.visitluxembourg.com/', icon: '🏔️' },
-            { label: 'Gouvernement.lu', href: 'https://luxembourg.public.lu/en.html', icon: '🏛️' },
-            { label: 'STATEC', href: 'https://statistiques.public.lu/en/statistique-publique/statec.html', icon: '📊' }
-          ].map(src => (
-            <a
-              key={src.href}
-              href={src.href}
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 12,
-                background: 'white',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius)',
-                padding: '12px 16px',
-                textDecoration: 'none',
-                color: 'var(--text)',
-                fontSize: '0.9rem',
-                fontWeight: 500
-              }}
-            >
-              <span style={{ fontSize: '1.3rem' }}>{src.icon}</span>
-              <span style={{ flex: 1 }}>{src.label}</span>
-              <span style={{ color: 'var(--gray-400)' }}>→</span>
-            </a>
-          ))}
-        </div>
+        </Link>
       </div>
     </div>
   )
