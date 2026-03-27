@@ -138,6 +138,36 @@
       "text": "Nearly half of Luxembourg's residents are foreign nationals. This rich diversity is one of Luxembourg's greatest strengths. Living and working together across cultures requires understanding, respect, and curiosity — exactly what these games are designed to encourage."
     }
   },
+  "challenge": {
+    "title": "Intercultural Challenge",
+    "subtitle": "Real-life missions to explore & connect in Luxembourg",
+    "thisWeek": "This week's theme",
+    "startMissions": "Start this week's missions",
+    "continueMissions": "Continue missions",
+    "done": "done",
+    "markDone": "Mark as complete",
+    "openBiergerpakt": "Open on Biergerpakt",
+    "weekComplete": "Week complete!",
+    "missionsCompleted": "Missions completed",
+    "totalXp": "Total XP earned",
+    "weeksCompleted": "Weeks completed",
+    "newMissionsNote": "New missions every Monday",
+    "discoverBiergerpakt": "Discover more on Biergerpakt",
+    "reviewMissions": "Review this week's missions",
+    "biergerpaktNote": "Some missions are linked to the Biergerpakt programme — Luxembourg's initiative for intercultural connection.",
+    "categories": {
+      "language": "Language",
+      "visit": "Explore",
+      "connect": "Connect",
+      "culture": "Culture",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Challenge"
+    }
+  },
   "footer": {
     "madeWith": "Made with ❤️ for Luxembourg",
     "sources": "Sources",

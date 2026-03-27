@@ -84,6 +84,14 @@ export default function HomePage() {
             color="#EDE9FE"
             badge="Weekly"
           />
+          <GameCard
+            path="/challenge"
+            emoji="🌍"
+            title="Intercultural Challenge"
+            description={t('challenge.subtitle')}
+            color="#D1FAE5"
+            badge="Weekly"
+          />
         </div>
       </div>
 

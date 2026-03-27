@@ -138,6 +138,36 @@
       "text": "Fast die Hälfte der Einwohner Luxemburgs sind ausländische Staatsangehörige. Diese reiche Vielfalt ist eine der größten Stärken Luxemburgs. Gemeinsames Leben und Arbeiten über Kulturen hinweg erfordert Verständnis, Respekt und Neugier."
     }
   },
+  "challenge": {
+    "title": "Interkulturelle Challenge",
+    "subtitle": "Echte Aufgaben, um Luxemburg zu entdecken und Menschen zu begegnen",
+    "thisWeek": "Thema dieser Woche",
+    "startMissions": "Diese Woche starten",
+    "continueMissions": "Aufgaben fortsetzen",
+    "done": "erledigt",
+    "markDone": "Als erledigt markieren",
+    "openBiergerpakt": "Bei Biergerpakt öffnen",
+    "weekComplete": "Woche abgeschlossen!",
+    "missionsCompleted": "Abgeschlossene Aufgaben",
+    "totalXp": "Gesamt-XP verdient",
+    "weeksCompleted": "Abgeschlossene Wochen",
+    "newMissionsNote": "Neue Aufgaben jeden Montag",
+    "discoverBiergerpakt": "Mehr beim Biergerpakt entdecken",
+    "reviewMissions": "Aufgaben der Woche ansehen",
+    "biergerpaktNote": "Einige Aufgaben sind mit dem Biergerpakt-Programm verknüpft — Luxemburgs Initiative für interkulturellen Austausch.",
+    "categories": {
+      "language": "Sprache",
+      "visit": "Erkunden",
+      "connect": "Verbinden",
+      "culture": "Kultur",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Einfach",
+      "medium": "Mittel",
+      "hard": "Challenge"
+    }
+  },
   "footer": {
     "madeWith": "Mit ❤️ für Luxemburg gemacht",
     "sources": "Quellen",

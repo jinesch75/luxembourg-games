@@ -138,6 +138,36 @@
       "text": "Bal d'Halschent vun den Awunner Lëtzebuerg sinn auslännesch Staatsbierger. Dës räich Diversitéit ass eng vun de gréisste Stärken Lëtzebuerg. Zesummen ze liewen a ze schaffen iwwer Kulturen eraus erfuerdert Verständnis, Respekt a Niegeschier."
     }
   },
+  "challenge": {
+    "title": "Interkulturell Challenge",
+    "subtitle": "Echt Missioune fir Lëtzebuerg z'entdecken a Leit kennenzeléieren",
+    "thisWeek": "Thema dëser Woch",
+    "startMissions": "Missioune vun dëser Woch starten",
+    "continueMissions": "Missioune weiderfieren",
+    "done": "fäerdeg",
+    "markDone": "Als erledegt markéieren",
+    "openBiergerpakt": "Op Biergerpakt opmaachen",
+    "weekComplete": "Woch ofgeschloss!",
+    "missionsCompleted": "Ofgeschloss Missioune",
+    "totalXp": "Gesamt XP verdéngt",
+    "weeksCompleted": "Ofgeschloss Wochen",
+    "newMissionsNote": "Nei Missioune all Méindeg",
+    "discoverBiergerpakt": "Méi beim Biergerpakt entdecken",
+    "reviewMissions": "Missioune vun dëser Woch iwwerpréiwen",
+    "biergerpaktNote": "E puer Missioune sinn mam Biergerpakt-Programm verknüpft.",
+    "categories": {
+      "language": "Sprooch",
+      "visit": "Entdecken",
+      "connect": "Verbanne",
+      "culture": "Kultur",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Einfach",
+      "medium": "Mëttel",
+      "hard": "Challenge"
+    }
+  },
   "footer": {
     "madeWith": "Mat ❤️ fir Lëtzebuerg gemaach",
     "sources": "Quellen",

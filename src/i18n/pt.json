@@ -138,6 +138,36 @@
       "text": "Quase metade dos residentes do Luxemburgo são cidadãos estrangeiros. Esta rica diversidade é um dos maiores pontos fortes do Luxemburgo. Viver e trabalhar juntos entre culturas exige compreensão, respeito e curiosidade."
     }
   },
+  "challenge": {
+    "title": "Desafio Intercultural",
+    "subtitle": "Missões reais para explorar e conectar-se no Luxemburgo",
+    "thisWeek": "Tema desta semana",
+    "startMissions": "Começar as missões desta semana",
+    "continueMissions": "Continuar missões",
+    "done": "feito",
+    "markDone": "Marcar como concluído",
+    "openBiergerpakt": "Abrir no Biergerpakt",
+    "weekComplete": "Semana completa!",
+    "missionsCompleted": "Missões concluídas",
+    "totalXp": "XP total ganho",
+    "weeksCompleted": "Semanas concluídas",
+    "newMissionsNote": "Novas missões todas as segundas-feiras",
+    "discoverBiergerpakt": "Descubra mais no Biergerpakt",
+    "reviewMissions": "Rever as missões desta semana",
+    "biergerpaktNote": "Algumas missões estão ligadas ao programa Biergerpakt — a iniciativa do Luxemburgo para a conexão intercultural.",
+    "categories": {
+      "language": "Língua",
+      "visit": "Explorar",
+      "connect": "Conectar",
+      "culture": "Cultura",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Fácil",
+      "medium": "Médio",
+      "hard": "Desafio"
+    }
+  },
   "footer": {
     "madeWith": "Feito com ❤️ para o Luxemburgo",
     "sources": "Fontes",

@@ -138,6 +138,36 @@
       "text": "Près de la moitié des résidents du Luxembourg sont des ressortissants étrangers. Cette riche diversité est l'une des plus grandes forces du Luxembourg. Vivre et travailler ensemble à travers les cultures exige compréhension, respect et curiosité."
     }
   },
+  "challenge": {
+    "title": "Défi Interculturel",
+    "subtitle": "Des missions réelles pour explorer et vous connecter au Luxembourg",
+    "thisWeek": "Thème de la semaine",
+    "startMissions": "Commencer les missions de la semaine",
+    "continueMissions": "Continuer les missions",
+    "done": "fait",
+    "markDone": "Marquer comme accompli",
+    "openBiergerpakt": "Ouvrir sur Biergerpakt",
+    "weekComplete": "Semaine complète !",
+    "missionsCompleted": "Missions accomplies",
+    "totalXp": "XP total gagné",
+    "weeksCompleted": "Semaines complétées",
+    "newMissionsNote": "Nouvelles missions chaque lundi",
+    "discoverBiergerpakt": "Découvrir plus sur Biergerpakt",
+    "reviewMissions": "Revoir les missions de la semaine",
+    "biergerpaktNote": "Certaines missions sont liées au programme Biergerpakt — l'initiative luxembourgeoise pour la connexion interculturelle.",
+    "categories": {
+      "language": "Langue",
+      "visit": "Explorer",
+      "connect": "Connecter",
+      "culture": "Culture",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Moyen",
+      "hard": "Défi"
+    }
+  },
   "footer": {
     "madeWith": "Fait avec ❤️ pour le Luxembourg",
     "sources": "Sources",
