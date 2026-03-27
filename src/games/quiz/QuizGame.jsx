@@ -94,6 +94,11 @@ export default function QuizGame() {
   const [answers, setAnswers] = useState([])
   const [copied, setCopied] = useState(false)
   const [newBadge, setNewBadge] = useState(null)
+  const [retryList, setRetryList] = useState(null)   // null = normal mode, [...] = retry wrong questions
+  const [wrongAnswers, setWrongAnswers] = useState([]) // wrong question objects from last session
+
+  // Active questions: either retry subset or the full randomised session
+  const activeQuestions = retryList !== null ? retryList : questions
 
   // Track game start
   useEffect(() => {
@@ -103,6 +108,9 @@ export default function QuizGame() {
   // Update progress when session done
   const handleSessionComplete = (finalAnswers) => {
     const sessionCorrect = finalAnswers.filter(Boolean).length
+    const wrongs = activeQuestions.filter((q, i) => !finalAnswers[i])
+    setWrongAnswers(wrongs)
+
     const prevTotal = quizProgress.totalCorrect
     const newTotal = prevTotal + sessionCorrect
 
@@ -117,19 +125,40 @@ export default function QuizGame() {
 
     setQuizProgress(prev => ({
       totalCorrect: newTotal,
-      totalPlayed: (prev.totalPlayed || 0) + questions.length,
+      totalPlayed: (prev.totalPlayed || 0) + activeQuestions.length,
       badges: earned && !prev.badges.includes(earned.id)
         ? [...(prev.badges || []), earned.id]
         : (prev.badges || []),
     }))
 
-    trackGameEvent('quiz', 'complete', { score: sessionCorrect, total: questions.length })
+    trackGameEvent('quiz', 'complete', { score: sessionCorrect, total: activeQuestions.length })
+  }
+
+  const handlePlayAgain = () => {
+    setStep('intro')
+    setCurrentIdx(0)
+    setSelected(null)
+    setRevealed(false)
+    setAnswers([])
+    setNewBadge(null)
+    setRetryList(null)
+    setWrongAnswers([])
+  }
+
+  const handleRetryWrong = () => {
+    setRetryList(wrongAnswers)
+    setStep('question')
+    setCurrentIdx(0)
+    setSelected(null)
+    setRevealed(false)
+    setAnswers([])
+    setNewBadge(null)
   }
 
   if (step === 'intro') {
     return (
       <Intro
-        questions={questions}
+        questions={activeQuestions}
         t={t}
         totalCorrect={quizProgress.totalCorrect || 0}
         badges={quizProgress.badges || []}
@@ -143,34 +172,29 @@ export default function QuizGame() {
     return (
       <Results
         score={score}
-        total={questions.length}
+        total={activeQuestions.length}
         answers={answers}
-        questions={questions}
+        questions={activeQuestions}
         t={t}
         totalCorrect={quizProgress.totalCorrect || 0}
         newBadge={newBadge}
         copied={copied}
+        wrongCount={wrongAnswers.length}
+        onRetryWrong={wrongAnswers.length > 0 ? handleRetryWrong : null}
         onShare={() => {
           const emoji = answers.map(a => a ? '🟢' : '🔴').join('')
-          const text = `Lëtz Quiz — ${score}/${questions.length}\n${emoji}\nPlay at letz.play`
+          const text = `Lëtz Quiz — ${score}/${activeQuestions.length}\n${emoji}\nPlay at letz.play`
           navigator.clipboard?.writeText(text).then(() => {
             setCopied(true)
             setTimeout(() => setCopied(false), 2000)
           })
         }}
-        onPlayAgain={() => {
-          setStep('intro')
-          setCurrentIdx(0)
-          setSelected(null)
-          setRevealed(false)
-          setAnswers([])
-          setNewBadge(null)
-        }}
+        onPlayAgain={handlePlayAgain}
       />
     )
   }
 
-  const q = questions[currentIdx]
+  const q = activeQuestions[currentIdx]
   if (!q) return null
   const cat = CAT_COLORS[q.category] || CAT_COLORS.culture
 
@@ -183,7 +207,7 @@ export default function QuizGame() {
   const handleNext = () => {
     const newAnswers = [...answers, selected === q.answer]
     setAnswers(newAnswers)
-    if (currentIdx + 1 >= questions.length) {
+    if (currentIdx + 1 >= activeQuestions.length) {
       handleSessionComplete(newAnswers)
       setStep('done')
     } else {
@@ -193,7 +217,7 @@ export default function QuizGame() {
     }
   }
 
-  const progress = (currentIdx / questions.length) * 100
+  const progress = (currentIdx / activeQuestions.length) * 100
 
   return (
     <div className="container" style={{ paddingTop: 24 }}>
@@ -203,7 +227,7 @@ export default function QuizGame() {
           <div className="progress-fill" style={{ width: `${progress}%`, background: cat.text }} />
         </div>
         <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, whiteSpace: 'nowrap' }}>
-          {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {questions.length}
+          {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {activeQuestions.length}
         </span>
       </div>
 
@@ -282,12 +306,6 @@ export default function QuizGame() {
           <p style={{ fontSize: '0.9rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
             {q.explanation}
           </p>
-          {q.link && (
-            <a href={q.link} target="_blank" rel="noreferrer"
-              style={{ display: 'inline-block', marginTop: 8, fontSize: '0.8rem', color: 'var(--accent)', fontWeight: 600 }}>
-              {t('quiz.learnMore')} →
-            </a>
-          )}
         </div>
       )}
 
@@ -297,7 +315,7 @@ export default function QuizGame() {
           className="btn btn-primary btn-full animate-slide-up"
           style={{ marginBottom: 8 }}
         >
-          {currentIdx + 1 >= questions.length ? t('quiz.finish') : t('quiz.next')} →
+          {currentIdx + 1 >= activeQuestions.length ? t('quiz.finish') : t('quiz.next')} →
         </button>
       )}
     </div>
@@ -437,7 +455,7 @@ function Intro({ questions, t, totalCorrect, onStart }) {
 }
 
 // ─── Results Screen ────────────────────────────────────────────────────────────
-function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, copied, onPlayAgain }) {
+function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, copied, onPlayAgain, wrongCount, onRetryWrong }) {
   const pct = (score / total) * 100
   const msg = pct === 100 ? t('quiz.perfect') : pct >= 80 ? t('quiz.great') : pct >= 60 ? t('quiz.good') : t('quiz.tryAgain')
   const currentLevel = getCurrentLevel(totalCorrect)
@@ -501,6 +519,16 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
       <button onClick={onShare} className="btn btn-secondary btn-full" style={{ marginBottom: 12 }}>
         {copied ? `✓ ${t('common.copied')}` : `📤 ${t('quiz.shareResult')}`}
       </button>
+
+      {onRetryWrong && (
+        <button onClick={onRetryWrong} className="btn btn-full animate-slide-up" style={{
+          marginBottom: 12,
+          background: '#FEF3C7', color: '#92400E',
+          border: '1.5px solid #FDE68A'
+        }}>
+          🔁 Retry {wrongCount} missed question{wrongCount !== 1 ? 's' : ''}
+        </button>
+      )}
 
       {/* Question breakdown */}
       <div className="card" style={{ marginBottom: 16 }}>

@@ -14,14 +14,6 @@ export default function Footer() {
       <div style={{ marginBottom: 8, color: 'white', fontWeight: 600 }}>
         {t('footer.madeWith')}
       </div>
-      <div style={{ marginBottom: 4 }}>
-        <a href="https://www.visitluxembourg.com/" target="_blank" rel="noreferrer"
-          style={{ color: 'var(--blue)', marginRight: 12 }}>Visit Luxembourg</a>
-        <a href="https://luxembourg.public.lu/en.html" target="_blank" rel="noreferrer"
-          style={{ color: 'var(--blue)', marginRight: 12 }}>Gouvernement.lu</a>
-        <a href="https://statistiques.public.lu/en/statistique-publique/statec.html" target="_blank" rel="noreferrer"
-          style={{ color: 'var(--blue)' }}>STATEC</a>
-      </div>
       <div style={{ marginTop: 8 }}>{t('footer.disclaimer')}</div>
     </footer>
   )

@@ -201,8 +201,16 @@ export default function GeoGame() {
   const currentKm     = revealed && userPin ? calcDistance(userPin[0], userPin[1], loc.coords[0], loc.coords[1]) : null
   const currentScore  = currentKm !== null ? distanceToScore(currentKm) : null
 
+  if (!loc) return null
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - var(--nav-height) - 68px)' }}>
+    <div style={{
+      display: 'flex', flexDirection: 'column',
+      position: 'fixed',
+      top: 'var(--nav-height)',
+      left: 0, right: 0,
+      bottom: 68
+    }}>
       {/* Progress strip */}
       <div style={{ background: 'var(--red)', padding: '8px 16px', display: 'flex', gap: 6, alignItems: 'center' }}>
         {locations.map((_, i) => (
