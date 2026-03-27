@@ -46,7 +46,6 @@ function getRandomisedQuestions(seed, questionsPool) {
     byCategory[c] = pool.filter(q => q.category === c)
   })
 
-  // Rotate category order based on seed, then pick one from each
   const catOrder = categories.slice(seed % 6).concat(categories.slice(0, seed % 6))
   const selected = []
 
@@ -54,13 +53,10 @@ function getRandomisedQuestions(seed, questionsPool) {
     const cat = catOrder[i % categories.length]
     const catPool = byCategory[cat]
     if (!catPool || catPool.length === 0) continue
-    // Pick a question using seed + position to get variety
     const q = catPool[(seed * (i + 3) * 13 + i * 7) % catPool.length]
-    // Avoid duplicates
     if (!selected.find(s => s.id === q.id)) {
       selected.push(q)
     } else {
-      // fallback: pick adjacent
       const alt = catPool[(seed * (i + 5) * 17) % catPool.length]
       if (!selected.find(s => s.id === alt.id)) selected.push(alt)
     }
@@ -71,7 +67,8 @@ function getRandomisedQuestions(seed, questionsPool) {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function QuizGame() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = i18n.language
 
   // Level / progress tracking (persisted)
   const [quizProgress, setQuizProgress] = useLocalStorage('letz-quiz-progress', {
@@ -80,10 +77,9 @@ export default function QuizGame() {
     badges: [],
   })
 
-  // Random seed per session — regenerated each time component mounts
+  // Random seed per session
   const [sessionSeed] = useState(() => Math.floor(Math.random() * 9999) + 1)
 
-  // Use server-side content override if available, else fall back to bundled data
   const allQuestions = useGameContent('questions', QUESTIONS)
   const questions = useMemo(() => getRandomisedQuestions(sessionSeed, allQuestions), [sessionSeed, allQuestions])
 
@@ -94,42 +90,52 @@ export default function QuizGame() {
   const [answers, setAnswers] = useState([])
   const [copied, setCopied] = useState(false)
   const [newBadge, setNewBadge] = useState(null)
-  const [retryList, setRetryList] = useState(null)   // null = normal mode, [...] = retry wrong questions
-  const [wrongAnswers, setWrongAnswers] = useState([]) // wrong question objects from last session
+  const [retryList, setRetryList] = useState(null)
+  const [wrongAnswers, setWrongAnswers] = useState([])
 
-  // Active questions: either retry subset or the full randomised session
   const activeQuestions = retryList !== null ? retryList : questions
 
-  // Track game start
   useEffect(() => {
     if (step === 'question') trackGameEvent('quiz', 'start')
   }, [step === 'question'])
 
-  // Update progress when session done
+  // Helper: get translated question field with English fallback
+  const qText    = (q) => t(`questions.${q.id}.q`,  { defaultValue: q.question })
+  const qOption  = (q, i) => t(`questions.${q.id}.o${i}`, { defaultValue: q.options[i] })
+  const qExplain = (q) => t(`questions.${q.id}.e`,  { defaultValue: q.explanation })
+
+  // Update progress when session done.
+  // BUG FIX: use functional form for totalCorrect so we always work from latest state,
+  // preventing stale-closure issues especially in the retry session.
   const handleSessionComplete = (finalAnswers) => {
     const sessionCorrect = finalAnswers.filter(Boolean).length
     const wrongs = activeQuestions.filter((q, i) => !finalAnswers[i])
     setWrongAnswers(wrongs)
 
-    const prevTotal = quizProgress.totalCorrect
-    const newTotal = prevTotal + sessionCorrect
-
+    // Compute level-up from current progress BEFORE updating
+    const prevTotal = quizProgress.totalCorrect || 0
+    const newTotal  = prevTotal + sessionCorrect
     const prevLevel = getCurrentLevel(prevTotal)
-    const newLevel = getCurrentLevel(newTotal)
+    const newLevel  = getCurrentLevel(newTotal)
 
-    let earned = null
     if (newLevel.id > prevLevel.id) {
-      earned = newLevel
       setNewBadge(newLevel)
     }
 
-    setQuizProgress(prev => ({
-      totalCorrect: newTotal,
-      totalPlayed: (prev.totalPlayed || 0) + activeQuestions.length,
-      badges: earned && !prev.badges.includes(earned.id)
-        ? [...(prev.badges || []), earned.id]
-        : (prev.badges || []),
-    }))
+    // Use functional form so the setter always uses the latest persisted value
+    setQuizProgress(prev => {
+      const latestTotal = (prev.totalCorrect || 0) + sessionCorrect
+      const latestPrev  = getCurrentLevel(prev.totalCorrect || 0)
+      const latestNew   = getCurrentLevel(latestTotal)
+      const earned = latestNew.id > latestPrev.id ? latestNew : null
+      return {
+        totalCorrect: latestTotal,
+        totalPlayed: (prev.totalPlayed || 0) + activeQuestions.length,
+        badges: earned && !(prev.badges || []).includes(earned.id)
+          ? [...(prev.badges || []), earned.id]
+          : (prev.badges || []),
+      }
+    })
 
     trackGameEvent('quiz', 'complete', { score: sessionCorrect, total: activeQuestions.length })
   }
@@ -146,13 +152,16 @@ export default function QuizGame() {
   }
 
   const handleRetryWrong = () => {
-    setRetryList(wrongAnswers)
-    setStep('question')
+    // Capture wrong answers before state resets
+    const retryQuestions = [...wrongAnswers]
+    setRetryList(retryQuestions)
     setCurrentIdx(0)
     setSelected(null)
     setRevealed(false)
     setAnswers([])
     setNewBadge(null)
+    // Set step last so activeQuestions is already updated when question renders
+    setStep('question')
   }
 
   if (step === 'intro') {
@@ -205,13 +214,20 @@ export default function QuizGame() {
   }
 
   const handleNext = () => {
-    const newAnswers = [...answers, selected === q.answer]
+    // Guard: require an answer before advancing
+    if (selected === null) return
+
+    const isCorrect = selected === q.answer
+    const newAnswers = [...answers, isCorrect]
     setAnswers(newAnswers)
+
     if (currentIdx + 1 >= activeQuestions.length) {
+      // Session complete — update progress then show results
       handleSessionComplete(newAnswers)
       setStep('done')
     } else {
-      setCurrentIdx(i => i + 1)
+      // Advance to next question
+      setCurrentIdx(prev => prev + 1)
       setSelected(null)
       setRevealed(false)
     }
@@ -246,7 +262,7 @@ export default function QuizGame() {
       {/* Question */}
       <div className="card" style={{ marginBottom: 20, padding: 24 }}>
         <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', lineHeight: 1.4, fontWeight: 700 }}>
-          {q.question}
+          {qText(q)}
         </h2>
       </div>
 
@@ -286,7 +302,7 @@ export default function QuizGame() {
               }}>
                 {icon || String.fromCharCode(65 + idx)}
               </span>
-              {opt}
+              {qOption(q, idx)}
             </button>
           )
         })}
@@ -304,7 +320,7 @@ export default function QuizGame() {
             {' '}{t('quiz.explanation')}
           </div>
           <p style={{ fontSize: '0.9rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
-            {q.explanation}
+            {qExplain(q)}
           </p>
         </div>
       )}
@@ -324,6 +340,7 @@ export default function QuizGame() {
 
 // ─── Level Badge Display ───────────────────────────────────────────────────────
 function LevelBadges({ totalCorrect, compact = false }) {
+  const { t } = useTranslation()
   const currentLevel = getCurrentLevel(totalCorrect)
 
   if (compact) {
@@ -334,7 +351,7 @@ function LevelBadges({ totalCorrect, compact = false }) {
       }}>
         <span style={{ fontSize: '1rem' }}>{currentLevel.icon}</span>
         <span style={{ fontWeight: 700, fontSize: '0.8rem', color: currentLevel.color }}>
-          Level {currentLevel.id} — {currentLevel.name}
+          {t('quiz.levelLabel', { id: currentLevel.id })} — {currentLevel.name}
         </span>
       </div>
     )
@@ -346,7 +363,7 @@ function LevelBadges({ totalCorrect, compact = false }) {
         fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)',
         textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10
       }}>
-        Your Level
+        {t('quiz.yourLevel')}
       </div>
       <div style={{ display: 'flex', gap: 6, justifyContent: 'space-between' }}>
         {LEVELS.map(level => {
@@ -414,7 +431,7 @@ function Intro({ questions, t, totalCorrect, onStart }) {
           display: 'flex', justifyContent: 'space-between', alignItems: 'center'
         }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            Total correct answers
+            {t('quiz.totalCorrectLabel')}
           </div>
           <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1.1rem' }}>
             {totalCorrect}
@@ -425,7 +442,11 @@ function Intro({ questions, t, totalCorrect, onStart }) {
             marginTop: 10, fontSize: '0.78rem', color: 'var(--text-muted)',
             textAlign: 'center'
           }}>
-            {remaining} more correct {remaining === 1 ? 'answer' : 'answers'} to unlock {nextLevel.icon} {nextLevel.name}
+            {t('quiz.toNextLevelCount', {
+              count: remaining,
+              icon: nextLevel.icon,
+              name: nextLevel.name
+            })}
           </div>
         )}
       </div>
@@ -433,7 +454,7 @@ function Intro({ questions, t, totalCorrect, onStart }) {
       {/* Session categories */}
       <div className="card" style={{ marginBottom: 20 }}>
         <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          This session's categories
+          {t('quiz.sessionCategories')}
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {categories.map(cat => {
@@ -460,7 +481,6 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
   const msg = pct === 100 ? t('quiz.perfect') : pct >= 80 ? t('quiz.great') : pct >= 60 ? t('quiz.good') : t('quiz.tryAgain')
   const currentLevel = getCurrentLevel(totalCorrect)
   const nextLevel = getNextLevel(totalCorrect)
-  const prevTotal = totalCorrect - score
 
   return (
     <div className="container" style={{ paddingTop: 24 }}>
@@ -473,10 +493,10 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
         }}>
           <div style={{ fontSize: '3rem', marginBottom: 8 }}>{newBadge.icon}</div>
           <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>
-            Level Up! {newBadge.name} unlocked!
+            {t('quiz.levelUpTitle', { name: newBadge.name })}
           </div>
           <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>
-            You've reached Level {newBadge.id}
+            {t('quiz.reachedLevelText', { id: newBadge.id })}
           </div>
         </div>
       )}
@@ -495,7 +515,7 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
           marginTop: 16, background: 'rgba(255,255,255,0.2)',
           borderRadius: 999, padding: '6px 16px', display: 'inline-block', fontWeight: 700
         }}>
-          {currentLevel.icon} Level {currentLevel.id}: {currentLevel.name}
+          {currentLevel.icon} {t('quiz.levelLabel', { id: currentLevel.id })}: {currentLevel.name}
         </div>
       </div>
 
@@ -506,12 +526,16 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
           marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)',
           display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: 'var(--text-muted)'
         }}>
-          <span>+{score} correct this session</span>
-          <span><strong style={{ color: 'var(--red)' }}>{totalCorrect}</strong> total correct</span>
+          <span>{t('quiz.sessionScoreText', { score })}</span>
+          <span><strong style={{ color: 'var(--red)' }}>{totalCorrect}</strong> {t('quiz.totalScoreText')}</span>
         </div>
         {nextLevel && (
           <div style={{ marginTop: 8, fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center' }}>
-            {nextLevel.minCorrect - totalCorrect} more to unlock {nextLevel.icon} {nextLevel.name}
+            {t('quiz.toNextLevelCount', {
+              count: nextLevel.minCorrect - totalCorrect,
+              icon: nextLevel.icon,
+              name: nextLevel.name
+            })}
           </div>
         )}
       </div>
@@ -526,7 +550,7 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
           background: '#FEF3C7', color: '#92400E',
           border: '1.5px solid #FDE68A'
         }}>
-          🔁 Retry {wrongCount} missed question{wrongCount !== 1 ? 's' : ''}
+          {t('quiz.retryWrong', { count: wrongCount })}
         </button>
       )}
 

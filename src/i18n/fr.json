@@ -1,10 +1,10 @@
 {
   "nav": {
     "home": "Accueil",
-    "quiz": "Lëtz Quiz",
-    "geo": "Lëtz Géo",
-    "connect": "Lëtz Connect",
-    "info": "Info Hub"
+    "quiz": "Quiz",
+    "geo": "Géo",
+    "challenge": "Activités",
+    "info": "Info"
   },
   "home": {
     "headline": "Découvrez le Luxembourg",
@@ -27,8 +27,8 @@
   },
   "quiz": {
     "title": "Lëtz Quiz",
-    "subtitle": "5 questions par jour — tout sur le Luxembourg",
-    "startBtn": "Commencer le quiz du jour",
+    "subtitle": "Testez vos connaissances sur le Luxembourg",
+    "startBtn": "Commencer le quiz",
     "question": "Question",
     "of": "sur",
     "next": "Question suivante",
@@ -44,7 +44,7 @@
     "great": "Bravo ! Continuez à explorer !",
     "good": "Bon effort — continuez à apprendre !",
     "tryAgain": "C'est en jouant qu'on apprend !",
-    "playAgain": "Jouer demain",
+    "playAgain": "Rejouer",
     "streak": "Jours consécutifs",
     "categories": {
       "language": "Langue",
@@ -54,9 +54,19 @@
       "institutions": "Institutions",
       "economy": "Économie"
     },
+    "shareResult": "Partager mon résultat",
     "alreadyPlayed": "Vous avez déjà joué aujourd'hui !",
     "comeBackTomorrow": "Revenez demain pour de nouvelles questions.",
-    "shareResult": "Partager mon résultat"
+    "yourLevel": "Votre niveau",
+    "totalCorrectLabel": "Total de bonnes réponses",
+    "toNextLevelCount": "{{count}} bonne(s) réponse(s) de plus pour débloquer {{icon}} {{name}}",
+    "sessionCategories": "Catégories de cette session",
+    "levelUpTitle": "Niveau supérieur ! {{name}} débloqué !",
+    "reachedLevelText": "Vous avez atteint le niveau {{id}}",
+    "sessionScoreText": "+{{score}} correct(s) cette session",
+    "totalScoreText": "total correct",
+    "retryWrong": "🔁 Revoir {{count}} question(s) ratée(s)",
+    "levelLabel": "Niveau {{id}}"
   },
   "geo": {
     "title": "Lëtz Géo",
@@ -110,6 +120,74 @@
       "purple": "Expert"
     }
   },
+  "challenge": {
+    "title": "Activités Interculturelles",
+    "subtitle": "Des idées pour vous connecter aux différentes cultures au Luxembourg",
+    "heroText": "Complétez des activités pour débloquer des niveaux supérieurs et approfondir vos liens au Luxembourg.",
+    "level1Name": "Débutant",
+    "level2Name": "Explorateur",
+    "level3Name": "Champion",
+    "level1Desc": "Commencez votre parcours interculturel avec des actions simples du quotidien.",
+    "level2Desc": "Allez plus loin — connectez-vous, explorez et découvrez.",
+    "level3Desc": "Prenez de vraies initiatives et laissez une empreinte durable dans votre communauté.",
+    "easyLabel": "Facile",
+    "mediumLabel": "Moyen",
+    "challengeLabel": "Défi",
+    "activitiesLabel": "activités",
+    "doneLabel": "faites",
+    "levelLabel": "Niveau {{id}}",
+    "levelProgress": "Progression vers le niveau {{next}}",
+    "levelUnlockedTip": "✓ Niveau {{next}} débloqué ! Appuyez dessus pour voir les activités.",
+    "levelUnlockedBanner": "Niveau {{id}} débloqué — {{name}} !",
+    "levelLocked": "Niveau {{id}} : {{name}} est verrouillé",
+    "unlockMore": "Complétez {{count}} activité(s) {{difficulty}} de plus pour débloquer ce niveau.",
+    "markDone": "✓ Marquer comme fait !",
+    "markUndone": "↩ Marquer comme non fait",
+    "biergerpaktTitle": "Le programme Biergerpakt",
+    "biergerpaktText": "Le Biergerpakt (Pacte des citoyens) est l'initiative du gouvernement luxembourgeois qui met en contact les nouveaux arrivants et les résidents de longue date à travers des activités, des événements et des expériences partagées. L'inscription est gratuite et les activités sont ouvertes à tous.",
+    "biergerpaktCta": "Découvrir le Biergerpakt →",
+    "biergerpaktRegisterLink": "S'inscrire sur Biergerpakt",
+    "biergerpaktModuleLink": "Explorer les ressources en ligne",
+    "biergerpaktEventsLink": "Parcourir les événements Biergerpakt",
+    "biergerpaktFindLink": "Trouver un événement à partager",
+    "biergerpaktIdeasLink": "S'inspirer sur Biergerpakt",
+    "biergerpaktSupportLink": "Obtenir du soutien sur Biergerpakt",
+    "whyTitle": "Pourquoi la connexion interculturelle est importante au Luxembourg",
+    "fact1Title": "170+ nationalités",
+    "fact1Text": "Le Luxembourg accueille des personnes de plus de 170 pays. Près de 47 % des résidents sont des ressortissants étrangers — l'une des proportions les plus élevées au monde.",
+    "fact2Title": "Trois langues officielles",
+    "fact2Text": "Le luxembourgeois, le français et l'allemand sont tous des langues officielles. Le portugais est largement parlé et l'anglais est courant dans les affaires et la vie quotidienne.",
+    "fact3Title": "220 000 frontaliers",
+    "fact3Text": "Environ 45 % de la main-d'œuvre effectue quotidiennement la navette depuis la France, la Belgique et l'Allemagne — rendant le Luxembourg uniquement international chaque jour ouvrable.",
+    "fact4Title": "Bien vivre ensemble",
+    "fact4Text": "Le gouvernement luxembourgeois promeut activement le dialogue interculturel et la cohésion sociale à travers des programmes comme le Biergerpakt, reconnaissant que les expériences partagées renforcent la communauté.",
+    "thisWeek": "Thème de la semaine",
+    "startMissions": "Commencer les missions de la semaine",
+    "continueMissions": "Continuer les missions",
+    "done": "fait",
+    "markDoneShort": "Fait",
+    "openBiergerpakt": "Ouvrir sur Biergerpakt",
+    "weekComplete": "Semaine complète !",
+    "missionsCompleted": "Missions accomplies",
+    "totalXp": "XP total gagné",
+    "weeksCompleted": "Semaines complétées",
+    "newMissionsNote": "Nouvelles missions chaque lundi",
+    "discoverBiergerpakt": "Découvrir plus sur Biergerpakt",
+    "reviewMissions": "Revoir les missions de la semaine",
+    "biergerpaktNote": "Certaines missions sont liées au programme Biergerpakt — l'initiative luxembourgeoise pour la connexion interculturelle.",
+    "categories": {
+      "language": "Langue",
+      "visit": "Explorer",
+      "connect": "Connecter",
+      "culture": "Culture",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Moyen",
+      "hard": "Défi"
+    }
+  },
   "info": {
     "title": "Info Hub",
     "subtitle": "Faits, statistiques, liens et plus sur le Luxembourg",
@@ -135,37 +213,7 @@
     },
     "intercultural": {
       "title": "Le vivre ensemble interculturel",
-      "text": "Près de la moitié des résidents du Luxembourg sont des ressortissants étrangers. Cette riche diversité est l'une des plus grandes forces du Luxembourg. Vivre et travailler ensemble à travers les cultures exige compréhension, respect et curiosité."
-    }
-  },
-  "challenge": {
-    "title": "Défi Interculturel",
-    "subtitle": "Des missions réelles pour explorer et vous connecter au Luxembourg",
-    "thisWeek": "Thème de la semaine",
-    "startMissions": "Commencer les missions de la semaine",
-    "continueMissions": "Continuer les missions",
-    "done": "fait",
-    "markDone": "Marquer comme accompli",
-    "openBiergerpakt": "Ouvrir sur Biergerpakt",
-    "weekComplete": "Semaine complète !",
-    "missionsCompleted": "Missions accomplies",
-    "totalXp": "XP total gagné",
-    "weeksCompleted": "Semaines complétées",
-    "newMissionsNote": "Nouvelles missions chaque lundi",
-    "discoverBiergerpakt": "Découvrir plus sur Biergerpakt",
-    "reviewMissions": "Revoir les missions de la semaine",
-    "biergerpaktNote": "Certaines missions sont liées au programme Biergerpakt — l'initiative luxembourgeoise pour la connexion interculturelle.",
-    "categories": {
-      "language": "Langue",
-      "visit": "Explorer",
-      "connect": "Connecter",
-      "culture": "Culture",
-      "biergerpakt": "Biergerpakt"
-    },
-    "difficulty": {
-      "easy": "Facile",
-      "medium": "Moyen",
-      "hard": "Défi"
+      "text": "Près de la moitié des résidents du Luxembourg sont des ressortissants étrangers. Cette riche diversité est l'une des plus grandes forces du Luxembourg. Vivre et travailler ensemble à travers les cultures exige compréhension, respect et curiosité — exactement ce que ces activités sont conçues pour encourager."
     }
   },
   "footer": {
@@ -183,5 +231,553 @@
     "language": "Langue",
     "back": "Retour",
     "home": "Accueil"
+  },
+  "activities": {
+    "lang-moien": {
+      "title": "Dites « Moien » à trois personnes",
+      "tip": "« Moien » (MOY-en) est la salutation luxembourgeoise la plus courante, utilisée à toute heure de la journée. Essayez avec un commerçant, un voisin ou un collègue. Un sourire fait des merveilles !",
+      "category": "Langue 🗣️"
+    },
+    "explore-walk": {
+      "title": "Faites une promenade dans un nouveau quartier",
+      "tip": "Explorez une partie du Luxembourg que vous n'avez jamais visitée — une commune différente, une nouvelle rue ou un parc. Essayez Bonnevoie, Hollerich, Esch-sur-Alzette ou Differdange.",
+      "category": "Explorer 📍"
+    },
+    "culture-song": {
+      "title": "Écoutez une chanson luxembourgeoise",
+      "tip": "Trouvez et écoutez une chanson en Lëtzebuergesch. Essayez des artistes comme Serge Tonnar, Def Dogg, ou cherchez « Ons Heemecht » — l'hymne national. Recherchez « musique lëtzebuergesch » ou parcourez la playlist de RTL Lëtzebuerg.",
+      "category": "Culture 🎭"
+    },
+    "lang-5phrases": {
+      "title": "Apprenez 5 phrases luxembourgeoises du quotidien",
+      "tip": "Maîtrisez celles-ci : « Moien » (bonjour), « Äddi » (au revoir), « Merci » (merci), « Wéi geet et ? » (comment vas-tu ?), « Ech verstinn net » (je ne comprends pas). Écrivez-les sur un post-it !",
+      "category": "Langue 🗣️"
+    },
+    "culture-dish": {
+      "title": "Essayez un plat traditionnel luxembourgeois",
+      "tip": "Essayez le Judd mat Gaardebounen (porc fumé aux fèves), la Bouneschlupp (soupe aux haricots verts) ou les Gromperekichelcher (galettes de pommes de terre) dans un restaurant local.",
+      "category": "Culture 🎭"
+    },
+    "lang-french-cafe": {
+      "title": "Commandez quelque chose en français dans un café",
+      "tip": "« Un café, s'il vous plaît ». « L'addition, s'il vous plaît » signifie « la note, s'il vous plaît ». Le français est l'une des trois langues officielles du Luxembourg !",
+      "category": "Langue 🗣️"
+    },
+    "lang-nature": {
+      "title": "Apprenez 5 mots de la nature en luxembourgeois",
+      "tip": "Apprenez : Bësch (forêt), Floss (rivière), Bierg (montagne/colline), Blumm (fleur), Vull (oiseau). Nommez ce que vous voyez lors d'une promenade — cela aide à mémoriser le vocabulaire !",
+      "category": "Langue 🗣️"
+    },
+    "lang-hello-neighbor": {
+      "title": "Apprenez à dire « bonjour » dans la langue d'un voisin",
+      "tip": "Découvrez quelle langue parle votre voisin, collègue ou ami à la maison, puis apprenez leur salutation. Le Luxembourg compte des résidents de plus de 170 nationalités !",
+      "category": "Langue 🗣️"
+    },
+    "explore-park": {
+      "title": "Passez une heure dans un parc luxembourgeois",
+      "tip": "Essayez le Parc de Merl, le Parc Schlassbësch, ou les jardins de l'Abbaye de Neumünster dans le Grund. Observez les gens autour de vous — les parcs luxembourgeois reflètent la remarquable diversité du pays.",
+      "category": "Explorer 📍"
+    },
+    "explore-train": {
+      "title": "Prenez le train pour une ville que vous n'avez jamais visitée",
+      "tip": "Les transports en commun au Luxembourg (trains, bus, trams) sont entièrement gratuits ! Utilisez-les pour visiter une ville ou un village inconnu. Le Luxembourg a été le premier pays au monde à rendre tous les transports gratuits (2020).",
+      "category": "Explorer 📍"
+    },
+    "culture-tradition": {
+      "title": "Lisez sur une tradition luxembourgeoise",
+      "tip": "Renseignez-vous sur une tradition culturelle : la Schueberfouer, l'Émaischen (foire de la poterie), le pèlerinage de l'Octave, le Bretzelsonndeg (Dimanche du Bretzel), ou la Procession dansante d'Echternach.",
+      "category": "Culture 🎭"
+    },
+    "culture-event": {
+      "title": "Assistez à un événement culturel gratuit",
+      "tip": "Assistez à un concert en plein air, une inauguration d'exposition, un spectacle de rue ou une conférence publique. Consultez l'Agenda Culturel (agenda.lu) pour les événements gratuits près de chez vous.",
+      "category": "Culture 🎭"
+    },
+    "connect-coffee": {
+      "title": "Prenez un café avec quelqu'un d'une autre culture",
+      "tip": "Invitez un collègue, camarade ou connaissance d'un autre contexte culturel pour un café ou un thé. Demandez-leur une chose qu'ils aiment de leur pays d'origine. Soyez curieux — chacun a une histoire fascinante.",
+      "category": "Connecter 🤝"
+    },
+    "explore-museum": {
+      "title": "Visitez un musée ou un site culturel local",
+      "tip": "Passez au moins 30 minutes dans un musée, château ou site patrimonial. Options : MUDAM, Musée National, Casino Luxembourg, Château de Vianden, ou l'une des nombreuses maisons de la culture.",
+      "category": "Explorer 📍"
+    },
+    "culture-film": {
+      "title": "Regardez un film d'une autre culture",
+      "tip": "Regardez un film ou documentaire d'une culture différente de la vôtre — bonus si c'est une nationalité représentée au Luxembourg. La Cinémathèque de la Ville de Luxembourg présente régulièrement des films internationaux.",
+      "category": "Culture 🎭"
+    },
+    "biergerpakt-register": {
+      "title": "Inscrivez-vous sur la plateforme Biergerpakt",
+      "tip": "Créez votre compte sur biergerpakt.zesummeliewen.lu. Explorez les activités et événements disponibles près de chez vous. L'inscription est gratuite et disponible en plusieurs langues.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-neighbour": {
+      "title": "Demandez à un voisin d'où il vient",
+      "tip": "Engagez une conversation avec un voisin que vous ne connaissez pas bien. Demandez-lui d'où il vient et partagez votre propre origine. Un simple « Bonjour, je ne crois pas qu'on se soit vraiment présentés » fonctionne parfaitement.",
+      "category": "Connecter 🤝"
+    },
+    "lang-directions": {
+      "title": "Utilisez le luxembourgeois pour demander son chemin",
+      "tip": "« Wou ass... ? » signifie « Où est... ? ». « Kënnt Dir mir soen, wou... ass ? » = « Pourriez-vous me dire où est... ? » est encore plus poli.",
+      "category": "Langue 🗣️"
+    },
+    "lang-news": {
+      "title": "Lisez un article de presse dans une langue que vous apprenez",
+      "tip": "Essayez RTL.lu pour le luxembourgeois, Tageblatt.lu pour le français ou Wort.lu pour l'allemand. Même lire les titres compte — c'est l'habitude qui importe !",
+      "category": "Langue 🗣️"
+    },
+    "explore-market": {
+      "title": "Visitez un marché hebdomadaire local",
+      "tip": "Rendez-vous dans l'un des marchés hebdomadaires luxembourgeois — comme le Marché de la Ville à Luxembourg-Ville. Achetez au moins un article et discutez avec un vendeur.",
+      "category": "Explorer 📍"
+    },
+    "explore-nature": {
+      "title": "Explorez un site naturel au Luxembourg",
+      "tip": "Visitez le Müllerthal (la Petite Suisse), la Vallée de la Moselle, les Ardennes ou la Réserve de biosphère du Minett. Visit Luxembourg (visitluxembourg.com) propose d'excellentes cartes de randonnées.",
+      "category": "Explorer 📍"
+    },
+    "explore-institution": {
+      "title": "Visitez une institution publique",
+      "tip": "Visitez la Chambre des Députés (visites guidées sur chd.lu), la Cour de justice européenne ou une mairie locale. Le Parlement luxembourgeois propose des visites guidées gratuites.",
+      "category": "Explorer 📍"
+    },
+    "connect-meal": {
+      "title": "Partagez un repas de votre propre culture",
+      "tip": "Cuisinez ou partagez un plat de votre culture avec un collègue, ami ou voisin. Utilisez la nourriture comme pont pour parler de votre pays d'origine.",
+      "category": "Connecter 🤝"
+    },
+    "connect-sport": {
+      "title": "Rejoignez une activité sportive ou fitness en groupe",
+      "tip": "Participez à un sport ou une séance de fitness en groupe — un club de running, un cours de yoga, un match de foot ou une randonnée. Le sport est un langage universel qui brise les barrières.",
+      "category": "Connecter 🤝"
+    },
+    "connect-language-exchange": {
+      "title": "Rejoignez un échange linguistique",
+      "tip": "Trouvez un partenaire qui veut apprendre votre langue pendant que vous apprenez la sienne. Retrouvez-vous 30 minutes en alternant à mi-parcours. Les échanges se trouvent via Biergerpakt, Meetup.com ou des groupes Facebook locaux.",
+      "category": "Connecter 🤝"
+    },
+    "culture-industrial": {
+      "title": "Explorez le patrimoine industriel du Luxembourg",
+      "tip": "Visitez les anciens hauts-fourneaux de Belval (Esch-sur-Alzette), le Musée National des Mines à Rumelange, ou le site ferroviaire patrimonial de Fond-de-Gras.",
+      "category": "Culture 🎭"
+    },
+    "biergerpakt-module": {
+      "title": "Complétez un module en ligne Biergerpakt",
+      "tip": "Suivez au moins un cours en ligne court ou module disponible via la plateforme Biergerpakt sur la culture, les institutions ou le vivre ensemble interculturel au Luxembourg.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-volunteer": {
+      "title": "Faites du bénévolat pour une activité communautaire locale",
+      "tip": "Inscrivez-vous pour une activité bénévole ponctuelle — une journée de nettoyage, une banque alimentaire, un jardin communautaire ou de l'aide à une association locale. Cherchez des opportunités sur luxassoc.lu ou le site de votre commune.",
+      "category": "Connecter 🤝"
+    },
+    "connect-gathering": {
+      "title": "Organisez un rassemblement de quartier",
+      "tip": "Prenez l'initiative : organisez un petit rassemblement — un pique-nique, une soirée jeux de société ou un barbecue — et invitez des personnes d'au moins deux cultures différentes. Vous pouvez trouver de l'inspiration via la plateforme Biergerpakt.",
+      "category": "Connecter 🤝"
+    },
+    "biergerpakt-attend": {
+      "title": "Assistez à un événement Biergerpakt",
+      "tip": "Inscrivez-vous et participez à un événement Biergerpakt dans votre région — une promenade guidée, un cours de cuisine, un échange linguistique ou un rassemblement communautaire. Parcourez les activités triées par commune.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-invite": {
+      "title": "Invitez quelqu'un à un événement Biergerpakt",
+      "tip": "Trouvez un événement Biergerpakt intéressant, puis invitez un ami, voisin ou collègue à vous rejoindre. Partager l'expérience la rend encore plus riche.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-organise": {
+      "title": "Organisez un rassemblement inspiré du Biergerpakt",
+      "tip": "Prenez l'initiative : organisez un petit rassemblement et invitez des personnes d'au moins deux cultures différentes. Vous pouvez trouver de l'inspiration et du soutien pour votre événement via la plateforme Biergerpakt.",
+      "category": "Biergerpakt 🤝"
+    }
+  },
+  "questions": {
+    "lang-1": {
+      "q": "Que signifie « Moien » en luxembourgeois ?",
+      "o0": "Bonsoir",
+      "o1": "Bonjour / Bonne matinée",
+      "o2": "Merci",
+      "o3": "Au revoir",
+      "e": "« Moien » est la salutation la plus courante en luxembourgeois, utilisée à toute heure de la journée. Il vient de l'allemand « Morgen » (matin)."
+    },
+    "lang-2": {
+      "q": "En quelle année le luxembourgeois a-t-il été officiellement reconnu comme langue nationale du Luxembourg ?",
+      "o0": "1945",
+      "o1": "1964",
+      "o2": "1984",
+      "o3": "2000",
+      "e": "La loi du 24 février 1984 a établi le luxembourgeois comme langue nationale, aux côtés du français et de l'allemand comme langues administratives."
+    },
+    "lang-3": {
+      "q": "À quelle famille de langues appartient le luxembourgeois (Lëtzebuergesch) ?",
+      "o0": "Langues romanes",
+      "o1": "Langues slaves",
+      "o2": "Germanique occidental (francique mosellan)",
+      "o3": "Germanique du Nord",
+      "e": "Le luxembourgeois est une langue germanique occidentale du groupe dialectal francique mosellan, étroitement liée à l'allemand mais avec une forte influence française."
+    },
+    "lang-4": {
+      "q": "Comment dit-on « Je t'aime » en luxembourgeois ?",
+      "o0": "Ech hunn dech gär",
+      "o1": "Je t'aime",
+      "o2": "Ich liebe dich",
+      "o3": "Mir gefällt dir",
+      "e": "« Ech hunn dech gär » signifie littéralement « je t'ai cher » — c'est l'expression standard d'affection en luxembourgeois."
+    },
+    "lang-5": {
+      "q": "Quelles sont les trois langues administratives officielles du Luxembourg ?",
+      "o0": "Anglais, français, allemand",
+      "o1": "Luxembourgeois, français, allemand",
+      "o2": "Français, allemand, portugais",
+      "o3": "Luxembourgeois, anglais, français",
+      "e": "Le Luxembourg utilise trois langues officielles : le luxembourgeois (langue nationale), le français (législation et tribunaux) et l'allemand (médias et presse)."
+    },
+    "lang-6": {
+      "q": "Que signifie « Wéi geet et ? » en luxembourgeois ?",
+      "o0": "Où vas-tu ?",
+      "o1": "Comment vas-tu ?",
+      "o2": "Quelle heure est-il ?",
+      "o3": "Où est la gare ?",
+      "e": "« Wéi geet et ? » signifie « Comment vas-tu ? » ou « Comment ça va ? » — une salutation quotidienne très courante au Luxembourg."
+    },
+    "lang-7": {
+      "q": "Pour quelle célèbre œuvre littéraire en luxembourgeois Michel Rodange est-il connu ?",
+      "o0": "De Renert",
+      "o1": "Dil Ueueglen",
+      "o2": "Lëtzebuerger",
+      "o3": "D'Weltgeschicht",
+      "e": "Michel Rodange a écrit « De Renert » (Le Renard) en 1872, un poème épique qui retranscrit l'histoire médiévale de Renard le Renard en luxembourgeois — une pierre angulaire du patrimoine littéraire luxembourgeois."
+    },
+    "lang-8": {
+      "q": "Que signifie « Merci villmools » en luxembourgeois ?",
+      "o0": "De rien",
+      "o1": "Merci beaucoup",
+      "o2": "Excusez-moi",
+      "o3": "S'il vous plaît",
+      "e": "« Merci villmools » combine le français « merci » avec le luxembourgeois « villmools » (plusieurs fois) pour signifier « merci beaucoup ». Ce mélange d'éléments français et germaniques est typique du luxembourgeois."
+    },
+    "hist-1": {
+      "q": "En quelle année le Luxembourg a-t-il obtenu sa pleine indépendance ?",
+      "o0": "1815",
+      "o1": "1839",
+      "o2": "1867",
+      "o3": "1890",
+      "e": "Le traité de Londres du 19 avril 1839 a reconnu le Luxembourg comme État pleinement indépendant, le séparant des Pays-Bas."
+    },
+    "hist-2": {
+      "q": "Quelle a été la signification du traité de Londres (1867) pour le Luxembourg ?",
+      "o0": "Le Luxembourg a rejoint la Communauté européenne",
+      "o1": "Le Luxembourg a été déclaré perpétuellement neutre et sa grande forteresse démolie",
+      "o2": "Le Luxembourg a obtenu ses frontières actuelles",
+      "o3": "Le Luxembourg est devenu un Grand-Duché",
+      "e": "Le traité de Londres de 1867 a déclaré le Luxembourg perpétuellement neutre et exigé la démolition de sa célèbre forteresse — l'une des plus solides d'Europe. Les Alliés appelaient la ville « le Gibraltar du Nord »."
+    },
+    "hist-3": {
+      "q": "Qui a fondé le Comté de Luxembourg en 963 apr. J.-C. en acquérant un petit château franc ?",
+      "o0": "Comte Baudouin Ier",
+      "o1": "Sigefroi",
+      "o2": "Ermesinde",
+      "o3": "Henri VII",
+      "e": "Le comte Sigefroi a acquis le Lucilinburhuc (Petite Forteresse) en 963, traditionnellement considéré comme la fondation du Luxembourg. Le château se dressait sur le promontoire du Bock au-dessus de l'Alzette."
+    },
+    "hist-4": {
+      "q": "En quelle année le Luxembourg a-t-il été occupé par l'Allemagne nazie pendant la Seconde Guerre mondiale ?",
+      "o0": "1938",
+      "o1": "1939",
+      "o2": "1940",
+      "o3": "1941",
+      "e": "L'Allemagne a envahi et occupé le Luxembourg le 10 mai 1940. Le Luxembourg a été annexé au Troisième Reich en 1942 et libéré par les forces alliées en septembre 1944."
+    },
+    "hist-5": {
+      "q": "Le Luxembourg a été membre fondateur de quelles trois grandes organisations internationales ?",
+      "o0": "ONU, OTAN et Conseil de l'Europe",
+      "o1": "OTAN, CEE (UE) et Benelux",
+      "o2": "CEE, espace Schengen et OMC",
+      "o3": "Benelux, AELE et OTAN",
+      "e": "Le Luxembourg a été membre fondateur de l'OTAN (1949), de la Communauté économique européenne (1957, maintenant l'UE) et de l'Union Benelux (1944)."
+    },
+    "hist-6": {
+      "q": "La Bataille des Ardennes (décembre 1944–janvier 1945) s'est partiellement déroulée sur le territoire luxembourgeois. Quelle ville est devenue célèbre pour cette bataille ?",
+      "o0": "Esch-sur-Alzette",
+      "o1": "Clervaux",
+      "o2": "Bastogne (Belgique voisine)",
+      "o3": "Echternach",
+      "e": "Clervaux, dans le nord du Luxembourg, a connu de violents combats pendant la Bataille des Ardennes. Le château de la ville a été gravement endommagé avant d'être repris par les forces alliées."
+    },
+    "hist-7": {
+      "q": "La Déclaration Schuman de 1950, document fondateur de l'intégration européenne, a été signée par Robert Schuman. Où est-il né ?",
+      "o0": "Metz, France",
+      "o1": "Clausen, ville de Luxembourg",
+      "o2": "Trèves, Allemagne",
+      "o3": "Bruxelles, Belgique",
+      "e": "Robert Schuman (1886–1963) est né à Clausen, dans la ville de Luxembourg. Il est devenu ministre français des Affaires étrangères et a proposé la création de la CECA, qui a conduit à l'UE actuelle."
+    },
+    "hist-8": {
+      "q": "Quelle Grande-Duchesse a dirigé le Luxembourg en exil pendant la Seconde Guerre mondiale et est devenue un symbole de résistance nationale ?",
+      "o0": "Marie-Adélaïde",
+      "o1": "Charlotte",
+      "o2": "Joséphine-Charlotte",
+      "o3": "Maria Teresa",
+      "e": "La Grande-Duchesse Charlotte (1896–1985) a dirigé le gouvernement luxembourgeois en exil pendant la Seconde Guerre mondiale, diffusant depuis Londres pour maintenir l'esprit national. Elle est l'une des figures historiques les plus aimées du Luxembourg."
+    },
+    "cult-1": {
+      "q": "Quel est le jour national du Luxembourg et quand est-il célébré ?",
+      "o0": "24 octobre — Jour de l'indépendance",
+      "o1": "23 juin — Fête nationale (Nationalfeierdag)",
+      "o2": "14 juillet — Fête nationale française",
+      "o3": "15 novembre — Fête de la Dynastie",
+      "e": "La fête nationale (Nationalfeierdag) est célébrée le 23 juin, officiellement l'anniversaire du Grand-Duc. Elle comprend des concerts, des feux d'artifice et la « procession aux flambeaux » la veille."
+    },
+    "cult-2": {
+      "q": "Qu'est-ce que le « Bretzelsonndeg » (Dimanche du Bretzel) au Luxembourg ?",
+      "o0": "Un festival des récoltes où les agriculteurs partagent des bretzels",
+      "o1": "Une tradition de la Saint-Valentin où les garçons offrent des bretzels aux filles qu'ils aiment",
+      "o2": "Une tradition de Pâques consistant à manger des bretzels sucrés",
+      "o3": "Une coutume de carnaval impliquant des costumes en forme de bretzel",
+      "e": "Le Bretzelsonndeg (le 4e dimanche du Carême) est la Saint-Valentin luxembourgeoise : les garçons offrent un bretzel décoré à la fille qu'ils aiment. Si elle est réciproque, elle lui offre un œuf décoré à Pâques."
+    },
+    "cult-3": {
+      "q": "Qu'est-ce que l'« Émaischen » ?",
+      "o0": "Un festival traditionnel des récoltes dans la vallée de la Moselle",
+      "o1": "Une foire artisanale du lundi de Pâques à Luxembourg-Ville avec les sifflets-oiseaux « Péckvillercher »",
+      "o2": "Un défilé de carnaval à Esch-sur-Alzette",
+      "o3": "Un festival de musique estival à Vianden",
+      "e": "L'Émaischen est une foire traditionnelle du lundi de Pâques au Marché-aux-Poissons de Luxembourg-Ville, célèbre pour les « Péckvillercher » artisanaux — des sifflets en forme d'oiseau en terre cuite."
+    },
+    "cult-4": {
+      "q": "La vieille ville historique du Luxembourg et ses fortifications sont inscrites au patrimoine mondial de l'UNESCO. Depuis quelle année ?",
+      "o0": "1985",
+      "o1": "1994",
+      "o2": "2001",
+      "o3": "2008",
+      "e": "Les Vieux Quartiers et Fortifications de la Ville de Luxembourg ont été inscrits sur la Liste du patrimoine mondial de l'UNESCO en 1994, reconnus pour leur valeur universelle exceptionnelle."
+    },
+    "cult-5": {
+      "q": "Qu'est-ce que la « Schueberfouer » ?",
+      "o0": "Une foire aux moutons devenue une grande fête foraine annuelle à Luxembourg-Ville",
+      "o1": "Un tournoi de joutes médiéval à Vianden",
+      "o2": "Un festival vinicole à Remich sur la Moselle",
+      "o3": "Un marché de Noël sur la Place d'Armes",
+      "e": "La Schueberfouer a débuté comme une foire aux moutons en 1340. Aujourd'hui, c'est l'une des plus anciennes et des plus grandes fêtes foraines d'Europe, organisée chaque août/septembre à Luxembourg-Ville."
+    },
+    "cult-6": {
+      "q": "L'« Octave de Notre-Dame de Luxembourg » est un événement religieux important. En quoi consiste-t-il ?",
+      "o0": "Huit jours de chants et de danses à la cathédrale",
+      "o1": "Un pèlerinage de deux semaines à la cathédrale Notre-Dame où des milliers vénèrent la Consolatrix Afflictorum",
+      "o2": "Une procession à travers la vallée de la Pétrusse le dimanche de Pâques",
+      "o3": "Un festival marial à Echternach",
+      "e": "L'Octave (Oktav) est un pèlerinage marial de 15 jours en mai à la cathédrale Notre-Dame. Des milliers vénèrent la Consolatrix Afflictorum (Consolatrice des affligés), patronne du Luxembourg."
+    },
+    "cult-7": {
+      "q": "La « Procession dansante d'Echternach » est un patrimoine culturel immatériel UNESCO unique. Qu'est-ce qui la rend spéciale ?",
+      "o0": "Les participants dansent à reculons dans les rues",
+      "o1": "Elle se déroule entièrement en silence",
+      "o2": "Les participants sautillent dans une danse en trois pas en procession le mardi de Pentecôte",
+      "o3": "Elle implique des costumes de plus de 100 pays différents",
+      "e": "La Procession dansante d'Echternach (Sprangprozessioun) a lieu chaque mardi de Pentecôte depuis le VIIe siècle. Les participants sautillent en trois pas à travers la ville en l'honneur de saint Willibrord."
+    },
+    "cult-8": {
+      "q": "Qu'est-ce que la « Gëlle Fra » (Dame d'Or) au Luxembourg ?",
+      "o0": "Une célèbre pâtisserie luxembourgeoise",
+      "o1": "Un monument à Luxembourg-Ville représentant l'esprit de sacrifice du pays, montrant une femme ailée sur une haute colonne",
+      "o2": "Une danse traditionnelle de la région des Ardennes",
+      "o3": "Le surnom de la Grande-Duchesse Charlotte",
+      "e": "La Gëlle Fra est un mémorial de guerre sur la Place de la Constitution. La statue dorée au sommet d'une colonne de 21 mètres commémore les volontaires de la Première Guerre mondiale. Elle a été fondue par les nazis en 1940 et reconstruite après la guerre."
+    },
+    "peop-1": {
+      "q": "Edward Steichen, né à Bivange au Luxembourg, est devenu mondialement célèbre en tant que ?",
+      "o0": "Musicien de jazz",
+      "o1": "Photographe et conservateur au MoMA de New York",
+      "o2": "Pilote de Formule 1",
+      "o3": "Économiste lauréat du prix Nobel",
+      "e": "Edward Steichen (1879–1973) était un photographe pionnier et directeur du département photographique du MoMA (New York). Il a créé la légendaire exposition « The Family of Man » (1955)."
+    },
+    "peop-2": {
+      "q": "Quel Luxembourgeois a remporté l'or olympique au 1500m aux Jeux olympiques d'Helsinki de 1952 ?",
+      "o0": "Michel Théato",
+      "o1": "Nicolas Frantz",
+      "o2": "Josy Barthel",
+      "o3": "Charly Gaul",
+      "e": "Josy Barthel (1927–1992) a remporté l'or au 1500m à Helsinki en 1952 — la seule médaille d'or olympique du Luxembourg à ce jour. Le stade national d'athlétisme porte son nom."
+    },
+    "peop-3": {
+      "q": "Charly Gaul, légendaire cycliste luxembourgeois, était surnommé comment ?",
+      "o0": "Le Jardinier",
+      "o1": "L'Ange de la Montagne",
+      "o2": "Le Lion de Fer",
+      "o3": "Le Coureur Silencieux",
+      "e": "Charly Gaul (1932–2005) était surnommé « L'Ange de la Montagne » pour ses capacités d'escalade extraordinaires. Il a remporté le Tour de France (1958) et le Giro d'Italia deux fois (1956, 1959)."
+    },
+    "peop-4": {
+      "q": "Hugo Gernsback, né au Luxembourg en 1884, est connu comme le « Père de la science-fiction ». Quel magazine a-t-il fondé ?",
+      "o0": "Popular Science",
+      "o1": "Amazing Stories",
+      "o2": "Science Wonder Stories",
+      "o3": "Modern Mechanics",
+      "e": "Hugo Gernsback (1884–1967) a fondé « Amazing Stories » en 1926, le premier magazine entièrement dédié à la science-fiction. Les prix Hugo annuels portent son nom."
+    },
+    "peop-5": {
+      "q": "Jean-Claude Juncker, ancien Premier ministre du Luxembourg (1995–2013), a ensuite occupé quel poste ?",
+      "o0": "Secrétaire général de l'OTAN",
+      "o1": "Président de la Commission européenne (2014–2019)",
+      "o2": "Président du Conseil européen",
+      "o3": "Président du Parlement européen",
+      "e": "Jean-Claude Juncker a été Premier ministre du Luxembourg pendant 18 ans, puis Président de la Commission européenne de 2014 à 2019. Il a également présidé l'Eurogroupe (2005–2013)."
+    },
+    "peop-6": {
+      "q": "Michel Théato, né au Luxembourg, a remporté l'or à quels Jeux olympiques au marathon ?",
+      "o0": "1896 Athènes",
+      "o1": "1900 Paris",
+      "o2": "1904 Saint-Louis",
+      "o3": "1908 Londres",
+      "e": "Michel Théato a remporté le marathon aux JO de Paris 1900, initialement considéré comme Français. Des recherches ont confirmé qu'il était né au Luxembourg en 1878, faisant de lui le premier médaillé d'or olympique luxembourgeois."
+    },
+    "peop-7": {
+      "q": "Qui est l'actuel (2024) chef d'État du Luxembourg ?",
+      "o0": "Grand-Duc Jean",
+      "o1": "Grand-Duc Henri",
+      "o2": "Grand-Duc Guillaume",
+      "o3": "Grand-Duc Adolphe",
+      "e": "Le Grand-Duc Henri est le monarque constitutionnel du Luxembourg depuis octobre 2000, lorsque son père le Grand-Duc Jean a abdiqué. Il est marié à la Grande-Duchesse Maria Teresa."
+    },
+    "peop-8": {
+      "q": "Nicolas Frantz, cycliste de Mamer au Luxembourg, a remporté le Tour de France en quelles années ?",
+      "o0": "1921 et 1922",
+      "o1": "1927 et 1928",
+      "o2": "1933 et 1934",
+      "o3": "1938 et 1939",
+      "e": "Nicolas Frantz a remporté le Tour de France en 1927 et 1928. Il est l'une des plus grandes légendes sportives du Luxembourg, avec Charly Gaul, Josy Barthel et Andy Schleck."
+    },
+    "inst-1": {
+      "q": "Combien de membres compte le parlement luxembourgeois (Chambre des Députés) ?",
+      "o0": "40",
+      "o1": "60",
+      "o2": "72",
+      "o3": "100",
+      "e": "La Chambre des Députés compte 60 membres élus pour des mandats de cinq ans. Le Luxembourg est divisé en 4 circonscriptions : Sud, Centre, Nord et Est."
+    },
+    "inst-2": {
+      "q": "Quelles grandes institutions de l'UE ont leur siège à Luxembourg-Ville ?",
+      "o0": "Parlement européen et Commission européenne",
+      "o1": "Cour de justice de l'UE, Cour des comptes et Eurostat",
+      "o2": "Banque centrale européenne et Conseil européen",
+      "o3": "Agence européenne de défense et Europol",
+      "e": "Le Luxembourg accueille la Cour de justice de l'UE, la Cour des comptes, Eurostat, la Banque européenne d'investissement (BEI) et une partie du Secrétariat du Parlement européen."
+    },
+    "inst-3": {
+      "q": "Qu'est-ce que STATEC ?",
+      "o0": "La télévision d'État",
+      "o1": "L'Institut national de la statistique et des études économiques du Luxembourg",
+      "o2": "L'agence nationale de technologie",
+      "o3": "L'agence nationale de l'emploi",
+      "e": "STATEC (Institut national de la statistique et des études économiques du Grand-Duché de Luxembourg) collecte et publie toutes les statistiques officielles sur le Luxembourg."
+    },
+    "inst-4": {
+      "q": "Quel est le rôle du « Médiateur » (Ombudsman) au Luxembourg ?",
+      "o0": "Médier dans les procédures de divorce",
+      "o1": "Traiter les plaintes des citoyens contre les administrations publiques",
+      "o2": "Superviser les médias et la presse",
+      "o3": "Gérer les relations avec l'UE",
+      "e": "Le Médiateur de la République agit comme intermédiaire indépendant entre les citoyens et les administrations publiques, enquêtant sur les plaintes et cherchant des solutions sans recours judiciaire."
+    },
+    "inst-5": {
+      "q": "L'Accord de Schengen a été signé en 1985. Où exactement a-t-il été signé ?",
+      "o0": "Luxembourg-Ville",
+      "o1": "Le village de Schengen, sur un bateau sur la Moselle",
+      "o2": "Bruxelles, Belgique",
+      "o3": "Strasbourg, France",
+      "e": "L'Accord de Schengen a été signé le 14 juin 1985 sur le MS Princesse Marie-Astrid, un bateau amarré à Schengen — un petit village luxembourgeois où se rencontrent la France, l'Allemagne et le Luxembourg."
+    },
+    "inst-6": {
+      "q": "Que signifie « LCGB » au Luxembourg ?",
+      "o0": "Luxembourg Catholic Governing Body",
+      "o1": "Lëtzebuerger Chrëschtleche Gewerkschafts-Bond (syndicat chrétien)",
+      "o2": "Luxembourg Commercial and Government Bureau",
+      "o3": "Luxembourg Cultural and Geographical Board",
+      "e": "LCGB (Lëtzebuerger Chrëschtleche Gewerkschafts-Bond) est l'un des principaux syndicats du Luxembourg, aux côtés de l'OGBL. Les syndicats jouent un rôle important dans le modèle de dialogue social luxembourgeois."
+    },
+    "inst-7": {
+      "q": "Quel est le rôle du « Conseil d'État » au Luxembourg ?",
+      "o0": "Le cabinet gouvernemental",
+      "o1": "Un organe consultatif qui examine la législation avant son adoption par le parlement",
+      "o2": "La cour suprême",
+      "o3": "Le sénat (chambre haute)",
+      "e": "Le Conseil d'État est un organe consultatif de 21 membres qui examine tous les projets de loi avant que le parlement ne vote. Il freine les législations hâtives mais n'a pas de droit de veto."
+    },
+    "inst-8": {
+      "q": "L'ADEM est une institution clé pour les personnes vivant au Luxembourg. Que fait-elle ?",
+      "o0": "Elle gère l'assurance maladie nationale",
+      "o1": "C'est l'agence nationale de l'emploi, aidant les demandeurs d'emploi et les employeurs",
+      "o2": "Elle gère l'immigration et les permis de séjour",
+      "o3": "Elle gère le logement social",
+      "e": "L'ADEM (Agence pour le développement de l'emploi) aide les demandeurs d'emploi à trouver du travail, gère les allocations chômage et soutient les employeurs dans leurs recrutements."
+    },
+    "econ-1": {
+      "q": "Le Luxembourg est le deuxième plus grand centre de fonds d'investissement au monde après quel pays ?",
+      "o0": "La Suisse",
+      "o1": "Les États-Unis",
+      "o2": "Le Royaume-Uni",
+      "o3": "Hong Kong",
+      "e": "Le Luxembourg est le deuxième domicile de fonds d'investissement au monde après les États-Unis, hébergeant plus de 3 500 fonds. Le secteur financier représente environ un quart du PIB."
+    },
+    "econ-2": {
+      "q": "Quel est le pourcentage approximatif de la main-d'œuvre luxembourgeoise constitué de frontaliers venant de France, d'Allemagne et de Belgique ?",
+      "o0": "15 %",
+      "o1": "25 %",
+      "o2": "45 %",
+      "o3": "60 %",
+      "e": "Environ 45 % des travailleurs au Luxembourg font quotidiennement la navette depuis la France, la Belgique et l'Allemagne. L'économie luxembourgeoise ne pourrait pas fonctionner sans les travailleurs frontaliers."
+    },
+    "econ-3": {
+      "q": "Quel était le pilier industriel traditionnel de l'économie luxembourgeoise jusqu'aux années 1970 ?",
+      "o0": "Exploitation minière du charbon",
+      "o1": "Industrie textile",
+      "o2": "Industrie sidérurgique",
+      "o3": "Agriculture",
+      "e": "L'acier était le fondement de l'économie luxembourgeoise des années 1870 aux années 1970. La région méridionale du « Minette » était riche en minerai de fer. Aujourd'hui ArcelorMittal (dont le siège est au Luxembourg) est le plus grand producteur d'acier au monde."
+    },
+    "econ-4": {
+      "q": "Quelle est la population approximative du Luxembourg ?",
+      "o0": "350 000",
+      "o1": "520 000",
+      "o2": "680 000",
+      "o3": "1,2 million",
+      "e": "Le Luxembourg comptait environ 680 000 résidents en 2024 — l'un des plus petits pays de l'UE par population, mais aussi l'un des plus riches par habitant."
+    },
+    "econ-5": {
+      "q": "Le Luxembourg se classe régulièrement premier dans l'UE pour quel indicateur économique ?",
+      "o0": "Taux de chômage",
+      "o1": "PIB par habitant",
+      "o2": "Production agricole",
+      "o3": "Exportations manufacturières",
+      "e": "Le Luxembourg a constamment le PIB par habitant le plus élevé de l'UE et parmi les plus élevés au monde, grâce à son secteur financier, aux institutions européennes et à sa main-d'œuvre frontalière qualifiée."
+    },
+    "econ-6": {
+      "q": "Quelles entreprises technologiques ont leur siège européen au Luxembourg ?",
+      "o0": "Apple, Google et Twitter/X",
+      "o1": "Amazon, PayPal, Skype et bien d'autres",
+      "o2": "Microsoft, Samsung et Sony",
+      "o3": "Facebook, Netflix et Uber",
+      "e": "Le Luxembourg accueille les sièges européens d'Amazon, PayPal, Skype, Rakuten, Ferrero et bien d'autres, attirés par la stabilité, la localisation et l'accès au marché de l'UE."
+    },
+    "econ-7": {
+      "q": "Combien de nationalités sont représentées parmi les résidents du Luxembourg ?",
+      "o0": "Environ 50",
+      "o1": "Environ 100",
+      "o2": "Environ 170",
+      "o3": "Environ 250",
+      "e": "Plus de 170 nationalités habitent au Luxembourg. Environ 47 % des résidents sont des ressortissants étrangers. Les ressortissants portugais forment la plus grande communauté non luxembourgeoise."
+    },
+    "econ-8": {
+      "q": "La région mosellane du Luxembourg est connue pour produire quoi ?",
+      "o0": "Bière artisanale",
+      "o1": "Vins blancs (Riesling, Rivaner, Auxerrois)",
+      "o2": "Fromage",
+      "o3": "Chocolat",
+      "e": "La vallée mosellane du Luxembourg produit d'excellents vins blancs, notamment le Riesling, le Rivaner, l'Auxerrois et le Crémant de Luxembourg. La région s'étend de Schengen à Wasserbillig."
+    }
   }
 }

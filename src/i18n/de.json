@@ -1,10 +1,10 @@
 {
   "nav": {
     "home": "Startseite",
-    "quiz": "Lëtz Quiz",
-    "geo": "Lëtz Géo",
-    "connect": "Lëtz Connect",
-    "info": "Info Hub"
+    "quiz": "Quiz",
+    "geo": "Géo",
+    "challenge": "Aktivitäten",
+    "info": "Info"
   },
   "home": {
     "headline": "Luxemburg entdecken",
@@ -27,8 +27,8 @@
   },
   "quiz": {
     "title": "Lëtz Quiz",
-    "subtitle": "5 Fragen pro Tag — alles über Luxemburg",
-    "startBtn": "Heutiges Quiz starten",
+    "subtitle": "Teste dein Wissen über Luxemburg",
+    "startBtn": "Quiz starten",
     "question": "Frage",
     "of": "von",
     "next": "Nächste Frage",
@@ -44,7 +44,7 @@
     "great": "Großartig! Weiter erkunden!",
     "good": "Gute Arbeit — weiter lernen!",
     "tryAgain": "Übung macht den Meister!",
-    "playAgain": "Morgen spielen",
+    "playAgain": "Nochmal spielen",
     "streak": "Tage in Folge",
     "categories": {
       "language": "Sprache",
@@ -54,9 +54,19 @@
       "institutions": "Institutionen",
       "economy": "Wirtschaft"
     },
+    "shareResult": "Ergebnis teilen",
     "alreadyPlayed": "Du hast heute bereits gespielt!",
     "comeBackTomorrow": "Komm morgen für neue Fragen wieder.",
-    "shareResult": "Ergebnis teilen"
+    "yourLevel": "Dein Level",
+    "totalCorrectLabel": "Insgesamt richtige Antworten",
+    "toNextLevelCount": "Noch {{count}} richtige Antwort(en), um {{icon}} {{name}} freizuschalten",
+    "sessionCategories": "Kategorien dieser Runde",
+    "levelUpTitle": "Aufgestiegen! {{name}} freigeschaltet!",
+    "reachedLevelText": "Du hast Level {{id}} erreicht",
+    "sessionScoreText": "+{{score}} richtig in dieser Runde",
+    "totalScoreText": "insgesamt richtig",
+    "retryWrong": "🔁 {{count}} verpasste Frage(n) wiederholen",
+    "levelLabel": "Level {{id}}"
   },
   "geo": {
     "title": "Lëtz Géo",
@@ -110,6 +120,73 @@
       "purple": "Experte"
     }
   },
+  "challenge": {
+    "title": "Interkulturelle Aktivitäten",
+    "subtitle": "Ideen, um in Luxemburg Kulturen zu verbinden",
+    "heroText": "Absolviere Aktivitäten, um höhere Level freizuschalten und deine Verbindungen in Luxemburg zu vertiefen.",
+    "level1Name": "Einsteiger",
+    "level2Name": "Entdecker",
+    "level3Name": "Champion",
+    "level1Desc": "Beginne deine interkulturelle Reise mit einfachen, alltäglichen Aktionen.",
+    "level2Desc": "Geh einen Schritt weiter — verbinde dich, erkunde und entdecke.",
+    "level3Desc": "Ergreife echte Initiative und hinterlasse einen bleibenden Eindruck in deiner Gemeinschaft.",
+    "easyLabel": "Einfach",
+    "mediumLabel": "Mittel",
+    "challengeLabel": "Herausforderung",
+    "activitiesLabel": "Aktivitäten",
+    "doneLabel": "erledigt",
+    "levelLabel": "Level {{id}}",
+    "levelProgress": "Fortschritt zu Level {{next}}",
+    "levelUnlockedTip": "✓ Level {{next}} freigeschaltet! Tippe oben darauf, um Aktivitäten zu sehen.",
+    "levelUnlockedBanner": "Level {{id}} freigeschaltet — {{name}}!",
+    "levelLocked": "Level {{id}}: {{name}} ist gesperrt",
+    "unlockMore": "Schließe noch {{count}} {{difficulty}}-Aktivität(en) ab, um dieses Level freizuschalten.",
+    "markDone": "✓ Als erledigt markieren!",
+    "markUndone": "↩ Als nicht erledigt markieren",
+    "biergerpaktTitle": "Das Biergerpakt-Programm",
+    "biergerpaktText": "Der Biergerpakt (Bürgerpakt) ist Luxemburgs Regierungsinitiative, die Neuankömmlinge und langjährige Einwohner durch gemeinsame Aktivitäten, Veranstaltungen und Erfahrungen verbindet. Die Registrierung ist kostenlos und Aktivitäten stehen jedem offen.",
+    "biergerpaktCta": "Biergerpakt entdecken →",
+    "biergerpaktRegisterLink": "Beim Biergerpakt registrieren",
+    "biergerpaktModuleLink": "Online-Ressourcen erkunden",
+    "biergerpaktEventsLink": "Biergerpakt-Veranstaltungen durchsuchen",
+    "biergerpaktFindLink": "Eine Veranstaltung zum Teilen finden",
+    "biergerpaktIdeasLink": "Ideen beim Biergerpakt holen",
+    "biergerpaktSupportLink": "Unterstützung beim Biergerpakt erhalten",
+    "whyTitle": "Warum interkulturelle Verbindung in Luxemburg wichtig ist",
+    "fact1Title": "170+ Nationalitäten",
+    "fact1Text": "Luxemburg beherbergt Menschen aus über 170 Ländern. Fast 47 % der Einwohner sind ausländische Staatsangehörige — eine der höchsten Quoten weltweit.",
+    "fact2Title": "Drei Amtssprachen",
+    "fact2Text": "Luxemburgisch, Französisch und Deutsch sind alle Amtssprachen. Portugiesisch ist weit verbreitet und Englisch ist in Wirtschaft und Alltag üblich.",
+    "fact3Title": "220.000 Grenzpendler",
+    "fact3Text": "Etwa 45 % der Arbeitnehmer pendeln täglich aus Frankreich, Belgien und Deutschland — was Luxemburg an jedem Arbeitstag einzigartig international macht.",
+    "fact4Title": "Gut zusammenleben",
+    "fact4Text": "Luxemburgs Regierung fördert aktiv den interkulturellen Dialog und den gesellschaftlichen Zusammenhalt durch Programme wie den Biergerpakt, da gemeinsame Erfahrungen eine stärkere Gemeinschaft schaffen.",
+    "thisWeek": "Thema dieser Woche",
+    "startMissions": "Diese Woche starten",
+    "continueMissions": "Aufgaben fortsetzen",
+    "done": "erledigt",
+    "openBiergerpakt": "Bei Biergerpakt öffnen",
+    "weekComplete": "Woche abgeschlossen!",
+    "missionsCompleted": "Abgeschlossene Aufgaben",
+    "totalXp": "Gesamt-XP verdient",
+    "weeksCompleted": "Abgeschlossene Wochen",
+    "newMissionsNote": "Neue Aufgaben jeden Montag",
+    "discoverBiergerpakt": "Mehr beim Biergerpakt entdecken",
+    "reviewMissions": "Aufgaben der Woche ansehen",
+    "biergerpaktNote": "Einige Aufgaben sind mit dem Biergerpakt-Programm verknüpft — Luxemburgs Initiative für interkulturellen Austausch.",
+    "categories": {
+      "language": "Sprache",
+      "visit": "Erkunden",
+      "connect": "Verbinden",
+      "culture": "Kultur",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Einfach",
+      "medium": "Mittel",
+      "hard": "Herausforderung"
+    }
+  },
   "info": {
     "title": "Info Hub",
     "subtitle": "Fakten, Statistiken, Links und mehr über Luxemburg",
@@ -135,37 +212,7 @@
     },
     "intercultural": {
       "title": "Interkulturelles Miteinander",
-      "text": "Fast die Hälfte der Einwohner Luxemburgs sind ausländische Staatsangehörige. Diese reiche Vielfalt ist eine der größten Stärken Luxemburgs. Gemeinsames Leben und Arbeiten über Kulturen hinweg erfordert Verständnis, Respekt und Neugier."
-    }
-  },
-  "challenge": {
-    "title": "Interkulturelle Challenge",
-    "subtitle": "Echte Aufgaben, um Luxemburg zu entdecken und Menschen zu begegnen",
-    "thisWeek": "Thema dieser Woche",
-    "startMissions": "Diese Woche starten",
-    "continueMissions": "Aufgaben fortsetzen",
-    "done": "erledigt",
-    "markDone": "Als erledigt markieren",
-    "openBiergerpakt": "Bei Biergerpakt öffnen",
-    "weekComplete": "Woche abgeschlossen!",
-    "missionsCompleted": "Abgeschlossene Aufgaben",
-    "totalXp": "Gesamt-XP verdient",
-    "weeksCompleted": "Abgeschlossene Wochen",
-    "newMissionsNote": "Neue Aufgaben jeden Montag",
-    "discoverBiergerpakt": "Mehr beim Biergerpakt entdecken",
-    "reviewMissions": "Aufgaben der Woche ansehen",
-    "biergerpaktNote": "Einige Aufgaben sind mit dem Biergerpakt-Programm verknüpft — Luxemburgs Initiative für interkulturellen Austausch.",
-    "categories": {
-      "language": "Sprache",
-      "visit": "Erkunden",
-      "connect": "Verbinden",
-      "culture": "Kultur",
-      "biergerpakt": "Biergerpakt"
-    },
-    "difficulty": {
-      "easy": "Einfach",
-      "medium": "Mittel",
-      "hard": "Challenge"
+      "text": "Fast die Hälfte der Einwohner Luxemburgs sind ausländische Staatsangehörige. Diese reiche Vielfalt ist eine der größten Stärken Luxemburgs. Gemeinsames Leben und Arbeiten über Kulturen hinweg erfordert Verständnis, Respekt und Neugier — genau das, was diese Aktivitäten fördern sollen."
     }
   },
   "footer": {
@@ -183,5 +230,553 @@
     "language": "Sprache",
     "back": "Zurück",
     "home": "Startseite"
+  },
+  "activities": {
+    "lang-moien": {
+      "title": "Sage drei Menschen \"Moien\"",
+      "tip": "\"Moien\" (MOY-en) ist die häufigste luxemburgische Begrüßung, die zu jeder Tageszeit verwendet wird. Probiere es mit einem Ladenbesitzer, Nachbarn oder Kollegen. Ein Lächeln wirkt Wunder!",
+      "category": "Sprache 🗣️"
+    },
+    "explore-walk": {
+      "title": "Mache einen Spaziergang in einem neuen Viertel",
+      "tip": "Erkunde einen Teil Luxemburgs, den du noch nie besucht hast — eine andere Gemeinde, eine neue Straße oder einen Park. Probiere Bonnevoie, Hollerich, Esch-sur-Alzette oder Differdange.",
+      "category": "Erkunden 📍"
+    },
+    "culture-song": {
+      "title": "Höre ein luxemburgisches Lied",
+      "tip": "Finde und höre ein Lied auf Lëtzebuergesch. Probiere Künstler wie Serge Tonnar, Def Dogg, oder suche nach \"Ons Heemecht\" — der Nationalhymne. Suche nach \"Musik lëtzebuergesch\" oder stöbere in der RTL Lëtzebuerg-Playlist.",
+      "category": "Kultur 🎭"
+    },
+    "lang-5phrases": {
+      "title": "Lerne 5 alltägliche luxemburgische Phrasen",
+      "tip": "Meistere diese: \"Moien\" (Hallo), \"Äddi\" (Tschüss), \"Merci\" (Danke), \"Wéi geet et?\" (Wie geht's?), \"Ech verstinn net\" (Ich verstehe nicht). Schreibe sie auf einen Zettel!",
+      "category": "Sprache 🗣️"
+    },
+    "culture-dish": {
+      "title": "Probiere ein traditionelles luxemburgisches Gericht",
+      "tip": "Probiere Judd mat Gaardebounen (geräuchertes Schweinefleisch mit Saubohnen), Bouneschlupp (grüne Bohnensuppe) oder Gromperekichelcher (Kartoffelpuffer) in einem lokalen Restaurant.",
+      "category": "Kultur 🎭"
+    },
+    "lang-french-cafe": {
+      "title": "Bestelle etwas auf Französisch in einem Café",
+      "tip": "\"Un café, s'il vous plaît\" (ein Kaffee, bitte). \"L'addition, s'il vous plaît\" bedeutet \"die Rechnung, bitte\". Französisch ist eine der drei Amtssprachen Luxemburgs!",
+      "category": "Sprache 🗣️"
+    },
+    "lang-nature": {
+      "title": "Lerne 5 Naturwörter auf Luxemburgisch",
+      "tip": "Lerne: Bësch (Wald), Floss (Fluss), Bierg (Berg/Hügel), Blumm (Blume), Vull (Vogel). Benenne, was du auf einem Spaziergang siehst — das hilft, den Wortschatz zu festigen!",
+      "category": "Sprache 🗣️"
+    },
+    "lang-hello-neighbor": {
+      "title": "Lerne \"Hallo\" in der Sprache eines Nachbarn zu sagen",
+      "tip": "Finde heraus, welche Sprache dein Nachbar, Kollege oder Freund zu Hause spricht, und lerne dann seine Begrüßung. Luxemburg hat Einwohner aus über 170 Nationalitäten!",
+      "category": "Sprache 🗣️"
+    },
+    "explore-park": {
+      "title": "Verbringe eine Stunde in einem luxemburgischen Park",
+      "tip": "Probiere den Parc de Merl, den Parc Schlassbësch oder die Gärten der Abtei Neumünster im Grund. Beobachte die Menschen um dich herum — Luxemburgs Parks spiegeln die bemerkenswerte Vielfalt des Landes wider.",
+      "category": "Erkunden 📍"
+    },
+    "explore-train": {
+      "title": "Fahre mit dem Zug in eine Stadt, die du noch nie besucht hast",
+      "tip": "Luxemburgs öffentliche Verkehrsmittel (Züge, Busse, Straßenbahnen) sind völlig kostenlos! Nutze sie, um eine Stadt oder ein Dorf zu besuchen, das du noch nie gesehen hast. Luxemburg war das erste Land der Welt mit kostenlosem ÖPNV (2020).",
+      "category": "Erkunden 📍"
+    },
+    "culture-tradition": {
+      "title": "Lies über eine luxemburgische Tradition",
+      "tip": "Informiere dich über eine luxemburgische Kulturtradition: die Schueberfouer, das Émaischen (Töpferfest), die Oktav-Wallfahrt, den Bretzelsonndeg (Brezelsonntag) oder die Springprozession von Echternach.",
+      "category": "Kultur 🎭"
+    },
+    "culture-event": {
+      "title": "Besuche eine kostenlose Kulturveranstaltung",
+      "tip": "Besuche ein Freiluftkonzert, eine Ausstellungseröffnung, eine Straßenaufführung oder einen öffentlichen Vortrag. Schau im Agenda Culturel (agenda.lu) nach kostenlosen Veranstaltungen in deiner Nähe.",
+      "category": "Kultur 🎭"
+    },
+    "connect-coffee": {
+      "title": "Trinke einen Kaffee mit jemandem aus einer anderen Kultur",
+      "tip": "Lade einen Kollegen, Mitschüler oder Bekannten aus einem anderen kulturellen Hintergrund zu einem Kaffee oder Tee ein. Frage sie nach einer Sache, die sie an ihrem Heimatland lieben. Sei neugierig — jeder hat eine faszinierende Geschichte.",
+      "category": "Verbinden 🤝"
+    },
+    "explore-museum": {
+      "title": "Besuche ein lokales Museum oder eine Kulturstätte",
+      "tip": "Verbringe mindestens 30 Minuten in einem Museum, einer Burg oder einem Kulturerbeort. Optionen: MUDAM, Nationales Museum, Casino Luxembourg, Burg Vianden oder eine der vielen Maisons de la culture.",
+      "category": "Erkunden 📍"
+    },
+    "culture-film": {
+      "title": "Schau einen Film aus einer anderen Kultur",
+      "tip": "Schau einen Film oder Dokumentarfilm aus einer Kultur, die sich von deiner unterscheidet — Bonus, wenn er aus einer der vielen in Luxemburg vertretenen Nationalitäten stammt. Die Cinémathèque de la Ville de Luxembourg zeigt regelmäßig internationale Filme.",
+      "category": "Kultur 🎭"
+    },
+    "biergerpakt-register": {
+      "title": "Registriere dich auf der Biergerpakt-Plattform",
+      "tip": "Erstelle dein Konto auf biergerpakt.zesummeliewen.lu. Entdecke die verfügbaren Aktivitäten und Veranstaltungen in deiner Nähe. Die Registrierung ist kostenlos und in mehreren Sprachen verfügbar.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-neighbour": {
+      "title": "Frage einen Nachbarn, woher er kommt",
+      "tip": "Fange ein Gespräch mit einem Nachbarn an, den du nicht gut kennst. Frage ihn, woher er ursprünglich kommt, und erzähle auch, woher du kommst. Ein einfaches \"Hallo, ich glaube, wir haben uns noch nicht richtig vorgestellt\" funktioniert perfekt.",
+      "category": "Verbinden 🤝"
+    },
+    "lang-directions": {
+      "title": "Benutze Luxemburgisch, um nach dem Weg zu fragen",
+      "tip": "\"Wou ass...?\" bedeutet \"Wo ist...?\". \"Kënnt Dir mir soen, wou... ass?\" = \"Könnten Sie mir sagen, wo... ist?\" ist noch höflicher.",
+      "category": "Sprache 🗣️"
+    },
+    "lang-news": {
+      "title": "Lies einen Nachrichtenartikel in einer Sprache, die du lernst",
+      "tip": "Versuche RTL.lu für Luxemburgisch, Tageblatt.lu für Französisch oder Wort.lu für Deutsch. Auch nur Schlagzeilen zu lesen zählt — die Gewohnheit ist das Wichtigste!",
+      "category": "Sprache 🗣️"
+    },
+    "explore-market": {
+      "title": "Besuche einen lokalen Wochenmarkt",
+      "tip": "Besuche einen der luxemburgischen Wochenmärkte — zum Beispiel den Marché de la Ville in Luxemburg-Stadt. Kaufe mindestens einen Artikel und plaudere kurz mit einem Händler.",
+      "category": "Erkunden 📍"
+    },
+    "explore-nature": {
+      "title": "Erkunde eine Natursehenswürdigkeit in Luxemburg",
+      "tip": "Besuche das Müllerthal (Kleine Schweiz), das Moseltal, die Ardennen oder das Minett-Biosphärenreservat. Visit Luxembourg (visitluxembourg.com) hat ausgezeichnete Wanderkarten.",
+      "category": "Erkunden 📍"
+    },
+    "explore-institution": {
+      "title": "Besuche eine öffentliche Institution",
+      "tip": "Besuche die Abgeordnetenkammer (Führungen auf chd.lu), den Europäischen Gerichtshof oder ein lokales Gemeindehaus. Das Luxemburger Parlament bietet kostenlose Führungen an.",
+      "category": "Erkunden 📍"
+    },
+    "connect-meal": {
+      "title": "Teile ein Gericht aus deiner eigenen Kultur",
+      "tip": "Koche oder teile ein Gericht aus deinem kulturellen Hintergrund mit einem Kollegen, Freund oder Nachbarn. Nutze Essen als Brücke, um etwas über deine Heimat zu erzählen.",
+      "category": "Verbinden 🤝"
+    },
+    "connect-sport": {
+      "title": "Nimm an einer Gruppensport- oder Fitnessaktivität teil",
+      "tip": "Nimm an einer Gruppensportart oder Fitnessstunde teil — einem Laufclub, Yogakurs, Fußballspiel oder einer Gruppenw anderung. Sport ist eine universelle Sprache, die Grenzen überwindet.",
+      "category": "Verbinden 🤝"
+    },
+    "connect-language-exchange": {
+      "title": "Nehme an einem Sprachtausch teil",
+      "tip": "Finde einen Partner, der deine Sprache lernen möchte, während du seine lernst. Triff dich 30 Minuten und wechsle auf halbem Weg. Sprachtausche findest du über Biergerpakt, Meetup.com oder lokale Facebook-Gruppen.",
+      "category": "Verbinden 🤝"
+    },
+    "culture-industrial": {
+      "title": "Erkunde Luxemburgs Industrieerbe",
+      "tip": "Besuche die ehemaligen Hochöfen in Belval (Esch-sur-Alzette), das Nationale Bergbaumuseum in Rumelange oder die Eisenbahndenkmäler in Fond-de-Gras.",
+      "category": "Kultur 🎭"
+    },
+    "biergerpakt-module": {
+      "title": "Absolviere ein Biergerpakt-Online-Modul",
+      "tip": "Absolviere mindestens einen kurzen Online-Kurs oder ein Modul auf der Biergerpakt-Plattform über Luxemburgs Kultur, Institutionen oder interkulturelles Zusammenleben.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-volunteer": {
+      "title": "Engagiere dich freiwillig für eine lokale Gemeinschaftsaktivität",
+      "tip": "Melde dich für eine einmalige Freiwilligentätigkeit an — einen Aufräumtag, eine Tafel, einen Gemeinschaftsgarten oder Hilfe für einen lokalen Verein. Suche Möglichkeiten auf luxassoc.lu oder der Website deiner Gemeinde.",
+      "category": "Verbinden 🤝"
+    },
+    "connect-gathering": {
+      "title": "Organisiere ein Nachbarschaftstreffen",
+      "tip": "Ergreife die Initiative: Organisiere ein kleines Treffen — ein Picknick, einen Spieleabend oder ein Grillfest — und lade Menschen aus mindestens zwei verschiedenen Kulturen ein. Inspiration und Unterstützung findest du auf der Biergerpakt-Plattform.",
+      "category": "Verbinden 🤝"
+    },
+    "biergerpakt-attend": {
+      "title": "Besuche eine Biergerpakt-Veranstaltung",
+      "tip": "Melde dich an und nimm an einer Biergerpakt-Veranstaltung in deiner Nähe teil — einem geführten Spaziergang, Kochkurs, Sprachtausch oder einer Gemeinschaftsveranstaltung. Durchsuche Aktivitäten nach deiner Gemeinde.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-invite": {
+      "title": "Lade jemanden zu einer Biergerpakt-Veranstaltung ein",
+      "tip": "Finde eine Biergerpakt-Veranstaltung, die dich interessiert, und lade dann einen Freund, Nachbarn oder Kollegen ein, mitzukommen. Das gemeinsame Erleben macht es noch reicher.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-organise": {
+      "title": "Organisiere ein Biergerpakt-inspiriertes Treffen",
+      "tip": "Ergreife die Initiative: Organisiere ein kleines Treffen und lade Menschen aus mindestens zwei verschiedenen Kulturen ein. Inspiration und Unterstützung für dein Event findest du auf der Biergerpakt-Plattform.",
+      "category": "Biergerpakt 🤝"
+    }
+  },
+  "questions": {
+    "lang-1": {
+      "q": "Was bedeutet \"Moien\" auf Luxemburgisch?",
+      "o0": "Guten Abend",
+      "o1": "Hallo / Guten Morgen",
+      "o2": "Danke",
+      "o3": "Auf Wiedersehen",
+      "e": "\"Moien\" ist die häufigste Begrüßung auf Luxemburgisch, die zu jeder Tageszeit verwendet wird. Es kommt vom deutschen Wort \"Morgen\"."
+    },
+    "lang-2": {
+      "q": "In welchem Jahr wurde Luxemburgisch offiziell als Nationalsprache Luxemburgs anerkannt?",
+      "o0": "1945",
+      "o1": "1964",
+      "o2": "1984",
+      "o3": "2000",
+      "e": "Das Gesetz vom 24. Februar 1984 legte Luxemburgisch als Nationalsprache fest, neben Französisch und Deutsch als Verwaltungssprachen."
+    },
+    "lang-3": {
+      "q": "Zu welcher Sprachfamilie gehört Luxemburgisch (Lëtzebuergesch)?",
+      "o0": "Romanische Sprachen",
+      "o1": "Slawische Sprachen",
+      "o2": "Westgermanisch (Moselfränkisch)",
+      "o3": "Nordgermanisch",
+      "e": "Luxemburgisch ist eine westgermanische Sprache der moselfränkischen Dialektgruppe, eng verwandt mit Deutsch, aber mit starkem französischen Einfluss."
+    },
+    "lang-4": {
+      "q": "Wie sagt man \"Ich liebe dich\" auf Luxemburgisch?",
+      "o0": "Ech hunn dech gär",
+      "o1": "Je t'aime",
+      "o2": "Ich liebe dich",
+      "o3": "Mir gefällt dir",
+      "e": "\"Ech hunn dech gär\" bedeutet wörtlich \"Ich habe dich gern\" — dies ist der übliche luxemburgische Ausdruck für Zuneigung."
+    },
+    "lang-5": {
+      "q": "Was sind die drei offiziellen Verwaltungssprachen Luxemburgs?",
+      "o0": "Englisch, Französisch, Deutsch",
+      "o1": "Luxemburgisch, Französisch, Deutsch",
+      "o2": "Französisch, Deutsch, Portugiesisch",
+      "o3": "Luxemburgisch, Englisch, Französisch",
+      "e": "Luxemburg verwendet drei Amtssprachen: Luxemburgisch (Nationalsprache), Französisch (Gesetzgebung und Gerichte) und Deutsch (Medien und Presse)."
+    },
+    "lang-6": {
+      "q": "Was bedeutet \"Wéi geet et?\" auf Luxemburgisch?",
+      "o0": "Wohin gehst du?",
+      "o1": "Wie geht es dir?",
+      "o2": "Wie spät ist es?",
+      "o3": "Wo ist der Bahnhof?",
+      "e": "\"Wéi geet et?\" bedeutet \"Wie geht es dir?\" oder \"Wie läuft's?\" — eine sehr gebräuchliche alltägliche Begrüßung in Luxemburg."
+    },
+    "lang-7": {
+      "q": "Für welches berühmte literarische Werk auf Luxemburgisch ist Michel Rodange bekannt?",
+      "o0": "De Renert",
+      "o1": "Dil Ueueglen",
+      "o2": "Lëtzebuerger",
+      "o3": "D'Weltgeschicht",
+      "e": "Michel Rodange schrieb \"De Renert\" (Der Fuchs) 1872, ein Epos, das die mittelalterliche Reineke-Fuchs-Geschichte auf Luxemburgisch nacherzählt — ein Eckpfeiler des luxemburgischen Literaturerbes."
+    },
+    "lang-8": {
+      "q": "Was bedeutet \"Merci villmools\" auf Luxemburgisch?",
+      "o0": "Bitte sehr",
+      "o1": "Vielen Dank",
+      "o2": "Entschuldigung",
+      "o3": "Bitte",
+      "e": "\"Merci villmools\" verbindet das französische \"merci\" mit dem luxemburgischen \"villmools\" (viele Male) und bedeutet \"vielen Dank\". Diese Mischung aus französischen und germanischen Elementen ist typisch für Luxemburgisch."
+    },
+    "hist-1": {
+      "q": "In welchem Jahr erlangte Luxemburg seine volle Unabhängigkeit?",
+      "o0": "1815",
+      "o1": "1839",
+      "o2": "1867",
+      "o3": "1890",
+      "e": "Der Londoner Vertrag vom 19. April 1839 erkannte Luxemburg als vollständig unabhängigen Staat an und trennte es von den Niederlanden."
+    },
+    "hist-2": {
+      "q": "Welche Bedeutung hatte der Londoner Vertrag (1867) für Luxemburg?",
+      "o0": "Luxemburg trat der Europäischen Gemeinschaft bei",
+      "o1": "Luxemburg wurde für dauerhaft neutral erklärt und seine große Festung abgerissen",
+      "o2": "Luxemburg erhielt seine heutigen Grenzen",
+      "o3": "Luxemburg wurde ein Großherzogtum",
+      "e": "Der Londoner Vertrag von 1867 erklärte Luxemburg für dauerhaft neutral und verlangte den Abriss seiner berühmten Festung — eine der stärksten Europas. Die Alliierten nannten die Stadt \"Gibraltar des Nordens\"."
+    },
+    "hist-3": {
+      "q": "Wer gründete 963 n. Chr. die Grafschaft Luxemburg durch den Erwerb einer kleinen fränkischen Burg?",
+      "o0": "Graf Balduin I.",
+      "o1": "Sigefroid",
+      "o2": "Ermesinde",
+      "o3": "Heinrich VII.",
+      "e": "Graf Sigefroid erwarb 963 n. Chr. das Lucilinburhuc (Kleine Festung), was traditionell als Gründung Luxemburgs gilt. Die Burg stand auf dem Bock-Felsen über dem Fluss Alzette."
+    },
+    "hist-4": {
+      "q": "In welchem Jahr wurde Luxemburg während des Zweiten Weltkriegs von Nazideutschland besetzt?",
+      "o0": "1938",
+      "o1": "1939",
+      "o2": "1940",
+      "o3": "1941",
+      "e": "Deutschland marschierte am 10. Mai 1940 in Luxemburg ein und besetzte es. Luxemburg wurde 1942 dem Dritten Reich eingegliedert und im September 1944 von alliierten Streitkräften befreit."
+    },
+    "hist-5": {
+      "q": "Luxemburg war Gründungsmitglied welcher drei großen internationalen Organisationen?",
+      "o0": "UN, NATO und Europarat",
+      "o1": "NATO, EWG (EU) und Benelux",
+      "o2": "EWG, Schengen-Raum und WTO",
+      "o3": "Benelux, EFTA und NATO",
+      "e": "Luxemburg war Gründungsmitglied der NATO (1949), der Europäischen Wirtschaftsgemeinschaft (1957, heute EU) und der Benelux-Union (1944)."
+    },
+    "hist-6": {
+      "q": "Die Ardennenoffensive (Dezember 1944–Januar 1945) wurde teilweise auf luxemburgischem Gebiet ausgetragen. Welche Stadt wurde durch diese Schlacht berühmt?",
+      "o0": "Esch-sur-Alzette",
+      "o1": "Clervaux",
+      "o2": "Bastogne (nahe Belgien)",
+      "o3": "Echternach",
+      "e": "Clervaux im Norden Luxemburgs erlebte schwere Kämpfe während der Ardennenoffensive. Das Schloss der Stadt wurde stark beschädigt, bevor es von alliierten Kräften zurückerobert wurde."
+    },
+    "hist-7": {
+      "q": "Die Schuman-Erklärung von 1950, das Gründungsdokument der europäischen Integration, wurde von Robert Schuman unterzeichnet. Wo wurde er geboren?",
+      "o0": "Metz, Frankreich",
+      "o1": "Clausen, Luxemburg-Stadt",
+      "o2": "Trier, Deutschland",
+      "o3": "Brüssel, Belgien",
+      "e": "Robert Schuman (1886–1963) wurde in Clausen, Luxemburg-Stadt geboren. Er wurde französischer Außenminister und schlug die Gründung der Europäischen Gemeinschaft für Kohle und Stahl vor, die zur heutigen EU führte."
+    },
+    "hist-8": {
+      "q": "Welche Großherzogin führte Luxemburg während des Zweiten Weltkriegs ins Exil und wurde zu einem Symbol des nationalen Widerstands?",
+      "o0": "Marie-Adélaïde",
+      "o1": "Charlotte",
+      "o2": "Joséphine-Charlotte",
+      "o3": "Maria Teresa",
+      "e": "Großherzogin Charlotte (1896–1985) führte die luxemburgische Exilregierung während des Zweiten Weltkriegs an und sendete aus London, um den Nationalgeist am Leben zu erhalten. Sie ist eine der beliebtesten historischen Figuren Luxemburgs."
+    },
+    "cult-1": {
+      "q": "Was ist Luxemburgs Nationalfeiertag und wann wird er gefeiert?",
+      "o0": "24. Oktober — Unabhängigkeitstag",
+      "o1": "23. Juni — Nationalfeiertag (Nationalfeierdag)",
+      "o2": "14. Juli — Bastille-Tag",
+      "o3": "15. November — Tag der Dynastie",
+      "e": "Luxemburgs Nationalfeiertag (Nationalfeierdag) wird am 23. Juni gefeiert, offiziell dem Geburtstag des Großherzogs. Er umfasst Konzerte, Feuerwerk und den \"Fackelzug\" am Vorabend."
+    },
+    "cult-2": {
+      "q": "Was ist der \"Bretzelsonndeg\" (Brezelsonntag) in Luxemburg?",
+      "o0": "Ein Ernte festival, bei dem Bauern Brezeln teilen",
+      "o1": "Eine Valentinstag-Tradition, bei der Jungen Mädchen, die sie mögen, Brezeln schenken",
+      "o2": "Eine Ostertradition des Verzehrens süßer Brezeln",
+      "o3": "Eine Karnevalstradition mit Brezel-Kostümen",
+      "e": "Der Bretzelsonndeg (4. Fastensonntag) ist Luxemburgs Valentinstag: Jungen schenken dem Mädchen, das sie mögen, eine verzierte Brezel. Wenn sie erwidert, schenkt sie ihm zu Ostern ein verziertes Ei."
+    },
+    "cult-3": {
+      "q": "Was ist das \"Émaischen\"?",
+      "o0": "Ein traditionelles Ernte festival im Moseltal",
+      "o1": "Ein Ostermontagshandwerksmarkt in Luxemburg-Stadt mit den \"Péckvillercher\"-Vogelpfeifen",
+      "o2": "Ein Karnevalsumzug in Esch-sur-Alzette",
+      "o3": "Ein Sommermusikfestival in Vianden",
+      "e": "Das Émaischen ist ein traditioneller Ostermontagsmarkt am Fischmarkt in Luxemburg-Stadt, berühmt für handgefertigte \"Péckvillercher\" — Vogelpfeifen aus Terrakotta."
+    },
+    "cult-4": {
+      "q": "Luxemburgs historische Altstadt und ihre Befestigungsanlagen sind UNESCO-Weltkulturerbe. Seit welchem Jahr?",
+      "o0": "1985",
+      "o1": "1994",
+      "o2": "2001",
+      "o3": "2008",
+      "e": "Die Alten Stadtteile und Befestigungsanlagen der Stadt Luxemburg wurden 1994 in die UNESCO-Welterbeliste aufgenommen, anerkannt für ihren herausragenden universellen Wert."
+    },
+    "cult-5": {
+      "q": "Was ist die \"Schueberfouer\"?",
+      "o0": "Eine Schafsmesse, die zu einem großen jährlichen Jahrmarkt in Luxemburg-Stadt wurde",
+      "o1": "Ein mittelalterliches Ritterturnier in Vianden",
+      "o2": "Ein Weinfestival in Remich an der Mosel",
+      "o3": "Ein Weihnachtsmarkt auf dem Place d'Armes",
+      "e": "Die Schueberfouer begann 1340 als Schafsmesse (Schafsmarkt). Heute ist sie einer der ältesten und größten Jahrmärkte Europas, der jeden August/September in Luxemburg-Stadt stattfindet."
+    },
+    "cult-6": {
+      "q": "Die \"Oktav Unserer Lieben Frau von Luxemburg\" ist ein wichtiges religiöses Ereignis. Was beinhaltet sie?",
+      "o0": "Acht Tage Gesang und Tanz in der Kathedrale",
+      "o1": "Eine zweiwöchige Wallfahrt zur Notre-Dame-Kathedrale, bei der Tausende die Consolatrix Afflictorum verehren",
+      "o2": "Eine Prozession durch das Pétrusse-Tal am Ostersonntag",
+      "o3": "Ein Marienfest in Echternach",
+      "e": "Die Oktav ist eine 15-tägige Marienwallfahrt im Mai in der Notre-Dame-Kathedrale. Tausende versammeln sich, um die Consolatrix Afflictorum (Trösterin der Betrübten), Patronin Luxemburgs, zu verehren."
+    },
+    "cult-7": {
+      "q": "Die \"Springprozession von Echternach\" ist immaterielles UNESCO-Kulturerbe. Was macht sie besonders?",
+      "o0": "Die Teilnehmer tanzen rückwärts durch die Straßen",
+      "o1": "Sie findet vollständig in Stille statt",
+      "o2": "Die Teilnehmer hüpfen in einem Dreierschritt-Tanz am Pfingstdienstag in der Prozession",
+      "o3": "Sie beinhaltet Kostüme aus über 100 verschiedenen Ländern",
+      "e": "Die Echternacher Springprozession (Sprangprozessioun) findet seit dem 7. Jahrhundert jeden Pfingstdienstag statt. Die Teilnehmer tanzen in einem hüpfenden Dreierschritt-Rhythmus durch die Stadt zu Ehren des hl. Willibrord."
+    },
+    "cult-8": {
+      "q": "Was ist die \"Gëlle Fra\" (Goldene Frau) in Luxemburg?",
+      "o0": "Ein berühmtes luxemburgisches Gebäck",
+      "o1": "Ein Denkmal in Luxemburg-Stadt, das den Opfergeist des Landes darstellt — eine geflügelte Frau auf einer hohen Säule",
+      "o2": "Ein traditioneller Tanz aus der Ardennen-Region",
+      "o3": "Der Spitzname von Großherzogin Charlotte",
+      "e": "Die Gëlle Fra ist ein Kriegsdenkmal auf dem Place de la Constitution. Die goldene Statue auf einer 21 Meter hohen Säule gedenkt der Freiwilligen des Ersten Weltkriegs. Sie wurde 1940 von den Nazi-Besatzern eingeschmolzen und nach dem Krieg wieder aufgebaut."
+    },
+    "peop-1": {
+      "q": "Edward Steichen, geboren in Bivange, Luxemburg, wurde als was weltberühmt?",
+      "o0": "Jazzmusiker",
+      "o1": "Fotograf und Kurator am MoMA New York",
+      "o2": "Formel-1-Rennfahrer",
+      "o3": "Wirtschaftsnobelpreisträger",
+      "e": "Edward Steichen (1879–1973) war ein Pionier-Fotograf und Leiter der Fotoabteilung des MoMA (New York). Er schuf die legendäre Ausstellung \"The Family of Man\" (1955)."
+    },
+    "peop-2": {
+      "q": "Welcher Luxemburger gewann bei den Olympischen Spielen 1952 in Helsinki Gold im 1500-m-Lauf?",
+      "o0": "Michel Théato",
+      "o1": "Nicolas Frantz",
+      "o2": "Josy Barthel",
+      "o3": "Charly Gaul",
+      "e": "Josy Barthel (1927–1992) gewann Gold im 1500-m-Lauf bei den Olympischen Spielen 1952 in Helsinki — Luxemburgs bisher einzige olympische Goldmedaille. Das nationale Leichtathletikstadion trägt seinen Namen."
+    },
+    "peop-3": {
+      "q": "Wie wurde Charly Gaul, ein legendärer Radfahrer aus Luxemburg, genannt?",
+      "o0": "Der Gärtner",
+      "o1": "Der Engel der Berge",
+      "o2": "Der eiserne Löwe",
+      "o3": "Der stille Rennfahrer",
+      "e": "Charly Gaul (1932–2005) wurde wegen seiner außergewöhnlichen Kletterleistungen \"L'Ange de la Montagne\" (Der Engel der Berge) genannt. Er gewann die Tour de France (1958) und den Giro d'Italia zweimal (1956, 1959)."
+    },
+    "peop-4": {
+      "q": "Hugo Gernsback, 1884 in Luxemburg geboren, ist als \"Vater der Science-Fiction\" bekannt. Welches Magazin gründete er?",
+      "o0": "Popular Science",
+      "o1": "Amazing Stories",
+      "o2": "Science Wonder Stories",
+      "o3": "Modern Mechanics",
+      "e": "Hugo Gernsback (1884–1967) gründete 1926 \"Amazing Stories\", das erste Magazin, das sich ausschließlich der Science-Fiction widmete. Die jährlichen Hugo Awards für Science-Fiction sind nach ihm benannt."
+    },
+    "peop-5": {
+      "q": "Jean-Claude Juncker, ehemaliger Premierminister Luxemburgs (1995–2013), diente später als was?",
+      "o0": "NATO-Generalsekretär",
+      "o1": "Präsident der Europäischen Kommission (2014–2019)",
+      "o2": "Präsident des Europäischen Rates",
+      "o3": "Präsident des Europäischen Parlaments",
+      "e": "Jean-Claude Juncker war 18 Jahre lang Luxemburgs Premierminister und dann von 2014 bis 2019 Präsident der Europäischen Kommission. Er war auch Präsident der Eurogruppe (2005–2013)."
+    },
+    "peop-6": {
+      "q": "Michel Théato, geboren in Luxemburg, gewann Gold bei welchen Olympischen Spielen im Marathon?",
+      "o0": "1896 Athen",
+      "o1": "1900 Paris",
+      "o2": "1904 St. Louis",
+      "o3": "1908 London",
+      "e": "Michel Théato gewann den Marathon bei den Olympischen Spielen 1900 in Paris, ursprünglich als Franzose gehalten. Spätere Recherchen bestätigten, dass er 1878 in Luxemburg geboren wurde, was ihn zu Luxemburgs erstem olympischen Goldmedaillengewinner macht."
+    },
+    "peop-7": {
+      "q": "Wer ist das aktuelle (2024) Staatsoberhaupt Luxemburgs?",
+      "o0": "Großherzog Jean",
+      "o1": "Großherzog Henri",
+      "o2": "Großherzog Guillaume",
+      "o3": "Großherzog Adolphe",
+      "e": "Großherzog Henri ist seit Oktober 2000 der konstitutionelle Monarch Luxemburgs, als sein Vater Großherzog Jean abdankte. Er ist mit Großherzogin Maria Teresa verheiratet."
+    },
+    "peop-8": {
+      "q": "Nicolas Frantz, ein Radfahrer aus Mamer, Luxemburg, gewann die Tour de France in welchen Jahren?",
+      "o0": "1921 und 1922",
+      "o1": "1927 und 1928",
+      "o2": "1933 und 1934",
+      "o3": "1938 und 1939",
+      "e": "Nicolas Frantz gewann die Tour de France 1927 und 1928. Er ist eine der größten Sportlegenden Luxemburgs, zusammen mit Charly Gaul, Josy Barthel und dem modernen Radfahrer Andy Schleck."
+    },
+    "inst-1": {
+      "q": "Wie viele Mitglieder hat das luxemburgische Parlament (Chambre des Députés)?",
+      "o0": "40",
+      "o1": "60",
+      "o2": "72",
+      "o3": "100",
+      "e": "Die Chambre des Députés hat 60 Mitglieder, die für fünfjährige Amtszeiten gewählt werden. Luxemburg ist in 4 Wahlkreise unterteilt: Süd, Mitte, Nord und Ost."
+    },
+    "inst-2": {
+      "q": "Welche wichtigen EU-Institutionen haben ihren Sitz in Luxemburg-Stadt?",
+      "o0": "Europäisches Parlament und Europäische Kommission",
+      "o1": "Gerichtshof der EU, Rechnungshof und Eurostat",
+      "o2": "Europäische Zentralbank und Europäischer Rat",
+      "o3": "Europäische Verteidigungsagentur und Europol",
+      "e": "Luxemburg beherbergt den Gerichtshof der EU, den Rechnungshof, Eurostat (Statistikamt), die Europäische Investitionsbank (EIB) und einen Teil des Sekretariats des Europäischen Parlaments."
+    },
+    "inst-3": {
+      "q": "Was ist STATEC?",
+      "o0": "Der staatliche Fernsehsender",
+      "o1": "Das Nationale Institut für Statistik und Wirtschaftsstudien Luxemburgs",
+      "o2": "Die staatliche Technologieagentur",
+      "o3": "Die nationale Arbeitsvermittlung",
+      "e": "STATEC (Institut national de la statistique et des études économiques) erhebt und veröffentlicht alle offiziellen Statistiken über Luxemburg."
+    },
+    "inst-4": {
+      "q": "Welche Rolle hat der \"Médiateur\" (Ombudsmann) in Luxemburg?",
+      "o0": "Vermittlung in Scheidungsverfahren",
+      "o1": "Bearbeitung von Bürgerbeschwerden gegen öffentliche Verwaltungen",
+      "o2": "Überwachung von Medien und Presse",
+      "o3": "Verwaltung der EU-Beziehungen",
+      "e": "Der Médiateur de la République agiert als unabhängiger Vermittler zwischen Bürgern und Behörden, untersucht Beschwerden und sucht Lösungen ohne Gerichtsverfahren."
+    },
+    "inst-5": {
+      "q": "Das Schengener Abkommen wurde 1985 unterzeichnet. Wo genau wurde es unterzeichnet?",
+      "o0": "Luxemburg-Stadt",
+      "o1": "Das Dorf Schengen, auf einem Boot auf der Mosel",
+      "o2": "Brüssel, Belgien",
+      "o3": "Straßburg, Frankreich",
+      "e": "Das Schengener Abkommen wurde am 14. Juni 1985 auf der MS Princesse Marie-Astrid unterzeichnet, einem Boot, das in Schengen festgemacht war — einem kleinen luxemburgischen Dorf, wo Frankreich, Deutschland und Luxemburg aufeinandertreffen."
+    },
+    "inst-6": {
+      "q": "Wofür steht \"LCGB\" in Luxemburg?",
+      "o0": "Luxembourg Catholic Governing Body",
+      "o1": "Lëtzebuerger Chrëschtleche Gewerkschafts-Bond (christliche Gewerkschaft)",
+      "o2": "Luxembourg Commercial and Government Bureau",
+      "o3": "Luxembourg Cultural and Geographical Board",
+      "e": "LCGB (Lëtzebuerger Chrëschtleche Gewerkschafts-Bond) ist eine der wichtigsten Gewerkschaften Luxemburgs, neben dem OGBL. Gewerkschaften spielen eine wichtige Rolle in Luxemburgs Sozialpartnerschaftsmodell."
+    },
+    "inst-7": {
+      "q": "Was ist der \"Conseil d'État\" (Staatsrat) in Luxemburg?",
+      "o0": "Das Regierungskabinett",
+      "o1": "Ein beratendes Gremium, das Gesetzgebung vor der parlamentarischen Abstimmung prüft",
+      "o2": "Das oberste Gericht",
+      "o3": "Der Senat (Oberhaus)",
+      "e": "Der Conseil d'État ist ein beratendes Gremium aus 21 Mitgliedern, das alle Gesetzentwürfe prüft, bevor das Parlament abstimmt. Er bremst überstürzte Gesetzgebung, hat aber kein Vetorecht."
+    },
+    "inst-8": {
+      "q": "Die ADEM ist eine Schlüsselinstitution für Menschen, die in Luxemburg leben. Was tut sie?",
+      "o0": "Sie verwaltet die nationale Krankenversicherung",
+      "o1": "Sie ist die nationale Arbeitsvermittlung und hilft Arbeitssuchenden und Arbeitgebern",
+      "o2": "Sie bearbeitet Einwanderung und Aufenthaltsgenehmigungen",
+      "o3": "Sie verwaltet Sozialwohnungen",
+      "e": "ADEM (Agence pour le développement de l'emploi) ist Luxemburgs nationale Arbeitsvermittlung. Sie hilft Arbeitssuchenden, Beschäftigung zu finden, verwaltet Arbeitslosenleistungen und unterstützt Arbeitgeber bei der Personalsuche."
+    },
+    "econ-1": {
+      "q": "Luxemburg ist das zweitgrößte Investmentfondszentrum der Welt nach welchem Land?",
+      "o0": "Schweiz",
+      "o1": "Vereinigte Staaten",
+      "o2": "Vereinigtes Königreich",
+      "o3": "Hongkong",
+      "e": "Luxemburg ist nach den USA der zweitgrößte Fondssitz der Welt mit über 3.500 Fonds. Der Finanzsektor macht etwa ein Viertel des BIP aus."
+    },
+    "econ-2": {
+      "q": "Welcher Prozentsatz der Luxemburger Belegschaft besteht ungefähr aus Grenzpendlern aus Frankreich, Deutschland und Belgien?",
+      "o0": "15 %",
+      "o1": "25 %",
+      "o2": "45 %",
+      "o3": "60 %",
+      "e": "Etwa 45 % der Arbeitnehmer in Luxemburg pendeln täglich aus Frankreich, Belgien und Deutschland. Luxemburgs Wirtschaft könnte ohne Grenzpendler nicht funktionieren."
+    },
+    "econ-3": {
+      "q": "Was war bis in die 1970er Jahre das traditionelle industrielle Rückgrat der luxemburgischen Wirtschaft?",
+      "o0": "Kohlebergbau",
+      "o1": "Textilindustrie",
+      "o2": "Stahlindustrie",
+      "o3": "Landwirtschaft",
+      "e": "Stahl war von den 1870er bis in die 1970er Jahre das Fundament der luxemburgischen Wirtschaft. Die südliche \"Minette\"-Region war reich an Eisenerz. Heute ist ArcelorMittal (mit Sitz in Luxemburg) der weltgrößte Stahlproduzent."
+    },
+    "econ-4": {
+      "q": "Wie groß ist Luxemburgs ungefähre Bevölkerung?",
+      "o0": "350.000",
+      "o1": "520.000",
+      "o2": "680.000",
+      "o3": "1,2 Millionen",
+      "e": "Luxemburg hatte 2024 etwa 680.000 Einwohner — eines der kleinsten EU-Länder nach Bevölkerungszahl, aber auch eines der wohlhabendsten pro Kopf."
+    },
+    "econ-5": {
+      "q": "Luxemburg belegt regelmäßig den ersten Platz in der EU für welchen Wirtschaftsindikator?",
+      "o0": "Arbeitslosenquote",
+      "o1": "BIP pro Kopf",
+      "o2": "Landwirtschaftliche Produktion",
+      "o3": "Industrieexporte",
+      "e": "Luxemburg hat konstant das höchste BIP pro Kopf in der EU und gehört zu den höchsten weltweit, angetrieben durch seinen Finanzsektor, europäische Institutionen und qualifizierte Grenzpendler."
+    },
+    "econ-6": {
+      "q": "Welche Technologieunternehmen haben ihren europäischen Hauptsitz in Luxemburg?",
+      "o0": "Apple, Google und Twitter/X",
+      "o1": "Amazon, PayPal, Skype und viele andere",
+      "o2": "Microsoft, Samsung und Sony",
+      "o3": "Facebook, Netflix und Uber",
+      "e": "Luxemburg beherbergt europäische Hauptsitze von Amazon, PayPal, Skype, Rakuten, Ferrero und vielen anderen, angezogen durch Stabilität, Lage und EU-Marktzugang."
+    },
+    "econ-7": {
+      "q": "Wie viele Nationalitäten sind unter den Einwohnern Luxemburgs vertreten?",
+      "o0": "Etwa 50",
+      "o1": "Etwa 100",
+      "o2": "Etwa 170",
+      "o3": "Etwa 250",
+      "e": "Über 170 Nationalitäten nennen Luxemburg ihre Heimat. Etwa 47 % der Einwohner sind ausländische Staatsangehörige. Portugiesische Staatsangehörige bilden die größte nicht-luxemburgische Gemeinschaft."
+    },
+    "econ-8": {
+      "q": "Die Moselregion Luxemburgs ist bekannt für die Produktion von was?",
+      "o0": "Craft-Bier",
+      "o1": "Weißweine (Riesling, Rivaner, Auxerrois)",
+      "o2": "Käse",
+      "o3": "Schokolade",
+      "e": "Das luxemburgische Moseltal produziert ausgezeichnete Weißweine, insbesondere Riesling, Rivaner (Müller-Thurgau), Auxerrois und den Schaumwein Crémant de Luxembourg. Die Region erstreckt sich von Schengen bis Wasserbillig."
+    }
   }
 }

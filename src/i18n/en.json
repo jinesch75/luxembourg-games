@@ -1,10 +1,10 @@
 {
   "nav": {
     "home": "Home",
-    "quiz": "Lëtz Quiz",
-    "geo": "Lëtz Géo",
+    "quiz": "Quiz",
+    "geo": "Géo",
     "challenge": "Activities",
-    "info": "Info Hub"
+    "info": "Info"
   },
   "home": {
     "headline": "Discover Luxembourg",
@@ -20,7 +20,10 @@
     "stat3Label": "Cross-border workers",
     "stat3Value": "~220,000",
     "stat4Label": "Official languages",
-    "stat4Value": "3"
+    "stat4Value": "3",
+    "sourcesTitle": "Reliable sources",
+    "dailyReminderTitle": "Come back every day!",
+    "dailyReminderText": "New quiz questions every day. A new Lëtz Connect puzzle every week."
   },
   "quiz": {
     "title": "Lëtz Quiz",
@@ -51,7 +54,19 @@
       "institutions": "Institutions",
       "economy": "Economy"
     },
-    "shareResult": "Share my result"
+    "shareResult": "Share my result",
+    "alreadyPlayed": "You've already played today!",
+    "comeBackTomorrow": "Come back tomorrow for new questions.",
+    "yourLevel": "Your Level",
+    "totalCorrectLabel": "Total correct answers",
+    "toNextLevelCount": "{{count}} more correct answer(s) to unlock {{icon}} {{name}}",
+    "sessionCategories": "This session's categories",
+    "levelUpTitle": "Level Up! {{name}} unlocked!",
+    "reachedLevelText": "You've reached Level {{id}}",
+    "sessionScoreText": "+{{score}} correct this session",
+    "totalScoreText": "total correct",
+    "retryWrong": "🔁 Retry {{count}} missed question(s)",
+    "levelLabel": "Level {{id}}"
   },
   "geo": {
     "title": "Lëtz Géo",
@@ -79,9 +94,98 @@
     "m": "m",
     "points": "points"
   },
+  "connect": {
+    "title": "Lëtz Connect",
+    "subtitle": "Group the 16 items into 4 categories",
+    "instructions": "Tap 4 items that share a theme, then press Submit.",
+    "submit": "Submit",
+    "deselect": "Deselect all",
+    "oneAway": "One away…",
+    "wrong": "Not quite — try again!",
+    "correct": "Correct!",
+    "alreadyFound": "Already found!",
+    "results": "Puzzle complete!",
+    "attemptsLeft": "attempts left",
+    "noAttempts": "No more attempts — see solution.",
+    "weeklyPuzzle": "Weekly puzzle",
+    "newPuzzle": "New puzzle every Monday",
+    "solved": "You solved it!",
+    "solvedWith": "Solved with",
+    "mistakes": "mistakes",
+    "playAgain": "Try last week's puzzle",
+    "difficulty": {
+      "yellow": "Easy",
+      "green": "Medium",
+      "blue": "Hard",
+      "purple": "Expert"
+    }
+  },
   "challenge": {
     "title": "Intercultural Activities",
-    "subtitle": "Ideas for connecting across cultures in Luxembourg"
+    "subtitle": "Ideas for connecting across cultures in Luxembourg",
+    "heroText": "Complete activities to unlock higher levels and deepen your connections in Luxembourg.",
+    "level1Name": "Starter",
+    "level2Name": "Explorer",
+    "level3Name": "Champion",
+    "level1Desc": "Begin your intercultural journey with simple, everyday actions.",
+    "level2Desc": "Go a step further — connect, explore, and discover.",
+    "level3Desc": "Take real initiative and make a lasting impact in your community.",
+    "easyLabel": "Easy",
+    "mediumLabel": "Medium",
+    "challengeLabel": "Challenge",
+    "activitiesLabel": "activities",
+    "doneLabel": "done",
+    "levelLabel": "Level {{id}}",
+    "levelProgress": "Progress to Level {{next}}",
+    "levelUnlockedTip": "✓ Level {{next}} unlocked! Tap it above to see activities.",
+    "levelUnlockedBanner": "Level {{id}} unlocked — {{name}}!",
+    "levelLocked": "Level {{id}}: {{name}} is locked",
+    "unlockMore": "Complete {{count}} more {{difficulty}} activities to unlock this level.",
+    "markDone": "✓ Mark as done!",
+    "markUndone": "↩ Mark as not done",
+    "biergerpaktTitle": "The Biergerpakt Programme",
+    "biergerpaktText": "The Biergerpakt (Citizens' Pact) is Luxembourg's government initiative that connects newcomers and long-term residents through shared activities, events, and experiences. Registration is free and activities are open to everyone.",
+    "biergerpaktCta": "Discover the Biergerpakt →",
+    "biergerpaktRegisterLink": "Register on Biergerpakt",
+    "biergerpaktModuleLink": "Explore online resources",
+    "biergerpaktEventsLink": "Browse Biergerpakt events",
+    "biergerpaktFindLink": "Find an event to share",
+    "biergerpaktIdeasLink": "Get ideas on Biergerpakt",
+    "biergerpaktSupportLink": "Get support on Biergerpakt",
+    "whyTitle": "Why intercultural connection matters in Luxembourg",
+    "fact1Title": "170+ nationalities",
+    "fact1Text": "Luxembourg is home to people from over 170 countries. Nearly 47% of residents are foreign nationals — one of the highest proportions in the world.",
+    "fact2Title": "Three official languages",
+    "fact2Text": "Luxembourgish, French, and German are all official languages. Portuguese is widely spoken and English is common in business and daily life.",
+    "fact3Title": "220,000 cross-border workers",
+    "fact3Text": "About 45% of the workforce commutes daily from France, Belgium, and Germany — making Luxembourg uniquely international every single workday.",
+    "fact4Title": "Living together well",
+    "fact4Text": "Luxembourg's government actively promotes intercultural dialogue and social cohesion through programmes like the Biergerpakt, recognising that shared experiences build a stronger community.",
+    "thisWeek": "This week's theme",
+    "startMissions": "Start this week's missions",
+    "continueMissions": "Continue missions",
+    "done": "done",
+    "openBiergerpakt": "Open on Biergerpakt",
+    "weekComplete": "Week complete!",
+    "missionsCompleted": "Missions completed",
+    "totalXp": "Total XP earned",
+    "weeksCompleted": "Weeks completed",
+    "newMissionsNote": "New missions every Monday",
+    "discoverBiergerpakt": "Discover more on Biergerpakt",
+    "reviewMissions": "Review this week's missions",
+    "biergerpaktNote": "Some missions are linked to the Biergerpakt programme — Luxembourg's initiative for intercultural connection.",
+    "categories": {
+      "language": "Language",
+      "visit": "Explore",
+      "connect": "Connect",
+      "culture": "Culture",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Challenge"
+    }
   },
   "info": {
     "title": "Info Hub",
@@ -126,5 +230,167 @@
     "language": "Language",
     "back": "Back",
     "home": "Home"
+  },
+  "activities": {
+    "lang-moien": {
+      "title": "Say \"Moien\" to three people",
+      "tip": "\"Moien\" (MOY-en) is the most common Luxembourgish greeting, used any time of day. Try it with a shopkeeper, neighbour, or colleague. A smile goes a long way!",
+      "category": "Language 🗣️"
+    },
+    "explore-walk": {
+      "title": "Take a walk in a new neighbourhood",
+      "tip": "Explore a part of Luxembourg you've never visited — a different commune, a new street, or a park. Try Bonnevoie, Hollerich, Esch-sur-Alzette, or Differdange.",
+      "category": "Explore 📍"
+    },
+    "culture-song": {
+      "title": "Listen to a Luxembourgish song",
+      "tip": "Find and listen to a song in Lëtzebuergesch. Try artists like Serge Tonnar, Def Dogg, or look up \"Ons Heemecht\" — the national anthem. Search \"musique lëtzebuergesch\" or browse the RTL Lëtzebuerg music playlist.",
+      "category": "Culture 🎭"
+    },
+    "lang-5phrases": {
+      "title": "Learn 5 everyday Luxembourgish phrases",
+      "tip": "Master these: \"Moien\" (hello), \"Äddi\" (goodbye), \"Merci\" (thank you), \"Wéi geet et?\" (how are you?), \"Ech verstinn net\" (I don't understand). Write them on a sticky note!",
+      "category": "Language 🗣️"
+    },
+    "culture-dish": {
+      "title": "Try a traditional Luxembourgish dish",
+      "tip": "Try Judd mat Gaardebounen (smoked pork with broad beans), Bouneschlupp (green bean soup), or Gromperekichelcher (potato fritters) at a local restaurant.",
+      "category": "Culture 🎭"
+    },
+    "lang-french-cafe": {
+      "title": "Order something in French at a café",
+      "tip": "\"Un café, s'il vous plaît\" (a coffee, please). \"L'addition, s'il vous plaît\" means \"the bill, please\". French is one of Luxembourg's three official languages!",
+      "category": "Language 🗣️"
+    },
+    "lang-nature": {
+      "title": "Learn 5 nature words in Luxembourgish",
+      "tip": "Learn: Bësch (forest), Floss (river), Bierg (mountain/hill), Blumm (flower), Vull (bird). Try naming what you see on a walk — it makes vocabulary stick!",
+      "category": "Language 🗣️"
+    },
+    "lang-hello-neighbor": {
+      "title": "Learn to say \"hello\" in a neighbour's language",
+      "tip": "Find out what language your neighbour, colleague, or friend speaks at home, then learn their greeting. Luxembourg has residents from over 170 nationalities!",
+      "category": "Language 🗣️"
+    },
+    "explore-park": {
+      "title": "Spend an hour in a Luxembourg park",
+      "tip": "Try Parc de Merl, Parc Schlassbësch, or the gardens of the Abbaye de Neumünster in the Grund. Observe the people around you — Luxembourg's parks reflect the country's remarkable diversity.",
+      "category": "Explore 📍"
+    },
+    "explore-train": {
+      "title": "Take a train to a town you've never visited",
+      "tip": "Luxembourg's public transport (trains, buses, trams) is completely free! Use it to visit a town or village you've never been to. Luxembourg was the first country in the world to make all public transport free (2020).",
+      "category": "Explore 📍"
+    },
+    "culture-tradition": {
+      "title": "Read about a Luxembourg tradition",
+      "tip": "Look up one Luxembourg cultural tradition: the Schueberfouer fair, Émaischen (pottery fair), the Octave pilgrimage, Bretzelsonndeg (Pretzel Sunday), or the Dancing Procession of Echternach.",
+      "category": "Culture 🎭"
+    },
+    "culture-event": {
+      "title": "Attend a free cultural event",
+      "tip": "Attend an outdoor concert, art exhibition opening, street performance, or public lecture. Check the Agenda Culturel (agenda.lu) for free events near you.",
+      "category": "Culture 🎭"
+    },
+    "connect-coffee": {
+      "title": "Have coffee with someone from a different culture",
+      "tip": "Invite a colleague, classmate, or acquaintance from a different cultural background for a coffee or tea. Ask them one thing they love about their home country. Be curious — everyone has a fascinating story.",
+      "category": "Connect 🤝"
+    },
+    "explore-museum": {
+      "title": "Visit a local museum or cultural site",
+      "tip": "Spend at least 30 minutes at a museum, castle, or cultural heritage site. Options include MUDAM, Musée National, Casino Luxembourg, Vianden Castle, or any of the many maisons de la culture.",
+      "category": "Explore 📍"
+    },
+    "culture-film": {
+      "title": "Watch a film from a different culture",
+      "tip": "Watch a film or documentary from a culture different from your own — bonus if it's from one of Luxembourg's many represented nationalities. Cinémathèque de la Ville de Luxembourg shows international films regularly.",
+      "category": "Culture 🎭"
+    },
+    "biergerpakt-register": {
+      "title": "Register on the Biergerpakt platform",
+      "tip": "Create your account on biergerpakt.zesummeliewen.lu. Explore the activities and events available in your area. Registration is free and available in multiple languages.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-neighbour": {
+      "title": "Ask a neighbour where they're from",
+      "tip": "Strike up a conversation with a neighbour you don't know well. Ask where they're originally from and share where you're from too. A simple \"Hi, I don't think we've properly met yet\" works perfectly.",
+      "category": "Connect 🤝"
+    },
+    "lang-directions": {
+      "title": "Use Luxembourgish to ask for directions",
+      "tip": "\"Wou ass...?\" means \"Where is...?\". \"Kënnt Dir mir soen, wou... ass?\" = \"Could you tell me where... is?\" is even more polite.",
+      "category": "Language 🗣️"
+    },
+    "lang-news": {
+      "title": "Read a news article in a language you're learning",
+      "tip": "Try RTL.lu for Luxembourgish, Tageblatt.lu for French, or Wort.lu for German. Even reading headlines and captions counts — the habit is what matters!",
+      "category": "Language 🗣️"
+    },
+    "explore-market": {
+      "title": "Visit a local weekly market",
+      "tip": "Head to one of Luxembourg's weekly markets — such as the Marché de la Ville in Luxembourg City. Buy at least one item and chat briefly with a vendor.",
+      "category": "Explore 📍"
+    },
+    "explore-nature": {
+      "title": "Explore a natural site in Luxembourg",
+      "tip": "Visit the Müllerthal (Little Switzerland), the Moselle Valley, the Ardennes, or the Minett Biosphere Reserve. Visit Luxembourg (visitluxembourg.com) has excellent trail maps.",
+      "category": "Explore 📍"
+    },
+    "explore-institution": {
+      "title": "Visit a public institution",
+      "tip": "Visit the Chamber of Deputies (guided tours available at chd.lu), the European Court of Justice, or a local town hall (mairie). The Luxembourg Parliament offers free guided tours.",
+      "category": "Explore 📍"
+    },
+    "connect-meal": {
+      "title": "Share a meal from your own culture",
+      "tip": "Cook or share a dish from your own cultural background with a colleague, friend, or neighbour. Use food as a bridge to tell them something about where you're from.",
+      "category": "Connect 🤝"
+    },
+    "connect-sport": {
+      "title": "Join a group sport or fitness activity",
+      "tip": "Participate in a group sport or fitness session — a running club, yoga class, football match, or group hike. Sport is a universal language that breaks barriers.",
+      "category": "Connect 🤝"
+    },
+    "connect-language-exchange": {
+      "title": "Join a language exchange",
+      "tip": "Find a partner who wants to learn your language while you learn theirs. Meet for 30 minutes, switching halfway. Language exchanges can be found through Biergerpakt, Meetup.com, or local Facebook groups.",
+      "category": "Connect 🤝"
+    },
+    "culture-industrial": {
+      "title": "Explore Luxembourg's industrial heritage",
+      "tip": "Visit the former blast furnaces at Belval (Esch-sur-Alzette), the National Mining Museum in Rumelange, or the Fond-de-Gras heritage railway site.",
+      "category": "Culture 🎭"
+    },
+    "biergerpakt-module": {
+      "title": "Complete a Biergerpakt online module",
+      "tip": "Complete at least one short online course or module available through the Biergerpakt platform about Luxembourg's culture, institutions, or intercultural living.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-volunteer": {
+      "title": "Volunteer for a local community activity",
+      "tip": "Sign up for a one-time volunteering activity — a clean-up day, a food bank, a community garden, or helping a local association. Search for opportunities on luxassoc.lu or your commune's website.",
+      "category": "Connect 🤝"
+    },
+    "connect-gathering": {
+      "title": "Organise a neighbourhood gathering",
+      "tip": "Take the initiative: organise a small gathering — a picnic, board game night, or barbecue — and invite people from at least two different cultural backgrounds. You can get inspiration and support through the Biergerpakt platform.",
+      "category": "Connect 🤝"
+    },
+    "biergerpakt-attend": {
+      "title": "Attend a Biergerpakt event",
+      "tip": "Sign up for and attend a Biergerpakt event or activity in your area — a guided walk, cooking class, language exchange, or community gathering. Browse activities sorted by your commune.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-invite": {
+      "title": "Invite someone to a Biergerpakt event",
+      "tip": "Find a Biergerpakt event you find interesting, then invite a friend, neighbour, or colleague to join you. Sharing the experience makes it even richer.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-organise": {
+      "title": "Organise a Biergerpakt-inspired gathering",
+      "tip": "Take the initiative: organise a small gathering and invite people from at least two different cultural backgrounds. You can get inspiration and even support for your event through the Biergerpakt platform.",
+      "category": "Biergerpakt 🤝"
+    }
   }
 }

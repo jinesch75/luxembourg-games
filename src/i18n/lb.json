@@ -1,10 +1,10 @@
 {
   "nav": {
     "home": "Haaptseite",
-    "quiz": "Lëtz Quiz",
-    "geo": "Lëtz Géo",
-    "connect": "Lëtz Connect",
-    "info": "Info Hub"
+    "quiz": "Quiz",
+    "geo": "Géo",
+    "challenge": "Aktivitéiten",
+    "info": "Info"
   },
   "home": {
     "headline": "Lëtzebuerg entdecken",
@@ -27,8 +27,8 @@
   },
   "quiz": {
     "title": "Lëtz Quiz",
-    "subtitle": "5 Froe pro Dag — alles iwwer Lëtzebuerg",
-    "startBtn": "Haitege Quiz starten",
+    "subtitle": "Teste deng Kenntnisser iwwer Lëtzebuerg",
+    "startBtn": "Quiz starten",
     "question": "Fro",
     "of": "vun",
     "next": "Nächst Fro",
@@ -44,7 +44,7 @@
     "great": "Super! Weider entdecken!",
     "good": "Gutt gemaach — weider léieren!",
     "tryAgain": "Iwwung mécht de Meeschter!",
-    "playAgain": "Muer spillen",
+    "playAgain": "Nach eng Kéier spillen",
     "streak": "Deeg hannerztenee",
     "categories": {
       "language": "Sprooch",
@@ -54,9 +54,19 @@
       "institutions": "Institutiounen",
       "economy": "Wirtschaft"
     },
+    "shareResult": "Meng Resultat deelen",
     "alreadyPlayed": "Dir hutt haut scho gespillt!",
     "comeBackTomorrow": "Kommt muer fir nei Froe erëm.",
-    "shareResult": "Meng Resultat deelen"
+    "yourLevel": "Är Etapp",
+    "totalCorrectLabel": "Insgesamt richteg Äntwerten",
+    "toNextLevelCount": "Nach {{count}} richteg Äntwert(en) fir {{icon}} {{name}} fräizeschalten",
+    "sessionCategories": "Kategorien vun dëser Ronnen",
+    "levelUpTitle": "Opgestan! {{name}} fräigeschalt!",
+    "reachedLevelText": "Dir hutt Etapp {{id}} erreecht",
+    "sessionScoreText": "+{{score}} richteg an dëser Ronnen",
+    "totalScoreText": "insgesamt richteg",
+    "retryWrong": "🔁 {{count}} verpasst Fro(en) widderholen",
+    "levelLabel": "Etapp {{id}}"
   },
   "geo": {
     "title": "Lëtz Géo",
@@ -72,7 +82,7 @@
     "good": "Net schlecht!",
     "ok": "Weider üben!",
     "results": "Resultater",
-    "totalScore": "Gesamtpunkte",
+    "totalScore": "Gesamtpunkten",
     "playAgain": "Nach eng Kéier spillen",
     "round": "Plaz",
     "clue": "Hinweis",
@@ -110,6 +120,73 @@
       "purple": "Expert"
     }
   },
+  "challenge": {
+    "title": "Interkulturell Aktivitéiten",
+    "subtitle": "Iddie fir Kulturen zu Lëtzebuerg ze verbannen",
+    "heroText": "Mécht Aktivitéiten fäerdeg fir méi héich Etappen fräizeschalten an Är Verbindunge zu Lëtzebuerg ze verdéiwen.",
+    "level1Name": "Asteiger",
+    "level2Name": "Entdecker",
+    "level3Name": "Champion",
+    "level1Desc": "Fänkt Är interkulturell Rees mat einfachen, alldeegleche Handlungen un.",
+    "level2Desc": "Maacht e Schratt weider — verbënnt Iech, entdeckt a léiert kennen.",
+    "level3Desc": "Hëlt echt Initiativ a loost e laanghaltende Abdrock an Ärer Gemeinschaft.",
+    "easyLabel": "Einfach",
+    "mediumLabel": "Mëttel",
+    "challengeLabel": "Erausfuerderung",
+    "activitiesLabel": "Aktivitéiten",
+    "doneLabel": "gemaach",
+    "levelLabel": "Etapp {{id}}",
+    "levelProgress": "Fortschrëtt zu Etapp {{next}}",
+    "levelUnlockedTip": "✓ Etapp {{next}} fräigeschalt! Dréckt dueriwwer fir Aktivitéiten ze gesinn.",
+    "levelUnlockedBanner": "Etapp {{id}} fräigeschalt — {{name}}!",
+    "levelLocked": "Etapp {{id}}: {{name}} ass gespaart",
+    "unlockMore": "Mécht nach {{count}} {{difficulty}}-Aktivitéit(en) fäerdeg fir dës Etapp fräizeschalten.",
+    "markDone": "✓ Als gemaach markéieren!",
+    "markUndone": "↩ Als net gemaach markéieren",
+    "biergerpaktTitle": "De Biergerpakt-Programm",
+    "biergerpaktText": "De Biergerpakt ass Lëtzebuerg seng Regierungsinitiativ déi Newcomer a laangjäreg Awunner duerch gemeinsam Aktivitéiten, Evenementer a Erfarungen zesummebréngt. D'Aschreiwung ass gratis a Aktivitéiten si fir jiddereen op.",
+    "biergerpaktCta": "De Biergerpakt entdecken →",
+    "biergerpaktRegisterLink": "Beim Biergerpakt aschriwen",
+    "biergerpaktModuleLink": "Online-Ressourcen entdecken",
+    "biergerpaktEventsLink": "Biergerpakt-Evenementer duerchsichen",
+    "biergerpaktFindLink": "En Evenement fir ze deelen fannen",
+    "biergerpaktIdeasLink": "Iddie beim Biergerpakt kréien",
+    "biergerpaktSupportLink": "Support beim Biergerpakt kréien",
+    "whyTitle": "Firwat interkulturell Verbindung zu Lëtzebuerg wichteg ass",
+    "fact1Title": "170+ Nationalitéiten",
+    "fact1Text": "Lëtzebuerg beherbergt Leit aus méi wéi 170 Länner. Bal 47 % vun den Awunner si auslännesch Staatsbierger — eng vun den héchste Quoten weltwäit.",
+    "fact2Title": "Dräi Amtssprochen",
+    "fact2Text": "Lëtzebuergesch, Franséisch a Däitsch si all Amtssprochen. Portugisesch gëtt wäit geschwat a Englesch ass heefeg am Geschäftsliewen an am Alldag.",
+    "fact3Title": "220.000 Grenzgänger",
+    "fact3Text": "Ongeféier 45 % vun de Mataarbechter pendelen all Dag aus Frankräich, Belgien a Deutschland — dat mécht Lëtzebuerg un all Aarbechtsdag eenzegaarteg international.",
+    "fact4Title": "Gutt zesummeliewen",
+    "fact4Text": "Lëtzebuerg seng Regierung fërdert aktiv de interkulturellen Dialog a gesellschaftlechen Zesumenhalt duerch Programmer wéi de Biergerpakt, well gemeinsam Erfarungen eng méi staark Gemeinschaft opbauen.",
+    "thisWeek": "Thema vun dëser Woch",
+    "startMissions": "Missioune vun dëser Woch starten",
+    "continueMissions": "Missioune weiderfieren",
+    "done": "fäerdeg",
+    "openBiergerpakt": "Op Biergerpakt opmaachen",
+    "weekComplete": "Woch ofgeschloss!",
+    "missionsCompleted": "Ofgeschloss Missioune",
+    "totalXp": "Gesamt XP verdéngt",
+    "weeksCompleted": "Ofgeschloss Wochen",
+    "newMissionsNote": "Nei Missioune all Méindeg",
+    "discoverBiergerpakt": "Méi beim Biergerpakt entdecken",
+    "reviewMissions": "Missioune vun dëser Woch iwwerpréiwen",
+    "biergerpaktNote": "E puer Missioune si mam Biergerpakt-Programm verknüpft — Lëtzebuerg seng Initiativ fir interkulturellen Austausch.",
+    "categories": {
+      "language": "Sprooch",
+      "visit": "Entdecken",
+      "connect": "Verbanne",
+      "culture": "Kultur",
+      "biergerpakt": "Biergerpakt"
+    },
+    "difficulty": {
+      "easy": "Einfach",
+      "medium": "Mëttel",
+      "hard": "Erausfuerderung"
+    }
+  },
   "info": {
     "title": "Info Hub",
     "subtitle": "Fakten, Statistiken, Linken a méi iwwer Lëtzebuerg",
@@ -131,41 +208,11 @@
     },
     "languages": {
       "title": "Lëtzebuerg seng Sprochen",
-      "text": "Lëtzebuerg huet dräi Amtssprochen: Lëtzebuergesch, Franséisch a Däitsch. Lëtzebuergesch ass d'Nationalsprooch a e Symbol vun der kultureller Identitéit."
+      "text": "Lëtzebuerg huet dräi Amtssprochen: Lëtzebuergesch, Franséisch a Däitsch. Lëtzebuergesch ass d'Nationalsprooch a e Symbol vun der kultureller Identitéit. Vill Awunner schwätzen och Englesch a Portugisesch."
     },
     "intercultural": {
       "title": "Interkulturellt Zesummeliewen",
-      "text": "Bal d'Halschent vun den Awunner Lëtzebuerg sinn auslännesch Staatsbierger. Dës räich Diversitéit ass eng vun de gréisste Stärken Lëtzebuerg. Zesummen ze liewen a ze schaffen iwwer Kulturen eraus erfuerdert Verständnis, Respekt a Niegeschier."
-    }
-  },
-  "challenge": {
-    "title": "Interkulturell Challenge",
-    "subtitle": "Echt Missioune fir Lëtzebuerg z'entdecken a Leit kennenzeléieren",
-    "thisWeek": "Thema dëser Woch",
-    "startMissions": "Missioune vun dëser Woch starten",
-    "continueMissions": "Missioune weiderfieren",
-    "done": "fäerdeg",
-    "markDone": "Als erledegt markéieren",
-    "openBiergerpakt": "Op Biergerpakt opmaachen",
-    "weekComplete": "Woch ofgeschloss!",
-    "missionsCompleted": "Ofgeschloss Missioune",
-    "totalXp": "Gesamt XP verdéngt",
-    "weeksCompleted": "Ofgeschloss Wochen",
-    "newMissionsNote": "Nei Missioune all Méindeg",
-    "discoverBiergerpakt": "Méi beim Biergerpakt entdecken",
-    "reviewMissions": "Missioune vun dëser Woch iwwerpréiwen",
-    "biergerpaktNote": "E puer Missioune sinn mam Biergerpakt-Programm verknüpft.",
-    "categories": {
-      "language": "Sprooch",
-      "visit": "Entdecken",
-      "connect": "Verbanne",
-      "culture": "Kultur",
-      "biergerpakt": "Biergerpakt"
-    },
-    "difficulty": {
-      "easy": "Einfach",
-      "medium": "Mëttel",
-      "hard": "Challenge"
+      "text": "Bal d'Halschent vun den Awunner Lëtzebuerg sinn auslännesch Staatsbierger. Dës räich Diversitéit ass eng vun de gréisste Stäerke Lëtzebuerg. Zesummen ze liewen a ze schaffen iwwer Kulturen eraus erfuerdert Verständnis, Respekt a Niegeschier — genee dat, wat dës Aktivitéiten encouragéiere sollen."
     }
   },
   "footer": {
@@ -183,5 +230,553 @@
     "language": "Sprooch",
     "back": "Zréck",
     "home": "Haaptseite"
+  },
+  "activities": {
+    "lang-moien": {
+      "title": "Sot dräi Leit \"Moien\"",
+      "tip": "\"Moien\" (MOY-en) ass déi heefegst lëtzebuergesch Begrëssong, déi zu all Dageszäit benotzt gëtt. Probéiert et mat engem Händler, Noper oder Kollegen. E Lächele mécht vill aus!",
+      "category": "Sprooch 🗣️"
+    },
+    "explore-walk": {
+      "title": "Maacht e Spazéiergang an engem neie Quartier",
+      "tip": "Entdeckt en Deel vu Lëtzebuerg deen Dir nach ni besicht hutt — eng aner Gemeng, eng nei Strooss oder e Park. Probéiert Bonnevoie, Hollerich, Esch-sur-Alzette oder Differdange.",
+      "category": "Entdecken 📍"
+    },
+    "culture-song": {
+      "title": "Héiert e lëtzebuergescht Lidd",
+      "tip": "Sicht a héiert e Lidd op Lëtzebuergesch. Probéiert Kënschtler wéi Serge Tonnar, Def Dogg, oder sicht no \"Ons Heemecht\" — der Nationalhymn. Sicht no \"Musek lëtzebuergesch\" oder duerchsicht d'RTL Lëtzebuerg Musek Playlist.",
+      "category": "Kultur 🎭"
+    },
+    "lang-5phrases": {
+      "title": "Léiert 5 alldeeglesch lëtzebuergesch Ausdréck",
+      "tip": "Meeschter dës: \"Moien\" (Hallo), \"Äddi\" (Tschüss), \"Merci\" (Merci), \"Wéi geet et?\" (Wéi geet et?), \"Ech verstinn net\" (Ech verstinn net). Schreiwt se op en Post-it!",
+      "category": "Sprooch 🗣️"
+    },
+    "culture-dish": {
+      "title": "Probéiert e traditionellt lëtzebuergescht Plat",
+      "tip": "Probéiert Judd mat Gaardebounen (geréchertem Schwéngsfleisch mat Saubounen), Bouneschlupp (Bunnenzoppeng) oder Gromperekichelcher (Gromperereibkichelcher) an engem lokale Restaurant.",
+      "category": "Kultur 🎭"
+    },
+    "lang-french-cafe": {
+      "title": "Bestellt eppes op Franséisch an engem Café",
+      "tip": "\"Un café, s'il vous plaît\" (e Kaffi, wann ech gelift). \"L'addition, s'il vous plaît\" heescht \"d'Rechnung, wann ech gelift\". Franséisch ass eng vun den dräi Amtssprochen vu Lëtzebuerg!",
+      "category": "Sprooch 🗣️"
+    },
+    "lang-nature": {
+      "title": "Léiert 5 Naturwierder op Lëtzebuergesch",
+      "tip": "Léiert: Bësch (Bësch), Floss (Floss), Bierg (Bierg/Hiwwel), Blumm (Blumm), Vull (Vull). Benummelt wat Dir op engem Spazéiergang gesitt — dat hëlleft de Wuertschatz ze festegen!",
+      "category": "Sprooch 🗣️"
+    },
+    "lang-hello-neighbor": {
+      "title": "Léiert \"Moien\" an der Sprooch vun engem Noper ze soen",
+      "tip": "Fannt eraus wéi eng Sprooch Äre Noper, Kollege oder Frënd doheem schwätzt, a léiert dann seng Begrëssong. Lëtzebuerg huet Awunner aus méi wéi 170 Nationalitéiten!",
+      "category": "Sprooch 🗣️"
+    },
+    "explore-park": {
+      "title": "Verbréngt eng Stonn an engem lëtzebuergesche Park",
+      "tip": "Probéiert de Parc de Merl, de Parc Schlassbësch, oder d'Gäert vun der Abtei Neumünster am Grund. Observéiert d'Leit ëm Iech erëm — Lëtzebuerg seng Parke reflektéieren d'bemierkenswäert Diversitéit vum Land.",
+      "category": "Entdecken 📍"
+    },
+    "explore-train": {
+      "title": "Fuert mat dem Zuch an eng Stad déi Dir nach ni besicht hutt",
+      "tip": "Lëtzebuerg seng ëffentlech Verkéiersmëttelen (Zich, Busse, Trams) si komplett gratis! Benotzt se fir eng Stad oder Duerf ze besichen déi Dir nach ni gesinn hutt. Lëtzebuerg war dat éischt Land op der Welt mat gratis ÖPNV (2020).",
+      "category": "Entdecken 📍"
+    },
+    "culture-tradition": {
+      "title": "Liest iwwer eng lëtzebuergesch Traditioun",
+      "tip": "Informéiert Iech iwwer eng lëtzebuergesch Kulturtradition: d'Schueberfouer, d'Émaischen (Kachelfoire), d'Oktav-Wallfahrt, de Bretzelsonndeg, oder d'Sprangprozessioun vu Echternach.",
+      "category": "Kultur 🎭"
+    },
+    "culture-event": {
+      "title": "Besucht eng gratis Kulturveranstaltung",
+      "tip": "Besucht e Fräiloftkonzert, eng Ausstellungseröffnung, eng Stroossenvirstelling oder eng ëffentlech Konferenz. Kuckt op dem Agenda Culturel (agenda.lu) no gratis Evenementer bei Iech.",
+      "category": "Kultur 🎭"
+    },
+    "connect-coffee": {
+      "title": "Drénkt e Kaffi mat jemanden aus enger anerer Kultur",
+      "tip": "Invitéiert e Kollegen, Matschüler oder Bekannten aus engem anere kulturellen Hannergrond op e Kaffi oder Téi. Freet se no enger Saach déi se u hirem Heemechtsland gär hunn. Sidd niegeschéierlech — jidderee huet eng faszinéierend Geschicht.",
+      "category": "Verbanne 🤝"
+    },
+    "explore-museum": {
+      "title": "Besucht e lokalt Museum oder e Kultursite",
+      "tip": "Verbréngt op d'mannst 30 Minutten an engem Museum, Schlass oder Kultururf-Site. Optiounen: MUDAM, Nationalt Museum, Casino Luxembourg, Schlass Vianden oder eng vun de ville Maisons de la culture.",
+      "category": "Entdecken 📍"
+    },
+    "culture-film": {
+      "title": "Kuckt e Film aus enger anerer Kultur",
+      "tip": "Kuckt e Film oder Dokumentarfilm aus enger Kultur anescht wéi Är eegen — Bonus wann et eng vun Lëtzebuerg senge ville vertruede Nationalitéite ass. D'Cinémathèque de la Ville de Luxembourg weist regelméisseg international Filmer.",
+      "category": "Kultur 🎭"
+    },
+    "biergerpakt-register": {
+      "title": "Schreift Iech op der Biergerpakt-Plattform an",
+      "tip": "Erstellt Äre Kont op biergerpakt.zesummeliewen.lu. Entdeckt déi verfügbar Aktivitéiten a Veranstaltungen an Ärer Géigend. D'Aschreiwung ass gratis a a verschiddene Sprooche verfügbar.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-neighbour": {
+      "title": "Freet e Noper wou hien hierkënnt",
+      "tip": "Fänkt e Gespréich mat engem Noper un deen Dir net gutt kennt. Freet hien wou hien ursprénglech hierkënnt a deelt och mat wou Dir hierkënnt. E einfacht \"Moien, ech mengen mir hunn eis nach net richteg virgestallt\" funktionéiert perfekt.",
+      "category": "Verbanne 🤝"
+    },
+    "lang-directions": {
+      "title": "Benotzt Lëtzebuergesch fir no dem Wee ze froen",
+      "tip": "\"Wou ass...?\" heescht \"Wou ass...?\". \"Kënnt Dir mir soen, wou... ass?\" ass nach méi héiflech.",
+      "category": "Sprooch 🗣️"
+    },
+    "lang-news": {
+      "title": "Liest en Noriichtenaartikkel an enger Sprooch déi Dir léiert",
+      "tip": "Probéiert RTL.lu fir Lëtzebuergesch, Tageblatt.lu fir Franséisch oder Wort.lu fir Däitsch. Och nëmme Schlagzeilen ze liesen ziilt — d'Gewunnecht ass wat wichteg ass!",
+      "category": "Sprooch 🗣️"
+    },
+    "explore-market": {
+      "title": "Besucht e lokale Wochemaart",
+      "tip": "Gitt op ee vu Lëtzebuerg senge Wochemaarten — wéi de Marché de la Ville zu Lëtzebuerg-Stad. Kaaft op d'mannst een Artikel a plaudert kuerz mat engem Händler.",
+      "category": "Entdecken 📍"
+    },
+    "explore-nature": {
+      "title": "Entdeckt eng Naturstät zu Lëtzebuerg",
+      "tip": "Besucht d'Mëllerdall (Kleng Schwäiz), d'Moseltal, d'Ardennen oder d'Minett Biosphäreresevat. Visit Luxembourg (visitluxembourg.com) huet exzellent Wanderkaarten.",
+      "category": "Entdecken 📍"
+    },
+    "explore-institution": {
+      "title": "Besucht eng ëffentlech Institutioun",
+      "tip": "Besucht d'Chambre des Députés (Führungen op chd.lu), den Europäesche Geriichtshaff oder eng lokal Gemeindeverwaltung. De Lëtzebuerger Parlament bitt gratis Führungen un.",
+      "category": "Entdecken 📍"
+    },
+    "connect-meal": {
+      "title": "Deelt en Iessen aus Ärer eegener Kultur",
+      "tip": "Kacht oder deelt e Plat aus Ärem kulturellen Hannergrond mat engem Kollegen, Frënd oder Noper. Benotzt Iessen als Bréck fir eppes iwwer Är Heemecht ze erzäilen.",
+      "category": "Verbanne 🤝"
+    },
+    "connect-sport": {
+      "title": "Maacht mat bei enger Gruppesport- oder Fitnessaktivitéit",
+      "tip": "Maacht mat bei engem Gruppesport oder enger Fitnessseance — engem Laafclub, Yogakurs, Fussballmatch oder enger Gruppewanderung. Sport ass eng universell Sprooch déi Grenzen iwwerwënnt.",
+      "category": "Verbanne 🤝"
+    },
+    "connect-language-exchange": {
+      "title": "Maacht bei engem Sproochaustausch mat",
+      "tip": "Fënnt e Partner deen Är Sprooch léiere wëll während Dir seng léiert. Trëfft Iech 30 Minutten a wechselt op hallwer Wee. Sproochaustausche fënnt Dir iwwer Biergerpakt, Meetup.com oder lokal Facebook-Gruppen.",
+      "category": "Verbanne 🤝"
+    },
+    "culture-industrial": {
+      "title": "Entdeckt Lëtzebuerg seng Industriekultur",
+      "tip": "Besucht déi fréier Hochiewen zu Belval (Esch-sur-Alzette), de Nationalt Biergbamusée zu Rëmeleng, oder d'Fond-de-Gras Eisebunnssite.",
+      "category": "Kultur 🎭"
+    },
+    "biergerpakt-module": {
+      "title": "Fäerdegt en Online-Modul vum Biergerpakt of",
+      "tip": "Fäerdegt op d'mannst ee kuerzen Online-Kurs oder -Modul iwwer d'Biergerpakt-Plattform of iwwer Lëtzebuerg seng Kultur, Institutiounen oder interkulturellt Zesummeliewen.",
+      "category": "Biergerpakt 🤝"
+    },
+    "connect-volunteer": {
+      "title": "Engagéiert Iech fräiwëlleg fir eng lokal Gemeinschaftsaktivitéit",
+      "tip": "Mellt Iech fir eng eemoleg Fräiwëllegeraktivitéit un — en Opraumsdag, eng Liewensmëttelbank, e Gemeinschaftsgaart oder Hëllef fir een lokalen Veräin. Sicht no Méiglechkeeten op luxassoc.lu oder dem Webside vun Ärer Gemeng.",
+      "category": "Verbanne 🤝"
+    },
+    "connect-gathering": {
+      "title": "Organiséiert e Nopeschschaftstreffen",
+      "tip": "Hëlt d'Initiativ: Organiséiert e klenge Treffen — e Pique-nique, en Spillowend oder e Grillfest — a invitéiert Leit aus op d'mannst zwou verschiddene Kulturen. Inspiratioun a Support fënnt Dir op der Biergerpakt-Plattform.",
+      "category": "Verbanne 🤝"
+    },
+    "biergerpakt-attend": {
+      "title": "Besucht en Evenement vum Biergerpakt",
+      "tip": "Mellt Iech un a maacht mat bei engem Biergerpakt-Evenement an Ärer Géigend — enger geféierter Wanderung, engem Kachkurs, engem Sproochaustausch oder engem Gemeinschaftstreffen. Duerchsicht Aktivitéiten no Ärer Gemeng.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-invite": {
+      "title": "Invitéiert jemanden zu engem Biergerpakt-Evenement",
+      "tip": "Fënnt en Biergerpakt-Evenement deen Iech interesséiert, a invitéiert dann e Frënd, Noper oder Kollegen mat ze kommen. D'Erfarung zesummen ze deelen mécht se nach räicher.",
+      "category": "Biergerpakt 🤝"
+    },
+    "biergerpakt-organise": {
+      "title": "Organiséiert e vum Biergerpakt inspiréierte Treffen",
+      "tip": "Hëlt d'Initiativ: Organiséiert e klenge Treffen a invitéiert Leit aus op d'mannst zwou verschiddene Kulturen. Inspiratioun a Ënnerstëtzung fir Är Veranstaltung fënnt Dir op der Biergerpakt-Plattform.",
+      "category": "Biergerpakt 🤝"
+    }
+  },
+  "questions": {
+    "lang-1": {
+      "q": "Wat heescht \"Moien\" op Lëtzebuergesch?",
+      "o0": "Gudden Owend",
+      "o1": "Hallo / Gudde Moien",
+      "o2": "Merci",
+      "o3": "Äddi",
+      "e": "\"Moien\" ass déi heefegst Begrëssong op Lëtzebuergesch, déi zu all Dageszäit benotzt gëtt. Et kënnt vum däitschen Wuert \"Morgen\"."
+    },
+    "lang-2": {
+      "q": "A wat Joer gouf Lëtzebuergesch offiziell als Nationalsprooch vu Lëtzebuerg unerkannt?",
+      "o0": "1945",
+      "o1": "1964",
+      "o2": "1984",
+      "o3": "2000",
+      "e": "D'Gesetz vum 24. Februar 1984 huet Lëtzebuergesch als Nationalsprooch festgeluecht, nieft Franséisch a Däitsch als Verwaltungssprochen."
+    },
+    "lang-3": {
+      "q": "Zu wéi engem Sproochefamillien gehéiert Lëtzebuergesch?",
+      "o0": "Romanesch Sprochen",
+      "o1": "Slawesch Sprochen",
+      "o2": "Westgermanisch (Moselfrénkesch)",
+      "o3": "Nordgermanisch",
+      "e": "Lëtzebuergesch ass eng westgermanesch Sprooch vun der mosefrénkescher Dialektgrupp, enk verwandt mat Däitsch awer mat staarkem franséischem Afloss."
+    },
+    "lang-4": {
+      "q": "Wéi seet een \"Ech hunn dech gär\" op Lëtzebuergesch?",
+      "o0": "Ech hunn dech gär",
+      "o1": "Je t'aime",
+      "o2": "Ich liebe dich",
+      "o3": "Mir gefällt dir",
+      "e": "\"Ech hunn dech gär\" heescht wuertwiertlech \"Ech hunn dech gär\" — dat ass den üblechen lëtzebuergesche Ausdrock fir Zouneigung."
+    },
+    "lang-5": {
+      "q": "Wat sinn déi dräi offiziell Verwaltungssprochen vu Lëtzebuerg?",
+      "o0": "Englesch, Franséisch, Däitsch",
+      "o1": "Lëtzebuergesch, Franséisch, Däitsch",
+      "o2": "Franséisch, Däitsch, Portugisesch",
+      "o3": "Lëtzebuergesch, Englesch, Franséisch",
+      "e": "Lëtzebuerg benotzt dräi Amtssprochen: Lëtzebuergesch (Nationalsprooch), Franséisch (Gesetzgebung a Geriichter) a Däitsch (Medien a Press)."
+    },
+    "lang-6": {
+      "q": "Wat heescht \"Wéi geet et?\" op Lëtzebuergesch?",
+      "o0": "Wou gees de hin?",
+      "o1": "Wéi geet et dir?",
+      "o2": "Wéi vill Auer ass et?",
+      "o3": "Wou ass de Bahnhof?",
+      "e": "\"Wéi geet et?\" heescht \"Wéi geet et dir?\" oder \"Wéi leeft et?\" — eng ganz heefeg alldeeglesch Begrëssong zu Lëtzebuerg."
+    },
+    "lang-7": {
+      "q": "Fir wat fir en berühmten literarescht Wierk op Lëtzebuergesch ass de Michel Rodange bekannt?",
+      "o0": "De Renert",
+      "o1": "Dil Ueueglen",
+      "o2": "Lëtzebuerger",
+      "o3": "D'Weltgeschicht",
+      "e": "De Michel Rodange huet \"De Renert\" (De Fuuss) 1872 geschriwwen, en Epos dat d'mëttelalterlesch Reineke-Fuuss-Geschicht op Lëtzebuergesch nozielt — e Schlësselwierk vum lëtzebuergeschen Literaturierwen."
+    },
+    "lang-8": {
+      "q": "Wat heescht \"Merci villmools\" op Lëtzebuergesch?",
+      "o0": "Gär geschitt",
+      "o1": "Villmols Merci",
+      "o2": "Entschëllegung",
+      "o3": "Wann ech gelift",
+      "e": "\"Merci villmools\" verbënnt de franséischen \"merci\" mam lëtzebuergeschen \"villmools\" (vill Mol) fir \"villmols Merci\" ze heeschen. Dës Mëschung vu franséischen a germanesche Elementer ass typesch fir Lëtzebuergesch."
+    },
+    "hist-1": {
+      "q": "A wat Joer huet Lëtzebuerg seng voll Onofhängegkeet erreecht?",
+      "o0": "1815",
+      "o1": "1839",
+      "o2": "1867",
+      "o3": "1890",
+      "e": "De Londoner Traité vum 19. Abrëll 1839 huet Lëtzebuerg als voll onofhängege Staat unerkannt, a vun den Nidderlanden getrennt."
+    },
+    "hist-2": {
+      "q": "Wat war d'Bedeitung vum Londoner Traité (1867) fir Lëtzebuerg?",
+      "o0": "Lëtzebuerg ass der Europäescher Gemeinschaft bäigetrueden",
+      "o1": "Lëtzebuerg gouf fir dauerhaft neutral erkläert a seng grouss Festung ofgerass",
+      "o2": "Lëtzebuerg huet seng haiteg Grenze kritt",
+      "o3": "Lëtzebuerg ass e Groussherzogdom ginn",
+      "e": "De Londoner Traité vun 1867 huet Lëtzebuerg fir dauerhaft neutral erkläert a verlaangt d'Ofris vun senger berühmter Festung — eng vun den stäerkste vu ganz Europa. D'Alliéiert hunn d'Stad \"Gibraltar vum Norden\" genannt."
+    },
+    "hist-3": {
+      "q": "Wien huet 963 n. Chr. d'Grofschaft Lëtzebuerg gegrënnt andeems e e kleng fränkescht Schlass kaaft huet?",
+      "o0": "Grof Balduin I.",
+      "o1": "Sigefroid",
+      "o2": "Ermesinde",
+      "o3": "Heinrich VII.",
+      "e": "De Grof Sigefroid huet 963 n. Chr. de Lucilinburhuc (Kleng Festung) kaaft, wat traditionell als Grënnung vu Lëtzebuerg ugesi gëtt. D'Schlass stoung um Bock-Fiels iwwer dem Floss Alzette."
+    },
+    "hist-4": {
+      "q": "A wat Joer gouf Lëtzebuerg während dem Zweete Weltkrich vu Nazidäitschland besat?",
+      "o0": "1938",
+      "o1": "1939",
+      "o2": "1940",
+      "o3": "1941",
+      "e": "Däitschland ass den 10. Mee 1940 a Lëtzebuerg amarschéiert a huet et besat. Lëtzebuerg gouf 1942 an d'Drëtt Räich annektéiert a gouf am September 1944 vun den alliéierte Kräfte befreit."
+    },
+    "hist-5": {
+      "q": "Lëtzebuerg war Grënnungsmember vu wéi engen dräi grousse internationale Organisatiounen?",
+      "o0": "UN, NATO a Conseil de l'Europe",
+      "o1": "NATO, EWG (EU) a Benelux",
+      "o2": "EWG, Schengen-Raum a WTO",
+      "o3": "Benelux, EFTA a NATO",
+      "e": "Lëtzebuerg war Grënnungsmember vun der NATO (1949), der Europäescher Wirtschaftsgemeinschaft (1957, haut EU) an der Benelux-Unioun (1944)."
+    },
+    "hist-6": {
+      "q": "D'Ardennenoffensiv (Dezember 1944–Januar 1945) gouf deelweis op lëtzebuergeschen Territoire gekämpft. Wéi eng Stad gouf duerch dës Schluecht berühmt?",
+      "o0": "Esch-sur-Alzette",
+      "o1": "Clervaux",
+      "o2": "Bastogne (Belgie vbeienei)",
+      "o3": "Echternach",
+      "e": "Clervaux, am Norden vu Lëtzebuerg, huet schwéier Kämpf wärend der Ardennenoffensiv gesinn. D'Schlass vun der Stad gouf staark beschiedegt ier et vun den alliéierte Kräfte zeréckgeholl gouf."
+    },
+    "hist-7": {
+      "q": "D'Schuman-Erklärung vun 1950, dat Grënndokument vun der europäescher Integratioun, gouf vum Robert Schuman ënnerschriwwen. Wou gouf hien gebuer?",
+      "o0": "Metz, Frankräich",
+      "o1": "Clausen, Lëtzebuerg-Stad",
+      "o2": "Trier, Däitschland",
+      "o3": "Bréissel, Belgie",
+      "e": "De Robert Schuman (1886–1963) gouf zu Clausen, Lëtzebuerg-Stad, gebuer. Hien ass franséische Bausseminister ginn a proposéiert d'Grënnung vun der Europäescher Gemeinschaft fir Kuel a Stol, wat zur haiteger EU geféiert huet."
+    },
+    "hist-8": {
+      "q": "Wéi eng Groussherzogin huet Lëtzebuerg während dem Zweete Weltkrich am Exil geféiert a gouf e Symbol vum nationale Widderstand?",
+      "o0": "Marie-Adélaïde",
+      "o1": "Charlotte",
+      "o2": "Joséphine-Charlotte",
+      "o3": "Maria Teresa",
+      "e": "D'Groussherzogin Charlotte (1896–1985) huet d'lëtzebuergesch Exilregierung wärend dem Zweete Weltkrich geféiert a vu London ausgestraalt fir den Nationalgeescht lieweg ze halen. Si ass eng vun den beliebtste historesche Figuren vu Lëtzebuerg."
+    },
+    "cult-1": {
+      "q": "Wat ass Lëtzebuerg seng Nationalfeierdag a wéini gëtt se gefeiert?",
+      "o0": "24. Oktober — Onofhängegkeetsdag",
+      "o1": "23. Juni — Nationalfeierdag",
+      "o2": "14. Juli — Bastille-Dag",
+      "o3": "15. November — Dag vun der Dynast",
+      "e": "Lëtzebuerg seng Nationalfeierdag gëtt den 23. Juni gefeiert, offiziell dem Groussherzog sengem Gebuertsdag. Si ëmfaasst Konzerten, Feierwierk a de \"Fackelsmupp\" den Owend virdrun."
+    },
+    "cult-2": {
+      "q": "Wat ass de \"Bretzelsonndeg\" zu Lëtzebuerg?",
+      "o0": "En Ärentefest wou Baueren Bretzelen deelen",
+      "o1": "Eng Valentinsdag-Traditioun wou Jongen de Meedercher déi si gäre hunn Bretzelen schenken",
+      "o2": "Eng Ouschtertradition vum Iessen vu séisse Bretzelen",
+      "o3": "Eng Karnevalstradition mat Bretzel-Kostümer",
+      "e": "De Bretzelsonndeg (de 4. Fastsonndeg) ass Lëtzebuerg seng Valentinsdag: Jongen schenken dem Meederche dat se gäre hunn eng dekoréiert Bretzel. Wann si erwidert, schenkt si him zu Ouschteren en dekoréiert Ee."
+    },
+    "cult-3": {
+      "q": "Wat ass d'\"Émaischen\"?",
+      "o0": "En traditionellt Ärentefest am Moseltal",
+      "o1": "En Ouschterméindeg Handwierkmaart zu Lëtzebuerg-Stad mat de \"Péckvillercher\" Villercher-Piff",
+      "o2": "En Karnevalsopzuch zu Esch-sur-Alzette",
+      "o3": "En Summermusiikfestival zu Vianden",
+      "e": "D'Émaischen ass en traditionellen Ouschterméindeg-Maart um Fëschmaart zu Lëtzebuerg-Stad, berühmt fir handgemaachte \"Péckvillercher\" — Kieramik Villerchen-Waasserpiff."
+    },
+    "cult-4": {
+      "q": "Lëtzebuerg seng historesch Altstad a seng Befestigunge si UNESCO-Weltkulturerwe. Zënter wéi engem Joer?",
+      "o0": "1985",
+      "o1": "1994",
+      "o2": "2001",
+      "o3": "2008",
+      "e": "D'Al Stadvéiertel a Befestigunge vun der Stad Lëtzebuerg goufen 1994 an d'UNESCO-Welterbelëscht opgeholl, unerkannt fir hiren aussergewéinleche universelle Wäert."
+    },
+    "cult-5": {
+      "q": "Wat ass d'\"Schueberfouer\"?",
+      "o0": "Eng Schafsfouer déi sech zu engem grousse jährleche Volksfest zu Lëtzebuerg-Stad entwéckelt huet",
+      "o1": "En mëttelalterlechen Tournoi zu Vianden",
+      "o2": "En Weinfestival zu Remich un der Mosel",
+      "o3": "E Chrëschtmaart um Place d'Armes",
+      "e": "D'Schueberfouer huet 1340 als Schafsfoire ugefaangen. Haut ass et ee vun den eelste a gréisste Volksfeier vu ganz Europa, dee jiddwer August/September zu Lëtzebuerg-Stad ofgehale gëtt."
+    },
+    "cult-6": {
+      "q": "D'\"Oktav vun Onseer Léiewer Fra vu Lëtzebuerg\" ass e wichtegen reliéisen Evenement. Wat beinhallt en?",
+      "o0": "Aacht Deeg Gesang a Danz an der Kathedrale",
+      "o1": "Eng zwou-Wochen Wallfahrt zur Notre-Dame Kathedral wou Dausende d'Consolatrix Afflictorum veréieren",
+      "o2": "Eng Prozessioun duerch d'Pétrusse-Dall um Ouschterméindeg",
+      "o3": "E Mariefest zu Echternach",
+      "e": "D'Oktav ass eng 15-Deeg-Marienwallfahrt am Mee an der Notre-Dame Kathedral. Dausende versammele sech fir d'Consolatrix Afflictorum (Tréischter vun den Betrëbten), Patronin vu Lëtzebuerg, ze veréieren."
+    },
+    "cult-7": {
+      "q": "D'\"Sprangprozessioun vu Echternach\" ass immateriellt UNESCO-Kulturierwen. Wat mécht si besonnech?",
+      "o0": "D'Participanten danzen rëckwärts duerch d'Stroossen",
+      "o1": "Si fënnt ganz a Schweige statt",
+      "o2": "D'Participanten hoppe bei enger Dräi-Schrëtt-Danz an der Prozessioun um Pfingschdeisden",
+      "o3": "Si ëmfaasst Kostümer aus iwwer 100 verschiddene Länner",
+      "e": "D'Echternacher Sprangprozessioun fënnt zënter dem 7. Joerhonnert all Pfingschdeisden statt. D'Participante danzen am hoppe Dräi-Schrëtt-Rhythmus duerch d'Stad zu Éieren vum Hellegen Willibrord."
+    },
+    "cult-8": {
+      "q": "Wat ass d'\"Gëlle Fra\" zu Lëtzebuerg?",
+      "o0": "En berühmte lëtzebuergesche Gebäck",
+      "o1": "En Denkmal zu Lëtzebuerg-Stad dat de Geescht vum Affer vum Land duerstellt — eng geflilte Fra op enger héijer Säil",
+      "o2": "En traditionellen Danz aus der Ardenneregioun",
+      "o3": "De Spëtznumm vun der Groussherzogin Charlotte",
+      "e": "D'Gëlle Fra ass e Krichsdenkmal um Place de la Constitution. D'golden Statue op enger 21 Meter héijer Säil gedenkt den Fräiwëllegen vum Éischte Weltkrich. Si gouf 1940 vun den Nazi-Besetzer ageschmolt a no dem Krich nees opgebaut."
+    },
+    "peop-1": {
+      "q": "Den Edward Steichen, gebuer zu Bivange, Lëtzebuerg, gouf weltberühmt als wat?",
+      "o0": "Jazz-Museker",
+      "o1": "Fotograf a Kurator um MoMA New York",
+      "o2": "Formel-1-Rennfuerer",
+      "o3": "Wirtschaftsnobelpräisgewënner",
+      "e": "Den Edward Steichen (1879–1973) war e Pionéier-Fotograf a Leeder vun der Fotoabteilung vum MoMA (New York). Hien huet déi legendär Ausstellung \"The Family of Man\" (1955) erstallt."
+    },
+    "peop-2": {
+      "q": "Wéi en Lëtzebuerger huet bei den Olympesche Spiller 1952 zu Helsinki Gold am 1500m Laf gewonnen?",
+      "o0": "Michel Théato",
+      "o1": "Nicolas Frantz",
+      "o2": "Josy Barthel",
+      "o3": "Charly Gaul",
+      "e": "De Josy Barthel (1927–1992) huet Gold am 1500m bei den Olympesche Spilleren 1952 zu Helsinki gewonnen — Lëtzebuerg seng eenzeg olympesch Goldmedail bis haut. D'national Atletikstadion zu Lëtzebuerg-Stad dréit säin Numm."
+    },
+    "peop-3": {
+      "q": "Wéi gouf de Charly Gaul, e legendäre Cycliste aus Lëtzebuerg, genannt?",
+      "o0": "De Gaartner",
+      "o1": "Den Engel vun de Bierger",
+      "o2": "Den Eiseleef",
+      "o3": "De stëllen Rennfuerer",
+      "e": "De Charly Gaul (1932–2005) gouf wéinst senge aussergewéinleche Klëtterleeschtungen \"L'Ange de la Montagne\" (Den Engel vun de Bierger) genannt. Hien huet d'Tour de France (1958) an de Giro d'Italia zweemol (1956, 1959) gewonnen."
+    },
+    "peop-4": {
+      "q": "Den Hugo Gernsback, 1884 zu Lëtzebuerg gebuer, ass bekannt als de \"Papp vun der Science-Fiction\". Wéi eng Zäitschrëft huet hien gegrënnt?",
+      "o0": "Popular Science",
+      "o1": "Amazing Stories",
+      "o2": "Science Wonder Stories",
+      "o3": "Modern Mechanics",
+      "e": "Den Hugo Gernsback (1884–1967) huet 1926 \"Amazing Stories\" gegrënnt, déi éischt Zäitschrëft déi sech ausschliisslech der Science-Fiction gewidmet huet. Déi jährlechen Hugo Awards fir Science-Fiction sinn no him benannt."
+    },
+    "peop-5": {
+      "q": "Den Jean-Claude Juncker, fréiere Premierminister vu Lëtzebuerg (1995–2013), huet duerno wat gemaach?",
+      "o0": "NATO-Generalsekretär",
+      "o1": "President vun der Europäescher Kommissioun (2014–2019)",
+      "o2": "President vum Europäesche Rot",
+      "o3": "President vum Europäesche Parlament",
+      "e": "Den Jean-Claude Juncker war 18 Joer laang Lëtzebuerg senge Premierminister, duerno President vun der Europäescher Kommissioun vun 2014 bis 2019. Hien war och President vun der Eurogrupp (2005–2013)."
+    },
+    "peop-6": {
+      "q": "De Michel Théato, gebuer zu Lëtzebuerg, huet Gold bei wéi engen Olympesche Spilleren am Marathon gewonnen?",
+      "o0": "1896 Athen",
+      "o1": "1900 Paräis",
+      "o2": "1904 St. Louis",
+      "o3": "1908 London",
+      "e": "De Michel Théato huet den Marathon bei den Olympesche Spillere 1900 zu Paräis gewonnen, ufanks als Fransous gehale. Spéider Fuerschungen hunn confirméiert datt hien 1878 zu Lëtzebuerg gebuer gouf, wat hien zu Lëtzebuerg sengem éischte olympesche Goldmedaillegewënner mécht."
+    },
+    "peop-7": {
+      "q": "Wien ass de momentanen (2024) Staatschef vu Lëtzebuerg?",
+      "o0": "Groussherzog Jean",
+      "o1": "Groussherzog Henri",
+      "o2": "Groussherzog Guillaume",
+      "o3": "Groussherzog Adolphe",
+      "e": "De Groussherzog Henri ass zënter Oktober 2000 de konstitutionelle Monarch vu Lëtzebuerg, wéi säi Papp de Groussherzog Jean ofgedankt huet. Hien ass mat der Groussherzogin Maria Teresa bestuet."
+    },
+    "peop-8": {
+      "q": "De Nicolas Frantz, e Cycliste vu Mamer, Lëtzebuerg, huet d'Tour de France a wat fir Joren gewonnen?",
+      "o0": "1921 an 1922",
+      "o1": "1927 an 1928",
+      "o2": "1933 an 1934",
+      "o3": "1938 an 1939",
+      "e": "De Nicolas Frantz huet d'Tour de France 1927 an 1928 gewonnen. Hien ass eng vun de gréisste Sportlegenden vu Lëtzebuerg, zesumme mat dem Charly Gaul, dem Josy Barthel an dem modernen Cycliste Andy Schleck."
+    },
+    "inst-1": {
+      "q": "Wéivill Memberen huet de lëtzebuergesche Parlament (Chambre des Députés)?",
+      "o0": "40",
+      "o1": "60",
+      "o2": "72",
+      "o3": "100",
+      "e": "D'Chambre des Députés huet 60 Membere gewielt fir fënnef-Joer Mandater. Lëtzebuerg ass a 4 Wahlkreesser opgedeelt: Süden, Mëtt, Norden a Osten."
+    },
+    "inst-2": {
+      "q": "Wéi eng wichteg EU-Institutiounen hunn hire Sëtz zu Lëtzebuerg-Stad?",
+      "o0": "Europäescht Parlament a Europäesch Kommissioun",
+      "o1": "Geriichtshaff vun der EU, Rechnungshaff a Eurostat",
+      "o2": "Europäesch Zentralbank a Europäeschen Rot",
+      "o3": "Europäesch Verdeedegungsagentur a Europol",
+      "e": "Lëtzebuerg beherbergt de Geriichtshaff vun der EU, de Rechnungshaff, Eurostat (Statistikamt), d'Europäesch Investitiounsbank (EIB) an en Deel vum Sekretariat vum Europäesche Parlament."
+    },
+    "inst-3": {
+      "q": "Wat ass STATEC?",
+      "o0": "Den staatleche Fernsehsender",
+      "o1": "Dat National Institut fir Statistik a Wirtschaftsstudien vu Lëtzebuerg",
+      "o2": "D'staatlesch Technologieagentur",
+      "o3": "Déi national Aarbechtsvermëttlung",
+      "e": "STATEC (Institut national de la statistique et des études économiques) sammelt a publizéiert all offiziell Statistike iwwer Lëtzebuerg."
+    },
+    "inst-4": {
+      "q": "Wat ass d'Roll vum \"Médiateur\" (Ombudsmann) zu Lëtzebuerg?",
+      "o0": "Vermëttlung a Scheedungsverfahren",
+      "o1": "Behandlung vu Bürgerbeschwerden géint ëffentlech Verwaltungen",
+      "o2": "Iwwerwaachung vu Medien a Press",
+      "o3": "Verwaltung vun EU-Bezéiungen",
+      "e": "De Médiateur de la République handelt als onofhängegen Intermediär tëschent Bierger a Verwaltungen, ënnersicht Beschwerden a sicht Léisungen ouni Geriichtsverfahren."
+    },
+    "inst-5": {
+      "q": "D'Schengen-Ofkommes gouf 1985 ënnerschriwwen. Wou genee gouf et ënnerschriwwen?",
+      "o0": "Lëtzebuerg-Stad",
+      "o1": "D'Duerf Schengen, op engem Boot op der Mosel",
+      "o2": "Bréissel, Belgie",
+      "o3": "Stroossbuerg, Frankräich",
+      "e": "D'Schengen-Ofkommes gouf den 14. Juni 1985 op der MS Princesse Marie-Astrid ënnerschriwwen, engem Boot dat zu Schengen vertäut war — engem klengen lëtzebuergesche Duerf wou Frankräich, Däitschland a Lëtzebuerg zesummentreffen."
+    },
+    "inst-6": {
+      "q": "Wéi steet \"LCGB\" zu Lëtzebuerg?",
+      "o0": "Luxembourg Catholic Governing Body",
+      "o1": "Lëtzebuerger Chrëschtleche Gewerkschafts-Bond (chrëschtlech Gewerkschaft)",
+      "o2": "Luxembourg Commercial and Government Bureau",
+      "o3": "Luxembourg Cultural and Geographical Board",
+      "e": "LCGB (Lëtzebuerger Chrëschtleche Gewerkschafts-Bond) ass eng vun de wichtegsten Gewerkschaften vu Lëtzebuerg, nieft dem OGBL. Gewerkschaften spillen eng wichteg Roll a Lëtzebuerg sengem Sozialpartnerschaftsmodell."
+    },
+    "inst-7": {
+      "q": "Wat ass de \"Conseil d'État\" (Staatsrot) zu Lëtzebuerg?",
+      "o0": "D'Regierungskabinett",
+      "o1": "En beroadendes Organ dat Gesetzgebung iwwerpréift ier de Parlament ofstëmmt",
+      "o2": "De Supreemscht Geriicht",
+      "o3": "De Senat (Uewerhaus)",
+      "e": "De Conseil d'État ass en beroadendes Organ vu 21 Memberen dat all Gesetzprojekter iwwerpréift ier de Parlament ofstëmmt. Hien bremst iwwerhascht Gesetzgebung awer huet kee Vetorecht."
+    },
+    "inst-8": {
+      "q": "D'ADEM ass eng Schlësselinstitution fir Leit déi zu Lëtzebuerg liewen. Wat mécht se?",
+      "o0": "Si verwalt d'national Krankeversécherung",
+      "o1": "Si ass d'national Aarbechtsvermëttlung, déi Aarbechtsiche a Patronen hëlleft",
+      "o2": "Si behandelt Immigratioun a Residenzerlaabnisser",
+      "o3": "Si verwalt Sozialwunnengen",
+      "e": "ADEM (Agence pour le développement de l'emploi) ass Lëtzebuerg seng national Aarbechtsvermëttlung. Si hëlleft Aarbechtsiche Beschäftegung ze fannen, verwalt Aarbechtsloseleeschtungen a ënnerstëtzt Patronen bei der Personalzuche."
+    },
+    "econ-1": {
+      "q": "Lëtzebuerg ass dat zweet-gréisst Investitiounsfondszentrum vun der Welt no wéi engem Land?",
+      "o0": "Schwäiz",
+      "o1": "Vereenegte Staaten",
+      "o2": "Vereenegt Kinnekräich",
+      "o3": "Hong Kong",
+      "e": "Lëtzebuerg ass no den USA dat zweet-gréisst Fondszentrum vun der Welt mat iwwer 3.500 Fonds. De Finanzsecteur mécht ongeféier e Véirel vum BIP aus."
+    },
+    "econ-2": {
+      "q": "Wéi vill Prozent vun Lëtzebuerg senger Aarbechtskraaft bestinn ongeféier aus Grenzgänger aus Frankräich, Däitschland a Belgie?",
+      "o0": "15 %",
+      "o1": "25 %",
+      "o2": "45 %",
+      "o3": "60 %",
+      "e": "Ongeféier 45 % vun de Mataarbechter zu Lëtzebuerg pendelen all Dag aus Frankräich, Belgie a Däitschland. Lëtzebuerg seng Wirtschaft kéint ouni Grenzgänger net funktionéieren."
+    },
+    "econ-3": {
+      "q": "Wat war bis an déi 1970er Joren d'traditionell industriell Backbone vu Lëtzebuerg senger Wirtschaft?",
+      "o0": "Kuelenbergbau",
+      "o1": "Textilindustrie",
+      "o2": "Stalindustrie",
+      "o3": "Landwirtschaft",
+      "e": "Stol war vun den 1870er bis an déi 1970er Joren d'Fundament vu Lëtzebuerg senger Wirtschaft. D'südlech \"Minette\"-Regioun war räich u Äisenerz. Haut ass ArcelorMittal (mat Sëtz zu Lëtzebuerg) de weltgréisste Stalproduzent."
+    },
+    "econ-4": {
+      "q": "Wat ass Lëtzebuerg seng ongeféier Bevëlkerung?",
+      "o0": "350.000",
+      "o1": "520.000",
+      "o2": "680.000",
+      "o3": "1,2 Milliounen",
+      "e": "Lëtzebuerg hat 2024 ongeféier 680.000 Awunner — ee vun den eelste EU-Länner no Bevëlkerungszuel, awer och ee vun den räichste pro Kapp."
+    },
+    "econ-5": {
+      "q": "Lëtzebuerg steet regelméisseg un éischter Plaz an der EU fir wéi en Wirtschaftsindikator?",
+      "o0": "Aarbechtslousegkeetsquote",
+      "o1": "BIP pro Kapp",
+      "o2": "Landwirtschaftlech Produktioun",
+      "o3": "Industrieexport",
+      "e": "Lëtzebuerg huet konstant dat héchst BIP pro Kapp an der EU an gehéiert zu de héchste weltwäit, bedriwwe vu sengem Finanzsecteur, europäesche Institutiounen a qualifizéierten Grenzgänger."
+    },
+    "econ-6": {
+      "q": "Wéi eng Technologiefirme hunn hire Sëtz fir Europa zu Lëtzebuerg?",
+      "o0": "Apple, Google a Twitter/X",
+      "o1": "Amazon, PayPal, Skype a vill anerer",
+      "o2": "Microsoft, Samsung a Sony",
+      "o3": "Facebook, Netflix a Uber",
+      "e": "Lëtzebuerg beherbergt europäesch Haaptsëtz vun Amazon, PayPal, Skype, Rakuten, Ferrero a ville aneren, ugezu duerch Stabilitéit, Lag a Zougang zum EU-Maart."
+    },
+    "econ-7": {
+      "q": "Wéivill Nationalitéiten sinn ënner Lëtzebuerg senge Awunner vertrueden?",
+      "o0": "Ongeféier 50",
+      "o1": "Ongeféier 100",
+      "o2": "Ongeféier 170",
+      "o3": "Ongeféier 250",
+      "e": "Iwwer 170 Nationalitéite nennen Lëtzebuerg hir Heemecht. Ongeféier 47 % vun den Awunner si auslännesch Staatsbierger. Portugisesch Staatsbierger bilden déi gréisst net-lëtzebuergesch Gemeinschaft."
+    },
+    "econ-8": {
+      "q": "D'Moselregioun vu Lëtzebuerg ass bekannt fir d'Produktioun vu wat?",
+      "o0": "Handwierksbéier",
+      "o1": "Wäissweiner (Riesling, Rivaner, Auxerrois)",
+      "o2": "Kéis",
+      "o3": "Schokela",
+      "e": "D'Lëtzebuerger Moselval produzéiert exzellent Wäissweiner, besonnesch Riesling, Rivaner (Müller-Thurgau), Auxerrois a Crémant de Luxembourg. D'Regioun erstreckt sech vu Schengen bis Waasserbëlleg."
+    }
   }
 }

@@ -8,10 +8,10 @@ export default function Navbar() {
 
   const navLinks = [
     { path: '/',           icon: '🏠', label: t('nav.home') },
-    { path: '/quiz',       icon: '🎯', label: 'Quiz' },
-    { path: '/geo',        icon: '🗺️', label: 'Géo' },
-    { path: '/challenge',  icon: '🌍', label: 'Activities' },
-    { path: '/info',       icon: 'ℹ️', label: 'Info' }
+    { path: '/quiz',       icon: '🎯', label: t('nav.quiz') },
+    { path: '/geo',        icon: '🗺️', label: t('nav.geo') },
+    { path: '/challenge',  icon: '🌍', label: t('nav.challenge') },
+    { path: '/info',       icon: 'ℹ️', label: t('nav.info') }
   ]
 
   return (
