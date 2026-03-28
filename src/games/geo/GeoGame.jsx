@@ -454,7 +454,7 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
       {!levelUpInfo && (
         <div style={{ background: `linear-gradient(135deg, ${curLevel.color}99 0%, ${curLevel.color} 100%)`, borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 16, color: 'white', textAlign: 'center' }}>
           <div style={{ fontSize: '1.4rem', marginBottom: 4 }}>{curLevel.icon}</div>
-          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{curLevel.name} — Sub-level {curSubLevel} complete!</div>
+          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{curLevel.name} — Sub-level {curSubLevel - 1} complete!</div>
         </div>
       )}
 
