@@ -379,18 +379,19 @@ export default function InfoHub() {
             </div>
             {languagePhrases.map((phrase) => (
               <div key={phrase.lb} className="card" style={{ marginBottom: 8, padding: 14 }}>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                  {phrase.meaning}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                  <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>🇱🇺</span>
+                  <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--gray-900)' }}>{phrase.lb}</span>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                   {[
-                    { flag: '🇱🇺', text: phrase.lb },
+                    { flag: '🇬🇧', text: phrase.meaning },
                     { flag: '🇫🇷', text: phrase.fr },
                     { flag: '🇩🇪', text: phrase.de }
                   ].map(({ flag, text }) => (
-                    <div key={flag} style={{ textAlign: 'center' }}>
-                      <div style={{ fontSize: '1rem' }}>{flag}</div>
-                      <div style={{ fontSize: '0.78rem', fontWeight: 600, marginTop: 4, lineHeight: 1.3 }}>{text}</div>
+                    <div key={flag} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{ fontSize: '0.95rem', flexShrink: 0 }}>{flag}</span>
+                      <span style={{ fontSize: '0.82rem', color: 'var(--gray-600)', lineHeight: 1.3 }}>{text}</span>
                     </div>
                   ))}
                 </div>
