@@ -406,11 +406,6 @@ export default function InfoHub() {
     navigate(`/info?tab=${tab}`, { replace: true })
   }
 
-  // Scroll to top whenever the InfoHub page is navigated to
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   // Sync tab if URL changes externally (e.g. back button)
   useEffect(() => {
     setActiveTab(getTabFromUrl())
