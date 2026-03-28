@@ -1,7 +1,7 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-import { QUESTIONS } from './data/questions'
+import { QUESTIONS, getSubLevelQuestions } from './data/questions'
 import { useGameContent } from '../../hooks/useGameContent'
 import { trackGameEvent } from '../../utils/analytics'
 
@@ -14,55 +14,77 @@ const CAT_COLORS = {
   economy:      { bg: '#CFFAFE', text: '#0E7490', icon: '📊' }
 }
 
-// ─── Level system ─────────────────────────────────────────────────────────────
-export const LEVELS = [
-  { id: 1, name: 'Newcomer',   icon: '🌱', minCorrect: 0,  color: '#6B7280', bg: '#F3F4F6' },
-  { id: 2, name: 'Explorer',   icon: '🏘️', minCorrect: 5,  color: '#059669', bg: '#D1FAE5' },
-  { id: 3, name: 'Resident',   icon: '🌆', minCorrect: 15, color: '#2563EB', bg: '#DBEAFE' },
-  { id: 4, name: 'Citizen',    icon: '🏛️', minCorrect: 30, color: '#7C3AED', bg: '#F3E8FF' },
-  { id: 5, name: 'Ambassador', icon: '⭐', minCorrect: 50, color: '#D97706', bg: '#FEF3C7' },
-  { id: 6, name: 'Legend',     icon: '🏆', minCorrect: 75, color: '#EF3340', bg: '#FEE2E2' },
+// ─── Level system (5 top levels × 5 sub-levels) ───────────────────────────────
+export const QUIZ_LEVELS = [
+  { id: 'newcomer',   name: 'Newcomer',   icon: '🌱', color: '#6B7280', bg: '#F3F4F6', subLevels: 5 },
+  { id: 'explorer',   name: 'Explorer',   icon: '🏘️', color: '#059669', bg: '#D1FAE5', subLevels: 5 },
+  { id: 'resident',   name: 'Resident',   icon: '🌆', color: '#2563EB', bg: '#DBEAFE', subLevels: 5 },
+  { id: 'citizen',    name: 'Citizen',    icon: '🏛️', color: '#7C3AED', bg: '#F3E8FF', subLevels: 5 },
+  { id: 'ambassador', name: 'Ambassador', icon: '⭐', color: '#D97706', bg: '#FEF3C7', subLevels: 5 },
 ]
 
-export function getCurrentLevel(totalCorrect) {
-  let level = LEVELS[0]
-  for (const l of LEVELS) {
-    if (totalCorrect >= l.minCorrect) level = l
+const POINTS_PER_CORRECT = 200 // max 1000 per sub-level
+
+function parseProgress(progress) {
+  for (let li = 0; li < QUIZ_LEVELS.length; li++) {
+    const lvl = QUIZ_LEVELS[li]
+    const done = progress.completedSubLevels[lvl.id] || 0
+    if (done < lvl.subLevels) return { levelIdx: li, subLevel: done + 1 }
   }
-  return level
+  return { levelIdx: QUIZ_LEVELS.length - 1, subLevel: 5, finished: true }
 }
 
-export function getNextLevel(totalCorrect) {
-  const idx = LEVELS.findIndex(l => l.minCorrect > totalCorrect)
-  return idx >= 0 ? LEVELS[idx] : null
+function totalSubLevelsDone(progress) {
+  return QUIZ_LEVELS.reduce((acc, lvl) => acc + (progress.completedSubLevels[lvl.id] || 0), 0)
 }
 
-// ─── Question selection (randomised per session) ───────────────────────────────
-function getRandomisedQuestions(seed, questionsPool) {
-  const pool = questionsPool || QUESTIONS
-  const categories = ['language', 'history', 'culture', 'people', 'institutions', 'economy']
-  const byCategory = {}
-  categories.forEach(c => {
-    byCategory[c] = pool.filter(q => q.category === c)
-  })
-
-  const catOrder = categories.slice(seed % 6).concat(categories.slice(0, seed % 6))
-  const selected = []
-
-  for (let i = 0; i < 5; i++) {
-    const cat = catOrder[i % categories.length]
-    const catPool = byCategory[cat]
-    if (!catPool || catPool.length === 0) continue
-    const q = catPool[(seed * (i + 3) * 13 + i * 7) % catPool.length]
-    if (!selected.find(s => s.id === q.id)) {
-      selected.push(q)
-    } else {
-      const alt = catPool[(seed * (i + 5) * 17) % catPool.length]
-      if (!selected.find(s => s.id === alt.id)) selected.push(alt)
-    }
-  }
-
-  return selected
+// ─── Level Badge Display ───────────────────────────────────────────────────────
+function LevelMapBadges({ progress }) {
+  const { levelIdx: curLvlIdx } = parseProgress(progress)
+  return (
+    <div style={{ display: 'flex', gap: 6, justifyContent: 'space-between' }}>
+      {QUIZ_LEVELS.map((level, li) => {
+        const done = progress.completedSubLevels[level.id] || 0
+        const isCurrentLevel = li === curLvlIdx
+        const isFullyDone = done >= level.subLevels
+        const isLocked = li > curLvlIdx
+        return (
+          <div key={level.id} style={{
+            flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+            opacity: isLocked ? 0.3 : 1,
+            transform: isCurrentLevel ? 'scale(1.12)' : 'scale(1)',
+            transition: 'transform 0.2s'
+          }}>
+            <div style={{
+              width: 36, height: 36, borderRadius: '50%',
+              background: isFullyDone ? level.color : isCurrentLevel ? level.bg : 'var(--gray-100)',
+              border: isCurrentLevel ? `2px solid ${level.color}` : '2px solid transparent',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
+              boxShadow: isCurrentLevel ? `0 0 8px ${level.color}40` : 'none'
+            }}>
+              {isLocked ? '🔒' : level.icon}
+            </div>
+            {/* Sub-level pip dots */}
+            <div style={{ display: 'flex', gap: 2 }}>
+              {Array.from({ length: level.subLevels }).map((_, si) => (
+                <div key={si} style={{
+                  width: 5, height: 5, borderRadius: '50%',
+                  background: si < done ? level.color : (isCurrentLevel && si === done ? level.color + '80' : 'var(--gray-200)')
+                }} />
+              ))}
+            </div>
+            <div style={{
+              fontSize: '0.5rem', fontWeight: isCurrentLevel ? 800 : 500,
+              color: isCurrentLevel ? level.color : 'var(--text-muted)',
+              textAlign: 'center', lineHeight: 1.2
+            }}>
+              {level.name}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
@@ -70,146 +92,34 @@ export default function QuizGame() {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
 
-  // Level / progress tracking (persisted)
-  const [quizProgress, setQuizProgress] = useLocalStorage('letz-quiz-progress', {
-    totalCorrect: 0,
-    totalPlayed: 0,
-    badges: [],
+  const [quizProgress, setQuizProgress] = useLocalStorage('letz-quiz-progress-v2', {
+    completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0, ambassador: 0 },
+    totalPoints: 0,
   })
 
-  // Random seed per session
-  const [sessionSeed] = useState(() => Math.floor(Math.random() * 9999) + 1)
-
   const allQuestions = useGameContent('questions', QUESTIONS)
-  const questions = useMemo(() => getRandomisedQuestions(sessionSeed, allQuestions), [sessionSeed, allQuestions])
+
+  // Derive current level/subLevel
+  const { levelIdx: curLevelIdx, subLevel: curSubLevel } = parseProgress(quizProgress)
+  const curLevel = QUIZ_LEVELS[curLevelIdx]
+
+  // Get the 5 questions for this sub-level
+  const questions = useMemo(
+    () => getSubLevelQuestions(curLevel.id, curSubLevel, allQuestions),
+    [curLevel.id, curSubLevel, allQuestions]
+  )
 
   const [step, setStep] = useState('intro') // intro | question | done
   const [currentIdx, setCurrentIdx] = useState(0)
   const [selected, setSelected] = useState(null)
   const [revealed, setRevealed] = useState(false)
-  const [answers, setAnswers] = useState([])
-  const [copied, setCopied] = useState(false)
-  const [newBadge, setNewBadge] = useState(null)
-  const [retryList, setRetryList] = useState(null)
-  const [wrongAnswers, setWrongAnswers] = useState([])
-  const [isRetrySession, setIsRetrySession] = useState(false)
-
-  const activeQuestions = retryList !== null ? retryList : questions
-
-  useEffect(() => {
-    if (step === 'question') trackGameEvent('quiz', 'start')
-  }, [step === 'question'])
+  const [roundScores, setRoundScores] = useState([])
+  const [levelUpInfo, setLevelUpInfo] = useState(null)
 
   // Helper: get translated question field with English fallback
   const qText    = (q) => t(`questions.${q.id}.q`,  { defaultValue: q.question })
   const qOption  = (q, i) => t(`questions.${q.id}.o${i}`, { defaultValue: q.options[i] })
   const qExplain = (q) => t(`questions.${q.id}.e`,  { defaultValue: q.explanation })
-
-  // Update progress when session done.
-  // BUG FIX: use functional form for totalCorrect so we always work from latest state,
-  // preventing stale-closure issues especially in the retry session.
-  const handleSessionComplete = (finalAnswers) => {
-    const sessionCorrect = finalAnswers.filter(Boolean).length
-    const wrongs = activeQuestions.filter((q, i) => !finalAnswers[i])
-    setWrongAnswers(wrongs)
-
-    // Compute level-up from current progress BEFORE updating
-    const prevTotal = quizProgress.totalCorrect || 0
-    const newTotal  = prevTotal + sessionCorrect
-    const prevLevel = getCurrentLevel(prevTotal)
-    const newLevel  = getCurrentLevel(newTotal)
-
-    if (newLevel.id > prevLevel.id) {
-      setNewBadge(newLevel)
-    }
-
-    // Use functional form so the setter always uses the latest persisted value
-    setQuizProgress(prev => {
-      const latestTotal = (prev.totalCorrect || 0) + sessionCorrect
-      const latestPrev  = getCurrentLevel(prev.totalCorrect || 0)
-      const latestNew   = getCurrentLevel(latestTotal)
-      const earned = latestNew.id > latestPrev.id ? latestNew : null
-      return {
-        totalCorrect: latestTotal,
-        totalPlayed: (prev.totalPlayed || 0) + activeQuestions.length,
-        badges: earned && !(prev.badges || []).includes(earned.id)
-          ? [...(prev.badges || []), earned.id]
-          : (prev.badges || []),
-      }
-    })
-
-    trackGameEvent('quiz', 'complete', { score: sessionCorrect, total: activeQuestions.length })
-  }
-
-  const handlePlayAgain = () => {
-    setStep('intro')
-    setCurrentIdx(0)
-    setSelected(null)
-    setRevealed(false)
-    setAnswers([])
-    setNewBadge(null)
-    setRetryList(null)
-    setWrongAnswers([])
-    setIsRetrySession(false)
-  }
-
-  const handleRetryWrong = () => {
-    // Capture wrong answers before state resets
-    const retryQuestions = [...wrongAnswers]
-    setRetryList(retryQuestions)
-    setCurrentIdx(0)
-    setSelected(null)
-    setRevealed(false)
-    setAnswers([])
-    setNewBadge(null)
-    setIsRetrySession(true)
-    // Set step last so activeQuestions is already updated when question renders
-    setStep('question')
-  }
-
-  if (step === 'intro') {
-    return (
-      <Intro
-        questions={activeQuestions}
-        t={t}
-        totalCorrect={quizProgress.totalCorrect || 0}
-        badges={quizProgress.badges || []}
-        onStart={() => setStep('question')}
-      />
-    )
-  }
-
-  if (step === 'done') {
-    const score = answers.filter(Boolean).length
-    return (
-      <Results
-        score={score}
-        total={activeQuestions.length}
-        answers={answers}
-        questions={activeQuestions}
-        t={t}
-        totalCorrect={quizProgress.totalCorrect || 0}
-        newBadge={newBadge}
-        copied={copied}
-        wrongCount={wrongAnswers.length}
-        isRetrySession={isRetrySession}
-        onRetryWrong={wrongAnswers.length > 0 ? handleRetryWrong : null}
-        onShare={() => {
-          const emoji = answers.map(a => a ? '🟢' : '🔴').join('')
-          const text = `Lëtz Quiz — ${score}/${activeQuestions.length}\n${emoji}\nPlay at letz.play`
-          navigator.clipboard?.writeText(text).then(() => {
-            setCopied(true)
-            setTimeout(() => setCopied(false), 2000)
-          })
-        }}
-        onPlayAgain={handlePlayAgain}
-      />
-    )
-  }
-
-  const q = activeQuestions[currentIdx]
-  if (!q) return null
-  const cat = CAT_COLORS[q.category] || CAT_COLORS.culture
 
   const handleSelect = (idx) => {
     if (revealed) return
@@ -218,42 +128,89 @@ export default function QuizGame() {
   }
 
   const handleNext = () => {
-    // Guard: require an answer before advancing
     if (selected === null) return
-
+    const q = questions[currentIdx]
     const isCorrect = selected === q.answer
-    const newAnswers = [...answers, isCorrect]
-    setAnswers(newAnswers)
+    const pts = isCorrect ? POINTS_PER_CORRECT : 0
+    const newScores = [...roundScores, { correct: isCorrect, pts }]
 
-    if (currentIdx + 1 >= activeQuestions.length) {
-      // Session complete — update progress then show results
-      handleSessionComplete(newAnswers)
+    if (currentIdx + 1 >= questions.length) {
+      // Sub-level complete
+      const sessionTotal = newScores.reduce((s, r) => s + r.pts, 0)
+      const prevLevelIdx = curLevelIdx
+      const newCompleted = {
+        ...quizProgress.completedSubLevels,
+        [curLevel.id]: (quizProgress.completedSubLevels[curLevel.id] || 0) + 1
+      }
+      const newTotal = (quizProgress.totalPoints || 0) + sessionTotal
+      const newProgressObj = { completedSubLevels: newCompleted, totalPoints: newTotal }
+      const { levelIdx: newLevelIdx } = parseProgress(newProgressObj)
+      if (newLevelIdx > prevLevelIdx) setLevelUpInfo(QUIZ_LEVELS[newLevelIdx])
+
+      setQuizProgress(newProgressObj)
+      setRoundScores(newScores)
+      trackGameEvent('quiz', 'complete', { score: sessionTotal, level: curLevel.id, subLevel: curSubLevel })
       setStep('done')
     } else {
-      // Advance to next question
-      setCurrentIdx(prev => prev + 1)
+      setRoundScores(newScores)
+      setCurrentIdx(i => i + 1)
       setSelected(null)
       setRevealed(false)
     }
   }
 
+  const handleReplay = () => {
+    setStep('intro')
+    setCurrentIdx(0)
+    setSelected(null)
+    setRevealed(false)
+    setRoundScores([])
+    setLevelUpInfo(null)
+  }
+
+  if (step === 'intro') {
+    return (
+      <Intro
+        t={t}
+        quizProgress={quizProgress}
+        curLevel={curLevel}
+        curSubLevel={curSubLevel}
+        onStart={() => { trackGameEvent('quiz', 'start'); setStep('question') }}
+      />
+    )
+  }
+
+  if (step === 'done') {
+    return (
+      <Done
+        scores={roundScores}
+        questions={questions}
+        t={t}
+        quizProgress={quizProgress}
+        curLevel={curLevel}
+        curSubLevel={curSubLevel}
+        levelUpInfo={levelUpInfo}
+        onReplay={handleReplay}
+      />
+    )
+  }
+
+  const q = questions[currentIdx]
+  if (!q) return null
+  const cat = CAT_COLORS[q.category] || CAT_COLORS.culture
+
   return (
     <div className="container" style={{ paddingTop: 24 }}>
-      {/* Retry mode banner */}
-      {isRetrySession && (
-        <div style={{
-          background: '#FEF3C7', border: '1px solid #FDE68A',
-          borderRadius: 'var(--radius)', padding: '8px 14px',
-          marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8,
-          fontSize: '0.82rem', fontWeight: 600, color: '#92400E'
+      {/* Level + sub-level badge */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+        <span style={{
+          background: curLevel.bg, color: curLevel.color,
+          borderRadius: 999, padding: '4px 12px',
+          fontSize: '0.75rem', fontWeight: 700,
+          display: 'inline-flex', alignItems: 'center', gap: 5
         }}>
-          <span>🔁</span>
-          <span>Retry mode — {activeQuestions.length} missed question{activeQuestions.length !== 1 ? 's' : ''}</span>
-        </div>
-      )}
-
-      {/* Category badge */}
-      <div style={{ marginBottom: 16 }}>
+          {curLevel.icon} {curLevel.name} {curSubLevel}/5
+        </span>
         <span style={{
           background: cat.bg, color: cat.text,
           borderRadius: 999, padding: '4px 12px',
@@ -267,7 +224,7 @@ export default function QuizGame() {
       {/* Question */}
       <div className="card" style={{ marginBottom: 20, padding: 24 }}>
         <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: 8 }}>
-          {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {activeQuestions.length}
+          {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {questions.length}
         </div>
         <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', lineHeight: 1.4, fontWeight: 700, margin: 0 }}>
           {qText(q)}
@@ -291,8 +248,7 @@ export default function QuizGame() {
           >
             <span style={{
               width: 28, height: 28, borderRadius: '50%',
-              background: 'var(--gray-100)',
-              color: 'var(--gray-500)',
+              background: 'var(--gray-100)', color: 'var(--gray-500)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: '0.8rem', fontWeight: 700, flexShrink: 0
             }}>
@@ -318,6 +274,17 @@ export default function QuizGame() {
             boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
             animation: 'popIn 0.25s ease'
           }}>
+            {/* Points earned */}
+            <div style={{
+              textAlign: 'center', marginBottom: 16,
+              background: selected === q.answer ? '#D1FAE5' : '#FEE2E2',
+              borderRadius: 'var(--radius)', padding: '10px'
+            }}>
+              <div style={{ fontSize: '1.5rem', fontWeight: 800, color: selected === q.answer ? '#059669' : '#DC2626' }}>
+                {selected === q.answer ? `+${POINTS_PER_CORRECT} pts` : '+0 pts'}
+              </div>
+            </div>
+
             {/* Your answer */}
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
@@ -344,7 +311,7 @@ export default function QuizGame() {
               </div>
             </div>
 
-            {/* Correct answer (only shown if wrong) */}
+            {/* Correct answer (only if wrong) */}
             {selected !== q.answer && (
               <div style={{ marginBottom: 16 }}>
                 <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
@@ -352,19 +319,15 @@ export default function QuizGame() {
                 </div>
                 <div style={{
                   display: 'flex', alignItems: 'center', gap: 10,
-                  padding: '10px 14px',
-                  background: '#D1FAE5',
-                  borderRadius: 'var(--radius)',
-                  border: '1.5px solid #059669'
+                  padding: '10px 14px', background: '#D1FAE5',
+                  borderRadius: 'var(--radius)', border: '1.5px solid #059669'
                 }}>
                   <span style={{
                     width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
                     background: '#059669', color: 'white',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: '0.8rem', fontWeight: 700
-                  }}>
-                    ✓
-                  </span>
+                  }}>✓</span>
                   <span style={{ fontWeight: 600, color: '#065F46', fontSize: '0.95rem' }}>
                     {qOption(q, q.answer)}
                   </span>
@@ -382,12 +345,8 @@ export default function QuizGame() {
               </p>
             </div>
 
-            {/* Next button */}
-            <button
-              onClick={handleNext}
-              className="btn btn-primary btn-full"
-            >
-              {currentIdx + 1 >= activeQuestions.length ? t('quiz.finish') : t('quiz.next')} →
+            <button onClick={handleNext} className="btn btn-primary btn-full">
+              {currentIdx + 1 >= questions.length ? t('quiz.finish') : t('quiz.next')} →
             </button>
           </div>
         </div>
@@ -396,272 +355,143 @@ export default function QuizGame() {
   )
 }
 
-// ─── Level Badge Display ───────────────────────────────────────────────────────
-function LevelBadges({ totalCorrect, compact = false }) {
-  const { t } = useTranslation()
-  const currentLevel = getCurrentLevel(totalCorrect)
-
-  if (compact) {
-    return (
-      <div style={{
-        display: 'inline-flex', alignItems: 'center', gap: 6,
-        background: currentLevel.bg, borderRadius: 999, padding: '5px 12px'
-      }}>
-        <span style={{ fontSize: '1rem' }}>{currentLevel.icon}</span>
-        <span style={{ fontWeight: 700, fontSize: '0.8rem', color: currentLevel.color }}>
-          {t('quiz.levelLabel', { id: currentLevel.id })} — {currentLevel.name}
-        </span>
-      </div>
-    )
-  }
-
-  return (
-    <div>
-      <div style={{
-        fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)',
-        textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10
-      }}>
-        {t('quiz.yourLevel')}
-      </div>
-      <div style={{ display: 'flex', gap: 6, justifyContent: 'space-between' }}>
-        {LEVELS.map(level => {
-          const isUnlocked = totalCorrect >= level.minCorrect
-          const isCurrent = level.id === currentLevel.id
-          return (
-            <div
-              key={level.id}
-              title={`${level.name} (${level.minCorrect}+ correct)`}
-              style={{
-                flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
-                gap: 4, opacity: isUnlocked ? 1 : 0.3,
-                transform: isCurrent ? 'scale(1.15)' : 'scale(1)',
-                transition: 'transform 0.2s'
-              }}
-            >
-              <div style={{
-                width: 36, height: 36, borderRadius: '50%',
-                background: isUnlocked ? level.bg : 'var(--gray-100)',
-                border: isCurrent ? `2px solid ${level.color}` : '2px solid transparent',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '1rem',
-                boxShadow: isCurrent ? `0 0 8px ${level.color}40` : 'none'
-              }}>
-                {isUnlocked ? level.icon : '🔒'}
-              </div>
-              <div style={{
-                fontSize: '0.55rem', fontWeight: isCurrent ? 800 : 500,
-                color: isCurrent ? level.color : 'var(--text-muted)',
-                textAlign: 'center', lineHeight: 1.2
-              }}>
-                {level.name}
-              </div>
-            </div>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
 // ─── Intro Screen ──────────────────────────────────────────────────────────────
-function Intro({ questions, t, totalCorrect, onStart }) {
-  const categories = [...new Set(questions.map(q => q.category))]
-  const nextLevel = getNextLevel(totalCorrect)
-  const remaining = nextLevel ? nextLevel.minCorrect - totalCorrect : 0
+function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
+  const isFinished = (quizProgress.completedSubLevels['ambassador'] || 0) >= 5
 
   return (
     <div className="container" style={{ paddingTop: 24 }}>
       <div style={{
-        background: 'linear-gradient(135deg, var(--red) 0%, #C4222E 100%)',
-        borderRadius: 'var(--radius-xl)', padding: '28px 24px', marginBottom: 24, color: 'white',
-        textAlign: 'center'
+        background: `linear-gradient(135deg, ${curLevel.color}CC 0%, ${curLevel.color} 100%)`,
+        borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 14,
+        color: 'white', textAlign: 'center'
       }}>
-        <div style={{ fontSize: '3rem', marginBottom: 12 }}>🎯</div>
-        <h1 style={{ color: 'white', marginBottom: 8 }}>{t('quiz.title')}</h1>
-        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0 }}>{t('quiz.subtitle')}</p>
+        <div style={{ fontSize: '2rem', marginBottom: 6 }}>{curLevel.icon}</div>
+        <h2 style={{ color: 'white', margin: '0 0 2px', fontSize: '1.3rem' }}>{t('quiz.title')}</h2>
+        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.8rem' }}>
+          {isFinished ? '🏆 All levels complete!' : `${curLevel.name} · Sub-level ${curSubLevel} of 5`}
+        </p>
       </div>
 
-      {/* Level display */}
-      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <LevelBadges totalCorrect={totalCorrect} />
-        <div style={{
-          marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center'
-        }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            {t('quiz.totalCorrectLabel')}
-          </div>
-          <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1.1rem' }}>
-            {totalCorrect}
-          </div>
-        </div>
-        {nextLevel && (
-          <div style={{
-            marginTop: 10, fontSize: '0.78rem', color: 'var(--text-muted)',
-            textAlign: 'center'
-          }}>
-            {t('quiz.toNextLevelCount', {
-              count: remaining,
-              icon: nextLevel.icon,
-              name: nextLevel.name
-            })}
-          </div>
-        )}
-      </div>
-
-      {/* Session categories */}
-      <div className="card" style={{ marginBottom: 20 }}>
-        <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          {t('quiz.sessionCategories')}
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          {categories.map(cat => {
-            const c = CAT_COLORS[cat]
-            return (
-              <span key={cat} style={{ background: c.bg, color: c.text, borderRadius: 999, padding: '5px 12px', fontSize: '0.8rem', fontWeight: 600 }}>
-                {c.icon} {t(`quiz.categories.${cat}`)}
-              </span>
-            )
-          })}
-        </div>
-      </div>
-
-      <button onClick={onStart} className="btn btn-primary btn-full btn-lg">
-        {t('quiz.startBtn')} →
+      <button
+        onClick={onStart}
+        className="btn btn-full btn-lg"
+        style={{ background: curLevel.color, color: 'white', marginBottom: 16 }}
+      >
+        {isFinished ? '🔄 Play Again' : `${curLevel.icon} Start ${curLevel.name} ${curSubLevel}/5 →`}
       </button>
+
+      {/* Level map */}
+      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
+          Your Progress
+        </div>
+        <LevelMapBadges progress={quizProgress} />
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+            {totalSubLevelsDone(quizProgress)}/25 sub-levels done
+          </div>
+          <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>
+            {(quizProgress.totalPoints || 0).toLocaleString()} pts
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
-// ─── Results Screen ────────────────────────────────────────────────────────────
-function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, copied, onPlayAgain, wrongCount, onRetryWrong, isRetrySession }) {
-  const pct = (score / total) * 100
-  const msg = pct === 100 ? t('quiz.perfect') : pct >= 80 ? t('quiz.great') : pct >= 60 ? t('quiz.good') : t('quiz.tryAgain')
-  const currentLevel = getCurrentLevel(totalCorrect)
-  const nextLevel = getNextLevel(totalCorrect)
+// ─── Done Screen ───────────────────────────────────────────────────────────────
+function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, levelUpInfo, onReplay }) {
+  const sessionTotal = scores.reduce((s, r) => s + r.pts, 0)
+  const maxTotal = scores.length * POINTS_PER_CORRECT
+  const { levelIdx: nextLevelIdx, subLevel: nextSub } = parseProgress(quizProgress)
+  const nextLevel = QUIZ_LEVELS[nextLevelIdx]
+  const isFinished = (quizProgress.completedSubLevels['ambassador'] || 0) >= 5
 
   return (
     <div className="container" style={{ paddingTop: 24 }}>
-      {/* New badge celebration */}
-      {newBadge && (
+      {/* Level up celebration */}
+      {levelUpInfo && (
         <div className="animate-slide-up" style={{
-          background: `linear-gradient(135deg, ${newBadge.color}DD 0%, ${newBadge.color} 100%)`,
+          background: `linear-gradient(135deg, ${levelUpInfo.color}CC 0%, ${levelUpInfo.color} 100%)`,
           borderRadius: 'var(--radius-xl)', padding: '20px 24px', marginBottom: 20,
           color: 'white', textAlign: 'center'
         }}>
-          <div style={{ fontSize: '3rem', marginBottom: 8 }}>{newBadge.icon}</div>
-          <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>
-            {t('quiz.levelUpTitle', { name: newBadge.name })}
-          </div>
-          <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>
-            {t('quiz.reachedLevelText', { id: newBadge.id })}
-          </div>
+          <div style={{ fontSize: '3rem', marginBottom: 8 }}>{levelUpInfo.icon}</div>
+          <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>New Level Unlocked!</div>
+          <div style={{ fontSize: '1rem', opacity: 0.9 }}>{levelUpInfo.name}</div>
         </div>
       )}
 
+      {/* Sub-level complete + score */}
       <div style={{
         background: 'linear-gradient(135deg, var(--red) 0%, #C4222E 100%)',
-        borderRadius: 'var(--radius-xl)', padding: '28px 24px', marginBottom: 24,
+        borderRadius: 'var(--radius-xl)', padding: '24px', marginBottom: 20,
         color: 'white', textAlign: 'center'
       }}>
-        <div style={{ fontSize: '3.5rem', marginBottom: 8 }}>
-          {pct === 100 ? '🏆' : pct >= 80 ? '⭐' : pct >= 60 ? '👍' : '💪'}
+        <div style={{ fontSize: '1.6rem', marginBottom: 4 }}>{curLevel.icon}</div>
+        <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 16, opacity: 0.9 }}>
+          {curLevel.name} — Sub-level {curSubLevel} complete!
         </div>
-        <div style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1 }}>{score}/{total}</div>
-        <div style={{ color: 'rgba(255,255,255,0.85)', marginTop: 8 }}>{msg}</div>
-        <div style={{
-          marginTop: 16, background: 'rgba(255,255,255,0.2)',
-          borderRadius: 999, padding: '6px 16px', display: 'inline-block', fontWeight: 700
-        }}>
-          {currentLevel.icon} {t('quiz.levelLabel', { id: currentLevel.id })}: {currentLevel.name}
-        </div>
-      </div>
-
-      {/* Level progress */}
-      <div className="card" style={{ marginBottom: 16 }}>
-        <LevelBadges totalCorrect={totalCorrect} />
-        <div style={{
-          marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)',
-          display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: 'var(--text-muted)'
-        }}>
-          <span>{t('quiz.sessionScoreText', { score })}</span>
-          <span><strong style={{ color: 'var(--red)' }}>{totalCorrect}</strong> {t('quiz.totalScoreText')}</span>
-        </div>
-        {nextLevel && (
-          <div style={{ marginTop: 8, fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center' }}>
-            {t('quiz.toNextLevelCount', {
-              count: nextLevel.minCorrect - totalCorrect,
-              icon: nextLevel.icon,
-              name: nextLevel.name
-            })}
+        <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px' }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
+            Round result
           </div>
-        )}
-      </div>
-
-      {/* Retry session context */}
-      {isRetrySession && score > 0 && !newBadge && (
-        <div className="animate-slide-up" style={{
-          background: '#F0FDF4', border: '1px solid #BBF7D0',
-          borderRadius: 'var(--radius)', padding: '12px 16px',
-          marginBottom: 16, fontSize: '0.85rem', color: '#065F46', fontWeight: 600,
-          textAlign: 'center'
-        }}>
-          ✓ {score} retry answer{score !== 1 ? 's' : ''} added to your progress!
-          {nextLevel && (
-            <span style={{ fontWeight: 400, color: '#059669', display: 'block', marginTop: 4, fontSize: '0.78rem' }}>
-              {nextLevel.minCorrect - totalCorrect} more to reach {nextLevel.icon} {nextLevel.name}
-            </span>
-          )}
+          <div style={{ fontSize: '1.3rem', fontWeight: 800, lineHeight: 1 }}>
+            {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
+          </div>
+          <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>points earned</div>
         </div>
-      )}
-
-      <button onClick={onShare} className="btn btn-secondary btn-full" style={{ marginBottom: 12 }}>
-        {copied ? `✓ ${t('common.copied')}` : `📤 ${t('quiz.shareResult')}`}
-      </button>
-
-      {onRetryWrong && (
-        <button onClick={onRetryWrong} className="btn btn-full animate-slide-up" style={{
-          marginBottom: 12,
-          background: '#FEF3C7', color: '#92400E',
-          border: '1.5px solid #FDE68A'
-        }}>
-          {t('quiz.retryWrong', { count: wrongCount })}
-        </button>
-      )}
+      </div>
 
       {/* Question breakdown */}
-      <div className="card" style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 12 }}>
+      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>
           {t('quiz.results')}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          {Array.from({ length: total }).map((_, i) => (
+          {scores.map((s, i) => (
             <div key={i} style={{
               display: 'flex', alignItems: 'center', gap: 10,
-              padding: '8px 0', borderBottom: i < total - 1 ? '1px solid var(--border)' : 'none'
+              padding: '8px 0', borderBottom: i < scores.length - 1 ? '1px solid var(--border)' : 'none'
             }}>
               <span style={{
                 width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
-                background: answers && answers[i] ? '#D1FAE5' : '#FEE2E2',
+                background: s.correct ? '#D1FAE5' : '#FEE2E2',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem'
               }}>
-                {answers && answers[i] ? '✓' : '✗'}
+                {s.correct ? '✓' : '✗'}
               </span>
-              <span style={{ fontSize: '0.85rem', color: 'var(--gray-600)' }}>
+              <span style={{ fontSize: '0.85rem', color: 'var(--gray-600)', flex: 1 }}>
                 {t('quiz.question')} {i + 1}
+              </span>
+              <span style={{ fontWeight: 700, fontSize: '0.85rem', color: s.correct ? '#059669' : 'var(--text-muted)' }}>
+                {s.correct ? `+${POINTS_PER_CORRECT}` : '+0'}
               </span>
             </div>
           ))}
         </div>
       </div>
 
-      {newBadge ? (
-        <button onClick={onPlayAgain} className="btn btn-primary btn-full" style={{ marginBottom: 8 }}>
-          {newBadge.icon} See my new level →
+      {/* Progress */}
+      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
+          Your Progress
+        </div>
+        <LevelMapBadges progress={quizProgress} />
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>+{sessionTotal.toLocaleString()} pts this round</div>
+          <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>{(quizProgress.totalPoints || 0).toLocaleString()} total</div>
+        </div>
+      </div>
+
+      {isFinished ? (
+        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
+          🏆 All done! Play again →
         </button>
       ) : (
-        <button onClick={onPlayAgain} className="btn btn-primary btn-full">
-          🔄 {t('quiz.playAgain')}
+        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: curLevel.color, color: 'white' }}>
+          Continue to next sub-level →
         </button>
       )}
     </div>
