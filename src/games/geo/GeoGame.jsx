@@ -245,6 +245,22 @@ export default function GeoGame() {
         </span>
       </div>
 
+      {/* Tap hint + zoom tip — shown above the clue while guessing */}
+      {!revealed && (
+        <div style={{
+          padding: '7px 16px', background: '#F0FDF4',
+          borderBottom: '1px solid #BBF7D0', flexShrink: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8
+        }}>
+          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#065F46' }}>
+            📍 Tap the map to place your pin
+          </span>
+          <span style={{ fontSize: '0.72rem', color: '#059669', whiteSpace: 'nowrap' }}>
+            🔍 Pinch or scroll to zoom in
+          </span>
+        </div>
+      )}
+
       {/* Clue panel */}
       <div style={{ padding: '12px 16px', background: 'white', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
         <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
@@ -298,17 +314,6 @@ export default function GeoGame() {
           )}
         </MapContainer>
 
-        {/* Tap hint */}
-        {!userPin && !revealed && (
-          <div style={{
-            position: 'absolute', bottom: 12, left: '50%', transform: 'translateX(-50%)',
-            background: 'rgba(0,0,0,0.7)', color: 'white', borderRadius: 999,
-            padding: '8px 16px', fontSize: '0.8rem', fontWeight: 600, zIndex: 10,
-            pointerEvents: 'none', whiteSpace: 'nowrap'
-          }}>
-            📍 {t('geo.tapMap')}
-          </div>
-        )}
       </div>
 
       {/* Result panel */}
