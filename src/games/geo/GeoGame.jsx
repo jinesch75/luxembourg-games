@@ -43,6 +43,18 @@ function MapResetter({ roundIdx, center, zoom }) {
   return null
 }
 
+// Fits the map to show both the user pin and the correct answer when result is revealed
+function MapFitBounds({ revealed, userPin, targetCoords }) {
+  const map = useMap()
+  useEffect(() => {
+    if (revealed && userPin) {
+      const bounds = L.latLngBounds([userPin, targetCoords])
+      map.fitBounds(bounds.pad(0.5), { animate: true, maxZoom: 12 })
+    }
+  }, [revealed]) // eslint-disable-line
+  return null
+}
+
 // ─── Level system ──────────────────────────────────────────────────────────────
 const GEO_LEVELS = [
   { id: 1, name: 'Tourist',     icon: '🗺️', minPoints: 0,     color: '#6B7280', bg: '#F3F4F6' },
@@ -232,42 +244,21 @@ export default function GeoGame() {
       left: 0, right: 0,
       bottom: 68
     }}>
-      {/* Progress strip */}
-      <div style={{ background: 'var(--red)', padding: '8px 16px', display: 'flex', gap: 6, alignItems: 'center' }}>
-        {locations.map((_, i) => (
-          <div key={i} style={{
-            flex: 1, height: 4, borderRadius: 999,
-            background: i < roundIdx ? 'rgba(255,255,255,0.9)' : i === roundIdx ? 'white' : 'rgba(255,255,255,0.3)'
-          }} />
-        ))}
-        <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.75rem', fontWeight: 600, marginLeft: 4 }}>
-          {roundIdx + 1}/{locations.length}
-        </span>
-      </div>
-
-      {/* Tap hint + zoom tip — shown above the clue while guessing */}
-      {!revealed && (
-        <div style={{
-          padding: '7px 16px', background: '#F0FDF4',
-          borderBottom: '1px solid #BBF7D0', flexShrink: 0,
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8
-        }}>
-          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#065F46' }}>
-            📍 Tap the map to place your pin
-          </span>
-          <span style={{ fontSize: '0.72rem', color: '#059669', whiteSpace: 'nowrap' }}>
-            🔍 Pinch or scroll to zoom in
-          </span>
-        </div>
-      )}
 
       {/* Clue panel */}
       <div style={{ padding: '12px 16px', background: 'white', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
         <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
           <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{loc.emoji}</span>
-          <div>
-            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>
-              {t('geo.clue')} {roundIdx + 1}
+          <div style={{ flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4, gap: 8 }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                {t('geo.clue')} {roundIdx + 1}/{locations.length}
+              </div>
+              {!revealed && (
+                <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#059669', whiteSpace: 'nowrap' }}>
+                  📍 Tap the map to place your pin
+                </span>
+              )}
             </div>
             <p style={{ fontSize: '0.85rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
               {loc_t(loc.clue)}
@@ -292,6 +283,7 @@ export default function GeoGame() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <MapResetter roundIdx={roundIdx} center={LUX_CENTER} zoom={LUX_ZOOM} />
+          <MapFitBounds revealed={revealed} userPin={userPin} targetCoords={loc.coords} />
           {!revealed && <ClickHandler onMapClick={setUserPin} />}
           {userPin && <Marker position={userPin} icon={pinIcon('#EF3340')} />}
           {revealed && (
@@ -424,6 +416,9 @@ function RulesModal({ t, onClose }) {
           <h2 style={{ margin: '0 0 8px' }}>How to Play</h2>
           <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
             {t('geo.instructions')}
+          </p>
+          <p style={{ color: 'var(--text-muted)', margin: '8px 0 0', fontSize: '0.9rem', lineHeight: 1.5 }}>
+            You can resize the map to zoom in and out.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, textAlign: 'center', marginBottom: 24 }}>
