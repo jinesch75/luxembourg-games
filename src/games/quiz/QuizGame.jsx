@@ -120,6 +120,7 @@ export default function QuizGame() {
   const [roundScores, setRoundScores] = useState([])
   const [levelUpInfo, setLevelUpInfo] = useState(null)
   const [completedSubLevelNum, setCompletedSubLevelNum] = useState(null)
+  const [completedLevelInfo, setCompletedLevelInfo] = useState(null)
 
   // Helper: get translated question field.
   // Priority: 1) translations object (admin-edited), 2) i18next key (static JSON), 3) English fallback
@@ -156,6 +157,7 @@ export default function QuizGame() {
       setQuizProgress(newProgressObj)
       setRoundScores(newScores)
       setCompletedSubLevelNum(curSubLevel)
+      setCompletedLevelInfo(curLevel)
       trackGameEvent('quiz', 'complete', { score: sessionTotal, level: curLevel.id, subLevel: curSubLevel })
       setStep('done')
     } else {
@@ -174,6 +176,7 @@ export default function QuizGame() {
     setRoundScores([])
     setLevelUpInfo(null)
     setCompletedSubLevelNum(null)
+    setCompletedLevelInfo(null)
   }
 
   if (step === 'intro') {
@@ -195,7 +198,7 @@ export default function QuizGame() {
         questions={questions}
         t={t}
         quizProgress={quizProgress}
-        curLevel={curLevel}
+        curLevel={completedLevelInfo ?? curLevel}
         curSubLevel={completedSubLevelNum ?? curSubLevel}
         levelUpInfo={levelUpInfo}
         onReplay={handleReplay}
@@ -481,7 +484,7 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
           🏆 {t('quiz.allDone')} →
         </button>
       ) : (
-        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: curLevel.color, color: 'white' }}>
+        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: curLevel.color, color: 'white', whiteSpace: 'normal', lineHeight: 1.3 }}>
           {t('quiz.continueNextSubLevel')} →
         </button>
       )}
