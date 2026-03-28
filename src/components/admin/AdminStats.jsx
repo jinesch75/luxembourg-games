@@ -312,7 +312,7 @@ export default function AdminStats() {
         <>
           <SectionTitle>Games completed</SectionTitle>
           <div style={{ background: 'white', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)' }}>
-            {[['quiz','🎯','Quiz'],['geo','🗺️','Géo'],['connect','🔗','Connect']].map(([game, icon, label]) => (
+            {[['quiz','🎯','Quiz'],['geo','🗺️','Géo']].map(([game, icon, label]) => (
               <BarRow
                 key={game}
                 label={label}

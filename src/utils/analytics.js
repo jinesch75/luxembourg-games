@@ -93,7 +93,7 @@ export async function trackVisit() {
 
 /**
  * Track a game event such as starting or completing a game.
- * @param {'quiz'|'geo'|'connect'} game
+ * @param {'quiz'|'geo'} game
  * @param {'start'|'complete'}     event
  * @param {object}                 [extra]   e.g. { score: 4, total: 5 }
  */
