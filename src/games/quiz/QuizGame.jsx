@@ -119,8 +119,8 @@ export default function QuizGame() {
   const [revealed, setRevealed] = useState(false)
   const [roundScores, setRoundScores] = useState([])
   const [levelUpInfo, setLevelUpInfo] = useState(null)
-  const [completedSubLevelNum, setCompletedSubLevelNum] = useState(null)
-  const [completedLevelInfo, setCompletedLevelInfo] = useState(null)
+  // Stored as a single object { level, subLevel } so both are always updated atomically
+  const [doneInfo, setDoneInfo] = useState(null)
 
   // Helper: get translated question field.
   // Priority: 1) translations object (admin-edited), 2) i18next key (static JSON), 3) English fallback
@@ -156,8 +156,7 @@ export default function QuizGame() {
 
       setQuizProgress(newProgressObj)
       setRoundScores(newScores)
-      setCompletedSubLevelNum(curSubLevel)
-      setCompletedLevelInfo(curLevel)
+      setDoneInfo({ level: curLevel, subLevel: curSubLevel })
       trackGameEvent('quiz', 'complete', { score: sessionTotal, level: curLevel.id, subLevel: curSubLevel })
       setStep('done')
     } else {
@@ -175,8 +174,7 @@ export default function QuizGame() {
     setRevealed(false)
     setRoundScores([])
     setLevelUpInfo(null)
-    setCompletedSubLevelNum(null)
-    setCompletedLevelInfo(null)
+    setDoneInfo(null)
   }
 
   if (step === 'intro') {
@@ -198,8 +196,8 @@ export default function QuizGame() {
         questions={questions}
         t={t}
         quizProgress={quizProgress}
-        curLevel={completedLevelInfo ?? curLevel}
-        curSubLevel={completedSubLevelNum ?? curSubLevel}
+        curLevel={doneInfo?.level ?? curLevel}
+        curSubLevel={doneInfo?.subLevel ?? curSubLevel}
         levelUpInfo={levelUpInfo}
         onReplay={handleReplay}
       />

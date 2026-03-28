@@ -366,7 +366,13 @@ export default function InfoHub() {
             return def ? { ...item, translations: def.translations } : item
           }))
         }
-        if (data.stats?.length)           setStats(data.stats)
+        if (data.stats?.length) {
+          setStats(data.stats.map(item => {
+            if (item.translations) return item
+            const def = DEFAULT_STATS.find(d => d.label === item.label)
+            return def ? { ...item, translations: def.translations } : item
+          }))
+        }
         if (data.languagePhrases?.length) setLanguagePhrases(data.languagePhrases)
         if (data.reliableSources?.length) {
           setReliableSources(data.reliableSources.map(group => {
@@ -399,6 +405,11 @@ export default function InfoHub() {
     setActiveTab(tab)
     navigate(`/info?tab=${tab}`, { replace: true })
   }
+
+  // Scroll to top whenever the InfoHub page is navigated to
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // Sync tab if URL changes externally (e.g. back button)
   useEffect(() => {
