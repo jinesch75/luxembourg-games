@@ -95,7 +95,14 @@ function GeoLevelBadges({ totalPoints }) {
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 export default function GeoGame() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language || 'en').split('-')[0]
+  // Resolve a multilingual field: object { en, fr, de, lb } or plain string
+  const loc_t = (field) => {
+    if (!field) return ''
+    if (typeof field === 'string') return field
+    return field[lang] || field.en || ''
+  }
 
   // Persistent progress
   const [geoProgress, setGeoProgress] = useLocalStorage('letz-geo-progress', {
@@ -191,6 +198,7 @@ export default function GeoGame() {
         scores={roundScores}
         locations={locations}
         t={t}
+        loc_t={loc_t}
         totalPoints={geoProgress.totalPoints || 0}
         newLevelUnlocked={newLevelUnlocked}
         onReplay={handleReplay}
@@ -233,7 +241,7 @@ export default function GeoGame() {
               {t('geo.clue')} {roundIdx + 1}
             </div>
             <p style={{ fontSize: '0.85rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
-              {loc.clue}
+              {loc_t(loc.clue)}
             </p>
           </div>
         </div>
@@ -304,13 +312,13 @@ export default function GeoGame() {
               <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{t('geo.points')}</div>
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: '1rem' }}>{loc.name}</div>
+              <div style={{ fontWeight: 700, fontSize: '1rem' }}>{loc_t(loc.name)}</div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                 {t('geo.distance')} {currentKm < 1 ? `${Math.round(currentKm * 1000)}${t('geo.m')}` : `${currentKm.toFixed(1)}${t('geo.km')}`} {t('geo.away')}
               </div>
             </div>
           </div>
-          <p style={{ fontSize: '0.85rem', color: 'var(--gray-700)', marginBottom: 12 }}>{loc.fact}</p>
+          <p style={{ fontSize: '0.85rem', color: 'var(--gray-700)', marginBottom: 12 }}>{loc_t(loc.fact)}</p>
           <div style={{ display: 'flex', gap: 8 }}>
             <a href={loc.link} target="_blank" rel="noreferrer"
               className="btn btn-outline btn-sm" style={{ flex: 1 }}>
@@ -405,7 +413,7 @@ function Intro({ t, totalPoints, onStart }) {
 }
 
 // ─── Done Screen ───────────────────────────────────────────────────────────────
-function Done({ scores, locations, t, totalPoints, newLevelUnlocked, onReplay }) {
+function Done({ scores, locations, t, loc_t, totalPoints, newLevelUnlocked, onReplay }) {
   const sessionTotal = scores.reduce((s, r) => s + r.pts, 0)
   const maxTotal = scores.length * 1000
   const currentLevel = getGeoLevel(totalPoints)
@@ -474,7 +482,7 @@ function Done({ scores, locations, t, totalPoints, newLevelUnlocked, onReplay })
           }}>
             <span style={{ fontSize: '1.4rem' }}>{locations[i].emoji}</span>
             <div style={{ flex: 1 }}>
-              <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{locations[i].name}</div>
+              <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{loc_t(locations[i].name)}</div>
               <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 {s.km < 1 ? `${Math.round(s.km * 1000)}m` : `${s.km.toFixed(1)}km`} {t('geo.away')}
               </div>
