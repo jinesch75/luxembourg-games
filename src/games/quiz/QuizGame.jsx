@@ -237,8 +237,6 @@ export default function QuizGame() {
     }
   }
 
-  const progress = (currentIdx / activeQuestions.length) * 100
-
   return (
     <div className="container" style={{ paddingTop: 24 }}>
       {/* Retry mode banner */}
@@ -254,16 +252,6 @@ export default function QuizGame() {
         </div>
       )}
 
-      {/* Progress */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-        <div className="progress-bar" style={{ flex: 1 }}>
-          <div className="progress-fill" style={{ width: `${progress}%`, background: cat.text }} />
-        </div>
-        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, whiteSpace: 'nowrap' }}>
-          {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {activeQuestions.length}
-        </span>
-      </div>
-
       {/* Category badge */}
       <div style={{ marginBottom: 16 }}>
         <span style={{
@@ -278,78 +266,131 @@ export default function QuizGame() {
 
       {/* Question */}
       <div className="card" style={{ marginBottom: 20, padding: 24 }}>
-        <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', lineHeight: 1.4, fontWeight: 700 }}>
+        <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: 8 }}>
+          {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {activeQuestions.length}
+        </div>
+        <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', lineHeight: 1.4, fontWeight: 700, margin: 0 }}>
           {qText(q)}
         </h2>
       </div>
 
       {/* Options */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
-        {q.options.map((opt, idx) => {
-          let bg = 'white', border = 'var(--border)', color = 'var(--text)', icon = null
-          if (revealed) {
-            if (idx === q.answer) {
-              bg = '#D1FAE5'; border = '#059669'; color = '#065F46'; icon = '✓'
-            } else if (idx === selected && idx !== q.answer) {
-              bg = '#FEE2E2'; border = '#DC2626'; color = '#991B1B'; icon = '✗'
-            }
-          } else if (selected === idx) {
-            bg = cat.bg; border = cat.text
-          }
-          return (
-            <button
-              key={idx}
-              onClick={() => handleSelect(idx)}
-              style={{
-                width: '100%', textAlign: 'left', padding: '14px 16px',
-                background: bg, border: `2px solid ${border}`, color,
-                borderRadius: 'var(--radius)', cursor: revealed ? 'default' : 'pointer',
-                fontFamily: 'var(--font)', fontSize: '0.95rem', fontWeight: 500,
-                display: 'flex', alignItems: 'center', gap: 10,
-                transition: 'all 0.15s',
-                animation: revealed && idx === q.answer ? 'popIn 0.3s ease' : 'none'
-              }}
-            >
-              <span style={{
-                width: 28, height: 28, borderRadius: '50%',
-                background: icon ? (idx === q.answer ? '#059669' : '#DC2626') : 'var(--gray-100)',
-                color: icon ? 'white' : 'var(--gray-500)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '0.8rem', fontWeight: 700, flexShrink: 0
-              }}>
-                {icon || String.fromCharCode(65 + idx)}
-              </span>
-              {qOption(q, idx)}
-            </button>
-          )
-        })}
+        {q.options.map((opt, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleSelect(idx)}
+            style={{
+              width: '100%', textAlign: 'left', padding: '14px 16px',
+              background: 'white', border: '2px solid var(--border)', color: 'var(--text)',
+              borderRadius: 'var(--radius)', cursor: 'pointer',
+              fontFamily: 'var(--font)', fontSize: '0.95rem', fontWeight: 500,
+              display: 'flex', alignItems: 'center', gap: 10,
+              transition: 'all 0.15s',
+            }}
+          >
+            <span style={{
+              width: 28, height: 28, borderRadius: '50%',
+              background: 'var(--gray-100)',
+              color: 'var(--gray-500)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '0.8rem', fontWeight: 700, flexShrink: 0
+            }}>
+              {String.fromCharCode(65 + idx)}
+            </span>
+            {qOption(q, idx)}
+          </button>
+        ))}
       </div>
 
-      {/* Explanation */}
+      {/* Answer Pop-up Modal */}
       {revealed && (
-        <div className="animate-slide-up" style={{
-          background: selected === q.answer ? '#F0FDF4' : '#FFF7ED',
-          border: `1px solid ${selected === q.answer ? '#BBF7D0' : '#FDE68A'}`,
-          borderRadius: 'var(--radius)', padding: 16, marginBottom: 20
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 1000,
+          background: 'rgba(0,0,0,0.5)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '20px',
+          animation: 'fadeIn 0.2s ease'
         }}>
-          <div style={{ fontWeight: 700, marginBottom: 6, fontSize: '0.85rem', color: 'var(--gray-600)' }}>
-            {selected === q.answer ? `✓ ${t('quiz.correct')}` : `✗ ${t('quiz.incorrect')}`}
-            {' '}{t('quiz.explanation')}
-          </div>
-          <p style={{ fontSize: '0.9rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
-            {qExplain(q)}
-          </p>
-        </div>
-      )}
+          <div style={{
+            background: 'white', borderRadius: 'var(--radius-xl)',
+            padding: '28px 24px', maxWidth: 460, width: '100%',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
+            animation: 'popIn 0.25s ease'
+          }}>
+            {/* Your answer */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                Your answer
+              </div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 10,
+                padding: '10px 14px',
+                background: selected === q.answer ? '#D1FAE5' : '#FEE2E2',
+                borderRadius: 'var(--radius)',
+                border: `1.5px solid ${selected === q.answer ? '#059669' : '#DC2626'}`
+              }}>
+                <span style={{
+                  width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
+                  background: selected === q.answer ? '#059669' : '#DC2626',
+                  color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '0.8rem', fontWeight: 700
+                }}>
+                  {selected === q.answer ? '✓' : '✗'}
+                </span>
+                <span style={{ fontWeight: 600, color: selected === q.answer ? '#065F46' : '#991B1B', fontSize: '0.95rem' }}>
+                  {qOption(q, selected)}
+                </span>
+              </div>
+            </div>
 
-      {revealed && (
-        <button
-          onClick={handleNext}
-          className="btn btn-primary btn-full animate-slide-up"
-          style={{ marginBottom: 8 }}
-        >
-          {currentIdx + 1 >= activeQuestions.length ? t('quiz.finish') : t('quiz.next')} →
-        </button>
+            {/* Correct answer (only shown if wrong) */}
+            {selected !== q.answer && (
+              <div style={{ marginBottom: 16 }}>
+                <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                  Correct answer
+                </div>
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: 10,
+                  padding: '10px 14px',
+                  background: '#D1FAE5',
+                  borderRadius: 'var(--radius)',
+                  border: '1.5px solid #059669'
+                }}>
+                  <span style={{
+                    width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
+                    background: '#059669', color: 'white',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '0.8rem', fontWeight: 700
+                  }}>
+                    ✓
+                  </span>
+                  <span style={{ fontWeight: 600, color: '#065F46', fontSize: '0.95rem' }}>
+                    {qOption(q, q.answer)}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* Explanation */}
+            <div style={{ marginBottom: 24 }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                {t('quiz.explanation')}
+              </div>
+              <p style={{ fontSize: '0.9rem', margin: 0, lineHeight: 1.6, color: 'var(--gray-700)' }}>
+                {qExplain(q)}
+              </p>
+            </div>
+
+            {/* Next button */}
+            <button
+              onClick={handleNext}
+              className="btn btn-primary btn-full"
+            >
+              {currentIdx + 1 >= activeQuestions.length ? t('quiz.finish') : t('quiz.next')} →
+            </button>
+          </div>
+        </div>
       )}
     </div>
   )
