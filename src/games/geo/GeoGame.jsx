@@ -254,9 +254,6 @@ export default function GeoGame() {
               <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                 {t('geo.clue')} {roundIdx + 1}/{locations.length}
               </div>
-              <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#059669', whiteSpace: 'nowrap' }}>
-                📍 Tap the map to set your pin
-              </span>
             </div>
             <p style={{ fontSize: '0.85rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
               {loc_t(loc.clue)}
@@ -303,6 +300,21 @@ export default function GeoGame() {
             </>
           )}
         </MapContainer>
+
+        {/* Tap hint overlay — top right, shown before guess */}
+        {!revealed && (
+          <div style={{
+            position: 'absolute', top: 10, right: 10, zIndex: 1000,
+            background: 'rgba(0,0,0,0.72)', color: 'white',
+            fontSize: '0.75rem', fontWeight: 700,
+            padding: '6px 12px', borderRadius: 8,
+            pointerEvents: 'none', letterSpacing: '0.03em',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+            border: '1px solid rgba(255,255,255,0.15)'
+          }}>
+            📍 Tap the map to set your pin
+          </div>
+        )}
 
         {/* Pinch hint overlay */}
         <div style={{
