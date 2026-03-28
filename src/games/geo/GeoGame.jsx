@@ -607,9 +607,14 @@ function Done({ scores, locations, t, loc_t, totalPoints, newLevelUnlocked, onRe
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         {nextLevel ? (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white', whiteSpace: 'normal', lineHeight: 1.3, padding: '12px 16px' }}>
-            <div>🚀 Next Level</div>
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white', whiteSpace: 'normal', lineHeight: 1.3, padding: '12px 16px', position: 'relative' }}>
+            <div>🔄 Continue Playing</div>
             <div style={{ fontSize: '0.8rem', opacity: 0.9 }}>{nextLevel.icon} {nextLevel.name} — {(nextLevel.minPoints - totalPoints).toLocaleString()} pts away</div>
+            <span style={{
+              position: 'absolute', bottom: 7, right: 10,
+              fontSize: '0.8rem', fontWeight: 800, opacity: 0.75,
+              lineHeight: 1
+            }}>→</span>
           </button>
         ) : (
           <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
