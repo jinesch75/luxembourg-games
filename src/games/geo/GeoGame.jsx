@@ -256,7 +256,7 @@ export default function GeoGame() {
               </div>
               {!revealed && (
                 <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#059669', whiteSpace: 'nowrap' }}>
-                  📍 Tap the map to place your pin
+                  📍 Tap the map to set your pin
                 </span>
               )}
             </div>
@@ -422,10 +422,9 @@ function RulesModal({ t, onClose }) {
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, textAlign: 'center', marginBottom: 24 }}>
-          {[['📖', '5 locations'], ['📍', 'Tap the map'], ['⭐', '1000 pts max']].map(([icon, label]) => (
-            <div key={label} style={{ background: 'var(--gray-50)', borderRadius: 8, padding: 12 }}>
+          {['📖', '📍', '⭐'].map((icon) => (
+            <div key={icon} style={{ background: 'var(--gray-50)', borderRadius: 8, padding: 12 }}>
               <div style={{ fontSize: '1.5rem' }}>{icon}</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: 4 }}>{label}</div>
             </div>
           ))}
         </div>
