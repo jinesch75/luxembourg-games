@@ -307,12 +307,14 @@ export default function GeoGame() {
         {/* Pinch hint overlay */}
         <div style={{
           position: 'absolute', bottom: 10, right: 10, zIndex: 1000,
-          background: 'rgba(0,0,0,0.45)', color: 'white',
-          fontSize: '0.65rem', fontWeight: 600,
-          padding: '4px 8px', borderRadius: 6,
-          pointerEvents: 'none', letterSpacing: '0.02em'
+          background: 'rgba(0,0,0,0.72)', color: 'white',
+          fontSize: '0.75rem', fontWeight: 700,
+          padding: '6px 12px', borderRadius: 8,
+          pointerEvents: 'none', letterSpacing: '0.03em',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+          border: '1px solid rgba(255,255,255,0.15)'
         }}>
-          Pinch to change size
+          🤏 Pinch to change size
         </div>
 
       </div>
