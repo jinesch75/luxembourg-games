@@ -245,8 +245,8 @@ export default function GeoGame() {
       bottom: 68
     }}>
 
-      {/* Clue panel */}
-      <div style={{ padding: '12px 16px', background: 'white', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
+      {/* Clue panel — hidden after guess is confirmed */}
+      {!revealed && <div style={{ padding: '12px 16px', background: 'white', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
         <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
           <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{loc.emoji}</span>
           <div style={{ flex: 1 }}>
@@ -254,18 +254,16 @@ export default function GeoGame() {
               <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                 {t('geo.clue')} {roundIdx + 1}/{locations.length}
               </div>
-              {!revealed && (
-                <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#059669', whiteSpace: 'nowrap' }}>
-                  📍 Tap the map to set your pin
-                </span>
-              )}
+              <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#059669', whiteSpace: 'nowrap' }}>
+                📍 Tap the map to set your pin
+              </span>
             </div>
             <p style={{ fontSize: '0.85rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
               {loc_t(loc.clue)}
             </p>
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Map */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
@@ -306,12 +304,23 @@ export default function GeoGame() {
           )}
         </MapContainer>
 
+        {/* Pinch hint overlay */}
+        <div style={{
+          position: 'absolute', bottom: 10, right: 10, zIndex: 1000,
+          background: 'rgba(0,0,0,0.45)', color: 'white',
+          fontSize: '0.65rem', fontWeight: 600,
+          padding: '4px 8px', borderRadius: 6,
+          pointerEvents: 'none', letterSpacing: '0.02em'
+        }}>
+          Pinch to change size
+        </div>
+
       </div>
 
       {/* Result panel */}
       {revealed && (
         <div className="animate-slide-up" style={{
-          background: 'white', borderTop: '1px solid var(--border)', flexShrink: 0
+          background: '#EFF6FF', borderTop: '1px solid var(--border)', flexShrink: 0
         }}>
           {/* Collapse toggle bar */}
           <button
@@ -415,12 +424,17 @@ function RulesModal({ t, onClose }) {
           <div style={{ fontSize: '2.2rem', marginBottom: 8 }}>🗺️</div>
           <h2 style={{ margin: '0 0 8px' }}>How to Play</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, textAlign: 'center', marginBottom: 24 }}>
-          {[['📖', 'Read the location description'], ['📍', 'Tap the map to set your pin'], ['⭐', '1000 pts max']].map(([icon, label]) => (
-            <div key={label} style={{ background: 'var(--gray-50)', borderRadius: 8, padding: 12 }}>
-              <div style={{ fontSize: '1.5rem' }}>{icon}</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: 4 }}>{label}</div>
-            </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 24 }}>
+          {[['📖', 'Read the location description'], ['📍', 'Tap the map to set your pin'], ['⭐', '1000 pts max']].map(([icon, label], i, arr) => (
+            <>
+              <div key={label} style={{ flex: 1, background: 'var(--gray-50)', borderRadius: 8, padding: 12, textAlign: 'center' }}>
+                <div style={{ fontSize: '1.5rem' }}>{icon}</div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: 4 }}>{label}</div>
+              </div>
+              {i < arr.length - 1 && (
+                <div key={`arrow-${i}`} style={{ color: 'var(--text-muted)', fontSize: '1rem', flexShrink: 0 }}>→</div>
+              )}
+            </>
           ))}
         </div>
         <button onClick={onClose} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
@@ -577,17 +591,16 @@ function Done({ scores, locations, t, loc_t, totalPoints, newLevelUnlocked, onRe
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {nextLevel && (
+        {nextLevel ? (
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white', whiteSpace: 'normal', lineHeight: 1.3, padding: '12px 16px' }}>
+            <div>🚀 Next Level</div>
+            <div style={{ fontSize: '0.8rem', opacity: 0.9 }}>{nextLevel.icon} {nextLevel.name} — {(nextLevel.minPoints - totalPoints).toLocaleString()} pts away</div>
+          </button>
+        ) : (
           <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
-            🚀 Next Level — {nextLevel.icon} {nextLevel.name} ({(nextLevel.minPoints - totalPoints).toLocaleString()} pts away)
+            🔄 {t('geo.playAgain')}
           </button>
         )}
-        <button onClick={onReplay} className="btn btn-full" style={{
-          background: nextLevel ? 'var(--gray-100)' : '#059669',
-          color: nextLevel ? 'var(--gray-700)' : 'white'
-        }}>
-          🔄 {t('geo.playAgain')}
-        </button>
       </div>
     </div>
   )
