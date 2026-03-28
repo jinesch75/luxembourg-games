@@ -1,6 +1,6 @@
-import { useState, useRef, useMemo } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { MapContainer, TileLayer, Marker, useMapEvents, Circle, Polyline } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, useMapEvents, Circle, Polyline, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import { getSessionLocations, calcDistance, distanceToScore, LOCATIONS } from './data/locations'
 import { useGameContent } from '../../hooks/useGameContent'
@@ -31,6 +31,15 @@ const targetIcon = L.divIcon({
 
 function ClickHandler({ onMapClick }) {
   useMapEvents({ click: (e) => onMapClick([e.latlng.lat, e.latlng.lng]) })
+  return null
+}
+
+// Resets the map view to Luxembourg center on each new question
+function MapResetter({ roundIdx, center, zoom }) {
+  const map = useMap()
+  useEffect(() => {
+    map.setView(center, zoom, { animate: true })
+  }, [roundIdx]) // eslint-disable-line
   return null
 }
 
@@ -124,13 +133,15 @@ export default function GeoGame() {
   const [roundScores, setRoundScores] = useState([])
   const [shake, setShake]         = useState(false)
   const [newLevelUnlocked, setNewLevelUnlocked] = useState(null)
+  const [resultCollapsed, setResultCollapsed] = useState(false)
   const mapRef = useRef(null)
 
   const loc = locations[roundIdx]
 
-  // Luxembourg bounding box
+  // Luxembourg center + expanded bounds (shows Belgium, France, Germany)
   const LUX_CENTER = [49.75, 6.17]
-  const LUX_BOUNDS = [[49.44, 5.73], [50.18, 6.53]]
+  const LUX_ZOOM   = 8
+  const LUX_BOUNDS = [[48.7, 4.9], [50.8, 7.5]]
 
   const handleGuess = () => {
     if (!userPin) {
@@ -139,6 +150,7 @@ export default function GeoGame() {
       return
     }
     setRevealed(true)
+    setResultCollapsed(false)
   }
 
   const handleNext = () => {
@@ -170,6 +182,7 @@ export default function GeoGame() {
       setRoundIdx(i => i + 1)
       setUserPin(null)
       setRevealed(false)
+      setResultCollapsed(false)
     }
   }
 
@@ -251,9 +264,9 @@ export default function GeoGame() {
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
         <MapContainer
           center={LUX_CENTER}
-          zoom={9}
+          zoom={LUX_ZOOM}
           maxBounds={LUX_BOUNDS}
-          maxBoundsViscosity={0.9}
+          maxBoundsViscosity={0.7}
           style={{ height: '100%', width: '100%' }}
           ref={mapRef}
           zoomControl={true}
@@ -262,6 +275,7 @@ export default function GeoGame() {
             attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <MapResetter roundIdx={roundIdx} center={LUX_CENTER} zoom={LUX_ZOOM} />
           {!revealed && <ClickHandler onMapClick={setUserPin} />}
           {userPin && <Marker position={userPin} icon={pinIcon('#EF3340')} />}
           {revealed && (
@@ -300,34 +314,69 @@ export default function GeoGame() {
       {/* Result panel */}
       {revealed && (
         <div className="animate-slide-up" style={{
-          background: 'white', padding: '16px', borderTop: '1px solid var(--border)',
-          flexShrink: 0
+          background: 'white', borderTop: '1px solid var(--border)', flexShrink: 0
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-            <div style={{
-              background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2',
-              borderRadius: 'var(--radius)', padding: '10px 16px', textAlign: 'center', minWidth: 80
-            }}>
-              <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{currentScore}</div>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{t('geo.points')}</div>
-            </div>
-            <div>
-              <div style={{ fontWeight: 700, fontSize: '1rem' }}>{loc_t(loc.name)}</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                {t('geo.distance')} {currentKm < 1 ? `${Math.round(currentKm * 1000)}${t('geo.m')}` : `${currentKm.toFixed(1)}${t('geo.km')}`} {t('geo.away')}
+          {/* Collapse toggle bar */}
+          <button
+            onClick={() => setResultCollapsed(c => !c)}
+            style={{
+              width: '100%', padding: '7px 16px',
+              background: 'var(--gray-50)', border: 'none',
+              borderBottom: resultCollapsed ? 'none' : '1px solid var(--border)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              gap: 6, cursor: 'pointer', fontSize: '0.78rem', fontWeight: 600,
+              color: 'var(--text-muted)'
+            }}
+          >
+            {resultCollapsed ? '▲ Show results' : '▼ Minimise'}
+          </button>
+
+          {/* Full result content */}
+          {!resultCollapsed && (
+            <div style={{ padding: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                <div style={{
+                  background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2',
+                  borderRadius: 'var(--radius)', padding: '10px 16px', textAlign: 'center', minWidth: 80
+                }}>
+                  <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{currentScore}</div>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{t('geo.points')}</div>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '1rem' }}>{loc_t(loc.name)}</div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                    {t('geo.distance')} {currentKm < 1 ? `${Math.round(currentKm * 1000)}${t('geo.m')}` : `${currentKm.toFixed(1)}${t('geo.km')}`} {t('geo.away')}
+                  </div>
+                </div>
+              </div>
+              <p style={{ fontSize: '0.85rem', color: 'var(--gray-700)', marginBottom: 12 }}>{loc_t(loc.fact)}</p>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <a href={loc.link} target="_blank" rel="noreferrer"
+                  className="btn btn-outline btn-sm" style={{ flex: 1 }}>
+                  {t('geo.learnMore')} ↗
+                </a>
+                <button onClick={handleNext} className="btn btn-primary" style={{ flex: 2 }}>
+                  {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
+                </button>
               </div>
             </div>
-          </div>
-          <p style={{ fontSize: '0.85rem', color: 'var(--gray-700)', marginBottom: 12 }}>{loc_t(loc.fact)}</p>
-          <div style={{ display: 'flex', gap: 8 }}>
-            <a href={loc.link} target="_blank" rel="noreferrer"
-              className="btn btn-outline btn-sm" style={{ flex: 1 }}>
-              {t('geo.learnMore')} ↗
-            </a>
-            <button onClick={handleNext} className="btn btn-primary" style={{ flex: 2 }}>
-              {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
-            </button>
-          </div>
+          )}
+
+          {/* Compact bar when collapsed */}
+          {resultCollapsed && (
+            <div style={{ padding: '10px 16px', display: 'flex', gap: 8, alignItems: 'center' }}>
+              <div style={{
+                background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2',
+                color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B',
+                borderRadius: 999, padding: '4px 12px', fontWeight: 800, fontSize: '0.9rem'
+              }}>
+                {currentScore} pts
+              </div>
+              <button onClick={handleNext} className="btn btn-primary" style={{ flex: 1 }}>
+                {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
+              </button>
+            </div>
+          )}
         </div>
       )}
 
@@ -352,21 +401,73 @@ export default function GeoGame() {
   )
 }
 
+// ─── Rules Modal ───────────────────────────────────────────────────────────────
+function RulesModal({ t, onClose }) {
+  return (
+    <div style={{
+      position: 'fixed', inset: 0, zIndex: 1000,
+      background: 'rgba(0,0,0,0.55)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20
+    }}>
+      <div className="animate-slide-up" style={{
+        background: 'white', borderRadius: 'var(--radius-xl)',
+        padding: '28px 24px', maxWidth: 400, width: '100%',
+        boxShadow: '0 20px 60px rgba(0,0,0,0.25)'
+      }}>
+        <div style={{ textAlign: 'center', marginBottom: 20 }}>
+          <div style={{ fontSize: '2.2rem', marginBottom: 8 }}>🗺️</div>
+          <h2 style={{ margin: '0 0 8px' }}>How to Play</h2>
+          <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
+            {t('geo.instructions')}
+          </p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, textAlign: 'center', marginBottom: 24 }}>
+          {[['📖', '5 locations'], ['📍', 'Tap the map'], ['⭐', '1000 pts max']].map(([icon, label]) => (
+            <div key={label} style={{ background: 'var(--gray-50)', borderRadius: 8, padding: 12 }}>
+              <div style={{ fontSize: '1.5rem' }}>{icon}</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: 4 }}>{label}</div>
+            </div>
+          ))}
+        </div>
+        <button onClick={onClose} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
+          Let's Go! →
+        </button>
+      </div>
+    </div>
+  )
+}
+
 // ─── Intro Screen ──────────────────────────────────────────────────────────────
 function Intro({ t, totalPoints, onStart }) {
   const currentLevel = getGeoLevel(totalPoints)
   const nextLevel = GEO_LEVELS.find(l => l.minPoints > totalPoints)
+  const [showRules, setShowRules] = useState(false)
+
   return (
     <div className="container" style={{ paddingTop: 24 }}>
+      {showRules && (
+        <RulesModal t={t} onClose={() => { setShowRules(false); onStart() }} />
+      )}
+
+      {/* Smaller title box */}
       <div style={{
         background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)',
-        borderRadius: 'var(--radius-xl)', padding: '28px 24px', marginBottom: 24,
+        borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 14,
         color: 'white', textAlign: 'center'
       }}>
-        <div style={{ fontSize: '3rem', marginBottom: 12 }}>🗺️</div>
-        <h1 style={{ color: 'white', marginBottom: 8 }}>{t('geo.title')}</h1>
-        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0 }}>{t('geo.subtitle')}</p>
+        <div style={{ fontSize: '2rem', marginBottom: 6 }}>🗺️</div>
+        <h2 style={{ color: 'white', margin: '0 0 4px', fontSize: '1.3rem' }}>{t('geo.title')}</h2>
+        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.85rem' }}>{t('geo.subtitle')}</p>
       </div>
+
+      {/* Start button — right under the title */}
+      <button
+        onClick={() => setShowRules(true)}
+        className="btn btn-full btn-lg"
+        style={{ background: '#059669', color: 'white', marginBottom: 16 }}
+      >
+        {t('quiz.startBtn')} →
+      </button>
 
       {/* Level display */}
       <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
@@ -391,23 +492,6 @@ function Intro({ t, totalPoints, onStart }) {
           </div>
         )}
       </div>
-
-      <div className="card" style={{ marginBottom: 20 }}>
-        <p style={{ color: 'var(--gray-700)', margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
-          {t('geo.instructions')}
-        </p>
-        <div style={{ marginTop: 16, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, textAlign: 'center' }}>
-          {[['📖', '5 locations'], ['📍', 'Tap the map'], ['⭐', '1000 pts max']].map(([icon, label]) => (
-            <div key={label} style={{ background: 'var(--gray-50)', borderRadius: 8, padding: 12 }}>
-              <div style={{ fontSize: '1.5rem' }}>{icon}</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: 4 }}>{label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <button onClick={onStart} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
-        {t('quiz.startBtn')} →
-      </button>
     </div>
   )
 }
@@ -498,9 +582,19 @@ function Done({ scores, locations, t, loc_t, totalPoints, newLevelUnlocked, onRe
         ))}
       </div>
 
-      <button onClick={onReplay} className="btn btn-full" style={{ background: '#059669', color: 'white' }}>
-        🔄 {t('geo.playAgain')}
-      </button>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {nextLevel && (
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
+            🚀 Next Level — {nextLevel.icon} {nextLevel.name} ({(nextLevel.minPoints - totalPoints).toLocaleString()} pts away)
+          </button>
+        )}
+        <button onClick={onReplay} className="btn btn-full" style={{
+          background: nextLevel ? 'var(--gray-100)' : '#059669',
+          color: nextLevel ? 'var(--gray-700)' : 'white'
+        }}>
+          🔄 {t('geo.playAgain')}
+        </button>
+      </div>
     </div>
   )
 }
