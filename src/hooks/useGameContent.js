@@ -23,7 +23,12 @@ export function useGameContent(key, staticData) {
       })
       .then(overrides => {
         if (!cancelled && overrides[key] && Array.isArray(overrides[key]) && overrides[key].length > 0) {
-          setData(overrides[key])
+          // Validate each item has the fields getSubLevelQuestions depends on
+          const valid = overrides[key].every(
+            q => q && typeof q.level === 'string' && typeof q.question === 'string' &&
+                 Array.isArray(q.options) && q.options.length > 0
+          )
+          if (valid) setData(overrides[key])
         }
       })
       .catch(() => {})

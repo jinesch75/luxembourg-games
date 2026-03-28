@@ -26,16 +26,18 @@ export const QUIZ_LEVELS = [
 const POINTS_PER_CORRECT = 200 // max 1000 per sub-level
 
 function parseProgress(progress) {
+  const completed = progress?.completedSubLevels || {}
   for (let li = 0; li < QUIZ_LEVELS.length; li++) {
     const lvl = QUIZ_LEVELS[li]
-    const done = progress.completedSubLevels[lvl.id] || 0
+    const done = completed[lvl.id] || 0
     if (done < lvl.subLevels) return { levelIdx: li, subLevel: done + 1 }
   }
   return { levelIdx: QUIZ_LEVELS.length - 1, subLevel: 5, finished: true }
 }
 
 function totalSubLevelsDone(progress) {
-  return QUIZ_LEVELS.reduce((acc, lvl) => acc + (progress.completedSubLevels[lvl.id] || 0), 0)
+  const completed = progress?.completedSubLevels || {}
+  return QUIZ_LEVELS.reduce((acc, lvl) => acc + (completed[lvl.id] || 0), 0)
 }
 
 // ─── Level Badge Display ───────────────────────────────────────────────────────
@@ -44,7 +46,7 @@ function LevelMapBadges({ progress }) {
   return (
     <div style={{ display: 'flex', gap: 6, justifyContent: 'space-between' }}>
       {QUIZ_LEVELS.map((level, li) => {
-        const done = progress.completedSubLevels[level.id] || 0
+        const done = (progress?.completedSubLevels || {})[level.id] || 0
         const isCurrentLevel = li === curLvlIdx
         const isFullyDone = done >= level.subLevels
         const isLocked = li > curLvlIdx
@@ -196,7 +198,19 @@ export default function QuizGame() {
   }
 
   const q = questions[currentIdx]
-  if (!q) return null
+  if (!q) {
+    // Questions failed to load — go back to intro so the user isn't stuck on a blank screen
+    return (
+      <div className="container" style={{ paddingTop: 40, textAlign: 'center' }}>
+        <p style={{ color: 'var(--text-muted)', marginBottom: 16 }}>
+          Could not load questions. Please try again.
+        </p>
+        <button className="btn btn-primary" onClick={handleReplay}>
+          ← Back
+        </button>
+      </div>
+    )
+  }
   const cat = CAT_COLORS[q.category] || CAT_COLORS.culture
 
   return (
