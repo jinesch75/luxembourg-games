@@ -450,18 +450,23 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
         </div>
       )}
 
-      {/* Sub-level complete banner */}
-      {!levelUpInfo && (
-        <div style={{ background: `linear-gradient(135deg, ${curLevel.color}99 0%, ${curLevel.color} 100%)`, borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 16, color: 'white', textAlign: 'center' }}>
-          <div style={{ fontSize: '1.4rem', marginBottom: 4 }}>{curLevel.icon}</div>
-          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{curLevel.name} — Sub-level {curSubLevel - 1} complete!</div>
-        </div>
-      )}
-
+      {/* Sub-level complete + score box */}
       <div style={{ background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)', borderRadius: 'var(--radius-xl)', padding: '24px', marginBottom: 20, color: 'white', textAlign: 'center' }}>
-        <div style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1 }}>{sessionTotal.toLocaleString()}</div>
-        <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>/ {maxTotal.toLocaleString()} {t('geo.points')}</div>
-        <div style={{ marginTop: 8, color: 'rgba(255,255,255,0.85)' }}>{t('geo.results')}</div>
+        <div style={{ fontSize: '1.6rem', marginBottom: 4 }}>{curLevel.icon}</div>
+        <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 16, opacity: 0.9 }}>
+          {curLevel.name} — Sub-level {curSubLevel - 1} complete!
+        </div>
+        <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px' }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
+            Round result
+          </div>
+          <div style={{ fontSize: '2rem', fontWeight: 800, lineHeight: 1 }}>
+            {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
+          </div>
+          <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>
+            points added
+          </div>
+        </div>
       </div>
 
       {/* Level progress */}
@@ -476,33 +481,14 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
         </div>
       </div>
 
-      {/* Round breakdown */}
-      <div className="card" style={{ marginBottom: 20 }}>
-        {scores.map((s, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: i < scores.length - 1 ? '1px solid var(--border)' : 'none' }}>
-            <span style={{ fontSize: '1.4rem' }}>{locations[i].emoji}</span>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{loc_t(locations[i].name)}</div>
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                {s.km < 1 ? `${Math.round(s.km * 1000)}m` : `${s.km.toFixed(1)}km`} {t('geo.away')}
-              </div>
-            </div>
-            <div style={{ background: s.pts >= 800 ? '#D1FAE5' : s.pts >= 500 ? '#FEF3C7' : '#FEE2E2', color: s.pts >= 800 ? '#065F46' : s.pts >= 500 ? '#92400E' : '#991B1B', padding: '4px 10px', borderRadius: 999, fontWeight: 700, fontSize: '0.85rem' }}>
-              {s.pts}
-            </div>
-          </div>
-        ))}
-      </div>
-
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         {isFinished ? (
           <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
             🏆 All done! Play again →
           </button>
         ) : (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: nextLevel.color, color: 'white', whiteSpace: 'normal', lineHeight: 1.3, padding: '12px 16px' }}>
-            <div>{nextLevel.icon} {nextLevel.name} — Sub-level {nextSub}/5</div>
-            <div style={{ fontSize: '0.8rem', opacity: 0.9 }}>Continue →</div>
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
+            Continue to next level →
           </button>
         )}
       </div>
