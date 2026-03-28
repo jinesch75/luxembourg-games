@@ -522,7 +522,7 @@ export default function AdminInfo() {
             </EditorBox>
           )
         })()
-        ) : (
+        : (
           <RowBox>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontWeight: 700, fontSize: '0.9rem', marginBottom: 4 }}>{bpIntro.title}</div>
@@ -568,7 +568,7 @@ export default function AdminInfo() {
             </EditorBox>
           )
         })()
-        ) : (
+        : (
           <RowBox>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontWeight: 700, fontSize: '0.9rem', marginBottom: 4 }}>{bpInterculturalCard.title}</div>
