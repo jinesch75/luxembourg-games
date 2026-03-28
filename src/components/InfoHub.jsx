@@ -350,11 +350,35 @@ export default function InfoHub() {
     fetch('/api/content')
       .then(r => r.ok ? r.json() : {})
       .then(data => {
-        if (data.bpCards?.length)         setBpCards(data.bpCards)
-        if (data.activities?.length)      setActivities(data.activities)
+        // Enrich API items with translations from defaults when translations are absent.
+        // This handles content saved before multilingual support was added to the admin panel.
+        if (data.bpCards?.length) {
+          setBpCards(data.bpCards.map(item => {
+            if (item.translations) return item
+            const def = DEFAULT_BP_CARDS.find(d => d.id === item.id)
+            return def ? { ...item, translations: def.translations } : item
+          }))
+        }
+        if (data.activities?.length) {
+          setActivities(data.activities.map(item => {
+            if (item.translations) return item
+            const def = DEFAULT_ACTIVITIES.find(d => d.id === item.id)
+            return def ? { ...item, translations: def.translations } : item
+          }))
+        }
         if (data.stats?.length)           setStats(data.stats)
         if (data.languagePhrases?.length) setLanguagePhrases(data.languagePhrases)
-        if (data.reliableSources?.length) setReliableSources(data.reliableSources)
+        if (data.reliableSources?.length) {
+          setReliableSources(data.reliableSources.map(group => {
+            const defGroup = DEFAULT_RELIABLE_SOURCES.find(d => d.category === group.category)
+            const sources = (group.sources || []).map(src => {
+              if (src.translations) return src
+              const defSrc = defGroup?.sources.find(d => d.href === src.href)
+              return defSrc ? { ...src, translations: defSrc.translations } : src
+            })
+            return { ...group, translations: group.translations || defGroup?.translations, sources }
+          }))
+        }
         if (data.bpIntro)                 setBpIntro(data.bpIntro)
         if (data.bpInterculturalCard)     setBpInterculturalCard(data.bpInterculturalCard)
       })
@@ -384,6 +408,18 @@ export default function InfoHub() {
   const lang = (i18n.language || 'en').split('-')[0]
   // Helper: get translated field from dynamic content items
   const tf = (item, field) => getField(item, field, lang) || item?.[field] || ''
+
+  // Like tf() but falls back to an i18n key when the item has no translation for the current language.
+  // Used for bpIntro / bpInterculturalCard which may have been saved without translations.
+  const trf = (item, field, tKey) => {
+    if (!item) return t(tKey)
+    if (lang !== 'en') {
+      const v = item.translations?.[lang]?.[field]
+      if (v) return v
+      return t(tKey)
+    }
+    return item[field] || t(tKey)
+  }
 
   const biergerpaktUrl = BIERGERPAKT_URLS[lang] || BIERGERPAKT_URLS.en
   const luxembourgishUrl = LUXEMBOURGISH_URLS[lang] || LUXEMBOURGISH_URLS.en
@@ -433,9 +469,9 @@ export default function InfoHub() {
             color: 'white', marginBottom: 20
           }}>
             <div style={{ fontSize: '3rem', marginBottom: 12 }}>🤝</div>
-            <h2 style={{ color: 'white', marginBottom: 12 }}>{bpIntro ? tf(bpIntro, 'title') : t('info.biergerpakt.title')}</h2>
+            <h2 style={{ color: 'white', marginBottom: 12 }}>{trf(bpIntro, 'title', 'info.biergerpakt.title')}</h2>
             <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, lineHeight: 1.6 }}>
-              {bpIntro ? tf(bpIntro, 'text') : t('info.biergerpakt.text')}
+              {trf(bpIntro, 'text', 'info.biergerpakt.text')}
             </p>
             <a href={biergerpaktUrl}
               target="_blank" rel="noreferrer"
@@ -446,14 +482,14 @@ export default function InfoHub() {
                 color: 'white', borderRadius: 10, padding: '12px 16px',
                 textAlign: 'center', fontWeight: 700, textDecoration: 'none', fontSize: '0.9rem'
               }}>
-              {bpIntro ? tf(bpIntro, 'cta') : t('info.biergerpakt.cta')} →
+              {trf(bpIntro, 'cta', 'info.biergerpakt.cta')} →
             </a>
           </div>
 
           <div className="card" style={{ marginBottom: 16 }}>
-            <h3 style={{ marginBottom: 12 }}>{bpInterculturalCard ? tf(bpInterculturalCard, 'title') : t('info.intercultural.title')}</h3>
+            <h3 style={{ marginBottom: 12 }}>{trf(bpInterculturalCard, 'title', 'info.intercultural.title')}</h3>
             <p style={{ color: 'var(--gray-700)', margin: 0, lineHeight: 1.6 }}>
-              {bpInterculturalCard ? tf(bpInterculturalCard, 'text') : t('info.intercultural.text')}
+              {trf(bpInterculturalCard, 'text', 'info.intercultural.text')}
             </p>
           </div>
 
