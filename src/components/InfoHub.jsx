@@ -51,7 +51,7 @@ export const DEFAULT_ACTIVITIES = [
   ]},
 ]
 
-const STATS = [
+export const DEFAULT_STATS = [
   { icon: '👥', label: 'Total population', value: '~680,000', source: 'STATEC 2024' },
   { icon: '🌍', label: 'Foreign nationals', value: '47%', source: 'STATEC 2024' },
   { icon: '🇵🇹', label: 'Largest non-LU community', value: 'Portuguese (~100,000)', source: 'STATEC 2023' },
@@ -69,7 +69,7 @@ const STATS = [
   { icon: '🌱', label: 'UNESCO Biosphere Reserve', value: 'Minett (2021)', source: 'UNESCO' },
 ]
 
-const LANGUAGE_PHRASES = [
+export const DEFAULT_LANGUAGE_PHRASES = [
   { lb: 'Moien', fr: 'Bonjour', de: 'Guten Morgen', meaning: 'Hello / Good morning' },
   { lb: 'Äddi', fr: 'Au revoir', de: 'Auf Wiedersehen', meaning: 'Goodbye' },
   { lb: 'Merci villmools', fr: 'Merci beaucoup', de: 'Vielen Dank', meaning: 'Thank you very much' },
@@ -94,7 +94,7 @@ const LUXEMBOURGISH_URLS = {
   lb: 'https://luxembourg.public.lu/fr/societe-et-culture/langues/luxembourgeois-langue-histoire.html'
 }
 
-const RELIABLE_SOURCES = [
+export const DEFAULT_RELIABLE_SOURCES = [
   {
     category: 'Official Government',
     icon: '🏛️',
@@ -154,15 +154,25 @@ export default function InfoHub() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const [bpCards, setBpCards]       = useState(DEFAULT_BP_CARDS)
-  const [activities, setActivities] = useState(DEFAULT_ACTIVITIES)
+  const [bpCards, setBpCards]               = useState(DEFAULT_BP_CARDS)
+  const [activities, setActivities]         = useState(DEFAULT_ACTIVITIES)
+  const [stats, setStats]                   = useState(DEFAULT_STATS)
+  const [languagePhrases, setLanguagePhrases] = useState(DEFAULT_LANGUAGE_PHRASES)
+  const [reliableSources, setReliableSources] = useState(DEFAULT_RELIABLE_SOURCES)
+  const [bpIntro, setBpIntro]               = useState(null)   // { title, text, cta }
+  const [bpInterculturalCard, setBpInterculturalCard] = useState(null) // { title, text }
 
   useEffect(() => {
     fetch('/api/content')
       .then(r => r.ok ? r.json() : {})
       .then(data => {
-        if (data.bpCards?.length)     setBpCards(data.bpCards)
-        if (data.activities?.length)  setActivities(data.activities)
+        if (data.bpCards?.length)         setBpCards(data.bpCards)
+        if (data.activities?.length)      setActivities(data.activities)
+        if (data.stats?.length)           setStats(data.stats)
+        if (data.languagePhrases?.length) setLanguagePhrases(data.languagePhrases)
+        if (data.reliableSources?.length) setReliableSources(data.reliableSources)
+        if (data.bpIntro)                 setBpIntro(data.bpIntro)
+        if (data.bpInterculturalCard)     setBpInterculturalCard(data.bpInterculturalCard)
       })
       .catch(() => {})
   }, [])
@@ -235,9 +245,9 @@ export default function InfoHub() {
             color: 'white', marginBottom: 20
           }}>
             <div style={{ fontSize: '3rem', marginBottom: 12 }}>🤝</div>
-            <h2 style={{ color: 'white', marginBottom: 12 }}>{t('info.biergerpakt.title')}</h2>
+            <h2 style={{ color: 'white', marginBottom: 12 }}>{bpIntro?.title ?? t('info.biergerpakt.title')}</h2>
             <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, lineHeight: 1.6 }}>
-              {t('info.biergerpakt.text')}
+              {bpIntro?.text ?? t('info.biergerpakt.text')}
             </p>
             <a href={biergerpaktUrl}
               target="_blank" rel="noreferrer"
@@ -248,14 +258,14 @@ export default function InfoHub() {
                 color: 'white', borderRadius: 10, padding: '12px 16px',
                 textAlign: 'center', fontWeight: 700, textDecoration: 'none', fontSize: '0.9rem'
               }}>
-              {t('info.biergerpakt.cta')} →
+              {bpIntro?.cta ?? t('info.biergerpakt.cta')} →
             </a>
           </div>
 
           <div className="card" style={{ marginBottom: 16 }}>
-            <h3 style={{ marginBottom: 12 }}>{t('info.intercultural.title')}</h3>
+            <h3 style={{ marginBottom: 12 }}>{bpInterculturalCard?.title ?? t('info.intercultural.title')}</h3>
             <p style={{ color: 'var(--gray-700)', margin: 0, lineHeight: 1.6 }}>
-              {t('info.intercultural.text')}
+              {bpInterculturalCard?.text ?? t('info.intercultural.text')}
             </p>
           </div>
 
@@ -287,7 +297,7 @@ export default function InfoHub() {
             </a>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {STATS.map(stat => (
+            {stats.map(stat => (
               <div key={stat.label} style={{
                 background: 'white', border: '1px solid var(--border)',
                 borderRadius: 'var(--radius)', padding: '14px 16px',
@@ -367,7 +377,7 @@ export default function InfoHub() {
             <div style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 12 }}>
               Useful phrases in 3 languages
             </div>
-            {LANGUAGE_PHRASES.map((phrase) => (
+            {languagePhrases.map((phrase) => (
               <div key={phrase.lb} className="card" style={{ marginBottom: 8, padding: 14 }}>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                   {phrase.meaning}
@@ -470,7 +480,7 @@ export default function InfoHub() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {RELIABLE_SOURCES.map(group => (
+            {reliableSources.map(group => (
               <div key={group.category}>
                 <div style={{
                   display: 'flex', alignItems: 'center', gap: 8,
