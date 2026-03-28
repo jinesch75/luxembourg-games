@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MapContainer, TileLayer, Marker, useMapEvents, Circle, Polyline, useMap } from 'react-leaflet'
 import L from 'leaflet'
-import { getSessionLocations, calcDistance, distanceToScore, LOCATIONS } from './data/locations'
+import { getSubLevelLocations, calcDistance, distanceToScore, LOCATIONS, LEVEL_ORDER } from './data/locations'
 import { useGameContent } from '../../hooks/useGameContent'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { trackGameEvent } from '../../utils/analytics'
@@ -34,16 +34,12 @@ function ClickHandler({ onMapClick }) {
   return null
 }
 
-// Resets the map view to Luxembourg center on each new question
 function MapResetter({ roundIdx, center, zoom }) {
   const map = useMap()
-  useEffect(() => {
-    map.setView(center, zoom, { animate: true })
-  }, [roundIdx]) // eslint-disable-line
+  useEffect(() => { map.setView(center, zoom, { animate: true }) }, [roundIdx]) // eslint-disable-line
   return null
 }
 
-// Fits the map to show both the user pin and the correct answer when result is revealed
 function MapFitBounds({ revealed, userPin, targetCoords }) {
   const map = useMap()
   useEffect(() => {
@@ -57,52 +53,66 @@ function MapFitBounds({ revealed, userPin, targetCoords }) {
 
 // ─── Level system ──────────────────────────────────────────────────────────────
 const GEO_LEVELS = [
-  { id: 1, name: 'Tourist',     icon: '🗺️', minPoints: 0,     color: '#6B7280', bg: '#F3F4F6' },
-  { id: 2, name: 'Wanderer',    icon: '🧭', minPoints: 1000,  color: '#059669', bg: '#D1FAE5' },
-  { id: 3, name: 'Navigator',   icon: '📍', minPoints: 3000,  color: '#2563EB', bg: '#DBEAFE' },
-  { id: 4, name: 'Explorer',    icon: '🌟', minPoints: 6000,  color: '#7C3AED', bg: '#F3E8FF' },
-  { id: 5, name: 'Geographer',  icon: '🏆', minPoints: 10000, color: '#D97706', bg: '#FEF3C7' },
+  { id: 'tourist',    name: 'Tourist',    icon: '🗺️', color: '#6B7280', bg: '#F3F4F6', subLevels: 5 },
+  { id: 'wanderer',   name: 'Wanderer',   icon: '🧭', color: '#059669', bg: '#D1FAE5', subLevels: 5 },
+  { id: 'navigator',  name: 'Navigator',  icon: '📍', color: '#2563EB', bg: '#DBEAFE', subLevels: 5 },
+  { id: 'explorer',   name: 'Explorer',   icon: '🌟', color: '#7C3AED', bg: '#F3E8FF', subLevels: 5 },
+  { id: 'geographer', name: 'Geographer', icon: '🏆', color: '#D97706', bg: '#FEF3C7', subLevels: 5 },
 ]
 
-function getGeoLevel(totalPoints) {
-  let level = GEO_LEVELS[0]
-  for (const l of GEO_LEVELS) {
-    if (totalPoints >= l.minPoints) level = l
+// Returns { levelIdx, subLevel } for the current progress
+function parseProgress(progress) {
+  const { completedSubLevels } = progress
+  for (let li = 0; li < GEO_LEVELS.length; li++) {
+    const lvl = GEO_LEVELS[li]
+    const done = completedSubLevels[lvl.id] || 0
+    if (done < lvl.subLevels) return { levelIdx: li, subLevel: done + 1 }
   }
-  return level
+  return { levelIdx: GEO_LEVELS.length - 1, subLevel: 5, finished: true }
 }
 
-function GeoLevelBadges({ totalPoints }) {
-  const currentLevel = getGeoLevel(totalPoints)
+function totalSubLevelsDone(progress) {
+  return GEO_LEVELS.reduce((acc, lvl) => acc + (progress.completedSubLevels[lvl.id] || 0), 0)
+}
+
+// ─── Level Map Badge ───────────────────────────────────────────────────────────
+function LevelMapBadges({ progress }) {
+  const { levelIdx: curLvlIdx, subLevel: curSub } = parseProgress(progress)
   return (
     <div style={{ display: 'flex', gap: 6, justifyContent: 'space-between' }}>
-      {GEO_LEVELS.map(level => {
-        const isUnlocked = totalPoints >= level.minPoints
-        const isCurrent = level.id === currentLevel.id
+      {GEO_LEVELS.map((level, li) => {
+        const done = progress.completedSubLevels[level.id] || 0
+        const isCurrentLevel = li === curLvlIdx
+        const isFullyDone = done >= level.subLevels
+        const isLocked = li > curLvlIdx
         return (
-          <div
-            key={level.id}
-            title={`${level.name} (${level.minPoints.toLocaleString()}+ pts)`}
-            style={{
-              flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
-              gap: 4, opacity: isUnlocked ? 1 : 0.3,
-              transform: isCurrent ? 'scale(1.15)' : 'scale(1)',
-              transition: 'transform 0.2s'
-            }}
-          >
+          <div key={level.id} style={{
+            flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+            opacity: isLocked ? 0.3 : 1,
+            transform: isCurrentLevel ? 'scale(1.12)' : 'scale(1)',
+            transition: 'transform 0.2s'
+          }}>
             <div style={{
               width: 36, height: 36, borderRadius: '50%',
-              background: isUnlocked ? level.bg : 'var(--gray-100)',
-              border: isCurrent ? `2px solid ${level.color}` : '2px solid transparent',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '1rem',
-              boxShadow: isCurrent ? `0 0 8px ${level.color}40` : 'none'
+              background: isFullyDone ? level.color : isCurrentLevel ? level.bg : 'var(--gray-100)',
+              border: isCurrentLevel ? `2px solid ${level.color}` : '2px solid transparent',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem',
+              boxShadow: isCurrentLevel ? `0 0 8px ${level.color}40` : 'none'
             }}>
-              {isUnlocked ? level.icon : '🔒'}
+              {isLocked ? '🔒' : level.icon}
+            </div>
+            {/* Sub-level pip dots */}
+            <div style={{ display: 'flex', gap: 2 }}>
+              {Array.from({ length: level.subLevels }).map((_, si) => (
+                <div key={si} style={{
+                  width: 5, height: 5, borderRadius: '50%',
+                  background: si < done ? level.color : (isCurrentLevel && si === done ? level.color + '80' : 'var(--gray-200)')
+                }} />
+              ))}
             </div>
             <div style={{
-              fontSize: '0.55rem', fontWeight: isCurrent ? 800 : 500,
-              color: isCurrent ? level.color : 'var(--text-muted)',
+              fontSize: '0.5rem', fontWeight: isCurrentLevel ? 800 : 500,
+              color: isCurrentLevel ? level.color : 'var(--text-muted)',
               textAlign: 'center', lineHeight: 1.2
             }}>
               {level.name}
@@ -118,25 +128,19 @@ function GeoLevelBadges({ totalPoints }) {
 export default function GeoGame() {
   const { t, i18n } = useTranslation()
   const lang = (i18n.language || 'en').split('-')[0]
-  // Resolve a multilingual field: object { en, fr, de, lb } or plain string
   const loc_t = (field) => {
     if (!field) return ''
     if (typeof field === 'string') return field
     return field[lang] || field.en || ''
   }
 
-  // Persistent progress
-  const [geoProgress, setGeoProgress] = useLocalStorage('letz-geo-progress', {
+  // Persistent progress – now sub-level based
+  const [geoProgress, setGeoProgress] = useLocalStorage('letz-geo-progress-v2', {
+    completedSubLevels: { tourist: 0, wanderer: 0, navigator: 0, explorer: 0, geographer: 0 },
     totalPoints: 0,
-    sessionsPlayed: 0,
   })
 
-  // Random seed per session
-  const [sessionSeed] = useState(() => Math.floor(Math.random() * 99999) + 1)
-
-  // Use server-side content override if available
   const allLocations = useGameContent('locations', LOCATIONS)
-  const locations    = useMemo(() => getSessionLocations(sessionSeed, allLocations), [sessionSeed, allLocations])
 
   const [step, setStep]           = useState('intro')
   const [roundIdx, setRoundIdx]   = useState(0)
@@ -144,13 +148,22 @@ export default function GeoGame() {
   const [revealed, setRevealed]   = useState(false)
   const [roundScores, setRoundScores] = useState([])
   const [shake, setShake]         = useState(false)
-  const [newLevelUnlocked, setNewLevelUnlocked] = useState(null)
+  const [levelUpInfo, setLevelUpInfo] = useState(null)
   const [resultCollapsed, setResultCollapsed] = useState(false)
   const mapRef = useRef(null)
 
+  // Derive current level/subLevel from progress
+  const { levelIdx: curLevelIdx, subLevel: curSubLevel } = parseProgress(geoProgress)
+  const curLevel = GEO_LEVELS[curLevelIdx]
+
+  // Get the 5 questions for this sub-level
+  const locations = useMemo(
+    () => getSubLevelLocations(curLevel.id, curSubLevel, allLocations),
+    [curLevel.id, curSubLevel, allLocations]
+  )
+
   const loc = locations[roundIdx]
 
-  // Luxembourg center + expanded bounds (shows Belgium, France, Germany)
   const LUX_CENTER = [49.75, 6.17]
   const LUX_ZOOM   = 8
   const LUX_BOUNDS = [[48.7, 4.9], [50.8, 7.5]]
@@ -172,23 +185,24 @@ export default function GeoGame() {
     setRoundScores(newScores)
 
     if (roundIdx + 1 >= locations.length) {
+      // Sub-level complete!
       const sessionTotal = newScores.reduce((s, r) => s + r.pts, 0)
-      const prevTotal = geoProgress.totalPoints || 0
-      const updatedTotal = prevTotal + sessionTotal
+      const prevLevelIdx = curLevelIdx
+      const newCompleted = {
+        ...geoProgress.completedSubLevels,
+        [curLevel.id]: (geoProgress.completedSubLevels[curLevel.id] || 0) + 1
+      }
+      const newTotal = (geoProgress.totalPoints || 0) + sessionTotal
 
-      // Check for level up
-      const prevLevel = getGeoLevel(prevTotal)
-      const newLevel  = getGeoLevel(updatedTotal)
-      if (newLevel.id > prevLevel.id) {
-        setNewLevelUnlocked(newLevel)
+      // Check for major level up
+      const newProgress = { completedSubLevels: newCompleted, totalPoints: newTotal }
+      const { levelIdx: newLevelIdx } = parseProgress(newProgress)
+      if (newLevelIdx > prevLevelIdx) {
+        setLevelUpInfo(GEO_LEVELS[newLevelIdx])
       }
 
-      setGeoProgress(prev => ({
-        totalPoints: updatedTotal,
-        sessionsPlayed: (prev.sessionsPlayed || 0) + 1,
-      }))
-
-      trackGameEvent('geo', 'complete', { score: sessionTotal, rounds: locations.length })
+      setGeoProgress({ completedSubLevels: newCompleted, totalPoints: newTotal })
+      trackGameEvent('geo', 'complete', { score: sessionTotal, level: curLevel.id, subLevel: curSubLevel })
       setStep('done')
     } else {
       setRoundIdx(i => i + 1)
@@ -204,55 +218,39 @@ export default function GeoGame() {
     setUserPin(null)
     setRevealed(false)
     setRoundScores([])
-    setNewLevelUnlocked(null)
+    setLevelUpInfo(null)
   }
 
   if (step === 'intro') {
-    return (
-      <Intro
-        t={t}
-        totalPoints={geoProgress.totalPoints || 0}
-        onStart={() => { trackGameEvent('geo', 'start'); setStep('game') }}
-      />
-    )
+    return <Intro t={t} geoProgress={geoProgress} curLevel={curLevel} curSubLevel={curSubLevel}
+      onStart={() => { trackGameEvent('geo', 'start'); setStep('game') }} />
   }
 
   if (step === 'done') {
-    return (
-      <Done
-        scores={roundScores}
-        locations={locations}
-        t={t}
-        loc_t={loc_t}
-        totalPoints={geoProgress.totalPoints || 0}
-        newLevelUnlocked={newLevelUnlocked}
-        onReplay={handleReplay}
-      />
-    )
+    return <Done scores={roundScores} locations={locations} t={t} loc_t={loc_t}
+      geoProgress={geoProgress} curLevel={curLevel} curSubLevel={curSubLevel}
+      levelUpInfo={levelUpInfo} onReplay={handleReplay} />
   }
 
-  const currentKm     = revealed && userPin ? calcDistance(userPin[0], userPin[1], loc.coords[0], loc.coords[1]) : null
-  const currentScore  = currentKm !== null ? distanceToScore(currentKm) : null
+  const currentKm    = revealed && userPin ? calcDistance(userPin[0], userPin[1], loc.coords[0], loc.coords[1]) : null
+  const currentScore = currentKm !== null ? distanceToScore(currentKm) : null
 
   if (!loc) return null
 
   return (
-    <div style={{
-      display: 'flex', flexDirection: 'column',
-      position: 'fixed',
-      top: 'var(--nav-height)',
-      left: 0, right: 0,
-      bottom: 68
-    }}>
+    <div style={{ display: 'flex', flexDirection: 'column', position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68 }}>
 
-      {/* Clue panel — hidden after guess is confirmed */}
+      {/* Clue panel */}
       {!revealed && <div style={{ padding: '12px 16px', background: 'white', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
         <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
           <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{loc.emoji}</span>
           <div style={{ flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4, gap: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
               <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                 {t('geo.clue')} {roundIdx + 1}/{locations.length}
+              </div>
+              <div style={{ fontSize: '0.65rem', fontWeight: 700, color: curLevel.color, background: curLevel.bg, borderRadius: 6, padding: '1px 6px' }}>
+                {curLevel.icon} {curLevel.name} {curSubLevel}/5
               </div>
             </div>
             <p style={{ fontSize: '0.85rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
@@ -262,17 +260,10 @@ export default function GeoGame() {
         </div>
       </div>}
 
-      {/* Tap hint — right-aligned, sits just above the map */}
+      {/* Tap hint */}
       {!revealed && (
         <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '4px 10px', flexShrink: 0, background: 'white' }}>
-          <div style={{
-            background: 'rgba(0,0,0,0.72)', color: 'white',
-            fontSize: '0.75rem', fontWeight: 700,
-            padding: '5px 11px', borderRadius: 8,
-            letterSpacing: '0.03em',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
-            border: '1px solid rgba(255,255,255,0.15)'
-          }}>
+          <div style={{ background: 'rgba(0,0,0,0.72)', color: 'white', fontSize: '0.75rem', fontWeight: 700, padding: '5px 11px', borderRadius: 8, letterSpacing: '0.03em', boxShadow: '0 2px 8px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.15)' }}>
             📍 Tap the map to set your pin
           </div>
         </div>
@@ -280,19 +271,9 @@ export default function GeoGame() {
 
       {/* Map */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-        <MapContainer
-          center={LUX_CENTER}
-          zoom={LUX_ZOOM}
-          maxBounds={LUX_BOUNDS}
-          maxBoundsViscosity={0.7}
-          style={{ height: '100%', width: '100%' }}
-          ref={mapRef}
-          zoomControl={true}
-        >
-          <TileLayer
-            attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+        <MapContainer center={LUX_CENTER} zoom={LUX_ZOOM} maxBounds={LUX_BOUNDS} maxBoundsViscosity={0.7}
+          style={{ height: '100%', width: '100%' }} ref={mapRef} zoomControl={true}>
+          <TileLayer attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <MapResetter roundIdx={roundIdx} center={LUX_CENTER} zoom={LUX_ZOOM} />
           <MapFitBounds revealed={revealed} userPin={userPin} targetCoords={loc.coords} />
           {!revealed && <ClickHandler onMapClick={setUserPin} />}
@@ -302,64 +283,28 @@ export default function GeoGame() {
               <Marker position={loc.coords} icon={targetIcon} />
               {userPin && (
                 <>
-                  <Polyline
-                    positions={[userPin, loc.coords]}
-                    pathOptions={{ color: '#EF3340', weight: 2, dashArray: '6 6' }}
-                  />
-                  <Circle
-                    center={loc.coords}
-                    radius={500}
-                    pathOptions={{ color: '#059669', fillColor: '#D1FAE5', fillOpacity: 0.4, weight: 2 }}
-                  />
+                  <Polyline positions={[userPin, loc.coords]} pathOptions={{ color: '#EF3340', weight: 2, dashArray: '6 6' }} />
+                  <Circle center={loc.coords} radius={500} pathOptions={{ color: '#059669', fillColor: '#D1FAE5', fillOpacity: 0.4, weight: 2 }} />
                 </>
               )}
             </>
           )}
         </MapContainer>
-
-        {/* Pinch hint overlay */}
-        <div style={{
-          position: 'absolute', bottom: 10, right: 10, zIndex: 1000,
-          background: 'rgba(0,0,0,0.72)', color: 'white',
-          fontSize: '0.75rem', fontWeight: 700,
-          padding: '6px 12px', borderRadius: 8,
-          pointerEvents: 'none', letterSpacing: '0.03em',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
-          border: '1px solid rgba(255,255,255,0.15)'
-        }}>
+        <div style={{ position: 'absolute', bottom: 10, right: 10, zIndex: 1000, background: 'rgba(0,0,0,0.72)', color: 'white', fontSize: '0.75rem', fontWeight: 700, padding: '6px 12px', borderRadius: 8, pointerEvents: 'none', letterSpacing: '0.03em', boxShadow: '0 2px 8px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.15)' }}>
           🤏 Pinch to change size
         </div>
-
       </div>
 
       {/* Result panel */}
       {revealed && (
-        <div className="animate-slide-up" style={{
-          background: '#EFF6FF', borderTop: '1px solid var(--border)', flexShrink: 0
-        }}>
-          {/* Collapse toggle bar */}
-          <button
-            onClick={() => setResultCollapsed(c => !c)}
-            style={{
-              width: '100%', padding: '7px 16px',
-              background: 'var(--gray-50)', border: 'none',
-              borderBottom: resultCollapsed ? 'none' : '1px solid var(--border)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: 6, cursor: 'pointer', fontSize: '0.78rem', fontWeight: 600,
-              color: 'var(--text-muted)'
-            }}
-          >
+        <div className="animate-slide-up" style={{ background: '#EFF6FF', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
+          <button onClick={() => setResultCollapsed(c => !c)} style={{ width: '100%', padding: '7px 16px', background: 'var(--gray-50)', border: 'none', borderBottom: resultCollapsed ? 'none' : '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-muted)' }}>
             {resultCollapsed ? '▲ Show results' : '▼ Minimise'}
           </button>
-
-          {/* Full result content */}
           {!resultCollapsed && (
             <div style={{ padding: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                <div style={{
-                  background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2',
-                  borderRadius: 'var(--radius)', padding: '10px 16px', textAlign: 'center', minWidth: 80
-                }}>
+                <div style={{ background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2', borderRadius: 'var(--radius)', padding: '10px 16px', textAlign: 'center', minWidth: 80 }}>
                   <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{currentScore}</div>
                   <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{t('geo.points')}</div>
                 </div>
@@ -372,8 +317,7 @@ export default function GeoGame() {
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--gray-700)', marginBottom: 12 }}>{loc_t(loc.fact)}</p>
               <div style={{ display: 'flex', gap: 8 }}>
-                <a href={loc.link} target="_blank" rel="noreferrer"
-                  className="btn btn-outline btn-sm" style={{ flex: 1 }}>
+                <a href={loc.link} target="_blank" rel="noreferrer" className="btn btn-outline btn-sm" style={{ flex: 1 }}>
                   {t('geo.learnMore')} ↗
                 </a>
                 <button onClick={handleNext} className="btn btn-primary" style={{ flex: 2 }}>
@@ -382,15 +326,9 @@ export default function GeoGame() {
               </div>
             </div>
           )}
-
-          {/* Compact bar when collapsed */}
           {resultCollapsed && (
             <div style={{ padding: '10px 16px', display: 'flex', gap: 8, alignItems: 'center' }}>
-              <div style={{
-                background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2',
-                color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B',
-                borderRadius: 999, padding: '4px 12px', fontWeight: 800, fontSize: '0.9rem'
-              }}>
+              <div style={{ background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2', color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B', borderRadius: 999, padding: '4px 12px', fontWeight: 800, fontSize: '0.9rem' }}>
                 {currentScore} pts
               </div>
               <button onClick={handleNext} className="btn btn-primary" style={{ flex: 1 }}>
@@ -409,11 +347,7 @@ export default function GeoGame() {
               {t('geo.noPin')}
             </div>
           )}
-          <button
-            onClick={handleGuess}
-            disabled={!userPin}
-            className={`btn btn-primary btn-full${shake ? ' animate-shake' : ''}`}
-          >
+          <button onClick={handleGuess} disabled={!userPin} className={`btn btn-primary btn-full${shake ? ' animate-shake' : ''}`}>
             {t('geo.guess')}
           </button>
         </div>
@@ -425,33 +359,26 @@ export default function GeoGame() {
 // ─── Rules Modal ───────────────────────────────────────────────────────────────
 function RulesModal({ t, onClose }) {
   return (
-    <div style={{
-      position: 'fixed', inset: 0, zIndex: 1000,
-      background: 'rgba(0,0,0,0.55)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20
-    }}>
-      <div className="animate-slide-up" style={{
-        background: 'white', borderRadius: 'var(--radius-xl)',
-        padding: '28px 24px', maxWidth: 400, width: '100%',
-        boxShadow: '0 20px 60px rgba(0,0,0,0.25)'
-      }}>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+      <div className="animate-slide-up" style={{ background: 'white', borderRadius: 'var(--radius-xl)', padding: '28px 24px', maxWidth: 400, width: '100%', boxShadow: '0 20px 60px rgba(0,0,0,0.25)' }}>
         <div style={{ textAlign: 'center', marginBottom: 20 }}>
           <div style={{ fontSize: '2.2rem', marginBottom: 8 }}>🗺️</div>
           <h2 style={{ margin: '0 0 8px' }}>How to Play</h2>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 24 }}>
-          {[['📖', 'Read the location description'], ['📍', 'Tap the map to set your pin'], ['⭐', '1000 pts max']].map(([icon, label], i, arr) => (
+          {[['📖', 'Read the clue'], ['📍', 'Tap the map'], ['⭐', '1000 pts max per question']].map(([icon, label], i, arr) => (
             <>
               <div key={label} style={{ flex: 1, background: 'var(--gray-50)', borderRadius: 8, padding: 12, textAlign: 'center' }}>
                 <div style={{ fontSize: '1.5rem' }}>{icon}</div>
                 <div style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: 4 }}>{label}</div>
               </div>
-              {i < arr.length - 1 && (
-                <div key={`arrow-${i}`} style={{ color: 'var(--text-muted)', fontSize: '1rem', flexShrink: 0 }}>→</div>
-              )}
+              {i < arr.length - 1 && <div key={`arrow-${i}`} style={{ color: 'var(--text-muted)', fontSize: '1rem', flexShrink: 0 }}>→</div>}
             </>
           ))}
         </div>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textAlign: 'center', margin: '0 0 16px' }}>
+          Complete 5 questions to finish a sub-level and unlock the next one!
+        </p>
         <button onClick={onClose} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
           Let's Go! →
         </button>
@@ -461,132 +388,98 @@ function RulesModal({ t, onClose }) {
 }
 
 // ─── Intro Screen ──────────────────────────────────────────────────────────────
-function Intro({ t, totalPoints, onStart }) {
-  const currentLevel = getGeoLevel(totalPoints)
-  const nextLevel = GEO_LEVELS.find(l => l.minPoints > totalPoints)
+function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
   const [showRules, setShowRules] = useState(false)
+  const { levelIdx } = parseProgress(geoProgress)
+  const isFinished = levelIdx >= GEO_LEVELS.length - 1 && (geoProgress.completedSubLevels['geographer'] || 0) >= 5
 
   return (
     <div className="container" style={{ paddingTop: 24 }}>
-      {showRules && (
-        <RulesModal t={t} onClose={() => { setShowRules(false); onStart() }} />
-      )}
+      {showRules && <RulesModal t={t} onClose={() => { setShowRules(false); onStart() }} />}
 
-      {/* Smaller title box */}
-      <div style={{
-        background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)',
-        borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 14,
-        color: 'white', textAlign: 'center'
-      }}>
-        <div style={{ fontSize: '2rem', marginBottom: 6 }}>🗺️</div>
-        <h2 style={{ color: 'white', margin: '0 0 4px', fontSize: '1.3rem' }}>{t('geo.title')}</h2>
-        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.85rem' }}>{t('geo.subtitle')}</p>
+      <div style={{ background: `linear-gradient(135deg, ${curLevel.color}CC 0%, ${curLevel.color} 100%)`, borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 14, color: 'white', textAlign: 'center' }}>
+        <div style={{ fontSize: '2rem', marginBottom: 6 }}>{curLevel.icon}</div>
+        <h2 style={{ color: 'white', margin: '0 0 2px', fontSize: '1.3rem' }}>{t('geo.title')}</h2>
+        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.8rem' }}>
+          {isFinished ? '🏆 All levels complete!' : `${curLevel.name} · Sub-level ${curSubLevel} of 5`}
+        </p>
       </div>
 
-      {/* Start button — right under the title */}
-      <button
-        onClick={() => setShowRules(true)}
-        className="btn btn-full btn-lg"
-        style={{ background: '#059669', color: 'white', marginBottom: 16 }}
-      >
-        {t('quiz.startBtn')} →
+      <button onClick={() => setShowRules(true)} className="btn btn-full btn-lg"
+        style={{ background: curLevel.color, color: 'white', marginBottom: 16 }}>
+        {isFinished ? '🔄 Play Again' : `${curLevel.icon} Start ${curLevel.name} ${curSubLevel}/5 →`}
       </button>
 
-      {/* Level display */}
+      {/* Level map */}
       <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>
-          Your Explorer Level
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
+          Your Progress
         </div>
-        <GeoLevelBadges totalPoints={totalPoints} />
-        <div style={{
-          marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center'
-        }}>
+        <LevelMapBadges progress={geoProgress} />
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            {currentLevel.icon} {currentLevel.name}
+            {totalSubLevelsDone(geoProgress)}/25 sub-levels done
           </div>
           <div style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
-            {(totalPoints || 0).toLocaleString()} pts
+            {(geoProgress.totalPoints || 0).toLocaleString()} pts
           </div>
         </div>
-        {nextLevel && (
-          <div style={{ marginTop: 8, fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center' }}>
-            {(nextLevel.minPoints - totalPoints).toLocaleString()} pts to unlock {nextLevel.icon} {nextLevel.name}
-          </div>
-        )}
       </div>
     </div>
   )
 }
 
 // ─── Done Screen ───────────────────────────────────────────────────────────────
-function Done({ scores, locations, t, loc_t, totalPoints, newLevelUnlocked, onReplay }) {
+function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel, levelUpInfo, onReplay }) {
   const sessionTotal = scores.reduce((s, r) => s + r.pts, 0)
   const maxTotal = scores.length * 1000
-  const currentLevel = getGeoLevel(totalPoints)
-  const nextLevel = GEO_LEVELS.find(l => l.minPoints > totalPoints)
+  const { levelIdx: nextLevelIdx, subLevel: nextSub } = parseProgress(geoProgress)
+  const nextLevel = GEO_LEVELS[nextLevelIdx]
+  const isFinished = (geoProgress.completedSubLevels['geographer'] || 0) >= 5
 
   return (
     <div className="container" style={{ paddingTop: 24 }}>
       {/* Level up celebration */}
-      {newLevelUnlocked && (
-        <div className="animate-slide-up" style={{
-          background: `linear-gradient(135deg, ${newLevelUnlocked.color}CC 0%, ${newLevelUnlocked.color} 100%)`,
-          borderRadius: 'var(--radius-xl)', padding: '20px 24px', marginBottom: 20,
-          color: 'white', textAlign: 'center'
-        }}>
-          <div style={{ fontSize: '3rem', marginBottom: 8 }}>{newLevelUnlocked.icon}</div>
+      {levelUpInfo && (
+        <div className="animate-slide-up" style={{ background: `linear-gradient(135deg, ${levelUpInfo.color}CC 0%, ${levelUpInfo.color} 100%)`, borderRadius: 'var(--radius-xl)', padding: '20px 24px', marginBottom: 20, color: 'white', textAlign: 'center' }}>
+          <div style={{ fontSize: '3rem', marginBottom: 8 }}>{levelUpInfo.icon}</div>
           <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>
-            Level Up! {newLevelUnlocked.name} unlocked!
+            New Level Unlocked!
           </div>
-          <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>
-            You've reached Level {newLevelUnlocked.id}
-          </div>
+          <div style={{ fontSize: '1rem', opacity: 0.9 }}>{levelUpInfo.name}</div>
         </div>
       )}
 
-      <div style={{
-        background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)',
-        borderRadius: 'var(--radius-xl)', padding: '28px 24px', marginBottom: 24,
-        color: 'white', textAlign: 'center'
-      }}>
-        <div style={{ fontSize: '3.5rem', marginBottom: 8 }}>🗺️</div>
-        <div style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1 }}>{sessionTotal.toLocaleString()}</div>
+      {/* Sub-level complete banner */}
+      {!levelUpInfo && (
+        <div style={{ background: `linear-gradient(135deg, ${curLevel.color}99 0%, ${curLevel.color} 100%)`, borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 16, color: 'white', textAlign: 'center' }}>
+          <div style={{ fontSize: '1.4rem', marginBottom: 4 }}>{curLevel.icon}</div>
+          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{curLevel.name} — Sub-level {curSubLevel} complete!</div>
+        </div>
+      )}
+
+      <div style={{ background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)', borderRadius: 'var(--radius-xl)', padding: '24px', marginBottom: 20, color: 'white', textAlign: 'center' }}>
+        <div style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1 }}>{sessionTotal.toLocaleString()}</div>
         <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>/ {maxTotal.toLocaleString()} {t('geo.points')}</div>
         <div style={{ marginTop: 8, color: 'rgba(255,255,255,0.85)' }}>{t('geo.results')}</div>
       </div>
 
       {/* Level progress */}
       <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>
-          Your Explorer Level
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
+          Your Progress
         </div>
-        <GeoLevelBadges totalPoints={totalPoints} />
-        <div style={{
-          marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center'
-        }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            +{sessionTotal.toLocaleString()} pts this session
-          </div>
-          <div style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
-            {totalPoints.toLocaleString()} total
-          </div>
+        <LevelMapBadges progress={geoProgress} />
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>+{sessionTotal.toLocaleString()} pts this round</div>
+          <div style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>{(geoProgress.totalPoints || 0).toLocaleString()} total</div>
         </div>
-        {nextLevel && (
-          <div style={{ marginTop: 8, fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center' }}>
-            {(nextLevel.minPoints - totalPoints).toLocaleString()} pts to {nextLevel.icon} {nextLevel.name}
-          </div>
-        )}
       </div>
 
       {/* Round breakdown */}
       <div className="card" style={{ marginBottom: 20 }}>
         {scores.map((s, i) => (
-          <div key={i} style={{
-            display: 'flex', alignItems: 'center', gap: 12,
-            padding: '10px 0', borderBottom: i < scores.length - 1 ? '1px solid var(--border)' : 'none'
-          }}>
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: i < scores.length - 1 ? '1px solid var(--border)' : 'none' }}>
             <span style={{ fontSize: '1.4rem' }}>{locations[i].emoji}</span>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{loc_t(locations[i].name)}</div>
@@ -594,11 +487,7 @@ function Done({ scores, locations, t, loc_t, totalPoints, newLevelUnlocked, onRe
                 {s.km < 1 ? `${Math.round(s.km * 1000)}m` : `${s.km.toFixed(1)}km`} {t('geo.away')}
               </div>
             </div>
-            <div style={{
-              background: s.pts >= 800 ? '#D1FAE5' : s.pts >= 500 ? '#FEF3C7' : '#FEE2E2',
-              color: s.pts >= 800 ? '#065F46' : s.pts >= 500 ? '#92400E' : '#991B1B',
-              padding: '4px 10px', borderRadius: 999, fontWeight: 700, fontSize: '0.85rem'
-            }}>
+            <div style={{ background: s.pts >= 800 ? '#D1FAE5' : s.pts >= 500 ? '#FEF3C7' : '#FEE2E2', color: s.pts >= 800 ? '#065F46' : s.pts >= 500 ? '#92400E' : '#991B1B', padding: '4px 10px', borderRadius: 999, fontWeight: 700, fontSize: '0.85rem' }}>
               {s.pts}
             </div>
           </div>
@@ -606,19 +495,14 @@ function Done({ scores, locations, t, loc_t, totalPoints, newLevelUnlocked, onRe
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {nextLevel ? (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white', whiteSpace: 'normal', lineHeight: 1.3, padding: '12px 16px', position: 'relative' }}>
-            <div>🔄 Continue Playing</div>
-            <div style={{ fontSize: '0.8rem', opacity: 0.9 }}>{nextLevel.icon} {nextLevel.name} — {(nextLevel.minPoints - totalPoints).toLocaleString()} pts away</div>
-            <span style={{
-              position: 'absolute', bottom: 7, right: 10,
-              fontSize: '0.8rem', fontWeight: 800, opacity: 0.75,
-              lineHeight: 1
-            }}>→</span>
+        {isFinished ? (
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
+            🏆 All done! Play again →
           </button>
         ) : (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
-            🔄 {t('geo.playAgain')}
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: nextLevel.color, color: 'white', whiteSpace: 'normal', lineHeight: 1.3, padding: '12px 16px' }}>
+            <div>{nextLevel.icon} {nextLevel.name} — Sub-level {nextSub}/5</div>
+            <div style={{ fontSize: '0.8rem', opacity: 0.9 }}>Continue →</div>
           </button>
         )}
       </div>
