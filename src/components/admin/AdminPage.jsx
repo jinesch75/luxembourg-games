@@ -68,7 +68,6 @@ const S = {
     cursor: 'pointer',
     background: 'none',
     border: 'none',
-    borderBottom: active ? '2px solid #EF3340' : '2px solid transparent',
     textTransform: 'uppercase',
     letterSpacing: '0.06em',
     transition: 'color 0.15s',
