@@ -4,6 +4,7 @@ import { getCurrentPuzzle, COLOR_META, PUZZLES } from './data/puzzles'
 import { weekIndex } from '../../utils/dateUtils'
 import { useGameContent } from '../../hooks/useGameContent'
 import { trackGameEvent } from '../../utils/analytics'
+import { getField, getArrayField } from '../../utils/contentLang'
 
 const MAX_ATTEMPTS = 4
 
@@ -18,15 +19,33 @@ function shuffle(arr, seed) {
 }
 
 export default function ConnectGame() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language || 'en').split('-')[0]
 
   // Use server-side content override if available
   const allPuzzles = useGameContent('puzzles', PUZZLES)
   const puzzle     = useMemo(() => getCurrentPuzzle(weekIndex(), allPuzzles), [allPuzzles])
 
-  // Build flat list of all items with their group info
-  const allItems = puzzle.groups.flatMap(g =>
-    g.items.map(item => ({ item, color: g.color, title: g.title }))
+  // Language-aware helpers for puzzle fields
+  const pTitle = (p) => getField(p, 'title', lang) || p.title
+  const gTitle = (g, ci) => {
+    // group titles in translations are stored under translations[lang].groups[ci].title
+    if (lang !== 'en' && puzzle.translations?.[lang]?.groups?.[ci]?.title) {
+      return puzzle.translations[lang].groups[ci].title
+    }
+    return g.title
+  }
+  const gItems = (g, ci) => {
+    if (lang !== 'en' && Array.isArray(puzzle.translations?.[lang]?.groups?.[ci]?.items)) {
+      const tItems = puzzle.translations[lang].groups[ci].items
+      if (tItems.some(i => i)) return tItems.map((v, ii) => v || g.items[ii])
+    }
+    return g.items
+  }
+
+  // Build flat list of all items with their group info (use translated items)
+  const allItems = puzzle.groups.flatMap((g, ci) =>
+    gItems(g, ci).map(item => ({ item, color: g.color, title: gTitle(g, ci) }))
   )
 
   const [tiles, setTiles]           = useState(() => shuffle(allItems.map(i => i.item), weekIndex() * 17))
@@ -101,8 +120,8 @@ export default function ConnectGame() {
     }
   }
 
-  if (step === 'intro') return <Intro puzzle={puzzle} t={t} onStart={() => { trackGameEvent('connect', 'start'); setStep('game') }} />
-  if (step === 'done')  return <Done  puzzle={puzzle} solved={solved} mistakes={mistakes} t={t} allItems={allItems} onReplay={() => {
+  if (step === 'intro') return <Intro puzzle={puzzle} lang={lang} t={t} onStart={() => { trackGameEvent('connect', 'start'); setStep('game') }} />
+  if (step === 'done')  return <Done  puzzle={puzzle} lang={lang} solved={solved} mistakes={mistakes} t={t} allItems={allItems} onReplay={() => {
     setSolved([]); setSelected([]); setAttempts(0); setMistakes(0); setMessage(null); setStep('game')
   }} />
 
@@ -115,7 +134,7 @@ export default function ConnectGame() {
         <div>
           <h2 style={{ fontSize: '1.1rem', margin: 0 }}>{t('connect.title')}</h2>
           <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-            {t('connect.weeklyPuzzle')} — {puzzle.title}
+            {t('connect.weeklyPuzzle')} — {pTitle(puzzle)}
           </div>
         </div>
         <div style={{ display: 'flex', gap: 4 }}>
@@ -142,7 +161,8 @@ export default function ConnectGame() {
 
       {/* Solved groups */}
       {solved.map(color => {
-        const group = puzzle.groups.find(g => g.color === color)
+        const ci    = puzzle.groups.findIndex(g => g.color === color)
+        const group = puzzle.groups[ci]
         const meta  = COLOR_META[color]
         return (
           <div key={color} className="animate-pop-in" style={{
@@ -150,10 +170,10 @@ export default function ConnectGame() {
             borderRadius: 'var(--radius)', padding: '12px 16px', marginBottom: 8, textAlign: 'center'
           }}>
             <div style={{ fontWeight: 800, fontSize: '0.9rem', color: meta.text, marginBottom: 4 }}>
-              {group.title.toUpperCase()}
+              {gTitle(group, ci).toUpperCase()}
             </div>
             <div style={{ fontSize: '0.85rem', color: meta.text, opacity: 0.8 }}>
-              {group.items.join(' · ')}
+              {gItems(group, ci).join(' · ')}
             </div>
           </div>
         )
@@ -229,7 +249,7 @@ export default function ConnectGame() {
   )
 }
 
-function Intro({ puzzle, t, onStart }) {
+function Intro({ puzzle, lang, t, onStart }) {
   return (
     <div className="container" style={{ paddingTop: 24 }}>
       <div style={{
@@ -243,7 +263,7 @@ function Intro({ puzzle, t, onStart }) {
       </div>
 
       <div className="card" style={{ marginBottom: 16 }}>
-        <div style={{ fontWeight: 700, marginBottom: 12 }}>{t('connect.weeklyPuzzle')}: "{puzzle.title}"</div>
+        <div style={{ fontWeight: 700, marginBottom: 12 }}>{t('connect.weeklyPuzzle')}: "{getField(puzzle, 'title', lang) || puzzle.title}"</div>
         <p style={{ fontSize: '0.9rem', color: 'var(--gray-700)', margin: 0 }}>{t('connect.instructions')}</p>
         <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {Object.entries(COLOR_META).map(([color, meta]) => (
@@ -271,7 +291,7 @@ function Intro({ puzzle, t, onStart }) {
   )
 }
 
-function Done({ puzzle, solved, mistakes, t, allItems, onReplay }) {
+function Done({ puzzle, lang, solved, mistakes, t, allItems, onReplay }) {
   const allSolved = solved.length === puzzle.groups.length
   return (
     <div className="container" style={{ paddingTop: 24 }}>
@@ -294,9 +314,13 @@ function Done({ puzzle, solved, mistakes, t, allItems, onReplay }) {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
-        {puzzle.groups.map(group => {
+        {puzzle.groups.map((group, ci) => {
           const meta = COLOR_META[group.color]
           const wasSolved = solved.includes(group.color)
+          const l = lang || 'en'
+          const tg = (l !== 'en' && puzzle.translations?.[l]?.groups?.[ci]) || null
+          const dTitle = tg?.title || group.title
+          const dItems = (tg?.items?.some(i => i) ? tg.items.map((v, ii) => v || group.items[ii]) : group.items)
           return (
             <div key={group.color} style={{
               background: wasSolved ? meta.bg : 'var(--gray-100)',
@@ -305,11 +329,11 @@ function Done({ puzzle, solved, mistakes, t, allItems, onReplay }) {
               opacity: wasSolved ? 1 : 0.6
             }}>
               <div style={{ fontWeight: 800, fontSize: '0.85rem', color: wasSolved ? meta.text : 'var(--gray-500)', marginBottom: 6 }}>
-                {group.title.toUpperCase()}
+                {dTitle.toUpperCase()}
                 {!wasSolved && ' ✗'}
               </div>
               <div style={{ fontSize: '0.85rem', color: wasSolved ? meta.text : 'var(--gray-500)', opacity: 0.85 }}>
-                {group.items.join(' · ')}
+                {dItems.join(' · ')}
               </div>
             </div>
           )

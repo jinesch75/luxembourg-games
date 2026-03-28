@@ -4,6 +4,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { QUESTIONS, getSubLevelQuestions } from './data/questions'
 import { useGameContent } from '../../hooks/useGameContent'
 import { trackGameEvent } from '../../utils/analytics'
+import { getField, getArrayField } from '../../utils/contentLang'
 
 const CAT_COLORS = {
   language:     { bg: '#F3E8FF', text: '#7C3AED', icon: '🗣️' },
@@ -92,7 +93,7 @@ function LevelMapBadges({ progress }) {
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function QuizGame() {
   const { t, i18n } = useTranslation()
-  const lang = i18n.language
+  const lang = (i18n.language || 'en').split('-')[0]
 
   const [quizProgress, setQuizProgress] = useLocalStorage('letz-quiz-progress-v2', {
     completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0, ambassador: 0 },
@@ -119,10 +120,11 @@ export default function QuizGame() {
   const [levelUpInfo, setLevelUpInfo] = useState(null)
   const [completedSubLevelNum, setCompletedSubLevelNum] = useState(null)
 
-  // Helper: get translated question field with English fallback
-  const qText    = (q) => t(`questions.${q.id}.q`,  { defaultValue: q.question })
-  const qOption  = (q, i) => t(`questions.${q.id}.o${i}`, { defaultValue: q.options[i] })
-  const qExplain = (q) => t(`questions.${q.id}.e`,  { defaultValue: q.explanation })
+  // Helper: get translated question field.
+  // Priority: 1) translations object (admin-edited), 2) i18next key (static JSON), 3) English fallback
+  const qText    = (q) => getField(q, 'question', lang) || t(`questions.${q.id}.q`,   { defaultValue: q.question })
+  const qOption  = (q, i) => getArrayField(q, 'options', lang)[i] || t(`questions.${q.id}.o${i}`, { defaultValue: q.options[i] })
+  const qExplain = (q) => getField(q, 'explanation', lang) || t(`questions.${q.id}.e`, { defaultValue: q.explanation })
 
   const handleSelect = (idx) => {
     if (revealed) return

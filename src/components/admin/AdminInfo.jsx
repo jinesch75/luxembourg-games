@@ -17,6 +17,14 @@ import {
   DEFAULT_LANGUAGE_PHRASES,
   DEFAULT_RELIABLE_SOURCES,
 } from '../InfoHub'
+import LangTabs from './LangTabs'
+import { ensureTranslations } from '../../utils/contentLang'
+
+const TRANS_LANGS = ['fr', 'de', 'lb']
+// Ensure an item has translation stubs for a given set of fields
+function withTrans(item, fields) {
+  return ensureTranslations(item, fields)
+}
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
@@ -90,14 +98,35 @@ function BpCardRow({ card, onEdit, onDelete }) {
   )
 }
 function BpCardEditor({ card, onSave, onCancel }) {
-  const [d, setD] = useState({ ...card })
+  const [d, setD] = useState(() => withTrans({ ...card }, ['title', 'text']))
+  const [editLang, setEditLang] = useState('en')
+
+  const getF = (f) => editLang === 'en' ? d[f] : (d.translations[editLang][f] || '')
+  const setF = (f, val) => {
+    if (editLang === 'en') { setD(p => ({ ...p, [f]: val })); return }
+    setD(p => ({ ...p, translations: { ...p.translations, [editLang]: { ...p.translations[editLang], [f]: val } } }))
+  }
+  const missing = TRANS_LANGS.filter(l => !d.translations[l]?.title)
+
   return (
     <EditorBox>
-      <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: 8, marginBottom: 8 }}>
-        <div><Label>Icon</Label><input value={d.icon} onChange={e => setD(p => ({ ...p, icon: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
-        <div><Label>Title</Label><input value={d.title} onChange={e => setD(p => ({ ...p, title: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
+      <LangTabs lang={editLang} onChange={setEditLang} missingFor={missing} />
+      {editLang === 'en' && (
+        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: 8, marginBottom: 8 }}>
+          <div><Label>Icon</Label><input value={d.icon} onChange={e => setD(p => ({ ...p, icon: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
+          <div><Label>Title (EN)</Label><input value={d.title} onChange={e => setF('title', e.target.value)} style={{ ...inputStyle(), height: 36 }} /></div>
+        </div>
+      )}
+      {editLang !== 'en' && (
+        <div style={{ marginBottom: 8 }}>
+          <Label>Title <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span></Label>
+          <input value={getF('title')} onChange={e => setF('title', e.target.value)} placeholder={d.title} style={{ ...inputStyle(), height: 36 }} />
+        </div>
+      )}
+      <div style={{ marginBottom: 10 }}>
+        <Label>Text {editLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+        <textarea value={getF('text')} onChange={e => setF('text', e.target.value)} placeholder={editLang !== 'en' ? d.text : undefined} style={inputStyle(true)} rows={3} />
       </div>
-      <div style={{ marginBottom: 10 }}><Label>Text</Label><textarea value={d.text} onChange={e => setD(p => ({ ...p, text: e.target.value }))} style={inputStyle(true)} rows={3} /></div>
       <SaveCancelRow onSave={() => onSave(d)} onCancel={onCancel} />
     </EditorBox>
   )
@@ -283,6 +312,8 @@ export default function AdminInfo() {
   const [bpInterculturalCard, setBpInterculturalCard] = useState({ title: 'Intercultural living-together', text: "Nearly half of Luxembourg's residents are foreign nationals. This rich diversity is one of Luxembourg's greatest strengths. Living and working together across cultures requires understanding, respect, and curiosity — exactly what these activities are designed to encourage." })
   const [editingBpIntro, setEditingBpIntro]           = useState(false)
   const [editingBpInterculturalCard, setEditingBpInterculturalCard] = useState(false)
+  const [bpIntroLang, setBpIntroLang]   = useState('en')
+  const [bpICLang,    setBpICLang]      = useState('en')
 
   const [editingBp, setEditingBp]         = useState(null)   // card.id
   const [editingAct, setEditingAct]       = useState(null)   // cat.id
@@ -450,13 +481,47 @@ export default function AdminInfo() {
           <SectionHeader title='🟦 "What is the Biergerpakt?" box' />
           {!editingBpIntro && editBtn(() => setEditingBpIntro(true))}
         </div>
-        {editingBpIntro ? (
-          <EditorBox>
-            <div style={{ marginBottom: 8 }}><Label>Title</Label><input value={bpIntro.title} onChange={e => setBpIntro(p => ({ ...p, title: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
-            <div style={{ marginBottom: 8 }}><Label>Body text</Label><textarea value={bpIntro.text} onChange={e => setBpIntro(p => ({ ...p, text: e.target.value }))} style={inputStyle(true)} rows={4} /></div>
-            <div style={{ marginBottom: 12 }}><Label>CTA button label</Label><input value={bpIntro.cta} onChange={e => setBpIntro(p => ({ ...p, cta: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
-            <SaveCancelRow onSave={() => { setEditingBpIntro(false); saveToServer({ bpIntro }) }} onCancel={() => setEditingBpIntro(false)} />
-          </EditorBox>
+        {editingBpIntro ? (() => {
+          const intro = withTrans(bpIntro, ['title', 'text', 'cta'])
+          const getF = (f) => bpIntroLang === 'en' ? intro[f] : (intro.translations[bpIntroLang]?.[f] || '')
+          const setF = (f, val) => {
+            if (bpIntroLang === 'en') {
+              setBpIntro(p => ({ ...withTrans(p, ['title','text','cta']), [f]: val }))
+            } else {
+              setBpIntro(p => {
+                const t = withTrans(p, ['title','text','cta'])
+                return { ...t, translations: { ...t.translations, [bpIntroLang]: { ...t.translations[bpIntroLang], [f]: val } } }
+              })
+            }
+          }
+          const missingBpIntro = TRANS_LANGS.filter(l => !intro.translations[l]?.title)
+          return (
+            <EditorBox>
+              <LangTabs lang={bpIntroLang} onChange={setBpIntroLang} missingFor={missingBpIntro} />
+              <div style={{ marginBottom: 8 }}>
+                <Label>Title {bpIntroLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+                <input value={getF('title')} onChange={e => setF('title', e.target.value)} placeholder={bpIntroLang !== 'en' ? intro.title : undefined} style={{ ...inputStyle(), height: 36 }} />
+              </div>
+              <div style={{ marginBottom: 8 }}>
+                <Label>Body text {bpIntroLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+                <textarea value={getF('text')} onChange={e => setF('text', e.target.value)} placeholder={bpIntroLang !== 'en' ? intro.text : undefined} style={inputStyle(true)} rows={4} />
+              </div>
+              {bpIntroLang === 'en' && (
+                <div style={{ marginBottom: 12 }}>
+                  <Label>CTA button label</Label>
+                  <input value={intro.cta} onChange={e => setF('cta', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
+                </div>
+              )}
+              {bpIntroLang !== 'en' && (
+                <div style={{ marginBottom: 12 }}>
+                  <Label>CTA label <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span></Label>
+                  <input value={getF('cta')} onChange={e => setF('cta', e.target.value)} placeholder={intro.cta} style={{ ...inputStyle(), height: 36 }} />
+                </div>
+              )}
+              <SaveCancelRow onSave={() => { setEditingBpIntro(false); setBpIntroLang('en'); saveToServer({ bpIntro: withTrans(bpIntro, ['title','text','cta']) }) }} onCancel={() => { setEditingBpIntro(false); setBpIntroLang('en') }} />
+            </EditorBox>
+          )
+        })()
         ) : (
           <RowBox>
             <div style={{ flex: 1, minWidth: 0 }}>
@@ -474,12 +539,35 @@ export default function AdminInfo() {
           <SectionHeader title='🌿 "Intercultural living-together" card' />
           {!editingBpInterculturalCard && editBtn(() => setEditingBpInterculturalCard(true))}
         </div>
-        {editingBpInterculturalCard ? (
-          <EditorBox>
-            <div style={{ marginBottom: 8 }}><Label>Title</Label><input value={bpInterculturalCard.title} onChange={e => setBpInterculturalCard(p => ({ ...p, title: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
-            <div style={{ marginBottom: 12 }}><Label>Body text</Label><textarea value={bpInterculturalCard.text} onChange={e => setBpInterculturalCard(p => ({ ...p, text: e.target.value }))} style={inputStyle(true)} rows={4} /></div>
-            <SaveCancelRow onSave={() => { setEditingBpInterculturalCard(false); saveToServer({ bpInterculturalCard }) }} onCancel={() => setEditingBpInterculturalCard(false)} />
-          </EditorBox>
+        {editingBpInterculturalCard ? (() => {
+          const ic = withTrans(bpInterculturalCard, ['title', 'text'])
+          const getF = (f) => bpICLang === 'en' ? ic[f] : (ic.translations[bpICLang]?.[f] || '')
+          const setF = (f, val) => {
+            if (bpICLang === 'en') {
+              setBpInterculturalCard(p => ({ ...withTrans(p, ['title','text']), [f]: val }))
+            } else {
+              setBpInterculturalCard(p => {
+                const t = withTrans(p, ['title','text'])
+                return { ...t, translations: { ...t.translations, [bpICLang]: { ...t.translations[bpICLang], [f]: val } } }
+              })
+            }
+          }
+          const missingIC = TRANS_LANGS.filter(l => !ic.translations[l]?.title)
+          return (
+            <EditorBox>
+              <LangTabs lang={bpICLang} onChange={setBpICLang} missingFor={missingIC} />
+              <div style={{ marginBottom: 8 }}>
+                <Label>Title {bpICLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+                <input value={getF('title')} onChange={e => setF('title', e.target.value)} placeholder={bpICLang !== 'en' ? ic.title : undefined} style={{ ...inputStyle(), height: 36 }} />
+              </div>
+              <div style={{ marginBottom: 12 }}>
+                <Label>Body text {bpICLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+                <textarea value={getF('text')} onChange={e => setF('text', e.target.value)} placeholder={bpICLang !== 'en' ? ic.text : undefined} style={inputStyle(true)} rows={4} />
+              </div>
+              <SaveCancelRow onSave={() => { setEditingBpInterculturalCard(false); setBpICLang('en'); saveToServer({ bpInterculturalCard: withTrans(bpInterculturalCard, ['title','text']) }) }} onCancel={() => { setEditingBpInterculturalCard(false); setBpICLang('en') }} />
+            </EditorBox>
+          )
+        })()
         ) : (
           <RowBox>
             <div style={{ flex: 1, minWidth: 0 }}>

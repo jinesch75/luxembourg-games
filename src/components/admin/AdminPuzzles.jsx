@@ -4,6 +4,10 @@
 
 import { useState, useEffect } from 'react'
 import { PUZZLES, COLOR_META } from '../../games/connect/data/puzzles'
+import LangTabs from './LangTabs'
+import { ensureTranslations } from '../../utils/contentLang'
+
+const TRANS_LANGS = ['fr', 'de', 'lb']
 
 const ADMIN_PASSWORD = 'biergerpakt'
 const COLORS = ['yellow', 'green', 'blue', 'purple']
@@ -80,22 +84,56 @@ function PuzzleCard({ puzzle, onEdit }) {
 }
 
 // ── Puzzle editor ──────────────────────────────────────────────────────────
-function PuzzleEditor({ puzzle, onSave, onCancel }) {
-  const [draft, setDraft] = useState(JSON.parse(JSON.stringify(puzzle)))
+// Ensure puzzle has translation stubs for title + each group's title and items
+function ensurePuzzleTranslations(puzzle) {
+  const t = { ...(puzzle.translations || {}) }
+  for (const l of TRANS_LANGS) {
+    t[l] = { title: '', groups: [], ...t[l] }
+    if (!Array.isArray(t[l].groups) || t[l].groups.length !== puzzle.groups.length) {
+      t[l].groups = puzzle.groups.map((g, i) => ({
+        title: t[l].groups?.[i]?.title || '',
+        items: t[l].groups?.[i]?.items || g.items.map(() => ''),
+      }))
+    }
+  }
+  return { ...puzzle, translations: t }
+}
 
+function PuzzleEditor({ puzzle, onSave, onCancel }) {
+  const [draft, setDraft] = useState(() => ensurePuzzleTranslations(JSON.parse(JSON.stringify(puzzle))))
+  const [editLang, setEditLang] = useState('en')
+
+  // ── EN helpers ──
   const setTitle = val => setDraft(d => ({ ...d, title: val }))
-  const setGroupTitle = (ci, val) => setDraft(d => {
-    const groups = d.groups.map((g, i) => i === ci ? { ...g, title: val } : g)
-    return { ...d, groups }
-  })
-  const setItem = (ci, ii, val) => setDraft(d => {
-    const groups = d.groups.map((g, i) => {
+  const setGroupTitle = (ci, val) => setDraft(d => ({
+    ...d, groups: d.groups.map((g, i) => i === ci ? { ...g, title: val } : g)
+  }))
+  const setItem = (ci, ii, val) => setDraft(d => ({
+    ...d, groups: d.groups.map((g, i) => {
       if (i !== ci) return g
-      const items = [...g.items]; items[ii] = val
-      return { ...g, items }
+      const items = [...g.items]; items[ii] = val; return { ...g, items }
     })
-    return { ...d, groups }
+  }))
+
+  // ── Translation helpers ──
+  const setTTitle = val => setDraft(d => ({
+    ...d, translations: { ...d.translations, [editLang]: { ...d.translations[editLang], title: val } }
+  }))
+  const setTGroupTitle = (ci, val) => setDraft(d => {
+    const groups = [...d.translations[editLang].groups]
+    groups[ci] = { ...groups[ci], title: val }
+    return { ...d, translations: { ...d.translations, [editLang]: { ...d.translations[editLang], groups } } }
   })
+  const setTItem = (ci, ii, val) => setDraft(d => {
+    const groups = [...d.translations[editLang].groups]
+    const items = [...groups[ci].items]; items[ii] = val
+    groups[ci] = { ...groups[ci], items }
+    return { ...d, translations: { ...d.translations, [editLang]: { ...d.translations[editLang], groups } } }
+  })
+
+  const missingFor = TRANS_LANGS.filter(l => !draft.translations[l]?.title)
+
+  const tl = editLang !== 'en' ? draft.translations[editLang] : null
 
   return (
     <div style={{
@@ -103,19 +141,22 @@ function PuzzleEditor({ puzzle, onSave, onCancel }) {
       boxShadow: '0 2px 8px rgba(0,0,0,0.12)', marginBottom: 12,
       border: '2px solid #EF3340',
     }}>
-      <div style={{ fontWeight: 700, marginBottom: 14, color: '#EF3340', fontSize: '0.85rem' }}>
+      <div style={{ fontWeight: 700, marginBottom: 10, color: '#EF3340', fontSize: '0.85rem' }}>
         ✏️ Editing — {puzzle.id}
       </div>
+
+      <LangTabs lang={editLang} onChange={setEditLang} missingFor={missingFor} />
 
       {/* Puzzle title */}
       <div style={{ marginBottom: 14 }}>
         <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
-          Puzzle title
+          Puzzle title {editLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}
         </label>
         <input
           type="text"
-          value={draft.title}
-          onChange={e => setTitle(e.target.value)}
+          value={editLang === 'en' ? draft.title : (tl.title || '')}
+          onChange={e => editLang === 'en' ? setTitle(e.target.value) : setTTitle(e.target.value)}
+          placeholder={editLang !== 'en' ? draft.title : undefined}
           style={{ ...inputStyle(), height: 36 }}
         />
       </div>
@@ -123,6 +164,7 @@ function PuzzleEditor({ puzzle, onSave, onCancel }) {
       {/* Groups */}
       {draft.groups.map((group, ci) => {
         const meta = COLOR_META[group.color]
+        const tGroup = tl?.groups?.[ci] || {}
         return (
           <div key={group.color} style={{
             background: meta.bg, border: `1px solid ${meta.border}`,
@@ -137,28 +179,29 @@ function PuzzleEditor({ puzzle, onSave, onCancel }) {
 
             <div style={{ marginBottom: 8 }}>
               <label style={{ fontSize: '0.72rem', fontWeight: 600, color: meta.text, display: 'block', marginBottom: 3 }}>
-                Category title (shown on reveal)
+                Category title {editLang !== 'en' && <span style={{ color: meta.text, opacity: 0.6, fontWeight: 400 }}>(leave blank → EN)</span>}
               </label>
               <input
                 type="text"
-                value={group.title}
-                onChange={e => setGroupTitle(ci, e.target.value)}
+                value={editLang === 'en' ? group.title : (tGroup.title || '')}
+                onChange={e => editLang === 'en' ? setGroupTitle(ci, e.target.value) : setTGroupTitle(ci, e.target.value)}
+                placeholder={editLang !== 'en' ? group.title : undefined}
                 style={{ ...inputStyle(), height: 34, background: 'white' }}
               />
             </div>
 
             <label style={{ fontSize: '0.72rem', fontWeight: 600, color: meta.text, display: 'block', marginBottom: 4 }}>
-              4 items (one per box)
+              4 items {editLang !== 'en' && <span style={{ color: meta.text, opacity: 0.6, fontWeight: 400 }}>(leave blank → EN)</span>}
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
               {group.items.map((item, ii) => (
                 <input
                   key={ii}
                   type="text"
-                  value={item}
-                  onChange={e => setItem(ci, ii, e.target.value)}
+                  value={editLang === 'en' ? item : (tGroup.items?.[ii] || '')}
+                  onChange={e => editLang === 'en' ? setItem(ci, ii, e.target.value) : setTItem(ci, ii, e.target.value)}
+                  placeholder={editLang !== 'en' ? item : `Item ${ii + 1}`}
                   style={{ ...inputStyle(), height: 34, background: 'white', padding: '6px 10px' }}
-                  placeholder={`Item ${ii + 1}`}
                 />
               ))}
             </div>

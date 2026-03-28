@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { getField } from '../utils/contentLang'
 
 export const DEFAULT_BP_CARDS = [
   { id: 'bp1', icon: '🗓️', title: 'Regular events', text: 'The Biergerpakt organises workshops, guided tours, sports events, and cultural activities throughout the year — all free or low cost.' },
@@ -197,8 +198,12 @@ export default function InfoHub() {
     setActiveTab(getTabFromUrl())
   }, [location.search])
 
-  const biergerpaktUrl = BIERGERPAKT_URLS[i18n.language] || BIERGERPAKT_URLS.en
-  const luxembourgishUrl = LUXEMBOURGISH_URLS[i18n.language] || LUXEMBOURGISH_URLS.en
+  const lang = (i18n.language || 'en').split('-')[0]
+  // Helper: get translated field from dynamic content items
+  const tf = (item, field) => getField(item, field, lang) || item?.[field] || ''
+
+  const biergerpaktUrl = BIERGERPAKT_URLS[lang] || BIERGERPAKT_URLS.en
+  const luxembourgishUrl = LUXEMBOURGISH_URLS[lang] || LUXEMBOURGISH_URLS.en
 
   const tabs = [
     { id: 'biergerpakt', label: 'Biergerpakt', icon: '🤝' },
@@ -245,9 +250,9 @@ export default function InfoHub() {
             color: 'white', marginBottom: 20
           }}>
             <div style={{ fontSize: '3rem', marginBottom: 12 }}>🤝</div>
-            <h2 style={{ color: 'white', marginBottom: 12 }}>{bpIntro?.title ?? t('info.biergerpakt.title')}</h2>
+            <h2 style={{ color: 'white', marginBottom: 12 }}>{bpIntro ? tf(bpIntro, 'title') : t('info.biergerpakt.title')}</h2>
             <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, lineHeight: 1.6 }}>
-              {bpIntro?.text ?? t('info.biergerpakt.text')}
+              {bpIntro ? tf(bpIntro, 'text') : t('info.biergerpakt.text')}
             </p>
             <a href={biergerpaktUrl}
               target="_blank" rel="noreferrer"
@@ -258,24 +263,24 @@ export default function InfoHub() {
                 color: 'white', borderRadius: 10, padding: '12px 16px',
                 textAlign: 'center', fontWeight: 700, textDecoration: 'none', fontSize: '0.9rem'
               }}>
-              {bpIntro?.cta ?? t('info.biergerpakt.cta')} →
+              {bpIntro ? tf(bpIntro, 'cta') : t('info.biergerpakt.cta')} →
             </a>
           </div>
 
           <div className="card" style={{ marginBottom: 16 }}>
-            <h3 style={{ marginBottom: 12 }}>{bpInterculturalCard?.title ?? t('info.intercultural.title')}</h3>
+            <h3 style={{ marginBottom: 12 }}>{bpInterculturalCard ? tf(bpInterculturalCard, 'title') : t('info.intercultural.title')}</h3>
             <p style={{ color: 'var(--gray-700)', margin: 0, lineHeight: 1.6 }}>
-              {bpInterculturalCard?.text ?? t('info.intercultural.text')}
+              {bpInterculturalCard ? tf(bpInterculturalCard, 'text') : t('info.intercultural.text')}
             </p>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {bpCards.map(item => (
-              <div key={item.title} className="card" style={{ display: 'flex', gap: 14 }}>
+              <div key={item.id || item.title} className="card" style={{ display: 'flex', gap: 14 }}>
                 <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{item.icon}</span>
                 <div>
-                  <div style={{ fontWeight: 700, marginBottom: 4 }}>{item.title}</div>
-                  <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--gray-700)', lineHeight: 1.5 }}>{item.text}</p>
+                  <div style={{ fontWeight: 700, marginBottom: 4 }}>{tf(item, 'title') || item.title}</div>
+                  <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--gray-700)', lineHeight: 1.5 }}>{tf(item, 'text') || item.text}</p>
                 </div>
               </div>
             ))}
@@ -401,7 +406,8 @@ export default function InfoHub() {
 
           <a href={luxembourgishUrl}
             target="_blank" rel="noreferrer"
-            className="btn btn-outline btn-full">
+            className="btn btn-outline btn-full"
+            style={{ borderColor: '#16a34a', color: '#16a34a' }}>
             Learn more about Luxembourgish →
           </a>
         </div>

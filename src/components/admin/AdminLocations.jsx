@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from 'react'
 import { LOCATIONS } from '../../games/geo/data/locations'
+import LangTabs from './LangTabs'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
@@ -113,15 +114,26 @@ function LocationCard({ loc, onEdit, onDelete }) {
 }
 
 // ── Location editor ────────────────────────────────────────────────────────
+// Ensures the multilingual field is an object with all 4 lang keys
+function ensureMultiLang(val) {
+  if (typeof val === 'object' && val !== null) return { en: '', fr: '', de: '', lb: '', ...val }
+  return { en: val || '', fr: '', de: '', lb: '' }
+}
+
 function LocationEditor({ loc, onSave, onCancel }) {
-  const [draft, setDraft] = useState({ ...loc, coords: [...loc.coords] })
+  const [draft, setDraft] = useState(() => ({
+    ...loc,
+    coords: [...loc.coords],
+    name: ensureMultiLang(loc.name),
+    clue: ensureMultiLang(loc.clue),
+    fact: ensureMultiLang(loc.fact),
+  }))
+  const [editLang, setEditLang] = useState('en')
+
   const set = (key, val) => setDraft(d => ({ ...d, [key]: val }))
-  // For multilingual fields (name/clue/fact), read/write only the English value
-  const getEn = (key) => str(draft[key])
-  const setEn = (key, val) => setDraft(d => {
-    const existing = d[key]
-    return { ...d, [key]: typeof existing === 'object' && existing !== null ? { ...existing, en: val } : val }
-  })
+  const setML = (key, val) => setDraft(d => ({ ...d, [key]: { ...d[key], [editLang]: val } }))
+
+  const missingFor = ['fr', 'de', 'lb'].filter(l => !draft.name[l])
 
   return (
     <div style={{
@@ -129,55 +141,69 @@ function LocationEditor({ loc, onSave, onCancel }) {
       boxShadow: '0 2px 8px rgba(0,0,0,0.12)', marginBottom: 10,
       border: '2px solid #EF3340',
     }}>
-      <div style={{ fontWeight: 700, marginBottom: 14, color: '#EF3340', fontSize: '0.85rem' }}>
+      <div style={{ fontWeight: 700, marginBottom: 10, color: '#EF3340', fontSize: '0.85rem' }}>
         ✏️ Editing — {loc.id}
       </div>
 
+      <LangTabs lang={editLang} onChange={setEditLang} missingFor={missingFor} />
+
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
         <div>
-          <Label>Name</Label>
-          <input type="text" value={getEn('name')} onChange={e => setEn('name', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
+          <Label>Name {editLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+          <input type="text" value={draft.name[editLang] || ''} onChange={e => setML('name', e.target.value)}
+            placeholder={editLang !== 'en' ? draft.name.en : undefined}
+            style={{ ...inputStyle(), height: 36 }} />
         </div>
-        <div>
-          <Label>Emoji icon</Label>
-          <input type="text" value={draft.emoji} onChange={e => set('emoji', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
-        </div>
+        {editLang === 'en' && (
+          <div>
+            <Label>Emoji icon</Label>
+            <input type="text" value={draft.emoji} onChange={e => set('emoji', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
+          </div>
+        )}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, marginBottom: 10 }}>
-        <div>
-          <Label>Region</Label>
-          <input type="text" value={draft.region} onChange={e => set('region', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
+      {editLang === 'en' && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, marginBottom: 10 }}>
+          <div>
+            <Label>Region</Label>
+            <input type="text" value={draft.region} onChange={e => set('region', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
+          </div>
+          <div>
+            <Label>Latitude</Label>
+            <input type="number" step="0.0001" value={draft.coords[0]}
+              onChange={e => setDraft(d => ({ ...d, coords: [parseFloat(e.target.value) || 0, d.coords[1]] }))}
+              style={{ ...inputStyle(), height: 36 }} />
+          </div>
+          <div>
+            <Label>Longitude</Label>
+            <input type="number" step="0.0001" value={draft.coords[1]}
+              onChange={e => setDraft(d => ({ ...d, coords: [d.coords[0], parseFloat(e.target.value) || 0] }))}
+              style={{ ...inputStyle(), height: 36 }} />
+          </div>
         </div>
-        <div>
-          <Label>Latitude</Label>
-          <input type="number" step="0.0001" value={draft.coords[0]}
-            onChange={e => setDraft(d => ({ ...d, coords: [parseFloat(e.target.value) || 0, d.coords[1]] }))}
-            style={{ ...inputStyle(), height: 36 }} />
-        </div>
-        <div>
-          <Label>Longitude</Label>
-          <input type="number" step="0.0001" value={draft.coords[1]}
-            onChange={e => setDraft(d => ({ ...d, coords: [d.coords[0], parseFloat(e.target.value) || 0] }))}
-            style={{ ...inputStyle(), height: 36 }} />
-        </div>
+      )}
+
+      <div style={{ marginBottom: 10 }}>
+        <Label>Clue text {editLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+        <textarea value={draft.clue[editLang] || ''} onChange={e => setML('clue', e.target.value)}
+          placeholder={editLang !== 'en' ? draft.clue.en : "Clue shown during game — don't give away the name!"}
+          style={inputStyle(true)} rows={4} />
       </div>
 
       <div style={{ marginBottom: 10 }}>
-        <Label>Clue text (shown during the game — don't give away the name!)</Label>
-        <textarea value={getEn('clue')} onChange={e => setEn('clue', e.target.value)} style={inputStyle(true)} rows={4} />
+        <Label>Fun fact {editLang !== 'en' && <span style={{ color: '#94A3B8', fontWeight: 400 }}>(leave blank → EN)</span>}</Label>
+        <textarea value={draft.fact[editLang] || ''} onChange={e => setML('fact', e.target.value)}
+          placeholder={editLang !== 'en' ? draft.fact.en : 'Shown after correct answer'}
+          style={inputStyle(true)} rows={3} />
       </div>
 
-      <div style={{ marginBottom: 10 }}>
-        <Label>Fun fact (shown after correct answer)</Label>
-        <textarea value={getEn('fact')} onChange={e => setEn('fact', e.target.value)} style={inputStyle(true)} rows={3} />
-      </div>
-
-      <div style={{ marginBottom: 16 }}>
-        <Label>Learn-more URL (optional)</Label>
-        <input type="url" value={draft.link || ''} onChange={e => set('link', e.target.value || null)}
-          style={{ ...inputStyle(), height: 36 }} placeholder="https://…" />
-      </div>
+      {editLang === 'en' && (
+        <div style={{ marginBottom: 16 }}>
+          <Label>Learn-more URL (optional)</Label>
+          <input type="url" value={draft.link || ''} onChange={e => set('link', e.target.value || null)}
+            style={{ ...inputStyle(), height: 36 }} placeholder="https://…" />
+        </div>
+      )}
 
       <div style={{ display: 'flex', gap: 8 }}>
         <button

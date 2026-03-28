@@ -6,6 +6,10 @@
 
 import { useState, useEffect } from 'react'
 import { QUESTIONS } from '../../games/quiz/data/questions'
+import LangTabs from './LangTabs'
+import { ensureTranslations } from '../../utils/contentLang'
+
+const TRANS_LANGS = ['fr', 'de', 'lb']
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
@@ -159,12 +163,41 @@ function QuestionCard({ q, onEdit, onDelete }) {
 
 // ── Question card in edit mode ─────────────────────────────────────────────
 function QuestionEditor({ q, onSave, onCancel }) {
-  const [draft, setDraft] = useState({ ...q, options: [...q.options] })
+  const [draft, setDraft] = useState(() =>
+    ensureTranslations({ ...q, options: [...q.options] }, ['question', 'options', 'explanation'])
+  )
+  const [editLang, setEditLang] = useState('en')
 
+  // ── helpers ──
   const set = (key, val) => setDraft(d => ({ ...d, [key]: val }))
   const setOpt = (i, val) => setDraft(d => {
     const opts = [...d.options]; opts[i] = val; return { ...d, options: opts }
   })
+
+  // For non-English tabs, read/write via translations object
+  const getT = (key) => {
+    if (editLang === 'en') return editLang === 'en' && key === 'options' ? draft.options : draft[key]
+    return draft.translations[editLang][key]
+  }
+  const getOpts = () => editLang === 'en' ? draft.options : (draft.translations[editLang].options || draft.options.map(() => ''))
+  const setT = (key, val) => {
+    if (editLang === 'en') { set(key, val); return }
+    setDraft(d => ({
+      ...d,
+      translations: { ...d.translations, [editLang]: { ...d.translations[editLang], [key]: val } }
+    }))
+  }
+  const setOptT = (i, val) => {
+    if (editLang === 'en') { setOpt(i, val); return }
+    setDraft(d => {
+      const base = d.translations[editLang].options || d.options.map(() => '')
+      const opts = [...base]; opts[i] = val
+      return { ...d, translations: { ...d.translations, [editLang]: { ...d.translations[editLang], options: opts } } }
+    })
+  }
+
+  // Detect which langs are missing translations
+  const missingFor = TRANS_LANGS.filter(l => !draft.translations[l]?.question)
 
   return (
     <div style={{
@@ -172,52 +205,59 @@ function QuestionEditor({ q, onSave, onCancel }) {
       boxShadow: '0 2px 8px rgba(0,0,0,0.12)', marginBottom: 10,
       border: '2px solid #EF3340',
     }}>
-      <div style={{ fontWeight: 700, marginBottom: 14, color: '#EF3340', fontSize: '0.85rem' }}>
+      <div style={{ fontWeight: 700, marginBottom: 10, color: '#EF3340', fontSize: '0.85rem' }}>
         ✏️ Editing — {q.id}
       </div>
 
-      {/* Category */}
-      <div style={{ marginBottom: 10 }}>
-        <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
-          Category
-        </label>
-        <select
-          value={draft.category}
-          onChange={e => set('category', e.target.value)}
-          style={{ ...inputStyle(), minHeight: undefined, resize: 'none', height: 38 }}
-        >
-          {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
-        </select>
-      </div>
+      <LangTabs lang={editLang} onChange={setEditLang} missingFor={missingFor} />
+
+      {/* Category — only on English tab */}
+      {editLang === 'en' && (
+        <div style={{ marginBottom: 10 }}>
+          <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
+            Category
+          </label>
+          <select
+            value={draft.category}
+            onChange={e => set('category', e.target.value)}
+            style={{ ...inputStyle(), minHeight: undefined, resize: 'none', height: 38 }}
+          >
+            {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </div>
+      )}
 
       {/* Question */}
       <div style={{ marginBottom: 10 }}>
         <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
-          Question text
+          Question text {editLang !== 'en' && <span style={{ color: '#94A3B8' }}>(leave blank to use English)</span>}
         </label>
         <textarea
-          value={draft.question}
-          onChange={e => set('question', e.target.value)}
+          value={getT('question') || ''}
+          onChange={e => setT('question', e.target.value)}
           style={inputStyle(true)}
           rows={3}
+          placeholder={editLang !== 'en' ? draft.question : undefined}
         />
       </div>
 
       {/* Options */}
       <div style={{ marginBottom: 10 }}>
         <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
-          Answer options (select the correct answer)
+          Answer options {editLang === 'en' ? '(select the correct answer)' : <span style={{ color: '#94A3B8' }}>(leave blank to use English)</span>}
         </label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          {draft.options.map((opt, i) => (
+          {draft.options.map((_, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <input
-                type="radio"
-                name="correct"
-                checked={draft.answer === i}
-                onChange={() => set('answer', i)}
-                style={{ flexShrink: 0 }}
-              />
+              {editLang === 'en' && (
+                <input
+                  type="radio"
+                  name="correct"
+                  checked={draft.answer === i}
+                  onChange={() => set('answer', i)}
+                  style={{ flexShrink: 0 }}
+                />
+              )}
               <span style={{
                 width: 22, height: 22, borderRadius: '50%',
                 background: draft.answer === i ? '#EF3340' : '#E2E8F0',
@@ -229,10 +269,10 @@ function QuestionEditor({ q, onSave, onCancel }) {
               </span>
               <input
                 type="text"
-                value={opt}
-                onChange={e => setOpt(i, e.target.value)}
+                value={getOpts()[i] || ''}
+                onChange={e => setOptT(i, e.target.value)}
                 style={{ ...inputStyle(), height: 36 }}
-                placeholder={`Option ${OPTION_LABELS[i]}`}
+                placeholder={editLang !== 'en' ? draft.options[i] : `Option ${OPTION_LABELS[i]}`}
               />
             </div>
           ))}
@@ -242,30 +282,32 @@ function QuestionEditor({ q, onSave, onCancel }) {
       {/* Explanation */}
       <div style={{ marginBottom: 14 }}>
         <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
-          Explanation
+          Explanation {editLang !== 'en' && <span style={{ color: '#94A3B8' }}>(leave blank to use English)</span>}
         </label>
         <textarea
-          value={draft.explanation || ''}
-          onChange={e => set('explanation', e.target.value)}
+          value={getT('explanation') || ''}
+          onChange={e => setT('explanation', e.target.value)}
           style={inputStyle(true)}
           rows={3}
-          placeholder="Explanation shown after answering…"
+          placeholder={editLang !== 'en' ? (draft.explanation || 'Explanation…') : 'Explanation shown after answering…'}
         />
       </div>
 
-      {/* Link */}
-      <div style={{ marginBottom: 16 }}>
-        <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
-          Learn-more URL (optional)
-        </label>
-        <input
-          type="url"
-          value={draft.link || ''}
-          onChange={e => set('link', e.target.value || null)}
-          style={{ ...inputStyle(), height: 36 }}
-          placeholder="https://…"
-        />
-      </div>
+      {/* Link — only on English tab */}
+      {editLang === 'en' && (
+        <div style={{ marginBottom: 16 }}>
+          <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', display: 'block', marginBottom: 4 }}>
+            Learn-more URL (optional)
+          </label>
+          <input
+            type="url"
+            value={draft.link || ''}
+            onChange={e => set('link', e.target.value || null)}
+            style={{ ...inputStyle(), height: 36 }}
+            placeholder="https://…"
+          />
+        </div>
+      )}
 
       <div style={{ display: 'flex', gap: 8 }}>
         <button
