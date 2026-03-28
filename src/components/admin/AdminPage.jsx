@@ -12,6 +12,7 @@ import { useState } from 'react'
 import AdminStats     from './AdminStats'
 import AdminQuestions from './AdminQuestions'
 import AdminLocations from './AdminLocations'
+import AdminInfo      from './AdminInfo'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
@@ -19,6 +20,7 @@ const TABS = [
   { id: 'stats',     icon: '📊', label: 'Statistics' },
   { id: 'questions', icon: '🎯', label: 'Quiz Questions' },
   { id: 'locations', icon: '🗺️', label: 'Geo Locations' },
+  { id: 'info',      icon: '📝', label: 'Info Content' },
 ]
 
 // ── Styles ─────────────────────────────────────────────────────────────────
@@ -242,6 +244,7 @@ export default function AdminPage() {
         {activeTab === 'stats'     && <AdminStats />}
         {activeTab === 'questions' && <AdminQuestions />}
         {activeTab === 'locations' && <AdminLocations />}
+        {activeTab === 'info'      && <AdminInfo />}
       </div>
     </div>
   )

@@ -7,6 +7,9 @@ import { LOCATIONS } from '../../games/geo/data/locations'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
+// Locations use multilingual objects for name/clue/fact — extract English (or raw string)
+const str = (val) => typeof val === 'object' && val !== null ? (val.en || '') : (val || '')
+
 function inputStyle(multiline = false) {
   return {
     width: '100%',
@@ -43,7 +46,7 @@ function LocationCard({ loc, onEdit, onDelete }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
         <span style={{ fontSize: '1.5rem' }}>{loc.emoji}</span>
         <div style={{ flex: 1 }}>
-          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{loc.name}</div>
+          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{str(loc.name)}</div>
           <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>
             {loc.region} · {loc.coords[0].toFixed(4)}, {loc.coords[1].toFixed(4)} · {loc.id}
           </div>
@@ -94,13 +97,13 @@ function LocationCard({ loc, onEdit, onDelete }) {
           <div style={{ marginBottom: 8 }}>
             <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', marginBottom: 3 }}>Clue</div>
             <p style={{ margin: 0, fontSize: '0.82rem', color: '#475569', lineHeight: 1.5, background: '#F8FAFC', padding: '8px 10px', borderRadius: 6, borderLeft: '3px solid #CBD5E1' }}>
-              {loc.clue}
+              {str(loc.clue)}
             </p>
           </div>
           <div>
             <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', marginBottom: 3 }}>Fun fact</div>
             <p style={{ margin: 0, fontSize: '0.82rem', color: '#475569', lineHeight: 1.5, background: '#F0FDF4', padding: '8px 10px', borderRadius: 6, borderLeft: '3px solid #A7F3D0' }}>
-              {loc.fact}
+              {str(loc.fact)}
             </p>
           </div>
         </div>
@@ -113,6 +116,12 @@ function LocationCard({ loc, onEdit, onDelete }) {
 function LocationEditor({ loc, onSave, onCancel }) {
   const [draft, setDraft] = useState({ ...loc, coords: [...loc.coords] })
   const set = (key, val) => setDraft(d => ({ ...d, [key]: val }))
+  // For multilingual fields (name/clue/fact), read/write only the English value
+  const getEn = (key) => str(draft[key])
+  const setEn = (key, val) => setDraft(d => {
+    const existing = d[key]
+    return { ...d, [key]: typeof existing === 'object' && existing !== null ? { ...existing, en: val } : val }
+  })
 
   return (
     <div style={{
@@ -127,7 +136,7 @@ function LocationEditor({ loc, onSave, onCancel }) {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
         <div>
           <Label>Name</Label>
-          <input type="text" value={draft.name} onChange={e => set('name', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
+          <input type="text" value={getEn('name')} onChange={e => setEn('name', e.target.value)} style={{ ...inputStyle(), height: 36 }} />
         </div>
         <div>
           <Label>Emoji icon</Label>
@@ -156,12 +165,12 @@ function LocationEditor({ loc, onSave, onCancel }) {
 
       <div style={{ marginBottom: 10 }}>
         <Label>Clue text (shown during the game — don't give away the name!)</Label>
-        <textarea value={draft.clue} onChange={e => set('clue', e.target.value)} style={inputStyle(true)} rows={4} />
+        <textarea value={getEn('clue')} onChange={e => setEn('clue', e.target.value)} style={inputStyle(true)} rows={4} />
       </div>
 
       <div style={{ marginBottom: 10 }}>
         <Label>Fun fact (shown after correct answer)</Label>
-        <textarea value={draft.fact} onChange={e => set('fact', e.target.value)} style={inputStyle(true)} rows={3} />
+        <textarea value={getEn('fact')} onChange={e => setEn('fact', e.target.value)} style={inputStyle(true)} rows={3} />
       </div>
 
       <div style={{ marginBottom: 16 }}>

@@ -2,6 +2,55 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 
+export const DEFAULT_BP_CARDS = [
+  { id: 'bp1', icon: '🗓️', title: 'Regular events', text: 'The Biergerpakt organises workshops, guided tours, sports events, and cultural activities throughout the year — all free or low cost.' },
+  { id: 'bp2', icon: '👥', title: 'For everyone', text: 'Whether you arrived last month or were born here, the Biergerpakt is designed for all residents regardless of nationality or background.' },
+  { id: 'bp3', icon: '🌱', title: 'Building bridges', text: 'Activities are specifically designed to bring people from different backgrounds together, creating friendships and a sense of shared community.' },
+  { id: 'bp4', icon: '📱', title: 'How to participate', text: 'Check the programme on the official website, sign up for activities near you, and take part in building an open and welcoming Luxembourg.' },
+]
+
+export const DEFAULT_ACTIVITIES = [
+  { id: 'act_lang',    icon: '🗣️', title: 'Language',   color: '#7C3AED', bg: '#F3E8FF', tips: [
+    'Say "Moien" (hello) to three different people today.',
+    'Learn 5 basic Luxembourgish phrases: Moien, Äddi, Merci, Wéi geet et?, Ech verstinn net.',
+    'Order something in French at a café or bakery.',
+    'Ask for directions using Luxembourgish: "Wou ass...?" (Where is...?)',
+    'Read a headline or news article in a language you\'re learning: RTL.lu (LB), Tageblatt.lu (FR), Wort.lu (DE).',
+    'Learn to greet a neighbour in their own language.',
+  ]},
+  { id: 'act_explore', icon: '📍', title: 'Explore',    color: '#065F46', bg: '#D1FAE5', tips: [
+    'Visit a local weekly market and chat briefly with a vendor.',
+    'Walk through a neighbourhood you\'ve never explored before.',
+    'Take the free public transport to a town or village you\'ve never visited.',
+    'Spend an hour in a Luxembourg park and observe the diversity around you.',
+    'Visit a museum or cultural heritage site (many have free entry days).',
+    'Explore a natural site: Mullerthal, Moselle valley, Ardennes, or Minett.',
+  ]},
+  { id: 'act_connect', icon: '🤝', title: 'Connect',    color: '#1D4ED8', bg: '#DBEAFE', tips: [
+    'Introduce yourself to a neighbour you\'ve never spoken to. Ask where they\'re from.',
+    'Invite a colleague from a different cultural background for a coffee.',
+    'Share a dish from your own culture with someone you know.',
+    'Join a local sports club, running group, or fitness class.',
+    'Participate in a language exchange — teach your language, learn theirs.',
+    'Volunteer for a local association, clean-up, or food bank.',
+  ]},
+  { id: 'act_culture', icon: '🎭', title: 'Culture',    color: '#B45309', bg: '#FEF3C7', tips: [
+    'Listen to a Luxembourgish song (try Serge Tonnar or search "musique lëtzebuergesch").',
+    'Try a traditional Luxembourgish dish: Judd mat Gaardebounen, Bouneschlupp, or Gromperekichelcher.',
+    'Read about a Luxembourg tradition: Schueberfouer, Émaischen, Bretzelsonndeg, or the Dancing Procession.',
+    'Attend a free cultural event: concert, art exhibition, or public lecture (check agenda.lu).',
+    'Watch a film from a culture different from your own and discuss it with someone.',
+    'Visit the industrial heritage of the south: Belval blast furnaces, Rumelange mining museum.',
+  ]},
+  { id: 'act_bp',      icon: '🤝', title: 'Biergerpakt', color: '#0369A1', bg: '#E0F2FE', tips: [
+    'Register on biergerpakt.zesummeliewen.lu — free, in multiple languages.',
+    'Browse upcoming events in your commune and sign up for one.',
+    'Invite a friend, colleague, or neighbour to join a Biergerpakt activity with you.',
+    'Complete an online module about Luxembourg\'s culture or institutions.',
+    'Organise a small gathering — picnic, game night, or barbecue — for people from different backgrounds.',
+  ]},
+]
+
 const STATS = [
   { icon: '👥', label: 'Total population', value: '~680,000', source: 'STATEC 2024' },
   { icon: '🌍', label: 'Foreign nationals', value: '47%', source: 'STATEC 2024' },
@@ -105,6 +154,19 @@ export default function InfoHub() {
   const location = useLocation()
   const navigate = useNavigate()
 
+  const [bpCards, setBpCards]       = useState(DEFAULT_BP_CARDS)
+  const [activities, setActivities] = useState(DEFAULT_ACTIVITIES)
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then(r => r.ok ? r.json() : {})
+      .then(data => {
+        if (data.bpCards?.length)     setBpCards(data.bpCards)
+        if (data.activities?.length)  setActivities(data.activities)
+      })
+      .catch(() => {})
+  }, [])
+
   // Read initial tab from URL query param
   const getTabFromUrl = () => {
     const params = new URLSearchParams(location.search)
@@ -146,8 +208,7 @@ export default function InfoHub() {
       {/* Tabs */}
       <div style={{
         display: 'flex', gap: 6, marginBottom: 20,
-        overflowX: 'auto', paddingBottom: 4,
-        scrollbarWidth: 'none'
+        flexWrap: 'wrap',
       }}>
         {tabs.map(tab => (
           <button
@@ -156,7 +217,6 @@ export default function InfoHub() {
             style={{
               padding: '8px 14px', borderRadius: 999, border: 'none', cursor: 'pointer',
               fontFamily: 'var(--font)', fontSize: '0.85rem', fontWeight: 600,
-              whiteSpace: 'nowrap', flexShrink: 0,
               background: activeTab === tab.id ? 'var(--red)' : 'var(--gray-100)',
               color: activeTab === tab.id ? 'white' : 'var(--gray-600)'
             }}
@@ -200,12 +260,7 @@ export default function InfoHub() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {[
-              { icon: '🗓️', title: 'Regular events', text: 'The Biergerpakt organises workshops, guided tours, sports events, and cultural activities throughout the year — all free or low cost.' },
-              { icon: '👥', title: 'For everyone', text: 'Whether you arrived last month or were born here, the Biergerpakt is designed for all residents regardless of nationality or background.' },
-              { icon: '🌱', title: 'Building bridges', text: 'Activities are specifically designed to bring people from different backgrounds together, creating friendships and a sense of shared community.' },
-              { icon: '📱', title: 'How to participate', text: 'Check the programme on the official website, sign up for activities near you, and take part in building an open and welcoming Luxembourg.' }
-            ].map(item => (
+            {bpCards.map(item => (
               <div key={item.title} className="card" style={{ display: 'flex', gap: 14 }}>
                 <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{item.icon}</span>
                 <div>
@@ -356,47 +411,7 @@ export default function InfoHub() {
             </p>
           </div>
 
-          {[
-            { icon: '🗣️', title: 'Language', color: '#7C3AED', bg: '#F3E8FF', tips: [
-              'Say "Moien" (hello) to three different people today.',
-              'Learn 5 basic Luxembourgish phrases: Moien, Äddi, Merci, Wéi geet et?, Ech verstinn net.',
-              'Order something in French at a café or bakery.',
-              'Ask for directions using Luxembourgish: "Wou ass...?" (Where is...?)',
-              'Read a headline or news article in a language you\'re learning: RTL.lu (LB), Tageblatt.lu (FR), Wort.lu (DE).',
-              'Learn to greet a neighbour in their own language.',
-            ]},
-            { icon: '📍', title: 'Explore', color: '#065F46', bg: '#D1FAE5', tips: [
-              'Visit a local weekly market and chat briefly with a vendor.',
-              'Walk through a neighbourhood you\'ve never explored before.',
-              'Take the free public transport to a town or village you\'ve never visited.',
-              'Spend an hour in a Luxembourg park and observe the diversity around you.',
-              'Visit a museum or cultural heritage site (many have free entry days).',
-              'Explore a natural site: Mullerthal, Moselle valley, Ardennes, or Minett.',
-            ]},
-            { icon: '🤝', title: 'Connect', color: '#1D4ED8', bg: '#DBEAFE', tips: [
-              'Introduce yourself to a neighbour you\'ve never spoken to. Ask where they\'re from.',
-              'Invite a colleague from a different cultural background for a coffee.',
-              'Share a dish from your own culture with someone you know.',
-              'Join a local sports club, running group, or fitness class.',
-              'Participate in a language exchange — teach your language, learn theirs.',
-              'Volunteer for a local association, clean-up, or food bank.',
-            ]},
-            { icon: '🎭', title: 'Culture', color: '#B45309', bg: '#FEF3C7', tips: [
-              'Listen to a Luxembourgish song (try Serge Tonnar or search "musique lëtzebuergesch").',
-              'Try a traditional Luxembourgish dish: Judd mat Gaardebounen, Bouneschlupp, or Gromperekichelcher.',
-              'Read about a Luxembourg tradition: Schueberfouer, Émaischen, Bretzelsonndeg, or the Dancing Procession.',
-              'Attend a free cultural event: concert, art exhibition, or public lecture (check agenda.lu).',
-              'Watch a film from a culture different from your own and discuss it with someone.',
-              'Visit the industrial heritage of the south: Belval blast furnaces, Rumelange mining museum.',
-            ]},
-            { icon: '🤝', title: 'Biergerpakt', color: '#0369A1', bg: '#E0F2FE', tips: [
-              'Register on biergerpakt.zesummeliewen.lu — free, in multiple languages.',
-              'Browse upcoming events in your commune and sign up for one.',
-              'Invite a friend, colleague, or neighbour to join a Biergerpakt activity with you.',
-              'Complete an online module about Luxembourg\'s culture or institutions.',
-              'Organise a small gathering — picnic, game night, or barbecue — for people from different backgrounds.',
-            ]},
-          ].map(cat => (
+          {activities.map(cat => (
             <div key={cat.title} style={{ marginBottom: 20 }}>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12
