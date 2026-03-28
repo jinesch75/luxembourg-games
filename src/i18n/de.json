@@ -251,7 +251,15 @@
     },
     "stats": {
       "title": "Luxemburg in Zahlen",
-      "source": "Quelle: STATEC"
+      "source": "Quelle: STATEC",
+      "populationTitle": "Bevölkerung nach Nationalitätsgruppe",
+      "luxembourgers": "Luxemburger",
+      "portuguese": "Portugiesen",
+      "french": "Franzosen",
+      "italian": "Italiener",
+      "belgian": "Belgier",
+      "other": "Andere Nationalitäten",
+      "approximateNote": "Ungefähre Zahlen — Quelle: STATEC 2024"
     },
     "links": {
       "title": "Nützliche Links",
@@ -262,11 +270,31 @@
     },
     "languages": {
       "title": "Luxemburgs Sprachen",
-      "text": "Luxemburg hat drei Amtssprachen: Luxemburgisch, Französisch und Deutsch. Luxemburgisch (Lëtzebuergesch) ist die Nationalsprache und ein Symbol der kulturellen Identität. Viele Einwohner sprechen auch Englisch und Portugiesisch."
+      "text": "Luxemburg hat drei Amtssprachen: Luxemburgisch, Französisch und Deutsch. Luxemburgisch (Lëtzebuergesch) ist die Nationalsprache und ein Symbol der kulturellen Identität. Viele Einwohner sprechen auch Englisch und Portugiesisch.",
+      "nationalLanguage": "Nationalsprache",
+      "administrative": "Verwaltung",
+      "community": "Gemeinschaft",
+      "business": "Wirtschaft",
+      "usefulPhrases": "Nützliche Ausdrücke in 3 Sprachen",
+      "learnMore": "Mehr über Luxemburgisch erfahren →"
     },
     "intercultural": {
       "title": "Interkulturelles Miteinander",
-      "text": "Fast die Hälfte der Einwohner Luxemburgs sind ausländische Staatsangehörige. Diese reiche Vielfalt ist eine der größten Stärken Luxemburgs. Gemeinsames Leben und Arbeiten über Kulturen hinweg erfordert Verständnis, Respekt und Neugier — genau das, was diese Aktivitäten fördern sollen."
+      "text": "Fast die Hälfte der Einwohner Luxemburgs sind ausländische Staatsangehörige. Diese reiche Vielfalt ist eine der größten Stärken Luxemburgs. Gemeinsames Leben und Arbeiten über Kulturen hinweg erfordert Verständnis, Respekt und Neugier — genau das, was diese Aktivitäten fördern sollen.",
+      "heading": "Interkulturelle Aktivitäten",
+      "subheading": "Ideen für Begegnungen über Kulturen hinweg — in Ihrer Nachbarschaft, bei der Arbeit und im Alltag in Luxemburg.",
+      "discoverBtn": "🤝 Alle Biergerpakt-Aktivitäten entdecken →"
+    },
+    "tabs": {
+      "stats": "Statistiken",
+      "language": "Sprachen",
+      "activities": "Aktivitäten",
+      "sources": "Quellen"
+    },
+    "sources": {
+      "heading": "Zuverlässige Quellen über Luxemburg",
+      "description": "Alle Informationen auf dieser Plattform basieren auf diesen verifizierten Quellen. Wir empfehlen Ihnen, diese direkt zu erkunden, um die aktuellsten Informationen zu erhalten.",
+      "disclaimer": "ℹ️ Diese Plattform ist ein Bildungswerkzeug und steht in keiner Verbindung zur luxemburgischen Regierung. Alle Inhalte basieren auf öffentlich zugänglichen offiziellen Quellen, die oben aufgeführt sind."
     }
   },
   "footer": {
@@ -832,5 +860,11 @@
       "o3": "Schokolade",
       "e": "Das luxemburgische Moseltal produziert ausgezeichnete Weißweine, insbesondere Riesling, Rivaner (Müller-Thurgau), Auxerrois und den Schaumwein Crémant de Luxembourg. Die Region erstreckt sich von Schengen bis Wasserbillig."
     }
+  },
+  "login": {
+    "subtitle": "Geben Sie das Passwort ein, um auf die Website zuzugreifen.",
+    "passwordPlaceholder": "Passwort",
+    "enterBtn": "Eintreten",
+    "wrongPassword": "Falsches Passwort. Bitte versuchen Sie es erneut."
   }
 }

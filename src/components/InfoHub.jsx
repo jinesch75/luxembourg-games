@@ -389,11 +389,11 @@ export default function InfoHub() {
   const luxembourgishUrl = LUXEMBOURGISH_URLS[lang] || LUXEMBOURGISH_URLS.en
 
   const tabs = [
-    { id: 'biergerpakt', label: 'Biergerpakt', icon: '🤝' },
-    { id: 'stats',       label: 'Stats',       icon: '📊' },
-    { id: 'language',    label: 'Language',    icon: '🗣️' },
-    { id: 'intercultural', label: 'Activities', icon: '🌍' },
-    { id: 'sources',     label: 'Sources',     icon: '🔗' },
+    { id: 'biergerpakt', label: 'Biergerpakt',              icon: '🤝' },
+    { id: 'stats',       label: t('info.tabs.stats'),       icon: '📊' },
+    { id: 'language',    label: t('info.tabs.language'),    icon: '🗣️' },
+    { id: 'intercultural', label: t('info.tabs.activities'), icon: '🌍' },
+    { id: 'sources',     label: t('info.tabs.sources'),     icon: '🔗' },
   ]
 
   return (
@@ -505,14 +505,14 @@ export default function InfoHub() {
 
           {/* Visual mini-chart */}
           <div className="card" style={{ marginTop: 16 }}>
-            <div style={{ fontWeight: 700, marginBottom: 12 }}>Population by nationality group</div>
+            <div style={{ fontWeight: 700, marginBottom: 12 }}>{t('info.stats.populationTitle')}</div>
             {[
-              { label: 'Luxembourgers', pct: 53, color: 'var(--red)' },
-              { label: 'Portuguese', pct: 15, color: '#009C3B' },
-              { label: 'French', pct: 7, color: '#0055A4' },
-              { label: 'Italian', pct: 4, color: '#009246' },
-              { label: 'Belgian', pct: 3, color: '#FAE042' },
-              { label: 'Other nationalities', pct: 18, color: 'var(--gray-400)' }
+              { label: t('info.stats.luxembourgers'), pct: 53, color: 'var(--red)' },
+              { label: t('info.stats.portuguese'),    pct: 15, color: '#009C3B' },
+              { label: t('info.stats.french'),        pct: 7,  color: '#0055A4' },
+              { label: t('info.stats.italian'),       pct: 4,  color: '#009246' },
+              { label: t('info.stats.belgian'),       pct: 3,  color: '#FAE042' },
+              { label: t('info.stats.other'),         pct: 18, color: 'var(--gray-400)' }
             ].map(bar => (
               <div key={bar.label} style={{ marginBottom: 10 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
@@ -525,7 +525,7 @@ export default function InfoHub() {
               </div>
             ))}
             <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: 8 }}>
-              Approximate figures — Source: STATEC 2024
+              {t('info.stats.approximateNote')}
             </div>
           </div>
         </div>
@@ -543,11 +543,11 @@ export default function InfoHub() {
 
           <div style={{ display: 'flex', gap: 10, marginBottom: 20, flexWrap: 'wrap' }}>
             {[
-              { flag: '🇱🇺', name: 'Lëtzebuergesch', role: 'National language' },
-              { flag: '🇫🇷', name: 'Français', role: 'Administrative' },
-              { flag: '🇩🇪', name: 'Deutsch', role: 'Administrative' },
-              { flag: '🇵🇹', name: 'Português', role: 'Community' },
-              { flag: '🇬🇧', name: 'English', role: 'Business' }
+              { flag: '🇱🇺', name: 'Lëtzebuergesch', role: t('info.languages.nationalLanguage') },
+              { flag: '🇫🇷', name: 'Français',        role: t('info.languages.administrative') },
+              { flag: '🇩🇪', name: 'Deutsch',          role: t('info.languages.administrative') },
+              { flag: '🇵🇹', name: 'Português',        role: t('info.languages.community') },
+              { flag: '🇬🇧', name: 'English',          role: t('info.languages.business') }
             ].map(lang => (
               <div key={lang.name} style={{
                 flex: '1 1 calc(50% - 5px)', minWidth: 130,
@@ -563,7 +563,7 @@ export default function InfoHub() {
 
           <div style={{ marginBottom: 12 }}>
             <div style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: 12 }}>
-              Useful phrases in 3 languages
+              {t('info.languages.usefulPhrases')}
             </div>
             {languagePhrases.map((phrase) => (
               <div key={phrase.lb} className="card" style={{ marginBottom: 8, padding: 14 }}>
@@ -591,7 +591,7 @@ export default function InfoHub() {
             target="_blank" rel="noreferrer"
             className="btn btn-outline btn-full"
             style={{ borderColor: '#16a34a', color: '#16a34a' }}>
-            Learn more about Luxembourgish →
+            {t('info.languages.learnMore')}
           </a>
         </div>
       )}
@@ -605,9 +605,9 @@ export default function InfoHub() {
             color: 'white', marginBottom: 20
           }}>
             <div style={{ fontSize: '2.5rem', marginBottom: 10 }}>🌍</div>
-            <h2 style={{ color: 'white', marginBottom: 8 }}>Intercultural Activities</h2>
+            <h2 style={{ color: 'white', marginBottom: 8 }}>{t('info.intercultural.heading')}</h2>
             <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
-              Ideas for connecting across cultures — in your neighbourhood, at work, and in everyday life in Luxembourg.
+              {t('info.intercultural.subheading')}
             </p>
           </div>
 
@@ -645,7 +645,7 @@ export default function InfoHub() {
             </div>
           ))}
 
-          <a href="https://biergerpakt.zesummeliewen.lu/en/"
+          <a href={biergerpaktUrl}
             target="_blank" rel="noreferrer"
             style={{
               display: 'block',
@@ -654,7 +654,7 @@ export default function InfoHub() {
               textDecoration: 'none', textAlign: 'center', fontWeight: 700,
               fontSize: '0.95rem', marginBottom: 24,
             }}>
-            🤝 Discover all Biergerpakt activities →
+            {t('info.intercultural.discoverBtn')}
           </a>
         </div>
       )}
@@ -663,9 +663,9 @@ export default function InfoHub() {
       {activeTab === 'sources' && (
         <div className="animate-fade-in">
           <div className="card" style={{ marginBottom: 20 }}>
-            <h3 style={{ marginBottom: 8 }}>Reliable sources about Luxembourg</h3>
+            <h3 style={{ marginBottom: 8 }}>{t('info.sources.heading')}</h3>
             <p style={{ color: 'var(--gray-700)', margin: 0, fontSize: '0.88rem', lineHeight: 1.6 }}>
-              All information on this platform is based on these verified sources. We encourage you to explore them directly for the most up-to-date information.
+              {t('info.sources.description')}
             </p>
           </div>
 
@@ -712,7 +712,7 @@ export default function InfoHub() {
             background: 'var(--gray-50)', border: '1px solid var(--border)',
             borderRadius: 'var(--radius)', fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.5
           }}>
-            ℹ️ This platform is an educational tool and is not affiliated with the Luxembourg government. All content is based on publicly available official sources listed above.
+            {t('info.sources.disclaimer')}
           </div>
         </div>
       )}

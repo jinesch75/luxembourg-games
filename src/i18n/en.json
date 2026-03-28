@@ -251,7 +251,15 @@
     },
     "stats": {
       "title": "Luxembourg in numbers",
-      "source": "Source: STATEC"
+      "source": "Source: STATEC",
+      "populationTitle": "Population by nationality group",
+      "luxembourgers": "Luxembourgers",
+      "portuguese": "Portuguese",
+      "french": "French",
+      "italian": "Italian",
+      "belgian": "Belgian",
+      "other": "Other nationalities",
+      "approximateNote": "Approximate figures — Source: STATEC 2024"
     },
     "links": {
       "title": "Useful links",
@@ -262,11 +270,31 @@
     },
     "languages": {
       "title": "Luxembourg's languages",
-      "text": "Luxembourg has three official languages: Luxembourgish, French, and German. Luxembourgish (Lëtzebuergesch) is the national language and a symbol of cultural identity. Many residents also speak English and Portuguese."
+      "text": "Luxembourg has three official languages: Luxembourgish, French, and German. Luxembourgish (Lëtzebuergesch) is the national language and a symbol of cultural identity. Many residents also speak English and Portuguese.",
+      "nationalLanguage": "National language",
+      "administrative": "Administrative",
+      "community": "Community",
+      "business": "Business",
+      "usefulPhrases": "Useful phrases in 3 languages",
+      "learnMore": "Learn more about Luxembourgish →"
     },
     "intercultural": {
       "title": "Intercultural living-together",
-      "text": "Nearly half of Luxembourg's residents are foreign nationals. This rich diversity is one of Luxembourg's greatest strengths. Living and working together across cultures requires understanding, respect, and curiosity — exactly what these activities are designed to encourage."
+      "text": "Nearly half of Luxembourg's residents are foreign nationals. This rich diversity is one of Luxembourg's greatest strengths. Living and working together across cultures requires understanding, respect, and curiosity — exactly what these activities are designed to encourage.",
+      "heading": "Intercultural Activities",
+      "subheading": "Ideas for connecting across cultures — in your neighbourhood, at work, and in everyday life in Luxembourg.",
+      "discoverBtn": "🤝 Discover all Biergerpakt activities →"
+    },
+    "tabs": {
+      "stats": "Stats",
+      "language": "Language",
+      "activities": "Activities",
+      "sources": "Sources"
+    },
+    "sources": {
+      "heading": "Reliable sources about Luxembourg",
+      "description": "All information on this platform is based on these verified sources. We encourage you to explore them directly for the most up-to-date information.",
+      "disclaimer": "ℹ️ This platform is an educational tool and is not affiliated with the Luxembourg government. All content is based on publicly available official sources listed above."
     }
   },
   "footer": {
@@ -446,5 +474,11 @@
       "tip": "Take the initiative: organise a small gathering and invite people from at least two different cultural backgrounds. You can get inspiration and even support for your event through the Biergerpakt platform.",
       "category": "Biergerpakt 🤝"
     }
+  },
+  "login": {
+    "subtitle": "Enter the password to access the site.",
+    "passwordPlaceholder": "Password",
+    "enterBtn": "Enter",
+    "wrongPassword": "Incorrect password. Please try again."
   }
 }

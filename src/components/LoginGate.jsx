@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const PASSWORD = 'biergerpakt'
 const STORAGE_KEY = 'letz_play_auth'
 
 export default function LoginGate({ children }) {
+  const { t } = useTranslation()
   const [unlocked, setUnlocked] = useState(
     () => sessionStorage.getItem(STORAGE_KEY) === '1'
   )
@@ -51,7 +53,7 @@ export default function LoginGate({ children }) {
         <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>🇱🇺</div>
         <h2 style={{ marginBottom: '6px' }}>Lëtz Play</h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '24px' }}>
-          Enter the password to access the site.
+          {t('login.subtitle')}
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -59,7 +61,7 @@ export default function LoginGate({ children }) {
             type="password"
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder="Password"
+            placeholder={t('login.passwordPlaceholder')}
             autoFocus
             className={error ? 'animate-shake' : ''}
             style={{
@@ -76,13 +78,13 @@ export default function LoginGate({ children }) {
             }}
           />
           <button type="submit" className="btn btn-primary btn-full">
-            Enter
+            {t('login.enterBtn')}
           </button>
         </form>
 
         {error && (
           <p style={{ color: 'var(--red)', fontSize: '0.85rem', marginTop: '10px' }}>
-            Incorrect password. Please try again.
+            {t('login.wrongPassword')}
           </p>
         )}
       </div>

@@ -251,7 +251,15 @@
     },
     "stats": {
       "title": "Lëtzebuerg a Zuelen",
-      "source": "Quell: STATEC"
+      "source": "Quell: STATEC",
+      "populationTitle": "Bevëlkerung no Nationalitéitsgrupp",
+      "luxembourgers": "Lëtzebuerger",
+      "portuguese": "Portugisen",
+      "french": "Fransousen",
+      "italian": "Italiener",
+      "belgian": "Belsch",
+      "other": "Aner Nationalitéiten",
+      "approximateNote": "Ongeféier Zuelen — Quell: STATEC 2024"
     },
     "links": {
       "title": "Nëtzlech Linken",
@@ -262,11 +270,31 @@
     },
     "languages": {
       "title": "Lëtzebuerg seng Sprochen",
-      "text": "Lëtzebuerg huet dräi Amtssprochen: Lëtzebuergesch, Franséisch a Däitsch. Lëtzebuergesch ass d'Nationalsprooch a e Symbol vun der kultureller Identitéit. Vill Awunner schwätzen och Englesch a Portugisesch."
+      "text": "Lëtzebuerg huet dräi Amtssprochen: Lëtzebuergesch, Franséisch a Däitsch. Lëtzebuergesch ass d'Nationalsprooch a e Symbol vun der kultureller Identitéit. Vill Awunner schwätzen och Englesch a Portugisesch.",
+      "nationalLanguage": "Nationalsprooch",
+      "administrative": "Administrativ",
+      "community": "Communautéit",
+      "business": "Geschäftswelt",
+      "usefulPhrases": "Nëtzlech Ausdréck an 3 Sprochen",
+      "learnMore": "Méi iwwer d'Lëtzebuergescht léieren →"
     },
     "intercultural": {
       "title": "Interkulturellt Zesummeliewen",
-      "text": "Bal d'Halschent vun den Awunner Lëtzebuerg sinn auslännesch Staatsbierger. Dës räich Diversitéit ass eng vun de gréisste Stäerke Lëtzebuerg. Zesummen ze liewen a ze schaffen iwwer Kulturen eraus erfuerdert Verständnis, Respekt a Niegeschier — genee dat, wat dës Aktivitéiten encouragéiere sollen."
+      "text": "Bal d'Halschent vun den Awunner Lëtzebuerg sinn auslännesch Staatsbierger. Dës räich Diversitéit ass eng vun de gréisste Stäerke Lëtzebuerg. Zesummen ze liewen a ze schaffen iwwer Kulturen eraus erfuerdert Verständnis, Respekt a Niegeschier — genee dat, wat dës Aktivitéiten encouragéiere sollen.",
+      "heading": "Interkulturell Aktivitéiten",
+      "subheading": "Iddie fir Kontakter iwwer Kulturen eraus — an Ärer Noperschaft, op der Aarbecht an am Alldag zu Lëtzebuerg.",
+      "discoverBtn": "🤝 All Biergerpakt-Aktivitéite entdecken →"
+    },
+    "tabs": {
+      "stats": "Statistiken",
+      "language": "Sprochen",
+      "activities": "Aktivitéiten",
+      "sources": "Quellen"
+    },
+    "sources": {
+      "heading": "Zouverlässeg Quellen iwwer Lëtzebuerg",
+      "description": "All Informatiounen op dëser Plattform baséieren op dëse verifizéierte Quellen. Mir encouragéieren Iech, dës direkt ze entdecken fir déi neiste Informatiounen.",
+      "disclaimer": "ℹ️ Dës Plattform ass en Educatiounsinstrument a steet a kengem Zesummenhang mat der lëtzebuergescher Regierung. All Inhalt baséiert op ëffentlech verfügbare offiziellen Quellen déi hei uewen opgezielt sinn."
     }
   },
   "footer": {
@@ -832,5 +860,11 @@
       "o3": "Schokela",
       "e": "D'Lëtzebuerger Moselval produzéiert exzellent Wäissweiner, besonnesch Riesling, Rivaner (Müller-Thurgau), Auxerrois a Crémant de Luxembourg. D'Regioun erstreckt sech vu Schengen bis Waasserbëlleg."
     }
+  },
+  "login": {
+    "subtitle": "Gitt d'Passwuert an fir op d'Säit ze kommen.",
+    "passwordPlaceholder": "Passwuert",
+    "enterBtn": "Aloggen",
+    "wrongPassword": "Falscht Passwuert. Probéiert et nach eng Kéier."
   }
 }

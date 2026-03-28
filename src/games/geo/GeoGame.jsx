@@ -318,10 +318,7 @@ export default function GeoGame() {
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--gray-700)', marginBottom: 12 }}>{loc_t(loc.fact)}</p>
               <div style={{ display: 'flex', gap: 8 }}>
-                <a href={loc.link} target="_blank" rel="noreferrer" className="btn btn-outline btn-sm" style={{ flex: 1 }}>
-                  {t('geo.learnMore')} ↗
-                </a>
-                <button onClick={handleNext} className="btn btn-primary" style={{ flex: 2 }}>
+                <button onClick={handleNext} className="btn btn-primary" style={{ flex: 1 }}>
                   {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
                 </button>
               </div>

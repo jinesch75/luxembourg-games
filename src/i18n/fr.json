@@ -252,7 +252,15 @@
     },
     "stats": {
       "title": "Le Luxembourg en chiffres",
-      "source": "Source : STATEC"
+      "source": "Source : STATEC",
+      "populationTitle": "Population par groupe de nationalité",
+      "luxembourgers": "Luxembourgeois",
+      "portuguese": "Portugais",
+      "french": "Français",
+      "italian": "Italiens",
+      "belgian": "Belges",
+      "other": "Autres nationalités",
+      "approximateNote": "Chiffres approximatifs — Source : STATEC 2024"
     },
     "links": {
       "title": "Liens utiles",
@@ -263,11 +271,31 @@
     },
     "languages": {
       "title": "Les langues du Luxembourg",
-      "text": "Le Luxembourg possède trois langues officielles : le luxembourgeois, le français et l'allemand. Le luxembourgeois (Lëtzebuergesch) est la langue nationale et un symbole de l'identité culturelle. Beaucoup de résidents parlent également l'anglais et le portugais."
+      "text": "Le Luxembourg possède trois langues officielles : le luxembourgeois, le français et l'allemand. Le luxembourgeois (Lëtzebuergesch) est la langue nationale et un symbole de l'identité culturelle. Beaucoup de résidents parlent également l'anglais et le portugais.",
+      "nationalLanguage": "Langue nationale",
+      "administrative": "Administratif",
+      "community": "Communauté",
+      "business": "Affaires",
+      "usefulPhrases": "Expressions utiles en 3 langues",
+      "learnMore": "En savoir plus sur le luxembourgeois →"
     },
     "intercultural": {
       "title": "Le vivre ensemble interculturel",
-      "text": "Près de la moitié des résidents du Luxembourg sont des ressortissants étrangers. Cette riche diversité est l'une des plus grandes forces du Luxembourg. Vivre et travailler ensemble à travers les cultures exige compréhension, respect et curiosité — exactement ce que ces activités sont conçues pour encourager."
+      "text": "Près de la moitié des résidents du Luxembourg sont des ressortissants étrangers. Cette riche diversité est l'une des plus grandes forces du Luxembourg. Vivre et travailler ensemble à travers les cultures exige compréhension, respect et curiosité — exactement ce que ces activités sont conçues pour encourager.",
+      "heading": "Activités interculturelles",
+      "subheading": "Des idées pour tisser des liens à travers les cultures — dans votre quartier, au travail et dans la vie quotidienne au Luxembourg.",
+      "discoverBtn": "🤝 Découvrir toutes les activités Biergerpakt →"
+    },
+    "tabs": {
+      "stats": "Stats",
+      "language": "Langues",
+      "activities": "Activités",
+      "sources": "Sources"
+    },
+    "sources": {
+      "heading": "Sources fiables sur le Luxembourg",
+      "description": "Toutes les informations sur cette plateforme sont basées sur ces sources vérifiées. Nous vous encourageons à les consulter directement pour les informations les plus récentes.",
+      "disclaimer": "ℹ️ Cette plateforme est un outil éducatif et n'est pas affiliée au gouvernement luxembourgeois. Tout le contenu est basé sur des sources officielles publiquement disponibles listées ci-dessus."
     }
   },
   "footer": {
@@ -833,5 +861,11 @@
       "o3": "Chocolat",
       "e": "La vallée mosellane du Luxembourg produit d'excellents vins blancs, notamment le Riesling, le Rivaner, l'Auxerrois et le Crémant de Luxembourg. La région s'étend de Schengen à Wasserbillig."
     }
+  },
+  "login": {
+    "subtitle": "Entrez le mot de passe pour accéder au site.",
+    "passwordPlaceholder": "Mot de passe",
+    "enterBtn": "Entrer",
+    "wrongPassword": "Mot de passe incorrect. Veuillez réessayer."
   }
 }
