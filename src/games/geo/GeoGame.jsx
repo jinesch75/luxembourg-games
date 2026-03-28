@@ -414,17 +414,12 @@ function RulesModal({ t, onClose }) {
         <div style={{ textAlign: 'center', marginBottom: 20 }}>
           <div style={{ fontSize: '2.2rem', marginBottom: 8 }}>🗺️</div>
           <h2 style={{ margin: '0 0 8px' }}>How to Play</h2>
-          <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
-            {t('geo.instructions')}
-          </p>
-          <p style={{ color: 'var(--text-muted)', margin: '8px 0 0', fontSize: '0.9rem', lineHeight: 1.5 }}>
-            You can resize the map to zoom in and out.
-          </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, textAlign: 'center', marginBottom: 24 }}>
-          {['📖', '📍', '⭐'].map((icon) => (
-            <div key={icon} style={{ background: 'var(--gray-50)', borderRadius: 8, padding: 12 }}>
+          {[['📖', 'Read the location description'], ['📍', 'Tap the map to set your pin'], ['⭐', '1000 pts max']].map(([icon, label]) => (
+            <div key={label} style={{ background: 'var(--gray-50)', borderRadius: 8, padding: 12 }}>
               <div style={{ fontSize: '1.5rem' }}>{icon}</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: 4 }}>{label}</div>
             </div>
           ))}
         </div>
