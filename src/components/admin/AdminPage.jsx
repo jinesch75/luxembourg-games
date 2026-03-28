@@ -3,25 +3,22 @@
  * Route: /admin
  *
  * Tabs:
- *   📊 Statistics    — visitor analytics dashboard
- *   🎯 Quiz          — edit quiz questions
- *   🔗 Connect       — edit connect puzzles
- *   🗺️  Geo           — edit geo locations
+ *   📊 Statistics  — visitor analytics dashboard
+ *   🎯 Quiz        — edit quiz questions
+ *   🗺️  Geo         — edit geo locations
  */
 
 import { useState } from 'react'
 import AdminStats     from './AdminStats'
 import AdminQuestions from './AdminQuestions'
-import AdminPuzzles   from './AdminPuzzles'
 import AdminLocations from './AdminLocations'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
 const TABS = [
   { id: 'stats',     icon: '📊', label: 'Statistics' },
-  { id: 'questions', icon: '🎯', label: 'Quiz' },
-  { id: 'puzzles',   icon: '🔗', label: 'Connect' },
-  { id: 'locations', icon: '🗺️', label: 'Geo' },
+  { id: 'questions', icon: '🎯', label: 'Quiz Questions' },
+  { id: 'locations', icon: '🗺️', label: 'Geo Locations' },
 ]
 
 // ── Styles ─────────────────────────────────────────────────────────────────
@@ -245,7 +242,6 @@ export default function AdminPage() {
       <div style={S.content}>
         {activeTab === 'stats'     && <AdminStats />}
         {activeTab === 'questions' && <AdminQuestions />}
-        {activeTab === 'puzzles'   && <AdminPuzzles />}
         {activeTab === 'locations' && <AdminLocations />}
       </div>
     </div>

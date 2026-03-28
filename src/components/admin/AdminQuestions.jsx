@@ -48,8 +48,10 @@ function inputStyle(multiline = false) {
 }
 
 // ── Question card in view mode ─────────────────────────────────────────────
-function QuestionCard({ q, onEdit }) {
+function QuestionCard({ q, onEdit, onDelete }) {
   const cat = CAT_COLORS[q.category] || CAT_COLORS.culture
+  const [confirmDel, setConfirmDel] = useState(false)
+
   return (
     <div style={{
       background: 'white',
@@ -104,16 +106,53 @@ function QuestionCard({ q, onEdit }) {
         </p>
       )}
 
-      <button
-        onClick={onEdit}
-        style={{
-          background: '#EF3340', color: 'white', border: 'none',
-          borderRadius: 6, padding: '7px 14px',
-          fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
-        }}
-      >
-        ✏️ Edit
-      </button>
+      <div style={{ display: 'flex', gap: 8 }}>
+        <button
+          onClick={onEdit}
+          style={{
+            flex: 1, background: '#EF3340', color: 'white', border: 'none',
+            borderRadius: 6, padding: '7px 14px',
+            fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
+          }}
+        >
+          ✏️ Edit
+        </button>
+        {confirmDel ? (
+          <>
+            <button
+              onClick={() => { onDelete(); setConfirmDel(false) }}
+              style={{
+                background: '#DC2626', color: 'white', border: 'none',
+                borderRadius: 6, padding: '7px 12px',
+                fontSize: '0.78rem', fontWeight: 700, cursor: 'pointer',
+              }}
+            >
+              Confirm delete
+            </button>
+            <button
+              onClick={() => setConfirmDel(false)}
+              style={{
+                background: '#F1F5F9', color: '#475569', border: 'none',
+                borderRadius: 6, padding: '7px 10px',
+                fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer',
+              }}
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => setConfirmDel(true)}
+            style={{
+              background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA',
+              borderRadius: 6, padding: '7px 12px',
+              fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer',
+            }}
+          >
+            🗑️
+          </button>
+        )}
+      </div>
     </div>
   )
 }
@@ -254,10 +293,27 @@ function QuestionEditor({ q, onSave, onCancel }) {
   )
 }
 
+function newBlankQuestion(existingIds) {
+  const base = 'custom_'
+  let n = 1
+  while (existingIds.includes(`${base}${String(n).padStart(3, '0')}`)) n++
+  return {
+    id: `${base}${String(n).padStart(3, '0')}`,
+    category: 'culture',
+    question: '',
+    options: ['', '', '', ''],
+    answer: 0,
+    explanation: '',
+    link: null,
+  }
+}
+
 // ── Main component ─────────────────────────────────────────────────────────
 export default function AdminQuestions() {
   const [questions, setQuestions] = useState(QUESTIONS)
   const [editingId, setEditingId] = useState(null)
+  const [addingNew, setAddingNew] = useState(false)
+  const [newDraft, setNewDraft]   = useState(null)
   const [saving, setSaving]       = useState(false)
   const [saved, setSaved]         = useState(false)
   const [error, setError]         = useState(null)
@@ -308,6 +364,29 @@ export default function AdminQuestions() {
     saveToServer(updated)
   }
 
+  const handleDelete = (id) => {
+    const updated = questions.filter(q => q.id !== id)
+    setQuestions(updated)
+    saveToServer(updated)
+  }
+
+  const handleAddNew = () => {
+    const blank = newBlankQuestion(questions.map(q => q.id))
+    setNewDraft(blank)
+    setAddingNew(true)
+    setEditingId(null)
+  }
+
+  const handleSaveNew = (q) => {
+    // Validate minimum fields
+    if (!q.question.trim()) return
+    const updated = [...questions, q]
+    setQuestions(updated)
+    setAddingNew(false)
+    setNewDraft(null)
+    saveToServer(updated)
+  }
+
   const resetToDefaults = async () => {
     if (!confirm('Reset ALL questions to the original defaults? This cannot be undone.')) return
     const r = await fetch('/api/content').then(r => r.json()).catch(() => ({}))
@@ -344,18 +423,32 @@ export default function AdminQuestions() {
         {saving && (
           <span style={{ color: '#94A3B8', fontSize: '0.8rem' }}>Saving…</span>
         )}
-        {isOverride && (
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+          {isOverride && (
+            <button
+              onClick={resetToDefaults}
+              style={{
+                background: '#F1F5F9', color: '#EF4444', border: 'none',
+                borderRadius: 6, padding: '5px 10px', fontSize: '0.75rem',
+                fontWeight: 600, cursor: 'pointer',
+              }}
+            >
+              Reset to defaults
+            </button>
+          )}
           <button
-            onClick={resetToDefaults}
+            onClick={handleAddNew}
+            disabled={addingNew}
             style={{
-              marginLeft: 'auto', background: '#F1F5F9', color: '#EF4444', border: 'none',
-              borderRadius: 6, padding: '5px 10px', fontSize: '0.75rem',
-              fontWeight: 600, cursor: 'pointer',
+              background: '#059669', color: 'white', border: 'none',
+              borderRadius: 6, padding: '5px 12px', fontSize: '0.75rem',
+              fontWeight: 700, cursor: addingNew ? 'default' : 'pointer',
+              opacity: addingNew ? 0.5 : 1,
             }}
           >
-            Reset to defaults
+            + Add question
           </button>
-        )}
+        </div>
       </div>
 
       {error && (
@@ -390,11 +483,25 @@ export default function AdminQuestions() {
         })}
       </div>
 
+      {/* New question form */}
+      {addingNew && newDraft && (
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#059669', marginBottom: 8 }}>
+            ➕ New question
+          </div>
+          <QuestionEditor
+            q={newDraft}
+            onSave={handleSaveNew}
+            onCancel={() => { setAddingNew(false); setNewDraft(null) }}
+          />
+        </div>
+      )}
+
       {/* Question list */}
       {filtered.map(q => (
         editingId === q.id
           ? <QuestionEditor key={q.id} q={q} onSave={handleSave} onCancel={() => setEditingId(null)} />
-          : <QuestionCard key={q.id} q={q} onEdit={() => setEditingId(q.id)} />
+          : <QuestionCard key={q.id} q={q} onEdit={() => setEditingId(q.id)} onDelete={() => handleDelete(q.id)} />
       ))}
     </div>
   )

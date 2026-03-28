@@ -32,8 +32,9 @@ function Label({ children }) {
 }
 
 // ── Location view card ─────────────────────────────────────────────────────
-function LocationCard({ loc, onEdit }) {
+function LocationCard({ loc, onEdit, onDelete }) {
   const [expanded, setExpanded] = useState(false)
+  const [confirmDel, setConfirmDel] = useState(false)
   return (
     <div style={{
       background: 'white', borderRadius: 10, padding: '14px 16px',
@@ -47,7 +48,7 @@ function LocationCard({ loc, onEdit }) {
             {loc.region} · {loc.coords[0].toFixed(4)}, {loc.coords[1].toFixed(4)} · {loc.id}
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 6 }}>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           <button
             onClick={() => setExpanded(e => !e)}
             style={{
@@ -68,6 +69,23 @@ function LocationCard({ loc, onEdit }) {
           >
             ✏️ Edit
           </button>
+          {confirmDel ? (
+            <>
+              <button onClick={() => { onDelete(); setConfirmDel(false) }}
+                style={{ background: '#DC2626', color: 'white', border: 'none', borderRadius: 6, padding: '5px 10px', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer' }}>
+                Confirm
+              </button>
+              <button onClick={() => setConfirmDel(false)}
+                style={{ background: '#F1F5F9', color: '#475569', border: 'none', borderRadius: 6, padding: '5px 8px', fontSize: '0.72rem', fontWeight: 600, cursor: 'pointer' }}>
+                Cancel
+              </button>
+            </>
+          ) : (
+            <button onClick={() => setConfirmDel(true)}
+              style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA', borderRadius: 6, padding: '5px 8px', fontSize: '0.72rem', fontWeight: 600, cursor: 'pointer' }}>
+              🗑️
+            </button>
+          )}
         </div>
       </div>
 
@@ -176,10 +194,28 @@ function LocationEditor({ loc, onSave, onCancel }) {
   )
 }
 
+function newBlankLocation(existingIds) {
+  const base = 'custom_loc_'
+  let n = 1
+  while (existingIds.includes(`${base}${n}`)) n++
+  return {
+    id: `${base}${n}`,
+    name: '',
+    emoji: '📍',
+    region: '',
+    coords: [49.8153, 6.1296],
+    clue: '',
+    fact: '',
+    link: null,
+  }
+}
+
 // ── Main component ─────────────────────────────────────────────────────────
 export default function AdminLocations() {
   const [locations, setLocations] = useState(LOCATIONS)
   const [editingId, setEditingId] = useState(null)
+  const [addingNew, setAddingNew] = useState(false)
+  const [newDraft, setNewDraft]   = useState(null)
   const [saving, setSaving]       = useState(false)
   const [saved, setSaved]         = useState(false)
   const [error, setError]         = useState(null)
@@ -219,6 +255,26 @@ export default function AdminLocations() {
     setLocations(list); setEditingId(null); saveToServer(list)
   }
 
+  const handleDelete = (id) => {
+    const list = locations.filter(l => l.id !== id)
+    setLocations(list); saveToServer(list)
+  }
+
+  const handleAddNew = () => {
+    setNewDraft(newBlankLocation(locations.map(l => l.id)))
+    setAddingNew(true)
+    setEditingId(null)
+  }
+
+  const handleSaveNew = (loc) => {
+    if (!loc.name.trim()) return
+    const list = [...locations, loc]
+    setLocations(list)
+    setAddingNew(false)
+    setNewDraft(null)
+    saveToServer(list)
+  }
+
   const resetToDefaults = async () => {
     if (!confirm('Reset ALL locations to the original defaults?')) return
     const r = await fetch('/api/content').then(r => r.json()).catch(() => ({}))
@@ -244,11 +300,20 @@ export default function AdminLocations() {
         )}
         {saved && <span style={{ color: '#059669', fontSize: '0.8rem', fontWeight: 700 }}>✓ Saved!</span>}
         {saving && <span style={{ color: '#94A3B8', fontSize: '0.8rem' }}>Saving…</span>}
-        {isOverride && (
-          <button onClick={resetToDefaults} style={{ marginLeft: 'auto', background: '#F1F5F9', color: '#EF4444', border: 'none', borderRadius: 6, padding: '5px 10px', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}>
-            Reset to defaults
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+          {isOverride && (
+            <button onClick={resetToDefaults} style={{ background: '#F1F5F9', color: '#EF4444', border: 'none', borderRadius: 6, padding: '5px 10px', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}>
+              Reset to defaults
+            </button>
+          )}
+          <button
+            onClick={handleAddNew}
+            disabled={addingNew}
+            style={{ background: '#059669', color: 'white', border: 'none', borderRadius: 6, padding: '5px 12px', fontSize: '0.75rem', fontWeight: 700, cursor: addingNew ? 'default' : 'pointer', opacity: addingNew ? 0.5 : 1 }}
+          >
+            + Add location
           </button>
-        )}
+        </div>
       </div>
 
       {error && (
@@ -257,10 +322,17 @@ export default function AdminLocations() {
         </div>
       )}
 
+      {addingNew && newDraft && (
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#059669', marginBottom: 8 }}>➕ New location</div>
+          <LocationEditor loc={newDraft} onSave={handleSaveNew} onCancel={() => { setAddingNew(false); setNewDraft(null) }} />
+        </div>
+      )}
+
       {locations.map(loc => (
         editingId === loc.id
           ? <LocationEditor key={loc.id} loc={loc} onSave={handleSave} onCancel={() => setEditingId(null)} />
-          : <LocationCard key={loc.id} loc={loc} onEdit={() => setEditingId(loc.id)} />
+          : <LocationCard key={loc.id} loc={loc} onEdit={() => setEditingId(loc.id)} onDelete={() => handleDelete(loc.id)} />
       ))}
     </div>
   )

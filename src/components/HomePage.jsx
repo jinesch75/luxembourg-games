@@ -55,13 +55,6 @@ export default function HomePage() {
             description={t('geo.subtitle')}
             color="#D1FAE5"
           />
-          <GameCard
-            path="/challenge"
-            emoji="🌍"
-            title="Intercultural Activities"
-            description={t('challenge.subtitle')}
-            color="#E0F2FE"
-          />
         </div>
       </div>
 

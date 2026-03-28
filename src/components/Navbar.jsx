@@ -7,11 +7,10 @@ export default function Navbar() {
   const { pathname } = useLocation()
 
   const navLinks = [
-    { path: '/',           icon: '🏠', label: t('nav.home') },
-    { path: '/quiz',       icon: '🎯', label: t('nav.quiz') },
-    { path: '/geo',        icon: '🗺️', label: t('nav.geo') },
-    { path: '/challenge',  icon: '🌍', label: t('nav.challenge') },
-    { path: '/info',       icon: 'ℹ️', label: t('nav.info') }
+    { path: '/',     icon: '🏠', label: t('nav.home') },
+    { path: '/quiz', icon: '🎯', label: t('nav.quiz') },
+    { path: '/geo',  icon: '🗺️', label: t('nav.geo') },
+    { path: '/info', icon: 'ℹ️', label: t('nav.info') }
   ]
 
   return (

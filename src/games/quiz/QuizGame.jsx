@@ -92,6 +92,7 @@ export default function QuizGame() {
   const [newBadge, setNewBadge] = useState(null)
   const [retryList, setRetryList] = useState(null)
   const [wrongAnswers, setWrongAnswers] = useState([])
+  const [isRetrySession, setIsRetrySession] = useState(false)
 
   const activeQuestions = retryList !== null ? retryList : questions
 
@@ -149,6 +150,7 @@ export default function QuizGame() {
     setNewBadge(null)
     setRetryList(null)
     setWrongAnswers([])
+    setIsRetrySession(false)
   }
 
   const handleRetryWrong = () => {
@@ -160,6 +162,7 @@ export default function QuizGame() {
     setRevealed(false)
     setAnswers([])
     setNewBadge(null)
+    setIsRetrySession(true)
     // Set step last so activeQuestions is already updated when question renders
     setStep('question')
   }
@@ -189,6 +192,7 @@ export default function QuizGame() {
         newBadge={newBadge}
         copied={copied}
         wrongCount={wrongAnswers.length}
+        isRetrySession={isRetrySession}
         onRetryWrong={wrongAnswers.length > 0 ? handleRetryWrong : null}
         onShare={() => {
           const emoji = answers.map(a => a ? '🟢' : '🔴').join('')
@@ -237,6 +241,19 @@ export default function QuizGame() {
 
   return (
     <div className="container" style={{ paddingTop: 24 }}>
+      {/* Retry mode banner */}
+      {isRetrySession && (
+        <div style={{
+          background: '#FEF3C7', border: '1px solid #FDE68A',
+          borderRadius: 'var(--radius)', padding: '8px 14px',
+          marginBottom: 14, display: 'flex', alignItems: 'center', gap: 8,
+          fontSize: '0.82rem', fontWeight: 600, color: '#92400E'
+        }}>
+          <span>🔁</span>
+          <span>Retry mode — {activeQuestions.length} missed question{activeQuestions.length !== 1 ? 's' : ''}</span>
+        </div>
+      )}
+
       {/* Progress */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
         <div className="progress-bar" style={{ flex: 1 }}>
@@ -476,7 +493,7 @@ function Intro({ questions, t, totalCorrect, onStart }) {
 }
 
 // ─── Results Screen ────────────────────────────────────────────────────────────
-function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, copied, onPlayAgain, wrongCount, onRetryWrong }) {
+function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, copied, onPlayAgain, wrongCount, onRetryWrong, isRetrySession }) {
   const pct = (score / total) * 100
   const msg = pct === 100 ? t('quiz.perfect') : pct >= 80 ? t('quiz.great') : pct >= 60 ? t('quiz.good') : t('quiz.tryAgain')
   const currentLevel = getCurrentLevel(totalCorrect)
@@ -540,6 +557,23 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
         )}
       </div>
 
+      {/* Retry session context */}
+      {isRetrySession && score > 0 && !newBadge && (
+        <div className="animate-slide-up" style={{
+          background: '#F0FDF4', border: '1px solid #BBF7D0',
+          borderRadius: 'var(--radius)', padding: '12px 16px',
+          marginBottom: 16, fontSize: '0.85rem', color: '#065F46', fontWeight: 600,
+          textAlign: 'center'
+        }}>
+          ✓ {score} retry answer{score !== 1 ? 's' : ''} added to your progress!
+          {nextLevel && (
+            <span style={{ fontWeight: 400, color: '#059669', display: 'block', marginTop: 4, fontSize: '0.78rem' }}>
+              {nextLevel.minCorrect - totalCorrect} more to reach {nextLevel.icon} {nextLevel.name}
+            </span>
+          )}
+        </div>
+      )}
+
       <button onClick={onShare} className="btn btn-secondary btn-full" style={{ marginBottom: 12 }}>
         {copied ? `✓ ${t('common.copied')}` : `📤 ${t('quiz.shareResult')}`}
       </button>
@@ -580,9 +614,15 @@ function Results({ score, total, answers, t, totalCorrect, newBadge, onShare, co
         </div>
       </div>
 
-      <button onClick={onPlayAgain} className="btn btn-primary btn-full">
-        🔄 {t('quiz.playAgain')}
-      </button>
+      {newBadge ? (
+        <button onClick={onPlayAgain} className="btn btn-primary btn-full" style={{ marginBottom: 8 }}>
+          {newBadge.icon} See my new level →
+        </button>
+      ) : (
+        <button onClick={onPlayAgain} className="btn btn-primary btn-full">
+          🔄 {t('quiz.playAgain')}
+        </button>
+      )}
     </div>
   )
 }

@@ -4,7 +4,6 @@ import Footer from './components/Footer'
 import HomePage from './components/HomePage'
 import QuizGame from './games/quiz/QuizGame'
 import GeoGame from './games/geo/GeoGame'
-import ChallengeGame from './games/challenge/ChallengeGame'
 import InfoHub from './components/InfoHub'
 import AdminPage from './components/admin/AdminPage'
 import LoginGate from './components/LoginGate'
@@ -16,12 +15,11 @@ export default function App() {
         <Navbar />
         <main className="page">
           <Routes>
-            <Route path="/"          element={<HomePage />} />
-            <Route path="/quiz"      element={<QuizGame />} />
-            <Route path="/geo"       element={<GeoGame />} />
-            <Route path="/challenge" element={<ChallengeGame />} />
-            <Route path="/info"      element={<InfoHub />} />
-            <Route path="/admin"     element={<AdminPage />} />
+            <Route path="/"      element={<HomePage />} />
+            <Route path="/quiz"  element={<QuizGame />} />
+            <Route path="/geo"   element={<GeoGame />} />
+            <Route path="/info"  element={<InfoHub />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>
         <Footer />
