@@ -262,6 +262,22 @@ export default function GeoGame() {
         </div>
       </div>}
 
+      {/* Tap hint — right-aligned, sits just above the map */}
+      {!revealed && (
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '4px 10px', flexShrink: 0, background: 'white' }}>
+          <div style={{
+            background: 'rgba(0,0,0,0.72)', color: 'white',
+            fontSize: '0.75rem', fontWeight: 700,
+            padding: '5px 11px', borderRadius: 8,
+            letterSpacing: '0.03em',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+            border: '1px solid rgba(255,255,255,0.15)'
+          }}>
+            📍 Tap the map to set your pin
+          </div>
+        </div>
+      )}
+
       {/* Map */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
         <MapContainer
@@ -300,21 +316,6 @@ export default function GeoGame() {
             </>
           )}
         </MapContainer>
-
-        {/* Tap hint overlay — top right, shown before guess */}
-        {!revealed && (
-          <div style={{
-            position: 'absolute', top: 10, right: 10, zIndex: 1000,
-            background: 'rgba(0,0,0,0.72)', color: 'white',
-            fontSize: '0.75rem', fontWeight: 700,
-            padding: '6px 12px', borderRadius: 8,
-            pointerEvents: 'none', letterSpacing: '0.03em',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
-            border: '1px solid rgba(255,255,255,0.15)'
-          }}>
-            📍 Tap the map to set your pin
-          </div>
-        )}
 
         {/* Pinch hint overlay */}
         <div style={{
