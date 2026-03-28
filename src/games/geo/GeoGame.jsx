@@ -405,7 +405,11 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
         </p>
       </div>
 
-      <button onClick={() => setShowRules(true)} className="btn btn-full btn-lg"
+      <button onClick={() => {
+          const isVeryFirstLevel = totalSubLevelsDone(geoProgress) === 0
+          if (isVeryFirstLevel) setShowRules(true)
+          else onStart()
+        }} className="btn btn-full btn-lg"
         style={{ background: curLevel.color, color: 'white', marginBottom: 16 }}>
         {isFinished ? '🔄 Play Again' : `${curLevel.icon} Start ${curLevel.name} ${curSubLevel}/5 →`}
       </button>
@@ -460,7 +464,7 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
           <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
             Round result
           </div>
-          <div style={{ fontSize: '2rem', fontWeight: 800, lineHeight: 1 }}>
+          <div style={{ fontSize: '1.3rem', fontWeight: 800, lineHeight: 1 }}>
             {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
           </div>
           <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>
