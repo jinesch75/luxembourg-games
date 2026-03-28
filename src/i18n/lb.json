@@ -23,7 +23,8 @@
     "stat4Value": "3",
     "sourcesTitle": "Zouverlässeg Quellen",
     "dailyReminderTitle": "All Dag zeréckkomm!",
-    "dailyReminderText": "All Dag nei Quizfroe. All Woch e neie Lëtz Connect-Puzzle."
+    "dailyReminderText": "All Dag nei Quizfroe. All Woch e neie Lëtz Connect-Puzzle.",
+    "moreStats": "Méi Statistiken iwwer Lëtzebuerg"
   },
   "quiz": {
     "title": "Lëtz Quiz",
@@ -66,7 +67,30 @@
     "sessionScoreText": "+{{score}} richteg an dëser Ronnen",
     "totalScoreText": "insgesamt richteg",
     "retryWrong": "🔁 {{count}} verpasst Fro(en) widderholen",
-    "levelLabel": "Etapp {{id}}"
+    "levelLabel": "Etapp {{id}}",
+    "yourAnswer": "Är Äntwert",
+    "correctAnswer": "Richteg Äntwert",
+    "yourProgress": "Äre Fortschrëtt",
+    "subLevelOf": "Ënnerniveau {{num}} vun 5",
+    "subLevelsDone": "{{done}}/25 Ënnerniveauen ofgeschloss",
+    "roundResult": "Resultat vun der Ronne",
+    "pointsEarned": "Punkte verdéngt",
+    "ptsThisRound": "+{{pts}} Pkt. an dëser Ronne",
+    "totalPts": "{{pts}} insgesamt",
+    "allLevelsComplete": "All Niveauen ofgeschloss!",
+    "newLevelUnlocked": "Neie Niveau fräigeschalt!",
+    "subLevelComplete": "Ënnerniveau {{num}} ofgeschloss!",
+    "continueNextSubLevel": "Weider zum nächste Ënnerniveau",
+    "allDone": "Fäerdeg! Nach eng Kéier spillen",
+    "startSubLevel": "{{name}} {{num}}/5 starten",
+    "couldNotLoad": "Froe konnten net geluede ginn. Probéiert et nach eng Kéier.",
+    "levelNames": {
+      "newcomer": "Newcomer",
+      "explorer": "Entdecker",
+      "resident": "Awunner",
+      "citizen": "Bierger",
+      "ambassador": "Ambassadeur"
+    }
   },
   "geo": {
     "title": "Lëtz Géo",
@@ -92,7 +116,37 @@
     "noPin": "Setzt éischt eng Markéierung op d'Kaart!",
     "km": "km",
     "m": "m",
-    "points": "Punkten"
+    "points": "Punkten",
+    "yourProgress": "Äre Fortschrëtt",
+    "subLevelOf": "Ënnerniveau {{num}} vun 5",
+    "subLevelsDone": "{{done}}/25 Ënnerniveauen ofgeschloss",
+    "roundResult": "Resultat vun der Ronne",
+    "pointsAdded": "Punkte bäigefüügt",
+    "ptsThisRound": "+{{pts}} Pkt. an dëser Ronne",
+    "totalPts": "{{pts}} insgesamt",
+    "allLevelsComplete": "All Niveauen ofgeschloss!",
+    "newLevelUnlocked": "Neie Niveau fräigeschalt!",
+    "subLevelComplete": "Ënnerniveau {{num}} ofgeschloss!",
+    "continueNextLevel": "Weider zum nächste Niveau",
+    "allDone": "Fäerdeg! Nach eng Kéier spillen",
+    "startSubLevel": "{{name}} {{num}}/5 starten",
+    "tapMapPin": "Tippt op d'Kaart fir Äre Pin ze setzen",
+    "pinchToZoom": "Pinchen fir ze zoomen",
+    "showResults": "Resultater weisen",
+    "minimise": "Miniméieren",
+    "howToPlay": "Wéi spillt een",
+    "readClue": "Liest den Hinweis",
+    "tapMapStep": "Tippt op d'Kaart",
+    "maxPtsPerQ": "1000 Pkt. max",
+    "completeSubLevelHint": "Beäntwert 5 Froen fir en Ënnerniveau ofzeschléissen an den nächsten opzespären!",
+    "letsGo": "Lass geet's!",
+    "levelNames": {
+      "tourist": "Tourist",
+      "wanderer": "Wanderer",
+      "navigator": "Navigator",
+      "explorer": "Entdecker",
+      "geographer": "Geograph"
+    }
   },
   "connect": {
     "title": "Lëtz Connect",

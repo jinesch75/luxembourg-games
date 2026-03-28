@@ -43,6 +43,7 @@ function totalSubLevelsDone(progress) {
 
 // ─── Level Badge Display ───────────────────────────────────────────────────────
 function LevelMapBadges({ progress }) {
+  const { t } = useTranslation()
   const { levelIdx: curLvlIdx } = parseProgress(progress)
   return (
     <div style={{ display: 'flex', gap: 6, justifyContent: 'space-between' }}>
@@ -81,7 +82,7 @@ function LevelMapBadges({ progress }) {
               color: isCurrentLevel ? level.color : 'var(--text-muted)',
               textAlign: 'center', lineHeight: 1.2
             }}>
-              {level.name}
+              {t(`quiz.levelNames.${level.id}`)}
             </div>
           </div>
         )
@@ -208,10 +209,10 @@ export default function QuizGame() {
     return (
       <div className="container" style={{ paddingTop: 40, textAlign: 'center' }}>
         <p style={{ color: 'var(--text-muted)', marginBottom: 16 }}>
-          Could not load questions. Please try again.
+          {t('quiz.couldNotLoad')}
         </p>
         <button className="btn btn-primary" onClick={handleReplay}>
-          ← Back
+          ← {t('common.back')}
         </button>
       </div>
     )
@@ -228,7 +229,7 @@ export default function QuizGame() {
           fontSize: '0.75rem', fontWeight: 700,
           display: 'inline-flex', alignItems: 'center', gap: 5
         }}>
-          {curLevel.icon} {curLevel.name} {curSubLevel}/5
+          {curLevel.icon} {t(`quiz.levelNames.${curLevel.id}`)} {curSubLevel}/5
         </span>
         <span style={{
           background: cat.bg, color: cat.text,
@@ -307,7 +308,7 @@ export default function QuizGame() {
             {/* Your answer */}
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
-                Your answer
+                {t('quiz.yourAnswer')}
               </div>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 10,
@@ -334,7 +335,7 @@ export default function QuizGame() {
             {selected !== q.answer && (
               <div style={{ marginBottom: 16 }}>
                 <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
-                  Correct answer
+                  {t('quiz.correctAnswer')}
                 </div>
                 <div style={{
                   display: 'flex', alignItems: 'center', gap: 10,
@@ -388,7 +389,7 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
         <div style={{ fontSize: '2rem', marginBottom: 6 }}>{curLevel.icon}</div>
         <h2 style={{ color: 'white', margin: '0 0 2px', fontSize: '1.3rem' }}>{t('quiz.title')}</h2>
         <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.8rem' }}>
-          {isFinished ? '🏆 All levels complete!' : `${curLevel.name} · Sub-level ${curSubLevel} of 5`}
+          {isFinished ? `🏆 ${t('quiz.allLevelsComplete')}` : `${t(`quiz.levelNames.${curLevel.id}`)} · ${t('quiz.subLevelOf', { num: curSubLevel })}`}
         </p>
       </div>
 
@@ -397,18 +398,18 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
         className="btn btn-full btn-lg"
         style={{ background: curLevel.color, color: 'white', marginBottom: 16 }}
       >
-        {isFinished ? '🔄 Play Again' : `${curLevel.icon} Start ${curLevel.name} ${curSubLevel}/5 →`}
+        {isFinished ? `🔄 ${t('quiz.allDone')}` : `${curLevel.icon} ${t('quiz.startSubLevel', { name: t(`quiz.levelNames.${curLevel.id}`), num: curSubLevel })} →`}
       </button>
 
       {/* Level map */}
       <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
         <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          Your Progress
+          {t('quiz.yourProgress')}
         </div>
         <LevelMapBadges progress={quizProgress} />
         <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            {totalSubLevelsDone(quizProgress)}/25 sub-levels done
+            {t('quiz.subLevelsDone', { done: totalSubLevelsDone(quizProgress) })}
           </div>
           <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>
             {(quizProgress.totalPoints || 0).toLocaleString()} pts
@@ -437,8 +438,8 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
           color: 'white', textAlign: 'center'
         }}>
           <div style={{ fontSize: '3rem', marginBottom: 8 }}>{levelUpInfo.icon}</div>
-          <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>New Level Unlocked!</div>
-          <div style={{ fontSize: '1rem', opacity: 0.9 }}>{levelUpInfo.name}</div>
+          <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>{t('quiz.newLevelUnlocked')}</div>
+          <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t(`quiz.levelNames.${levelUpInfo.id}`)}</div>
         </div>
       )}
 
@@ -450,38 +451,38 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
       }}>
         <div style={{ fontSize: '1.6rem', marginBottom: 4 }}>{curLevel.icon}</div>
         <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 16, opacity: 0.9 }}>
-          {curLevel.name} — Sub-level {curSubLevel} complete!
+          {t(`quiz.levelNames.${curLevel.id}`)} — {t('quiz.subLevelComplete', { num: curSubLevel })}
         </div>
         <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px' }}>
           <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
-            Round result
+            {t('quiz.roundResult')}
           </div>
           <div style={{ fontSize: '1.3rem', fontWeight: 800, lineHeight: 1 }}>
             {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
           </div>
-          <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>points earned</div>
+          <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>{t('quiz.pointsEarned')}</div>
         </div>
       </div>
 
       {/* Progress */}
       <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
         <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          Your Progress
+          {t('quiz.yourProgress')}
         </div>
         <LevelMapBadges progress={quizProgress} />
         <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>+{sessionTotal.toLocaleString()} pts this round</div>
-          <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>{(quizProgress.totalPoints || 0).toLocaleString()} total</div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('quiz.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</div>
+          <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>{t('quiz.totalPts', { pts: (quizProgress.totalPoints || 0).toLocaleString() })}</div>
         </div>
       </div>
 
       {isFinished ? (
         <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
-          🏆 All done! Play again →
+          🏆 {t('quiz.allDone')} →
         </button>
       ) : (
         <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: curLevel.color, color: 'white' }}>
-          Continue to next sub-level →
+          {t('quiz.continueNextSubLevel')} →
         </button>
       )}
     </div>

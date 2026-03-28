@@ -23,7 +23,8 @@
     "stat4Value": "3",
     "sourcesTitle": "Zuverlässige Quellen",
     "dailyReminderTitle": "Täglich zurückkehren!",
-    "dailyReminderText": "Täglich neue Quizfragen. Jede Woche ein neues Lëtz Connect-Rätsel."
+    "dailyReminderText": "Täglich neue Quizfragen. Jede Woche ein neues Lëtz Connect-Rätsel.",
+    "moreStats": "Mehr Statistiken über Luxemburg"
   },
   "quiz": {
     "title": "Lëtz Quiz",
@@ -66,7 +67,30 @@
     "sessionScoreText": "+{{score}} richtig in dieser Runde",
     "totalScoreText": "insgesamt richtig",
     "retryWrong": "🔁 {{count}} verpasste Frage(n) wiederholen",
-    "levelLabel": "Level {{id}}"
+    "levelLabel": "Level {{id}}",
+    "yourAnswer": "Deine Antwort",
+    "correctAnswer": "Richtige Antwort",
+    "yourProgress": "Dein Fortschritt",
+    "subLevelOf": "Unterlevel {{num}} von 5",
+    "subLevelsDone": "{{done}}/25 Unterlevel abgeschlossen",
+    "roundResult": "Rundenergebnis",
+    "pointsEarned": "Punkte gesammelt",
+    "ptsThisRound": "+{{pts}} Pkt. diese Runde",
+    "totalPts": "{{pts}} gesamt",
+    "allLevelsComplete": "Alle Level abgeschlossen!",
+    "newLevelUnlocked": "Neues Level freigeschaltet!",
+    "subLevelComplete": "Unterlevel {{num}} abgeschlossen!",
+    "continueNextSubLevel": "Weiter zum nächsten Unterlevel",
+    "allDone": "Fertig! Nochmal spielen",
+    "startSubLevel": "{{name}} {{num}}/5 starten",
+    "couldNotLoad": "Fragen konnten nicht geladen werden. Bitte versuche es erneut.",
+    "levelNames": {
+      "newcomer": "Neuankömmling",
+      "explorer": "Entdecker",
+      "resident": "Einwohner",
+      "citizen": "Bürger",
+      "ambassador": "Botschafter"
+    }
   },
   "geo": {
     "title": "Lëtz Géo",
@@ -92,7 +116,37 @@
     "noPin": "Setze zuerst eine Markierung auf der Karte!",
     "km": "km",
     "m": "m",
-    "points": "Punkte"
+    "points": "Punkte",
+    "yourProgress": "Dein Fortschritt",
+    "subLevelOf": "Unterlevel {{num}} von 5",
+    "subLevelsDone": "{{done}}/25 Unterlevel abgeschlossen",
+    "roundResult": "Rundenergebnis",
+    "pointsAdded": "Punkte hinzugefügt",
+    "ptsThisRound": "+{{pts}} Pkt. diese Runde",
+    "totalPts": "{{pts}} gesamt",
+    "allLevelsComplete": "Alle Level abgeschlossen!",
+    "newLevelUnlocked": "Neues Level freigeschaltet!",
+    "subLevelComplete": "Unterlevel {{num}} abgeschlossen!",
+    "continueNextLevel": "Weiter zum nächsten Level",
+    "allDone": "Fertig! Nochmal spielen",
+    "startSubLevel": "{{name}} {{num}}/5 starten",
+    "tapMapPin": "Tippe auf die Karte um deinen Pin zu setzen",
+    "pinchToZoom": "Pinchen zum Zoomen",
+    "showResults": "Ergebnisse anzeigen",
+    "minimise": "Minimieren",
+    "howToPlay": "Wie man spielt",
+    "readClue": "Lies den Hinweis",
+    "tapMapStep": "Tippe auf die Karte",
+    "maxPtsPerQ": "1000 Pkt. max",
+    "completeSubLevelHint": "Schließe 5 Fragen ab, um ein Unterlevel zu beenden und das nächste freizuschalten!",
+    "letsGo": "Los geht's!",
+    "levelNames": {
+      "tourist": "Tourist",
+      "wanderer": "Wanderer",
+      "navigator": "Navigator",
+      "explorer": "Entdecker",
+      "geographer": "Geograph"
+    }
   },
   "connect": {
     "title": "Lëtz Connect",

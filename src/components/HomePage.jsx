@@ -106,7 +106,7 @@ export default function HomePage() {
           }}
         >
           <span style={{ fontSize: '1.2rem' }}>📊</span>
-          <span style={{ flex: 1 }}>More statistics about Luxembourg →</span>
+          <span style={{ flex: 1 }}>{t('home.moreStats')} →</span>
         </Link>
       </div>
 

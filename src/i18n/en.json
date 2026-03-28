@@ -23,7 +23,8 @@
     "stat4Value": "3",
     "sourcesTitle": "Reliable sources",
     "dailyReminderTitle": "Come back every day!",
-    "dailyReminderText": "New quiz questions every day. A new Lëtz Connect puzzle every week."
+    "dailyReminderText": "New quiz questions every day. A new Lëtz Connect puzzle every week.",
+    "moreStats": "More statistics about Luxembourg"
   },
   "quiz": {
     "title": "Lëtz Quiz",
@@ -66,7 +67,30 @@
     "sessionScoreText": "+{{score}} correct this session",
     "totalScoreText": "total correct",
     "retryWrong": "🔁 Retry {{count}} missed question(s)",
-    "levelLabel": "Level {{id}}"
+    "levelLabel": "Level {{id}}",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
+    "yourProgress": "Your Progress",
+    "subLevelOf": "Sub-level {{num}} of 5",
+    "subLevelsDone": "{{done}}/25 sub-levels done",
+    "roundResult": "Round result",
+    "pointsEarned": "points earned",
+    "ptsThisRound": "+{{pts}} pts this round",
+    "totalPts": "{{pts}} total",
+    "allLevelsComplete": "All levels complete!",
+    "newLevelUnlocked": "New Level Unlocked!",
+    "subLevelComplete": "Sub-level {{num}} complete!",
+    "continueNextSubLevel": "Continue to next sub-level",
+    "allDone": "All done! Play again",
+    "startSubLevel": "Start {{name}} {{num}}/5",
+    "couldNotLoad": "Could not load questions. Please try again.",
+    "levelNames": {
+      "newcomer": "Newcomer",
+      "explorer": "Explorer",
+      "resident": "Resident",
+      "citizen": "Citizen",
+      "ambassador": "Ambassador"
+    }
   },
   "geo": {
     "title": "Lëtz Géo",
@@ -92,7 +116,37 @@
     "noPin": "Place a pin on the map first!",
     "km": "km",
     "m": "m",
-    "points": "points"
+    "points": "points",
+    "yourProgress": "Your Progress",
+    "subLevelOf": "Sub-level {{num}} of 5",
+    "subLevelsDone": "{{done}}/25 sub-levels done",
+    "roundResult": "Round result",
+    "pointsAdded": "points added",
+    "ptsThisRound": "+{{pts}} pts this round",
+    "totalPts": "{{pts}} total",
+    "allLevelsComplete": "All levels complete!",
+    "newLevelUnlocked": "New Level Unlocked!",
+    "subLevelComplete": "Sub-level {{num}} complete!",
+    "continueNextLevel": "Continue to next level",
+    "allDone": "All done! Play again",
+    "startSubLevel": "Start {{name}} {{num}}/5",
+    "tapMapPin": "Tap the map to set your pin",
+    "pinchToZoom": "Pinch to change size",
+    "showResults": "Show results",
+    "minimise": "Minimise",
+    "howToPlay": "How to Play",
+    "readClue": "Read the clue",
+    "tapMapStep": "Tap the map",
+    "maxPtsPerQ": "1000 pts max",
+    "completeSubLevelHint": "Complete 5 questions to finish a sub-level and unlock the next one!",
+    "letsGo": "Let's go!",
+    "levelNames": {
+      "tourist": "Tourist",
+      "wanderer": "Wanderer",
+      "navigator": "Navigator",
+      "explorer": "Explorer",
+      "geographer": "Geographer"
+    }
   },
   "connect": {
     "title": "Lëtz Connect",
