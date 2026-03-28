@@ -117,6 +117,7 @@ export default function QuizGame() {
   const [revealed, setRevealed] = useState(false)
   const [roundScores, setRoundScores] = useState([])
   const [levelUpInfo, setLevelUpInfo] = useState(null)
+  const [completedSubLevelNum, setCompletedSubLevelNum] = useState(null)
 
   // Helper: get translated question field with English fallback
   const qText    = (q) => t(`questions.${q.id}.q`,  { defaultValue: q.question })
@@ -151,6 +152,7 @@ export default function QuizGame() {
 
       setQuizProgress(newProgressObj)
       setRoundScores(newScores)
+      setCompletedSubLevelNum(curSubLevel)
       trackGameEvent('quiz', 'complete', { score: sessionTotal, level: curLevel.id, subLevel: curSubLevel })
       setStep('done')
     } else {
@@ -168,6 +170,7 @@ export default function QuizGame() {
     setRevealed(false)
     setRoundScores([])
     setLevelUpInfo(null)
+    setCompletedSubLevelNum(null)
   }
 
   if (step === 'intro') {
@@ -190,7 +193,7 @@ export default function QuizGame() {
         t={t}
         quizProgress={quizProgress}
         curLevel={curLevel}
-        curSubLevel={curSubLevel}
+        curSubLevel={completedSubLevelNum ?? curSubLevel}
         levelUpInfo={levelUpInfo}
         onReplay={handleReplay}
       />
@@ -455,35 +458,6 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
             {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
           </div>
           <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>points earned</div>
-        </div>
-      </div>
-
-      {/* Question breakdown */}
-      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>
-          {t('quiz.results')}
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          {scores.map((s, i) => (
-            <div key={i} style={{
-              display: 'flex', alignItems: 'center', gap: 10,
-              padding: '8px 0', borderBottom: i < scores.length - 1 ? '1px solid var(--border)' : 'none'
-            }}>
-              <span style={{
-                width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
-                background: s.correct ? '#D1FAE5' : '#FEE2E2',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem'
-              }}>
-                {s.correct ? '✓' : '✗'}
-              </span>
-              <span style={{ fontSize: '0.85rem', color: 'var(--gray-600)', flex: 1 }}>
-                {t('quiz.question')} {i + 1}
-              </span>
-              <span style={{ fontWeight: 700, fontSize: '0.85rem', color: s.correct ? '#059669' : 'var(--text-muted)' }}>
-                {s.correct ? `+${POINTS_PER_CORRECT}` : '+0'}
-              </span>
-            </div>
-          ))}
         </div>
       </div>
 
