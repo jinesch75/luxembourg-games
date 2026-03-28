@@ -1463,27 +1463,8 @@ export const LOCATIONS = [
   },
     region: 'Esch',
     link: 'https://www.visitluxembourg.com/en/place/site/rockhal-and-belval'
-  }
-]
-
-/**
- * Returns the 5 locations for a specific major level + sub-level.
- */
-export function getSubLevelLocations(levelName, subLevel, locationsPool = null) {
-  const pool = locationsPool || LOCATIONS
-  return pool.filter(loc => loc.level === levelName && loc.subLevel === subLevel)
-}
-
-export const LEVEL_ORDER = ['tourist', 'wanderer', 'navigator', 'explorer', 'geographer']
-
-/**
- * Returns 5 locations for a play session using a given seed.
- * @param {number} seed  — use a random number for randomisation per session
- * @param {Array}  [locationsPool]  optional override (from admin/server)
- */
-export function getSessionLocations(seed = 0, locationsPool = null) {
-  const pool = locationsPool || LOCATIONS
-  const shuffled = [...pool  ,{
+  },
+  {
     id: 'esch-sur-sure',
     level: 'navigator',
     subLevel: 1,
@@ -1944,9 +1925,8 @@ export function getSessionLocations(seed = 0, locationsPool = null) {
     },
     region: 'Wiltz',
     link: 'https://www.visitluxembourg.com/en/region/ardennes'
-  }
-]
-  ,{
+  },
+  {
     id: 'hamm-cemetery',
     level: 'explorer',
     subLevel: 1,
@@ -2221,9 +2201,8 @@ export function getSessionLocations(seed = 0, locationsPool = null) {
     fact: { en: 'Hautcharage ("upper Charage") sits atop the Chiers plateau at about 370m altitude. The village forms a pair with neighbouring Bascharage (Nidderkuer) below. The area was important for iron ore mining in the 19th and early 20th centuries, forming part of the Minett industrial belt.', fr: 'Hautcharage (haut Charage) est perché sur le plateau de la Chiers à environ 370 m d\'altitude. Le village forme une paire avec son voisin Bascharage (Nidderkuer) en dessous. La région était importante pour l\'extraction du minerai de fer aux XIXe et début du XXe siècles, faisant partie de la ceinture industrielle du Minett.', de: 'Hautcharage (oberes Charage) sitzt auf dem Chiers-Plateau auf etwa 370 m Höhe. Das Dorf bildet ein Paar mit dem benachbarten Bascharage (Nidderkuer) darunter. Das Gebiet war im 19. und frühen 20. Jahrhundert wichtig für den Eisenerzabbau und bildete Teil des Minett-Industriegürtels.', lb: 'Iewerkuer (iewert Charage) läit op dem Chiers-Plateau op ronderëm 370 m Héicht. D\'Duerf bildet e Paar mat sengem Noper Nidderkuer drënner. D\'Géigend war am 19. an fréien 20. Joerhonnert wichteg fir Ierzofbau a war Deel vum Minett-Industriegürtel.' },
     region: 'Capellen',
     link: 'https://www.visitluxembourg.com/en/region/minett'
-  }
-]
-  ,{
+  },
+  {
     id: 'sandweiler',
     level: 'explorer',
     subLevel: 1,
@@ -2474,9 +2453,8 @@ export function getSessionLocations(seed = 0, locationsPool = null) {
     fact: { en: 'The pilgrimage chapel of Stadtbredimus contains a medieval Black Madonna statue that has been venerated since at least the 14th century. The baroque chapel building dates to the 17th century and is listed as a national monument. Pilgrims visit particularly on the Feast of the Assumption in August.', fr: 'La chapelle de pèlerinage de Stadtbredimus contient une statue médiévale de Vierge Noire vénérée depuis au moins le XIVe siècle. La chapelle baroque date du XVIIe siècle et est classée monument national. Les pèlerins viennent surtout le jour de la fête de l\'Assomption en août.', de: 'Die Wallfahrtskapelle Stadtbredimus enthält eine mittelalterliche Schwarze Madonna, die seit mindestens dem 14. Jahrhundert verehrt wird. Das Barockkapellengebäude stammt aus dem 17. Jahrhundert und ist als nationales Denkmal eingestuft. Pilger kommen besonders am Hochfest der Aufnahme Mariens im August.', lb: 'D\'Pilgerskapell vu Stadbriedemes enthält eng mëttelalterlesch Schwaart Madonna, déi zanter mindestens dem 14. Joerhonnert veréiert gëtt. D\'Barockkapellgebaier stammt aus dem 17. Joerhonnert a gëtt als nationalent Monument gelistet. Pilger kommen besonnesch um Fest vun der Mariehimmelfaart am August.' },
     region: 'Remich',
     link: 'https://www.visitluxembourg.com/en'
-  }
-]
-  ,{
+  },
+  {
     id: 'insenborn',
     level: 'geographer',
     subLevel: 1,
@@ -2549,7 +2527,26 @@ export function getSessionLocations(seed = 0, locationsPool = null) {
     link: 'https://www.schueberfouer.lu'
   }
 ]
-].sort((a, b) => {
+
+/**
+ * Returns the 5 locations for a specific major level + sub-level.
+ */
+export function getSubLevelLocations(levelName, subLevel, locationsPool = null) {
+  const pool = locationsPool || LOCATIONS
+  return pool.filter(loc => loc.level === levelName && loc.subLevel === subLevel)
+}
+
+export const LEVEL_ORDER = ['tourist', 'wanderer', 'navigator', 'explorer', 'geographer']
+
+/**
+ * Returns 5 locations for a play session using a given seed.
+ * @param {number} seed  — use a random number for randomisation per session
+ * @param {Array}  [locationsPool]  optional override (from admin/server)
+ */
+
+export function getSessionLocations(seed = 0, locationsPool = null) {
+  const pool = locationsPool || LOCATIONS
+  const shuffled = [...pool].sort((a, b) => {
     const h = (str) => {
       let hash = seed
       for (let i = 0; i < str.length; i++) {
