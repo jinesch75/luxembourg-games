@@ -31,12 +31,10 @@ function AppRoutes() {
 }
 
 function AppLayout() {
-  const { pathname } = useLocation()
-  const isHome = pathname === '/'
   return (
     <>
-      {!isHome && <Navbar />}
-      <main className="page" style={isHome ? { paddingTop: 0, paddingBottom: 0 } : {}}>
+      <Navbar />
+      <main className="page">
         <AppRoutes />
       </main>
     </>

@@ -10,7 +10,7 @@ export default function Navbar() {
 
   const allNavLinks = [
     { path: '/',     icon: '🏠', label: t('nav.home') },
-    { path: '/quiz', icon: '🧠', label: t('nav.quiz') },
+    { path: '/quiz', icon: '❓', label: t('nav.quiz') },
     { path: '/geo',  icon: '🎯', label: t('nav.geo') },
     { path: '/info', icon: 'ℹ️', label: t('nav.info'), hidden: !infoHubEnabled }
   ]

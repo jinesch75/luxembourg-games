@@ -7,7 +7,7 @@ export default function HomePage() {
   const [gamesOpen, setGamesOpen] = useState(false)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%)' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - var(--nav-height))', marginBottom: '-80px', background: 'linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%)' }}>
 
       {/* ── Hero ── */}
       <section className="home-hero" style={{ flex: 1 }}>
@@ -38,7 +38,7 @@ export default function HomePage() {
               <Link to="/quiz" className="game-card-v" onClick={() => setGamesOpen(false)}>
                 <div className="game-card-v-body">
                   <div className="game-card-v-header-row">
-                    <div className="game-card-v-icon" style={{ background: '#DBEAFE' }}>🧠</div>
+                    <div className="game-card-v-icon" style={{ background: '#DBEAFE' }}>❓</div>
                     <div className="game-card-v-title">Quiz</div>
                   </div>
                   <p className="game-card-v-desc">Fun multiple-choice questions about history, culture, language and more.</p>

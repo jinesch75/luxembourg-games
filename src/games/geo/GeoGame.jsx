@@ -395,15 +395,14 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
     <div>
       {showRules && <RulesModal t={t} onClose={() => { setShowRules(false); onStart() }} />}
 
-      {/* Full-width level hero */}
+      {/* Level header */}
       <div style={{
-        background: `linear-gradient(135deg, ${curLevel.color}CC 0%, ${curLevel.color} 100%)`,
         color: 'white', textAlign: 'center',
-        padding: '48px 20px 40px',
+        padding: '18px 20px 8px',
       }}>
-        <span style={{ fontSize: '3rem', display: 'block', marginBottom: 12 }}>{curLevel.icon}</span>
-        <h2 style={{ margin: '0 0 8px', fontSize: '1.8rem', fontWeight: 800 }}>{t('geo.title')}</h2>
-        <p style={{ margin: 0, opacity: 0.88, fontSize: '1rem' }}>
+        <span style={{ fontSize: '2rem', display: 'block', marginBottom: 4 }}>{curLevel.icon}</span>
+        <h2 style={{ margin: '0 0 4px', fontSize: '1.4rem', fontWeight: 800 }}>{t('geo.title')}</h2>
+        <p style={{ margin: 0, opacity: 0.75, fontSize: '0.88rem' }}>
           {isFinished
             ? `🏆 ${t('geo.allLevelsComplete')}`
             : `${t(`geo.levelNames.${curLevel.id}`)} · ${t('geo.subLevelOf', { num: curSubLevel })}`}
