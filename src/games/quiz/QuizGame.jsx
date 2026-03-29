@@ -266,9 +266,6 @@ export default function QuizGame() {
           borderBottomLeftRadius: 'var(--radius-xl)',
           borderBottomRightRadius: 'var(--radius-xl)',
         }}>
-          <div style={{ fontSize: '0.65rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
-            {t('quiz.question')} {currentIdx + 1}
-          </div>
           <h2 style={{ fontSize: 'clamp(1.05rem, 4vw, 1.25rem)', lineHeight: 1.5, fontWeight: 700, margin: 0, color: 'var(--text)' }}>
             {qText(q)}
           </h2>
@@ -332,7 +329,7 @@ export default function QuizGame() {
               </div>
               <div style={{
                 fontSize: '0.68rem', fontWeight: 700,
-                color: 'rgba(255,255,255,0.4)',
+                color: 'rgba(255,255,255,0.65)',
                 textTransform: 'uppercase', letterSpacing: '0.16em',
                 marginTop: 4,
               }}>
@@ -404,7 +401,7 @@ export default function QuizGame() {
               <div style={{ marginBottom: 10 }}>
                 <div style={{
                   fontSize: '0.63rem', fontWeight: 700,
-                  color: 'rgba(255,255,255,0.38)',
+                  color: 'rgba(255,255,255,0.65)',
                   textTransform: 'uppercase', letterSpacing: '0.13em',
                   marginBottom: 7,
                 }}>
@@ -443,7 +440,7 @@ export default function QuizGame() {
               </div>
               <p style={{
                 fontSize: '0.875rem', margin: 0, lineHeight: 1.65,
-                color: 'rgba(255,255,255,0.68)',
+                color: 'rgba(255,255,255,0.88)',
                 background: 'rgba(255,255,255,0.055)',
                 borderRadius: 12,
                 padding: '12px 15px',
