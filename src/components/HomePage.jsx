@@ -25,6 +25,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Bridge Photo Section ── */}
+      <div className="home-bridge-section" />
+
       {/* ── Games Popup Modal ── */}
       {gamesOpen && (
         <div className="games-modal-overlay" onClick={() => setGamesOpen(false)}>
