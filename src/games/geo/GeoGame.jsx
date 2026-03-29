@@ -239,16 +239,16 @@ export default function GeoGame() {
   if (!loc) return null
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68, padding: '8px 8px 0 8px', gap: '8px' }}>
+    <div style={{ position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68 }}>
 
-      {/* Clue panel */}
+      {/* Clue panel — floats over the map at the top */}
       {!revealed && (
         <div style={{
+          position: 'absolute', top: 8, left: 8, right: 8, zIndex: 20,
           background: '#FFFFFF',
           borderRadius: 14,
           padding: '12px 16px 10px',
-          flexShrink: 0,
-          boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
         }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
             <div style={{
@@ -285,8 +285,8 @@ export default function GeoGame() {
         </div>
       )}
 
-      {/* Map */}
-      <div style={{ flex: 1, position: 'relative', overflow: 'hidden', borderRadius: 14, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
+      {/* Map — fills the full container; panels float on top */}
+      <div style={{ position: 'absolute', inset: 8, borderRadius: 14, overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
         <MapContainer center={LUX_CENTER} zoom={LUX_ZOOM} maxBounds={LUX_BOUNDS} maxBoundsViscosity={0.7}
           style={{ height: '100%', width: '100%' }} ref={mapRef} zoomControl={true}>
           <TileLayer attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -311,9 +311,15 @@ export default function GeoGame() {
         </div>
       </div>
 
-      {/* Result panel */}
+      {/* Result panel — floats over the map at the bottom */}
       {revealed && (
-        <div className="animate-slide-up" style={{ background: '#FFFFFF', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
+        <div className="animate-slide-up" style={{
+          position: 'absolute', bottom: 8, left: 8, right: 8, zIndex: 20,
+          background: '#FFFFFF',
+          borderRadius: 14,
+          overflow: 'hidden',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.20)',
+        }}>
           <button onClick={() => setResultCollapsed(c => !c)} style={{
             width: '100%', padding: '7px 16px',
             background: 'var(--gray-50)', border: 'none',
@@ -377,9 +383,9 @@ export default function GeoGame() {
         </div>
       )}
 
-      {/* Guess button */}
+      {/* Guess button — anchored to the bottom of the container */}
       {!revealed && (
-        <div style={{ padding: '0 0 12px 0', background: 'transparent', flexShrink: 0 }}>
+        <div style={{ position: 'absolute', bottom: 8, left: 8, right: 8, zIndex: 20, background: 'transparent' }}>
           {shake && !userPin && (
             <div style={{ textAlign: 'center', color: 'var(--red)', fontSize: '0.78rem', marginBottom: 8, fontWeight: 600 }}>
               {t('geo.noPin')}
