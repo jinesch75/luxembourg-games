@@ -221,47 +221,48 @@ export default function QuizGame() {
   const cat = CAT_COLORS[q.category] || CAT_COLORS.culture
 
   return (
-    <div className="container" style={{ paddingTop: 24 }}>
-      {/* Level + sub-level badge */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-        <span style={{
-          background: curLevel.bg, color: curLevel.color,
-          borderRadius: 999, padding: '4px 12px',
-          fontSize: '0.75rem', fontWeight: 700,
-          display: 'inline-flex', alignItems: 'center', gap: 5
-        }}>
-          {t(`quiz.levelNames.${curLevel.id}`)} {curSubLevel}/5
-        </span>
-        <span style={{
-          background: cat.bg, color: cat.text,
-          borderRadius: 999, padding: '4px 12px',
-          fontSize: '0.75rem', fontWeight: 700,
-          display: 'inline-flex', alignItems: 'center', gap: 5
-        }}>
-          {t(`quiz.categories.${q.category}`)}
-        </span>
-      </div>
-
+    <div className="container" style={{ paddingTop: 20 }}>
       {/* Progress bar */}
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 20 }}>
         <div className="game-progress-row">
           <span className="game-progress-label">
             {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {questions.length}
           </span>
           <span className="game-progress-pct">
-            {Math.round((currentIdx / questions.length) * 100)}%
+            {Math.round(((currentIdx + 1) / questions.length) * 100)}%
           </span>
         </div>
         <div className="progress-bar">
-          <div className="progress-fill" style={{ width: `${(currentIdx / questions.length) * 100}%` }} />
+          <div className="progress-fill" style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }} />
         </div>
       </div>
 
       {/* Question */}
-      <div className="card" style={{ marginBottom: 20, padding: 24, background: 'linear-gradient(135deg, #F0FDF4 0%, #D1FAE5 100%)', borderColor: '#A7F3D0' }}>
-        <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', lineHeight: 1.4, fontWeight: 700, margin: 0 }}>
-          {qText(q)}
-        </h2>
+      <div style={{
+        marginBottom: 18,
+        borderRadius: 'var(--radius-xl)',
+        overflow: 'hidden',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+      }}>
+        <div style={{
+          height: 5,
+          background: `linear-gradient(90deg, ${curLevel.color}, ${cat.text})`,
+        }} />
+        <div style={{
+          padding: '22px 24px',
+          background: 'white',
+          border: '1.5px solid var(--border)',
+          borderTop: 'none',
+          borderBottomLeftRadius: 'var(--radius-xl)',
+          borderBottomRightRadius: 'var(--radius-xl)',
+        }}>
+          <div style={{ fontSize: '0.65rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
+            {t('quiz.question')} {currentIdx + 1}
+          </div>
+          <h2 style={{ fontSize: 'clamp(1.05rem, 4vw, 1.25rem)', lineHeight: 1.5, fontWeight: 700, margin: 0, color: 'var(--text)' }}>
+            {qText(q)}
+          </h2>
+        </div>
       </div>
 
       {/* Options */}
