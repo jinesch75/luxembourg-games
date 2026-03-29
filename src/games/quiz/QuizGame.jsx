@@ -313,7 +313,7 @@ export default function QuizGame() {
             onClick={() => handleSelect(idx)}
             className="quiz-option"
           >
-            <span className="quiz-option-letter">
+            <span className="quiz-option-letter" translate="no">
               {String.fromCharCode(65 + idx)}
             </span>
             {qOption(q, idx)}

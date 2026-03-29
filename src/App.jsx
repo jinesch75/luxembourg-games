@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
 import HomePage from './components/HomePage'
 import QuizGame from './games/quiz/QuizGame'
@@ -31,6 +32,11 @@ function AppRoutes() {
 }
 
 function AppLayout() {
+  const { i18n } = useTranslation()
+  useEffect(() => {
+    document.documentElement.lang = i18n.language || 'en'
+  }, [i18n.language])
+
   return (
     <>
       <Navbar />
