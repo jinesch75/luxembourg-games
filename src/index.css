@@ -449,7 +449,7 @@ a:hover { text-decoration: underline; }
   letter-spacing: -0.03em;
   margin-bottom: 14px;
 }
-.home-hero-title-accent { color: #FFD966; }
+.home-hero-title-accent { color: #FFD966; font-style: italic; }
 .home-hero-sub {
   color: rgba(255,255,255,0.65);
   font-size: clamp(1rem, 2.5vw, 1.15rem);
@@ -738,7 +738,7 @@ a:hover { text-decoration: underline; }
   animation: fadeIn 0.2s ease forwards;
 }
 .games-modal {
-  background: #1E293B;
+  background: linear-gradient(145deg, #7F0A12 0%, #B01A22 45%, #EF3340 100%);
   border-radius: var(--radius-xl);
   padding: 24px 20px;
   width: 100%;

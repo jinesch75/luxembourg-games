@@ -13,6 +13,7 @@ import AdminStats     from './AdminStats'
 import AdminQuestions from './AdminQuestions'
 import AdminLocations from './AdminLocations'
 import AdminInfo      from './AdminInfo'
+import { useFeatureFlags } from '../../contexts/FeatureFlagsContext'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
@@ -180,6 +181,87 @@ function LoginGate({ onAuth }) {
   )
 }
 
+// ── Info Hub toggle banner ─────────────────────────────────────────────────
+function InfoHubToggleBanner() {
+  const { infoHubEnabled, toggleInfoHub } = useFeatureFlags()
+  const [busy, setBusy] = useState(false)
+
+  const handleToggle = async () => {
+    setBusy(true)
+    await toggleInfoHub()
+    setBusy(false)
+  }
+
+  return (
+    <div style={{
+      background: infoHubEnabled
+        ? 'linear-gradient(135deg, #065F46 0%, #047857 100%)'
+        : 'linear-gradient(135deg, #7C2D12 0%, #B45309 100%)',
+      padding: '14px 20px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+      flexWrap: 'wrap',
+      borderBottom: infoHubEnabled ? '3px solid #10B981' : '3px solid #F59E0B',
+    }}>
+      {/* Pulsing status dot */}
+      <span style={{
+        display: 'inline-block',
+        width: 14,
+        height: 14,
+        borderRadius: '50%',
+        background: infoHubEnabled ? '#10B981' : '#F59E0B',
+        boxShadow: infoHubEnabled
+          ? '0 0 0 4px rgba(16,185,129,0.3)'
+          : '0 0 0 4px rgba(245,158,11,0.3)',
+        flexShrink: 0,
+        animation: !infoHubEnabled ? 'pulse 2s infinite' : 'none',
+      }} />
+
+      <div style={{ flex: 1 }}>
+        <div style={{ color: 'white', fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.02em' }}>
+          {infoHubEnabled ? '✅ Info Hub is VISIBLE to users' : '⚠️ Info Hub is HIDDEN from users'}
+        </div>
+        <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.78rem', marginTop: 2 }}>
+          {infoHubEnabled
+            ? 'The Info Hub section appears in the navigation and is accessible.'
+            : 'The ℹ️ Info Hub tab is not shown in the menu. Click to re-enable it at any time.'}
+        </div>
+      </div>
+
+      <button
+        onClick={handleToggle}
+        disabled={busy}
+        style={{
+          background: infoHubEnabled ? 'rgba(239,68,68,0.9)' : 'rgba(16,185,129,0.9)',
+          color: 'white',
+          border: '2px solid rgba(255,255,255,0.4)',
+          borderRadius: 8,
+          padding: '10px 20px',
+          fontSize: '0.88rem',
+          fontWeight: 800,
+          cursor: busy ? 'not-allowed' : 'pointer',
+          letterSpacing: '0.03em',
+          textTransform: 'uppercase',
+          whiteSpace: 'nowrap',
+          opacity: busy ? 0.7 : 1,
+          transition: 'all 0.2s',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+        }}
+      >
+        {busy ? '...' : infoHubEnabled ? '🙈 Hide Info Hub' : '👁 Show Info Hub'}
+      </button>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { box-shadow: 0 0 0 4px rgba(245,158,11,0.3); }
+          50% { box-shadow: 0 0 0 8px rgba(245,158,11,0.1); }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 // ── Main component ─────────────────────────────────────────────────────────
 export default function AdminPage() {
   const [authed, setAuthed] = useState(
@@ -224,6 +306,9 @@ export default function AdminPage() {
           Manage game content and view visitor statistics
         </div>
       </div>
+
+      {/* Info Hub visibility toggle — always visible regardless of active tab */}
+      <InfoHubToggleBanner />
 
       {/* Tab bar */}
       <div style={S.tabBar}>

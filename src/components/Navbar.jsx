@@ -1,17 +1,21 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import LanguageSelector from './LanguageSelector'
+import { useFeatureFlags } from '../contexts/FeatureFlagsContext'
 
 export default function Navbar() {
   const { t } = useTranslation()
   const { pathname } = useLocation()
+  const { infoHubEnabled } = useFeatureFlags()
 
-  const navLinks = [
+  const allNavLinks = [
     { path: '/',     icon: '🏠', label: t('nav.home') },
     { path: '/quiz', icon: '🧠', label: t('nav.quiz') },
     { path: '/geo',  icon: '🎯', label: t('nav.geo') },
-    { path: '/info', icon: 'ℹ️', label: t('nav.info') }
+    { path: '/info', icon: 'ℹ️', label: t('nav.info'), hidden: !infoHubEnabled }
   ]
+
+  const navLinks = allNavLinks.filter(l => !l.hidden)
 
   return (
     <>
