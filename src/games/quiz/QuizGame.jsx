@@ -168,7 +168,7 @@ export default function QuizGame() {
   }
 
   const handleReplay = () => {
-    setStep('intro')
+    setStep('question')
     setCurrentIdx(0)
     setSelected(null)
     setRevealed(false)

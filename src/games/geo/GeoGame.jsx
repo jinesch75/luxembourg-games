@@ -214,7 +214,7 @@ export default function GeoGame() {
   }
 
   const handleReplay = () => {
-    setStep('intro')
+    setStep('game')
     setRoundIdx(0)
     setUserPin(null)
     setRevealed(false)
