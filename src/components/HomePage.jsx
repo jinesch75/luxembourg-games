@@ -15,19 +15,18 @@ export default function HomePage() {
               {t('home.headline')}
             </h1>
             <p className="home-hero-sub">{t('home.tagline')}</p>
-            <p className="home-hero-choose">{t('home.gamesTitle')}</p>
             <div className="home-hero-actions">
               <Link to="/quiz" className="btn-hero-game btn-hero-game-quiz">
                 <span className="btn-hero-game-icon">🗳️</span>
                 <span className="btn-hero-game-text">
-                  <strong>Quiz</strong>
+                  <strong>Game 1: Multiple-choice Quiz</strong>
                   <small>{t('home.quizCardDesc')}</small>
                 </span>
               </Link>
               <Link to="/geo" className="btn-hero-game btn-hero-game-geo">
                 <span className="btn-hero-game-icon">🎯</span>
                 <span className="btn-hero-game-text">
-                  <strong>Map Game</strong>
+                  <strong>Game 2: Find a location in Luxembourg</strong>
                   <small>{t('home.mapCardDesc')}</small>
                 </span>
               </Link>

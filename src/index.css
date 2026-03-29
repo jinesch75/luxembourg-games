@@ -404,7 +404,7 @@ a:hover { text-decoration: underline; }
   color: #FFD966;
   font-style: italic;
   font-size: clamp(0.88rem, 2.2vw, 1rem);
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   max-width: 460px;
   line-height: 1.7;
   text-align: center;
@@ -423,7 +423,7 @@ a:hover { text-decoration: underline; }
   gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 0;
 }
 .btn-hero-game {
   display: inline-flex;
