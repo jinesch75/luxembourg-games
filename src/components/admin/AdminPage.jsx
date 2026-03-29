@@ -66,8 +66,8 @@ const S = {
     padding: '10px 18px',
     fontSize: '0.72rem',
     fontWeight: active ? 700 : 500,
-    color: active ? '#EF3340' : '#64748B',
-    borderBottom: active ? '2px solid #EF3340' : '2px solid transparent',
+    color: active ? '#16A34A' : '#64748B',
+    borderBottom: active ? '2px solid #16A34A' : '2px solid transparent',
     cursor: 'pointer',
     background: 'none',
     border: 'none',
@@ -163,7 +163,7 @@ function LoginGate({ onAuth }) {
           <button
             type="submit"
             style={{
-              background: '#EF3340',
+              background: '#16A34A',
               color: 'white',
               border: 'none',
               borderRadius: 8,

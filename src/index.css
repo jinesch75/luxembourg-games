@@ -120,10 +120,10 @@ a:hover { text-decoration: underline; }
 }
 .btn:active { transform: scale(0.97); }
 .btn-primary {
-  background: var(--primary);
+  background: #16A34A;
   color: white;
 }
-.btn-primary:hover { background: var(--primary-dark); }
+.btn-primary:hover { background: #15803D; }
 .btn-secondary {
   background: var(--gray-100);
   color: var(--gray-700);
@@ -131,10 +131,10 @@ a:hover { text-decoration: underline; }
 .btn-secondary:hover { background: var(--gray-200); }
 .btn-outline {
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: #16A34A;
+  border: 2px solid #16A34A;
 }
-.btn-outline:hover { background: var(--red-light); }
+.btn-outline:hover { background: #DCFCE7; }
 .btn-blue {
   background: var(--accent);
   color: white;
@@ -572,27 +572,16 @@ a:hover { text-decoration: underline; }
   border-top: 1px solid var(--gray-100);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-.game-card-v-cta {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #16A34A;
-}
-.game-card-v-arrow {
-  width: 32px;
-  height: 32px;
-  background: #16A34A;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 1rem;
-  transition: transform 0.15s;
-  flex-shrink: 0;
 }
-.game-card-v:hover .game-card-v-arrow { transform: translateX(3px); }
+.game-card-v-btn {
+  padding: 10px 24px;
+  font-size: 0.875rem;
+  width: 100%;
+  justify-content: center;
+  border-radius: 8px;
+  text-align: center;
+}
 
 /* Value prop cards */
 .home-value-grid {

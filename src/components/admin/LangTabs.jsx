@@ -44,7 +44,7 @@ export default function LangTabs({ lang, onChange, missingFor = [] }) {
               fontSize: '0.78rem',
               fontWeight: active ? 700 : 500,
               background: active ? 'white' : 'transparent',
-              color: active ? '#EF3340' : '#64748B',
+              color: active ? '#16A34A' : '#64748B',
               boxShadow: active ? '0 1px 4px rgba(0,0,0,0.1)' : 'none',
               transition: 'all 0.15s',
             }}

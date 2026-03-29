@@ -44,8 +44,7 @@ export default function HomePage() {
                   <p className="game-card-v-desc">Fun multiple-choice questions about history, culture, language and more.</p>
                 </div>
                 <div className="game-card-v-footer">
-                  <span className="game-card-v-cta">Start playing</span>
-                  <div className="game-card-v-arrow">›</div>
+                  <div className="btn-hero-primary game-card-v-btn">Start playing →</div>
                 </div>
               </Link>
 
@@ -58,8 +57,7 @@ export default function HomePage() {
                   <p className="game-card-v-desc">{t('geo.subtitle')} — Pin locations on the map and earn points based on your accuracy.</p>
                 </div>
                 <div className="game-card-v-footer">
-                  <span className="game-card-v-cta">Start playing</span>
-                  <div className="game-card-v-arrow">›</div>
+                  <div className="btn-hero-primary game-card-v-btn">Start playing →</div>
                 </div>
               </Link>
             </div>

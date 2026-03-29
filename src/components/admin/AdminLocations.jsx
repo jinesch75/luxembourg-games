@@ -66,7 +66,7 @@ function LocationCard({ loc, onEdit, onDelete }) {
           <button
             onClick={onEdit}
             style={{
-              background: '#EF3340', color: 'white', border: 'none',
+              background: '#16A34A', color: 'white', border: 'none',
               borderRadius: 6, padding: '5px 10px',
               fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer',
             }}
@@ -76,7 +76,7 @@ function LocationCard({ loc, onEdit, onDelete }) {
           {confirmDel ? (
             <>
               <button onClick={() => { onDelete(); setConfirmDel(false) }}
-                style={{ background: '#DC2626', color: 'white', border: 'none', borderRadius: 6, padding: '5px 10px', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer' }}>
+                style={{ background: '#16A34A', color: 'white', border: 'none', borderRadius: 6, padding: '5px 10px', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer' }}>
                 Confirm
               </button>
               <button onClick={() => setConfirmDel(false)}
@@ -86,7 +86,7 @@ function LocationCard({ loc, onEdit, onDelete }) {
             </>
           ) : (
             <button onClick={() => setConfirmDel(true)}
-              style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA', borderRadius: 6, padding: '5px 8px', fontSize: '0.72rem', fontWeight: 600, cursor: 'pointer' }}>
+              style={{ background: '#DCFCE7', color: '#16A34A', border: '1px solid #BBF7D0', borderRadius: 6, padding: '5px 8px', fontSize: '0.72rem', fontWeight: 600, cursor: 'pointer' }}>
               🗑️
             </button>
           )}

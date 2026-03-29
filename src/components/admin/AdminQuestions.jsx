@@ -114,7 +114,7 @@ function QuestionCard({ q, onEdit, onDelete }) {
         <button
           onClick={onEdit}
           style={{
-            flex: 1, background: '#EF3340', color: 'white', border: 'none',
+            flex: 1, background: '#16A34A', color: 'white', border: 'none',
             borderRadius: 6, padding: '7px 14px',
             fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer',
           }}
@@ -126,7 +126,7 @@ function QuestionCard({ q, onEdit, onDelete }) {
             <button
               onClick={() => { onDelete(); setConfirmDel(false) }}
               style={{
-                background: '#DC2626', color: 'white', border: 'none',
+                background: '#16A34A', color: 'white', border: 'none',
                 borderRadius: 6, padding: '7px 12px',
                 fontSize: '0.78rem', fontWeight: 700, cursor: 'pointer',
               }}
@@ -148,7 +148,7 @@ function QuestionCard({ q, onEdit, onDelete }) {
           <button
             onClick={() => setConfirmDel(true)}
             style={{
-              background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA',
+              background: '#DCFCE7', color: '#16A34A', border: '1px solid #BBF7D0',
               borderRadius: 6, padding: '7px 12px',
               fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer',
             }}
@@ -260,7 +260,7 @@ function QuestionEditor({ q, onSave, onCancel }) {
               )}
               <span style={{
                 width: 22, height: 22, borderRadius: '50%',
-                background: draft.answer === i ? '#EF3340' : '#E2E8F0',
+                background: draft.answer === i ? '#16A34A' : '#E2E8F0',
                 color: draft.answer === i ? 'white' : '#64748B',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '0.65rem', fontWeight: 800, flexShrink: 0,

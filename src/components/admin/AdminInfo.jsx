@@ -54,10 +54,10 @@ function SectionHeader({ title }) {
   )
 }
 function editBtn(onClick) {
-  return <button onClick={onClick} style={{ background: '#EF3340', color: 'white', border: 'none', borderRadius: 6, padding: '5px 10px', fontSize: '0.73rem', fontWeight: 600, cursor: 'pointer' }}>✏️</button>
+  return <button onClick={onClick} style={{ background: '#16A34A', color: 'white', border: 'none', borderRadius: 6, padding: '5px 10px', fontSize: '0.73rem', fontWeight: 600, cursor: 'pointer' }}>✏️</button>
 }
 function deleteBtn(onClick) {
-  return <button onClick={onClick} style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA', borderRadius: 6, padding: '5px 8px', fontSize: '0.73rem', fontWeight: 600, cursor: 'pointer' }}>🗑️</button>
+  return <button onClick={onClick} style={{ background: '#DCFCE7', color: '#16A34A', border: '1px solid #BBF7D0', borderRadius: 6, padding: '5px 8px', fontSize: '0.73rem', fontWeight: 600, cursor: 'pointer' }}>🗑️</button>
 }
 function SaveCancelRow({ onSave, onCancel }) {
   return (
@@ -169,7 +169,7 @@ function ActivityEditor({ cat, onSave, onCancel }) {
         {d.tips.map((tip, i) => (
           <div key={i} style={{ display: 'flex', gap: 6, alignItems: 'flex-start' }}>
             <textarea value={tip} onChange={e => setTip(i, e.target.value)} style={{ ...inputStyle(true), minHeight: 40, flex: 1 }} rows={2} />
-            <button onClick={() => removeTip(i)} style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA', borderRadius: 6, padding: '5px 8px', fontSize: '0.8rem', cursor: 'pointer', flexShrink: 0 }}>✕</button>
+            <button onClick={() => removeTip(i)} style={{ background: '#DCFCE7', color: '#16A34A', border: '1px solid #BBF7D0', borderRadius: 6, padding: '5px 8px', fontSize: '0.8rem', cursor: 'pointer', flexShrink: 0 }}>✕</button>
           </div>
         ))}
       </div>
@@ -286,7 +286,7 @@ function SourceGroupEditor({ group, onSave, onCancel }) {
           <div key={i} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 8, padding: 10 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
               <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748B' }}>Source {i + 1}</span>
-              <button onClick={() => removeSource(i)} style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA', borderRadius: 5, padding: '3px 8px', fontSize: '0.72rem', cursor: 'pointer' }}>✕ Remove</button>
+              <button onClick={() => removeSource(i)} style={{ background: '#DCFCE7', color: '#16A34A', border: '1px solid #BBF7D0', borderRadius: 5, padding: '3px 8px', fontSize: '0.72rem', cursor: 'pointer' }}>✕ Remove</button>
             </div>
             <div style={{ marginBottom: 6 }}><Label>Label (link text)</Label><input value={src.label} onChange={e => setSource(i, 'label', e.target.value)} style={{ ...inputStyle(), height: 32 }} /></div>
             <div style={{ marginBottom: 6 }}><Label>URL</Label><input value={src.href} onChange={e => setSource(i, 'href', e.target.value)} style={{ ...inputStyle(), height: 32 }} /></div>
