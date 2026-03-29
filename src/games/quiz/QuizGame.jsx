@@ -168,7 +168,17 @@ export default function QuizGame() {
   }
 
   const handleReplay = () => {
-    setStep('question')
+    const isFinished = (quizProgress.completedSubLevels['ambassador'] || 0) >= 5
+    if (isFinished) {
+      // Reset all progress back to zero
+      setQuizProgress({
+        completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0, ambassador: 0 },
+        totalPoints: 0,
+      })
+      setStep('intro')
+    } else {
+      setStep('question')
+    }
     setCurrentIdx(0)
     setSelected(null)
     setRevealed(false)
