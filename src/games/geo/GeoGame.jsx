@@ -239,15 +239,16 @@ export default function GeoGame() {
   if (!loc) return null
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68, padding: '8px 8px 0 8px', gap: '8px' }}>
 
       {/* Clue panel */}
       {!revealed && (
         <div style={{
           background: '#FFFFFF',
-          borderBottom: '1px solid var(--border)',
+          borderRadius: 14,
           padding: '12px 16px 10px',
           flexShrink: 0,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
         }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
             <div style={{
@@ -259,22 +260,12 @@ export default function GeoGame() {
               {loc.emoji}
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                marginBottom: 5,
-              }}>
+              <div style={{ marginBottom: 5 }}>
                 <span style={{
-                  fontSize: '0.63rem', fontWeight: 700, color: 'var(--gray-400)',
+                  fontSize: '0.63rem', fontWeight: 700, color: '#1e3a8a',
                   textTransform: 'uppercase', letterSpacing: '0.08em',
                 }}>
                   {t('geo.clue')} {roundIdx + 1}/{locations.length}
-                </span>
-                <span style={{
-                  fontSize: '0.63rem', fontWeight: 600, color: 'var(--gray-500)',
-                  background: 'var(--gray-100)', padding: '2px 8px',
-                  borderRadius: 4, letterSpacing: '0.03em',
-                }}>
-                  {t(`geo.levelNames.${curLevel.id}`)} · {curSubLevel}/5
                 </span>
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--gray-700)', lineHeight: 1.55, margin: 0 }}>
@@ -286,8 +277,8 @@ export default function GeoGame() {
             marginTop: 10, paddingTop: 8, borderTop: '1px solid var(--gray-100)',
             display: 'flex', alignItems: 'center', gap: 6,
           }}>
-            <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--gray-300)', flexShrink: 0 }} />
-            <span style={{ fontSize: '0.68rem', color: 'var(--gray-400)', fontWeight: 500, letterSpacing: '0.02em' }}>
+            <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--red)', flexShrink: 0 }} />
+            <span style={{ fontSize: '0.68rem', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.02em' }}>
               {t('geo.tapMapPin')}
             </span>
           </div>
@@ -295,7 +286,7 @@ export default function GeoGame() {
       )}
 
       {/* Map */}
-      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden', borderRadius: 14, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
         <MapContainer center={LUX_CENTER} zoom={LUX_ZOOM} maxBounds={LUX_BOUNDS} maxBoundsViscosity={0.7}
           style={{ height: '100%', width: '100%' }} ref={mapRef} zoomControl={true}>
           <TileLayer attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -315,7 +306,7 @@ export default function GeoGame() {
             </>
           )}
         </MapContainer>
-        <div style={{ position: 'absolute', bottom: 12, right: 12, zIndex: 1000, background: 'rgba(255,255,255,0.9)', color: 'var(--gray-500)', fontSize: '0.65rem', fontWeight: 600, padding: '5px 10px', borderRadius: 6, pointerEvents: 'none', letterSpacing: '0.04em', boxShadow: '0 1px 4px rgba(0,0,0,0.12)', border: '1px solid var(--gray-200)' }}>
+        <div style={{ position: 'absolute', bottom: 12, right: 12, zIndex: 1000, background: 'rgba(255,255,255,0.92)', color: 'var(--red)', fontSize: '0.65rem', fontWeight: 700, padding: '5px 10px', borderRadius: 6, pointerEvents: 'none', letterSpacing: '0.04em', boxShadow: '0 1px 4px rgba(0,0,0,0.12)', border: '1px solid rgba(239,51,64,0.2)' }}>
           {t('geo.pinchToZoom')}
         </div>
       </div>
@@ -388,7 +379,7 @@ export default function GeoGame() {
 
       {/* Guess button */}
       {!revealed && (
-        <div style={{ padding: '12px 16px', background: '#FFFFFF', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
+        <div style={{ padding: '0 0 12px 0', background: 'transparent', flexShrink: 0 }}>
           {shake && !userPin && (
             <div style={{ textAlign: 'center', color: 'var(--red)', fontSize: '0.78rem', marginBottom: 8, fontWeight: 600 }}>
               {t('geo.noPin')}
