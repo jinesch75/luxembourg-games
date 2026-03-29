@@ -4,6 +4,7 @@
  */
 
 import { useState, useEffect } from 'react'
+import { HelpCircle, MapPin } from 'lucide-react'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
@@ -240,7 +241,7 @@ export default function AdminStats() {
           boxShadow: '0 1px 4px rgba(0,0,0,0.07)',
           display: 'flex', alignItems: 'center', gap: 12,
         }}>
-          <span style={{ fontSize: '1.4rem' }}>🎯</span>
+          <HelpCircle size={22} strokeWidth={1.75} color="#64748B" />
           <div>
             <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B', textTransform: 'uppercase' }}>
               Average quiz score
@@ -312,7 +313,10 @@ export default function AdminStats() {
         <>
           <SectionTitle>Games completed</SectionTitle>
           <div style={{ background: 'white', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 4px rgba(0,0,0,0.07)' }}>
-            {[['quiz','🎯','Quiz'],['geo','🗺️','Géo']].map(([game, icon, label]) => (
+            {[
+              ['quiz', <HelpCircle size={14} strokeWidth={1.75} />, 'Quiz'],
+              ['geo',  <MapPin    size={14} strokeWidth={1.75} />, 'Géo'],
+            ].map(([game, icon, label]) => (
               <BarRow
                 key={game}
                 label={label}

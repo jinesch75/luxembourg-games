@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { HelpCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { QUESTIONS, getSubLevelQuestions } from './data/questions'
@@ -293,7 +294,7 @@ export default function QuizGame() {
         }} />
         <div style={{
           padding: '22px 24px',
-          background: 'white',
+          background: 'linear-gradient(145deg, #EFF6FF 0%, #F0F9FF 60%, #E0F2FE 100%)',
           border: '1.5px solid var(--border)',
           borderTop: 'none',
           borderBottomLeftRadius: 'var(--radius-xl)',
@@ -594,8 +595,8 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
             width: 48, height: 48, borderRadius: 12, flexShrink: 0,
             background: 'rgba(255,255,255,0.10)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.6rem',
-          }}>🧠</span>
+            color: 'rgba(255,255,255,0.9)',
+          }}><HelpCircle size={26} strokeWidth={1.75} /></span>
           <span style={{ flex: 1, textAlign: 'left' }}>
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
               {isFinished ? t('quiz.allDone') : t('quiz.startGame', { defaultValue: 'Start the game' })}
