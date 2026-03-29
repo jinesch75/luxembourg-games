@@ -212,7 +212,7 @@ export default function QuizGame() {
         <p style={{ color: 'var(--text-muted)', marginBottom: 16 }}>
           {t('quiz.couldNotLoad')}
         </p>
-        <button className="btn btn-primary" onClick={handleReplay}>
+        <button className="btn-hero-primary" onClick={handleReplay}>
           ← {t('common.back')}
         </button>
       </div>
@@ -230,7 +230,7 @@ export default function QuizGame() {
           fontSize: '0.75rem', fontWeight: 700,
           display: 'inline-flex', alignItems: 'center', gap: 5
         }}>
-          {curLevel.icon} {t(`quiz.levelNames.${curLevel.id}`)} {curSubLevel}/5
+          {t(`quiz.levelNames.${curLevel.id}`)} {curSubLevel}/5
         </span>
         <span style={{
           background: cat.bg, color: cat.text,
@@ -238,7 +238,7 @@ export default function QuizGame() {
           fontSize: '0.75rem', fontWeight: 700,
           display: 'inline-flex', alignItems: 'center', gap: 5
         }}>
-          {cat.icon} {t(`quiz.categories.${q.category}`)}
+          {t(`quiz.categories.${q.category}`)}
         </span>
       </div>
 
@@ -258,7 +258,7 @@ export default function QuizGame() {
       </div>
 
       {/* Question */}
-      <div className="card" style={{ marginBottom: 20, padding: 24 }}>
+      <div className="card" style={{ marginBottom: 20, padding: 24, background: 'linear-gradient(135deg, #F0FDF4 0%, #D1FAE5 100%)', borderColor: '#A7F3D0' }}>
         <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', lineHeight: 1.4, fontWeight: 700, margin: 0 }}>
           {qText(q)}
         </h2>
@@ -366,7 +366,7 @@ export default function QuizGame() {
               </p>
             </div>
 
-            <button onClick={handleNext} className="btn btn-primary btn-full">
+            <button onClick={handleNext} className="btn-hero-primary" style={{ width: '100%' }}>
               {currentIdx + 1 >= questions.length ? t('quiz.finish') : t('quiz.next')} →
             </button>
           </div>
@@ -388,7 +388,7 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
         padding: '18px 20px 8px',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <span style={{ fontSize: '2rem', lineHeight: 1 }}>❓</span>
+          <span style={{ fontSize: '2rem', lineHeight: 1 }}>🗳️</span>
           <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('quiz.title')}</h2>
         </div>
       </div>
@@ -397,16 +397,12 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
       <div className="container" style={{ paddingTop: 28 }}>
         <button
           onClick={onStart}
-          className="btn btn-full btn-lg"
+          className="btn-hero-primary"
           style={{
-            background: curLevel.color,
-            color: 'white',
+            width: '100%',
             marginBottom: 16,
-            borderRadius: 'var(--radius-lg)',
-            boxShadow: `0 6px 20px ${curLevel.color}55`,
-            border: '2px solid rgba(255,255,255,0.25)',
-            fontWeight: 800,
             fontSize: '1.1rem',
+            fontWeight: 800,
             letterSpacing: '0.01em',
           }}
         >
@@ -490,11 +486,11 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
         </div>
 
         {isFinished ? (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
+          <button onClick={onReplay} className="btn-hero-primary" style={{ width: '100%', fontSize: '1.1rem', whiteSpace: 'normal', lineHeight: 1.3 }}>
             🏆 {t('quiz.allDone')} →
           </button>
         ) : (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: curLevel.color, color: 'white', whiteSpace: 'normal', lineHeight: 1.3 }}>
+          <button onClick={onReplay} className="btn-hero-primary" style={{ width: '100%', fontSize: '1.1rem', whiteSpace: 'normal', lineHeight: 1.3 }}>
             {t('quiz.continueNextSubLevel')} →
           </button>
         )}

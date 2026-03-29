@@ -38,7 +38,7 @@ export default function HomePage() {
               <Link to="/quiz" className="game-card-v" onClick={() => setGamesOpen(false)}>
                 <div className="game-card-v-body">
                   <div className="game-card-v-header-row">
-                    <div className="game-card-v-icon" style={{ background: '#DBEAFE' }}>❓</div>
+                    <div className="game-card-v-icon" style={{ background: '#DBEAFE' }}>🗳️</div>
                     <div className="game-card-v-title">Quiz</div>
                   </div>
                   <p className="game-card-v-desc">Fun multiple-choice questions about history, culture, language and more.</p>
