@@ -608,29 +608,29 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
             width: '100%',
             display: 'flex', alignItems: 'center', gap: 16,
             padding: '20px 24px',
-            borderRadius: 18,
-            background: 'linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%)',
-            color: 'rgba(255,255,255,0.95)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            boxShadow: '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
+            border: '1px solid rgba(255,255,255,0.25)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.transform = 'translateY(-3px)'
-            e.currentTarget.style.boxShadow = '0 8px 28px rgba(100,30,30,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
           }}
         >
           <span style={{
-            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
-            background: 'rgba(255,255,255,0.15)',
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.10)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.7rem',
+            fontSize: '1.6rem',
           }}>🏆</span>
           <span style={{ flex: 1, textAlign: 'left' }}>
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
@@ -649,29 +649,29 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
             width: '100%',
             display: 'flex', alignItems: 'center', gap: 16,
             padding: '20px 24px',
-            borderRadius: 18,
-            background: 'linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%)',
-            color: 'rgba(255,255,255,0.95)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            boxShadow: '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
+            border: '1px solid rgba(255,255,255,0.25)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.transform = 'translateY(-3px)'
-            e.currentTarget.style.boxShadow = '0 8px 28px rgba(100,30,30,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
           }}
         >
           <span style={{
-            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
-            background: 'rgba(255,255,255,0.15)',
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.10)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.7rem',
+            fontSize: '1.6rem',
           }}>▶</span>
           <span style={{ flex: 1, textAlign: 'left' }}>
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>

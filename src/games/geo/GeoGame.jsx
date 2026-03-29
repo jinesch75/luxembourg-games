@@ -389,15 +389,18 @@ export default function GeoGame() {
               width: '100%', padding: '10px 20px', borderRadius: 10,
               background: userPin ? 'var(--gray-900)' : 'var(--gray-200)',
               color: userPin ? '#FFFFFF' : 'var(--gray-400)',
-              border: 'none', cursor: userPin ? 'pointer' : 'default',
+              border: userPin ? '1px solid rgba(255,255,255,0.25)' : '1px solid transparent',
+              cursor: userPin ? 'pointer' : 'default',
               fontFamily: 'var(--font)', fontSize: '0.92rem', fontWeight: 700,
               letterSpacing: '0.01em',
               transition: 'background 0.15s ease, opacity 0.15s ease',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             }}
             onMouseEnter={e => { if (userPin) e.currentTarget.style.opacity = '0.85' }}
             onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
           >
             {t('geo.guess')}
+            <span style={{ fontSize: '1rem', opacity: userPin ? 0.6 : 0.3 }}>→</span>
           </button>
         </div>
       )}
@@ -558,7 +561,7 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
             borderRadius: 16,
             background: '#111827',
             color: '#FFFFFF',
-            border: '1px solid #1F2937',
+            border: '1px solid rgba(255,255,255,0.25)',
             boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
@@ -599,7 +602,7 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
             borderRadius: 16,
             background: '#111827',
             color: '#FFFFFF',
-            border: '1px solid #1F2937',
+            border: '1px solid rgba(255,255,255,0.25)',
             boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
