@@ -19,14 +19,14 @@ export default function HomePage() {
               <Link to="/quiz" className="btn-hero-game btn-hero-game-quiz">
                 <span className="btn-hero-game-icon">🗳️</span>
                 <span className="btn-hero-game-text">
-                  <strong>Game 1: Multiple-choice Quiz</strong>
+                  <strong>Game 1: Quiz</strong>
                   <small>{t('home.quizCardDesc')}</small>
                 </span>
               </Link>
               <Link to="/geo" className="btn-hero-game btn-hero-game-geo">
                 <span className="btn-hero-game-icon">🎯</span>
                 <span className="btn-hero-game-text">
-                  <strong>Game 2: Find a location in Luxembourg</strong>
+                  <strong>Game 2: Map Game</strong>
                   <small>{t('home.mapCardDesc')}</small>
                 </span>
               </Link>
