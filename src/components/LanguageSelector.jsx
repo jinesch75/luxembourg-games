@@ -33,7 +33,7 @@ export default function LanguageSelector() {
           fontWeight: 600
         }}
       >
-        <span style={{ fontSize: '1.1rem' }}>{current.flag}</span>
+        <span style={{ fontSize: '0.85rem' }}>{current.flag}</span>
         <span style={{ textTransform: 'uppercase', letterSpacing: '0.04em' }}>{current.code}</span>
         <span style={{ fontSize: '0.6rem', opacity: 0.8 }}>▼</span>
       </button>

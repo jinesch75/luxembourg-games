@@ -17,7 +17,7 @@ export default function HomePage() {
             <p className="home-hero-sub">{t('home.tagline')}</p>
             <div className="home-hero-actions">
               <Link to="/quiz" className="btn-hero-game btn-hero-game-quiz">
-                <span className="btn-hero-game-icon">🗳️</span>
+                <span className="btn-hero-game-icon">🧠</span>
                 <span className="btn-hero-game-text">
                   <strong>Game 1: Quiz</strong>
                   <small>{t('home.quizCardDesc')}</small>

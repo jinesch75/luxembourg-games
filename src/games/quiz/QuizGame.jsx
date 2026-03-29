@@ -380,51 +380,53 @@ export default function QuizGame() {
 // ─── Intro Screen ──────────────────────────────────────────────────────────────
 function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
   const isFinished = (quizProgress.completedSubLevels['ambassador'] || 0) >= 5
+  const doneSubs = totalSubLevelsDone(quizProgress)
+  const totalSubs = QUIZ_LEVELS.reduce((acc, l) => acc + l.subLevels, 0)
 
   return (
     <div>
-      {/* Level header */}
+      {/* Title header */}
       <div style={{
         color: 'white', textAlign: 'center',
         padding: '18px 20px 8px',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <span style={{ fontSize: '2rem', lineHeight: 1 }}>🗳️</span>
-          <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('quiz.title')}</h2>
-        </div>
+        <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('quiz.title')}</h2>
       </div>
 
       {/* Content */}
       <div className="container" style={{ paddingTop: 28 }}>
-        <button
-          onClick={onStart}
-          className="btn-hero-primary"
-          style={{
-            width: '100%',
-            marginBottom: 16,
-            fontSize: '1.1rem',
-            fontWeight: 800,
-            letterSpacing: '0.01em',
-          }}
-        >
-          {isFinished
-            ? `🔄 ${t('quiz.allDone')}`
-            : `${curLevel.icon} ${t('quiz.startSubLevel', { name: t(`quiz.levelNames.${curLevel.id}`), num: curSubLevel })} →`}
-        </button>
 
-        {/* Progress card */}
+        {/* Progress card — on top */}
         <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
           <div className="section-title" style={{ marginBottom: 12 }}>{t('quiz.yourProgress')}</div>
-          <LevelMapBadges progress={quizProgress} />
-          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-              {t('quiz.subLevelsDone', { done: totalSubLevelsDone(quizProgress) })}
-            </span>
+          <div className="game-progress-row">
+            <span className="game-progress-label">{doneSubs} / {totalSubs}</span>
+            <span className="game-progress-pct">{Math.round((doneSubs / totalSubs) * 100)}%</span>
+          </div>
+          <div className="progress-bar" style={{ marginBottom: 14 }}>
+            <div className="progress-fill" style={{ width: `${(doneSubs / totalSubs) * 100}%` }} />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
             <span style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>
               {(quizProgress.totalPoints || 0).toLocaleString()} pts
             </span>
           </div>
         </div>
+
+        {/* Start button — below */}
+        <button
+          onClick={onStart}
+          className="btn-hero-primary"
+          style={{
+            width: '100%',
+            fontSize: '1.1rem',
+            fontWeight: 800,
+            letterSpacing: '0.01em',
+          }}
+        >
+          {isFinished ? t('quiz.allDone') : t('quiz.startGame', { defaultValue: 'Start the game' })}
+        </button>
+
       </div>
     </div>
   )
