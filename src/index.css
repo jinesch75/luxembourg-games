@@ -456,21 +456,21 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
 }
 .btn-hero-game-quiz {
-  background: linear-gradient(135deg, #4A1A1A 0%, #6B2323 60%, #7A2C2C 100%);
-  color: rgba(255,255,255,0.92);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.10);
+  background: linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%);
+  color: rgba(255,255,255,0.95);
+  box-shadow: 0 4px 20px rgba(100,30,30,0.30), inset 0 1px 0 rgba(255,255,255,0.14);
 }
 .btn-hero-game-quiz:hover {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10);
+  box-shadow: 0 8px 28px rgba(100,30,30,0.45), inset 0 1px 0 rgba(255,255,255,0.14);
   color: white;
 }
 .btn-hero-game-geo {
-  background: linear-gradient(135deg, #0F2340 0%, #1A3260 60%, #1E3A70 100%);
-  color: rgba(255,255,255,0.92);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.10);
+  background: linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%);
+  color: rgba(255,255,255,0.95);
+  box-shadow: 0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14);
 }
 .btn-hero-game-geo:hover {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10);
+  box-shadow: 0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14);
   color: white;
 }
 .btn-hero-game-icon {
