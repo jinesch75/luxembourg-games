@@ -44,8 +44,13 @@ function MapFitBounds({ revealed, userPin, targetCoords }) {
   const map = useMap()
   useEffect(() => {
     if (revealed && userPin) {
-      const bounds = L.latLngBounds([userPin, targetCoords])
-      map.fitBounds(bounds.pad(0.5), { animate: true, maxZoom: 12 })
+      // Wait for the result panel to render and the map to resize,
+      // then recalculate size before fitting both pins into view.
+      setTimeout(() => {
+        map.invalidateSize()
+        const bounds = L.latLngBounds([userPin, targetCoords])
+        map.fitBounds(bounds.pad(0.55), { animate: true, maxZoom: 12 })
+      }, 200)
     }
   }, [revealed]) // eslint-disable-line
   return null
