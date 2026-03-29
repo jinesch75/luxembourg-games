@@ -95,7 +95,12 @@
       "resident": "Résident",
       "citizen": "Citoyen",
       "ambassador": "Ambassadeur"
-    }
+    },
+    "points": "points",
+    "seeResults": "Voir mes résultats",
+    "startGame": "Commencer le jeu",
+    "subLevel": "Sous-niveau",
+    "allLevelsCompleted": "Tous les niveaux complétés !"
   },
   "geo": {
     "title": "Map Game",
@@ -152,7 +157,9 @@
       "explorer": "Explorateur",
       "geographer": "Géographe"
     },
-    "startGame": "Commencer le jeu"
+    "startGame": "Commencer le jeu",
+    "subLevel": "Sous-niveau",
+    "allLevelsCompleted": "Tous les niveaux complétés !"
   },
   "info": {
     "title": "Info Hub",

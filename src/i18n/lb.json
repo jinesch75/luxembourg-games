@@ -95,7 +95,12 @@
       "resident": "Awunner",
       "citizen": "Bierger",
       "ambassador": "Ambassadeur"
-    }
+    },
+    "points": "Punkten",
+    "seeResults": "Meng Resultater kucken",
+    "startGame": "Spill ufänken",
+    "subLevel": "Ënnerniveau",
+    "allLevelsCompleted": "All Niveauen ofgeschloss!"
   },
   "geo": {
     "title": "Map Game",
@@ -152,7 +157,9 @@
       "explorer": "Entdecker",
       "geographer": "Geograph"
     },
-    "startGame": "Spill starten"
+    "startGame": "Spill starten",
+    "subLevel": "Ënnerniveau",
+    "allLevelsCompleted": "All Niveauen ofgeschloss!"
   },
   "info": {
     "title": "Info Hub",

@@ -91,6 +91,33 @@ function LevelMapBadges({ progress }) {
   )
 }
 
+// ─── Shuffle options for a question so the correct answer lands at a random position ──
+function shuffleQuestionOptions(q) {
+  const n = q.options.length
+  // Build a shuffled index array using Fisher-Yates
+  const indices = Array.from({ length: n }, (_, i) => i)
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[indices[i], indices[j]] = [indices[j], indices[i]]
+  }
+  const shuffledOptions = indices.map(i => q.options[i])
+  const newAnswer = indices.indexOf(q.answer)
+
+  // Shuffle translated options arrays too (if present)
+  let shuffledTranslations = q.translations
+  if (q.translations) {
+    shuffledTranslations = {}
+    for (const [lang, tData] of Object.entries(q.translations)) {
+      shuffledTranslations[lang] = {
+        ...tData,
+        options: tData.options ? indices.map(i => tData.options[i]) : tData.options,
+      }
+    }
+  }
+
+  return { ...q, options: shuffledOptions, answer: newAnswer, translations: shuffledTranslations }
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function QuizGame() {
   const { t, i18n } = useTranslation()
@@ -111,6 +138,12 @@ export default function QuizGame() {
   const questions = useMemo(
     () => getSubLevelQuestions(curLevel.id, curSubLevel, allQuestions),
     [curLevel.id, curSubLevel, allQuestions]
+  )
+
+  // Shuffle each question's options so the correct answer isn't always option B
+  const shuffledQuestions = useMemo(
+    () => questions.map(shuffleQuestionOptions),
+    [questions]
   )
 
   const [step, setStep] = useState('intro') // intro | question | done
@@ -136,7 +169,7 @@ export default function QuizGame() {
 
   const handleNext = () => {
     if (selected === null) return
-    const q = questions[currentIdx]
+    const q = shuffledQuestions[currentIdx]
     const isCorrect = selected === q.answer
     const pts = isCorrect ? POINTS_PER_CORRECT : 0
     const newScores = [...roundScores, { correct: isCorrect, pts }]
@@ -214,7 +247,7 @@ export default function QuizGame() {
     )
   }
 
-  const q = questions[currentIdx]
+  const q = shuffledQuestions[currentIdx]
   if (!q) {
     // Questions failed to load — go back to intro so the user isn't stuck on a blank screen
     return (
