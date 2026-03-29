@@ -263,8 +263,8 @@ export default function GeoGame() {
 
       {/* Tap hint */}
       {!revealed && (
-        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '4px 10px', flexShrink: 0, background: 'white' }}>
-          <div style={{ background: 'rgba(0,0,0,0.72)', color: 'white', fontSize: '0.75rem', fontWeight: 700, padding: '5px 11px', borderRadius: 8, letterSpacing: '0.03em', boxShadow: '0 2px 8px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.15)' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '5px 12px 5px', flexShrink: 0, background: 'white', borderBottom: '1px solid #E5E7EB' }}>
+          <div style={{ background: '#F9FAFB', color: '#6B7280', fontSize: '0.72rem', fontWeight: 600, padding: '4px 10px', borderRadius: 7, letterSpacing: '0.03em', border: '1px solid #E5E7EB' }}>
             📍 {t('geo.tapMapPin')}
           </div>
         </div>
@@ -298,38 +298,66 @@ export default function GeoGame() {
 
       {/* Result panel */}
       {revealed && (
-        <div className="animate-slide-up" style={{ background: '#EFF6FF', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
-          <button onClick={() => setResultCollapsed(c => !c)} style={{ width: '100%', padding: '7px 16px', background: 'var(--gray-50)', border: 'none', borderBottom: resultCollapsed ? 'none' : '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-muted)' }}>
+        <div className="animate-slide-up" style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB', flexShrink: 0 }}>
+          <button onClick={() => setResultCollapsed(c => !c)} style={{ width: '100%', padding: '7px 16px', background: '#F9FAFB', border: 'none', borderBottom: resultCollapsed ? 'none' : '1px solid #E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, color: '#9CA3AF', letterSpacing: '0.03em' }}>
             {resultCollapsed ? `▲ ${t('geo.showResults')}` : `▼ ${t('geo.minimise')}`}
           </button>
           {!resultCollapsed && (
-            <div style={{ padding: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                <div style={{ background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2', borderRadius: 'var(--radius)', padding: '10px 16px', textAlign: 'center', minWidth: 80 }}>
-                  <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{currentScore}</div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>{t('geo.points')}</div>
+            <div style={{ padding: '16px 16px 20px' }}>
+              {/* Score + location row */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
+                <div style={{
+                  background: currentScore >= 800 ? '#ECFDF5' : currentScore >= 500 ? '#FFFBEB' : '#FEF2F2',
+                  border: `1px solid ${currentScore >= 800 ? '#6EE7B7' : currentScore >= 500 ? '#FCD34D' : '#FCA5A5'}`,
+                  borderRadius: 12, padding: '10px 14px', textAlign: 'center', minWidth: 72, flexShrink: 0,
+                }}>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B', lineHeight: 1 }}>{currentScore}</div>
+                  <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 3 }}>{t('geo.points')}</div>
                 </div>
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: '1rem' }}>{loc_t(loc.name)}</div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontWeight: 700, fontSize: '1rem', color: '#111827', lineHeight: 1.3 }}>{loc_t(loc.name)}</div>
+                  <div style={{ fontSize: '0.82rem', color: '#6B7280', marginTop: 3 }}>
                     {t('geo.distance')} {currentKm < 1 ? `${Math.round(currentKm * 1000)}${t('geo.m')}` : `${currentKm.toFixed(1)}${t('geo.km')}`} {t('geo.away')}
                   </div>
                 </div>
               </div>
-              <p style={{ fontSize: '0.85rem', color: 'var(--gray-700)', marginBottom: 12 }}>{loc_t(loc.fact)}</p>
-              <div style={{ display: 'flex', gap: 8 }}>
-                <button onClick={handleNext} className="btn btn-primary" style={{ flex: 1 }}>
-                  {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
-                </button>
-              </div>
+              {/* Fact */}
+              <p style={{ fontSize: '0.84rem', color: '#374151', background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 10, padding: '10px 13px', margin: '0 0 14px', lineHeight: 1.6 }}>{loc_t(loc.fact)}</p>
+              {/* Next button */}
+              <button onClick={handleNext} style={{
+                width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                padding: '14px 20px', borderRadius: 12,
+                background: '#111827', color: '#FFFFFF',
+                border: '1px solid #1F2937',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+                cursor: 'pointer', fontFamily: 'var(--font)',
+                fontSize: '0.95rem', fontWeight: 700,
+                transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
+              >
+                {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
+              </button>
             </div>
           )}
           {resultCollapsed && (
             <div style={{ padding: '10px 16px', display: 'flex', gap: 8, alignItems: 'center' }}>
-              <div style={{ background: currentScore >= 800 ? '#D1FAE5' : currentScore >= 500 ? '#FEF3C7' : '#FEE2E2', color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B', borderRadius: 999, padding: '4px 12px', fontWeight: 800, fontSize: '0.9rem' }}>
+              <div style={{
+                background: currentScore >= 800 ? '#ECFDF5' : currentScore >= 500 ? '#FFFBEB' : '#FEF2F2',
+                border: `1px solid ${currentScore >= 800 ? '#6EE7B7' : currentScore >= 500 ? '#FCD34D' : '#FCA5A5'}`,
+                color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B',
+                borderRadius: 999, padding: '4px 13px', fontWeight: 800, fontSize: '0.88rem', flexShrink: 0,
+              }}>
                 {currentScore} pts
               </div>
-              <button onClick={handleNext} className="btn btn-primary" style={{ flex: 1 }}>
+              <button onClick={handleNext} style={{
+                flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                padding: '10px 16px', borderRadius: 10,
+                background: '#111827', color: '#FFFFFF',
+                border: 'none', cursor: 'pointer', fontFamily: 'var(--font)',
+                fontSize: '0.88rem', fontWeight: 700,
+              }}>
                 {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
               </button>
             </div>
@@ -339,13 +367,27 @@ export default function GeoGame() {
 
       {/* Guess button */}
       {!revealed && (
-        <div style={{ padding: '12px 16px', background: 'white', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
+        <div style={{ padding: '12px 16px', background: '#FFFFFF', borderTop: '1px solid #E5E7EB', flexShrink: 0 }}>
           {shake && !userPin && (
-            <div style={{ textAlign: 'center', color: 'var(--red)', fontSize: '0.85rem', marginBottom: 8, fontWeight: 600 }}>
+            <div style={{ textAlign: 'center', color: '#DC2626', fontSize: '0.82rem', marginBottom: 8, fontWeight: 600 }}>
               {t('geo.noPin')}
             </div>
           )}
-          <button onClick={handleGuess} disabled={!userPin} className={`btn btn-primary btn-full${shake ? ' animate-shake' : ''}`}>
+          <button
+            onClick={handleGuess}
+            disabled={!userPin}
+            className={shake ? 'animate-shake' : ''}
+            style={{
+              width: '100%', padding: '14px 20px', borderRadius: 12,
+              background: userPin ? '#111827' : '#E5E7EB',
+              color: userPin ? '#FFFFFF' : '#9CA3AF',
+              border: 'none', cursor: userPin ? 'pointer' : 'default',
+              fontFamily: 'var(--font)', fontSize: '0.95rem', fontWeight: 700,
+              transition: 'background 0.15s ease, transform 0.15s ease',
+            }}
+            onMouseEnter={e => { if (userPin) e.currentTarget.style.transform = 'translateY(-1px)' }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)' }}
+          >
             {t('geo.guess')}
           </button>
         </div>
@@ -419,29 +461,29 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
             display: 'flex', alignItems: 'center', gap: 16,
             padding: '20px 24px',
             marginBottom: 16,
-            borderRadius: 18,
-            background: 'linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%)',
-            color: 'rgba(255,255,255,0.95)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            boxShadow: '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
+            border: '1px solid #1F2937',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.transform = 'translateY(-3px)'
-            e.currentTarget.style.boxShadow = '0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
           }}
         >
           <span style={{
-            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
-            background: 'rgba(255,255,255,0.15)',
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.10)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.7rem',
+            fontSize: '1.6rem',
           }}>{isFinished ? '🔄' : '🎯'}</span>
           <span style={{ flex: 1, textAlign: 'left' }}>
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
@@ -450,12 +492,12 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
                 : t('geo.startSubLevel', { name: t(`geo.levelNames.${curLevel.id}`), num: curSubLevel })}
             </strong>
             {!isFinished && (
-              <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+              <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.65, marginTop: 3, fontWeight: 400 }}>
                 {curLevel.icon} {t(`geo.levelNames.${curLevel.id}`)} · {t('geo.subLevel', { defaultValue: 'Sub-level' })} {curSubLevel}/5
               </small>
             )}
           </span>
-          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
+          <span style={{ opacity: 0.45, fontSize: '1.1rem' }}>→</span>
         </button>
 
         {/* Progress card */}
@@ -503,29 +545,29 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
             width: '100%',
             display: 'flex', alignItems: 'center', gap: 16,
             padding: '20px 24px',
-            borderRadius: 18,
-            background: 'linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%)',
-            color: 'rgba(255,255,255,0.95)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            boxShadow: '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
+            border: '1px solid #1F2937',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.transform = 'translateY(-3px)'
-            e.currentTarget.style.boxShadow = '0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
           }}
         >
           <span style={{
-            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
-            background: 'rgba(255,255,255,0.15)',
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.10)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.7rem',
+            fontSize: '1.6rem',
           }}>🏆</span>
           <span style={{ flex: 1, textAlign: 'left' }}>
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
@@ -544,29 +586,29 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
             width: '100%',
             display: 'flex', alignItems: 'center', gap: 16,
             padding: '20px 24px',
-            borderRadius: 18,
-            background: 'linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%)',
-            color: 'rgba(255,255,255,0.95)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            boxShadow: '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
+            border: '1px solid #1F2937',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.transform = 'translateY(-3px)'
-            e.currentTarget.style.boxShadow = '0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
           }}
         >
           <span style={{
-            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
-            background: 'rgba(255,255,255,0.15)',
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.10)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '1.7rem',
+            fontSize: '1.6rem',
           }}>▶</span>
           <span style={{ flex: 1, textAlign: 'left' }}>
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
