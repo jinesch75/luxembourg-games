@@ -542,7 +542,7 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
             borderRadius: 16,
             background: '#111827',
             color: '#FFFFFF',
-            border: '1px solid #1F2937',
+            border: '1px solid rgba(255,255,255,0.25)',
             boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
             cursor: 'pointer',
             fontFamily: 'var(--font)',
