@@ -75,7 +75,7 @@ html {
 
 body {
   font-family: var(--font);
-  background: linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 60%, #BFDBFE 100%) fixed;
+  background: linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%) fixed;
   color: var(--text);
   line-height: 1.5;
   min-height: 100vh;
@@ -365,7 +365,7 @@ a:hover { text-decoration: underline; }
 
 /* ---- Hero Section ---- */
 .home-hero {
-  background: linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 60%, #BFDBFE 100%);
+  background: linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%);
 }
 .home-hero-inner {
   padding: 20px 0 48px;
@@ -390,7 +390,7 @@ a:hover { text-decoration: underline; }
   border: 1px solid rgba(255,255,255,0.12);
 }
 .home-hero-title {
-  color: #1E3A8A;
+  color: white;
   font-size: clamp(2rem, 7vw, 3.5rem);
   font-weight: 800;
   line-height: 1.1;
@@ -399,7 +399,7 @@ a:hover { text-decoration: underline; }
   text-align: center;
   display: block;
 }
-.home-hero-title-accent { color: #2563EB; font-style: italic; }
+.home-hero-title-accent { color: #FFD966; font-style: italic; }
 .home-hero-sub {
   color: #FFD966;
   font-style: italic;
@@ -436,7 +436,7 @@ a:hover { text-decoration: underline; }
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-width: 240px;
   max-width: 320px;
-  border: 1px solid rgba(30,58,138,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
   position: relative;
   overflow: hidden;
 }
@@ -716,7 +716,7 @@ a:hover { text-decoration: underline; }
 /* Biergerpakt CTA banner */
 .home-cta-section { padding: 80px 0; }
 .home-cta-inner {
-  background: linear-gradient(150deg, #EFF6FF 0%, #BFDBFE 100%);
+  background: linear-gradient(150deg, #0F172A 0%, #1B3A6B 100%);
   border-radius: var(--radius-xl);
   padding: 72px 48px;
   text-align: center;
