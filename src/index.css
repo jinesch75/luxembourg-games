@@ -285,7 +285,7 @@ a:hover { text-decoration: underline; }
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-height);
-  background: #000000;
+  background: #0F172A;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -370,6 +370,10 @@ a:hover { text-decoration: underline; }
 .home-hero-inner {
   padding: 32px 0 48px;
   animation: fadeIn 0.4s ease forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .home-hero-label {
   display: inline-flex;
@@ -392,6 +396,8 @@ a:hover { text-decoration: underline; }
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 14px;
+  text-align: left;
+  display: inline-block;
 }
 .home-hero-title-accent { color: #FFD966; font-style: italic; }
 .home-hero-sub {
@@ -400,13 +406,80 @@ a:hover { text-decoration: underline; }
   margin-bottom: 24px;
   max-width: 460px;
   line-height: 1.7;
+  text-align: center;
+}
+.home-hero-choose {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 36px;
+  margin-bottom: 0;
 }
 .home-hero-actions {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 36px;
+  margin-top: 12px;
+}
+.btn-hero-game {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  min-width: 200px;
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(4px);
+}
+.btn-hero-game:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.btn-hero-game-quiz {
+  background: rgba(22, 163, 74, 0.85);
+  color: white;
+}
+.btn-hero-game-quiz:hover {
+  background: rgba(22, 163, 74, 1);
+  box-shadow: 0 6px 20px rgba(22,163,74,0.4);
+  color: white;
+}
+.btn-hero-game-geo {
+  background: rgba(0, 120, 200, 0.75);
+  color: white;
+}
+.btn-hero-game-geo:hover {
+  background: rgba(0, 120, 200, 0.95);
+  box-shadow: 0 6px 20px rgba(0,120,200,0.4);
+  color: white;
+}
+.btn-hero-game-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.btn-hero-game-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+.btn-hero-game-text strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.btn-hero-game-text small {
+  font-size: 0.72rem;
+  opacity: 0.75;
+  line-height: 1.4;
+  font-weight: 400;
 }
 .btn-hero-primary {
   display: inline-flex;
