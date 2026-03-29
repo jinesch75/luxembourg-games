@@ -333,8 +333,10 @@ export default function QuizGame() {
           <div style={{
             background: '#FFFFFF',
             borderRadius: '24px 24px 0 0',
-            padding: '28px 20px 36px',
+            padding: '28px 20px calc(36px + env(safe-area-inset-bottom, 0px))',
             maxWidth: 520, width: '100%',
+            maxHeight: '90vh',
+            overflowY: 'auto',
             boxShadow: '0 -4px 32px rgba(0,0,0,0.14)',
             animation: 'slideUp 0.28s ease',
             border: '1px solid #E5E7EB',
