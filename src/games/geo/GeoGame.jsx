@@ -37,8 +37,7 @@ function ClickHandler({ onMapClick }) {
 function MapResetter({ roundIdx, center, zoom }) {
   const map = useMap()
   useEffect(() => {
-    map.stop()
-    map.setView(center, zoom, { animate: true })
+    map.setView(center, zoom, { animate: false })
   }, [roundIdx]) // eslint-disable-line
   return null
 }
