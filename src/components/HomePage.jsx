@@ -11,7 +11,7 @@ export default function HomePage() {
       <section className="home-hero">
         <div className="container-wide">
           <div className="home-hero-inner">
-            <div className="home-hero-label"><img src="/bl-logo.svg" alt="Beautiful Luxembourg" style={{ height: '24px', width: '24px', objectFit: 'contain', verticalAlign: 'middle', marginRight: '6px' }} />Beautiful Luxembourg</div>
+            <div className="home-hero-label"><img src="/bl-logo-1.png" alt="Beautiful Luxembourg" style={{ height: '24px', width: '24px', objectFit: 'contain', verticalAlign: 'middle', marginRight: '6px' }} />Beautiful Luxembourg</div>
             <h1 className="home-hero-title">
               {t('home.headline')}<br />
               <span className="home-hero-title-accent">Through Play</span>

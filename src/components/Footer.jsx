@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="site-footer-inner">
           {/* Brand */}
           <div className="site-footer-brand">
-            <img src="/bl-logo.svg" alt="Beautiful Luxembourg logo" style={{ height: '28px', width: '28px', objectFit: 'contain' }} />
+            <img src="/bl-logo-1.png" alt="Beautiful Luxembourg logo" style={{ height: '28px', width: '28px', objectFit: 'contain' }} />
             <span>Beautiful Luxembourg</span>
           </div>
 
