@@ -13,7 +13,6 @@ export default function Navbar() {
             <img src="/bl-logo-1.png" alt="Beautiful Luxembourg logo" style={{ height: '28px', width: '28px', objectFit: 'contain' }} />
             <div>
               <div className="navbar-brand-name">Beautiful<br />Luxembourg</div>
-              <div className="navbar-brand-sub">{t('nav.discoverSub')}</div>
             </div>
           </Link>
         </div>

@@ -302,7 +302,7 @@ a:hover { text-decoration: underline; }
 }
 .navbar-brand a:hover { text-decoration: none; }
 .navbar-brand-flag { font-size: 1.5rem; line-height: 1; }
-.navbar-brand-name { font-weight: 800; font-size: 0.85rem; letter-spacing: -0.02em; }
+.navbar-brand-name { font-weight: 800; font-size: 0.85rem; letter-spacing: -0.02em; line-height: 1.1; }
 .navbar-brand-sub  { font-size: 0.7rem; font-weight: 500; opacity: 0.75; display: none; }
 
 .navbar-right {
@@ -902,12 +902,6 @@ a:hover { text-decoration: underline; }
   transition: border-color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.12s;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
-.quiz-option:hover:not(:disabled) {
-  border-color: var(--primary);
-  background: #F8FAFF;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-  transform: translateY(-1px);
-}
 .quiz-option:active {
   transform: translateY(0);
   opacity: 0.9;
@@ -926,9 +920,17 @@ a:hover { text-decoration: underline; }
   flex-shrink: 0;
   transition: background 0.18s, color 0.18s;
 }
-.quiz-option:hover .quiz-option-letter {
-  background: var(--primary);
-  color: white;
+@media (hover: hover) {
+  .quiz-option:hover:not(:disabled) {
+    border-color: var(--primary);
+    background: #F8FAFF;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+  }
+  .quiz-option:hover .quiz-option-letter {
+    background: var(--primary);
+    color: white;
+  }
 }
 
 /* Game progress bar row */

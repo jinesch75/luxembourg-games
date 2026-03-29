@@ -459,7 +459,7 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
     <div className="container" style={{ paddingTop: 28 }}>
       {/* Level progress */}
       <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')}</div>
+        <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')} — {nextLevel.icon} {t(`geo.levelNames.${nextLevel.id}`)}</div>
         <LevelMapBadges progress={geoProgress} />
         <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('geo.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</span>
