@@ -442,7 +442,7 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
     <div className="container" style={{ paddingTop: 28 }}>
       {/* Progress */}
       <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div className="section-title" style={{ marginBottom: 12 }}>{t('quiz.yourProgress')} — {nextLevel.icon} {t(`quiz.levelNames.${nextLevel.id}`)}</div>
+        <div className="section-title" style={{ marginBottom: 12 }}>{t('quiz.yourProgress')}</div>
         <LevelMapBadges progress={quizProgress} />
         <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('quiz.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</span>
