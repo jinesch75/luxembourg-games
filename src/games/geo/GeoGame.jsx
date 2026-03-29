@@ -239,49 +239,29 @@ export default function GeoGame() {
   if (!loc) return null
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68, padding: '8px 8px 0 8px', gap: '8px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68, padding: '4px 8px 0 8px', gap: '4px' }}>
 
       {/* Clue panel */}
       {!revealed && (
         <div style={{
           background: '#FFFFFF',
           borderRadius: 14,
-          padding: '12px 16px 10px',
+          padding: '7px 14px 8px',
           flexShrink: 0,
           boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
         }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-            <div style={{
-              width: 38, height: 38, borderRadius: 8,
-              background: 'var(--gray-100)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '1.2rem', flexShrink: 0,
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 4 }}>
+            <span style={{ fontSize: '1.05rem', lineHeight: 1 }}>{loc.emoji}</span>
+            <span style={{
+              fontSize: '0.6rem', fontWeight: 700, color: '#1e3a8a',
+              textTransform: 'uppercase', letterSpacing: '0.08em',
             }}>
-              {loc.emoji}
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ marginBottom: 5 }}>
-                <span style={{
-                  fontSize: '0.63rem', fontWeight: 700, color: '#1e3a8a',
-                  textTransform: 'uppercase', letterSpacing: '0.08em',
-                }}>
-                  {t('geo.clue')} {roundIdx + 1}/{locations.length}
-                </span>
-              </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--gray-700)', lineHeight: 1.55, margin: 0 }}>
-                {loc_t(loc.clue)}
-              </p>
-            </div>
-          </div>
-          <div style={{
-            marginTop: 10, paddingTop: 8, borderTop: '1px solid var(--gray-100)',
-            display: 'flex', alignItems: 'center', gap: 6,
-          }}>
-            <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--red)', flexShrink: 0 }} />
-            <span style={{ fontSize: '0.68rem', color: 'var(--red)', fontWeight: 600, letterSpacing: '0.02em' }}>
-              {t('geo.tapMapPin')}
+              {t('geo.clue')} {roundIdx + 1}/{locations.length}
             </span>
           </div>
+          <p style={{ fontSize: '0.855rem', color: 'var(--gray-700)', lineHeight: 1.45, margin: 0 }}>
+            {loc_t(loc.clue)}
+          </p>
         </div>
       )}
 
@@ -306,6 +286,11 @@ export default function GeoGame() {
             </>
           )}
         </MapContainer>
+        {!revealed && (
+          <div style={{ position: 'absolute', top: 10, left: 10, zIndex: 1000, background: 'rgba(255,255,255,0.92)', color: 'var(--red)', fontSize: '0.65rem', fontWeight: 700, padding: '5px 10px', borderRadius: 6, pointerEvents: 'none', letterSpacing: '0.03em', boxShadow: '0 1px 4px rgba(0,0,0,0.12)', border: '1px solid rgba(239,51,64,0.2)' }}>
+            {t('geo.tapMapPin')}
+          </div>
+        )}
         <div style={{ position: 'absolute', bottom: 12, right: 12, zIndex: 1000, background: 'rgba(255,255,255,0.92)', color: 'var(--red)', fontSize: '0.65rem', fontWeight: 700, padding: '5px 10px', borderRadius: 6, pointerEvents: 'none', letterSpacing: '0.04em', boxShadow: '0 1px 4px rgba(0,0,0,0.12)', border: '1px solid rgba(239,51,64,0.2)' }}>
           {t('geo.pinchToZoom')}
         </div>
@@ -385,7 +370,7 @@ export default function GeoGame() {
 
       {/* Guess button */}
       {!revealed && (
-        <div style={{ padding: '0 0 12px 0', background: 'transparent', flexShrink: 0 }}>
+        <div style={{ padding: '0 0 8px 0', background: 'transparent', flexShrink: 0 }}>
           {shake && !userPin && (
             <div style={{ textAlign: 'center', color: 'var(--red)', fontSize: '0.78rem', marginBottom: 8, fontWeight: 600 }}>
               {t('geo.noPin')}
@@ -396,7 +381,7 @@ export default function GeoGame() {
             disabled={!userPin}
             className={shake ? 'animate-shake' : ''}
             style={{
-              width: '100%', padding: '13px 20px', borderRadius: 10,
+              width: '100%', padding: '10px 20px', borderRadius: 10,
               background: userPin ? 'var(--gray-900)' : 'var(--gray-200)',
               color: userPin ? '#FFFFFF' : 'var(--gray-400)',
               border: 'none', cursor: userPin ? 'pointer' : 'default',
