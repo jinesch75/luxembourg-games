@@ -684,6 +684,20 @@ a:hover { text-decoration: underline; }
   animation: slideUp 0.25s ease forwards;
   box-shadow: 0 24px 64px rgba(0,0,0,0.2);
 }
+.games-modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/bridge.jpg') center / cover no-repeat;
+  opacity: 0.08;
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+  z-index: 0;
+}
+.games-modal > * {
+  position: relative;
+  z-index: 1;
+}
 .games-modal-header {
   text-align: center;
   position: relative;
