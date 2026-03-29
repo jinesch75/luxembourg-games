@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 import HomePage from './components/HomePage'
 import QuizGame from './games/quiz/QuizGame'
 import GeoGame from './games/geo/GeoGame'
@@ -31,17 +30,26 @@ function AppRoutes() {
   )
 }
 
+function AppLayout() {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+  return (
+    <>
+      {!isHome && <Navbar />}
+      <main className="page" style={isHome ? { paddingTop: 0, paddingBottom: 0 } : {}}>
+        <AppRoutes />
+      </main>
+    </>
+  )
+}
+
 export default function App() {
   return (
     <LoginGate>
       <BrowserRouter>
         <FeatureFlagsProvider>
           <ScrollToTop />
-          <Navbar />
-          <main className="page">
-            <AppRoutes />
-          </main>
-          <Footer />
+          <AppLayout />
         </FeatureFlagsProvider>
       </BrowserRouter>
     </LoginGate>
