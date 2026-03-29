@@ -432,24 +432,39 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
   const [showRules, setShowRules] = useState(false)
   const { levelIdx } = parseProgress(geoProgress)
   const isFinished = levelIdx >= GEO_LEVELS.length - 1 && (geoProgress.completedSubLevels['geographer'] || 0) >= 5
+  const doneSubs = totalSubLevelsDone(geoProgress)
+  const totalSubs = GEO_LEVELS.reduce((acc, l) => acc + l.subLevels, 0)
 
   return (
     <div>
       {showRules && <RulesModal t={t} onClose={() => { setShowRules(false); onStart() }} />}
 
-      {/* Level header */}
-      <div style={{
-        color: 'white', textAlign: 'center',
-        padding: '18px 20px 8px',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <span style={{ fontSize: '2rem', lineHeight: 1 }}>{curLevel.icon}</span>
-          <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('geo.title')}</h2>
-        </div>
+      {/* Title header */}
+      <div style={{ color: 'white', textAlign: 'center', padding: '18px 20px 8px' }}>
+        <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('geo.title')}</h2>
       </div>
 
       {/* Content */}
       <div className="container" style={{ paddingTop: 28 }}>
+
+        {/* Progress card — on top */}
+        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+          <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')}</div>
+          <div className="game-progress-row">
+            <span className="game-progress-label">{doneSubs} / {totalSubs}</span>
+            <span className="game-progress-pct">{Math.round((doneSubs / totalSubs) * 100)}%</span>
+          </div>
+          <div className="progress-bar" style={{ marginBottom: 14 }}>
+            <div className="progress-fill" style={{ width: `${(doneSubs / totalSubs) * 100}%` }} />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+            <span style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
+              {(geoProgress.totalPoints || 0).toLocaleString()} pts
+            </span>
+          </div>
+        </div>
+
+        {/* Start button — below */}
         <button
           onClick={() => {
             const isVeryFirstLevel = totalSubLevelsDone(geoProgress) === 0
@@ -460,7 +475,6 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
             width: '100%',
             display: 'flex', alignItems: 'center', gap: 16,
             padding: '20px 24px',
-            marginBottom: 16,
             borderRadius: 16,
             background: '#111827',
             color: '#FFFFFF',
@@ -500,19 +514,6 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
           <span style={{ opacity: 0.45, fontSize: '1.1rem' }}>→</span>
         </button>
 
-        {/* Progress card */}
-        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-          <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')}</div>
-          <LevelMapBadges progress={geoProgress} />
-          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-              {t('geo.subLevelsDone', { done: totalSubLevelsDone(geoProgress) })}
-            </span>
-            <span style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
-              {(geoProgress.totalPoints || 0).toLocaleString()} pts
-            </span>
-          </div>
-        </div>
       </div>
     </div>
   )
