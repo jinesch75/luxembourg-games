@@ -26,7 +26,7 @@
     "moreStats": "Plus de statistiques sur le Luxembourg"
   },
   "quiz": {
-    "title": "Lëtz Quiz",
+    "title": "Quiz",
     "subtitle": "Testez vos connaissances sur le Luxembourg",
     "startBtn": "Commencer le quiz",
     "question": "Question",
@@ -92,7 +92,7 @@
     }
   },
   "geo": {
-    "title": "Lëtz Géo",
+    "title": "Géo",
     "subtitle": "Pouvez-vous le trouver sur la carte ?",
     "instructions": "Lisez l'indice, puis appuyez sur la carte là où vous pensez que le lieu se trouve.",
     "guess": "Confirmer ma réponse",

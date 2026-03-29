@@ -26,7 +26,7 @@
     "moreStats": "Méi Statistiken iwwer Lëtzebuerg"
   },
   "quiz": {
-    "title": "Lëtz Quiz",
+    "title": "Quiz",
     "subtitle": "Teste deng Kenntnisser iwwer Lëtzebuerg",
     "startBtn": "Quiz starten",
     "question": "Fro",
@@ -92,7 +92,7 @@
     }
   },
   "geo": {
-    "title": "Lëtz Géo",
+    "title": "Géo",
     "subtitle": "Kënnt Dir et op der Kaart fannen?",
     "instructions": "Liest den Hinweis, dann tippt op d'Kaart wou Dir mengt datt de Plaz ass.",
     "guess": "Meng Äntwert confirméieren",

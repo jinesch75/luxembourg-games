@@ -50,8 +50,8 @@ export default function LoginGate({ children }) {
           <div style={{ flex: 1, background: '#00A3E0' }} />
         </div>
 
-        <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>🇱🇺</div>
-        <h2 style={{ marginBottom: '6px' }}>Lëtz Play</h2>
+        <img src="/bl-logo.svg" alt="Beautiful Luxembourg" style={{ height: '60px', width: '60px', objectFit: 'contain', marginBottom: '8px' }} />
+        <h2 style={{ marginBottom: '6px' }}>Beautiful Luxembourg</h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '24px' }}>
           {t('login.subtitle')}
         </p>

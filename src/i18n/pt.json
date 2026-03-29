@@ -25,7 +25,7 @@
     "dailyReminderText": "Novas perguntas de quiz todos os dias. Teste o seu conhecimento sobre o Luxemburgo!"
   },
   "quiz": {
-    "title": "Lëtz Quiz",
+    "title": "Quiz",
     "subtitle": "Teste os seus conhecimentos sobre o Luxemburgo",
     "startBtn": "Começar o quiz",
     "question": "Pergunta",
@@ -68,7 +68,7 @@
     "levelLabel": "Nível {{id}}"
   },
   "geo": {
-    "title": "Lëtz Géo",
+    "title": "Géo",
     "subtitle": "Consegue encontrar no mapa?",
     "instructions": "Leia a dica e toque no mapa onde acha que o lugar está.",
     "guess": "Confirmar a minha resposta",

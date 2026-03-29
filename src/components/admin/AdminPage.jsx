@@ -202,7 +202,7 @@ export default function AdminPage() {
       <div style={S.header}>
         <div style={S.headerTitle}>
           <span>🇱🇺</span>
-          <span>Lëtz Play — Admin</span>
+          <span>Beautiful Luxembourg — Admin</span>
           <button
             onClick={logout}
             style={{

@@ -10,15 +10,15 @@ export default function Footer() {
         <div className="site-footer-inner">
           {/* Brand */}
           <div className="site-footer-brand">
-            <span className="site-footer-brand-flag">🇱🇺</span>
-            <span>Biergerpakt Games</span>
+            <img src="/bl-logo.svg" alt="Beautiful Luxembourg logo" style={{ height: '28px', width: '28px', objectFit: 'contain' }} />
+            <span>Beautiful Luxembourg</span>
           </div>
 
           {/* Nav links */}
           <nav className="site-footer-links" aria-label="Footer navigation">
             <Link to="/">Home</Link>
-            <Link to="/quiz">Lëtz Quiz</Link>
-            <Link to="/geo">Lëtz Géo</Link>
+            <Link to="/quiz">Quiz</Link>
+            <Link to="/geo">Géo</Link>
             <Link to="/info">Info Hub</Link>
           </nav>
 

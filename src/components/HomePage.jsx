@@ -11,7 +11,7 @@ export default function HomePage() {
       <section className="home-hero">
         <div className="container-wide">
           <div className="home-hero-inner">
-            <div className="home-hero-label">🇱🇺 Biergerpakt Games</div>
+            <div className="home-hero-label"><img src="/bl-logo.svg" alt="Beautiful Luxembourg" style={{ height: '24px', width: '24px', objectFit: 'contain', verticalAlign: 'middle', marginRight: '6px' }} />Beautiful Luxembourg</div>
             <h1 className="home-hero-title">
               {t('home.headline')}<br />
               <span className="home-hero-title-accent">Through Play</span>
@@ -62,7 +62,7 @@ export default function HomePage() {
             <Link to="/quiz" className="game-card-v">
               <div className="game-card-v-body">
                 <div className="game-card-v-icon" style={{ background: '#DBEAFE' }}>🎯</div>
-                <div className="game-card-v-title">Lëtz Quiz</div>
+                <div className="game-card-v-title">Quiz</div>
                 <p className="game-card-v-desc">{t('quiz.subtitle')} — 5 levels with 25 sub-levels covering history, culture, language, and more.</p>
               </div>
               <div className="game-card-v-footer">
@@ -74,7 +74,7 @@ export default function HomePage() {
             <Link to="/geo" className="game-card-v">
               <div className="game-card-v-body">
                 <div className="game-card-v-icon" style={{ background: '#D1FAE5' }}>🗺️</div>
-                <div className="game-card-v-title">Lëtz Géo</div>
+                <div className="game-card-v-title">Géo</div>
                 <p className="game-card-v-desc">{t('geo.subtitle')} — Pin locations on the map and earn points based on your accuracy.</p>
               </div>
               <div className="game-card-v-footer">

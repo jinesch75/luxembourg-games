@@ -19,9 +19,9 @@ export default function Navbar() {
       <header className="navbar-top">
         <div className="navbar-brand">
           <Link to="/">
-            <span className="navbar-brand-flag">🇱🇺</span>
+            <img src="/bl-logo.svg" alt="Beautiful Luxembourg logo" style={{ height: '40px', width: '40px', objectFit: 'contain' }} />
             <div>
-              <div className="navbar-brand-name">Biergerpakt Games</div>
+              <div className="navbar-brand-name">Beautiful Luxembourg</div>
               <div className="navbar-brand-sub">Discover Luxembourg Through Play</div>
             </div>
           </Link>
