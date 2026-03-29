@@ -16,17 +16,17 @@ L.Icon.Default.mergeOptions({
 })
 
 const pinIcon = (color) => L.divIcon({
-  html: `<div style="width:28px;height:28px;border-radius:50% 50% 50% 0;background:${color};border:3px solid white;transform:rotate(-45deg);box-shadow:0 2px 8px rgba(0,0,0,0.3)"></div>`,
+  html: `<div style="width:18px;height:18px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.35)"></div>`,
   className: '',
-  iconSize: [28, 28],
-  iconAnchor: [14, 28]
+  iconSize: [18, 18],
+  iconAnchor: [9, 9]
 })
 
 const targetIcon = L.divIcon({
-  html: `<div style="width:32px;height:32px;border-radius:50%;background:#059669;border:3px solid white;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.3);font-size:14px;line-height:26px;text-align:center">📍</div>`,
+  html: `<div style="width:20px;height:20px;border-radius:50%;background:#1E293B;border:2.5px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.4)"></div>`,
   className: '',
-  iconSize: [32, 32],
-  iconAnchor: [16, 16]
+  iconSize: [20, 20],
+  iconAnchor: [10, 10]
 })
 
 function ClickHandler({ onMapClick }) {
@@ -243,29 +243,53 @@ export default function GeoGame() {
 
       {/* Clue panel */}
       {!revealed && (
-        <div className="geo-clue-panel">
-          <div className="geo-clue-row">
-            <span className="geo-clue-emoji">{loc.emoji}</span>
-            <div style={{ flex: 1 }}>
-              <div className="geo-clue-meta">
-                <span className="geo-clue-counter">
+        <div style={{
+          background: '#FFFFFF',
+          borderBottom: '1px solid var(--border)',
+          padding: '12px 16px 10px',
+          flexShrink: 0,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+            <div style={{
+              width: 38, height: 38, borderRadius: 8,
+              background: 'var(--gray-100)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '1.2rem', flexShrink: 0,
+            }}>
+              {loc.emoji}
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                marginBottom: 5,
+              }}>
+                <span style={{
+                  fontSize: '0.63rem', fontWeight: 700, color: 'var(--gray-400)',
+                  textTransform: 'uppercase', letterSpacing: '0.08em',
+                }}>
                   {t('geo.clue')} {roundIdx + 1}/{locations.length}
                 </span>
-                <span className="geo-clue-level-badge" style={{ color: curLevel.color, background: curLevel.bg }}>
-                  {curLevel.icon} {t(`geo.levelNames.${curLevel.id}`)} {curSubLevel}/5
+                <span style={{
+                  fontSize: '0.63rem', fontWeight: 600, color: 'var(--gray-500)',
+                  background: 'var(--gray-100)', padding: '2px 8px',
+                  borderRadius: 4, letterSpacing: '0.03em',
+                }}>
+                  {t(`geo.levelNames.${curLevel.id}`)} · {curSubLevel}/5
                 </span>
               </div>
-              <p className="geo-clue-text">{loc_t(loc.clue)}</p>
+              <p style={{ fontSize: '0.875rem', color: 'var(--gray-700)', lineHeight: 1.55, margin: 0 }}>
+                {loc_t(loc.clue)}
+              </p>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* Tap hint */}
-      {!revealed && (
-        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '5px 12px 5px', flexShrink: 0, background: 'white', borderBottom: '1px solid #E5E7EB' }}>
-          <div style={{ background: '#F9FAFB', color: '#6B7280', fontSize: '0.72rem', fontWeight: 600, padding: '4px 10px', borderRadius: 7, letterSpacing: '0.03em', border: '1px solid #E5E7EB' }}>
-            📍 {t('geo.tapMapPin')}
+          <div style={{
+            marginTop: 10, paddingTop: 8, borderTop: '1px solid var(--gray-100)',
+            display: 'flex', alignItems: 'center', gap: 6,
+          }}>
+            <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--gray-300)', flexShrink: 0 }} />
+            <span style={{ fontSize: '0.68rem', color: 'var(--gray-400)', fontWeight: 500, letterSpacing: '0.02em' }}>
+              {t('geo.tapMapPin')}
+            </span>
           </div>
         </div>
       )}
@@ -291,72 +315,69 @@ export default function GeoGame() {
             </>
           )}
         </MapContainer>
-        <div style={{ position: 'absolute', bottom: 10, right: 10, zIndex: 1000, background: 'rgba(0,0,0,0.72)', color: 'white', fontSize: '0.75rem', fontWeight: 700, padding: '6px 12px', borderRadius: 8, pointerEvents: 'none', letterSpacing: '0.03em', boxShadow: '0 2px 8px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.15)' }}>
-          🤏 {t('geo.pinchToZoom')}
+        <div style={{ position: 'absolute', bottom: 12, right: 12, zIndex: 1000, background: 'rgba(255,255,255,0.9)', color: 'var(--gray-500)', fontSize: '0.65rem', fontWeight: 600, padding: '5px 10px', borderRadius: 6, pointerEvents: 'none', letterSpacing: '0.04em', boxShadow: '0 1px 4px rgba(0,0,0,0.12)', border: '1px solid var(--gray-200)' }}>
+          {t('geo.pinchToZoom')}
         </div>
       </div>
 
       {/* Result panel */}
       {revealed && (
-        <div className="animate-slide-up" style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB', flexShrink: 0 }}>
-          <button onClick={() => setResultCollapsed(c => !c)} style={{ width: '100%', padding: '7px 16px', background: '#F9FAFB', border: 'none', borderBottom: resultCollapsed ? 'none' : '1px solid #E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, color: '#9CA3AF', letterSpacing: '0.03em' }}>
+        <div className="animate-slide-up" style={{ background: '#FFFFFF', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
+          <button onClick={() => setResultCollapsed(c => !c)} style={{
+            width: '100%', padding: '7px 16px',
+            background: 'var(--gray-50)', border: 'none',
+            borderBottom: resultCollapsed ? 'none' : '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+            cursor: 'pointer', fontSize: '0.65rem', fontWeight: 700,
+            color: 'var(--gray-400)', letterSpacing: '0.07em', textTransform: 'uppercase',
+          }}>
             {resultCollapsed ? `▲ ${t('geo.showResults')}` : `▼ ${t('geo.minimise')}`}
           </button>
           {!resultCollapsed && (
             <div style={{ padding: '16px 16px 20px' }}>
               {/* Score + location row */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
-                <div style={{
-                  background: currentScore >= 800 ? '#ECFDF5' : currentScore >= 500 ? '#FFFBEB' : '#FEF2F2',
-                  border: `1px solid ${currentScore >= 800 ? '#6EE7B7' : currentScore >= 500 ? '#FCD34D' : '#FCA5A5'}`,
-                  borderRadius: 12, padding: '10px 14px', textAlign: 'center', minWidth: 72, flexShrink: 0,
-                }}>
-                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B', lineHeight: 1 }}>{currentScore}</div>
-                  <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 3 }}>{t('geo.points')}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14, paddingBottom: 14, borderBottom: '1px solid var(--border)' }}>
+                <div style={{ textAlign: 'center', minWidth: 60, flexShrink: 0 }}>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--gray-900)', lineHeight: 1 }}>{currentScore}</div>
+                  <div style={{ fontSize: '0.58rem', fontWeight: 700, color: 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 3 }}>{t('geo.points')}</div>
                 </div>
+                <div style={{ width: 1, height: 38, background: 'var(--border)', flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontWeight: 700, fontSize: '1rem', color: '#111827', lineHeight: 1.3 }}>{loc_t(loc.name)}</div>
-                  <div style={{ fontSize: '0.82rem', color: '#6B7280', marginTop: 3 }}>
+                  <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--gray-900)', lineHeight: 1.3 }}>{loc_t(loc.name)}</div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 3 }}>
                     {t('geo.distance')} {currentKm < 1 ? `${Math.round(currentKm * 1000)}${t('geo.m')}` : `${currentKm.toFixed(1)}${t('geo.km')}`} {t('geo.away')}
                   </div>
                 </div>
               </div>
               {/* Fact */}
-              <p style={{ fontSize: '0.84rem', color: '#374151', background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 10, padding: '10px 13px', margin: '0 0 14px', lineHeight: 1.6 }}>{loc_t(loc.fact)}</p>
+              <p style={{ fontSize: '0.82rem', color: 'var(--gray-600)', lineHeight: 1.65, margin: '0 0 14px', borderLeft: '2px solid var(--gray-200)', paddingLeft: 12 }}>{loc_t(loc.fact)}</p>
               {/* Next button */}
               <button onClick={handleNext} style={{
                 width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                padding: '14px 20px', borderRadius: 12,
-                background: '#111827', color: '#FFFFFF',
-                border: '1px solid #1F2937',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
-                cursor: 'pointer', fontFamily: 'var(--font)',
-                fontSize: '0.95rem', fontWeight: 700,
-                transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+                padding: '13px 20px', borderRadius: 10,
+                background: 'var(--gray-900)', color: '#FFFFFF',
+                border: 'none', cursor: 'pointer', fontFamily: 'var(--font)',
+                fontSize: '0.92rem', fontWeight: 700, letterSpacing: '0.01em',
+                transition: 'opacity 0.15s ease',
               }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.85' }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
               >
                 {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
               </button>
             </div>
           )}
           {resultCollapsed && (
-            <div style={{ padding: '10px 16px', display: 'flex', gap: 8, alignItems: 'center' }}>
-              <div style={{
-                background: currentScore >= 800 ? '#ECFDF5' : currentScore >= 500 ? '#FFFBEB' : '#FEF2F2',
-                border: `1px solid ${currentScore >= 800 ? '#6EE7B7' : currentScore >= 500 ? '#FCD34D' : '#FCA5A5'}`,
-                color: currentScore >= 800 ? '#065F46' : currentScore >= 500 ? '#92400E' : '#991B1B',
-                borderRadius: 999, padding: '4px 13px', fontWeight: 800, fontSize: '0.88rem', flexShrink: 0,
-              }}>
-                {currentScore} pts
-              </div>
+            <div style={{ padding: '10px 16px', display: 'flex', gap: 10, alignItems: 'center' }}>
+              <span style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--gray-700)', flexShrink: 0 }}>
+                {currentScore} <span style={{ fontWeight: 500, fontSize: '0.7rem', color: 'var(--gray-400)' }}>pts</span>
+              </span>
               <button onClick={handleNext} style={{
                 flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                padding: '10px 16px', borderRadius: 10,
-                background: '#111827', color: '#FFFFFF',
+                padding: '10px 16px', borderRadius: 8,
+                background: 'var(--gray-900)', color: '#FFFFFF',
                 border: 'none', cursor: 'pointer', fontFamily: 'var(--font)',
-                fontSize: '0.88rem', fontWeight: 700,
+                fontSize: '0.85rem', fontWeight: 700,
               }}>
                 {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
               </button>
@@ -367,9 +388,9 @@ export default function GeoGame() {
 
       {/* Guess button */}
       {!revealed && (
-        <div style={{ padding: '12px 16px', background: '#FFFFFF', borderTop: '1px solid #E5E7EB', flexShrink: 0 }}>
+        <div style={{ padding: '12px 16px', background: '#FFFFFF', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
           {shake && !userPin && (
-            <div style={{ textAlign: 'center', color: '#DC2626', fontSize: '0.82rem', marginBottom: 8, fontWeight: 600 }}>
+            <div style={{ textAlign: 'center', color: 'var(--red)', fontSize: '0.78rem', marginBottom: 8, fontWeight: 600 }}>
               {t('geo.noPin')}
             </div>
           )}
@@ -378,15 +399,16 @@ export default function GeoGame() {
             disabled={!userPin}
             className={shake ? 'animate-shake' : ''}
             style={{
-              width: '100%', padding: '14px 20px', borderRadius: 12,
-              background: userPin ? '#111827' : '#E5E7EB',
-              color: userPin ? '#FFFFFF' : '#9CA3AF',
+              width: '100%', padding: '13px 20px', borderRadius: 10,
+              background: userPin ? 'var(--gray-900)' : 'var(--gray-200)',
+              color: userPin ? '#FFFFFF' : 'var(--gray-400)',
               border: 'none', cursor: userPin ? 'pointer' : 'default',
-              fontFamily: 'var(--font)', fontSize: '0.95rem', fontWeight: 700,
-              transition: 'background 0.15s ease, transform 0.15s ease',
+              fontFamily: 'var(--font)', fontSize: '0.92rem', fontWeight: 700,
+              letterSpacing: '0.01em',
+              transition: 'background 0.15s ease, opacity 0.15s ease',
             }}
-            onMouseEnter={e => { if (userPin) e.currentTarget.style.transform = 'translateY(-1px)' }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)' }}
+            onMouseEnter={e => { if (userPin) e.currentTarget.style.opacity = '0.85' }}
+            onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
           >
             {t('geo.guess')}
           </button>
