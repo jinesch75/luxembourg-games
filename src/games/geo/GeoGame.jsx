@@ -242,24 +242,24 @@ export default function GeoGame() {
     <div style={{ display: 'flex', flexDirection: 'column', position: 'fixed', top: 'var(--nav-height)', left: 0, right: 0, bottom: 68 }}>
 
       {/* Clue panel */}
-      {!revealed && <div style={{ padding: '12px 16px', background: 'white', borderBottom: '1px solid var(--border)', flexShrink: 0 }}>
-        <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-          <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{loc.emoji}</span>
-          <div style={{ flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                {t('geo.clue')} {roundIdx + 1}/{locations.length}
+      {!revealed && (
+        <div className="geo-clue-panel">
+          <div className="geo-clue-row">
+            <span className="geo-clue-emoji">{loc.emoji}</span>
+            <div style={{ flex: 1 }}>
+              <div className="geo-clue-meta">
+                <span className="geo-clue-counter">
+                  {t('geo.clue')} {roundIdx + 1}/{locations.length}
+                </span>
+                <span className="geo-clue-level-badge" style={{ color: curLevel.color, background: curLevel.bg }}>
+                  {curLevel.icon} {t(`geo.levelNames.${curLevel.id}`)} {curSubLevel}/5
+                </span>
               </div>
-              <div style={{ fontSize: '0.65rem', fontWeight: 700, color: curLevel.color, background: curLevel.bg, borderRadius: 6, padding: '1px 6px' }}>
-                {curLevel.icon} {t(`geo.levelNames.${curLevel.id}`)} {curSubLevel}/5
-              </div>
+              <p className="geo-clue-text">{loc_t(loc.clue)}</p>
             </div>
-            <p style={{ fontSize: '0.85rem', margin: 0, lineHeight: 1.5, color: 'var(--gray-700)' }}>
-              {loc_t(loc.clue)}
-            </p>
           </div>
         </div>
-      </div>}
+      )}
 
       {/* Tap hint */}
       {!revealed && (
@@ -392,38 +392,48 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
   const isFinished = levelIdx >= GEO_LEVELS.length - 1 && (geoProgress.completedSubLevels['geographer'] || 0) >= 5
 
   return (
-    <div className="container" style={{ paddingTop: 24 }}>
+    <div>
       {showRules && <RulesModal t={t} onClose={() => { setShowRules(false); onStart() }} />}
 
-      <div style={{ background: `linear-gradient(135deg, ${curLevel.color}CC 0%, ${curLevel.color} 100%)`, borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 14, color: 'white', textAlign: 'center' }}>
-        <div style={{ fontSize: '2rem', marginBottom: 6 }}>{curLevel.icon}</div>
-        <h2 style={{ color: 'white', margin: '0 0 2px', fontSize: '1.3rem' }}>{t('geo.title')}</h2>
-        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.8rem' }}>
-          {isFinished ? `🏆 ${t('geo.allLevelsComplete')}` : `${t(`geo.levelNames.${curLevel.id}`)} · ${t('geo.subLevelOf', { num: curSubLevel })}`}
+      {/* Full-width level hero */}
+      <div style={{
+        background: `linear-gradient(135deg, ${curLevel.color}CC 0%, ${curLevel.color} 100%)`,
+        color: 'white', textAlign: 'center',
+        padding: '48px 20px 40px',
+      }}>
+        <span style={{ fontSize: '3rem', display: 'block', marginBottom: 12 }}>{curLevel.icon}</span>
+        <h2 style={{ margin: '0 0 8px', fontSize: '1.8rem', fontWeight: 800 }}>{t('geo.title')}</h2>
+        <p style={{ margin: 0, opacity: 0.88, fontSize: '1rem' }}>
+          {isFinished
+            ? `🏆 ${t('geo.allLevelsComplete')}`
+            : `${t(`geo.levelNames.${curLevel.id}`)} · ${t('geo.subLevelOf', { num: curSubLevel })}`}
         </p>
       </div>
 
-      <button onClick={() => {
-          const isVeryFirstLevel = totalSubLevelsDone(geoProgress) === 0
-          if (isVeryFirstLevel) setShowRules(true)
-          else onStart()
-        }} className="btn btn-full btn-lg"
-        style={{ background: curLevel.color, color: 'white', marginBottom: 16 }}>
-        {isFinished ? `🔄 ${t('geo.allDone')}` : `${curLevel.icon} ${t('geo.startSubLevel', { name: t(`geo.levelNames.${curLevel.id}`), num: curSubLevel })} →`}
-      </button>
+      {/* Content */}
+      <div className="container" style={{ paddingTop: 28 }}>
+        <button onClick={() => {
+            const isVeryFirstLevel = totalSubLevelsDone(geoProgress) === 0
+            if (isVeryFirstLevel) setShowRules(true)
+            else onStart()
+          }} className="btn btn-full btn-lg"
+          style={{ background: curLevel.color, color: 'white', marginBottom: 16, borderRadius: 'var(--radius-lg)' }}>
+          {isFinished
+            ? `🔄 ${t('geo.allDone')}`
+            : `${curLevel.icon} ${t('geo.startSubLevel', { name: t(`geo.levelNames.${curLevel.id}`), num: curSubLevel })} →`}
+        </button>
 
-      {/* Level map */}
-      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          {t('geo.yourProgress')}
-        </div>
-        <LevelMapBadges progress={geoProgress} />
-        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            {t('geo.subLevelsDone', { done: totalSubLevelsDone(geoProgress) })}
-          </div>
-          <div style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
-            {(geoProgress.totalPoints || 0).toLocaleString()} pts
+        {/* Progress card */}
+        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+          <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')}</div>
+          <LevelMapBadges progress={geoProgress} />
+          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              {t('geo.subLevelsDone', { done: totalSubLevelsDone(geoProgress) })}
+            </span>
+            <span style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>
+              {(geoProgress.totalPoints || 0).toLocaleString()} pts
+            </span>
           </div>
         </div>
       </div>
@@ -440,59 +450,64 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
   const isFinished = (geoProgress.completedSubLevels['geographer'] || 0) >= 5
 
   return (
-    <div className="container" style={{ paddingTop: 24 }}>
-      {/* Level up celebration */}
-      {levelUpInfo && (
-        <div className="animate-slide-up" style={{ background: `linear-gradient(135deg, ${levelUpInfo.color}CC 0%, ${levelUpInfo.color} 100%)`, borderRadius: 'var(--radius-xl)', padding: '20px 24px', marginBottom: 20, color: 'white', textAlign: 'center' }}>
-          <div style={{ fontSize: '3rem', marginBottom: 8 }}>{levelUpInfo.icon}</div>
-          <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>
-            {t('geo.newLevelUnlocked')}
+    <div>
+      {/* Full-width result hero */}
+      <div style={{
+        background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)',
+        color: 'white', textAlign: 'center',
+        padding: '48px 20px 40px',
+      }}>
+        {/* Level up celebration */}
+        {levelUpInfo && (
+          <div className="animate-slide-up" style={{
+            background: `linear-gradient(135deg, ${levelUpInfo.color}CC 0%, ${levelUpInfo.color} 100%)`,
+            borderRadius: 'var(--radius-xl)', padding: '16px 24px', marginBottom: 20,
+            display: 'inline-block'
+          }}>
+            <div style={{ fontSize: '2rem', marginBottom: 4 }}>{levelUpInfo.icon}</div>
+            <div style={{ fontWeight: 800, fontSize: '1rem' }}>{t('geo.newLevelUnlocked')}</div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>{t(`geo.levelNames.${levelUpInfo.id}`)}</div>
           </div>
-          <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t(`geo.levelNames.${levelUpInfo.id}`)}</div>
-        </div>
-      )}
+        )}
 
-      {/* Sub-level complete + score box */}
-      <div style={{ background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)', borderRadius: 'var(--radius-xl)', padding: '24px', marginBottom: 20, color: 'white', textAlign: 'center' }}>
-        <div style={{ fontSize: '1.6rem', marginBottom: 4 }}>{curLevel.icon}</div>
-        <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 16, opacity: 0.9 }}>
+        <span style={{ fontSize: '3rem', display: 'block', marginBottom: 12 }}>{curLevel.icon}</span>
+        <h2 style={{ margin: '0 0 20px', fontSize: '1.6rem', fontWeight: 800 }}>
           {t(`geo.levelNames.${curLevel.id}`)} — {t('geo.subLevelComplete', { num: curSubLevel - 1 })}
-        </div>
-        <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px' }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
+        </h2>
+        <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px', display: 'inline-block', minWidth: 200 }}>
+          <div style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
             {t('geo.roundResult')}
           </div>
-          <div style={{ fontSize: '1.3rem', fontWeight: 800, lineHeight: 1 }}>
+          <div style={{ fontSize: '1.6rem', fontWeight: 800, lineHeight: 1 }}>
             {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
           </div>
-          <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>
-            {t('geo.pointsAdded')}
+          <div style={{ fontSize: '0.8rem', opacity: 0.85, marginTop: 4 }}>{t('geo.pointsAdded')}</div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="container" style={{ paddingTop: 28 }}>
+        {/* Level progress */}
+        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+          <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')}</div>
+          <LevelMapBadges progress={geoProgress} />
+          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('geo.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</span>
+            <span style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>{t('geo.totalPts', { pts: (geoProgress.totalPoints || 0).toLocaleString() })}</span>
           </div>
         </div>
-      </div>
 
-      {/* Level progress */}
-      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          {t('geo.yourProgress')}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {isFinished ? (
+            <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
+              🏆 {t('geo.allDone')} →
+            </button>
+          ) : (
+            <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
+              {t('geo.continueNextLevel')} →
+            </button>
+          )}
         </div>
-        <LevelMapBadges progress={geoProgress} />
-        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('geo.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</div>
-          <div style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>{t('geo.totalPts', { pts: (geoProgress.totalPoints || 0).toLocaleString() })}</div>
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {isFinished ? (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
-            🏆 {t('geo.allDone')} →
-          </button>
-        ) : (
-          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
-            {t('geo.continueNextLevel')} →
-          </button>
-        )}
       </div>
     </div>
   )

@@ -242,11 +242,23 @@ export default function QuizGame() {
         </span>
       </div>
 
+      {/* Progress bar */}
+      <div style={{ marginBottom: 16 }}>
+        <div className="game-progress-row">
+          <span className="game-progress-label">
+            {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {questions.length}
+          </span>
+          <span className="game-progress-pct">
+            {Math.round((currentIdx / questions.length) * 100)}%
+          </span>
+        </div>
+        <div className="progress-bar">
+          <div className="progress-fill" style={{ width: `${(currentIdx / questions.length) * 100}%` }} />
+        </div>
+      </div>
+
       {/* Question */}
       <div className="card" style={{ marginBottom: 20, padding: 24 }}>
-        <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: 8 }}>
-          {t('quiz.question')} {currentIdx + 1} {t('quiz.of')} {questions.length}
-        </div>
         <h2 style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', lineHeight: 1.4, fontWeight: 700, margin: 0 }}>
           {qText(q)}
         </h2>
@@ -258,21 +270,9 @@ export default function QuizGame() {
           <button
             key={idx}
             onClick={() => handleSelect(idx)}
-            style={{
-              width: '100%', textAlign: 'left', padding: '14px 16px',
-              background: 'white', border: '2px solid var(--border)', color: 'var(--text)',
-              borderRadius: 'var(--radius)', cursor: 'pointer',
-              fontFamily: 'var(--font)', fontSize: '0.95rem', fontWeight: 500,
-              display: 'flex', alignItems: 'center', gap: 10,
-              transition: 'all 0.15s',
-            }}
+            className="quiz-option"
           >
-            <span style={{
-              width: 28, height: 28, borderRadius: '50%',
-              background: 'var(--gray-100)', color: 'var(--gray-500)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '0.8rem', fontWeight: 700, flexShrink: 0
-            }}>
+            <span className="quiz-option-letter">
               {String.fromCharCode(65 + idx)}
             </span>
             {qOption(q, idx)}
@@ -381,39 +381,45 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
   const isFinished = (quizProgress.completedSubLevels['ambassador'] || 0) >= 5
 
   return (
-    <div className="container" style={{ paddingTop: 24 }}>
+    <div>
+      {/* Full-width level hero */}
       <div style={{
         background: `linear-gradient(135deg, ${curLevel.color}CC 0%, ${curLevel.color} 100%)`,
-        borderRadius: 'var(--radius-xl)', padding: '16px 20px', marginBottom: 14,
-        color: 'white', textAlign: 'center'
+        color: 'white', textAlign: 'center',
+        padding: '48px 20px 40px',
       }}>
-        <div style={{ fontSize: '2rem', marginBottom: 6 }}>{curLevel.icon}</div>
-        <h2 style={{ color: 'white', margin: '0 0 2px', fontSize: '1.3rem' }}>{t('quiz.title')}</h2>
-        <p style={{ color: 'rgba(255,255,255,0.85)', margin: 0, fontSize: '0.8rem' }}>
-          {isFinished ? `🏆 ${t('quiz.allLevelsComplete')}` : `${t(`quiz.levelNames.${curLevel.id}`)} · ${t('quiz.subLevelOf', { num: curSubLevel })}`}
+        <span style={{ fontSize: '3rem', display: 'block', marginBottom: 12 }}>{curLevel.icon}</span>
+        <h2 style={{ margin: '0 0 8px', fontSize: '1.8rem', fontWeight: 800 }}>{t('quiz.title')}</h2>
+        <p style={{ margin: 0, opacity: 0.88, fontSize: '1rem' }}>
+          {isFinished
+            ? `🏆 ${t('quiz.allLevelsComplete')}`
+            : `${t(`quiz.levelNames.${curLevel.id}`)} · ${t('quiz.subLevelOf', { num: curSubLevel })}`}
         </p>
       </div>
 
-      <button
-        onClick={onStart}
-        className="btn btn-full btn-lg"
-        style={{ background: curLevel.color, color: 'white', marginBottom: 16 }}
-      >
-        {isFinished ? `🔄 ${t('quiz.allDone')}` : `${curLevel.icon} ${t('quiz.startSubLevel', { name: t(`quiz.levelNames.${curLevel.id}`), num: curSubLevel })} →`}
-      </button>
+      {/* Content */}
+      <div className="container" style={{ paddingTop: 28 }}>
+        <button
+          onClick={onStart}
+          className="btn btn-full btn-lg"
+          style={{ background: curLevel.color, color: 'white', marginBottom: 16, borderRadius: 'var(--radius-lg)' }}
+        >
+          {isFinished
+            ? `🔄 ${t('quiz.allDone')}`
+            : `${curLevel.icon} ${t('quiz.startSubLevel', { name: t(`quiz.levelNames.${curLevel.id}`), num: curSubLevel })} →`}
+        </button>
 
-      {/* Level map */}
-      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          {t('quiz.yourProgress')}
-        </div>
-        <LevelMapBadges progress={quizProgress} />
-        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            {t('quiz.subLevelsDone', { done: totalSubLevelsDone(quizProgress) })}
-          </div>
-          <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>
-            {(quizProgress.totalPoints || 0).toLocaleString()} pts
+        {/* Progress card */}
+        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+          <div className="section-title" style={{ marginBottom: 12 }}>{t('quiz.yourProgress')}</div>
+          <LevelMapBadges progress={quizProgress} />
+          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              {t('quiz.subLevelsDone', { done: totalSubLevelsDone(quizProgress) })}
+            </span>
+            <span style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>
+              {(quizProgress.totalPoints || 0).toLocaleString()} pts
+            </span>
           </div>
         </div>
       </div>
@@ -430,62 +436,63 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
   const isFinished = (quizProgress.completedSubLevels['ambassador'] || 0) >= 5
 
   return (
-    <div className="container" style={{ paddingTop: 24 }}>
-      {/* Level up celebration */}
-      {levelUpInfo && (
-        <div className="animate-slide-up" style={{
-          background: `linear-gradient(135deg, ${levelUpInfo.color}CC 0%, ${levelUpInfo.color} 100%)`,
-          borderRadius: 'var(--radius-xl)', padding: '20px 24px', marginBottom: 20,
-          color: 'white', textAlign: 'center'
-        }}>
-          <div style={{ fontSize: '3rem', marginBottom: 8 }}>{levelUpInfo.icon}</div>
-          <div style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: 4 }}>{t('quiz.newLevelUnlocked')}</div>
-          <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t(`quiz.levelNames.${levelUpInfo.id}`)}</div>
-        </div>
-      )}
-
-      {/* Sub-level complete + score */}
+    <div>
+      {/* Full-width result hero */}
       <div style={{
-        background: 'linear-gradient(135deg, var(--red) 0%, #C4222E 100%)',
-        borderRadius: 'var(--radius-xl)', padding: '24px', marginBottom: 20,
-        color: 'white', textAlign: 'center'
+        background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)',
+        color: 'white', textAlign: 'center',
+        padding: '48px 20px 40px',
       }}>
-        <div style={{ fontSize: '1.6rem', marginBottom: 4 }}>{curLevel.icon}</div>
-        <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: 16, opacity: 0.9 }}>
+        {/* Level up celebration */}
+        {levelUpInfo && (
+          <div className="animate-slide-up" style={{
+            background: `linear-gradient(135deg, ${levelUpInfo.color}CC 0%, ${levelUpInfo.color} 100%)`,
+            borderRadius: 'var(--radius-xl)', padding: '16px 24px', marginBottom: 20,
+            display: 'inline-block'
+          }}>
+            <div style={{ fontSize: '2rem', marginBottom: 4 }}>{levelUpInfo.icon}</div>
+            <div style={{ fontWeight: 800, fontSize: '1rem' }}>{t('quiz.newLevelUnlocked')}</div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>{t(`quiz.levelNames.${levelUpInfo.id}`)}</div>
+          </div>
+        )}
+
+        <span style={{ fontSize: '3rem', display: 'block', marginBottom: 12 }}>{curLevel.icon}</span>
+        <h2 style={{ margin: '0 0 20px', fontSize: '1.6rem', fontWeight: 800 }}>
           {t(`quiz.levelNames.${curLevel.id}`)} — {t('quiz.subLevelComplete', { num: curSubLevel })}
-        </div>
-        <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px' }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
+        </h2>
+        <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px', display: 'inline-block', minWidth: 200 }}>
+          <div style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
             {t('quiz.roundResult')}
           </div>
-          <div style={{ fontSize: '1.3rem', fontWeight: 800, lineHeight: 1 }}>
+          <div style={{ fontSize: '1.6rem', fontWeight: 800, lineHeight: 1 }}>
             {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
           </div>
-          <div style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4 }}>{t('quiz.pointsEarned')}</div>
+          <div style={{ fontSize: '0.8rem', opacity: 0.85, marginTop: 4 }}>{t('quiz.pointsEarned')}</div>
         </div>
       </div>
 
-      {/* Progress */}
-      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-          {t('quiz.yourProgress')}
+      {/* Content */}
+      <div className="container" style={{ paddingTop: 28 }}>
+        {/* Progress */}
+        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+          <div className="section-title" style={{ marginBottom: 12 }}>{t('quiz.yourProgress')}</div>
+          <LevelMapBadges progress={quizProgress} />
+          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('quiz.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</span>
+            <span style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>{t('quiz.totalPts', { pts: (quizProgress.totalPoints || 0).toLocaleString() })}</span>
+          </div>
         </div>
-        <LevelMapBadges progress={quizProgress} />
-        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('quiz.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</div>
-          <div style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>{t('quiz.totalPts', { pts: (quizProgress.totalPoints || 0).toLocaleString() })}</div>
-        </div>
-      </div>
 
-      {isFinished ? (
-        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
-          🏆 {t('quiz.allDone')} →
-        </button>
-      ) : (
-        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: curLevel.color, color: 'white', whiteSpace: 'normal', lineHeight: 1.3 }}>
-          {t('quiz.continueNextSubLevel')} →
-        </button>
-      )}
+        {isFinished ? (
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
+            🏆 {t('quiz.allDone')} →
+          </button>
+        ) : (
+          <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: curLevel.color, color: 'white', whiteSpace: 'normal', lineHeight: 1.3 }}>
+            {t('quiz.continueNextSubLevel')} →
+          </button>
+        )}
+      </div>
     </div>
   )
 }

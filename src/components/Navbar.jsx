@@ -16,81 +16,48 @@ export default function Navbar() {
   return (
     <>
       {/* Top bar */}
-      <header style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 'var(--nav-height)',
-        background: 'var(--red)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 16px',
-        zIndex: 50,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
-      }}>
-        <Link to="/" style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          textDecoration: 'none',
-          color: 'white'
-        }}>
-          <span style={{ fontSize: '1.5rem' }}>🇱🇺</span>
-          <span style={{
-            fontWeight: 800,
-            fontSize: '1.1rem',
-            letterSpacing: '-0.02em'
-          }}>
-            Biergerpakt Games
-          </span>
-        </Link>
-        <LanguageSelector />
+      <header className="navbar-top">
+        <div className="navbar-brand">
+          <Link to="/">
+            <span className="navbar-brand-flag">🇱🇺</span>
+            <div>
+              <div className="navbar-brand-name">Biergerpakt Games</div>
+              <div className="navbar-brand-sub">Discover Luxembourg Through Play</div>
+            </div>
+          </Link>
+        </div>
+
+        {/* Desktop nav links (hidden on mobile) */}
+        <nav className="navbar-desktop-links" aria-label="Main navigation">
+          {navLinks.map(link => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`navbar-desktop-link${pathname === link.path ? ' active' : ''}`}
+            >
+              <span>{link.icon}</span>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="navbar-right">
+          <LanguageSelector />
+        </div>
       </header>
 
-      {/* Bottom tab bar (mobile) */}
-      <nav style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: 68,
-        background: 'white',
-        borderTop: '1px solid var(--border)',
-        display: 'flex',
-        alignItems: 'stretch',
-        zIndex: 50,
-        boxShadow: '0 -2px 12px rgba(0,0,0,0.08)'
-      }}>
+      {/* Bottom tab bar (mobile only — hidden on desktop via CSS) */}
+      <nav className="navbar-bottom" aria-label="Tab navigation">
         {navLinks.map(link => {
           const active = pathname === link.path
           return (
             <Link
               key={link.path}
               to={link.path}
-              style={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 2,
-                textDecoration: 'none',
-                color: active ? 'var(--red)' : 'var(--gray-400)',
-                fontSize: '0.625rem',
-                fontWeight: active ? 700 : 500,
-                letterSpacing: '0.03em',
-                transition: 'color 0.15s',
-                paddingBottom: 4
-              }}
+              className={`navbar-bottom-link${active ? ' active' : ''}`}
             >
-              <span style={{
-                fontSize: '1.3rem',
-                lineHeight: 1,
-                filter: active ? 'none' : 'grayscale(0.4) opacity(0.7)'
-              }}>{link.icon}</span>
-              <span style={{ textTransform: 'uppercase' }}>{link.label}</span>
+              <span className="navbar-bottom-icon">{link.icon}</span>
+              <span className="navbar-bottom-label">{link.label}</span>
             </Link>
           )
         })}

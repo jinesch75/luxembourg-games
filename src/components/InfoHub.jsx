@@ -439,29 +439,28 @@ export default function InfoHub() {
   ]
 
   return (
-    <div className="container" style={{ paddingTop: 20 }}>
-      <div style={{ marginBottom: 20 }}>
-        <h1 style={{ fontSize: '1.5rem', marginBottom: 4 }}>{t('info.title')}</h1>
-        <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem' }}>{t('info.subtitle')}</p>
+    <div>
+      {/* Full-width page header */}
+      <div style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%)',
+        color: 'white', padding: '48px 20px 40px', textAlign: 'center',
+      }}>
+        <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: 12 }}>ℹ️</span>
+        <h1 style={{ margin: '0 0 8px', fontSize: '1.8rem', fontWeight: 800, color: 'white' }}>{t('info.title')}</h1>
+        <p style={{ margin: 0, opacity: 0.8, fontSize: '1rem', maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>{t('info.subtitle')}</p>
       </div>
 
+    <div className="container-wide" style={{ paddingTop: 28 }}>
       {/* Tabs */}
-      <div style={{
-        display: 'flex', gap: 6, marginBottom: 20,
-        flexWrap: 'wrap',
-      }}>
+      <div className="info-tabs">
         {tabs.map(tab => (
           <button
             key={tab.id}
             onClick={() => switchTab(tab.id)}
-            style={{
-              padding: '8px 14px', borderRadius: 999, border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font)', fontSize: '0.85rem', fontWeight: 600,
-              background: activeTab === tab.id ? 'var(--red)' : 'var(--gray-100)',
-              color: activeTab === tab.id ? 'white' : 'var(--gray-600)'
-            }}
+            className={`info-tab${activeTab === tab.id ? ' active' : ''}`}
           >
-            {tab.icon} {tab.label}
+            <span>{tab.icon}</span>
+            {tab.label}
           </button>
         ))}
       </div>
@@ -501,11 +500,11 @@ export default function InfoHub() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {bpCards.map(item => (
-              <div key={item.id || item.title} className="card" style={{ display: 'flex', gap: 14 }}>
-                <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{item.icon}</span>
+              <div key={item.id || item.title} className="bp-card">
+                <span className="bp-card-icon">{item.icon}</span>
                 <div>
-                  <div style={{ fontWeight: 700, marginBottom: 4 }}>{tf(item, 'title') || item.title}</div>
-                  <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--gray-700)', lineHeight: 1.5 }}>{tf(item, 'text') || item.text}</p>
+                  <div className="bp-card-title">{tf(item, 'title') || item.title}</div>
+                  <p className="bp-card-text">{tf(item, 'text') || item.text}</p>
                 </div>
               </div>
             ))}
@@ -528,19 +527,13 @@ export default function InfoHub() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {stats.map(stat => (
-              <div key={stat.label} style={{
-                background: 'white', border: '1px solid var(--border)',
-                borderRadius: 'var(--radius)', padding: '14px 16px',
-                display: 'flex', alignItems: 'center', gap: 14
-              }}>
-                <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{stat.icon}</span>
+              <div key={stat.label} className="info-stat-item">
+                <span className="info-stat-icon">{stat.icon}</span>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 700, color: 'var(--gray-800)' }}>{stat.value}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{tf(stat, 'label') || stat.label}</div>
+                  <div className="info-stat-value">{stat.value}</div>
+                  <div className="info-stat-label">{tf(stat, 'label') || stat.label}</div>
                 </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--gray-400)', textAlign: 'right', flexShrink: 0 }}>
-                  {stat.source}
-                </div>
+                <div className="info-stat-source">{stat.source}</div>
               </div>
             ))}
           </div>
@@ -669,18 +662,9 @@ export default function InfoHub() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {(getArrayField(cat, 'tips', lang) || cat.tips).map((tip, i) => (
-                  <div key={i} style={{
-                    background: 'white', border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius)', padding: '12px 16px',
-                    display: 'flex', gap: 12, alignItems: 'flex-start'
-                  }}>
-                    <span style={{
-                      width: 24, height: 24, borderRadius: '50%', flexShrink: 0,
-                      background: cat.bg, color: cat.color,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '0.75rem', fontWeight: 700
-                    }}>{i + 1}</span>
-                    <span style={{ fontSize: '0.88rem', color: 'var(--gray-700)', lineHeight: 1.5 }}>{tip}</span>
+                  <div key={i} className="info-tip-item">
+                    <span className="info-tip-num" style={{ background: cat.bg, color: cat.color }}>{i + 1}</span>
+                    <span className="info-tip-text">{tip}</span>
                   </div>
                 ))}
               </div>
@@ -730,18 +714,13 @@ export default function InfoHub() {
                       href={src.href}
                       target="_blank"
                       rel="noreferrer"
-                      style={{
-                        display: 'flex', flexDirection: 'column', gap: 4,
-                        background: 'white', border: '1px solid var(--border)',
-                        borderRadius: 'var(--radius)', padding: '14px 16px',
-                        textDecoration: 'none', color: 'var(--text)'
-                      }}
+                      className="source-link"
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-                        <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--accent)' }}>{src.label}</span>
-                        <span style={{ color: 'var(--gray-400)', flexShrink: 0 }}>→</span>
+                      <div className="source-link-header">
+                        <span className="source-link-label">{src.label}</span>
+                        <span className="source-link-arrow">→</span>
                       </div>
-                      <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{tf(src, 'desc') || src.desc}</span>
+                      <span className="source-link-desc">{tf(src, 'desc') || src.desc}</span>
                     </a>
                   ))}
                 </div>
@@ -758,6 +737,7 @@ export default function InfoHub() {
           </div>
         </div>
       )}
+    </div>
     </div>
   )
 }
