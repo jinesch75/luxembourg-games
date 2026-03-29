@@ -547,15 +547,45 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
         {/* Start button — below */}
         <button
           onClick={onStart}
-          className="btn-hero-primary"
           style={{
             width: '100%',
-            fontSize: '1.1rem',
-            fontWeight: 800,
-            letterSpacing: '0.01em',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
+            borderRadius: 18,
+            background: 'linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%)',
+            color: 'rgba(255,255,255,0.95)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            boxShadow: '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-3px)'
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(100,30,30,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
           }}
         >
-          {isFinished ? t('quiz.allDone') : t('quiz.startGame', { defaultValue: 'Start the game' })}
+          <span style={{
+            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.7rem',
+          }}>🧠</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {isFinished ? t('quiz.allDone') : t('quiz.startGame', { defaultValue: 'Start the game' })}
+            </strong>
+            {!isFinished && (
+              <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+                {t(`quiz.levelNames.${curLevel.id}`)} · {t('quiz.subLevel', { defaultValue: 'Sub-level' })} {curSubLevel}/5
+              </small>
+            )}
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
 
       </div>
@@ -584,12 +614,86 @@ function Done({ scores, questions, t, quizProgress, curLevel, curSubLevel, level
       </div>
 
       {isFinished ? (
-        <button onClick={onReplay} className="btn-hero-primary" style={{ width: '100%', fontSize: '1.1rem', whiteSpace: 'normal', lineHeight: 1.3 }}>
-          🏆 {t('quiz.allDone')} →
+        <button
+          onClick={onReplay}
+          style={{
+            width: '100%',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
+            borderRadius: 18,
+            background: 'linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%)',
+            color: 'rgba(255,255,255,0.95)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            boxShadow: '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-3px)'
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(100,30,30,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+        >
+          <span style={{
+            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.7rem',
+          }}>🏆</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {t('quiz.allDone')}
+            </strong>
+            <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+              {t('quiz.allLevelsCompleted', { defaultValue: 'All levels completed!' })}
+            </small>
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
       ) : (
-        <button onClick={onReplay} className="btn-hero-primary" style={{ width: '100%', fontSize: '1.1rem', whiteSpace: 'normal', lineHeight: 1.3 }}>
-          {t('quiz.continueNextSubLevel')} →
+        <button
+          onClick={onReplay}
+          style={{
+            width: '100%',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
+            borderRadius: 18,
+            background: 'linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%)',
+            color: 'rgba(255,255,255,0.95)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            boxShadow: '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-3px)'
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(100,30,30,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(100,30,30,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+        >
+          <span style={{
+            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.7rem',
+          }}>▶</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {t('quiz.continueNextSubLevel')}
+            </strong>
+            <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+              {t(`quiz.levelNames.${nextLevel.id}`)} · {t('quiz.subLevel', { defaultValue: 'Sub-level' })} {nextSub}/5
+            </small>
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
       )}
     </div>

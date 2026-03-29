@@ -25,15 +25,15 @@ export default function LanguageSelector() {
           background: 'rgba(255,255,255,0.15)',
           border: 'none',
           borderRadius: 8,
-          padding: '6px 10px',
+          padding: '5px 8px',
           cursor: 'pointer',
           color: 'white',
           fontFamily: 'var(--font)',
-          fontSize: '0.875rem',
+          fontSize: '0.8rem',
           fontWeight: 600
         }}
       >
-        <span style={{ fontSize: '0.85rem' }}>{current.flag}</span>
+        <span style={{ fontSize: '0.75rem' }}>{current.flag}</span>
         <span style={{ textTransform: 'uppercase', letterSpacing: '0.04em' }}>{current.code}</span>
         <span style={{ fontSize: '0.6rem', opacity: 0.8 }}>▼</span>
       </button>

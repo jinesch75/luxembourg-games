@@ -408,25 +408,54 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
 
       {/* Content */}
       <div className="container" style={{ paddingTop: 28 }}>
-        <button onClick={() => {
+        <button
+          onClick={() => {
             const isVeryFirstLevel = totalSubLevelsDone(geoProgress) === 0
             if (isVeryFirstLevel) setShowRules(true)
             else onStart()
-          }} className="btn btn-full btn-lg"
+          }}
           style={{
-            background: curLevel.color,
-            color: 'white',
+            width: '100%',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
             marginBottom: 16,
-            borderRadius: 'var(--radius-lg)',
-            boxShadow: `0 6px 20px ${curLevel.color}55`,
-            border: '2px solid rgba(255,255,255,0.25)',
-            fontWeight: 800,
-            fontSize: '1.1rem',
-            letterSpacing: '0.01em',
-          }}>
-          {isFinished
-            ? `🔄 ${t('geo.allDone')}`
-            : `${curLevel.icon} ${t('geo.startSubLevel', { name: t(`geo.levelNames.${curLevel.id}`), num: curSubLevel })} →`}
+            borderRadius: 18,
+            background: 'linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%)',
+            color: 'rgba(255,255,255,0.95)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            boxShadow: '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-3px)'
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+        >
+          <span style={{
+            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.7rem',
+          }}>{isFinished ? '🔄' : '🎯'}</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {isFinished
+                ? t('geo.allDone')
+                : t('geo.startSubLevel', { name: t(`geo.levelNames.${curLevel.id}`), num: curSubLevel })}
+            </strong>
+            {!isFinished && (
+              <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+                {curLevel.icon} {t(`geo.levelNames.${curLevel.id}`)} · {t('geo.subLevel', { defaultValue: 'Sub-level' })} {curSubLevel}/5
+              </small>
+            )}
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
 
         {/* Progress card */}
@@ -468,12 +497,86 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
       </div>
 
       {isFinished ? (
-        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
-          🏆 {t('geo.allDone')} →
+        <button
+          onClick={onReplay}
+          style={{
+            width: '100%',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
+            borderRadius: 18,
+            background: 'linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%)',
+            color: 'rgba(255,255,255,0.95)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            boxShadow: '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-3px)'
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+        >
+          <span style={{
+            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.7rem',
+          }}>🏆</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {t('geo.allDone')}
+            </strong>
+            <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+              {t('geo.allLevelsCompleted', { defaultValue: 'All levels completed!' })}
+            </small>
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
       ) : (
-        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
-          {t('geo.continueNextLevel')} →
+        <button
+          onClick={onReplay}
+          style={{
+            width: '100%',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
+            borderRadius: 18,
+            background: 'linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%)',
+            color: 'rgba(255,255,255,0.95)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            boxShadow: '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-3px)'
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14)'
+          }}
+        >
+          <span style={{
+            width: 50, height: 50, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.7rem',
+          }}>▶</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {t('geo.continueNextLevel')}
+            </strong>
+            <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+              {nextLevel.icon} {t(`geo.levelNames.${nextLevel.id}`)} · {t('geo.subLevel', { defaultValue: 'Sub-level' })} {nextSub}/5
+            </small>
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
       )}
     </div>
