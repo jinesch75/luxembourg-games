@@ -11,10 +11,7 @@ export default function Footer() {
       fontSize: '0.8rem',
       lineHeight: 1.7
     }}>
-      <div style={{ marginBottom: 8, color: 'white', fontWeight: 600 }}>
-        {t('footer.madeWith')}
-      </div>
-      <div style={{ marginTop: 8 }}>{t('footer.disclaimer')}</div>
+      <div>{t('footer.disclaimer')}</div>
     </footer>
   )
 }
