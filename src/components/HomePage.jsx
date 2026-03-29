@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { HelpCircle, MapPin } from 'lucide-react'
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -20,14 +21,14 @@ export default function HomePage() {
             </h1>
             <div className="home-hero-actions">
               <Link to="/quiz" className="btn-hero-game btn-hero-game-quiz">
-                <span className="btn-hero-game-icon">🧠</span>
+                <span className="btn-hero-game-icon"><HelpCircle size={26} strokeWidth={1.75} /></span>
                 <span className="btn-hero-game-text">
                   <strong>Game 1: Quiz</strong>
                   <small>{t('home.quizCardDesc')}</small>
                 </span>
               </Link>
               <Link to="/geo" className="btn-hero-game btn-hero-game-geo">
-                <span className="btn-hero-game-icon">🎯</span>
+                <span className="btn-hero-game-icon"><MapPin size={26} strokeWidth={1.75} /></span>
                 <span className="btn-hero-game-text">
                   <strong>Game 2: Map Game</strong>
                   <small>{t('home.mapCardDesc')}</small>

@@ -423,7 +423,7 @@ a:hover { text-decoration: underline; }
   gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 0;
+  margin-top: 20px;
 }
 .btn-hero-game {
   display: inline-flex;
@@ -474,8 +474,6 @@ a:hover { text-decoration: underline; }
   color: white;
 }
 .btn-hero-game-icon {
-  font-size: 1.7rem;
-  line-height: 1;
   flex-shrink: 0;
   background: rgba(255,255,255,0.15);
   border-radius: 12px;
@@ -484,6 +482,7 @@ a:hover { text-decoration: underline; }
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgba(255,255,255,0.9);
 }
 .btn-hero-game-text {
   display: flex;
