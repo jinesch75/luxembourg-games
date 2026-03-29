@@ -297,7 +297,7 @@ export default function QuizGame() {
           animation: 'fadeIn 0.2s ease'
         }}>
           <div style={{
-            background: 'linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%)',
+            background: 'linear-gradient(160deg, #1E3A5F 0%, #2155A3 60%, #2B6CBF 100%)',
             borderRadius: '24px 24px 0 0',
             padding: '28px 20px 36px',
             maxWidth: 520, width: '100%',
