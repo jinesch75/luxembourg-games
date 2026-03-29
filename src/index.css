@@ -424,7 +424,7 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%);
 }
 .home-hero-inner {
-  padding: 56px 0 72px;
+  padding: 32px 0 48px;
   animation: fadeIn 0.4s ease forwards;
 }
 .home-hero-label {
@@ -447,13 +447,13 @@ a:hover { text-decoration: underline; }
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 .home-hero-title-accent { color: #FFD966; }
 .home-hero-sub {
   color: rgba(255,255,255,0.65);
   font-size: clamp(1rem, 2.5vw, 1.15rem);
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   max-width: 460px;
   line-height: 1.7;
 }
@@ -592,6 +592,12 @@ a:hover { text-decoration: underline; }
 .game-card-v-body {
   padding: 16px 20px 12px;
 }
+.game-card-v-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
 .game-card-v-icon {
   width: 44px;
   height: 44px;
@@ -600,13 +606,12 @@ a:hover { text-decoration: underline; }
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 .game-card-v-title {
   color: var(--gray-900);
   font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 6px;
   letter-spacing: -0.02em;
 }
 .game-card-v-desc {
@@ -733,7 +738,7 @@ a:hover { text-decoration: underline; }
   animation: fadeIn 0.2s ease forwards;
 }
 .games-modal {
-  background: white;
+  background: #1E293B;
   border-radius: var(--radius-xl);
   padding: 24px 20px;
   width: 100%;
@@ -749,12 +754,12 @@ a:hover { text-decoration: underline; }
   position: relative;
 }
 .games-modal-header h2 {
-  color: var(--gray-900);
+  color: white;
   margin: 8px 0 10px;
   letter-spacing: -0.02em;
 }
 .games-modal-header p {
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.6);
   font-size: 0.95rem;
   max-width: 440px;
   margin: 0 auto;
@@ -767,19 +772,19 @@ a:hover { text-decoration: underline; }
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--gray-100);
+  background: rgba(255,255,255,0.15);
   border: none;
   cursor: pointer;
   font-size: 1rem;
-  color: var(--gray-600);
+  color: rgba(255,255,255,0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.15s, color 0.15s;
 }
 .games-modal-close:hover {
-  background: var(--gray-200);
-  color: var(--gray-900);
+  background: rgba(255,255,255,0.25);
+  color: white;
 }
 
 /* ---- Desktop breakpoints ---- */

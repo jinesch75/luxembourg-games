@@ -8,8 +8,8 @@ export default function Navbar() {
 
   const navLinks = [
     { path: '/',     icon: '🏠', label: t('nav.home') },
-    { path: '/quiz', icon: '🎯', label: t('nav.quiz') },
-    { path: '/geo',  icon: '🗺️', label: t('nav.geo') },
+    { path: '/quiz', icon: '🧠', label: t('nav.quiz') },
+    { path: '/geo',  icon: '🎯', label: t('nav.geo') },
     { path: '/info', icon: 'ℹ️', label: t('nav.info') }
   ]
 
@@ -22,7 +22,7 @@ export default function Navbar() {
             <img src="/bl-logo-1.png" alt="Beautiful Luxembourg logo" style={{ height: '40px', width: '40px', objectFit: 'contain' }} />
             <div>
               <div className="navbar-brand-name">Beautiful Luxembourg</div>
-              <div className="navbar-brand-sub">Discover Luxembourg Through Play</div>
+              <div className="navbar-brand-sub">Discover Luxembourg - Games</div>
             </div>
           </Link>
         </div>
