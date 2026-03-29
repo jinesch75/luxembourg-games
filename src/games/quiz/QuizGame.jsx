@@ -291,76 +291,140 @@ export default function QuizGame() {
         ))}
       </div>
 
-      {/* Answer Pop-up Modal */}
+      {/* Answer Reveal — bottom-sheet panel, homepage dark aesthetic */}
       {revealed && (
         <div style={{
           position: 'fixed', inset: 0, zIndex: 1000,
-          background: 'rgba(0,0,0,0.5)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          padding: '20px',
+          background: 'rgba(0,0,0,0.65)',
+          display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
           animation: 'fadeIn 0.2s ease'
         }}>
           <div style={{
-            background: 'white', borderRadius: 'var(--radius-xl)',
-            padding: '28px 24px', maxWidth: 460, width: '100%',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
-            animation: 'popIn 0.25s ease'
+            background: 'linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%)',
+            borderRadius: '24px 24px 0 0',
+            padding: '28px 20px 36px',
+            maxWidth: 520, width: '100%',
+            boxShadow: '0 -12px 48px rgba(0,0,0,0.5)',
+            animation: 'slideUp 0.28s ease',
+            border: '1px solid rgba(255,255,255,0.10)',
+            borderBottom: 'none',
           }}>
-            {/* Points earned */}
+
+            {/* Drag handle */}
             <div style={{
-              textAlign: 'center', marginBottom: 16,
-              background: selected === q.answer ? '#D1FAE5' : '#FEE2E2',
-              borderRadius: 'var(--radius)', padding: '10px'
-            }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 800, color: selected === q.answer ? '#059669' : '#DC2626' }}>
-                {selected === q.answer ? `+${POINTS_PER_CORRECT} pts` : '+0 pts'}
+              width: 36, height: 4, borderRadius: 999,
+              background: 'rgba(255,255,255,0.18)',
+              margin: '-8px auto 20px',
+            }} />
+
+            {/* Points earned — large hero number */}
+            <div style={{ textAlign: 'center', marginBottom: 22 }}>
+              <div style={{
+                fontSize: '3.8rem', fontWeight: 900,
+                letterSpacing: '-0.04em', lineHeight: 1,
+                color: selected === q.answer ? '#FFD966' : '#F87171',
+                textShadow: selected === q.answer
+                  ? '0 0 40px rgba(255,217,102,0.55)'
+                  : '0 0 40px rgba(248,113,113,0.45)',
+                animation: 'popIn 0.32s ease',
+              }}>
+                {selected === q.answer ? `+${POINTS_PER_CORRECT}` : '+0'}
+              </div>
+              <div style={{
+                fontSize: '0.68rem', fontWeight: 700,
+                color: 'rgba(255,255,255,0.4)',
+                textTransform: 'uppercase', letterSpacing: '0.16em',
+                marginTop: 4,
+              }}>
+                {t('quiz.points', { defaultValue: 'points' })}
+              </div>
+
+              {/* Correct / Wrong pill badge */}
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                marginTop: 14,
+                background: selected === q.answer
+                  ? 'rgba(16,185,129,0.18)'
+                  : 'rgba(239,68,68,0.18)',
+                border: `1px solid ${selected === q.answer ? 'rgba(16,185,129,0.45)' : 'rgba(239,68,68,0.40)'}`,
+                borderRadius: 999,
+                padding: '5px 14px',
+                color: selected === q.answer ? '#34D399' : '#F87171',
+                fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.04em',
+              }}>
+                <span>{selected === q.answer ? '✓' : '✗'}</span>
+                <span>{selected === q.answer
+                  ? t('quiz.correct', { defaultValue: 'Correct!' })
+                  : t('quiz.incorrect', { defaultValue: 'Incorrect' })}
+                </span>
               </div>
             </div>
 
+            {/* Thin divider */}
+            <div style={{ height: 1, background: 'rgba(255,255,255,0.08)', marginBottom: 18 }} />
+
             {/* Your answer */}
-            <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+            <div style={{ marginBottom: 10 }}>
+              <div style={{
+                fontSize: '0.63rem', fontWeight: 700,
+                color: 'rgba(255,255,255,0.38)',
+                textTransform: 'uppercase', letterSpacing: '0.13em',
+                marginBottom: 7,
+              }}>
                 {t('quiz.yourAnswer')}
               </div>
               <div style={{
-                display: 'flex', alignItems: 'center', gap: 10,
-                padding: '10px 14px',
-                background: selected === q.answer ? '#D1FAE5' : '#FEE2E2',
-                borderRadius: 'var(--radius)',
-                border: `1.5px solid ${selected === q.answer ? '#059669' : '#DC2626'}`
+                display: 'flex', alignItems: 'center', gap: 12,
+                padding: '13px 16px',
+                background: selected === q.answer
+                  ? 'rgba(16,185,129,0.13)'
+                  : 'rgba(239,68,68,0.13)',
+                borderRadius: 14,
+                border: `1px solid ${selected === q.answer ? 'rgba(16,185,129,0.32)' : 'rgba(239,68,68,0.30)'}`,
               }}>
                 <span style={{
-                  width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
-                  background: selected === q.answer ? '#059669' : '#DC2626',
-                  color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '0.8rem', fontWeight: 700
+                  width: 30, height: 30, borderRadius: 9, flexShrink: 0,
+                  background: selected === q.answer
+                    ? 'rgba(16,185,129,0.28)'
+                    : 'rgba(239,68,68,0.28)',
+                  color: selected === q.answer ? '#34D399' : '#F87171',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '0.9rem', fontWeight: 800,
                 }}>
                   {selected === q.answer ? '✓' : '✗'}
                 </span>
-                <span style={{ fontWeight: 600, color: selected === q.answer ? '#065F46' : '#991B1B', fontSize: '0.95rem' }}>
+                <span style={{ fontWeight: 600, color: 'rgba(255,255,255,0.88)', fontSize: '0.9rem', lineHeight: 1.45 }}>
                   {qOption(q, selected)}
                 </span>
               </div>
             </div>
 
-            {/* Correct answer (only if wrong) */}
+            {/* Correct answer — only shown when wrong */}
             {selected !== q.answer && (
-              <div style={{ marginBottom: 16 }}>
-                <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+              <div style={{ marginBottom: 10 }}>
+                <div style={{
+                  fontSize: '0.63rem', fontWeight: 700,
+                  color: 'rgba(255,255,255,0.38)',
+                  textTransform: 'uppercase', letterSpacing: '0.13em',
+                  marginBottom: 7,
+                }}>
                   {t('quiz.correctAnswer')}
                 </div>
                 <div style={{
-                  display: 'flex', alignItems: 'center', gap: 10,
-                  padding: '10px 14px', background: '#D1FAE5',
-                  borderRadius: 'var(--radius)', border: '1.5px solid #059669'
+                  display: 'flex', alignItems: 'center', gap: 12,
+                  padding: '13px 16px',
+                  background: 'rgba(16,185,129,0.13)',
+                  borderRadius: 14,
+                  border: '1px solid rgba(16,185,129,0.32)',
                 }}>
                   <span style={{
-                    width: 26, height: 26, borderRadius: '50%', flexShrink: 0,
-                    background: '#059669', color: 'white',
+                    width: 30, height: 30, borderRadius: 9, flexShrink: 0,
+                    background: 'rgba(16,185,129,0.28)',
+                    color: '#34D399',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '0.8rem', fontWeight: 700
+                    fontSize: '0.9rem', fontWeight: 800,
                   }}>✓</span>
-                  <span style={{ fontWeight: 600, color: '#065F46', fontSize: '0.95rem' }}>
+                  <span style={{ fontWeight: 600, color: 'rgba(255,255,255,0.88)', fontSize: '0.9rem', lineHeight: 1.45 }}>
                     {qOption(q, q.answer)}
                   </span>
                 </div>
@@ -368,18 +432,75 @@ export default function QuizGame() {
             )}
 
             {/* Explanation */}
-            <div style={{ marginBottom: 24 }}>
-              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+            <div style={{ marginBottom: 22 }}>
+              <div style={{
+                fontSize: '0.63rem', fontWeight: 700,
+                color: 'rgba(255,255,255,0.38)',
+                textTransform: 'uppercase', letterSpacing: '0.13em',
+                marginBottom: 7,
+              }}>
                 {t('quiz.explanation')}
               </div>
-              <p style={{ fontSize: '0.9rem', margin: 0, lineHeight: 1.6, color: 'var(--gray-700)' }}>
+              <p style={{
+                fontSize: '0.875rem', margin: 0, lineHeight: 1.65,
+                color: 'rgba(255,255,255,0.68)',
+                background: 'rgba(255,255,255,0.055)',
+                borderRadius: 12,
+                padding: '12px 15px',
+                border: '1px solid rgba(255,255,255,0.07)',
+              }}>
                 {qExplain(q)}
               </p>
             </div>
 
-            <button onClick={handleNext} className="btn-hero-primary" style={{ width: '100%' }}>
-              {currentIdx + 1 >= questions.length ? t('quiz.finish') : t('quiz.next')} →
+            {/* Next / Finish button — styled like homepage quiz game button */}
+            <button
+              onClick={handleNext}
+              style={{
+                width: '100%',
+                display: 'flex', alignItems: 'center', gap: 16,
+                padding: '18px 22px',
+                borderRadius: 16,
+                background: 'linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%)',
+                color: 'rgba(255,255,255,0.95)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                boxShadow: '0 4px 20px rgba(100,30,30,0.40), inset 0 1px 0 rgba(255,255,255,0.14)',
+                cursor: 'pointer',
+                fontFamily: 'var(--font)',
+                fontSize: '0.95rem', fontWeight: 700,
+                transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+                position: 'relative', overflow: 'hidden',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 28px rgba(100,30,30,0.55), inset 0 1px 0 rgba(255,255,255,0.14)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(100,30,30,0.40), inset 0 1px 0 rgba(255,255,255,0.14)'
+              }}
+            >
+              <span style={{
+                width: 44, height: 44, borderRadius: 12, flexShrink: 0,
+                background: 'rgba(255,255,255,0.15)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '1.3rem',
+              }}>
+                {currentIdx + 1 >= questions.length ? '🏁' : '▶'}
+              </span>
+              <span style={{ flex: 1, textAlign: 'left', lineHeight: 1.3 }}>
+                <span style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700 }}>
+                  {currentIdx + 1 >= questions.length ? t('quiz.finish') : t('quiz.next')}
+                </span>
+                <span style={{ display: 'block', fontSize: '0.7rem', opacity: 0.65, fontWeight: 400, marginTop: 1 }}>
+                  {currentIdx + 1 >= questions.length
+                    ? t('quiz.seeResults', { defaultValue: 'See your results' })
+                    : `${t('quiz.question', { defaultValue: 'Question' })} ${currentIdx + 2} ${t('quiz.of', { defaultValue: 'of' })} ${questions.length}`}
+                </span>
+              </span>
+              <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
             </button>
+
           </div>
         </div>
       )}
