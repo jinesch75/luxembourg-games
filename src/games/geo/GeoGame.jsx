@@ -456,65 +456,26 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
   const isFinished = (geoProgress.completedSubLevels['geographer'] || 0) >= 5
 
   return (
-    <div>
-      {/* Full-width result hero */}
-      <div style={{
-        background: 'linear-gradient(135deg, #065F46 0%, #059669 100%)',
-        color: 'white', textAlign: 'center',
-        padding: '48px 20px 40px',
-      }}>
-        {/* Level up celebration */}
-        {levelUpInfo && (
-          <div className="animate-slide-up" style={{
-            background: `linear-gradient(135deg, ${levelUpInfo.color}CC 0%, ${levelUpInfo.color} 100%)`,
-            borderRadius: 'var(--radius-xl)', padding: '16px 24px', marginBottom: 20,
-            display: 'inline-block'
-          }}>
-            <div style={{ fontSize: '2rem', marginBottom: 4 }}>{levelUpInfo.icon}</div>
-            <div style={{ fontWeight: 800, fontSize: '1rem' }}>{t('geo.newLevelUnlocked')}</div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>{t(`geo.levelNames.${levelUpInfo.id}`)}</div>
-          </div>
-        )}
-
-        <span style={{ fontSize: '3rem', display: 'block', marginBottom: 12 }}>{curLevel.icon}</span>
-        <h2 style={{ margin: '0 0 20px', fontSize: '1.6rem', fontWeight: 800 }}>
-          {t(`geo.levelNames.${curLevel.id}`)} — {t('geo.subLevelComplete', { num: curSubLevel - 1 })}
-        </h2>
-        <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 'var(--radius)', padding: '14px 20px', display: 'inline-block', minWidth: 200 }}>
-          <div style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8, marginBottom: 6 }}>
-            {t('geo.roundResult')}
-          </div>
-          <div style={{ fontSize: '1.6rem', fontWeight: 800, lineHeight: 1 }}>
-            {sessionTotal.toLocaleString()} / {maxTotal.toLocaleString()}
-          </div>
-          <div style={{ fontSize: '0.8rem', opacity: 0.85, marginTop: 4 }}>{t('geo.pointsAdded')}</div>
+    <div className="container" style={{ paddingTop: 28 }}>
+      {/* Level progress */}
+      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+        <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')}</div>
+        <LevelMapBadges progress={geoProgress} />
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('geo.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</span>
+          <span style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>{t('geo.totalPts', { pts: (geoProgress.totalPoints || 0).toLocaleString() })}</span>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="container" style={{ paddingTop: 28 }}>
-        {/* Level progress */}
-        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
-          <div className="section-title" style={{ marginBottom: 12 }}>{t('geo.yourProgress')}</div>
-          <LevelMapBadges progress={geoProgress} />
-          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('geo.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</span>
-            <span style={{ fontWeight: 800, color: '#059669', fontSize: '1rem' }}>{t('geo.totalPts', { pts: (geoProgress.totalPoints || 0).toLocaleString() })}</span>
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {isFinished ? (
-            <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
-              🏆 {t('geo.allDone')} →
-            </button>
-          ) : (
-            <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
-              {t('geo.continueNextLevel')} →
-            </button>
-          )}
-        </div>
-      </div>
+      {isFinished ? (
+        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#D97706', color: 'white' }}>
+          🏆 {t('geo.allDone')} →
+        </button>
+      ) : (
+        <button onClick={onReplay} className="btn btn-full btn-lg" style={{ background: '#059669', color: 'white' }}>
+          {t('geo.continueNextLevel')} →
+        </button>
+      )}
     </div>
   )
 }
