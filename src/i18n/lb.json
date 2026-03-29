@@ -3,7 +3,8 @@
     "home": "Haaptseite",
     "quiz": "Quiz",
     "geo": "Géo",
-    "info": "Info"
+    "info": "Info",
+    "discoverSub": "Lëtzebuerg entdecken — Spiller"
   },
   "home": {
     "headline": "Lëtzebuerg entdecken",
@@ -23,7 +24,12 @@
     "sourcesTitle": "Zouverlässeg Quellen",
     "dailyReminderTitle": "All Dag zeréckkomm!",
     "dailyReminderText": "All Dag nei Quizfroe. Test Äert Wëssen iwwer Lëtzebuerg!",
-    "moreStats": "Méi Statistiken iwwer Lëtzebuerg"
+    "moreStats": "Méi Statistiken iwwer Lëtzebuerg",
+    "gamesWord": "Spiller",
+    "startGamesBtn": "D'Spiller starten",
+    "quizCardDesc": "Luschteg Multiple-Choice-Froe iwwer Geschicht, Kultur, Sprooch a méi.",
+    "mapCardDesc": "Markéier Plazen op der Kaart a verdéng Punkte je no denger Genauegkeet.",
+    "startPlaying": "Spillen →"
   },
   "quiz": {
     "title": "Quiz",

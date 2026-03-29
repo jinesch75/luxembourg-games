@@ -15,11 +15,11 @@ export default function HomePage() {
           <div className="home-hero-inner">
             <h1 className="home-hero-title">
               {t('home.headline')}<br />
-              <span className="home-hero-title-accent">Games</span>
+              <span className="home-hero-title-accent">{t('home.gamesWord')}</span>
             </h1>
             <p className="home-hero-sub">{t('home.tagline')}</p>
             <div className="home-hero-actions">
-              <button className="btn-hero-primary" onClick={() => setGamesOpen(true)}>🎯 Start the games</button>
+              <button className="btn-hero-primary" onClick={() => setGamesOpen(true)}>🎯 {t('home.startGamesBtn')}</button>
             </div>
           </div>
         </div>
@@ -41,10 +41,10 @@ export default function HomePage() {
                     <div className="game-card-v-icon" style={{ background: '#DBEAFE' }}>🗳️</div>
                     <div className="game-card-v-title">Quiz</div>
                   </div>
-                  <p className="game-card-v-desc">Fun multiple-choice questions about history, culture, language and more.</p>
+                  <p className="game-card-v-desc">{t('home.quizCardDesc')}</p>
                 </div>
                 <div className="game-card-v-footer">
-                  <div className="btn-hero-primary game-card-v-btn">Start playing →</div>
+                  <div className="btn-hero-primary game-card-v-btn">{t('home.startPlaying')}</div>
                 </div>
               </Link>
 
@@ -54,10 +54,10 @@ export default function HomePage() {
                     <div className="game-card-v-icon" style={{ background: '#D1FAE5' }}>🎯</div>
                     <div className="game-card-v-title">Map-Game</div>
                   </div>
-                  <p className="game-card-v-desc">{t('geo.subtitle')} — Pin locations on the map and earn points based on your accuracy.</p>
+                  <p className="game-card-v-desc">{t('geo.subtitle')} — {t('home.mapCardDesc')}</p>
                 </div>
                 <div className="game-card-v-footer">
-                  <div className="btn-hero-primary game-card-v-btn">Start playing →</div>
+                  <div className="btn-hero-primary game-card-v-btn">{t('home.startPlaying')}</div>
                 </div>
               </Link>
             </div>

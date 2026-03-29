@@ -3,7 +3,8 @@
     "home": "Home",
     "quiz": "Quiz",
     "geo": "Géo",
-    "info": "Info"
+    "info": "Info",
+    "discoverSub": "Discover Luxembourg — Games"
   },
   "home": {
     "headline": "Discover Luxembourg",
@@ -23,7 +24,12 @@
     "sourcesTitle": "Reliable sources",
     "dailyReminderTitle": "Come back every day!",
     "dailyReminderText": "New quiz questions every day. Test your knowledge of Luxembourg!",
-    "moreStats": "More statistics about Luxembourg"
+    "moreStats": "More statistics about Luxembourg",
+    "gamesWord": "Games",
+    "startGamesBtn": "Start the games",
+    "quizCardDesc": "Fun multiple-choice questions about history, culture, language and more.",
+    "mapCardDesc": "Pin locations on the map and earn points based on your accuracy.",
+    "startPlaying": "Start playing →"
   },
   "quiz": {
     "title": "Quiz",

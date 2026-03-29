@@ -3,7 +3,8 @@
     "home": "Startseite",
     "quiz": "Quiz",
     "geo": "Géo",
-    "info": "Info"
+    "info": "Info",
+    "discoverSub": "Luxemburg entdecken — Spiele"
   },
   "home": {
     "headline": "Luxemburg entdecken",
@@ -23,7 +24,12 @@
     "sourcesTitle": "Zuverlässige Quellen",
     "dailyReminderTitle": "Täglich zurückkehren!",
     "dailyReminderText": "Täglich neue Quizfragen. Testen Sie Ihr Wissen über Luxemburg!",
-    "moreStats": "Mehr Statistiken über Luxemburg"
+    "moreStats": "Mehr Statistiken über Luxemburg",
+    "gamesWord": "Spiele",
+    "startGamesBtn": "Spiele starten",
+    "quizCardDesc": "Lustige Multiple-Choice-Fragen zu Geschichte, Kultur, Sprache und mehr.",
+    "mapCardDesc": "Markiere Orte auf der Karte und verdiene Punkte je nach deiner Genauigkeit.",
+    "startPlaying": "Spielen →"
   },
   "quiz": {
     "title": "Quiz",
