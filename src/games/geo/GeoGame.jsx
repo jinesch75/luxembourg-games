@@ -36,7 +36,10 @@ function ClickHandler({ onMapClick }) {
 
 function MapResetter({ roundIdx, center, zoom }) {
   const map = useMap()
-  useEffect(() => { map.setView(center, zoom, { animate: true }) }, [roundIdx]) // eslint-disable-line
+  useEffect(() => {
+    map.stop()
+    map.setView(center, zoom, { animate: true })
+  }, [roundIdx]) // eslint-disable-line
   return null
 }
 
@@ -46,11 +49,12 @@ function MapFitBounds({ revealed, userPin, targetCoords }) {
     if (revealed && userPin) {
       // Wait for the result panel to render and the map to resize,
       // then recalculate size before fitting both pins into view.
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         map.invalidateSize()
         const bounds = L.latLngBounds([userPin, targetCoords])
         map.fitBounds(bounds.pad(0.55), { animate: true, maxZoom: 12 })
       }, 200)
+      return () => clearTimeout(timer)
     }
   }, [revealed]) // eslint-disable-line
   return null
