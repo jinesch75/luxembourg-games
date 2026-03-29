@@ -98,7 +98,7 @@
     }
   },
   "geo": {
-    "title": "Géo",
+    "title": "Map Game",
     "subtitle": "Kënnt Dir et op der Kaart fannen?",
     "instructions": "Liest den Hinweis, dann tippt op d'Kaart wou Dir mengt datt de Plaz ass.",
     "guess": "Meng Äntwert confirméieren",
@@ -151,7 +151,8 @@
       "navigator": "Navigator",
       "explorer": "Entdecker",
       "geographer": "Geograph"
-    }
+    },
+    "startGame": "Spill starten"
   },
   "info": {
     "title": "Info Hub",

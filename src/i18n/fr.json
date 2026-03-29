@@ -98,7 +98,7 @@
     }
   },
   "geo": {
-    "title": "Géo",
+    "title": "Map Game",
     "subtitle": "Pouvez-vous le trouver sur la carte ?",
     "instructions": "Lisez l'indice, puis appuyez sur la carte là où vous pensez que le lieu se trouve.",
     "guess": "Confirmer ma réponse",
@@ -151,7 +151,8 @@
       "navigator": "Navigateur",
       "explorer": "Explorateur",
       "geographer": "Géographe"
-    }
+    },
+    "startGame": "Commencer le jeu"
   },
   "info": {
     "title": "Info Hub",

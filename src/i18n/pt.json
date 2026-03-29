@@ -74,7 +74,7 @@
     "levelLabel": "Nível {{id}}"
   },
   "geo": {
-    "title": "Géo",
+    "title": "Map Game",
     "subtitle": "Consegue encontrar no mapa?",
     "instructions": "Leia a dica e toque no mapa onde acha que o lugar está.",
     "guess": "Confirmar a minha resposta",
@@ -97,7 +97,8 @@
     "noPin": "Coloque primeiro um pino no mapa!",
     "km": "km",
     "m": "m",
-    "points": "pontos"
+    "points": "pontos",
+    "startGame": "Iniciar o jogo"
   },
   "info": {
     "title": "Info Hub",

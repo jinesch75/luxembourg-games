@@ -98,7 +98,7 @@
     }
   },
   "geo": {
-    "title": "Géo",
+    "title": "Map Game",
     "subtitle": "Kannst du es auf der Karte finden?",
     "instructions": "Lies den Hinweis und tippe dann auf die Karte, wo du glaubst, dass der Ort liegt.",
     "guess": "Meine Antwort bestätigen",
@@ -151,7 +151,8 @@
       "navigator": "Navigator",
       "explorer": "Entdecker",
       "geographer": "Geograph"
-    }
+    },
+    "startGame": "Spiel starten"
   },
   "info": {
     "title": "Info Hub",

@@ -503,7 +503,7 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
               {isFinished
                 ? t('geo.allDone')
-                : t('geo.startSubLevel', { name: t(`geo.levelNames.${curLevel.id}`), num: curSubLevel })}
+                : t('geo.startGame')}
             </strong>
             {!isFinished && (
               <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.65, marginTop: 3, fontWeight: 400 }}>
