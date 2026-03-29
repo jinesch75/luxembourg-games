@@ -302,7 +302,7 @@ a:hover { text-decoration: underline; }
 }
 .navbar-brand a:hover { text-decoration: none; }
 .navbar-brand-flag { font-size: 1.5rem; line-height: 1; }
-.navbar-brand-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
+.navbar-brand-name { font-weight: 800; font-size: 0.85rem; letter-spacing: -0.02em; }
 .navbar-brand-sub  { font-size: 0.7rem; font-weight: 500; opacity: 0.75; display: none; }
 
 .navbar-right {
@@ -368,7 +368,7 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%);
 }
 .home-hero-inner {
-  padding: 32px 0 48px;
+  padding: 72px 0 48px;
   animation: fadeIn 0.4s ease forwards;
   display: flex;
   flex-direction: column;
@@ -401,7 +401,8 @@ a:hover { text-decoration: underline; }
 }
 .home-hero-title-accent { color: #FFD966; font-style: italic; }
 .home-hero-sub {
-  color: rgba(255,255,255,0.65);
+  color: #FFD966;
+  font-style: italic;
   font-size: clamp(0.88rem, 2.2vw, 1rem);
   margin-bottom: 24px;
   max-width: 460px;

@@ -10,7 +10,7 @@ export default function Navbar() {
       <header className="navbar-top">
         <div className="navbar-brand">
           <Link to="/">
-            <img src="/bl-logo-1.png" alt="Beautiful Luxembourg logo" style={{ height: '40px', width: '40px', objectFit: 'contain' }} />
+            <img src="/bl-logo-1.png" alt="Beautiful Luxembourg logo" style={{ height: '28px', width: '28px', objectFit: 'contain' }} />
             <div>
               <div className="navbar-brand-name">Beautiful Luxembourg</div>
               <div className="navbar-brand-sub">{t('nav.discoverSub')}</div>

@@ -12,8 +12,7 @@ export default function HomePage() {
         <div className="container-wide">
           <div className="home-hero-inner">
             <h1 className="home-hero-title">
-              {t('home.headline')}<br />
-              <span className="home-hero-title-accent">{t('home.gamesWord')}</span>
+              {t('home.headline')}
             </h1>
             <p className="home-hero-sub">{t('home.tagline')}</p>
             <p className="home-hero-choose">{t('home.gamesTitle')}</p>
