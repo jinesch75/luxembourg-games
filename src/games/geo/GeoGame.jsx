@@ -400,13 +400,10 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
         color: 'white', textAlign: 'center',
         padding: '18px 20px 8px',
       }}>
-        <span style={{ fontSize: '2rem', display: 'block', marginBottom: 4 }}>{curLevel.icon}</span>
-        <h2 style={{ margin: '0 0 4px', fontSize: '1.4rem', fontWeight: 800 }}>{t('geo.title')}</h2>
-        <p style={{ margin: 0, opacity: 0.75, fontSize: '0.88rem' }}>
-          {isFinished
-            ? `🏆 ${t('geo.allLevelsComplete')}`
-            : `${t(`geo.levelNames.${curLevel.id}`)} · ${t('geo.subLevelOf', { num: curSubLevel })}`}
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+          <span style={{ fontSize: '2rem', lineHeight: 1 }}>{curLevel.icon}</span>
+          <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('geo.title')}</h2>
+        </div>
       </div>
 
       {/* Content */}
@@ -416,7 +413,17 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
             if (isVeryFirstLevel) setShowRules(true)
             else onStart()
           }} className="btn btn-full btn-lg"
-          style={{ background: curLevel.color, color: 'white', marginBottom: 16, borderRadius: 'var(--radius-lg)' }}>
+          style={{
+            background: curLevel.color,
+            color: 'white',
+            marginBottom: 16,
+            borderRadius: 'var(--radius-lg)',
+            boxShadow: `0 6px 20px ${curLevel.color}55`,
+            border: '2px solid rgba(255,255,255,0.25)',
+            fontWeight: 800,
+            fontSize: '1.1rem',
+            letterSpacing: '0.01em',
+          }}>
           {isFinished
             ? `🔄 ${t('geo.allDone')}`
             : `${curLevel.icon} ${t('geo.startSubLevel', { name: t(`geo.levelNames.${curLevel.id}`), num: curSubLevel })} →`}

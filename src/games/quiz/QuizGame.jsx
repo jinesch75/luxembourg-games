@@ -387,13 +387,10 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
         color: 'white', textAlign: 'center',
         padding: '18px 20px 8px',
       }}>
-        <span style={{ fontSize: '2rem', display: 'block', marginBottom: 4 }}>❓</span>
-        <h2 style={{ margin: '0 0 4px', fontSize: '1.4rem', fontWeight: 800 }}>{t('quiz.title')}</h2>
-        <p style={{ margin: 0, opacity: 0.75, fontSize: '0.88rem' }}>
-          {isFinished
-            ? `🏆 ${t('quiz.allLevelsComplete')}`
-            : `${t(`quiz.levelNames.${curLevel.id}`)} · ${t('quiz.subLevelOf', { num: curSubLevel })}`}
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+          <span style={{ fontSize: '2rem', lineHeight: 1 }}>❓</span>
+          <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('quiz.title')}</h2>
+        </div>
       </div>
 
       {/* Content */}
@@ -401,7 +398,17 @@ function Intro({ t, quizProgress, curLevel, curSubLevel, onStart }) {
         <button
           onClick={onStart}
           className="btn btn-full btn-lg"
-          style={{ background: curLevel.color, color: 'white', marginBottom: 16, borderRadius: 'var(--radius-lg)' }}
+          style={{
+            background: curLevel.color,
+            color: 'white',
+            marginBottom: 16,
+            borderRadius: 'var(--radius-lg)',
+            boxShadow: `0 6px 20px ${curLevel.color}55`,
+            border: '2px solid rgba(255,255,255,0.25)',
+            fontWeight: 800,
+            fontSize: '1.1rem',
+            letterSpacing: '0.01em',
+          }}
         >
           {isFinished
             ? `🔄 ${t('quiz.allDone')}`

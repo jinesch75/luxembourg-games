@@ -173,7 +173,7 @@ a:hover { text-decoration: underline; }
 /* ---- Page layout ---- */
 .page {
   flex: 1;
-  padding: var(--nav-height) 0 80px;
+  padding: var(--nav-height) 0 32px;
 }
 .container {
   max-width: 600px;
@@ -305,73 +305,17 @@ a:hover { text-decoration: underline; }
 .navbar-brand-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
 .navbar-brand-sub  { font-size: 0.7rem; font-weight: 500; opacity: 0.75; display: none; }
 
-.navbar-desktop-links {
-  display: none;
-  align-items: center;
-  gap: 4px;
-}
-.navbar-desktop-link {
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 8px;
-  transition: background 0.15s, color 0.15s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.navbar-desktop-link:hover { background: rgba(255,255,255,0.15); color: white; text-decoration: none; }
-.navbar-desktop-link.active { background: rgba(255,255,255,0.2); color: white; }
-
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.navbar-bottom {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  height: 68px;
-  background: white;
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: stretch;
-  z-index: 50;
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-}
-.navbar-bottom-link {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  text-decoration: none;
-  color: var(--gray-400);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  transition: color 0.15s;
-  padding-bottom: 4px;
-}
-.navbar-bottom-link:hover { text-decoration: none; }
-.navbar-bottom-link.active { color: var(--red); font-weight: 700; }
-.navbar-bottom-icon {
-  font-size: 1.3rem;
-  line-height: 1;
-  filter: grayscale(0.4) opacity(0.7);
-}
-.navbar-bottom-link.active .navbar-bottom-icon { filter: none; }
-.navbar-bottom-label { text-transform: uppercase; }
-
 /* ---- Footer ---- */
 .site-footer {
   background: var(--gray-900);
   color: var(--gray-400);
-  padding: 36px 0 96px; /* 96px for mobile tab bar clearance */
+  padding: 36px 0;
   font-size: 0.85rem;
   line-height: 1.6;
 }
@@ -797,8 +741,6 @@ a:hover { text-decoration: underline; }
   .home-stats-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
 }
 @media (min-width: 768px) {
-  .navbar-desktop-links { display: flex; }
-  .navbar-bottom { display: none; }
   .page { padding-bottom: 32px; }
   .site-footer { padding-bottom: 36px; }
   .site-footer-inner {
