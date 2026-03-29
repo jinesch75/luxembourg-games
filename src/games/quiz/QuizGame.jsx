@@ -294,7 +294,7 @@ export default function QuizGame() {
         }} />
         <div style={{
           padding: '22px 24px',
-          background: 'linear-gradient(145deg, #EFF6FF 0%, #F0F9FF 60%, #E0F2FE 100%)',
+          background: 'linear-gradient(145deg, #BFDBFE 0%, #BAE6FD 60%, #93C5FD 100%)',
           border: '1.5px solid var(--border)',
           borderTop: 'none',
           borderBottomLeftRadius: 'var(--radius-xl)',

@@ -456,13 +456,13 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
 }
 .btn-hero-game-quiz {
-  background: linear-gradient(135deg, #7C3A3A 0%, #9E4A4A 60%, #A85252 100%);
-  color: rgba(255,255,255,0.95);
-  box-shadow: 0 4px 20px rgba(100,30,30,0.30), inset 0 1px 0 rgba(255,255,255,0.14);
+  background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 60%, #FCA5A5 100%);
+  color: #7F1D1D;
+  box-shadow: 0 4px 20px rgba(220,80,80,0.25), inset 0 1px 0 rgba(255,255,255,0.40);
 }
 .btn-hero-game-quiz:hover {
-  box-shadow: 0 8px 28px rgba(100,30,30,0.45), inset 0 1px 0 rgba(255,255,255,0.14);
-  color: white;
+  box-shadow: 0 8px 28px rgba(220,80,80,0.40), inset 0 1px 0 rgba(255,255,255,0.40);
+  color: #7F1D1D;
 }
 .btn-hero-game-geo {
   background: linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%);
