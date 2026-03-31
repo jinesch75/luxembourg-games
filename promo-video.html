@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lëtz Play — Promo Video</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .viewport {
+    position: relative;
+    width: 390px;
+    height: 693px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.2);
+    background: #F6F5F1;
+    border: 3px solid rgba(255,255,255,0.1);
+  }
+  .scene { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .progress-track {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: rgba(0,0,0,0.1); z-index: 100;
+  }
+  .progress-fill {
+    height: 100%; border-radius: 0 2px 2px 0;
+    background: linear-gradient(90deg, #EF3340, #00A3E0);
+    transition: width 0.05s linear;
+  }
+  .controls {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .controls button {
+    font-family: 'Inter', system-ui, sans-serif;
+    border: none; border-radius: 12px; padding: 10px 24px;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .controls button:active { transform: scale(0.96); }
+  .btn-play { background: #fff; color: #1E293B; }
+  .btn-restart { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
+  .timer { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.5); }
+  .hint { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="viewport" id="viewport">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+  <div class="controls">
+    <button class="btn-play" id="btnPlay" onclick="togglePlay()">&#9654; Play</button>
+    <button class="btn-restart" onclick="restart()">&#8635; Restart</button>
+    <div class="timer" id="timer">0s / 30s</div>
+  </div>
+  <div class="hint">Tip: Screen-record this to create an MP4</div>
+</div>
+
+<script>
+const TOTAL = 30000;
+const SCENES = [
+  { id:'intro', start:0, end:5000 },
+  { id:'quiz', start:5000, end:12000 },
+  { id:'geo', start:12000, end:19000 },
+  { id:'famous', start:19000, end:25000 },
+  { id:'outro', start:25000, end:30000 },
+];
+const C = {
+  red:'#EF3340', redDark:'#C4222E', blue:'#00A3E0', blueDark:'#007AB5',
+  bg:'#F6F5F1', dark:'#1E293B', muted:'#64748B', white:'#FFFFFF',
+  green:'#16A34A', catHistory:'#D97706', catCulture:'#EC4899',
+  catPeople:'#059669', catInstitutions:'#2563EB', catEconomy:'#0891B2',
+};
+
+let time = 0, playing = false, raf = null, startT = 0;
+const vp = document.getElementById('viewport');
+const pf = document.getElementById('progressFill');
+const btn = document.getElementById('btnPlay');
+const tmr = document.getElementById('timer');
+
+function ease(t){ t=Math.max(0,Math.min(1,t)); return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+function sp(time,s){ if(time<s.start)return 0; if(time>s.end)return 1; return(time-s.start)/(s.end-s.start); }
+
+function render(){
+  pf.style.width = (time/TOTAL*100)+'%';
+  tmr.textContent = Math.ceil(time/1000)+'s / 30s';
+  // Remove old scenes
+  vp.querySelectorAll('.scene').forEach(el=>el.remove());
+
+  const cur = SCENES.find(s=>time>=s.start&&time<s.end)||SCENES[SCENES.length-1];
+  const p = sp(time,cur);
+
+  const div = document.createElement('div');
+  div.className = 'scene';
+  div.innerHTML = renderers[cur.id](p);
+  vp.appendChild(div);
+}
+
+function togglePlay(){
+  if(playing){ playing=false; cancelAnimationFrame(raf); btn.innerHTML='&#9654; Play'; return; }
+  if(time>=TOTAL) time=0;
+  playing=true; btn.innerHTML='&#9208; Pause';
+  startT = performance.now()-time;
+  function tick(now){
+    if(!playing)return;
+    time = now-startT;
+    if(time>=TOTAL){ time=TOTAL; playing=false; btn.innerHTML='&#9654; Play'; render(); return; }
+    render();
+    raf=requestAnimationFrame(tick);
+  }
+  raf=requestAnimationFrame(tick);
+}
+function restart(){ playing=false; cancelAnimationFrame(raf); time=0; btn.innerHTML='&#9654; Play'; render(); setTimeout(togglePlay,100); }
+
+// ---- Scene Renderers ----
+
+const renderers = {
+  intro(p) {
+    const ti=ease(Math.min(1,p/0.25)), si=ease(Math.max(0,(p-0.15)/0.25)), tg=ease(Math.max(0,(p-0.35)/0.25));
+    const fi=Math.max(0,Math.min(1,(p-0.05)/0.4));
+    const emojis = [{e:'🏰',x:8,y:18,d:0.2},{e:'🇱🇺',x:85,y:12,d:0.3},{e:'🎯',x:12,y:72,d:0.25},{e:'🗺️',x:88,y:68,d:0.35},{e:'⭐',x:50,y:8,d:0.4},{e:'🎭',x:20,y:40,d:0.45},{e:'📚',x:80,y:42,d:0.38}];
+    let emojiHtml = emojis.map(em=>{
+      const ep=Math.max(0,Math.min(1,(p-em.d)/0.3));
+      const op=ep<0.1?ep*10:ep>0.8?(1-ep)*5:1;
+      return `<div style="position:absolute;left:${em.x}%;top:${em.y}%;font-size:2rem;opacity:${op};transform:translateY(${(1-ease(ep))*40}px) scale(${0.5+ease(ep)*0.5}) rotate(${Math.sin(ep*Math.PI*3)*15}deg);pointer-events:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.15))">${em.e}</div>`;
+    }).join('');
+
+    // Flag stripes
+    const fs = [C.red,C.white,C.blue].map((c,i)=>{
+      const fp=ease(Math.max(0,Math.min(1,(fi-i*0.05)/0.15)));
+      return `<div style="flex:1;position:relative"><div style="position:absolute;inset:0;background:${c};transform:scaleX(${fp});transform-origin:left"></div></div>`;
+    }).join('');
+
+    // Decorative circles
+    const circ1 = `<div style="position:absolute;width:300px;height:300px;border-radius:50%;border:2px solid ${C.red}15;top:50%;left:50%;transform:translate(-50%,-50%) scale(${0.8+ti*0.3});opacity:${0.3*ti}"></div>`;
+    const circ2 = `<div style="position:absolute;width:450px;height:450px;border-radius:50%;border:2px solid ${C.blue}10;top:50%;left:50%;transform:translate(-50%,-50%) scale(${0.6+si*0.5});opacity:${0.2*si}"></div>`;
+
+    return `
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:${C.bg};overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:6px;display:flex">${fs}</div>
+        ${emojiHtml}${circ1}${circ2}
+        <div style="text-align:center;transform:translateY(${(1-ti)*60}px);opacity:${ti}">
+          <div style="font-size:1rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:${C.red};margin-bottom:12px;opacity:${si};transform:translateY(${(1-si)*20}px)">Beautiful Luxembourg presents</div>
+          <div style="font-family:'Playfair Display',Georgia,serif;font-size:3.8rem;font-weight:900;color:${C.dark};line-height:1;letter-spacing:-0.03em">Lëtz <span style="color:${C.red};font-style:italic">Play</span></div>
+        </div>
+        <div style="margin-top:28px;opacity:${tg};transform:translateY(${(1-tg)*30}px) scale(${0.9+tg*0.1})">
+          <div style="background:${C.white};border:1px solid #E5E4DF;border-radius:999px;padding:8px 24px;font-size:0.95rem;font-weight:600;color:${C.muted};box-shadow:0 2px 12px rgba(0,0,0,0.06)">Learn Luxembourg through play 🎮</div>
+        </div>
+      </div>`;
+  },
+
+  quiz(p) {
+    const hi=ease(Math.min(1,p/0.18)), ci=ease(Math.max(0,(p-0.12)/0.2));
+    const ar=ease(Math.max(0,(p-0.55)/0.15)), cp=ease(Math.max(0,(p-0.72)/0.12));
+    const cats=[{l:'📚 History',c:C.catHistory,d:0.32},{l:'🎭 Culture',c:C.catCulture,d:0.37},{l:'👤 People',c:C.catPeople,d:0.42},{l:'🏛️ Institutions',c:C.catInstitutions,d:0.47},{l:'📊 Economy',c:C.catEconomy,d:0.52}];
+    const catsP=Math.max(0,Math.min(1,(p-0.3)/0.35));
+
+    const answers=['1839','1815','1867','1890'].map((a,i)=>{
+      const isC=i===0, showC=isC&&cp>0;
+      const op=ease(Math.max(0,(ar-i*0.04)/0.12));
+      return `<div style="padding:12px 16px;border-radius:12px;margin-bottom:8px;font-size:0.95rem;font-weight:600;border:${showC?'2px solid '+C.green:'1.5px solid #E5E4DF'};background:${showC?C.green+'10':C.white};color:${showC?C.green:C.dark};transform:translateX(${(1-op)*40}px) scale(${showC?0.97+cp*0.03:1});opacity:${op};display:flex;align-items:center;gap:10px;box-shadow:${showC?'0 2px 12px '+C.green+'20':'none'}">
+        <span style="width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;background:${showC?C.green:'#F1F5F9'};color:${showC?C.white:C.muted}">${showC?'✓':String.fromCharCode(65+i)}</span>${a}
+      </div>`;
+    }).join('');
+
+    const catPills=cats.map(c=>{
+      const cp2=ease(Math.max(0,(catsP-c.d)/0.12));
+      return `<div style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;font-size:0.8rem;font-weight:700;background:${c.c}18;color:${c.c};transform:scale(${cp2}) translateY(${(1-cp2)*20}px);opacity:${cp2};letter-spacing:0.02em">${c.l}</div>`;
+    }).join('');
+
+    const ptsPopup = cp>0?`<div style="position:absolute;top:-12px;right:-12px;background:${C.green};color:${C.white};border-radius:12px;padding:6px 14px;font-size:0.85rem;font-weight:800;box-shadow:0 4px 16px ${C.green}40;transform:scale(${cp})">+200 pts</div>`:'';
+
+    return `
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#EEF2FF 0%,${C.bg} 100%);overflow:hidden;padding:0 24px">
+        <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 20% 80%,${C.blue}08 0%,transparent 50%),radial-gradient(circle at 80% 20%,${C.red}06 0%,transparent 50%)"></div>
+        <div style="position:absolute;top:28px;left:50%;transform:translateX(-50%) translateY(${(1-hi)*-30}px);opacity:${hi};background:linear-gradient(135deg,${C.blue},${C.blueDark});color:${C.white};padding:6px 20px;border-radius:999px;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;box-shadow:0 4px 16px ${C.blue}40">Game 1: Lëtz Quiz</div>
+        <div style="background:${C.white};border-radius:20px;padding:28px 32px;max-width:340px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.08),0 1px 3px rgba(0,0,0,0.04);border:1px solid #E5E4DF;transform:translateY(${(1-ci)*50}px) scale(${0.92+ci*0.08});opacity:${ci};position:relative">
+          <div style="font-size:0.75rem;font-weight:700;color:${C.muted};text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px">Daily Question</div>
+          <div style="font-size:1.05rem;font-weight:700;color:${C.dark};line-height:1.4;margin-bottom:20px">In which year was the Treaty of London signed, establishing Luxembourg as an independent state?</div>
+          ${answers}${ptsPopup}
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;max-width:360px">${catPills}</div>
+      </div>`;
+  },
+
+  geo(p) {
+    const hi=ease(Math.min(1,p/0.18)), mi=ease(Math.max(0,(p-0.1)/0.25));
+    const pd=ease(Math.max(0,(p-0.4)/0.15)), si=ease(Math.max(0,(p-0.6)/0.15));
+    const clI=ease(Math.max(0,(p-0.15)/0.2));
+
+    // Map grid lines
+    let gridH='',gridV='';
+    for(let i=0;i<8;i++){
+      gridH+=`<div style="position:absolute;top:${i*14}%;left:0;right:0;height:1px;background:rgba(255,255,255,0.25)"></div>`;
+      gridV+=`<div style="position:absolute;left:${i*14}%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.25)"></div>`;
+    }
+
+    const ripple=pd>0.5?`<div style="position:absolute;top:42%;left:42%;transform:translate(-50%,-50%);width:${(pd-0.5)*120}px;height:${(pd-0.5)*120}px;border-radius:50%;border:2px solid ${C.red};opacity:${1-(pd-0.5)*2}"></div>`:'';
+
+    const score=si>0?`<div style="padding:14px 20px;background:${C.white};border-top:1px solid #E5E4DF;display:flex;align-items:center;justify-content:space-between;transform:translateY(${(1-si)*20}px);opacity:${si}">
+      <div style="font-size:0.85rem;font-weight:600;color:${C.muted}">Distance: 2.3 km</div>
+      <div style="background:${C.green};color:${C.white};padding:4px 14px;border-radius:999px;font-size:0.9rem;font-weight:800;box-shadow:0 2px 10px ${C.green}30">+850 pts</div>
+    </div>`:'';
+
+    const tags=['🏰 Castles','🌿 Nature Parks','🏛️ EU Institutions'].map(t=>
+      `<div style="background:${C.green}12;color:${C.green};padding:5px 12px;border-radius:999px;font-size:0.75rem;font-weight:700;transform:translateY(${(1-si)*15}px)">${t}</div>`
+    ).join('');
+
+    return `
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#ECFDF5 0%,${C.bg} 100%);overflow:hidden;padding:0 24px">
+        <div style="position:absolute;top:28px;left:50%;transform:translateX(-50%) translateY(${(1-hi)*-30}px);opacity:${hi};background:linear-gradient(135deg,#16A34A,#15803D);color:${C.white};padding:6px 20px;border-radius:999px;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;box-shadow:0 4px 16px rgba(22,163,74,0.35)">Game 2: Lëtz Géo</div>
+        <div style="width:100%;max-width:340px;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.1);border:1px solid #E5E4DF;transform:translateY(${(1-mi)*50}px) scale(${0.92+mi*0.08});opacity:${mi};position:relative;background:${C.white}">
+          <div style="padding:16px 20px;background:${C.white};border-bottom:1px solid #E5E4DF;opacity:${clI};transform:translateY(${(1-clI)*-20}px)">
+            <div style="font-size:0.7rem;font-weight:700;color:${C.muted};text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Find this place</div>
+            <div style="font-size:0.95rem;font-weight:700;color:${C.dark};line-height:1.4">This medieval castle ruin sits above the Eisch valley and is one of Luxembourg's largest...</div>
+          </div>
+          <div style="height:220px;background:linear-gradient(180deg,#C8E6C9 0%,#A5D6A7 30%,#81C784 60%,#66BB6A 100%);position:relative;overflow:hidden">
+            ${gridH}${gridV}
+            <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 400 220"><path d="M 80 0 Q 120 60 100 110 T 130 220" stroke="rgba(100,180,255,0.5)" fill="none" stroke-width="3"/><path d="M 250 0 Q 230 80 260 140 T 240 220" stroke="rgba(100,180,255,0.4)" fill="none" stroke-width="2"/></svg>
+            <div style="position:absolute;top:15%;left:20%;width:60%;height:70%;border:2px dashed rgba(255,255,255,0.35);border-radius:40% 50% 45% 35%"></div>
+            <div style="position:absolute;top:35%;left:42%;transform:translateX(-50%) translateY(${(1-pd)*-80}px) scale(${0.5+pd*0.5});opacity:${pd};filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));font-size:2.2rem;z-index:10">📍</div>
+            ${ripple}
+          </div>
+          ${score}
+        </div>
+        <div style="display:flex;gap:8px;margin-top:16px;opacity:${si}">${tags}</div>
+      </div>`;
+  },
+
+  famous(p) {
+    const hi=ease(Math.min(1,p/0.18)), ci=ease(Math.max(0,(p-0.1)/0.2));
+    const ri=ease(Math.max(0,(p-0.45)/0.18)), li=ease(Math.max(0,(p-0.65)/0.2));
+
+    const levels=['Tourist','Wanderer','Navigator','Explorer','Geographer'].map((l,i)=>
+      `<div style="padding:5px 12px;border-radius:999px;font-size:0.7rem;font-weight:700;background:${i<3?C.catHistory+'18':'#F1F5F9'};color:${i<3?C.catHistory:C.muted};border:${i===2?'1.5px solid '+C.catHistory:'1.5px solid transparent'}">${i<3?'★':'☆'} ${l}</div>`
+    ).join('');
+
+    const reveal=ri>0?`<div style="overflow:hidden;max-height:${ri>0?60:0}px;opacity:${ri};margin-top:14px">
+      <div style="background:${C.green}10;border:1.5px solid ${C.green};border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:10px;transform:scale(${0.95+ri*0.05})">
+        <span style="font-size:1.3rem">🌟</span>
+        <div><div style="font-weight:800;color:${C.green};font-size:0.95rem">Correct!</div><div style="font-size:0.78rem;color:${C.muted}">You identified the artist</div></div>
+      </div>
+    </div>`:'';
+
+    return `
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFF7ED 0%,${C.bg} 100%);overflow:hidden;padding:0 24px">
+        <div style="position:absolute;top:28px;left:50%;transform:translateX(-50%) translateY(${(1-hi)*-30}px);opacity:${hi};background:linear-gradient(135deg,${C.catHistory},#B45309);color:${C.white};padding:6px 20px;border-radius:999px;font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;box-shadow:0 4px 16px rgba(217,119,6,0.35)">Game 3: Famous People</div>
+        <div style="max-width:340px;width:100%;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.1);border:1px solid #E5E4DF;background:${C.white};transform:translateY(${(1-ci)*50}px) scale(${0.92+ci*0.08});opacity:${ci}">
+          <div style="height:180px;background:linear-gradient(135deg,#F8FAFC 0%,#E2E8F0 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+            <div style="font-size:5rem;opacity:${1-ri*0.3};transform:scale(${1+ri*0.1})">🤔</div>
+            <div style="position:absolute;top:12px;right:12px;background:${C.catCulture}20;color:${C.catCulture};padding:4px 12px;border-radius:999px;font-size:0.7rem;font-weight:700">🎵 Music</div>
+          </div>
+          <div style="padding:18px 22px">
+            <div style="font-size:0.7rem;font-weight:700;color:${C.muted};text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px">Who is this person?</div>
+            <div style="font-size:0.88rem;color:${C.dark};line-height:1.5">This artist represented Luxembourg at Eurovision and has become one of the country's most recognized musicians...</div>
+            ${reveal}
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:20px;opacity:${li};transform:translateY(${(1-li)*20}px)">${levels}</div>
+      </div>`;
+  },
+
+  outro(p) {
+    const bi=ease(Math.min(1,p/0.2)), ti=ease(Math.max(0,(p-0.05)/0.25));
+    const fi=ease(Math.max(0,(p-0.2)/0.3)), ci=ease(Math.max(0,(p-0.3)/0.2));
+    const pulse=Math.sin(p*Math.PI*4)*0.03+1;
+
+    // Confetti dots
+    const colors=[C.red,C.blue,C.green,C.catCulture,C.catHistory];
+    let dots='';
+    for(let i=0;i<20;i++){
+      const x=(i*37+13)%100, y=(i*53+7)%100, col=colors[i%5], sz=4+(i%4)*2;
+      const dp=ease(Math.max(0,(bi-i*0.02)/0.3));
+      dots+=`<div style="position:absolute;left:${x}%;top:${y}%;width:${sz}px;height:${sz}px;border-radius:50%;background:${col};opacity:${dp*0.35};transform:scale(${dp})"></div>`;
+    }
+
+    const pills=['5 Languages','25 Levels','3 Games','Free & Fun'].map(f=>
+      `<div style="background:${C.white};border:1px solid #E5E4DF;border-radius:999px;padding:5px 14px;font-size:0.8rem;font-weight:700;color:${C.muted}">${f}</div>`
+    ).join('');
+
+    return `
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,${C.red}08 0%,${C.bg} 40%,${C.blue}08 100%);overflow:hidden">
+        ${dots}
+        <div style="text-align:center;z-index:1">
+          <div style="font-family:'Playfair Display',Georgia,serif;font-size:2.8rem;font-weight:900;color:${C.dark};line-height:1.1;letter-spacing:-0.02em;opacity:${ti};transform:translateY(${(1-ti)*40}px)">
+            Start your<br><span style="color:${C.red};font-style:italic">Luxembourg</span><br>journey
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;max-width:380px;opacity:${fi};transform:translateY(${(1-fi)*20}px)">${pills}</div>
+          <div style="margin-top:28px;opacity:${ci};transform:translateY(${(1-ci)*30}px) scale(${pulse})">
+            <div style="background:linear-gradient(135deg,${C.red},${C.redDark});color:${C.white};padding:14px 36px;border-radius:16px;font-size:1.1rem;font-weight:800;letter-spacing:-0.01em;box-shadow:0 6px 24px ${C.red}40;display:inline-block">Play now at letzplay.lu</div>
+          </div>
+          <div style="margin-top:16px;font-size:0.75rem;color:${C.muted};font-weight:600;opacity:${ci*0.7}">Part of the Biergerpakt programme 🇱🇺</div>
+        </div>
+      </div>`;
+  }
+};
+
+// Initial render
+render();
+// Auto-play after a brief delay
+setTimeout(togglePlay, 800);
+</script>
+</body>
+</html>

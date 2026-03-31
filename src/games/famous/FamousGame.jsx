@@ -106,29 +106,55 @@ function shufflePersonOptions(p) {
   }
 }
 
-// ─── Wikipedia image component (fetches thumbnail at runtime) ────────────────
-function WikiImage({ wikiTitle, size = 220, noPhoto = false, photoPos = null, imageUrl = null }) {
+// ─── Photo mapping cache (fetched once from /api/photos) ───────────────────
+let _photoMapPromise = null
+let _photoMap = null
+
+function getPhotoMap() {
+  if (_photoMap) return Promise.resolve(_photoMap)
+  if (!_photoMapPromise) {
+    _photoMapPromise = fetch('/api/photos')
+      .then(r => r.ok ? r.json() : {})
+      .then(map => { _photoMap = map; return map })
+      .catch(() => { _photoMap = {}; return {} })
+  }
+  return _photoMapPromise
+}
+
+// ─── Photo image component (uses Railway-hosted photos, falls back to Wikipedia) ─
+function WikiImage({ personId, wikiTitle, size = 220, noPhoto = false, photoPos = null, imageUrl = null }) {
   const [src, setSrc] = useState(null)
   const [error, setError] = useState(false)
 
   useEffect(() => {
     if (noPhoto) { setError(true); return }
-    // If a direct imageUrl is provided, use it instead of fetching from Wikipedia API
-    if (imageUrl) { setSrc(imageUrl); return }
-    if (!wikiTitle) { setError(true); return }
     let cancelled = false
-    fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`)
-      .then(r => { if (!r.ok) throw new Error(); return r.json() })
-      .then(data => {
-        if (cancelled) return
-        // Prefer originalimage for better quality, fallback to thumbnail
-        const url = data.originalimage?.source || data.thumbnail?.source
-        if (url) setSrc(url)
-        else setError(true)
-      })
-      .catch(() => { if (!cancelled) setError(true) })
+
+    // 1. Try local photo from Railway server first
+    getPhotoMap().then(map => {
+      if (cancelled) return
+      const entry = map[personId]
+      if (entry?.file) {
+        setSrc(`/photos/${entry.file}`)
+        return
+      }
+      // 2. Fall back to direct imageUrl if provided
+      if (imageUrl) { setSrc(imageUrl); return }
+      // 3. Fall back to Wikipedia API
+      if (!wikiTitle) { setError(true); return }
+      fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`)
+        .then(r => { if (!r.ok) throw new Error(); return r.json() })
+        .then(data => {
+          if (cancelled) return
+          const url = data.originalimage?.source || data.thumbnail?.source
+          if (url) setSrc(url)
+          else setError(true)
+        })
+        .catch(() => { if (!cancelled) setError(true) })
+    })
+
     return () => { cancelled = true }
-  }, [wikiTitle, noPhoto, imageUrl])
+  }, [personId, wikiTitle, noPhoto, imageUrl])
 
   // Default object-position: show from top so faces are clearly visible
   // Custom photoPos can override for specific photos
@@ -603,7 +629,7 @@ export default function FamousGame() {
 
           {/* Photo card — compact for mobile */}
           <div style={{ ...S.card, marginTop: 12, marginBottom: 10, textAlign: 'center', padding: '16px 20px' }}>
-            <WikiImage key={p.wikiTitle || currentIdx} wikiTitle={p.wikiTitle} size={140} noPhoto={p.noPhoto} photoPos={p.photoPos} imageUrl={p.imageUrl} />
+            <WikiImage key={p.id || currentIdx} personId={p.id} wikiTitle={p.wikiTitle} size={140} noPhoto={p.noPhoto} photoPos={p.photoPos} imageUrl={p.imageUrl} />
             <h2 style={{ fontSize: 18, fontWeight: 800, color: '#1E293B', margin: '10px 0 2px' }}>
               Who is this person?
             </h2>

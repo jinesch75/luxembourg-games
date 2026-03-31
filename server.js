@@ -6,6 +6,9 @@
  *   GET  /api/stats          — admin: retrieve analytics (password required)
  *   GET  /api/content        — public: get content overrides for games
  *   PUT  /api/content        — admin: save content overrides (password required)
+ *   GET  /api/photos         — public: get photo mapping (id → filename)
+ *   POST /api/photos/fetch   — admin: download all photos from Wikipedia
+ *   /photos/*                — public: serve downloaded photo files
  *
  * Data is persisted to ./data/ on the server filesystem.
  * NOTE: Railway's filesystem resets on redeploy. For permanent persistence
@@ -131,6 +134,56 @@ app.put('/api/content', adminAuth, (req, res) => {
   contentOverrides = req.body
   persist(CONTENT_FILE, contentOverrides)
   res.json({ ok: true })
+})
+
+// ── Photos — serve downloaded photos as static files ─────────────────────
+const PHOTOS_DIR = path.join(DATA_DIR, 'photos')
+const PHOTOS_FILE = path.join(DATA_DIR, 'photos.json')
+
+if (!fs.existsSync(PHOTOS_DIR)) {
+  fs.mkdirSync(PHOTOS_DIR, { recursive: true })
+}
+
+// Serve photo files with long cache headers (images don't change)
+app.use('/photos', express.static(PHOTOS_DIR, {
+  maxAge: '7d',
+  immutable: true,
+}))
+
+// ── Photos — get mapping (public) ────────────────────────────────────────
+app.get('/api/photos', (req, res) => {
+  try {
+    if (fs.existsSync(PHOTOS_FILE)) {
+      const mapping = JSON.parse(fs.readFileSync(PHOTOS_FILE, 'utf-8'))
+      res.json(mapping)
+    } else {
+      res.json({})
+    }
+  } catch (e) {
+    console.error('Could not load photo mapping:', e.message)
+    res.json({})
+  }
+})
+
+// ── Photos — download all from Wikipedia (admin) ─────────────────────────
+let photoFetchInProgress = false
+
+app.post('/api/photos/fetch', adminAuth, async (req, res) => {
+  if (photoFetchInProgress) {
+    return res.status(409).json({ error: 'A photo fetch is already in progress' })
+  }
+  photoFetchInProgress = true
+  try {
+    const { fetchAllPhotos } = require('./scripts/fetch-photos')
+    const peopleFile = path.join(__dirname, 'src', 'games', 'famous', 'data', 'people.js')
+    const summary = await fetchAllPhotos(DATA_DIR, peopleFile)
+    res.json({ ok: true, ...summary })
+  } catch (e) {
+    console.error('Photo fetch error:', e)
+    res.status(500).json({ error: e.message })
+  } finally {
+    photoFetchInProgress = false
+  }
 })
 
 // ── Serve Vite build ───────────────────────────────────────────────────────
