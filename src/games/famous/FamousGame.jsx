@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { Camera } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
@@ -429,6 +429,11 @@ export default function FamousGame() {
   const [levelUpInfo, setLevelUpInfo] = useState(null)
   const [doneInfo, setDoneInfo] = useState(null)
 
+  // Scroll to top whenever a new question loads or the screen changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [step, currentIdx])
+
   const handleSelect = (idx) => {
     if (revealed) return
     setSelected(idx)
@@ -534,7 +539,7 @@ export default function FamousGame() {
   return (
     <div style={S.page}>
       <div style={S.container}>
-        <div style={{ paddingTop: 24 }}>
+        <div style={{ paddingTop: 16 }}>
           {/* Progress header */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
             <span style={{ fontSize: 12, fontWeight: 700, color: curLevel.color, letterSpacing: 0.5 }}>
@@ -546,23 +551,23 @@ export default function FamousGame() {
           </div>
           <ProgressBar current={currentIdx + 1} total={people.length} color={curLevel.color} />
 
-          {/* Photo card */}
-          <div style={{ ...S.card, marginTop: 16, marginBottom: 14, textAlign: 'center', padding: '28px 24px' }}>
-            <WikiImage wikiTitle={p.wikiTitle} size={220} />
-            <h2 style={{ fontSize: 20, fontWeight: 800, color: '#1E293B', margin: '18px 0 4px' }}>
+          {/* Photo card — compact for mobile */}
+          <div style={{ ...S.card, marginTop: 12, marginBottom: 10, textAlign: 'center', padding: '16px 20px' }}>
+            <WikiImage wikiTitle={p.wikiTitle} size={140} />
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: '#1E293B', margin: '10px 0 2px' }}>
               Who is this person?
             </h2>
-            <div style={{ fontSize: 13, color: '#64748B' }}>{cat.icon} {p.category.charAt(0).toUpperCase() + p.category.slice(1)}</div>
+            <div style={{ fontSize: 12, color: '#64748B' }}>{cat.icon} {p.category.charAt(0).toUpperCase() + p.category.slice(1)}</div>
           </div>
 
           {/* Options — click to select AND reveal immediately */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
             {p.options.map((opt, i) => (
               <button
                 key={i}
                 onClick={() => handleSelect(i)}
                 style={{
-                  ...S.card, padding: '14px 18px',
+                  ...S.card, padding: '11px 14px',
                   cursor: revealed ? 'default' : 'pointer',
                   background: '#FFFFFF',
                   border: '1px solid #E5E4DF',

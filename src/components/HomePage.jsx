@@ -42,6 +42,18 @@ export default function HomePage() {
       {/* ── Bridge Photo Section ── */}
       <div className="home-bridge-section" />
 
+      {/* ── Small link to test/preview games ── */}
+      <div style={{ textAlign: 'center', padding: '12px 16px 20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
+          <Link to="/spelling" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
+            Language Game
+          </Link>
+          <Link to="/famous" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
+            Famous People Game
+          </Link>
+        </div>
+      </div>
+
     </div>
   )
 }
