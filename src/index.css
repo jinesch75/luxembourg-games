@@ -510,6 +510,20 @@ a:hover { text-decoration: underline; }
   background: rgba(124,58,173,0.1);
   color: #7C3AED;
 }
+.btn-hero-game-places {
+  background: #FFFFFF;
+  color: #1E293B;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.btn-hero-game-places:hover {
+  box-shadow: 0 4px 16px rgba(14,116,144,0.12);
+  border-color: rgba(14,116,144,0.3);
+  color: #1E293B;
+}
+.btn-hero-game-places .btn-hero-game-icon {
+  background: rgba(14,116,144,0.1);
+  color: #0E7490;
+}
 .btn-hero-game-text {
   display: flex;
   flex-direction: column;

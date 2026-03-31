@@ -186,6 +186,55 @@ app.post('/api/photos/fetch', adminAuth, async (req, res) => {
   }
 })
 
+// ── Place Photos — serve downloaded place photos as static files ─────────
+const PLACE_PHOTOS_DIR = path.join(DATA_DIR, 'place-photos')
+const PLACE_PHOTOS_FILE = path.join(DATA_DIR, 'place-photos.json')
+
+if (!fs.existsSync(PLACE_PHOTOS_DIR)) {
+  fs.mkdirSync(PLACE_PHOTOS_DIR, { recursive: true })
+}
+
+app.use('/place-photos', express.static(PLACE_PHOTOS_DIR, {
+  maxAge: '7d',
+  immutable: true,
+}))
+
+// ── Place Photos — get mapping (public) ──────────────────────────────────
+app.get('/api/place-photos', (req, res) => {
+  try {
+    if (fs.existsSync(PLACE_PHOTOS_FILE)) {
+      const mapping = JSON.parse(fs.readFileSync(PLACE_PHOTOS_FILE, 'utf-8'))
+      res.json(mapping)
+    } else {
+      res.json({})
+    }
+  } catch (e) {
+    console.error('Could not load place photo mapping:', e.message)
+    res.json({})
+  }
+})
+
+// ── Place Photos — download all from Wikipedia (admin) ───────────────────
+let placePhotoFetchInProgress = false
+
+app.post('/api/place-photos/fetch', adminAuth, async (req, res) => {
+  if (placePhotoFetchInProgress) {
+    return res.status(409).json({ error: 'A place photo fetch is already in progress' })
+  }
+  placePhotoFetchInProgress = true
+  try {
+    const { fetchAllPlacePhotos } = require('./scripts/fetch-place-photos')
+    const placesFile = path.join(__dirname, 'src', 'games', 'places', 'data', 'places.js')
+    const summary = await fetchAllPlacePhotos(DATA_DIR, placesFile)
+    res.json({ ok: true, ...summary })
+  } catch (e) {
+    console.error('Place photo fetch error:', e)
+    res.status(500).json({ error: e.message })
+  } finally {
+    placePhotoFetchInProgress = false
+  }
+})
+
 // ── Serve Vite build ───────────────────────────────────────────────────────
 app.use(express.static(DIST_DIR))
 
