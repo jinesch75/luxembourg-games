@@ -28,7 +28,7 @@ const STARTER = [
       'France has approximately the same GDP per capita as Luxembourg',
     ],
     answer: 0,
-    explanation: 'Luxembourg consistently ranks #1 globally with GDP per capita over $130,000 USD, significantly ahead of other wealthy nations. This exceptional figure reflects the country\'s wealthy financial sector, high productivity, and relatively small population relative to economic output.'
+    explanation: 'Luxembourg consistently ranks among the top countries globally in GDP per capita, with figures exceeding $100,000 USD. Some rankings place it #1 (excluding microstates like Liechtenstein). This exceptional figure reflects the country\'s large financial sector, high productivity, and small resident population relative to economic output — though cross-border workers inflate the figure.'
   },
   {
     id: 'e-arcelormittal-hq',
@@ -56,7 +56,7 @@ const STARTER = [
       'Forex derivatives',
     ],
     answer: 0,
-    explanation: 'Luxembourg is the #2 global center for investment fund management and administration, second only to the USA, with over $5 trillion in assets under management. The country pioneered UCITS (Undertakings for Collective Investment in Transferable Securities) in 1988, making it a global hub for regulated fund distribution.'
+    explanation: 'Luxembourg is the #2 global center for investment fund management and administration, second only to the USA, with over EUR 8 trillion in total assets (regulated and unregulated). The country pioneered UCITS (Undertakings for Collective Investment in Transferable Securities) in 1988, making it a global hub for regulated fund distribution.'
   },
   {
     id: 'e-public-transport-free',
@@ -128,7 +128,7 @@ const STARTER = [
       '#10 globally by trading volume',
     ],
     answer: 0,
-    explanation: 'The Luxembourg Stock Exchange (LuxSE) is the #1 global marketplace for listing international securities, particularly bonds and investment funds. With over 36,000 securities listed, it dominates global capital markets infrastructure and serves as a crucial platform for European and international issuers.'
+    explanation: 'The Luxembourg Stock Exchange (LuxSE) is the #1 global marketplace for listing international securities, particularly bonds and investment funds. With over 41,000 securities listed from issuers in over 100 countries, it dominates global capital markets infrastructure.'
   },
   {
     id: 'e-ses-satellites',
@@ -142,7 +142,7 @@ const STARTER = [
       'Automotive manufacturing',
     ],
     answer: 0,
-    explanation: 'SES is one of the world\'s leading satellite operators, headquartered in Betzdorf, Luxembourg, providing broadcasting and telecommunications services globally. The company operates one of the world\'s largest commercial satellite fleets.'
+    explanation: 'SES is one of the world\'s leading satellite operators, headquartered in Betzdorf, Luxembourg, providing broadcasting and telecommunications services globally. Following its 2025 acquisition of Intelsat, SES operates a fleet of around 120 satellites across GEO and MEO orbits.'
   },
   {
     id: 'e-cargolux-airline',
@@ -156,7 +156,7 @@ const STARTER = [
       'Charter and private aviation',
     ],
     answer: 0,
-    explanation: 'Cargolux is Europe\'s largest all-cargo airline, headquartered in Luxembourg and operating scheduled international freight services. It plays a crucial role in Luxembourg\'s logistics and aviation sector, connecting major European distribution centers.'
+    explanation: 'Cargolux is Europe\'s largest all-cargo airline, headquartered in Luxembourg and operating scheduled international freight services with a fleet of 30 Boeing 747 freighters. It plays a crucial role in Luxembourg\'s logistics and aviation sector.'
   },
 
   // Sub-level 3
@@ -180,13 +180,13 @@ const STARTER = [
     category: 'banking',
     situation: 'Luxembourg hosts how many major international banks?',
     options: [
-      'Over 140 banking institutions',
+      'Over 120 banking institutions',
       'Around 50 banking institutions',
       'Around 80 banking institutions',
       'Around 20 banking institutions',
     ],
     answer: 0,
-    explanation: 'Luxembourg is home to over 140 banking institutions, making it one of Europe\'s most important financial centers. These include major international banks, investment banks, and specialized financial institutions that contribute significantly to the country\'s economy.'
+    explanation: 'Luxembourg is home to over 120 banking institutions from more than 20 countries, making it one of Europe\'s most important financial centers. These include major international banks, investment banks, and specialized financial institutions that contribute significantly to the country\'s economy.'
   },
   {
     id: 'e-eu-institutions',
@@ -222,13 +222,13 @@ const STARTER = [
     category: 'indicators',
     situation: 'Luxembourg\'s small population compared to its economic output is one reason for its exceptionally high GDP per capita. What is Luxembourg\'s approximate population?',
     options: [
-      'Around 660,000',
+      'Around 680,000',
       'Around 1.2 million',
       'Around 380,000',
       'Around 900,000',
     ],
     answer: 0,
-    explanation: 'Luxembourg has a population of approximately 660,000 residents, making it one of Europe\'s smallest countries by population. Its high economic output combined with this small population base produces one of the world\'s highest GDP per capita figures.'
+    explanation: 'Luxembourg has a population of approximately 680,000 residents (as of 2025), making it one of Europe\'s smallest countries by population. Its high economic output combined with this small population base produces one of the world\'s highest GDP per capita figures.'
   },
 
   // Sub-level 4
@@ -244,7 +244,7 @@ const STARTER = [
       'Tenth globally',
     ],
     answer: 0,
-    explanation: 'Luxembourg ranks #2 globally for investment funds management with over $5 trillion in assets under administration, second only to the United States. This dominant position reflects decades of regulatory innovation and favorable fund domiciliation policies.'
+    explanation: 'Luxembourg ranks #2 globally for investment funds management with over EUR 8 trillion in total assets, second only to the United States. This dominant position reflects decades of regulatory innovation and favorable fund domiciliation policies.'
   },
   {
     id: 'e-steel-production-history',
@@ -294,13 +294,13 @@ const STARTER = [
     category: 'indicators',
     situation: 'Luxembourg typically has one of Europe\'s lowest unemployment rates. What has it been in recent years?',
     options: [
-      'Around 5% or lower',
+      'Around 5-6%',
       'Around 8-10%',
       'Around 12-15%',
-      'Around 3-4%',
+      'Around 1-2%',
     ],
     answer: 0,
-    explanation: 'Luxembourg consistently maintains one of Europe\'s lowest unemployment rates, typically around 5% or lower, reflecting strong labor demand and economic resilience. The country\'s small population and robust financial sector create multiple employment opportunities despite tight labor markets.'
+    explanation: 'Luxembourg maintains one of Europe\'s lower unemployment rates, typically around 5-6%, reflecting relatively strong labor demand. The rate has fluctuated — reaching around 6.2% in late 2025 — but remains well below the EU average. The country\'s robust financial sector and cross-border labor dynamics play key roles.'
   },
 
   // Sub-level 5
@@ -308,29 +308,29 @@ const STARTER = [
     id: 'e-median-salary',
     level: 'starter',
     category: 'indicators',
-    situation: 'Luxembourg has among Europe\'s highest median salaries. Which range is typical?',
+    situation: 'Luxembourg has among Europe\'s highest median salaries. Which range is typical for the gross median salary?',
     options: [
-      '3,500-4,000 EUR per month',
+      'Around 5,000-5,500 EUR per month',
       '2,000-2,500 EUR per month',
       '1,500-2,000 EUR per month',
-      '4,500-5,500 EUR per month',
+      '8,000-9,000 EUR per month',
     ],
     answer: 0,
-    explanation: 'Luxembourg\'s median gross salary is approximately 3,500-4,000 EUR per month, significantly higher than most European countries. This elevated wage level attracts cross-border workers and reflects the country\'s high productivity and wealthy service-based economy.'
+    explanation: 'Luxembourg\'s median gross salary is approximately EUR 5,400 per month (around EUR 65,000/year), significantly higher than most European countries. This elevated wage level attracts cross-border workers and reflects the country\'s high productivity and wealthy service-based economy.'
   },
   {
     id: 'e-tax-rate-intro',
     level: 'starter',
     category: 'finance',
-    situation: 'Luxembourg has a complex tax system. For a basic employee, what is the approximate combined income tax rate?',
+    situation: 'Luxembourg has a progressive income tax system. What is the range of marginal tax rates?',
     options: [
-      'Around 8-20% depending on income level',
-      'Around 30-40%',
-      'Around 45-50%',
-      'Around 2-5%',
+      'From 8% up to 42% depending on income level',
+      'A flat 15% for everyone',
+      'From 0% to 20% maximum',
+      'From 25% to 55%',
     ],
     answer: 0,
-    explanation: 'Luxembourg\'s income tax system is progressive, with rates ranging from around 8% for lower incomes to 20% for higher incomes, plus social contributions. This results in effective combined rates of approximately 8-20% depending on income level, relatively favorable by European standards.'
+    explanation: 'Luxembourg\'s income tax system has 23 progressive brackets, ranging from 8% on taxable income above EUR 13,230 to 42% on income exceeding EUR 234,870, plus a solidarity contribution. Social security contributions of around 12-13% are added on top. Despite the top rate, effective rates remain moderate for many workers.'
   },
   {
     id: 'e-language-multilingual',
@@ -416,13 +416,13 @@ const ANALYST = [
     category: 'finance',
     situation: 'How many securities are listed on the Luxembourg Stock Exchange, and what type dominate?',
     options: [
-      'Over 36,000 securities, primarily international bonds and investment funds',
+      'Over 41,000 securities, primarily international bonds and investment funds',
       'Around 10,000 securities, primarily equity shares',
       'Around 5,000 securities, primarily derivatives',
       'Around 100,000 securities across all markets',
     ],
     answer: 0,
-    explanation: 'The Luxembourg Stock Exchange lists over 36,000 securities, making it the world\'s largest exchange by number of listings. The vast majority are international bonds and investment funds, with bonds representing approximately 80% of all listed instruments.'
+    explanation: 'The Luxembourg Stock Exchange lists over 41,000 securities from issuers in over 100 countries, making it the world\'s largest exchange by number of listings. The vast majority are international bonds and investment fund shares.'
   },
   {
     id: 'e-arbed-timeline',
@@ -480,7 +480,7 @@ const ANALYST = [
       'Conducting space research for ESA',
     ],
     answer: 0,
-    explanation: 'SES operates a fleet of over 70 communications satellites providing broadcasting, telecommunications, and data services globally. The company generates revenue through leasing satellite capacity to broadcasters, telecommunications companies, and government agencies.'
+    explanation: 'SES operates a fleet of around 120 communications satellites (following its 2025 Intelsat acquisition) providing broadcasting, telecommunications, and data services globally. The company generates revenue through leasing satellite capacity to broadcasters, telecommunications companies, and government agencies.'
   },
   {
     id: 'e-cargolux-operations',
@@ -488,13 +488,13 @@ const ANALYST = [
     category: 'trade',
     situation: 'How many aircraft does Cargolux operate approximately?',
     options: [
-      'Around 10-15 all-cargo aircraft',
+      'Around 30 all-cargo aircraft',
       'Around 50-60 aircraft',
       'Around 100+ aircraft',
-      'Around 3-5 aircraft',
+      'Around 5-10 aircraft',
     ],
     answer: 0,
-    explanation: 'Cargolux operates approximately 10-15 modern cargo aircraft, primarily Boeing 747 freighters, providing scheduled international freight services. Despite its relatively small fleet, it is Europe\'s largest all-cargo airline by capacity and serves major European distribution centers.'
+    explanation: 'Cargolux operates a fleet of 30 Boeing 747 freighters (a mix of 747-8F and 747-400F models), providing scheduled international freight services. It is Europe\'s largest all-cargo airline by capacity, with Boeing 777-8F aircraft on order to modernize the fleet.'
   },
   {
     id: 'e-banking-cross-border',
@@ -508,7 +508,7 @@ const ANALYST = [
       'Less than 10% are foreign-controlled',
     ],
     answer: 0,
-    explanation: 'Over 80% of Luxembourg\'s more than 140 banking institutions are foreign-owned or branches of foreign banks, reflecting the country\'s role as an international financial center. These include major global banks, regional European banks, and specialized investment banks.'
+    explanation: 'Over 80% of Luxembourg\'s 120+ banking institutions are foreign-owned or branches of foreign banks, reflecting the country\'s role as an international financial center. These include major global banks, regional European banks, and specialized investment banks.'
   },
   {
     id: 'e-european-court-justice',
@@ -552,7 +552,7 @@ const ANALYST = [
       'Belgium, UK, and Ireland',
     ],
     answer: 0,
-    explanation: 'The majority of Luxembourg\'s approximately 47% cross-border workforce commutes from Belgium, France, and Germany, with Belgium being the largest source. This cross-border dynamic reflects wage differentials, labor market integration, and Luxembourg\'s role as a regional employment hub.'
+    explanation: 'The majority of Luxembourg\'s approximately 47% cross-border workforce commutes from France, Belgium, and Germany, with France being the largest source (about 54% of all frontaliers, roughly 124,000 workers). This cross-border dynamic reflects wage differentials, labor market integration, and Luxembourg\'s role as a regional employment hub.'
   },
   {
     id: 'e-financial-sector-contribution',
@@ -594,7 +594,7 @@ const ANALYST = [
       'Around 20-25 administrators',
     ],
     answer: 0,
-    explanation: 'Over 40 of the world\'s largest fund administrators operate in Luxembourg, providing custody, administration, and transfer agent services. This infrastructure supports the $5+ trillion in assets under administration, creating a self-reinforcing ecosystem of financial expertise.'
+    explanation: 'Over 40 of the world\'s largest fund administrators operate in Luxembourg, providing custody, administration, and transfer agent services. This infrastructure supports the EUR 8+ trillion in assets under administration, creating a self-reinforcing ecosystem of financial expertise.'
   },
 
   // Sub-level 4
@@ -874,7 +874,7 @@ const STRATEGIST = [
       'A regulatory body for bank capital requirements',
     ],
     answer: 0,
-    explanation: 'The European Stability Mechanism (ESM) is an international organization that provides financial assistance to Eurozone member states experiencing fiscal crises. While headquartered in Germany, Luxembourg is significantly involved in ESM operations and participates as both a member and financial center.'
+    explanation: 'The European Stability Mechanism (ESM) is an intergovernmental organization headquartered in Luxembourg City (Kirchberg district) that provides financial assistance to Eurozone member states experiencing fiscal crises. Its Luxembourg location underscores the country\'s role as a hub for European financial institutions.'
   },
   {
     id: 'e-etf-listing-hub',
@@ -1728,7 +1728,7 @@ const ECONOMIST = [
     id: 'e-investment-fund-redemption-dynamics',
     level: 'economist',
     category: 'funds',
-    situation: 'What redemption risks do Luxembourg\'s $5+ trillion fund assets create?',
+    situation: 'What redemption risks do Luxembourg\'s EUR 8+ trillion fund assets create?',
     options: [
       'Large-scale simultaneous redemptions could create asset fire sales, liquidity strains, and potential systemic disruption',
       'No redemption risks exist',
@@ -1736,7 +1736,7 @@ const ECONOMIST = [
       'Redemptions impossible',
     ],
     answer: 0,
-    explanation: 'The $5+ trillion in Luxembourg-managed funds creates systemic liquidity risk: during market stress or loss of confidence, simultaneous redemptions could exceed liquidity buffers, forcing asset fire sales at depressed prices, disrupting both fund asset values and broader financial markets.'
+    explanation: 'The EUR 8+ trillion in Luxembourg-managed funds creates systemic liquidity risk: during market stress or loss of confidence, simultaneous redemptions could exceed liquidity buffers, forcing asset fire sales at depressed prices, disrupting both fund asset values and broader financial markets.'
   },
   {
     id: 'e-ecb-asset-composition',
@@ -1764,7 +1764,7 @@ const ECONOMIST = [
       'Capital immobile in Luxembourg',
     ],
     answer: 0,
-    explanation: 'Luxembourg\'s financial infrastructure can amplify bubble dynamics: SIF structures enable rapid capital deployment, securities lending provides leverage, and the sheer scale of assets ($5+ trillion) means significant capital can concentrate in speculative assets, inflating bubbles and increasing crash severity.'
+    explanation: 'Luxembourg\'s financial infrastructure can amplify bubble dynamics: SIF structures enable rapid capital deployment, securities lending provides leverage, and the sheer scale of assets (EUR 8+ trillion) means significant capital can concentrate in speculative assets, inflating bubbles and increasing crash severity.'
   },
 
   // Sub-level 5
@@ -1794,7 +1794,7 @@ const ECONOMIST = [
       'Transition impossible',
     ],
     answer: 0,
-    explanation: 'Luxembourg\'s $5+ trillion fund portfolio faces substantial transition risk: fossil fuel assets face potential stranding, carbon-intensive investments may be rapidly repriced, regulatory/market shifts could trigger losses. Fund managers face increasing pressure to manage these risks, potentially constraining returns.'
+    explanation: 'Luxembourg\'s EUR 8+ trillion fund portfolio faces substantial transition risk: fossil fuel assets face potential stranding, carbon-intensive investments may be rapidly repriced, regulatory/market shifts could trigger losses. Fund managers face increasing pressure to manage these risks, potentially constraining returns.'
   },
   {
     id: 'e-tax-competition-sustainability',
