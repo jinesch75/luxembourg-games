@@ -240,60 +240,66 @@ function LevelMapBadges({ progress }) {
   )
 }
 
-// ─── Intro Screen ────────────────────────────────────────────────────────────
-function Intro({ progress, curLevel, curSubLevel, onStart }) {
+// ─── Intro Screen (matches Quiz game layout) ────────────────────────────────
+function Intro({ t, progress, curLevel, curSubLevel, onStart }) {
   const isFinished = parseProgress(progress).finished
   const doneSubs = totalSubLevelsDone(progress)
   const totalSubs = FAMOUS_LEVELS.reduce((acc, l) => acc + l.subLevels, 0)
 
   return (
-    <div style={S.page}>
-      <div style={S.container}>
-        {/* Header */}
-        <div style={{ paddingTop: 32, paddingBottom: 24, textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: '#FDE8EA', border: '1px solid #F5C6CB', borderRadius: 99, padding: '6px 16px', marginBottom: 20 }}>
-            <span style={{ fontSize: 18 }}>🇱🇺</span>
-            <span style={{ color: '#C4222E', fontWeight: 700, fontSize: 13, letterSpacing: 0.5 }}>LUXEMBOURG GAMES</span>
-          </div>
-          <h1 style={{ fontSize: 32, fontWeight: 800, lineHeight: 1.2, margin: '0 0 10px', color: '#1E293B' }}>
-            Famous<br />
-            <span style={{ color: '#C4222E' }}>Luxembourgers</span>
-          </h1>
-          <p style={{ color: '#64748B', fontSize: 15, maxWidth: 480, margin: '0 auto 8px', lineHeight: 1.6 }}>
-            Look at the photo and guess who it is — from politics to sport, culture to science. Can you recognise Luxembourg's famous faces?
-          </p>
-        </div>
+    <div>
+      {/* Title header */}
+      <div style={{
+        color: 'white', textAlign: 'center',
+        padding: '18px 20px 8px',
+      }}>
+        <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('famous.title', { defaultValue: 'Famous Luxembourgers' })}</h2>
+      </div>
 
-        {/* Progress card */}
-        <div style={{ ...S.card, marginBottom: 16, padding: '18px 20px' }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: '#94A3B8', letterSpacing: 0.5, marginBottom: 12 }}>YOUR PROGRESS</div>
-          <LevelMapBadges progress={progress} />
-          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid #E5E4DF' }}>
-            <ProgressBar current={doneSubs} total={totalSubs} color="#C4222E" />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
-              <span style={{ fontSize: '0.8rem', color: '#94A3B8' }}>{doneSubs} / {totalSubs}</span>
-              <span style={{ fontWeight: 800, color: '#C4222E', fontSize: '1rem' }}>
-                {(progress.totalPoints || 0).toLocaleString()} pts
-              </span>
-            </div>
+      {/* Content */}
+      <div className="container" style={{ paddingTop: 28 }}>
+
+        {/* Progress card — on top */}
+        <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+          <div className="section-title" style={{ marginBottom: 12 }}>{t('quiz.yourProgress')}</div>
+          <div className="game-progress-row">
+            <span className="game-progress-label">{doneSubs} / {totalSubs}</span>
+            <span className="game-progress-pct">{Math.round((doneSubs / totalSubs) * 100)}%</span>
+          </div>
+          <div className="progress-bar" style={{ marginBottom: 14 }}>
+            <div className="progress-fill" style={{ width: `${(doneSubs / totalSubs) * 100}%` }} />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+            <span style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>
+              {(progress.totalPoints || 0).toLocaleString()} pts
+            </span>
           </div>
         </div>
 
-        {/* Start button */}
+        {/* Start button — below */}
         <button
           onClick={onStart}
           style={{
             width: '100%',
             display: 'flex', alignItems: 'center', gap: 16,
-            padding: '20px 24px', borderRadius: 16,
-            background: '#111827', color: '#FFFFFF',
+            padding: '20px 24px',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
             border: '1px solid rgba(255,255,255,0.25)',
             boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
-            cursor: 'pointer', fontFamily: 'var(--font)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
             transition: 'transform 0.15s ease, box-shadow 0.15s ease',
           }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)' }}
-          onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
+          }}
         >
           <span style={{
             width: 48, height: 48, borderRadius: 12, flexShrink: 0,
@@ -303,104 +309,123 @@ function Intro({ progress, curLevel, curSubLevel, onStart }) {
           }}><Camera size={26} strokeWidth={1.75} /></span>
           <span style={{ flex: 1, textAlign: 'left' }}>
             <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
-              {isFinished ? '🏆 All Done — Play Again!' : 'Start the game'}
+              {isFinished ? t('quiz.allDone') : t('quiz.startGame', { defaultValue: 'Start the game' })}
             </strong>
             {!isFinished && (
               <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
-                {curLevel.name} · Sub-level {curSubLevel}/{curLevel.subLevels}
+                {t(`quiz.levelNames.${curLevel.id}`, { defaultValue: curLevel.name })} · {t('quiz.subLevel', { defaultValue: 'Sub-level' })} {curSubLevel}/5
               </small>
             )}
           </span>
           <span style={{ opacity: 0.45, fontSize: '1.1rem' }}>→</span>
         </button>
+
       </div>
     </div>
   )
 }
 
-// ─── Done Screen ─────────────────────────────────────────────────────────────
-function Done({ scores, people, progress, curLevel, curSubLevel, levelUpInfo, onReplay }) {
+// ─── Done Screen (matches Quiz game layout) ─────────────────────────────────
+function Done({ scores, people, t, progress, curLevel, curSubLevel, levelUpInfo, onReplay }) {
   const sessionTotal = scores.reduce((s, r) => s + r.pts, 0)
   const { levelIdx: nextLevelIdx, subLevel: nextSub, finished } = parseProgress(progress)
   const nextLevel = FAMOUS_LEVELS[nextLevelIdx]
 
   return (
-    <div style={S.page}>
-      <div style={S.container}>
-        <div style={{ paddingTop: 28 }}>
-          {/* Level-up banner */}
-          {levelUpInfo && (
-            <div style={{
-              textAlign: 'center', marginBottom: 20,
-              background: levelUpInfo.bg, border: `1px solid ${levelUpInfo.color}40`,
-              borderRadius: 16, padding: '20px 16px',
-            }}>
-              <div style={{ fontSize: 48, marginBottom: 8 }}>{levelUpInfo.icon}</div>
-              <div style={{ fontWeight: 800, fontSize: 18, color: levelUpInfo.color }}>
-                Level Up: {levelUpInfo.name}!
-              </div>
-            </div>
-          )}
-
-          {/* Score */}
-          <div style={{ textAlign: 'center', marginBottom: 20 }}>
-            <Stars score={scores.filter(s => s.correct).length} total={scores.length} />
-            <div style={{ ...S.card, display: 'inline-block', margin: '16px 0', padding: '20px 40px' }}>
-              <div style={{ fontSize: 48, fontWeight: 800, color: '#C4222E' }}>
-                +{sessionTotal}
-              </div>
-              <div style={{ fontSize: 13, color: '#64748B', marginTop: 2 }}>points this round</div>
-            </div>
-          </div>
-
-          {/* Progress card */}
-          <div style={{ ...S.card, marginBottom: 16, padding: '18px 20px' }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: '#94A3B8', letterSpacing: 0.5, marginBottom: 12 }}>YOUR PROGRESS</div>
-            <LevelMapBadges progress={progress} />
-            <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid #E5E4DF', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.8rem', color: '#94A3B8' }}>+{sessionTotal} this round</span>
-              <span style={{ fontWeight: 800, color: '#C4222E', fontSize: '1rem' }}>
-                {(progress.totalPoints || 0).toLocaleString()} pts total
-              </span>
-            </div>
-          </div>
-
-          {/* Continue / Replay button */}
-          <button
-            onClick={onReplay}
-            style={{
-              width: '100%',
-              display: 'flex', alignItems: 'center', gap: 16,
-              padding: '20px 24px', borderRadius: 16,
-              background: '#111827', color: '#FFFFFF',
-              border: '1px solid rgba(255,255,255,0.25)',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
-              cursor: 'pointer', fontFamily: 'var(--font)',
-              transition: 'transform 0.15s ease, box-shadow 0.15s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)' }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)' }}
-          >
-            <span style={{
-              width: 48, height: 48, borderRadius: 12, flexShrink: 0,
-              background: 'rgba(255,255,255,0.10)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '1.6rem',
-            }}>{finished ? '🏆' : '▶'}</span>
-            <span style={{ flex: 1, textAlign: 'left' }}>
-              <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
-                {finished ? 'All Done — Play Again!' : 'Continue'}
-              </strong>
-              {!finished && (
-                <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
-                  {nextLevel.name} · Sub-level {nextSub}/{nextLevel.subLevels}
-                </small>
-              )}
-            </span>
-            <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
-          </button>
+    <div className="container" style={{ paddingTop: 28 }}>
+      {/* Progress */}
+      <div className="card" style={{ marginBottom: 16, padding: '18px 20px' }}>
+        <div className="section-title" style={{ marginBottom: 12 }}>{t('quiz.yourProgress')}</div>
+        <LevelMapBadges progress={progress} />
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('quiz.ptsThisRound', { pts: sessionTotal.toLocaleString() })}</span>
+          <span style={{ fontWeight: 800, color: 'var(--red)', fontSize: '1rem' }}>{t('quiz.totalPts', { pts: (progress.totalPoints || 0).toLocaleString() })}</span>
         </div>
       </div>
+
+      {finished ? (
+        <button
+          onClick={onReplay}
+          style={{
+            width: '100%',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
+            border: '1px solid rgba(255,255,255,0.25)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
+          }}
+        >
+          <span style={{
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.10)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.6rem',
+          }}>🏆</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {t('quiz.allDone')}
+            </strong>
+            <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+              {t('quiz.allLevelsCompleted', { defaultValue: 'All levels completed!' })}
+            </small>
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
+        </button>
+      ) : (
+        <button
+          onClick={onReplay}
+          style={{
+            width: '100%',
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '20px 24px',
+            borderRadius: 16,
+            background: '#111827',
+            color: '#FFFFFF',
+            border: '1px solid rgba(255,255,255,0.25)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font)',
+            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-2px)'
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
+          }}
+        >
+          <span style={{
+            width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+            background: 'rgba(255,255,255,0.10)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '1.6rem',
+          }}>▶</span>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              {t('quiz.continueNextSubLevel')}
+            </strong>
+            <small style={{ display: 'block', fontSize: '0.72rem', opacity: 0.75, marginTop: 3, fontWeight: 400 }}>
+              {t(`quiz.levelNames.${nextLevel.id}`, { defaultValue: nextLevel.name })} · {t('quiz.subLevel', { defaultValue: 'Sub-level' })} {nextSub}/5
+            </small>
+          </span>
+          <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
+        </button>
+      )}
     </div>
   )
 }
@@ -506,6 +531,7 @@ export default function FamousGame() {
   if (step === 'intro') {
     return (
       <Intro
+        t={t}
         progress={progress}
         curLevel={curLevel}
         curSubLevel={curSubLevel}
@@ -520,6 +546,7 @@ export default function FamousGame() {
       <Done
         scores={roundScores}
         people={people}
+        t={t}
         progress={progress}
         curLevel={doneInfo?.level ?? curLevel}
         curSubLevel={doneInfo?.subLevel ?? curSubLevel}

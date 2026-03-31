@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { HelpCircle, MapPin } from 'lucide-react'
+import { HelpCircle, MapPin, Camera } from 'lucide-react'
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -34,6 +34,13 @@ export default function HomePage() {
                   <small>{t('home.mapCardDesc')}</small>
                 </span>
               </Link>
+              <Link to="/famous" className="btn-hero-game btn-hero-game-famous">
+                <span className="btn-hero-game-icon"><Camera size={26} strokeWidth={1.75} /></span>
+                <span className="btn-hero-game-text">
+                  <strong>Game 3: Famous People</strong>
+                  <small>{t('home.famousCardDesc', { defaultValue: 'Recognise Luxembourg\'s famous faces' })}</small>
+                </span>
+              </Link>
             </div>
           </div>
         </div>
@@ -47,9 +54,6 @@ export default function HomePage() {
         <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
           <Link to="/spelling" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
             Language Game
-          </Link>
-          <Link to="/famous" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
-            Famous People Game
           </Link>
         </div>
       </div>

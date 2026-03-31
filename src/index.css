@@ -496,6 +496,20 @@ a:hover { text-decoration: underline; }
   background: rgba(42,78,122,0.1);
   color: #2A4E7A;
 }
+.btn-hero-game-famous {
+  background: #FFFFFF;
+  color: #1E293B;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.btn-hero-game-famous:hover {
+  box-shadow: 0 4px 16px rgba(124,58,173,0.12);
+  border-color: rgba(124,58,173,0.3);
+  color: #1E293B;
+}
+.btn-hero-game-famous .btn-hero-game-icon {
+  background: rgba(124,58,173,0.1);
+  color: #7C3AED;
+}
 .btn-hero-game-text {
   display: flex;
   flex-direction: column;
