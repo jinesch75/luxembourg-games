@@ -107,11 +107,14 @@ function shufflePersonOptions(p) {
 }
 
 // ─── Wikipedia image component (fetches thumbnail at runtime) ────────────────
-function WikiImage({ wikiTitle, size = 220 }) {
+function WikiImage({ wikiTitle, size = 220, noPhoto = false, photoPos = null, imageUrl = null }) {
   const [src, setSrc] = useState(null)
   const [error, setError] = useState(false)
 
   useEffect(() => {
+    if (noPhoto) { setError(true); return }
+    // If a direct imageUrl is provided, use it instead of fetching from Wikipedia API
+    if (imageUrl) { setSrc(imageUrl); return }
     if (!wikiTitle) { setError(true); return }
     let cancelled = false
     fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`)
@@ -125,7 +128,11 @@ function WikiImage({ wikiTitle, size = 220 }) {
       })
       .catch(() => { if (!cancelled) setError(true) })
     return () => { cancelled = true }
-  }, [wikiTitle])
+  }, [wikiTitle, noPhoto, imageUrl])
+
+  // Default object-position: center face area (center 20%)
+  // Custom photoPos can override for sports/action photos
+  const objPosition = photoPos || 'center 20%'
 
   return (
     <div style={{
@@ -142,13 +149,16 @@ function WikiImage({ wikiTitle, size = 220 }) {
           gap: 8, background: '#F1F0EC',
         }}>
           <span style={{ fontSize: 48 }}>👤</span>
-          {!error && <span style={{ fontSize: 11, color: '#94A3B8' }}>Loading…</span>}
+          {noPhoto
+            ? <span style={{ fontSize: 11, color: '#94A3B8' }}>No photo available</span>
+            : !error && <span style={{ fontSize: 11, color: '#94A3B8' }}>Loading…</span>
+          }
         </div>
       ) : (
         <img
           src={src}
           alt="Who is this person?"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: objPosition, display: 'block' }}
           onError={() => setError(true)}
         />
       )}
@@ -553,7 +563,7 @@ export default function FamousGame() {
 
           {/* Photo card — compact for mobile */}
           <div style={{ ...S.card, marginTop: 12, marginBottom: 10, textAlign: 'center', padding: '16px 20px' }}>
-            <WikiImage wikiTitle={p.wikiTitle} size={140} />
+            <WikiImage wikiTitle={p.wikiTitle} size={140} noPhoto={p.noPhoto} photoPos={p.photoPos} imageUrl={p.imageUrl} />
             <h2 style={{ fontSize: 18, fontWeight: 800, color: '#1E293B', margin: '10px 0 2px' }}>
               Who is this person?
             </h2>

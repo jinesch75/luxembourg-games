@@ -47,6 +47,7 @@ const NEWCOMER = [
   },
   {
     id: 'f-andy', level: 'newcomer', category: 'sport',
+    photoPos: 'center 15%',
     name: 'Andy Schleck',
     wikiTitle: 'Andy_Schleck',
     options: ['Andy Schleck', 'Fränk Schleck', 'Kim Kirchen', 'Bob Jungels'],
@@ -102,6 +103,7 @@ const NEWCOMER = [
   },
   {
     id: 'f-ni', level: 'newcomer', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Ni Xia Lian',
     wikiTitle: 'Ni_Xia_Lian',
     options: ['Ni Xia Lian', 'Su-Mei Tse', 'Christine Majerus', 'Sarah De Nutte'],
@@ -130,6 +132,7 @@ const NEWCOMER = [
   },
   {
     id: 'f-frank', level: 'newcomer', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Fränk Schleck',
     wikiTitle: 'Fränk_Schleck',
     options: ['Fränk Schleck', 'Andy Schleck', 'Kim Kirchen', 'Ben Gastauer'],
@@ -185,6 +188,7 @@ const NEWCOMER = [
   },
   {
     id: 'f-sumei', level: 'newcomer', category: 'culture',
+    noPhoto: true,
     name: 'Su-Mei Tse',
     wikiTitle: 'Su-Mei_Tse',
     options: ['Su-Mei Tse', 'Désirée Nosbusch', 'Germaine Damar', 'Taina Bofferding'],
@@ -194,6 +198,7 @@ const NEWCOMER = [
   },
   {
     id: 'f-majerus-c', level: 'newcomer', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Christine Majerus',
     wikiTitle: 'Christine_Majerus',
     options: ['Christine Majerus', 'Ni Xia Lian', 'Sarah De Nutte', 'Charel Grethen'],
@@ -272,6 +277,7 @@ const EXPLORER = [
   },
   {
     id: 'f-grethen', level: 'explorer', category: 'sport',
+    photoPos: 'center 15%',
     name: 'Charel Grethen',
     wikiTitle: 'Charel_Grethen',
     options: ['Charel Grethen', 'Bob Jungels', 'Andy Schleck', 'Gilles Muller'],
@@ -309,6 +315,7 @@ const EXPLORER = [
   },
   {
     id: 'f-denutte', level: 'explorer', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Sarah De Nutte',
     wikiTitle: 'Sarah_De_Nutte',
     options: ['Sarah De Nutte', 'Ni Xia Lian', 'Christine Majerus', 'Charel Grethen'],
@@ -327,6 +334,7 @@ const EXPLORER = [
   },
   {
     id: 'f-dicks', level: 'explorer', category: 'history',
+    noPhoto: true,
     name: 'Edmond de la Fontaine (Dicks)',
     wikiTitle: 'Edmond_de_la_Fontaine',
     options: ['Edmond de la Fontaine (Dicks)', 'Batty Weber', 'Michel Rodange', 'Marcel Noppeney'],
@@ -336,6 +344,7 @@ const EXPLORER = [
   },
   {
     id: 'f-jungels', level: 'explorer', category: 'sport',
+    photoPos: 'center 15%',
     name: 'Bob Jungels',
     wikiTitle: 'Bob_Jungels',
     options: ['Bob Jungels', 'Andy Schleck', 'Fränk Schleck', 'Ben Gastauer'],
@@ -355,6 +364,7 @@ const EXPLORER = [
   },
   {
     id: 'f-ley', level: 'explorer', category: 'music',
+    noPhoto: true,
     name: 'Sascha Ley',
     wikiTitle: 'Sascha_Ley',
     options: ['Sascha Ley', 'Désirée Nosbusch', 'Sandrine Bentata', 'Su-Mei Tse'],
@@ -382,6 +392,7 @@ const EXPLORER = [
   },
   {
     id: 'f-kirchen', level: 'explorer', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Kim Kirchen',
     wikiTitle: 'Kim_Kirchen',
     options: ['Kim Kirchen', 'Andy Schleck', 'Fränk Schleck', 'Bob Jungels'],
@@ -392,6 +403,7 @@ const EXPLORER = [
   // sub-level 4
   {
     id: 'f-hack', level: 'explorer', category: 'history',
+    noPhoto: true,
     name: 'Élise Hack',
     wikiTitle: 'Élise_Hack',
     options: ['Élise Hack', 'Anise Koltz', 'Paulette Lenert', 'Grand Duchess Charlotte'],
@@ -447,6 +459,7 @@ const EXPLORER = [
   },
   {
     id: 'f-gastauer', level: 'explorer', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Ben Gastauer',
     wikiTitle: 'Ben_Gastauer',
     options: ['Ben Gastauer', 'Bob Jungels', 'Kim Kirchen', 'Fränk Schleck'],
@@ -456,6 +469,7 @@ const EXPLORER = [
   },
   {
     id: 'f-kerg', level: 'explorer', category: 'culture',
+    noPhoto: true,
     name: 'Théo Kerg',
     wikiTitle: 'Théo_Kerg',
     options: ['Théo Kerg', 'Joseph Kutter', 'Michel Majerus', 'Edward Steichen'],
@@ -515,6 +529,7 @@ const RESIDENT = [
   },
   {
     id: 'f-oppenheim', level: 'resident', category: 'culture',
+    noPhoto: true,
     name: 'Mike Koedinger',
     wikiTitle: 'Maison_Moderne',
     options: ['Mike Koedinger', 'Batty Weber', 'Roger Manderscheid', 'Marcel Noppeney'],
@@ -524,6 +539,7 @@ const RESIDENT = [
   },
   {
     id: 'f-noppeney', level: 'resident', category: 'history',
+    noPhoto: true,
     name: 'Marcel Noppeney',
     wikiTitle: 'Marcel_Noppeney',
     options: ['Marcel Noppeney', 'Batty Weber', 'Edmond de la Fontaine', 'Michel Rodange'],
@@ -552,6 +568,7 @@ const RESIDENT = [
   },
   {
     id: 'f-barthel', level: 'resident', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Josy Barthel',
     wikiTitle: 'Josy_Barthel',
     options: ['Josy Barthel', 'Charel Grethen', 'Bob Jungels', 'Gilles Muller'],
@@ -607,6 +624,7 @@ const RESIDENT = [
   },
   {
     id: 'f-osch', level: 'resident', category: 'sport',
+    noPhoto: true,
     name: 'Marc Dostert',
     wikiTitle: 'Marc_Dostert',
     options: ['Marc Dostert', 'Josy Barthel', 'Charel Grethen', 'Bob Jungels'],
@@ -616,6 +634,7 @@ const RESIDENT = [
   },
   {
     id: 'f-jacobs', level: 'resident', category: 'science',
+    noPhoto: true,
     name: 'François Bentgen',
     wikiTitle: 'Luxembourg_science',
     options: ['François Bentgen', 'Gabriel Lippmann', 'Hugo Gernsback', 'Yves Mersch'],
@@ -644,6 +663,7 @@ const RESIDENT = [
   },
   {
     id: 'f-eicher', level: 'resident', category: 'media',
+    noPhoto: true,
     name: 'Mandy Eicher',
     wikiTitle: 'ECM_Records',
     options: ['Mandy Eicher', 'Batty Weber', 'Désirée Nosbusch', 'Mike Koedinger'],
@@ -653,6 +673,7 @@ const RESIDENT = [
   },
   {
     id: 'f-hein', level: 'resident', category: 'sport',
+    photoPos: 'center 25%',
     name: 'Fleur Maxwell',
     wikiTitle: 'Fleur_Maxwell',
     options: ['Fleur Maxwell', 'Christine Majerus', 'Sarah De Nutte', 'Ni Xia Lian'],
@@ -690,6 +711,7 @@ const RESIDENT = [
   },
   {
     id: 'f-olingen', level: 'resident', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Tom Habscheid',
     wikiTitle: 'Tom_Habscheid',
     options: ['Tom Habscheid', 'Charel Grethen', 'Josy Barthel', 'Bob Jungels'],
@@ -699,6 +721,7 @@ const RESIDENT = [
   },
   {
     id: 'f-rollinger', level: 'resident', category: 'music',
+    noPhoto: true,
     name: 'Edsun',
     wikiTitle: 'Edsun',
     options: ['Edsun', 'Francesco Tristano', 'Gast Waltzing', 'Sascha Ley'],
@@ -708,6 +731,7 @@ const RESIDENT = [
   },
   {
     id: 'f-lorang', level: 'resident', category: 'science',
+    noPhoto: true,
     name: 'Marc Schiltz',
     wikiTitle: 'Luxembourg_National_Research_Fund',
     options: ['Marc Schiltz', 'Gabriel Lippmann', 'Hugo Gernsback', 'Yves Mersch'],
@@ -731,6 +755,7 @@ const CITIZEN = [
   },
   {
     id: 'f-konsbruck', level: 'citizen', category: 'sport',
+    photoPos: 'center 25%',
     name: 'Charly Gaul',
     wikiTitle: 'Charly_Gaul',
     options: ['Charly Gaul', 'Andy Schleck', 'Fränk Schleck', 'Nicolas Frantz'],
@@ -740,6 +765,7 @@ const CITIZEN = [
   },
   {
     id: 'f-frantz', level: 'citizen', category: 'sport',
+    photoPos: 'center 30%',
     name: 'Nicolas Frantz',
     wikiTitle: 'Nicolas_Frantz',
     options: ['Nicolas Frantz', 'Charly Gaul', 'Andy Schleck', 'François Faber'],
@@ -749,6 +775,7 @@ const CITIZEN = [
   },
   {
     id: 'f-ries', level: 'citizen', category: 'history',
+    noPhoto: true,
     name: 'Nicolas Ries',
     wikiTitle: 'Nicolas_Ries',
     options: ['Nicolas Ries', 'Marcel Noppeney', 'Antoine Meyer', 'Batty Weber'],
@@ -758,6 +785,7 @@ const CITIZEN = [
   },
   {
     id: 'f-funkel', level: 'citizen', category: 'culture',
+    noPhoto: true,
     name: 'Fernand Roda',
     wikiTitle: 'Luxembourg_culture',
     options: ['Fernand Roda', 'Théo Kerg', 'Joseph Kutter', 'Michel Majerus'],
@@ -768,6 +796,7 @@ const CITIZEN = [
   // sub-level 2
   {
     id: 'f-faber-tour', level: 'citizen', category: 'sport',
+    photoPos: 'center 25%',
     name: 'François Faber',
     wikiTitle: 'François_Faber',
     options: ['François Faber', 'Nicolas Frantz', 'Charly Gaul', 'Andy Schleck'],
@@ -777,6 +806,7 @@ const CITIZEN = [
   },
   {
     id: 'f-mersch-poet', level: 'citizen', category: 'culture',
+    noPhoto: true,
     name: 'Léon Hamilius',
     wikiTitle: 'Place_Hamilius',
     options: ['Léon Hamilius', 'Pierre Werner', 'Joseph Bech', 'Gaston Thorn'],
@@ -786,6 +816,7 @@ const CITIZEN = [
   },
   {
     id: 'f-zenners', level: 'citizen', category: 'media',
+    noPhoto: true,
     name: 'RTL Group founders',
     wikiTitle: 'RTL_Group',
     options: ['RTL Group', 'SES Astra', 'Maison Moderne', 'Tageblatt'],
@@ -795,7 +826,7 @@ const CITIZEN = [
   },
   {
     id: 'f-kraemer', level: 'citizen', category: 'science',
-    name: 'Nicolas Leonard Sadi Carnot',
+    name: 'Henri Tudor',
     wikiTitle: 'Henri_Tudor',
     options: ['Henri Tudor', 'Gabriel Lippmann', 'Hugo Gernsback', 'François Bentgen'],
     answer: 0,
@@ -814,6 +845,7 @@ const CITIZEN = [
   // sub-level 3
   {
     id: 'f-prince-felix', level: 'citizen', category: 'royalty',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Prince_F%C3%A9lix_of_Luxembourg.jpg',
     name: 'Prince Félix',
     wikiTitle: 'Prince_Félix_of_Luxembourg',
     options: ['Prince Félix', 'Prince Guillaume', 'Grand Duke Henri', 'Prince Louis'],
@@ -832,6 +864,7 @@ const CITIZEN = [
   },
   {
     id: 'f-hermes', level: 'citizen', category: 'culture',
+    noPhoto: true,
     name: 'Jeff Dieschbourg',
     wikiTitle: 'Luxembourg_film',
     options: ['Jeff Dieschbourg', 'Fernand Roda', 'Désirée Nosbusch', 'Mike Koedinger'],
@@ -869,6 +902,7 @@ const CITIZEN = [
   },
   {
     id: 'f-richard', level: 'citizen', category: 'culture',
+    noPhoto: true,
     name: 'Pol Abraham',
     wikiTitle: 'Pol_Abraham',
     options: ['Pol Abraham', 'François Valentiny', 'Bert Theis', 'Joseph Kutter'],
@@ -878,6 +912,7 @@ const CITIZEN = [
   },
   {
     id: 'f-zenon', level: 'citizen', category: 'sport',
+    noPhoto: true,
     name: 'Mathias Buhagiar',
     wikiTitle: 'Luxembourg_football',
     options: ['Mathias Buhagiar', 'Jeff Saibene', 'Luc Holtz', 'Josy Barthel'],
@@ -887,6 +922,7 @@ const CITIZEN = [
   },
   {
     id: 'f-kneip', level: 'citizen', category: 'history',
+    noPhoto: true,
     name: 'Tony Krier',
     wikiTitle: 'Luxembourg_WWII',
     options: ['Tony Krier', 'Pierre Werner', 'Joseph Bech', 'Émile Mayrisch'],
@@ -896,6 +932,7 @@ const CITIZEN = [
   },
   {
     id: 'f-mannes', level: 'citizen', category: 'music',
+    noPhoto: true,
     name: 'Serge Tonnar',
     wikiTitle: 'Serge_Tonnar',
     options: ['Serge Tonnar', 'Francesco Tristano', 'Gast Waltzing', 'Edsun'],
@@ -924,6 +961,7 @@ const CITIZEN = [
   },
   {
     id: 'f-degroof', level: 'citizen', category: 'sport',
+    photoPos: 'center 20%',
     name: 'Jenny Warling',
     wikiTitle: 'Jenny_Warling',
     options: ['Jenny Warling', 'Christine Majerus', 'Ni Xia Lian', 'Sarah De Nutte'],
@@ -933,6 +971,7 @@ const CITIZEN = [
   },
   {
     id: 'f-lies', level: 'citizen', category: 'culture',
+    noPhoto: true,
     name: 'Simone Beck',
     wikiTitle: 'Luxembourg_literature',
     options: ['Simone Beck', 'Anise Koltz', 'Sascha Ley', 'Guy Helminger'],
@@ -943,7 +982,7 @@ const CITIZEN = [
   {
     id: 'f-clees', level: 'citizen', category: 'history',
     name: 'Émile Hamilius',
-    wikiTitle: 'Luxembourg_history',
+    wikiTitle: 'Émile_Hamilius',
     options: ['Émile Hamilius', 'Pierre Werner', 'Gaston Thorn', 'Joseph Bech'],
     answer: 0,
     hint: 'He was a key political figure in Luxembourg\'s post-war reconstruction.',
@@ -965,6 +1004,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-diederich', level: 'ambassador', category: 'culture',
+    noPhoto: true,
     name: 'Nikolaus Hein',
     wikiTitle: 'Luxembourg_literature',
     options: ['Nikolaus Hein', 'Batty Weber', 'Marcel Noppeney', 'Antoine Meyer'],
@@ -983,6 +1023,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-clement', level: 'ambassador', category: 'sport',
+    noPhoto: true,
     name: 'Mathieu Clément',
     wikiTitle: 'Luxembourg_athletics',
     options: ['Mathieu Clément', 'Charel Grethen', 'Josy Barthel', 'Tom Habscheid'],
@@ -1003,7 +1044,7 @@ const AMBASSADOR = [
   {
     id: 'f-munchen', level: 'ambassador', category: 'culture',
     name: 'Frantz Seimetz',
-    wikiTitle: 'Luxembourg_art',
+    wikiTitle: 'Frantz_Seimetz',
     options: ['Frantz Seimetz', 'Joseph Kutter', 'Théo Kerg', 'Michel Majerus'],
     answer: 0,
     hint: 'He was one of the first notable Luxembourgish painters of the 19th century.',
@@ -1011,6 +1052,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-herr', level: 'ambassador', category: 'music',
+    noPhoto: true,
     name: 'Jeff Herr',
     wikiTitle: 'Jeff_Herr',
     options: ['Jeff Herr', 'Gast Waltzing', 'Francesco Tristano', 'Serge Tonnar'],
@@ -1029,6 +1071,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-scholtus', level: 'ambassador', category: 'sport',
+    noPhoto: true,
     name: 'Julien Brosius',
     wikiTitle: 'Luxembourg_cycling',
     options: ['Julien Brosius', 'Nicolas Frantz', 'Charly Gaul', 'François Faber'],
@@ -1048,6 +1091,7 @@ const AMBASSADOR = [
   // sub-level 3
   {
     id: 'f-kayser', level: 'ambassador', category: 'culture',
+    noPhoto: true,
     name: 'Sosthène Weis',
     wikiTitle: 'Sosthène_Weis',
     options: ['Sosthène Weis', 'Joseph Kutter', 'Frantz Seimetz', 'Théo Kerg'],
@@ -1084,6 +1128,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-waringo', level: 'ambassador', category: 'sport',
+    noPhoto: true,
     name: 'Jeanne Saibene',
     wikiTitle: 'Luxembourg_women_sport',
     options: ['Jeanne Saibene', 'Christine Majerus', 'Jenny Warling', 'Fleur Maxwell'],
@@ -1094,6 +1139,7 @@ const AMBASSADOR = [
   // sub-level 4
   {
     id: 'f-prum', level: 'ambassador', category: 'history',
+    noPhoto: true,
     name: 'Émile Prum',
     wikiTitle: 'Luxembourg_history',
     options: ['Émile Prum', 'Paul Eyschen', 'Émile Reuter', 'Joseph Bech'],
@@ -1130,6 +1176,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-jacoby', level: 'ambassador', category: 'politics',
+    noPhoto: true,
     name: 'Robert Brasseur',
     wikiTitle: 'Luxembourg_politics',
     options: ['Robert Brasseur', 'Paul Eyschen', 'Pierre Werner', 'Gaston Thorn'],
@@ -1149,6 +1196,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-thyes', level: 'ambassador', category: 'culture',
+    noPhoto: true,
     name: 'Jean Schaack',
     wikiTitle: 'Luxembourg_sculpture',
     options: ['Jean Schaack', 'Bert Theis', 'Dominique Lang', 'Frantz Seimetz'],
@@ -1158,6 +1206,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-thinnes', level: 'ambassador', category: 'media',
+    noPhoto: true,
     name: 'Thierry Thinnes',
     wikiTitle: 'Luxembourg_television',
     options: ['Thierry Thinnes', 'Batty Weber', 'Désirée Nosbusch', 'Mike Koedinger'],
@@ -1167,6 +1216,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-kayser-sport', level: 'ambassador', category: 'sport',
+    noPhoto: true,
     name: 'Marc Kayser',
     wikiTitle: 'Luxembourg_sport',
     options: ['Marc Kayser', 'Josy Barthel', 'Charly Gaul', 'Nicolas Frantz'],
@@ -1176,6 +1226,7 @@ const AMBASSADOR = [
   },
   {
     id: 'f-beicht', level: 'ambassador', category: 'music',
+    noPhoto: true,
     name: 'J.P. Beicht',
     wikiTitle: 'Luxembourg_music',
     options: ['J.P. Beicht', 'Laurent Menager', 'Jean-Antoine Zinnen', 'Gast Waltzing'],

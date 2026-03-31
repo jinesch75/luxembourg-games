@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Famous People Photo Review</title>
+<style>
+body { font-family: system-ui; background: #f8f9fa; margin: 20px; }
+h1 { text-align: center; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.card { background: white; border-radius: 8px; padding: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center; }
+.card img { width: 160px; height: 160px; object-fit: cover; object-position: top; border-radius: 6px; background: #eee; }
+.card .name { font-weight: bold; font-size: 13px; margin: 6px 0 2px; }
+.card .wiki { font-size: 10px; color: #888; word-break: break-all; }
+.card .status { font-size: 11px; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 4px; }
+.card .status.ok { background: #d4edda; color: #155724; }
+.card .status.warn { background: #fff3cd; color: #856404; }
+.card .status.bad { background: #f8d7da; color: #721c24; }
+.card .status.loading { background: #e2e3e5; color: #383d41; }
+.summary { text-align: center; margin: 20px 0; font-size: 14px; }
+#stats { font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>Famous Luxembourgers - Photo Review</h1>
+<div class="summary">
+  <span id="stats">Loading...</span>
+</div>
+<div class="grid" id="grid"></div>
+
+<script>
+const people = [
+["f-henri","Grand Duke Henri","Henri,_Grand_Duke_of_Luxembourg"],
+["f-juncker","Jean-Claude Juncker","Jean-Claude_Juncker"],
+["f-charlotte","Grand Duchess Charlotte","Charlotte,_Grand_Duchess_of_Luxembourg"],
+["f-andy","Andy Schleck","Andy_Schleck"],
+["f-nosbusch","Désirée Nosbusch","Désirée_Nosbusch"],
+["f-bettel","Xavier Bettel","Xavier_Bettel"],
+["f-maria-teresa","Grand Duchess Maria Teresa","Maria_Teresa,_Grand_Duchess_of_Luxembourg"],
+["f-steichen","Edward Steichen","Edward_Steichen"],
+["f-lippmann","Gabriel Lippmann","Gabriel_Lippmann"],
+["f-ni","Ni Xia Lian","Ni_Xia_Lian"],
+["f-frieden","Luc Frieden","Luc_Frieden"],
+["f-schuman","Robert Schuman","Robert_Schuman"],
+["f-frank","Fränk Schleck","Fränk_Schleck"],
+["f-gernsback","Hugo Gernsback","Hugo_Gernsback"],
+["f-jean","Grand Duke Jean","Jean,_Grand_Duke_of_Luxembourg"],
+["f-lenert","Paulette Lenert","Paulette_Lenert"],
+["f-tristano","Francesco Tristano","Francesco_Tristano"],
+["f-muller","Gilles Muller","Gilles_Müller"],
+["f-sumei","Su-Mei Tse","Su-Mei_Tse"],
+["f-majerus-c","Christine Majerus","Christine_Majerus"],
+["f-guillaume","Hereditary Grand Duke Guillaume","Guillaume,_Hereditary_Grand_Duke_of_Luxembourg"],
+["f-bech","Joseph Bech","Joseph_Bech"],
+["f-kutter","Joseph Kutter","Joseph_Kutter"],
+["f-santer","Jacques Santer","Jacques_Santer"],
+["f-damar","Germaine Damar","Germaine_Damar"],
+["f-koltz","Anise Koltz","Anise_Koltz"],
+["f-thorn","Gaston Thorn","Gaston_Thorn"],
+["f-grethen","Charel Grethen","Charel_Grethen"],
+["f-waltzing","Gast Waltzing","Gast_Waltzing"],
+["f-werner","Pierre Werner","Pierre_Werner"],
+["f-majerus-m","Michel Majerus","Michel_Majerus"],
+["f-denutte","Sarah De Nutte","Sarah_De_Nutte"],
+["f-cahen","Corinne Cahen","Corinne_Cahen"],
+["f-dicks","Edmond de la Fontaine","Edmond_de_la_Fontaine"],
+["f-jungels","Bob Jungels","Bob_Jungels"],
+["f-weber","Batty Weber","Batty_Weber"],
+["f-ley","Sascha Ley","Sascha_Ley"],
+["f-bofferding","Taina Bofferding","Taina_Bofferding"],
+["f-rodange","Michel Rodange","Michel_Rodange"],
+["f-kirchen","Kim Kirchen","Kim_Kirchen"],
+["f-hack","Élise Hack","Élise_Hack"],
+["f-holtz","Luc Holtz","Luc_Holtz"],
+["f-josephine-charlotte","Grand Duchess Joséphine-Charlotte","Princess_Joséphine_Charlotte_of_Belgium"],
+["f-mersch","Yves Mersch","Yves_Mersch"],
+["f-mudam-theis","Bert Theis","Bert_Theis"],
+["f-wiseler","Claude Wiseler","Claude_Wiseler"],
+["f-gastauer","Ben Gastauer","Ben_Gastauer"],
+["f-kerg","Théo Kerg","Théo_Kerg"],
+["f-marie-adelaide","Grand Duchess Marie-Adélaïde","Marie-Adélaïde,_Grand_Duchess_of_Luxembourg"],
+["f-manderscheid","Roger Manderscheid","Roger_Manderscheid"],
+["f-mutsch","Lydia Mutsch","Lydia_Mutsch"],
+["f-hetto-gaasch","Martine Hansen","Martine_Hansen_(politician)"],
+["f-manternach","Raphaël Stacchiotti","Raphaël_Stacchiotti"],
+["f-oppenheim","Mike Koedinger","Maison_Moderne"],
+["f-noppeney","Marcel Noppeney","Marcel_Noppeney"],
+["f-asselborn","Jean Asselborn","Jean_Asselborn"],
+["f-braz","Félix Braz","Félix_Braz"],
+["f-barthel","Josy Barthel","Josy_Barthel"],
+["f-stephanie","Princess Stéphanie","Princess_Stéphanie_of_Luxembourg"],
+["f-kinsch","Guy Helminger","Guy_Helminger"],
+["f-adolphe","Grand Duke Adolphe","Adolphe,_Grand_Duke_of_Luxembourg"],
+["f-faber","Faber","Faber_(singer)"],
+["f-meyers","Émile Mayrisch","Émile_Mayrisch"],
+["f-osch","Marc Dostert","Marc_Dostert"],
+["f-jacobs","François Bentgen","Luxembourg_science"],
+["f-alexandra","Princess Alexandra","Princess_Alexandra_of_Luxembourg"],
+["f-thilmany","François Valentiny","François_Valentiny"],
+["f-eicher","Mandy Eicher","ECM_Records"],
+["f-hein","Fleur Maxwell","Fleur_Maxwell"],
+["f-pesch","Aline Mayrisch de Saint-Hubert","Aline_Mayrisch_de_Saint-Hubert"],
+["f-conter","Antoine Meyer","Antoine_Meyer_(writer)"],
+["f-delvaux","Sam Tanson","Sam_Tanson"],
+["f-olingen","Tom Habscheid","Tom_Habscheid"],
+["f-rollinger","Edsun","Edsun"],
+["f-lorang","Marc Schiltz","Luxembourg_National_Research_Fund"],
+["f-turmes","Claude Turmes","Claude_Turmes"],
+["f-konsbruck","Charly Gaul","Charly_Gaul"],
+["f-frantz","Nicolas Frantz","Nicolas_Frantz"],
+["f-ries","Nicolas Ries","Nicolas_Ries"],
+["f-funkel","Fernand Roda","Luxembourg_culture"],
+["f-faber-tour","François Faber","François_Faber"],
+["f-mersch-poet","Léon Hamilius","Place_Hamilius"],
+["f-zenners","RTL Group founders","RTL_Group"],
+["f-kraemer","Henri Tudor","Henri_Tudor"],
+["f-beissel","Simone Beissel","Simone_Beissel"],
+["f-prince-felix","Prince Félix","Prince_Félix_of_Luxembourg"],
+["f-saibene","Jeff Saibene","Jeff_Saibene"],
+["f-hermes","Jeff Dieschbourg","Luxembourg_film"],
+["f-servais","Nik Welter","Nik_Welter"],
+["f-dieschbourg","Carole Dieschbourg","Carole_Dieschbourg"],
+["f-prince-louis","Prince Louis","Prince_Louis_of_Luxembourg"],
+["f-richard","Pol Abraham","Pol_Abraham"],
+["f-zenon","Mathias Buhagiar","Luxembourg_football"],
+["f-kneip","Tony Krier","Luxembourg_WWII"],
+["f-mannes","Serge Tonnar","Serge_Tonnar"],
+["f-prince-seb","Prince Sébastien","Prince_Sébastien_of_Luxembourg"],
+["f-hastert","Paul Helminger","Paul_Helminger"],
+["f-degroof","Jenny Warling","Jenny_Warling"],
+["f-lies","Simone Beck","Luxembourg_literature"],
+["f-clees","Émile Hamilius","Luxembourg_history"],
+["f-guillaume-iv","Grand Duke Guillaume IV","William_IV,_Grand_Duke_of_Luxembourg"],
+["f-diederich","Nikolaus Hein","Luxembourg_literature"],
+["f-hemmer","Carlo Hemmer","Carlo_Hemmer"],
+["f-clement","Mathieu Clément","Luxembourg_athletics"],
+["f-linden","Paul Eyschen","Paul_Eyschen"],
+["f-munchen","Frantz Seimetz","Luxembourg_art"],
+["f-herr","Jeff Herr","Jeff_Herr"],
+["f-metzler","Laurent Menager","Laurent_Menager"],
+["f-scholtus","Julien Brosius","Luxembourg_cycling"],
+["f-thill","Émile Reuter","Émile_Reuter"],
+["f-kayser","Sosthène Weis","Sosthène_Weis"],
+["f-zinnen","Jean-Antoine Zinnen","Jean-Antoine_Zinnen"],
+["f-lentz","Michel Lentz","Michel_Lentz"],
+["f-reding","Viviane Reding","Viviane_Reding"],
+["f-waringo","Jeanne Saibene","Luxembourg_women_sport"],
+["f-prum","Émile Prum","Luxembourg_history"],
+["f-prince-charles","Prince Charles","Prince_Charles_of_Luxembourg"],
+["f-kemp","Dominique Lang","Dominique_Lang"],
+["f-scholer","Jean-Pierre Sauvage","Jean-Pierre_Sauvage"],
+["f-jacoby","Robert Brasseur","Luxembourg_politics"],
+["f-pescatore","Jean-Pierre Pescatore","Jean-Pierre_Pescatore"],
+["f-thyes","Jean Schaack","Luxembourg_sculpture"],
+["f-thinnes","Thierry Thinnes","Luxembourg_television"],
+["f-kayser-sport","Marc Kayser","Luxembourg_sport"],
+["f-beicht","J.P. Beicht","Luxembourg_music"]
+];
+
+// Known generic/topic wikiTitles that won't have person photos
+const genericTitles = new Set([
+  'Luxembourg_science','ECM_Records','Luxembourg_National_Research_Fund',
+  'Luxembourg_culture','Place_Hamilius','RTL_Group','Luxembourg_film',
+  'Luxembourg_football','Luxembourg_WWII','Luxembourg_literature',
+  'Luxembourg_history','Luxembourg_athletics','Luxembourg_art',
+  'Luxembourg_cycling','Luxembourg_women_sport','Luxembourg_politics',
+  'Luxembourg_sculpture','Luxembourg_television','Luxembourg_sport',
+  'Luxembourg_music','Maison_Moderne'
+]);
+
+const grid = document.getElementById('grid');
+let okCount = 0, warnCount = 0, badCount = 0;
+
+async function loadAll() {
+  const promises = people.map(async ([id, name, wiki]) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = id;
+
+    const isGeneric = genericTitles.has(wiki);
+
+    const img = document.createElement('img');
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'name';
+    nameDiv.textContent = name;
+    const wikiDiv = document.createElement('div');
+    wikiDiv.className = 'wiki';
+    wikiDiv.textContent = wiki;
+    const statusDiv = document.createElement('div');
+    statusDiv.className = 'status loading';
+    statusDiv.textContent = 'Loading...';
+
+    card.append(img, nameDiv, wikiDiv, statusDiv);
+    grid.appendChild(card);
+
+    if (isGeneric) {
+      img.src = '';
+      img.alt = 'GENERIC PAGE';
+      img.style.background = '#f8d7da';
+      statusDiv.className = 'status bad';
+      statusDiv.textContent = 'GENERIC PAGE - NO PERSON PHOTO';
+      badCount++;
+      updateStats();
+      return;
+    }
+
+    try {
+      const resp = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wiki)}`);
+      const data = await resp.json();
+      const url = data.originalimage?.source || data.thumbnail?.source;
+
+      if (!url) {
+        img.style.background = '#fff3cd';
+        statusDiv.className = 'status warn';
+        statusDiv.textContent = 'NO IMAGE';
+        warnCount++;
+      } else {
+        img.src = url;
+        img.onerror = () => {
+          statusDiv.className = 'status warn';
+          statusDiv.textContent = 'IMG LOAD ERROR';
+          warnCount++;
+          updateStats();
+        };
+        img.onload = () => {
+          statusDiv.className = 'status ok';
+          statusDiv.textContent = `OK (${img.naturalWidth}x${img.naturalHeight})`;
+          okCount++;
+          updateStats();
+        };
+      }
+    } catch(e) {
+      statusDiv.className = 'status bad';
+      statusDiv.textContent = 'FETCH ERROR';
+      badCount++;
+    }
+    updateStats();
+  });
+
+  await Promise.all(promises);
+}
+
+function updateStats() {
+  document.getElementById('stats').textContent =
+    `OK: ${okCount} | Warnings: ${warnCount} | Bad: ${badCount} | Total: ${people.length}`;
+}
+
+loadAll();
+</script>
+</body>
+</html>
