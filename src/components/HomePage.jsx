@@ -48,7 +48,7 @@ export default function HomePage() {
                   <small>{t('home.placesCardDesc', { defaultValue: 'Identify Luxembourg\'s iconic landmarks' })}</small>
                 </span>
               </Link>
-              <Link to="/admin" className="btn-hero-game btn-hero-game-admin">
+              <Link to="/life" className="btn-hero-game btn-hero-game-admin">
                 <span className="btn-hero-game-icon"><ClipboardList size={26} strokeWidth={1.75} /></span>
                 <span className="btn-hero-game-text">
                   <strong>Game 5: Life in Luxembourg</strong>

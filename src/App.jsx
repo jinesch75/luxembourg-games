@@ -35,7 +35,7 @@ function AppRoutes() {
       <Route path="/spelling" element={<SpellingGame />} />
       <Route path="/famous" element={<FamousGame />} />
       <Route path="/places" element={<PlacesGame />} />
-      <Route path="/admin" element={<AdminGame />} />
+      <Route path="/life" element={<AdminGame />} />
     </Routes>
   )
 }
