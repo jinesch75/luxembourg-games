@@ -148,7 +148,7 @@ function WikiImage({ wikiTitle, size = 220 }) {
         <img
           src={src}
           alt="Who is this person?"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
           onError={() => setError(true)}
         />
       )}

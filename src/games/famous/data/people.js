@@ -61,7 +61,7 @@ const NEWCOMER = [
     options: ['Désirée Nosbusch', 'Vicky Leandros', 'Su-Mei Tse', 'Germaine Damar'],
     answer: 0,
     hint: 'She became famous as a teenager presenting Eurovision and is now one of Luxembourg\'s top TV & film actresses.',
-    explanation: 'Désirée Nosbusch became a European celebrity as a 14-year-old Eurovision presenter in 1984. She has since built a distinguished acting career, starring in "Bad Banks" and many international productions.',
+    explanation: 'Désirée Nosbusch became a European celebrity as a 19-year-old Eurovision presenter in 1984. She has since built a distinguished acting career, starring in "Bad Banks" and many international productions.',
   },
   // sub-level 2
   {
@@ -98,7 +98,7 @@ const NEWCOMER = [
     options: ['Gabriel Lippmann', 'Hugo Gernsback', 'Edward Steichen', 'Pierre Werner'],
     answer: 0,
     hint: 'He won the Nobel Prize in Physics in 1908.',
-    explanation: 'Gabriel Lippmann (1845–1921), born in Bonnevoie, Luxembourg, won the Nobel Prize in Physics in 1908 for his method of reproducing colours photographically. He remains Luxembourg\'s only Nobel laureate.',
+    explanation: 'Gabriel Lippmann (1845–1921), born in Bonnevoie, Luxembourg, won the Nobel Prize in Physics in 1908 for his method of reproducing colours photographically. He was Luxembourg\'s first Nobel laureate; Jules Hoffmann, born in Echternach, won the Nobel Prize in Medicine in 2011.',
   },
   {
     id: 'f-ni', level: 'newcomer', category: 'sport',
@@ -245,7 +245,7 @@ const NEWCOMER = [
     options: ['Germaine Damar', 'Désirée Nosbusch', 'Anise Koltz', 'Sascha Ley'],
     answer: 0,
     hint: 'She was a 1950s film star known as the "Luxembourg Audrey Hepburn".',
-    explanation: 'Germaine Damar (1929–2021) was a Luxembourgish dancer and film actress who became one of the biggest stars of 1950s German-language cinema. She appeared in over 20 musical films.',
+    explanation: 'Germaine Damar (1929–2019) was a Luxembourgish dancer and film actress who became one of the biggest stars of 1950s German-language cinema. She appeared in over 20 musical films.',
   },
 ]
 
@@ -433,7 +433,7 @@ const EXPLORER = [
     options: ['Bert Theis', 'Michel Majerus', 'Joseph Kutter', 'Su-Mei Tse'],
     answer: 0,
     hint: 'He was a Luxembourgish conceptual and installation artist known for large-scale public works.',
-    explanation: 'Bert Theis (1952–2016) was a Luxembourgish conceptual artist who created major public installations. He represented Luxembourg at the Venice Biennale in 1999 and was known for blending art with social activism.',
+    explanation: 'Bert Theis (1952–2016) was a Luxembourgish conceptual artist who created major public installations. He represented Luxembourg at the Venice Biennale in 1995 and was known for blending art with social activism.',
   },
   // sub-level 5
   {
@@ -640,7 +640,7 @@ const RESIDENT = [
     options: ['François Valentiny', 'Bert Theis', 'Michel Majerus', 'Joseph Kutter'],
     answer: 0,
     hint: 'He is one of Luxembourg\'s most renowned architects.',
-    explanation: 'François Valentiny is one of Luxembourg\'s leading architects, known for innovative designs. His firm has designed major cultural buildings in Luxembourg and abroad, including parts of the Philharmonie Luxembourg.',
+    explanation: 'François Valentiny is one of Luxembourg\'s leading architects, known for innovative designs. His firm has designed major cultural buildings in Luxembourg and abroad, including the Luxembourg Pavilion at the 2010 Shanghai World Expo.',
   },
   {
     id: 'f-eicher', level: 'resident', category: 'media',
@@ -649,7 +649,7 @@ const RESIDENT = [
     options: ['Mandy Eicher', 'Batty Weber', 'Désirée Nosbusch', 'Mike Koedinger'],
     answer: 0,
     hint: 'His family founded one of the world\'s most prestigious jazz and classical music record labels.',
-    explanation: 'Manfred Eicher, of Luxembourgish heritage, founded ECM Records in 1969. The label became one of the most respected in jazz and contemporary classical music, known for its distinctive sound and aesthetic.',
+    explanation: 'Manfred Eicher, born in Lindau, Germany, founded ECM Records in 1969. The label became one of the most respected in jazz and contemporary classical music, known for its distinctive sound and aesthetic.',
   },
   {
     id: 'f-hein', level: 'resident', category: 'sport',
@@ -874,7 +874,7 @@ const CITIZEN = [
     options: ['Pol Abraham', 'François Valentiny', 'Bert Theis', 'Joseph Kutter'],
     answer: 0,
     hint: 'He was a Luxembourgish architect who became famous in France for his modernist designs.',
-    explanation: 'Pol Abraham (1891–1966) was a Luxembourgish architect who built a distinguished career in France. He was a pioneer of reinforced concrete architecture and designed notable modernist buildings.',
+    explanation: 'Pol Abraham (1891–1966) was a French architect born in Nantes who built a distinguished career in France. He was a pioneer of reinforced concrete architecture and designed notable modernist buildings.',
   },
   {
     id: 'f-zenon', level: 'citizen', category: 'sport',
@@ -1126,7 +1126,7 @@ const AMBASSADOR = [
     options: ['Jean-Pierre Sauvage', 'Gabriel Lippmann', 'Hugo Gernsback', 'Henri Tudor'],
     answer: 0,
     hint: 'He is a Nobel Prize-winning chemist with ties to the Luxembourg border region.',
-    explanation: 'Jean-Pierre Sauvage, born in Paris and raised near the Luxembourg border, won the Nobel Prize in Chemistry in 2016 for his work on molecular machines. His research at the University of Strasbourg connects to the Greater Region.',
+    explanation: 'Jean-Pierre Sauvage, born in Paris, won the Nobel Prize in Chemistry in 2016 for his work on molecular machines. He spent his career at the University of Strasbourg in neighbouring France. A street in Luxembourg City\'s Kirchberg district is named after him.',
   },
   {
     id: 'f-jacoby', level: 'ambassador', category: 'politics',
