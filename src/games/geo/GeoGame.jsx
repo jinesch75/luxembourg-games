@@ -239,7 +239,19 @@ export default function GeoGame() {
   if (step === 'done') {
     return <Done scores={roundScores} locations={locations} t={t} loc_t={loc_t}
       geoProgress={geoProgress} curLevel={curLevel} curSubLevel={curSubLevel}
-      levelUpInfo={levelUpInfo} onReplay={handleReplay} />
+      levelUpInfo={levelUpInfo} onReplay={handleReplay}
+      onReset={() => {
+        setGeoProgress({
+          completedSubLevels: { tourist: 0, wanderer: 0, navigator: 0, explorer: 0, geographer: 0 },
+          totalPoints: 0,
+        })
+        setStep('intro')
+        setRoundIdx(0)
+        setUserPin(null)
+        setRevealed(false)
+        setRoundScores([])
+        setLevelUpInfo(null)
+      }} />
   }
 
   const currentKm    = revealed && userPin ? calcDistance(userPin[0], userPin[1], loc.coords[0], loc.coords[1]) : null
@@ -536,7 +548,8 @@ function Intro({ t, geoProgress, curLevel, curSubLevel, onStart }) {
 }
 
 // ─── Done Screen ───────────────────────────────────────────────────────────────
-function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel, levelUpInfo, onReplay }) {
+function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel, levelUpInfo, onReplay, onReset }) {
+  const [confirmReset, setConfirmReset] = useState(false)
   const sessionTotal = scores.reduce((s, r) => s + r.pts, 0)
   const maxTotal = scores.length * 1000
   const { levelIdx: nextLevelIdx, subLevel: nextSub } = parseProgress(geoProgress)
@@ -638,6 +651,26 @@ function Done({ scores, locations, t, loc_t, geoProgress, curLevel, curSubLevel,
           <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
       )}
+
+      {/* Reset progress */}
+      <div style={{ textAlign: 'center', marginTop: 18 }}>
+        {confirmReset ? (
+          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+            {t('common.resetConfirm')}{' '}
+            <button onClick={onReset} style={{ background: 'none', border: 'none', color: '#059669', cursor: 'pointer', fontFamily: 'var(--font)', fontSize: '0.72rem', fontWeight: 600, padding: 0, textDecoration: 'underline' }}>
+              {t('common.resetProgress')}
+            </button>
+            {' / '}
+            <button onClick={() => setConfirmReset(false)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontFamily: 'var(--font)', fontSize: '0.72rem', padding: 0, textDecoration: 'underline' }}>
+              {t('common.back')}
+            </button>
+          </span>
+        ) : (
+          <button onClick={() => setConfirmReset(true)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontFamily: 'var(--font)', fontSize: '0.72rem', padding: 0, opacity: 0.6 }}>
+            {t('common.resetProgress')}
+          </button>
+        )}
+      </div>
     </div>
   )
 }

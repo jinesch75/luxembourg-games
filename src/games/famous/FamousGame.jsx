@@ -352,7 +352,8 @@ function Intro({ t, progress, curLevel, curSubLevel, onStart }) {
 }
 
 // ─── Done Screen (matches Quiz game layout) ─────────────────────────────────
-function Done({ scores, people, t, progress, curLevel, curSubLevel, levelUpInfo, onReplay }) {
+function Done({ scores, people, t, progress, curLevel, curSubLevel, levelUpInfo, onReplay, onReset }) {
+  const [confirmReset, setConfirmReset] = useState(false)
   const sessionTotal = scores.reduce((s, r) => s + r.pts, 0)
   const { levelIdx: nextLevelIdx, subLevel: nextSub, finished } = parseProgress(progress)
   const nextLevel = FAMOUS_LEVELS[nextLevelIdx]
@@ -452,6 +453,26 @@ function Done({ scores, people, t, progress, curLevel, curSubLevel, levelUpInfo,
           <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
         </button>
       )}
+
+      {/* Reset progress */}
+      <div style={{ textAlign: 'center', marginTop: 18 }}>
+        {confirmReset ? (
+          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+            {t('common.resetConfirm')}{' '}
+            <button onClick={onReset} style={{ background: 'none', border: 'none', color: 'var(--red)', cursor: 'pointer', fontFamily: 'var(--font)', fontSize: '0.72rem', fontWeight: 600, padding: 0, textDecoration: 'underline' }}>
+              {t('common.resetProgress')}
+            </button>
+            {' / '}
+            <button onClick={() => setConfirmReset(false)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontFamily: 'var(--font)', fontSize: '0.72rem', padding: 0, textDecoration: 'underline' }}>
+              {t('common.back')}
+            </button>
+          </span>
+        ) : (
+          <button onClick={() => setConfirmReset(true)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontFamily: 'var(--font)', fontSize: '0.72rem', padding: 0, opacity: 0.6 }}>
+            {t('common.resetProgress')}
+          </button>
+        )}
+      </div>
     </div>
   )
 }
@@ -591,6 +612,19 @@ export default function FamousGame() {
         curSubLevel={doneInfo?.subLevel ?? curSubLevel}
         levelUpInfo={levelUpInfo}
         onReplay={handleReplay}
+        onReset={() => {
+          setProgress({
+            completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0, ambassador: 0 },
+            totalPoints: 0,
+          })
+          setStep('intro')
+          setCurrentIdx(0)
+          setSelected(null)
+          setRevealed(false)
+          setRoundScores([])
+          setLevelUpInfo(null)
+          setDoneInfo(null)
+        }}
       />
     )
   }

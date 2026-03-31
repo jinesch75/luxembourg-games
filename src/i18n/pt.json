@@ -142,7 +142,9 @@
     "copied": "Copiado!",
     "language": "Língua",
     "back": "Voltar",
-    "home": "Início"
+    "home": "Início",
+    "resetProgress": "Repor progresso",
+    "resetConfirm": "Repor todo o progresso e pontos deste jogo?"
   },
   "activities": {
     "lang-moien": {

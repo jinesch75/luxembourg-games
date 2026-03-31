@@ -821,7 +821,8 @@ function ExerciseScreen({ chapter, exerciseIdx, selected, showResult, onSelect, 
   )
 }
 
-function ChapterCompleteScreen({ chapter, score, onNext, onMenu, onRetry }) {
+function ChapterCompleteScreen({ chapter, score, onNext, onMenu, onRetry, onReset }) {
+  const [confirmReset, setConfirmReset] = useState(false)
   const total = chapter.exercises.length
   const pct = score / total
   const medal = pct === 1 ? '🥇' : pct >= 0.75 ? '🥈' : pct >= 0.5 ? '🥉' : '📖'
@@ -865,13 +866,34 @@ function ChapterCompleteScreen({ chapter, score, onNext, onMenu, onRetry }) {
           </div>
 
           <CreditBadge chapterRef={chapter.chapterRef} />
+
+          {/* Reset progress */}
+          <div style={{ textAlign: 'center', marginTop: 8 }}>
+            {confirmReset ? (
+              <span style={{ fontSize: 11, color: '#94A3B8' }}>
+                Reset all progress and scores?{' '}
+                <button onClick={onReset} style={{ background: 'none', border: 'none', color: '#C4222E', cursor: 'pointer', fontSize: 11, fontWeight: 600, padding: 0, textDecoration: 'underline' }}>
+                  Reset
+                </button>
+                {' / '}
+                <button onClick={() => setConfirmReset(false)} style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: 11, padding: 0, textDecoration: 'underline' }}>
+                  Cancel
+                </button>
+              </span>
+            ) : (
+              <button onClick={() => setConfirmReset(true)} style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: 11, padding: 0, opacity: 0.6 }}>
+                Reset progress
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-function GameCompleteScreen({ allScores, onMenu }) {
+function GameCompleteScreen({ allScores, onMenu, onReset }) {
+  const [confirmReset, setConfirmReset] = useState(false)
   const totalCorrect = allScores.reduce((sum, s) => sum + (s || 0), 0)
   const totalQuestions = CHAPTERS.reduce((sum, ch) => sum + ch.exercises.length, 0)
   const pct = totalCorrect / totalQuestions
@@ -941,6 +963,26 @@ function GameCompleteScreen({ allScores, onMenu }) {
           <button onClick={onMenu} style={{ ...S.btn, ...S.btnPrimary, padding: '13px 32px', fontSize: 15 }}>
             🔄 Play Again from Menu
           </button>
+
+          {/* Reset progress */}
+          <div style={{ textAlign: 'center', marginTop: 16 }}>
+            {confirmReset ? (
+              <span style={{ fontSize: 11, color: '#94A3B8' }}>
+                Reset all progress and scores?{' '}
+                <button onClick={onReset} style={{ background: 'none', border: 'none', color: '#C4222E', cursor: 'pointer', fontSize: 11, fontWeight: 600, padding: 0, textDecoration: 'underline' }}>
+                  Reset
+                </button>
+                {' / '}
+                <button onClick={() => setConfirmReset(false)} style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: 11, padding: 0, textDecoration: 'underline' }}>
+                  Cancel
+                </button>
+              </span>
+            ) : (
+              <button onClick={() => setConfirmReset(true)} style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: 11, padding: 0, opacity: 0.6 }}>
+                Reset progress
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -1071,6 +1113,17 @@ export default function SpellingGame() {
     />
   )
 
+  const handleResetAll = () => {
+    setAllScores(Array(CHAPTERS.length).fill(null))
+    setCompletedChapters(new Set())
+    setChapterIdx(0)
+    setExerciseIdx(0)
+    setSelected(null)
+    setShowResult(false)
+    setChapterScore(0)
+    setScreen('menu')
+  }
+
   if (screen === 'chapter-done') return (
     <ChapterCompleteScreen
       chapter={chapter}
@@ -1078,6 +1131,7 @@ export default function SpellingGame() {
       onNext={chapterIdx + 1 < CHAPTERS.length ? handleNextChapter : null}
       onMenu={() => setScreen('menu')}
       onRetry={handleRetry}
+      onReset={handleResetAll}
     />
   )
 
@@ -1085,6 +1139,7 @@ export default function SpellingGame() {
     <GameCompleteScreen
       allScores={allScores}
       onMenu={() => setScreen('menu')}
+      onReset={handleResetAll}
     />
   )
 

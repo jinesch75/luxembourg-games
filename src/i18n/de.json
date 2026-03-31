@@ -231,7 +231,9 @@
     "copied": "Kopiert!",
     "language": "Sprache",
     "back": "Zurück",
-    "home": "Startseite"
+    "home": "Startseite",
+    "resetProgress": "Fortschritt zurücksetzen",
+    "resetConfirm": "Allen Fortschritt und alle Punkte für dieses Spiel zurücksetzen?"
   },
   "activities": {
     "lang-moien": {

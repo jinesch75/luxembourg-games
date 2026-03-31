@@ -231,7 +231,9 @@
     "copied": "Kopéiert!",
     "language": "Sprooch",
     "back": "Zréck",
-    "home": "Haaptseite"
+    "home": "Haaptseite",
+    "resetProgress": "Fortschrëtt zrécksetzen",
+    "resetConfirm": "All Fortschrëtt an all Punkten fir dëst Spill zrécksetzen?"
   },
   "activities": {
     "lang-moien": {
