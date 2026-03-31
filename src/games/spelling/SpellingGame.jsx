@@ -68,7 +68,7 @@ const CHAPTERS = [
     title: "Long & Short Vowels",
     subtitle: "Vowel length changes meaning!",
     icon: "🔊",
-    color: "#EF3340",
+    color: "#C4222E",
     colorLight: "rgba(239,51,64,0.15)",
     chapterRef: "Based on: Josy Braun, Eis Sprooch richteg schreiwen (English Version), ZLS/SCRIPT 2020 — Chapter on Vowel Length & Spelling",
     rule: {
@@ -113,7 +113,7 @@ const CHAPTERS = [
     title: "The 'ie' Sound",
     subtitle: "The long 'i' in disguise",
     icon: "👁️",
-    color: "#00A3E0",
+    color: "#64748B",
     colorLight: "rgba(0,163,224,0.15)",
     chapterRef: "Based on: Josy Braun, Eis Sprooch richteg schreiwen (English Version), ZLS/SCRIPT 2020 — Chapter on the 'ie' Vowel",
     rule: {
@@ -403,9 +403,9 @@ const CHAPTERS = [
 const S = {
   page: {
     minHeight: '100vh',
-    background: 'linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%)',
+    background: '#F6F5F1',
     fontFamily: "'Inter', system-ui, sans-serif",
-    color: '#F1F5F9',
+    color: '#1E293B',
     paddingBottom: 60,
   },
   container: {
@@ -414,18 +414,19 @@ const S = {
     padding: '0 16px',
   },
   card: {
-    background: 'rgba(255,255,255,0.06)',
-    border: '1px solid rgba(255,255,255,0.10)',
+    background: '#FFFFFF',
+    border: '1px solid #E5E4DF',
     borderRadius: 16,
     padding: '24px',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
   },
   creditBox: {
-    background: 'rgba(0,163,224,0.10)',
-    border: '1px solid rgba(0,163,224,0.25)',
+    background: '#F0EFE9',
+    border: '1px solid #DDD9D0',
     borderRadius: 10,
     padding: '10px 14px',
     fontSize: 11.5,
-    color: '#94A3B8',
+    color: '#64748B',
     lineHeight: 1.6,
     marginTop: 16,
   },
@@ -445,13 +446,13 @@ const S = {
     textDecoration: 'none',
   },
   btnPrimary: {
-    background: '#EF3340',
+    background: '#C4222E',
     color: '#fff',
   },
   btnSecondary: {
-    background: 'rgba(255,255,255,0.10)',
-    color: '#F1F5F9',
-    border: '1px solid rgba(255,255,255,0.15)',
+    background: '#FFFFFF',
+    color: '#1E293B',
+    border: '1px solid #D4D3CE',
   },
 }
 
@@ -462,7 +463,7 @@ const S = {
 function CreditBadge({ chapterRef }) {
   return (
     <div style={S.creditBox}>
-      📚 <span style={{ color: '#00A3E0', fontWeight: 600 }}>Source: </span>
+      📚 <span style={{ color: '#64748B', fontWeight: 600 }}>Source: </span>
       {chapterRef} — {ZLS_REF.lod}
       <br />
       <span style={{ fontSize: 10.5, opacity: 0.75 }}>{ZLS_REF.note}</span>
@@ -473,11 +474,11 @@ function CreditBadge({ chapterRef }) {
 function ProgressBar({ current, total, color }) {
   const pct = total > 0 ? ((current / total) * 100) : 0
   return (
-    <div style={{ background: 'rgba(255,255,255,0.08)', borderRadius: 99, height: 6, overflow: 'hidden', marginBottom: 4 }}>
+    <div style={{ background: '#E5E4DF', borderRadius: 99, height: 6, overflow: 'hidden', marginBottom: 4 }}>
       <div style={{
         height: '100%',
         width: `${pct}%`,
-        background: color || '#EF3340',
+        background: color || '#C4222E',
         borderRadius: 99,
         transition: 'width 0.4s ease',
       }} />
@@ -507,19 +508,19 @@ function MenuScreen({ completedChapters, allScores, onSelectChapter }) {
       <div style={S.container}>
         {/* Header */}
         <div style={{ paddingTop: 32, paddingBottom: 24, textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(239,51,64,0.15)', border: '1px solid rgba(239,51,64,0.3)', borderRadius: 99, padding: '6px 16px', marginBottom: 20 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: '#FDE8EA', border: '1px solid #F5C6CB', borderRadius: 99, padding: '6px 16px', marginBottom: 20 }}>
             <span style={{ fontSize: 18 }}>🇱🇺</span>
-            <span style={{ color: '#EF3340', fontWeight: 700, fontSize: 13, letterSpacing: 0.5 }}>LUXEMBOURG GAMES</span>
+            <span style={{ color: '#C4222E', fontWeight: 700, fontSize: 13, letterSpacing: 0.5 }}>LUXEMBOURG GAMES</span>
           </div>
-          <h1 style={{ fontSize: 32, fontWeight: 800, lineHeight: 1.2, margin: '0 0 10px', color: '#F8FAFC' }}>
+          <h1 style={{ fontSize: 32, fontWeight: 800, lineHeight: 1.2, margin: '0 0 10px', color: '#1E293B' }}>
             Lëtzebuergesch<br />
-            <span style={{ color: '#EF3340' }}>Spelling</span> Game
+            <span style={{ color: '#C4222E' }}>Spelling</span> Game
           </h1>
-          <p style={{ color: '#94A3B8', fontSize: 15, maxWidth: 480, margin: '0 auto 8px', lineHeight: 1.6 }}>
+          <p style={{ color: '#64748B', fontSize: 15, maxWidth: 480, margin: '0 auto 8px', lineHeight: 1.6 }}>
             Learn the spelling rules of Luxembourgish through 8 chapters — each with an explanation and fun exercises.
           </p>
           <div style={{ ...S.creditBox, textAlign: 'left', maxWidth: 560, margin: '16px auto 0' }}>
-            📚 <span style={{ color: '#00A3E0', fontWeight: 600 }}>Based on: </span>
+            📚 <span style={{ color: '#64748B', fontWeight: 600 }}>Based on: </span>
             <em>{ZLS_REF.book}</em> — {ZLS_REF.author} ({ZLS_REF.publisher}, {ZLS_REF.year}, {ZLS_REF.isbn})
             &nbsp;and <em>{ZLS_REF.ortho}</em>.
           </div>
@@ -542,11 +543,12 @@ function MenuScreen({ completedChapters, allScores, onSelectChapter }) {
                   alignItems: 'flex-start',
                   gap: 14,
                   transition: 'all 0.2s ease',
-                  border: done ? `1px solid ${ch.color}40` : '1px solid rgba(255,255,255,0.10)',
-                  background: done ? ch.colorLight : 'rgba(255,255,255,0.04)',
+                  border: done ? `1px solid ${ch.color}30` : '1px solid #E5E4DF',
+                  background: done ? ch.colorLight : '#FFFFFF',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = ch.colorLight; e.currentTarget.style.transform = 'translateY(-2px)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = done ? ch.colorLight : 'rgba(255,255,255,0.04)'; e.currentTarget.style.transform = 'none' }}
+                onMouseEnter={e => { e.currentTarget.style.background = ch.colorLight; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = done ? ch.colorLight : '#FFFFFF'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)' }}
               >
                 <div style={{
                   width: 48, height: 48, borderRadius: 12,
@@ -563,8 +565,8 @@ function MenuScreen({ completedChapters, allScores, onSelectChapter }) {
                       <div style={{ fontSize: 11, fontWeight: 600, color: ch.color, letterSpacing: 0.5, marginBottom: 2 }}>
                         CHAPTER {ch.id}
                       </div>
-                      <div style={{ fontWeight: 700, fontSize: 15, color: '#F1F5F9', lineHeight: 1.3 }}>{ch.title}</div>
-                      <div style={{ fontSize: 12.5, color: '#94A3B8', marginTop: 2 }}>{ch.subtitle}</div>
+                      <div style={{ fontWeight: 700, fontSize: 15, color: '#1E293B', lineHeight: 1.3 }}>{ch.title}</div>
+                      <div style={{ fontSize: 12.5, color: '#64748B', marginTop: 2 }}>{ch.subtitle}</div>
                     </div>
                     {done && score !== null && (
                       <div style={{ fontSize: 12, color: ch.color, fontWeight: 700, flexShrink: 0 }}>
@@ -613,8 +615,8 @@ function LessonScreen({ chapter, onStartExercises, onBack }) {
                 <div style={{ fontSize: 11, fontWeight: 700, color: chapter.color, letterSpacing: 0.8, marginBottom: 3 }}>
                   CHAPTER {chapter.id} OF {CHAPTERS.length}
                 </div>
-                <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: '#F8FAFC' }}>{chapter.title}</h2>
-                <div style={{ fontSize: 13, color: '#94A3B8', marginTop: 2 }}>{chapter.subtitle}</div>
+                <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: '#1E293B' }}>{chapter.title}</h2>
+                <div style={{ fontSize: 13, color: '#64748B', marginTop: 2 }}>{chapter.subtitle}</div>
               </div>
             </div>
 
@@ -623,7 +625,7 @@ function LessonScreen({ chapter, onStartExercises, onBack }) {
               background: `${chapter.color}20`,
               border: `1px solid ${chapter.color}40`,
               borderRadius: 10, padding: '12px 16px',
-              fontSize: 14, fontWeight: 600, color: '#F1F5F9',
+              fontSize: 14, fontWeight: 600, color: '#1E293B',
               marginBottom: 20, lineHeight: 1.5,
             }}>
               💡 {chapter.rule.highlight}
@@ -631,14 +633,14 @@ function LessonScreen({ chapter, onStartExercises, onBack }) {
 
             {/* Rule explanation */}
             <div style={{ marginBottom: 16 }}>
-              <h3 style={{ fontSize: 17, fontWeight: 700, color: '#F1F5F9', margin: '0 0 10px' }}>{chapter.rule.title}</h3>
-              <p style={{ color: '#CBD5E1', fontSize: 14.5, lineHeight: 1.7, margin: '0 0 16px' }}>{chapter.rule.intro}</p>
+              <h3 style={{ fontSize: 17, fontWeight: 700, color: '#1E293B', margin: '0 0 10px' }}>{chapter.rule.title}</h3>
+              <p style={{ color: '#475569', fontSize: 14.5, lineHeight: 1.7, margin: '0 0 16px' }}>{chapter.rule.intro}</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {chapter.rule.points.map((pt, i) => (
                   <div key={i} style={{
                     display: 'flex', alignItems: 'flex-start', gap: 12,
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    background: '#F8F7F3',
+                    border: '1px solid #E5E4DF',
                     borderRadius: 10, padding: '12px 14px',
                   }}>
                     <div style={{
@@ -650,7 +652,7 @@ function LessonScreen({ chapter, onStartExercises, onBack }) {
                     }}>
                       {pt.char}
                     </div>
-                    <p style={{ margin: 0, fontSize: 13.5, color: '#CBD5E1', lineHeight: 1.6 }}>{pt.description}</p>
+                    <p style={{ margin: 0, fontSize: 13.5, color: '#475569', lineHeight: 1.6 }}>{pt.description}</p>
                   </div>
                 ))}
               </div>
@@ -691,7 +693,7 @@ function ExerciseScreen({ chapter, exerciseIdx, selected, showResult, onSelect, 
             <button onClick={onBack} style={{ ...S.btn, ...S.btnSecondary, padding: '7px 14px', fontSize: 12 }}>
               ← Lesson
             </button>
-            <span style={{ fontSize: 13, color: '#94A3B8', fontWeight: 600 }}>
+            <span style={{ fontSize: 13, color: '#64748B', fontWeight: 600 }}>
               {exerciseIdx + 1} / {total}
             </span>
           </div>
@@ -707,7 +709,7 @@ function ExerciseScreen({ chapter, exerciseIdx, selected, showResult, onSelect, 
 
           {/* Question card */}
           <div style={{ ...S.card, marginBottom: 14 }}>
-            <p style={{ fontSize: 17, fontWeight: 700, color: '#F8FAFC', lineHeight: 1.5, margin: 0 }}>
+            <p style={{ fontSize: 17, fontWeight: 700, color: '#1E293B', lineHeight: 1.5, margin: 0 }}>
               {exercise.question}
             </p>
           </div>
@@ -715,21 +717,21 @@ function ExerciseScreen({ chapter, exerciseIdx, selected, showResult, onSelect, 
           {/* Options */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 16 }}>
             {exercise.options.map((opt, i) => {
-              let bg = 'rgba(255,255,255,0.06)'
-              let border = '1px solid rgba(255,255,255,0.10)'
-              let color = '#E2E8F0'
+              let bg = '#FFFFFF'
+              let border = '1px solid #E5E4DF'
+              let color = '#334155'
               let icon = null
 
               if (showResult) {
                 if (i === exercise.correct) {
-                  bg = 'rgba(16,185,129,0.15)'
-                  border = '1px solid rgba(16,185,129,0.5)'
-                  color = '#6EE7B7'
+                  bg = '#ECFDF5'
+                  border = '1px solid #86EFAC'
+                  color = '#065F46'
                   icon = '✓'
                 } else if (i === selected && i !== exercise.correct) {
-                  bg = 'rgba(239,51,64,0.15)'
-                  border = '1px solid rgba(239,51,64,0.5)'
-                  color = '#FCA5A5'
+                  bg = '#FEF2F2'
+                  border = '1px solid #FECACA'
+                  color = '#991B1B'
                   icon = '✗'
                 }
               } else if (selected === i) {
@@ -759,13 +761,13 @@ function ExerciseScreen({ chapter, exerciseIdx, selected, showResult, onSelect, 
                   <div style={{
                     width: 28, height: 28, borderRadius: 7,
                     background: showResult
-                      ? (i === exercise.correct ? 'rgba(16,185,129,0.25)' : i === selected ? 'rgba(239,51,64,0.25)' : 'rgba(255,255,255,0.08)')
-                      : (selected === i ? `${chapter.color}30` : 'rgba(255,255,255,0.08)'),
+                      ? (i === exercise.correct ? '#D1FAE5' : i === selected ? '#FEE2E2' : '#F1F0EC')
+                      : (selected === i ? `${chapter.color}20` : '#F1F0EC'),
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: 13, fontWeight: 700,
                     color: showResult
-                      ? (i === exercise.correct ? '#6EE7B7' : i === selected ? '#FCA5A5' : '#64748B')
-                      : (selected === i ? chapter.color : '#64748B'),
+                      ? (i === exercise.correct ? '#065F46' : i === selected ? '#991B1B' : '#94A3B8')
+                      : (selected === i ? chapter.color : '#94A3B8'),
                     flexShrink: 0,
                     transition: 'all 0.15s ease',
                   }}>
@@ -783,14 +785,14 @@ function ExerciseScreen({ chapter, exerciseIdx, selected, showResult, onSelect, 
           {showResult && (
             <div style={{
               ...S.card,
-              background: isCorrect ? 'rgba(16,185,129,0.12)' : 'rgba(239,51,64,0.12)',
-              border: isCorrect ? '1px solid rgba(16,185,129,0.3)' : '1px solid rgba(239,51,64,0.3)',
+              background: isCorrect ? '#ECFDF5' : '#FEF2F2',
+              border: isCorrect ? '1px solid #A7F3D0' : '1px solid #FECACA',
               marginBottom: 16,
             }}>
-              <div style={{ fontWeight: 700, fontSize: 15, color: isCorrect ? '#6EE7B7' : '#FCA5A5', marginBottom: 6 }}>
+              <div style={{ fontWeight: 700, fontSize: 15, color: isCorrect ? '#065F46' : '#991B1B', marginBottom: 6 }}>
                 {isCorrect ? '🎉 Correct!' : '🤔 Not quite!'}
               </div>
-              <p style={{ margin: '0 0 12px', fontSize: 14, color: '#CBD5E1', lineHeight: 1.6 }}>
+              <p style={{ margin: '0 0 12px', fontSize: 14, color: '#475569', lineHeight: 1.6 }}>
                 {exercise.explanation}
               </p>
               <CreditBadge chapterRef={chapter.chapterRef} />
@@ -829,10 +831,10 @@ function ChapterCompleteScreen({ chapter, score, onNext, onMenu, onRetry }) {
       <div style={S.container}>
         <div style={{ paddingTop: 48, textAlign: 'center' }}>
           <div style={{ fontSize: 64, marginBottom: 12 }}>{medal}</div>
-          <h2 style={{ fontSize: 26, fontWeight: 800, color: '#F8FAFC', margin: '0 0 6px' }}>
+          <h2 style={{ fontSize: 26, fontWeight: 800, color: '#1E293B', margin: '0 0 6px' }}>
             Chapter {chapter.id} Complete!
           </h2>
-          <div style={{ fontSize: 15, color: '#94A3B8', marginBottom: 24 }}>{chapter.title}</div>
+          <div style={{ fontSize: 15, color: '#64748B', marginBottom: 24 }}>{chapter.title}</div>
 
           <Stars score={score} total={total} />
 
@@ -840,7 +842,7 @@ function ChapterCompleteScreen({ chapter, score, onNext, onMenu, onRetry }) {
             <div style={{ fontSize: 48, fontWeight: 800, color: chapter.color }}>
               {score}<span style={{ fontSize: 24, color: '#64748B' }}>/{total}</span>
             </div>
-            <div style={{ fontSize: 14, color: '#94A3B8', marginTop: 4 }}>
+            <div style={{ fontSize: 14, color: '#64748B', marginTop: 4 }}>
               {score === total ? 'Perfect score! Excellent work! 🎊' :
                score >= total * 0.75 ? 'Great job! Keep it up!' :
                score >= total * 0.5 ? 'Good effort! Try again to improve.' :
@@ -881,28 +883,28 @@ function GameCompleteScreen({ allScores, onMenu }) {
           <div style={{ fontSize: 72, marginBottom: 12 }}>
             {pct >= 0.9 ? '🏆' : pct >= 0.75 ? '🎉' : pct >= 0.6 ? '👏' : '📚'}
           </div>
-          <div style={{ display: 'inline-block', background: 'rgba(239,51,64,0.15)', border: '1px solid rgba(239,51,64,0.3)', borderRadius: 99, padding: '6px 18px', marginBottom: 16 }}>
-            <span style={{ color: '#EF3340', fontWeight: 700, fontSize: 12, letterSpacing: 0.5 }}>🇱🇺 LUXEMBOURG GAMES</span>
+          <div style={{ display: 'inline-block', background: '#FDE8EA', border: '1px solid #F5C6CB', borderRadius: 99, padding: '6px 18px', marginBottom: 16 }}>
+            <span style={{ color: '#C4222E', fontWeight: 700, fontSize: 12, letterSpacing: 0.5 }}>🇱🇺 LUXEMBOURG GAMES</span>
           </div>
-          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#F8FAFC', margin: '0 0 8px' }}>
+          <h2 style={{ fontSize: 28, fontWeight: 800, color: '#1E293B', margin: '0 0 8px' }}>
             All 8 Chapters Complete!
           </h2>
-          <p style={{ color: '#94A3B8', fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
+          <p style={{ color: '#64748B', fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
             You've worked through all the Luxembourgish spelling rules.<br />
             Excellent dedication to learning Lëtzebuergesch!
           </p>
 
           <div style={{ ...S.card, display: 'inline-block', margin: '0 0 24px', padding: '24px 48px' }}>
-            <div style={{ fontSize: 56, fontWeight: 800, color: '#EF3340' }}>
+            <div style={{ fontSize: 56, fontWeight: 800, color: '#C4222E' }}>
               {totalCorrect}<span style={{ fontSize: 28, color: '#64748B' }}>/{totalQuestions}</span>
             </div>
-            <div style={{ fontSize: 13, color: '#94A3B8', marginTop: 4 }}>Total correct answers</div>
+            <div style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>Total correct answers</div>
             <Stars score={totalCorrect} total={totalQuestions} />
           </div>
 
           {/* Chapter summary */}
           <div style={{ ...S.card, textAlign: 'left', marginBottom: 24 }}>
-            <div style={{ fontWeight: 700, fontSize: 14, color: '#94A3B8', marginBottom: 14 }}>Chapter Scores</div>
+            <div style={{ fontWeight: 700, fontSize: 14, color: '#64748B', marginBottom: 14 }}>Chapter Scores</div>
             {CHAPTERS.map((ch, i) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10,
@@ -910,7 +912,7 @@ function GameCompleteScreen({ allScores, onMenu }) {
                 <span style={{ fontSize: 16, width: 24 }}>{ch.icon}</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                    <span style={{ fontSize: 12.5, color: '#CBD5E1', fontWeight: 500 }}>{ch.title}</span>
+                    <span style={{ fontSize: 12.5, color: '#475569', fontWeight: 500 }}>{ch.title}</span>
                     <span style={{ fontSize: 12.5, color: ch.color, fontWeight: 700 }}>
                       {allScores[i] ?? 0}/{ch.exercises.length}
                     </span>
@@ -923,15 +925,15 @@ function GameCompleteScreen({ allScores, onMenu }) {
 
           {/* Full attribution at completion */}
           <div style={{ ...S.creditBox, textAlign: 'left', marginBottom: 24 }}>
-            <div style={{ fontWeight: 700, color: '#00A3E0', marginBottom: 6, fontSize: 12 }}>📚 Official ZLS References</div>
+            <div style={{ fontWeight: 700, color: '#64748B', marginBottom: 6, fontSize: 12 }}>📚 Official ZLS References</div>
             <div style={{ marginBottom: 4 }}>
-              <strong style={{ color: '#CBD5E1' }}>Primary source:</strong> {ZLS_REF.author}, <em>{ZLS_REF.book}</em>. {ZLS_REF.publisher}, {ZLS_REF.year}. {ZLS_REF.isbn}. {ZLS_REF.pages}.
+              <strong style={{ color: '#475569' }}>Primary source:</strong> {ZLS_REF.author}, <em>{ZLS_REF.book}</em>. {ZLS_REF.publisher}, {ZLS_REF.year}. {ZLS_REF.isbn}. {ZLS_REF.pages}.
             </div>
             <div style={{ marginBottom: 4 }}>
-              <strong style={{ color: '#CBD5E1' }}>Also referenced:</strong> <em>{ZLS_REF.ortho}</em>
+              <strong style={{ color: '#475569' }}>Also referenced:</strong> <em>{ZLS_REF.ortho}</em>
             </div>
             <div>
-              <strong style={{ color: '#CBD5E1' }}>Online dictionary:</strong> {ZLS_REF.lod}
+              <strong style={{ color: '#475569' }}>Online dictionary:</strong> {ZLS_REF.lod}
             </div>
             <div style={{ marginTop: 8, fontSize: 10.5, opacity: 0.7 }}>{ZLS_REF.note}</div>
           </div>
