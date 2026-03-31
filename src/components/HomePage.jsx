@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { HelpCircle, MapPin, Camera, Building, ClipboardList } from 'lucide-react'
+import { HelpCircle, MapPin, Camera, Building, ClipboardList, TrendingUp } from 'lucide-react'
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -53,6 +53,13 @@ export default function HomePage() {
                 <span className="btn-hero-game-text">
                   <strong>Game 5: Life in Luxembourg</strong>
                   <small>{t('home.adminCardDesc', { defaultValue: 'Master daily life, admin & institutions' })}</small>
+                </span>
+              </Link>
+              <Link to="/economy" className="btn-hero-game btn-hero-game-economy">
+                <span className="btn-hero-game-icon"><TrendingUp size={26} strokeWidth={1.75} /></span>
+                <span className="btn-hero-game-text">
+                  <strong>Game 6: Economy</strong>
+                  <small>{t('home.economyCardDesc', { defaultValue: 'Explore Luxembourg\'s economy & financial sector' })}</small>
                 </span>
               </Link>
             </div>

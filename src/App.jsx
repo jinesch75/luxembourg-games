@@ -9,6 +9,7 @@ import SpellingGame from './games/spelling/SpellingGame'
 import FamousGame from './games/famous/FamousGame'
 import PlacesGame from './games/places/PlacesGame'
 import AdminGame from './games/admin/AdminGame'
+import EconomyGame from './games/economy/EconomyGame'
 import InfoHub from './components/InfoHub'
 import AdminPage from './components/admin/AdminPage'
 import LoginGate from './components/LoginGate'
@@ -36,6 +37,7 @@ function AppRoutes() {
       <Route path="/famous" element={<FamousGame />} />
       <Route path="/places" element={<PlacesGame />} />
       <Route path="/life" element={<AdminGame />} />
+      <Route path="/economy" element={<EconomyGame />} />
     </Routes>
   )
 }

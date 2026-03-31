@@ -538,6 +538,20 @@ a:hover { text-decoration: underline; }
   background: rgba(217,119,6,0.1);
   color: #D97706;
 }
+.btn-hero-game-economy {
+  background: #FFFFFF;
+  color: #1E293B;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.btn-hero-game-economy:hover {
+  box-shadow: 0 4px 16px rgba(29,78,216,0.12);
+  border-color: rgba(29,78,216,0.3);
+  color: #1E293B;
+}
+.btn-hero-game-economy .btn-hero-game-icon {
+  background: rgba(29,78,216,0.1);
+  color: #1D4ED8;
+}
 .btn-hero-game-text {
   display: flex;
   flex-direction: column;
