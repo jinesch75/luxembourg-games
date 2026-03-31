@@ -6,6 +6,7 @@ import HomePage from './components/HomePage'
 import QuizGame from './games/quiz/QuizGame'
 import GeoGame from './games/geo/GeoGame'
 import SpellingGame from './games/spelling/SpellingGame'
+import FamousGame from './games/famous/FamousGame'
 import InfoHub from './components/InfoHub'
 import AdminPage from './components/admin/AdminPage'
 import LoginGate from './components/LoginGate'
@@ -28,8 +29,9 @@ function AppRoutes() {
       <Route path="/geo"   element={<GeoGame />} />
       <Route path="/info"  element={infoHubEnabled ? <InfoHub /> : <Navigate to="/" replace />} />
       <Route path="/admin" element={<AdminPage />} />
-      {/* Hidden preview route — not linked from homepage */}
+      {/* Hidden preview routes — not linked from homepage */}
       <Route path="/spelling" element={<SpellingGame />} />
+      <Route path="/famous" element={<FamousGame />} />
     </Routes>
   )
 }
