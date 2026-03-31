@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { HelpCircle, MapPin, Camera, Building } from 'lucide-react'
+import { HelpCircle, MapPin, Camera, Building, ClipboardList } from 'lucide-react'
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -46,6 +46,13 @@ export default function HomePage() {
                 <span className="btn-hero-game-text">
                   <strong>Game 4: Famous Places</strong>
                   <small>{t('home.placesCardDesc', { defaultValue: 'Identify Luxembourg\'s iconic landmarks' })}</small>
+                </span>
+              </Link>
+              <Link to="/admin" className="btn-hero-game btn-hero-game-admin">
+                <span className="btn-hero-game-icon"><ClipboardList size={26} strokeWidth={1.75} /></span>
+                <span className="btn-hero-game-text">
+                  <strong>Game 5: Life in Luxembourg</strong>
+                  <small>{t('home.adminCardDesc', { defaultValue: 'Master daily life, admin & institutions' })}</small>
                 </span>
               </Link>
             </div>

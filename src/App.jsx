@@ -8,6 +8,7 @@ import GeoGame from './games/geo/GeoGame'
 import SpellingGame from './games/spelling/SpellingGame'
 import FamousGame from './games/famous/FamousGame'
 import PlacesGame from './games/places/PlacesGame'
+import AdminGame from './games/admin/AdminGame'
 import InfoHub from './components/InfoHub'
 import AdminPage from './components/admin/AdminPage'
 import LoginGate from './components/LoginGate'
@@ -34,6 +35,7 @@ function AppRoutes() {
       <Route path="/spelling" element={<SpellingGame />} />
       <Route path="/famous" element={<FamousGame />} />
       <Route path="/places" element={<PlacesGame />} />
+      <Route path="/admin" element={<AdminGame />} />
     </Routes>
   )
 }
