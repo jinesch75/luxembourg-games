@@ -563,7 +563,7 @@ export default function FamousGame() {
 
           {/* Photo card — compact for mobile */}
           <div style={{ ...S.card, marginTop: 12, marginBottom: 10, textAlign: 'center', padding: '16px 20px' }}>
-            <WikiImage wikiTitle={p.wikiTitle} size={140} noPhoto={p.noPhoto} photoPos={p.photoPos} imageUrl={p.imageUrl} />
+            <WikiImage key={p.wikiTitle || currentIdx} wikiTitle={p.wikiTitle} size={140} noPhoto={p.noPhoto} photoPos={p.photoPos} imageUrl={p.imageUrl} />
             <h2 style={{ fontSize: 18, fontWeight: 800, color: '#1E293B', margin: '10px 0 2px' }}>
               Who is this person?
             </h2>
