@@ -13,6 +13,7 @@ import AdminStats     from './AdminStats'
 import AdminQuestions from './AdminQuestions'
 import AdminLocations from './AdminLocations'
 import AdminInfo      from './AdminInfo'
+import AdminFamous    from './AdminFamous'
 import { useFeatureFlags } from '../../contexts/FeatureFlagsContext'
 
 const ADMIN_PASSWORD = 'biergerpakt'
@@ -22,6 +23,7 @@ const TABS = [
   { id: 'questions', icon: '🎯', label: 'Quiz Questions' },
   { id: 'locations', icon: '🗺️', label: 'Geo Locations' },
   { id: 'info',      icon: '📝', label: 'Info Content' },
+  { id: 'famous',    icon: '🌟', label: 'Famous People' },
 ]
 
 // ── Styles ─────────────────────────────────────────────────────────────────
@@ -330,6 +332,7 @@ export default function AdminPage() {
         {activeTab === 'questions' && <AdminQuestions />}
         {activeTab === 'locations' && <AdminLocations />}
         {activeTab === 'info'      && <AdminInfo />}
+        {activeTab === 'famous'    && <AdminFamous />}
       </div>
     </div>
   )

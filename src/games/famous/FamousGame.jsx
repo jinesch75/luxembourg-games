@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import { Camera } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-import { PEOPLE, getSubLevelPeople } from './data/people'
+import { PEOPLE as STATIC_PEOPLE, getSubLevelPeople } from './data/people'
 import { trackGameEvent } from '../../utils/analytics'
 
 // ─── Category colours (visual only — not used for progression) ───────────────
@@ -434,6 +434,19 @@ function Done({ scores, people, t, progress, curLevel, curSubLevel, levelUpInfo,
 export default function FamousGame() {
   const { t } = useTranslation()
 
+  // Load server-side content overrides (admin edits), fall back to bundled data
+  const [PEOPLE, setPEOPLE] = useState(STATIC_PEOPLE)
+  useEffect(() => {
+    let cancelled = false
+    fetch('/api/content')
+      .then(r => r.ok ? r.json() : {})
+      .then(data => {
+        if (!cancelled && data.people?.length > 0) setPEOPLE(data.people)
+      })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [])
+
   const [progress, setProgress] = useLocalStorage('letz-famous-progress-v2', {
     completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0, ambassador: 0 },
     totalPoints: 0,
@@ -446,7 +459,7 @@ export default function FamousGame() {
   // Get 5 people for this sub-level
   const people = useMemo(
     () => getSubLevelPeople(curLevel.id, curSubLevel, PEOPLE),
-    [curLevel.id, curSubLevel],
+    [curLevel.id, curSubLevel, PEOPLE],
   )
 
   // Shuffle options so correct answer isn't always A
