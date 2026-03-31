@@ -21,13 +21,13 @@ export default function Navbar() {
           <Link to="/" aria-label="Home" style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             width: 36, height: 36, borderRadius: 10,
-            background: 'rgba(255,255,255,0.08)',
-            color: 'rgba(255,255,255,0.75)',
+            background: 'rgba(0,0,0,0.04)',
+            color: '#64748B',
             textDecoration: 'none', fontSize: '1.1rem',
             transition: 'background 0.18s, color 0.18s',
           }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)'; e.currentTarget.style.color = '#fff' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'rgba(255,255,255,0.75)' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.08)'; e.currentTarget.style.color = '#1E293B' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; e.currentTarget.style.color = '#64748B' }}
           >
             🏠
           </Link>

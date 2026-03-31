@@ -75,7 +75,7 @@ html {
 
 body {
   font-family: var(--font);
-  background: linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%) fixed;
+  background: #F6F5F1;
   color: var(--text);
   line-height: 1.5;
   min-height: 100vh;
@@ -285,20 +285,21 @@ a:hover { text-decoration: underline; }
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-height);
-  background: #0F172A;
+  background: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   z-index: 50;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border-bottom: 1px solid #E5E4DF;
 }
 .navbar-brand a {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: white;
+  color: #1E293B;
 }
 .navbar-brand a:hover { text-decoration: none; }
 .navbar-brand-flag { font-size: 1.5rem; line-height: 1; }
@@ -313,11 +314,12 @@ a:hover { text-decoration: underline; }
 
 /* ---- Footer ---- */
 .site-footer {
-  background: var(--gray-900);
-  color: var(--gray-400);
+  background: #FFFFFF;
+  color: var(--gray-500);
   padding: 36px 0;
   font-size: 0.85rem;
   line-height: 1.6;
+  border-top: 1px solid #E5E4DF;
 }
 .site-footer-inner {
   display: flex;
@@ -331,7 +333,7 @@ a:hover { text-decoration: underline; }
   display: flex;
   align-items: center;
   gap: 8px;
-  color: white;
+  color: #1E293B;
   font-weight: 700;
   font-size: 1rem;
 }
@@ -347,14 +349,14 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
   transition: color 0.15s;
 }
-.site-footer-links a:hover { color: white; text-decoration: none; }
+.site-footer-links a:hover { color: var(--gray-800); text-decoration: none; }
 .site-footer-made {
   color: var(--gray-500);
   font-size: 0.8rem;
 }
 .site-footer-divider {
   height: 1px;
-  background: var(--gray-800);
+  background: #E5E4DF;
   margin-bottom: 20px;
 }
 .site-footer-disclaimer {
@@ -365,7 +367,7 @@ a:hover { text-decoration: underline; }
 
 /* ---- Hero Section ---- */
 .home-hero {
-  background: linear-gradient(160deg, #0F172A 0%, #1A2744 60%, #1B3A6B 100%);
+  background: #F6F5F1;
 }
 .home-hero-inner {
   padding: 56px 0 28px;
@@ -379,18 +381,18 @@ a:hover { text-decoration: underline; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.8);
+  background: #FFFFFF;
+  color: var(--gray-600);
   padding: 5px 14px;
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   margin-bottom: 24px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid #E5E4DF;
 }
 .home-hero-title {
-  color: white;
+  color: #1E293B;
   font-size: clamp(2rem, 7vw, 3.5rem);
   font-weight: 800;
   line-height: 1.1;
@@ -399,9 +401,9 @@ a:hover { text-decoration: underline; }
   text-align: center;
   display: block;
 }
-.home-hero-title-accent { color: #FFD966; font-style: italic; }
+.home-hero-title-accent { color: var(--red); font-style: italic; }
 .home-hero-sub {
-  color: #FFD966;
+  color: var(--gray-500);
   font-style: italic;
   font-size: clamp(0.88rem, 2.2vw, 1rem);
   margin-bottom: 20px;
@@ -410,7 +412,7 @@ a:hover { text-decoration: underline; }
   text-align: center;
 }
 .home-hero-choose {
-  color: rgba(255,255,255,0.45);
+  color: var(--gray-400);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -430,21 +432,22 @@ a:hover { text-decoration: underline; }
   align-items: center;
   gap: 16px;
   padding: 20px 28px;
-  border-radius: 18px;
+  border-radius: 16px;
   font-size: 0.9rem;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-width: 240px;
   max-width: 320px;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid #E5E4DF;
   position: relative;
   overflow: hidden;
+  background: #FFFFFF;
 }
 .btn-hero-game::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.07);
+  background: rgba(0,0,0,0.015);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -454,35 +457,44 @@ a:hover { text-decoration: underline; }
 .btn-hero-game:hover {
   transform: translateY(-3px);
   text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 .btn-hero-game-quiz {
-  background: linear-gradient(135deg, #EF4444 0%, #DC2626 60%, #B91C1C 100%);
-  color: rgba(255,255,255,0.95);
-  box-shadow: 0 4px 20px rgba(185,28,28,0.40), inset 0 1px 0 rgba(255,255,255,0.18);
+  background: #FFFFFF;
+  color: #1E293B;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .btn-hero-game-quiz:hover {
-  box-shadow: 0 8px 28px rgba(185,28,28,0.55), inset 0 1px 0 rgba(255,255,255,0.18);
-  color: white;
+  box-shadow: 0 4px 16px rgba(185,28,28,0.12);
+  border-color: rgba(196,34,46,0.3);
+  color: #1E293B;
 }
 .btn-hero-game-geo {
-  background: linear-gradient(135deg, #2A4E7A 0%, #36639A 60%, #3C6FAA 100%);
-  color: rgba(255,255,255,0.95);
-  box-shadow: 0 4px 20px rgba(20,50,100,0.35), inset 0 1px 0 rgba(255,255,255,0.14);
+  background: #FFFFFF;
+  color: #1E293B;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .btn-hero-game-geo:hover {
-  box-shadow: 0 8px 28px rgba(20,50,100,0.50), inset 0 1px 0 rgba(255,255,255,0.14);
-  color: white;
+  box-shadow: 0 4px 16px rgba(20,50,100,0.12);
+  border-color: rgba(42,78,122,0.3);
+  color: #1E293B;
 }
 .btn-hero-game-icon {
   flex-shrink: 0;
-  background: rgba(255,255,255,0.15);
   border-radius: 12px;
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.9);
+}
+.btn-hero-game-quiz .btn-hero-game-icon {
+  background: rgba(196,34,46,0.1);
+  color: #C4222E;
+}
+.btn-hero-game-geo .btn-hero-game-icon {
+  background: rgba(42,78,122,0.1);
+  color: #2A4E7A;
 }
 .btn-hero-game-text {
   display: flex;
@@ -495,12 +507,14 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.3;
+  color: #1E293B;
 }
 .btn-hero-game-text small {
   font-size: 0.72rem;
-  opacity: 0.82;
+  opacity: 1;
   line-height: 1.4;
   font-weight: 400;
+  color: #64748B;
 }
 .btn-hero-primary {
   display: inline-flex;
@@ -528,19 +542,19 @@ a:hover { text-decoration: underline; }
   align-items: center;
   gap: 8px;
   background: transparent;
-  color: rgba(255,255,255,0.8);
+  color: var(--gray-600);
   padding: 15px 32px;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid #E5E4DF;
   transition: border-color 0.15s, color 0.15s;
   cursor: pointer;
 }
 .btn-hero-outline:hover {
-  border-color: rgba(255,255,255,0.4);
-  color: white;
+  border-color: var(--gray-400);
+  color: var(--gray-800);
   text-decoration: none;
 }
 
@@ -715,19 +729,21 @@ a:hover { text-decoration: underline; }
 /* Biergerpakt CTA banner */
 .home-cta-section { padding: 80px 0; }
 .home-cta-inner {
-  background: linear-gradient(150deg, #0F172A 0%, #1B3A6B 100%);
+  background: #FFFFFF;
+  border: 1px solid #E5E4DF;
   border-radius: var(--radius-xl);
   padding: 72px 48px;
   text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .home-cta-inner h2 {
-  color: white;
+  color: #1E293B;
   font-size: clamp(1.5rem, 4vw, 2.2rem);
   margin-bottom: 16px;
   letter-spacing: -0.025em;
 }
 .home-cta-inner p {
-  color: rgba(255,255,255,0.65);
+  color: var(--gray-500);
   font-size: 1rem;
   max-width: 460px;
   margin: 0 auto 36px;
@@ -737,21 +753,22 @@ a:hover { text-decoration: underline; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: white;
-  color: var(--gray-900);
+  background: #C4222E;
+  color: white;
   padding: 15px 32px;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
-  transition: box-shadow 0.15s;
+  transition: background 0.15s, box-shadow 0.15s;
   border: none;
   cursor: pointer;
 }
 .btn-cta-white:hover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  background: #A71D27;
+  box-shadow: 0 4px 16px rgba(196,34,46,0.25);
   text-decoration: none;
-  color: var(--gray-900);
+  color: white;
 }
 
 /* ---- Games Modal Popup ---- */
@@ -829,7 +846,7 @@ a:hover { text-decoration: underline; }
   position: absolute;
   inset: 0;
   background: url('/bridge.jpg') center / cover no-repeat;
-  opacity: 0.12;
+  opacity: 0.18;
   pointer-events: none;
 }
 

@@ -22,12 +22,12 @@ export default function LanguageSelector() {
           display: 'flex',
           alignItems: 'center',
           gap: 6,
-          background: 'rgba(255,255,255,0.15)',
-          border: 'none',
+          background: 'rgba(0,0,0,0.04)',
+          border: '1px solid #E5E4DF',
           borderRadius: 8,
           padding: '5px 8px',
           cursor: 'pointer',
-          color: 'white',
+          color: '#1E293B',
           fontFamily: 'var(--font)',
           fontSize: '0.8rem',
           fontWeight: 600
@@ -35,7 +35,7 @@ export default function LanguageSelector() {
       >
         <span style={{ fontSize: '0.75rem' }}>{current.flag}</span>
         <span style={{ textTransform: 'uppercase', letterSpacing: '0.04em' }}>{current.code}</span>
-        <span style={{ fontSize: '0.6rem', opacity: 0.8 }}>▼</span>
+        <span style={{ fontSize: '0.6rem', opacity: 0.5, color: '#64748B' }}>▼</span>
       </button>
 
       {open && (
