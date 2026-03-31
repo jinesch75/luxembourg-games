@@ -130,9 +130,9 @@ function WikiImage({ wikiTitle, size = 220, noPhoto = false, photoPos = null, im
     return () => { cancelled = true }
   }, [wikiTitle, noPhoto, imageUrl])
 
-  // Default object-position: center face area (center 20%)
-  // Custom photoPos can override for sports/action photos
-  const objPosition = photoPos || 'center 20%'
+  // Default object-position: show from top so faces are clearly visible
+  // Custom photoPos can override for specific photos
+  const objPosition = photoPos || 'center top'
 
   return (
     <div style={{
