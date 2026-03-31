@@ -17,12 +17,13 @@ const CAT_COLORS = {
   media:      { bg: '#FEE2E2', text: '#DC2626', icon: '📺' },
 }
 
-// ─── Level system (mirrors quiz game: 4 levels × 2 sub-levels = 40 people) ──
+// ─── Level system (mirrors quiz game: 5 levels × 5 sub-levels = 125 people) ──
 export const FAMOUS_LEVELS = [
-  { id: 'newcomer',  name: 'Newcomer',  icon: '🌱', color: '#6B7280', bg: '#F3F4F6', subLevels: 2 },
-  { id: 'explorer',  name: 'Explorer',  icon: '🏘️', color: '#059669', bg: '#D1FAE5', subLevels: 2 },
-  { id: 'resident',  name: 'Resident',  icon: '🌆', color: '#2563EB', bg: '#DBEAFE', subLevels: 2 },
-  { id: 'citizen',   name: 'Citizen',   icon: '🏛️', color: '#7C3AED', bg: '#F3E8FF', subLevels: 2 },
+  { id: 'newcomer',   name: 'Newcomer',   icon: '🌱', color: '#6B7280', bg: '#F3F4F6', subLevels: 5 },
+  { id: 'explorer',   name: 'Explorer',   icon: '🏘️', color: '#059669', bg: '#D1FAE5', subLevels: 5 },
+  { id: 'resident',   name: 'Resident',   icon: '🌆', color: '#2563EB', bg: '#DBEAFE', subLevels: 5 },
+  { id: 'citizen',    name: 'Citizen',    icon: '🏛️', color: '#7C3AED', bg: '#F3E8FF', subLevels: 5 },
+  { id: 'ambassador', name: 'Ambassador', icon: '⭐', color: '#D97706', bg: '#FEF3C7', subLevels: 5 },
 ]
 
 const POINTS_PER_CORRECT = 200
@@ -398,8 +399,8 @@ function Done({ scores, people, progress, curLevel, curSubLevel, levelUpInfo, on
 export default function FamousGame() {
   const { t } = useTranslation()
 
-  const [progress, setProgress] = useLocalStorage('letz-famous-progress-v1', {
-    completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0 },
+  const [progress, setProgress] = useLocalStorage('letz-famous-progress-v2', {
+    completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0, ambassador: 0 },
     totalPoints: 0,
   })
 
@@ -424,7 +425,6 @@ export default function FamousGame() {
   const [currentIdx, setCurrentIdx] = useState(0)
   const [selected, setSelected] = useState(null)
   const [revealed, setRevealed] = useState(false)
-  const [showHint, setShowHint] = useState(false)
   const [roundScores, setRoundScores] = useState([])
   const [levelUpInfo, setLevelUpInfo] = useState(null)
   const [doneInfo, setDoneInfo] = useState(null)
@@ -432,10 +432,6 @@ export default function FamousGame() {
   const handleSelect = (idx) => {
     if (revealed) return
     setSelected(idx)
-  }
-
-  const handleConfirm = () => {
-    if (selected === null || revealed) return
     setRevealed(true)
   }
 
@@ -469,7 +465,6 @@ export default function FamousGame() {
       setCurrentIdx(i => i + 1)
       setSelected(null)
       setRevealed(false)
-      setShowHint(false)
     }
   }
 
@@ -477,7 +472,7 @@ export default function FamousGame() {
     const isFinished = allFinished || parseProgress(progress).finished
     if (isFinished) {
       setProgress({
-        completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0 },
+        completedSubLevels: { newcomer: 0, explorer: 0, resident: 0, citizen: 0, ambassador: 0 },
         totalPoints: 0,
       })
       setStep('intro')
@@ -487,7 +482,6 @@ export default function FamousGame() {
     setCurrentIdx(0)
     setSelected(null)
     setRevealed(false)
-    setShowHint(false)
     setRoundScores([])
     setLevelUpInfo(null)
     setDoneInfo(null)
@@ -559,108 +553,239 @@ export default function FamousGame() {
               Who is this person?
             </h2>
             <div style={{ fontSize: 13, color: '#64748B' }}>{cat.icon} {p.category.charAt(0).toUpperCase() + p.category.slice(1)}</div>
+          </div>
 
-            {/* Hint toggle */}
-            {!revealed && (
+          {/* Options — click to select AND reveal immediately */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
+            {p.options.map((opt, i) => (
               <button
-                onClick={() => setShowHint(h => !h)}
+                key={i}
+                onClick={() => handleSelect(i)}
                 style={{
-                  marginTop: 12,
-                  background: showHint ? '#FEF3C7' : '#F8F7F3',
-                  border: showHint ? '1px solid #FCD34D' : '1px solid #E5E4DF',
-                  borderRadius: 8, padding: '8px 16px',
-                  fontSize: 12.5, color: '#92400E', fontWeight: 600,
-                  cursor: 'pointer', transition: 'all 0.15s ease',
+                  ...S.card, padding: '14px 18px',
+                  cursor: revealed ? 'default' : 'pointer',
+                  background: '#FFFFFF',
+                  border: '1px solid #E5E4DF',
+                  display: 'flex', alignItems: 'center', gap: 12,
+                  textAlign: 'left', transition: 'all 0.15s ease', width: '100%',
                 }}
               >
-                {showHint ? `💡 ${p.hint}` : '💡 Show hint'}
+                <div style={{
+                  width: 28, height: 28, borderRadius: 7,
+                  background: '#F1F0EC',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 13, fontWeight: 700,
+                  color: '#94A3B8',
+                  flexShrink: 0,
+                }}>
+                  {String.fromCharCode(65 + i)}
+                </div>
+                <span style={{ fontSize: 14.5, color: '#334155', lineHeight: 1.5, fontWeight: 400 }}>
+                  {opt}
+                </span>
               </button>
-            )}
+            ))}
           </div>
 
-          {/* Options */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 16 }}>
-            {p.options.map((opt, i) => {
-              let bg = '#FFFFFF'
-              let border = '1px solid #E5E4DF'
-              let color = '#334155'
-              let icon = null
-
-              if (revealed) {
-                if (i === p.answer) {
-                  bg = '#ECFDF5'; border = '1px solid #86EFAC'; color = '#065F46'; icon = '✓'
-                } else if (i === selected && i !== p.answer) {
-                  bg = '#FEF2F2'; border = '1px solid #FECACA'; color = '#991B1B'; icon = '✗'
-                }
-              } else if (selected === i) {
-                bg = `${cat.text}15`; border = `1px solid ${cat.text}60`
-              }
-
-              return (
-                <button
-                  key={i}
-                  onClick={() => !revealed && handleSelect(i)}
-                  style={{
-                    ...S.card, padding: '14px 18px',
-                    cursor: revealed ? 'default' : 'pointer',
-                    background: bg, border,
-                    display: 'flex', alignItems: 'center', gap: 12,
-                    textAlign: 'left', transition: 'all 0.15s ease', width: '100%',
-                  }}
-                >
-                  <div style={{
-                    width: 28, height: 28, borderRadius: 7,
-                    background: revealed
-                      ? (i === p.answer ? '#D1FAE5' : i === selected ? '#FEE2E2' : '#F1F0EC')
-                      : (selected === i ? `${cat.text}20` : '#F1F0EC'),
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 13, fontWeight: 700,
-                    color: revealed
-                      ? (i === p.answer ? '#065F46' : i === selected ? '#991B1B' : '#94A3B8')
-                      : (selected === i ? cat.text : '#94A3B8'),
-                    flexShrink: 0, transition: 'all 0.15s ease',
-                  }}>
-                    {icon || String.fromCharCode(65 + i)}
-                  </div>
-                  <span style={{ fontSize: 14.5, color, lineHeight: 1.5, fontWeight: selected === i || (revealed && i === p.answer) ? 600 : 400 }}>
-                    {opt}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Feedback after reveal */}
+          {/* Answer Reveal — bottom-sheet panel (same style as quiz game) */}
           {revealed && (
             <div style={{
-              ...S.card,
-              background: selected === p.answer ? '#ECFDF5' : '#FEF2F2',
-              border: selected === p.answer ? '1px solid #A7F3D0' : '1px solid #FECACA',
-              marginBottom: 16,
+              position: 'fixed', inset: 0, zIndex: 1000,
+              background: 'rgba(0,0,0,0.65)',
+              display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+              animation: 'fadeIn 0.2s ease',
             }}>
-              <div style={{ fontWeight: 700, fontSize: 15, color: selected === p.answer ? '#065F46' : '#991B1B', marginBottom: 6 }}>
-                {selected === p.answer ? '🎉 Correct!' : '🤔 Not quite!'}
+              <div style={{
+                background: '#FFFFFF',
+                borderRadius: '24px 24px 0 0',
+                padding: '28px 20px calc(36px + env(safe-area-inset-bottom, 0px))',
+                maxWidth: 520, width: '100%',
+                maxHeight: '90vh',
+                overflowY: 'auto',
+                boxShadow: '0 -4px 32px rgba(0,0,0,0.14)',
+                animation: 'slideUp 0.28s ease',
+                border: '1px solid #E5E7EB',
+                borderBottom: 'none',
+              }}>
+                {/* Drag handle */}
+                <div style={{
+                  width: 36, height: 4, borderRadius: 999,
+                  background: '#D1D5DB',
+                  margin: '-8px auto 20px',
+                }} />
+
+                {/* Points earned — large hero number */}
+                <div style={{ textAlign: 'center', marginBottom: 22 }}>
+                  <div style={{
+                    fontSize: '3.2rem', fontWeight: 800,
+                    letterSpacing: '-0.03em', lineHeight: 1,
+                    color: selected === p.answer ? '#059669' : '#DC2626',
+                    animation: 'popIn 0.32s ease',
+                  }}>
+                    {selected === p.answer ? `+${POINTS_PER_CORRECT}` : '+0'}
+                  </div>
+                  <div style={{
+                    fontSize: '0.68rem', fontWeight: 600,
+                    color: '#9CA3AF',
+                    textTransform: 'uppercase', letterSpacing: '0.14em',
+                    marginTop: 5,
+                  }}>
+                    points
+                  </div>
+
+                  {/* Correct / Wrong pill badge */}
+                  <div style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                    marginTop: 14,
+                    background: selected === p.answer ? '#ECFDF5' : '#FEF2F2',
+                    border: `1px solid ${selected === p.answer ? '#6EE7B7' : '#FCA5A5'}`,
+                    borderRadius: 999,
+                    padding: '5px 16px',
+                    color: selected === p.answer ? '#065F46' : '#991B1B',
+                    fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.04em',
+                  }}>
+                    <span>{selected === p.answer ? '✓' : '✗'}</span>
+                    <span>{selected === p.answer ? 'Correct!' : 'Incorrect'}</span>
+                  </div>
+                </div>
+
+                {/* Thin divider */}
+                <div style={{ height: 1, background: '#E5E7EB', marginBottom: 18 }} />
+
+                {/* Your answer */}
+                <div style={{ marginBottom: 10 }}>
+                  <div style={{
+                    fontSize: '0.63rem', fontWeight: 700,
+                    color: '#9CA3AF',
+                    textTransform: 'uppercase', letterSpacing: '0.13em',
+                    marginBottom: 7,
+                  }}>
+                    Your answer
+                  </div>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: 12,
+                    padding: '13px 16px',
+                    background: selected === p.answer ? '#F0FDF4' : '#FFF1F2',
+                    borderRadius: 12,
+                    border: `1px solid ${selected === p.answer ? '#BBF7D0' : '#FECDD3'}`,
+                  }}>
+                    <span style={{
+                      width: 30, height: 30, borderRadius: 9, flexShrink: 0,
+                      background: selected === p.answer ? '#DCFCE7' : '#FFE4E6',
+                      color: selected === p.answer ? '#15803D' : '#BE123C',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '0.9rem', fontWeight: 800,
+                    }}>
+                      {selected === p.answer ? '✓' : '✗'}
+                    </span>
+                    <span style={{ fontWeight: 600, color: '#111827', fontSize: '0.9rem', lineHeight: 1.45 }}>
+                      {p.options[selected]}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Correct answer — only shown when wrong */}
+                {selected !== p.answer && (
+                  <div style={{ marginBottom: 10 }}>
+                    <div style={{
+                      fontSize: '0.63rem', fontWeight: 700,
+                      color: '#9CA3AF',
+                      textTransform: 'uppercase', letterSpacing: '0.11em',
+                      marginBottom: 7,
+                    }}>
+                      Correct answer
+                    </div>
+                    <div style={{
+                      display: 'flex', alignItems: 'center', gap: 12,
+                      padding: '13px 16px',
+                      background: '#F0FDF4',
+                      borderRadius: 12,
+                      border: '1px solid #BBF7D0',
+                    }}>
+                      <span style={{
+                        width: 30, height: 30, borderRadius: 9, flexShrink: 0,
+                        background: '#DCFCE7',
+                        color: '#15803D',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: '0.9rem', fontWeight: 800,
+                      }}>✓</span>
+                      <span style={{ fontWeight: 600, color: '#111827', fontSize: '0.9rem', lineHeight: 1.45 }}>
+                        {p.options[p.answer]}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Explanation */}
+                <div style={{ marginBottom: 22 }}>
+                  <div style={{
+                    fontSize: '0.63rem', fontWeight: 700,
+                    color: '#9CA3AF',
+                    textTransform: 'uppercase', letterSpacing: '0.11em',
+                    marginBottom: 7,
+                  }}>
+                    Explanation
+                  </div>
+                  <p style={{
+                    fontSize: '0.875rem', margin: 0, lineHeight: 1.65,
+                    color: '#374151',
+                    background: '#F9FAFB',
+                    borderRadius: 12,
+                    padding: '12px 15px',
+                    border: '1px solid #E5E7EB',
+                  }}>
+                    {p.explanation}
+                  </p>
+                </div>
+
+                {/* Next / Finish button */}
+                <button
+                  onClick={handleNext}
+                  style={{
+                    width: '100%',
+                    display: 'flex', alignItems: 'center', gap: 16,
+                    padding: '18px 22px',
+                    borderRadius: 16,
+                    background: '#111827',
+                    color: '#FFFFFF',
+                    border: '1px solid #1F2937',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
+                    cursor: 'pointer',
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                    fontSize: '0.95rem', fontWeight: 700,
+                    transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+                    position: 'relative', overflow: 'hidden',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-1px)'
+                    e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.28)'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)'
+                  }}
+                >
+                  <span style={{
+                    width: 44, height: 44, borderRadius: 12, flexShrink: 0,
+                    background: 'rgba(255,255,255,0.10)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '1.3rem',
+                  }}>
+                    {currentIdx + 1 >= people.length ? '🏁' : '▶'}
+                  </span>
+                  <span style={{ flex: 1, textAlign: 'left', lineHeight: 1.3 }}>
+                    <span style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700 }}>
+                      {currentIdx + 1 >= people.length ? 'See Results' : 'Next Person'}
+                    </span>
+                    <span style={{ display: 'block', fontSize: '0.7rem', opacity: 0.65, fontWeight: 400, marginTop: 1 }}>
+                      {currentIdx + 1 >= people.length
+                        ? 'See your results'
+                        : `Person ${currentIdx + 2} of ${people.length}`}
+                    </span>
+                  </span>
+                  <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
+                </button>
               </div>
-              <p style={{ margin: 0, fontSize: 14, color: '#475569', lineHeight: 1.6 }}>
-                {p.explanation}
-              </p>
-            </div>
-          )}
-
-          {/* Confirm / Next button */}
-          {!revealed && selected !== null && (
-            <div style={{ textAlign: 'center' }}>
-              <button onClick={handleConfirm} style={{ ...S.btn, ...S.btnPrimary, padding: '13px 32px', fontSize: 15 }}>
-                Confirm Answer ✓
-              </button>
-            </div>
-          )}
-
-          {revealed && (
-            <div style={{ textAlign: 'center' }}>
-              <button onClick={handleNext} style={{ ...S.btn, ...S.btnPrimary, padding: '13px 32px', fontSize: 15 }}>
-                {currentIdx + 1 >= people.length ? 'See Results 🏆' : 'Next Person →'}
-              </button>
             </div>
           )}
         </div>
