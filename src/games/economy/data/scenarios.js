@@ -258,7 +258,7 @@ const STARTER = [
       'Benelux Steel Corporation',
     ],
     answer: 0,
-    explanation: 'ARBED was Luxembourg\'s historic steel giant, founded in 1912 through the merger of three major iron and steel companies. It dominated European steel production for most of the 20th century before merging to form Arcelor, which later became part of ArcelorMittal.'
+    explanation: 'ARBED was Luxembourg\'s historic steel giant, founded in 1911 through the merger of three major iron and steel companies. It dominated European steel production for most of the 20th century before merging to form Arcelor, which later became part of ArcelorMittal.'
   },
   {
     id: 'e-fintech-ecosystem',
@@ -430,13 +430,13 @@ const ANALYST = [
     category: 'steel',
     situation: 'ARBED was founded through a merger in what year?',
     options: [
-      '1912',
+      '1911',
       '1945',
       '1960',
       '1888',
     ],
     answer: 0,
-    explanation: 'ARBED (Aciéries Réunies de Burbach-Eich-Dudelange) was created in 1912 through the merger of three major Luxembourg iron and steel producers. It became one of Europe\'s largest steelmakers and remained dominant for most of the 20th century until its merger to form Arcelor.'
+    explanation: 'ARBED (Aciéries Réunies de Burbach-Eich-Dudelange) was created in 1911 through the merger of three major Luxembourg iron and steel producers. It became one of Europe\'s largest steelmakers and remained dominant for most of the 20th century until its merger to form Arcelor.'
   },
   {
     id: 'e-fund-domiciliation',
@@ -1542,13 +1542,13 @@ const ECONOMIST = [
     category: 'trade',
     situation: 'What was the historical significance of the Benelux Customs Union for Luxembourg\'s economic development?',
     options: [
-      'Established free trade between Belgium, Netherlands, Luxembourg (1944-1958); precursor to EU integration providing market access',
+      'Established free trade between Belgium, Netherlands, Luxembourg (1948-1960); precursor to EU integration providing market access',
       'Current trade agreement',
       'Bilateral agreement only',
       'No historical importance',
     ],
     answer: 0,
-    explanation: 'The Benelux Customs Union (1944-1958) established free trade and labor mobility between Belgium, Netherlands, and Luxembourg, providing a small country access to larger markets. It pioneered customs union concepts later embedded in the European Economic Community and EU.'
+    explanation: 'The Benelux Customs Union (1948-1960) established free trade and labor mobility between Belgium, Netherlands, and Luxembourg, providing a small country access to larger markets. It pioneered customs union concepts later embedded in the European Economic Community and EU.'
   },
 
   // Sub-level 2
@@ -1558,13 +1558,13 @@ const ECONOMIST = [
     category: 'trade',
     situation: 'What historical trade union preceded Luxembourg\'s modern economic integration?',
     options: [
-      'The German Zollverein (1834); Luxembourg initially participated, influencing trade preferences',
+      'The German Zollverein (1842); Luxembourg initially participated, influencing trade preferences',
       'The ECSC (European Coal and Steel Community)',
       'Direct EU membership',
       'Benelux only arrangement',
     ],
     answer: 0,
-    explanation: 'Luxembourg initially joined the German Zollverein (customs union) in 1834, exposing the country to German trade patterns and markets. This historical precedent influenced Luxembourg\'s later search for larger economic partnerships, eventually finding them through ECSC and EU membership.'
+    explanation: 'Luxembourg initially joined the German Zollverein (customs union) in 1842, exposing the country to German trade patterns and markets. This historical precedent influenced Luxembourg\'s later search for larger economic partnerships, eventually finding them through ECSC and EU membership.'
   },
   {
     id: 'e-ecsc-founding',

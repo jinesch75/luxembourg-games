@@ -640,16 +640,16 @@ export const LOCATIONS = [
     coords: [49.8476, 6.1005],
     emoji: "🎖️",
     clue: {
-    en: "Known as the \"Patton City,\" this crossroads town in central-north Luxembourg honours the American general whose 3rd Army liberated it in September 1944. Every year a General Patton Memorial Day parade is held here.",
-    fr: "Connue sous le nom de \"Patton City\", cette ville carrefour du centre-nord du Luxembourg rend hommage au général américain dont la 3e armée la libéra en septembre 1944. Un défilé commémoratif General Patton Memorial Day y est organisé chaque année.",
-    de: "Als „Patton-Stadt\" bekannt, ehrt dieser Kreuzungsort im Zentrum-Norden Luxemburgs den amerikanischen General, dessen 3. Armee ihn im September 1944 befreite. Jedes Jahr findet hier eine Gedenkparade zum General Patton Memorial Day statt.",
-    lb: "Bekannt als „Patton-Stad\", éiert dëst Kreuzungsstaedtchen am Zentrum-Norde vu Lëtzebuerg de amerikaneschen General, deem seng 3. Arméi et am September 1944 befreit huet. All Joer gëtt hei eng Gedenkprozessioun zum General Patton Memorial Day ofgehalen."
+    en: "Known as the \"Patton City,\" this crossroads town in central-north Luxembourg honours the American general whose 3rd Army helped liberate it during the Battle of the Bulge in late 1944. Every year a General Patton Memorial Day parade is held here.",
+    fr: "Connue sous le nom de \"Patton City\", cette ville carrefour du centre-nord du Luxembourg rend hommage au général américain dont la 3e armée contribua à la libérer lors de la Bataille des Ardennes fin 1944. Un défilé commémoratif General Patton Memorial Day y est organisé chaque année.",
+    de: "Als „Patton-Stadt\" bekannt, ehrt dieser Kreuzungsort im Zentrum-Norden Luxemburgs den amerikanischen General, dessen 3. Armee ihn während der Ardennenoffensive Ende 1944 befreite. Jedes Jahr findet hier eine Gedenkparade zum General Patton Memorial Day statt.",
+    lb: "Bekannt als „Patton-Stad\", éiert dëst Kreuzungsstaedtchen am Zentrum-Norde vu Lëtzebuerg de amerikaneschen General, deem seng 3. Arméi et während der Ardennenoffensiv Enn 1944 befreit huet. All Joer gëtt hei eng Gedenkprozessioun zum General Patton Memorial Day ofgehalen."
   },
     fact: {
-    en: "Ettelbruck holds a General Patton Memorial Day every July, honouring General George S. Patton whose 3rd Army liberated the town on 25 September 1944. A statue of Patton stands in the town square.",
-    fr: "Ettelbruck organise chaque juillet un General Patton Memorial Day en l'honneur du général George S. Patton, dont la 3e armée libéra la ville le 25 septembre 1944. Une statue de Patton se dresse sur la place principale.",
-    de: "Ettelbrück veranstaltet jeden Juli einen General Patton Memorial Day zu Ehren von General George S. Patton, dessen 3. Armee die Stadt am 25. September 1944 befreite. Eine Patton-Statue steht auf dem Stadtplatz.",
-    lb: "Ettelbréck organiséiert all Juli e General Patton Memorial Day fir d'Éier vum General George S. Patton, deem seng 3. Arméi d'Stad de 25. September 1944 befreit huet. Eng Patton-Statu steet op dem Stadtplatz."
+    en: "Ettelbruck holds a General Patton Memorial Day every July, honouring General George S. Patton whose 3rd Army helped liberate the town during the Battle of the Bulge in late 1944. A statue of Patton stands in the town square.",
+    fr: "Ettelbruck organise chaque juillet un General Patton Memorial Day en l'honneur du général George S. Patton, dont la 3e armée contribua à libérer la ville lors de la Bataille des Ardennes fin 1944. Une statue de Patton se dresse sur la place principale.",
+    de: "Ettelbrück veranstaltet jeden Juli einen General Patton Memorial Day zu Ehren von General George S. Patton, dessen 3. Armee die Stadt während der Ardennenoffensive Ende 1944 befreite. Eine Patton-Statue steht auf dem Stadtplatz.",
+    lb: "Ettelbréck organiséiert all Juli e General Patton Memorial Day fir d'Éier vum General George S. Patton, deem seng 3. Arméi d'Stad während der Ardennenoffensiv Enn 1944 befreit huet. Eng Patton-Statu steet op dem Stadtplatz."
   },
     region: "Diekirch",
     link: "https://www.visitluxembourg.com/en/city/ettelbruck"
@@ -1213,10 +1213,10 @@ export const LOCATIONS = [
     lb: "No bei der belgescher Grenz am Weste vu Lëtzebuerg war dës kleng Stad Heem vun enger vun de eelste a berüümtste Brassereien vum Land, déi iwwer 150 Joer laang Béier produzéiert huet. D'Brässerei-Gebaier ginn haut fir kulturell a kommerziell Zwecker ëmgenotzt."
   },
     fact: {
-    en: "Brasserie Nationale (Bofferding brand) was founded in Steinfort in 1764, making it one of Luxembourg's oldest breweries. The company later merged and moved operations, but Bofferding remains Luxembourg's most popular local beer brand.",
-    fr: "La Brasserie Nationale (marque Bofferding) fut fondée à Steinfort en 1764, ce qui en fait l'une des plus anciennes brasseries du Luxembourg. Bofferding reste la marque de bière locale la plus populaire du pays.",
-    de: "Die Brasserie Nationale (Marke Bofferding) wurde 1764 in Steinfort gegründet und gehört damit zu den ältesten Brauereien Luxemburgs. Bofferding ist nach wie vor die beliebteste lokale Biermarke des Landes.",
-    lb: "D'Brasserie Nationale (Marke Bofferding) gouf 1764 zu Steefort gegrënnt, wat se zu enger vun de eelste Brassereien vu Lëtzebuerg mécht. Bofferding bleift d'populärste lokal Béiermark vum Land."
+    en: "Brasserie Nationale (Bofferding brand) traces its brewing origins to 1764. Now based in Bascharage, it is one of Luxembourg's oldest brewing traditions. Bofferding remains Luxembourg's most popular local beer brand.",
+    fr: "La Brasserie Nationale (marque Bofferding) fait remonter ses origines brassicoles à 1764. Aujourd'hui basée à Bascharage, c'est l'une des plus anciennes traditions brassicoles du Luxembourg. Bofferding reste la marque de bière locale la plus populaire du pays.",
+    de: "Die Brasserie Nationale (Marke Bofferding) führt ihre Brautradition auf 1764 zurück. Heute in Bascharage ansässig, gehört sie zu den ältesten Brautraditionen Luxemburgs. Bofferding ist nach wie vor die beliebteste lokale Biermarke des Landes.",
+    lb: "D'Brasserie Nationale (Marke Bofferding) féiert hir Brautradition op 1764 zeréck. Haut zu Nidderkäerjeng baséiert, gehéiert se zu den eelste Brautraditiounen vu Lëtzebuerg. Bofferding bleift d'populärste lokal Béiermark vum Land."
   },
     region: "Capellen",
     link: "https://www.visitluxembourg.com/en/region/capellen"
@@ -1808,10 +1808,10 @@ export const LOCATIONS = [
       lb: "De gréisste See vu Lëtzebuerg, dëse Stauséi am Weste vum Land, schlängelt sech kilometerwäit duerch bewaldet Bierger. Duerch Staauen vun engem Floss entstanen, versuerg hien iwwer d'Hallschent vun der Landesbevëlkerung mat Drénkwaasser a ass e populäert Ziel fir Segeln, Windsurfe a Seenwanderen."
     },
     fact: {
-      en: "The Lac de la Haute-Sûre was created in 1960 by damming the Sûre River near Insenborn. Covering 370 hectares and with a 48km shoreline, it is Luxembourg's principal water reservoir and a protected natural zone where motorised boats are prohibited.",
-      fr: "Le lac de la Haute-Sûre a été créé en 1960 en barrant la Sûre près d'Insenborn. Couvrant 370 hectares avec 48 km de rives, c'est le principal réservoir d'eau du Luxembourg et une zone naturelle protégée où les bateaux à moteur sont interdits.",
-      de: "Der Obersauer-Stausee entstand 1960 durch Aufstau der Sauer bei Insenborn. Mit 370 Hektar Fläche und 48 km Uferlinie ist er Luxemburgs wichtigster Trinkwasserspeicher und ein Schutzgebiet, in dem Motorboote verboten sind.",
-      lb: "De Stauséi Obersauer gouf 1960 duerch Staauen vun der Sauer no bei Insenborn gebaut. Mat 370 Hektar a 48 km Uferlinn ass hien Lëtzebuerg säin Haaptwasserreservoir an e Schutzgebitt, wou Motorbooter verbueden sinn."
+      en: "The Lac de la Haute-Sûre was created in 1961 by damming the Sûre River near Insenborn. Covering approximately 380 hectares, it is Luxembourg's principal water reservoir and a protected natural zone where motorised boats are prohibited.",
+      fr: "Le lac de la Haute-Sûre a été créé en 1961 en barrant la Sûre près d'Insenborn. Couvrant environ 380 hectares, c'est le principal réservoir d'eau du Luxembourg et une zone naturelle protégée où les bateaux à moteur sont interdits.",
+      de: "Der Obersauer-Stausee entstand 1961 durch Aufstau der Sauer bei Insenborn. Mit rund 380 Hektar Fläche ist er Luxemburgs wichtigster Trinkwasserspeicher und ein Schutzgebiet, in dem Motorboote verboten sind.",
+      lb: "De Stauséi Obersauer gouf 1961 duerch Staauen vun der Sauer no bei Insenborn gebaut. Mat ongeféier 380 Hektar ass hien Lëtzebuerg säin Haaptwasserreservoir an e Schutzgebitt, wou Motorbooter verbueden sinn."
     },
     region: "Wiltz",
     link: "https://www.visitluxembourg.com/en/place/nature/lac-de-la-haute-sure"

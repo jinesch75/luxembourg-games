@@ -945,8 +945,8 @@ const CITIZEN = [
     wikiTitle: 'Luxembourg_station',
     options: ['Luxembourg Central Station', 'Ettelbruck Station', 'Esch-sur-Alzette Station', 'Bettembourg Station'],
     answer: 0,
-    hint: 'This Gare Centrale with its distinctive Art Nouveau clock tower has been the main railway hub since 1859.',
-    explanation: 'Luxembourg Central Station (Gare Centrale) opened in 1859 and was rebuilt in 1907-1913 in a distinctive Mosan Renaissance and Art Nouveau style. Its clock tower is an iconic landmark. Since 2020, all public transport in Luxembourg is free, making the station even more central to daily life.',
+    hint: 'This Gare Centrale with its distinctive Mosan Renaissance clock tower has been the main railway hub since 1859.',
+    explanation: 'Luxembourg Central Station (Gare Centrale) opened in 1859 and was rebuilt in 1907-1913 in a distinctive Mosan Renaissance and Baroque Revival style. Its clock tower is an iconic landmark. Since 2020, all public transport in Luxembourg is free, making the station even more central to daily life.',
   },
 ]
 

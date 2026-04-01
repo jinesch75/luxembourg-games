@@ -192,8 +192,8 @@ const NEWCOMER = [
     wikiTitle: 'Vicky_Leandros',
     options: ['Vicky Leandros', 'Désirée Nosbusch', 'Germaine Damar', 'Taina Bofferding'],
     answer: 0,
-    hint: 'She won the Eurovision Song Contest twice, first representing Luxembourg.',
-    explanation: 'Vicky Leandros is a German-born singer who won the Eurovision Song Contest twice (1972 and 1982), initially representing Luxembourg. She became one of Europe\'s biggest entertainment stars of the 1970s.',
+    hint: 'She won the Eurovision Song Contest in 1972, representing Luxembourg.',
+    explanation: 'Vicky Leandros is a German-born singer who won the Eurovision Song Contest in 1972 representing Luxembourg with "Après toi." She also represented Luxembourg in 1967, finishing 4th. She became one of Europe\'s biggest entertainment stars of the 1970s.',
   },
   {
     id: 'f-majerus-c', level: 'newcomer', category: 'sport',
@@ -774,8 +774,8 @@ const CITIZEN = [
     wikiTitle: 'François_Faber',
     options: ['François Faber', 'Marcel Noppeney', 'Antoine Meyer', 'Batty Weber'],
     answer: 0,
-    hint: 'He was the first non-French winner of the Tour de France in 1910.',
-    explanation: 'François Faber (1887–1925) was a Luxembourgish-born cyclist who won the Tour de France in 1910, becoming the first non-French winner. He won stages across multiple Tours and was one of cycling\'s early legends.',
+    hint: 'He was the first non-French winner of the Tour de France in 1909.',
+    explanation: 'François Faber (1887–1915) was a Luxembourgish-born cyclist who won the Tour de France in 1909, becoming the first non-French winner. He won stages across multiple Tours and was one of cycling\'s early legends. He died in World War I in 1915.',
   },
   {
     id: 'f-funkel', level: 'citizen', category: 'culture',
@@ -928,7 +928,7 @@ const CITIZEN = [
     options: ['Elsy Jacobs', 'Francesco Tristano', 'Gast Waltzing', 'Edsun'],
     answer: 0,
     hint: 'She was Luxembourg\'s first female world champion cyclist.',
-    explanation: 'Elsy Jacobs (1927–1996) was a Luxembourgish cyclist who became the first-ever women\'s world road race champion in 1956. She was a pioneering figure in professional women\'s cycling.',
+    explanation: 'Elsy Jacobs (1933–1998) was a Luxembourgish cyclist who became the first-ever women\'s world road race champion in 1958. She was a pioneering figure in professional women\'s cycling.',
   },
   // sub-level 5
   {

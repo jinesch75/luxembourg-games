@@ -120,7 +120,7 @@ const CHAPTERS = [
       title: "Writing the Long 'i' Sound",
       intro: "Luxembourgish has a very consistent rule for the long 'i' sound — it is almost always written as 'ie'. This is different from doubling ('ii') and is its own special pattern.",
       points: [
-        { char: "ie", description: "Represents the long 'i' sound (like 'ee' in 'see'). Example: Bier (beer), Dier (door/animal)." },
+        { char: "ie", description: "Represents the long 'i' sound (like 'ee' in 'see'). Example: Bier (beer), Dier (door). Note: 'Déier' (with accent) means 'animal'." },
         { char: "Consistent", description: "This rule is highly regular — whenever you hear a long 'ee/i' sound, write 'ie'. Example: Lieb (dear/kind)." },
         { char: "Not ii!", description: "Don't confuse with doubled 'ii' — 'ii' also appears but in different words. 'ie' is the dominant pattern." },
       ],
@@ -949,7 +949,7 @@ function GameCompleteScreen({ allScores, onMenu, onReset }) {
           <div style={{ ...S.creditBox, textAlign: 'left', marginBottom: 24 }}>
             <div style={{ fontWeight: 700, color: '#64748B', marginBottom: 6, fontSize: 12 }}>📚 Official ZLS References</div>
             <div style={{ marginBottom: 4 }}>
-              <strong style={{ color: '#475569' }}>Primary source:</strong> {ZLS_REF.author}, <em>{ZLS_REF.book}</em>. {ZLS_REF.publisher}, {ZLS_REF.year}. {ZLS_REF.isbn}. {ZLS_REF.pages}.
+              <strong style={{ color: '#475569' }}>Primary source:</strong> {ZLS_REF.author}, <em>{ZLS_REF.book}</em>. {ZLS_REF.publisher}, {ZLS_REF.year}. {ZLS_REF.isbn}.
             </div>
             <div style={{ marginBottom: 4 }}>
               <strong style={{ color: '#475569' }}>Also referenced:</strong> <em>{ZLS_REF.ortho}</em>

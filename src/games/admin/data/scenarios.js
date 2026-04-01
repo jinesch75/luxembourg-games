@@ -216,9 +216,9 @@ const EXPLORER = [
   {
     id: 'a-bail-caution', level: 'explorer', category: 'housing',
     situation: 'When renting in Luxembourg, what is the maximum deposit (caution) a landlord can legally require?',
-    options: ['3 months\' rent', '1 month\'s rent', '6 months\' rent', '2 months\' rent'],
+    options: ['2 months\' rent', '1 month\'s rent', '6 months\' rent', '3 months\' rent'],
     answer: 0,
-    explanation: 'A landlord can legally ask for a rental deposit of up to 3 months\' rent. This must be held in a dedicated bank account. It is returned at the end of the lease, minus any deductions for damages beyond normal wear and tear.',
+    explanation: 'Since August 2024, a landlord can legally ask for a rental deposit of up to 2 months\' base rent (previously 3 months). This must be held in a dedicated bank account. It is returned at the end of the lease, minus any deductions for damages beyond normal wear and tear.',
   },
   {
     id: 'a-mvehicle-control', level: 'explorer', category: 'transport',
@@ -373,10 +373,10 @@ const EXPLORER = [
   },
   {
     id: 'a-elections-commune', level: 'explorer', category: 'housing',
-    situation: 'After how many years of residence can a non-Luxembourgish EU citizen vote in communal elections?',
-    options: ['5 years', 'Immediately', '10 years', '3 years'],
+    situation: 'Can a non-Luxembourgish EU citizen vote in communal elections?',
+    options: ['Yes, after registering on the electoral roll', 'No, only Luxembourg nationals can vote', 'Only after 10 years of residence', 'Only if they hold a permanent residence permit'],
     answer: 0,
-    explanation: 'Non-Luxembourgish residents who are EU citizens can vote in communal elections after 5 years of residence in Luxembourg. They must register on the electoral roll. Voting in national (legislative) elections is reserved for Luxembourg nationals.',
+    explanation: 'Since 2022, non-Luxembourgish residents who are EU citizens can vote in communal elections by registering on the electoral roll, with no minimum residence requirement. Voting in national (legislative) elections is reserved for Luxembourg nationals.',
   },
 ]
 
