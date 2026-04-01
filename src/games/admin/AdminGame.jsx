@@ -182,7 +182,7 @@ function Intro({ t, progress, curLevel, curSubLevel, onStart }) {
         color: 'white', textAlign: 'center',
         padding: '18px 20px 8px',
       }}>
-        <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('admin.title', { defaultValue: 'Life in Luxembourg' })}</h2>
+        <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('admin.title')}</h2>
       </div>
 
       {/* Content */}

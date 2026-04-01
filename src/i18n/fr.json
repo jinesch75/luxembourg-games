@@ -29,7 +29,18 @@
     "startGamesBtn": "Commencer les jeux",
     "quizCardDesc": "Des questions à choix multiples sur l'histoire, la culture, la langue et bien plus.",
     "mapCardDesc": "Épinglez des lieux sur la carte et gagnez des points selon votre précision.",
-    "startPlaying": "Jouer →"
+    "startPlaying": "Jouer →",
+    "game1Title": "Jeu 1 : Quiz",
+    "game2Title": "Jeu 2 : Jeu de carte",
+    "game3Title": "Jeu 3 : Personnalités célèbres",
+    "game4Title": "Jeu 4 : Lieux célèbres",
+    "game5Title": "Jeu 5 : Vivre au Luxembourg",
+    "game6Title": "Jeu 6 : Économie",
+    "famousCardDesc": "Reconnaissez les visages célèbres du Luxembourg",
+    "placesCardDesc": "Identifiez les monuments emblématiques du Luxembourg",
+    "adminCardDesc": "Maîtrisez la vie quotidienne, l'administration et les institutions",
+    "economyCardDesc": "Explorez l'économie et le secteur financier du Luxembourg",
+    "languageGameLink": "Jeu de langue"
   },
   "quiz": {
     "title": "Quiz",
@@ -788,6 +799,82 @@
     "passwordPlaceholder": "Mot de passe",
     "enterBtn": "Entrer",
     "wrongPassword": "Mot de passe incorrect. Veuillez réessayer."
+  },
+  "famous": {
+    "title": "Luxembourgeois célèbres",
+    "noPhoto": "Pas de photo disponible",
+    "whoIsThis": "Qui est cette personne ?"
+  },
+  "places": {
+    "title": "Lieux célèbres",
+    "noPhoto": "Pas de photo disponible",
+    "whatIsThis": "Quel est ce lieu ?"
+  },
+  "admin": {
+    "title": "Vivre au Luxembourg"
+  },
+  "economy": {
+    "title": "Économie du Luxembourg",
+    "levelNames": {
+      "starter": "Débutant",
+      "analyst": "Analyste",
+      "strategist": "Stratège",
+      "expert": "Expert",
+      "economist": "Économiste"
+    }
+  },
+  "spelling": {
+    "title": "Orthographe",
+    "gameWord": "Jeu"
+  },
+  "adminPage": {
+    "headerTitle": "Beautiful Luxembourg — Admin",
+    "headerSub": "Gérer le contenu des jeux et consulter les statistiques",
+    "signOut": "Déconnexion",
+    "accessTitle": "Accès administrateur",
+    "accessSubtitle": "Entrez le mot de passe administrateur pour continuer",
+    "password": "Mot de passe",
+    "incorrectPassword": "Mot de passe incorrect. Réessayez.",
+    "signIn": "Se connecter →",
+    "infoHubVisible": "Info Hub est VISIBLE pour les utilisateurs",
+    "infoHubHidden": "Info Hub est MASQUÉ pour les utilisateurs",
+    "infoHubVisibleDesc": "La section Info Hub apparaît dans la navigation et est accessible.",
+    "infoHubHiddenDesc": "L'onglet Info Hub n'est pas affiché dans le menu. Cliquez pour le réactiver à tout moment.",
+    "hideInfoHub": "Masquer Info Hub",
+    "showInfoHub": "Afficher Info Hub",
+    "tabStatistics": "Statistiques",
+    "tabQuizQuestions": "Questions Quiz",
+    "tabGeoLocations": "Emplacements Géo",
+    "tabInfoContent": "Contenu Info",
+    "tabFamousPeople": "Personnalités",
+    "tabFamousPlaces": "Lieux célèbres",
+    "tabErrorReports": "Signalements d'erreurs",
+    "deleteConfirm": "Supprimer définitivement ce signalement ?",
+    "loadingReports": "Chargement des signalements…",
+    "summaryTotal": "Total",
+    "summaryNew": "Nouveau",
+    "summaryReviewed": "Examiné",
+    "summaryResolved": "Résolu",
+    "noReportsYet": "Aucun signalement pour l'instant. Les utilisateurs verront un lien « Signaler une erreur » sur les écrans de réponse.",
+    "noReportsMatch": "Aucun signalement ne correspond à ce filtre.",
+    "questionLabel": "Question",
+    "noQuestionText": "(Aucun texte de question enregistré)",
+    "markReviewed": "Marquer comme examiné",
+    "markResolved": "Marquer comme résolu",
+    "dismiss": "Rejeter",
+    "delete": "Supprimer",
+    "statusNew": "Nouveau",
+    "statusReviewed": "Examiné",
+    "statusResolved": "Résolu",
+    "statusDismissed": "Rejeté",
+    "gameQuiz": "Quiz",
+    "gameFamous": "Personnalités",
+    "gamePlaces": "Lieux célèbres",
+    "gameEconomy": "Économie",
+    "gameGeo": "Géo",
+    "gameAdmin": "Admin/Vie",
+    "gameSpelling": "Orthographe",
+    "gameUnknown": "Inconnu"
   },
   "report": {
     "linkText": "Signaler une erreur",

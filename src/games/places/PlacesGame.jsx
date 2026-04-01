@@ -124,6 +124,7 @@ function getPhotoMap() {
 
 // ─── Photo image component (uses Railway-hosted photos, falls back to Wikipedia) ─
 function WikiImage({ placeId, wikiTitle, size = 220, noPhoto = false, photoPos = null, imageUrl = null }) {
+  const { t } = useTranslation()
   const [src, setSrc] = useState(null)
   const [error, setError] = useState(false)
 
@@ -177,14 +178,14 @@ function WikiImage({ placeId, wikiTitle, size = 220, noPhoto = false, photoPos =
         }}>
           <span style={{ fontSize: 48 }}>🏛️</span>
           {noPhoto
-            ? <span style={{ fontSize: 11, color: '#94A3B8' }}>No photo available</span>
-            : !error && <span style={{ fontSize: 11, color: '#94A3B8' }}>Loading…</span>
+            ? <span style={{ fontSize: 11, color: '#94A3B8' }}>{t('places.noPhoto')}</span>
+            : !error && <span style={{ fontSize: 11, color: '#94A3B8' }}>{t('common.loading')}</span>
           }
         </div>
       ) : (
         <img
           src={src}
-          alt="What is this place?"
+          alt={t('places.whatIsThis')}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: objPosition, display: 'block' }}
           onError={() => setError(true)}
         />
@@ -280,7 +281,7 @@ function Intro({ t, progress, curLevel, curSubLevel, onStart }) {
         color: 'white', textAlign: 'center',
         padding: '18px 20px 8px',
       }}>
-        <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('places.title', { defaultValue: 'Famous Places' })}</h2>
+        <h2 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800 }}>{t('places.title')}</h2>
       </div>
 
       {/* Content */}

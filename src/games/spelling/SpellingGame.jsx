@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import ReportErrorLink from '../../components/ReportErrorLink'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -515,7 +516,7 @@ function MenuScreen({ completedChapters, allScores, onSelectChapter }) {
           </div>
           <h1 style={{ fontSize: 32, fontWeight: 800, lineHeight: 1.2, margin: '0 0 10px', color: '#1E293B' }}>
             Lëtzebuergesch<br />
-            <span style={{ color: '#C4222E' }}>Spelling</span> Game
+            <span style={{ color: '#C4222E' }}>{t('spelling.title')}</span> {t('spelling.gameWord')}
           </h1>
           <p style={{ color: '#64748B', fontSize: 15, maxWidth: 480, margin: '0 auto 8px', lineHeight: 1.6 }}>
             Learn the spelling rules of Luxembourgish through 8 chapters — each with an explanation and fun exercises.
@@ -999,6 +1000,7 @@ function GameCompleteScreen({ allScores, onMenu, onReset }) {
 // Main Game Component
 // ─────────────────────────────────────────────────────────────────────────────
 export default function SpellingGame() {
+  const { t } = useTranslation()
   const [screen, setScreen] = useState('menu')     // menu | lesson | exercises | chapter-done | all-done
   const [chapterIdx, setChapterIdx] = useState(0)
   const [exerciseIdx, setExerciseIdx] = useState(0)

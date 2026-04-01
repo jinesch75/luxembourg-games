@@ -29,7 +29,18 @@
     "startGamesBtn": "D'Spiller starten",
     "quizCardDesc": "Luschteg Multiple-Choice-Froe iwwer Geschicht, Kultur, Sprooch a méi.",
     "mapCardDesc": "Markéier Plazen op der Kaart a verdéng Punkte je no denger Genauegkeet.",
-    "startPlaying": "Spillen →"
+    "startPlaying": "Spillen →",
+    "game1Title": "Spill 1: Quiz",
+    "game2Title": "Spill 2: Kaartespill",
+    "game3Title": "Spill 3: Berüümt Leit",
+    "game4Title": "Spill 4: Berüümt Plazen",
+    "game5Title": "Spill 5: Liewen zu Lëtzebuerg",
+    "game6Title": "Spill 6: Wirtschaft",
+    "famousCardDesc": "Erkannt déi berüümt Gesiichter vu Lëtzebuerg",
+    "placesCardDesc": "Identifizéiert Lëtzebuerg seng berüümt Monumenter",
+    "adminCardDesc": "Meeschtert den Alldag, d'Verwaltung an d'Institutiounen",
+    "economyCardDesc": "Entdeckt d'Wirtschaft an de Finanzsecteur vu Lëtzebuerg",
+    "languageGameLink": "Sproochespill"
   },
   "quiz": {
     "title": "Quiz",
@@ -788,6 +799,82 @@
     "passwordPlaceholder": "Passwuert",
     "enterBtn": "Aloggen",
     "wrongPassword": "Falscht Passwuert. Probéiert et nach eng Kéier."
+  },
+  "famous": {
+    "title": "Berüümt Lëtzebuerger",
+    "noPhoto": "Kee Foto verfügbar",
+    "whoIsThis": "Wien ass dës Persoun?"
+  },
+  "places": {
+    "title": "Berüümt Plazen",
+    "noPhoto": "Kee Foto verfügbar",
+    "whatIsThis": "Wat ass dëse Plaz?"
+  },
+  "admin": {
+    "title": "Liewen zu Lëtzebuerg"
+  },
+  "economy": {
+    "title": "Lëtzebuerger Wirtschaft",
+    "levelNames": {
+      "starter": "Ufänger",
+      "analyst": "Analyst",
+      "strategist": "Strateg",
+      "expert": "Expert",
+      "economist": "Ekonomist"
+    }
+  },
+  "spelling": {
+    "title": "Schreifweis",
+    "gameWord": "Spill"
+  },
+  "adminPage": {
+    "headerTitle": "Beautiful Luxembourg — Admin",
+    "headerSub": "Spillinhalter verwalten an d'Besucherstatistike kucken",
+    "signOut": "Ofmellen",
+    "accessTitle": "Admin-Zougang",
+    "accessSubtitle": "Gitt d'Admin-Passwuert an fir weiderzemaachen",
+    "password": "Passwuert",
+    "incorrectPassword": "Falscht Passwuert. Probéiert et nach eng Kéier.",
+    "signIn": "Aloggen →",
+    "infoHubVisible": "Info Hub ass SICHTBAR fir d'Benotzer",
+    "infoHubHidden": "Info Hub ass VERSTOPPT fir d'Benotzer",
+    "infoHubVisibleDesc": "Den Info Hub-Beräich erschéngt an der Navigatioun an ass zougänglech.",
+    "infoHubHiddenDesc": "Den Info Hub-Tab gëtt net am Menü ugewisen. Klickt fir en jidderzeit nei ze aktivéieren.",
+    "hideInfoHub": "Info Hub verstoppen",
+    "showInfoHub": "Info Hub weisen",
+    "tabStatistics": "Statistiken",
+    "tabQuizQuestions": "Quiz-Froen",
+    "tabGeoLocations": "Geo-Standuerter",
+    "tabInfoContent": "Info-Inhalt",
+    "tabFamousPeople": "Berüümt Leit",
+    "tabFamousPlaces": "Berüümt Plazen",
+    "tabErrorReports": "Feelermeldungen",
+    "deleteConfirm": "Dës Meldung permanent läschen?",
+    "loadingReports": "Meldunge gi gelueden…",
+    "summaryTotal": "Gesamt",
+    "summaryNew": "Nei",
+    "summaryReviewed": "Iwwerpréift",
+    "summaryResolved": "Geléist",
+    "noReportsYet": "Nach keng Feelermeldungen. D'Benotzer gesinn e Link \"E Feeler mellen\" op den Äntwertbildschirmer.",
+    "noReportsMatch": "Keng Meldunge passen op dëse Filter.",
+    "questionLabel": "Fro",
+    "noQuestionText": "(Keen Frotext opgeholl)",
+    "markReviewed": "Als iwwerpréift markéieren",
+    "markResolved": "Als geléist markéieren",
+    "dismiss": "Ofleenen",
+    "delete": "Läschen",
+    "statusNew": "Nei",
+    "statusReviewed": "Iwwerpréift",
+    "statusResolved": "Geléist",
+    "statusDismissed": "Ofgeleent",
+    "gameQuiz": "Quiz",
+    "gameFamous": "Berüümt Leit",
+    "gamePlaces": "Berüümt Plazen",
+    "gameEconomy": "Wirtschaft",
+    "gameGeo": "Geo",
+    "gameAdmin": "Admin/Liewen",
+    "gameSpelling": "Schreifweis",
+    "gameUnknown": "Onbekannt"
   },
   "report": {
     "linkText": "E Feeler mellen",

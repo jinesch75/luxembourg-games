@@ -29,7 +29,18 @@
     "startGamesBtn": "Start the games",
     "quizCardDesc": "Multiple-choice questions about history, culture, language and more.",
     "mapCardDesc": "Pin locations on the map and earn points based on your accuracy.",
-    "startPlaying": "Start playing →"
+    "startPlaying": "Start playing →",
+    "game1Title": "Game 1: Quiz",
+    "game2Title": "Game 2: Map Game",
+    "game3Title": "Game 3: Famous People",
+    "game4Title": "Game 4: Famous Places",
+    "game5Title": "Game 5: Life in Luxembourg",
+    "game6Title": "Game 6: Economy",
+    "famousCardDesc": "Recognise Luxembourg's famous faces",
+    "placesCardDesc": "Identify Luxembourg's iconic landmarks",
+    "adminCardDesc": "Master daily life, admin & institutions",
+    "economyCardDesc": "Explore Luxembourg's economy & financial sector",
+    "languageGameLink": "Language Game"
   },
   "quiz": {
     "title": "Quiz",
@@ -402,6 +413,82 @@
     "passwordPlaceholder": "Password",
     "enterBtn": "Enter",
     "wrongPassword": "Incorrect password. Please try again."
+  },
+  "famous": {
+    "title": "Famous Luxembourgers",
+    "noPhoto": "No photo available",
+    "whoIsThis": "Who is this person?"
+  },
+  "places": {
+    "title": "Famous Places",
+    "noPhoto": "No photo available",
+    "whatIsThis": "What is this place?"
+  },
+  "admin": {
+    "title": "Life in Luxembourg"
+  },
+  "economy": {
+    "title": "Luxembourg Economy",
+    "levelNames": {
+      "starter": "Starter",
+      "analyst": "Analyst",
+      "strategist": "Strategist",
+      "expert": "Expert",
+      "economist": "Economist"
+    }
+  },
+  "spelling": {
+    "title": "Spelling",
+    "gameWord": "Game"
+  },
+  "adminPage": {
+    "headerTitle": "Beautiful Luxembourg — Admin",
+    "headerSub": "Manage game content and view visitor statistics",
+    "signOut": "Sign out",
+    "accessTitle": "Admin Access",
+    "accessSubtitle": "Enter the admin password to continue",
+    "password": "Password",
+    "incorrectPassword": "Incorrect password. Try again.",
+    "signIn": "Sign in →",
+    "infoHubVisible": "Info Hub is VISIBLE to users",
+    "infoHubHidden": "Info Hub is HIDDEN from users",
+    "infoHubVisibleDesc": "The Info Hub section appears in the navigation and is accessible.",
+    "infoHubHiddenDesc": "The Info Hub tab is not shown in the menu. Click to re-enable it at any time.",
+    "hideInfoHub": "Hide Info Hub",
+    "showInfoHub": "Show Info Hub",
+    "tabStatistics": "Statistics",
+    "tabQuizQuestions": "Quiz Questions",
+    "tabGeoLocations": "Geo Locations",
+    "tabInfoContent": "Info Content",
+    "tabFamousPeople": "Famous People",
+    "tabFamousPlaces": "Famous Places",
+    "tabErrorReports": "Error Reports",
+    "deleteConfirm": "Delete this report permanently?",
+    "loadingReports": "Loading reports…",
+    "summaryTotal": "Total",
+    "summaryNew": "New",
+    "summaryReviewed": "Reviewed",
+    "summaryResolved": "Resolved",
+    "noReportsYet": "No error reports yet. Users will see a \"Report an error\" link on answer screens.",
+    "noReportsMatch": "No reports match this filter.",
+    "questionLabel": "Question",
+    "noQuestionText": "(No question text recorded)",
+    "markReviewed": "Mark Reviewed",
+    "markResolved": "Mark Resolved",
+    "dismiss": "Dismiss",
+    "delete": "Delete",
+    "statusNew": "New",
+    "statusReviewed": "Reviewed",
+    "statusResolved": "Resolved",
+    "statusDismissed": "Dismissed",
+    "gameQuiz": "Quiz",
+    "gameFamous": "Famous People",
+    "gamePlaces": "Famous Places",
+    "gameEconomy": "Economy",
+    "gameGeo": "Géo",
+    "gameAdmin": "Admin/Life",
+    "gameSpelling": "Spelling",
+    "gameUnknown": "Unknown"
   },
   "report": {
     "linkText": "Report an error",

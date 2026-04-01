@@ -3,28 +3,30 @@
  */
 
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
-const STATUS_LABELS = {
-  new:       { label: 'New',      color: '#DC2626', bg: '#FEF2F2', border: '#FECDD3' },
-  reviewed:  { label: 'Reviewed', color: '#D97706', bg: '#FFFBEB', border: '#FDE68A' },
-  resolved:  { label: 'Resolved', color: '#059669', bg: '#ECFDF5', border: '#A7F3D0' },
-  dismissed: { label: 'Dismissed',color: '#6B7280', bg: '#F3F4F6', border: '#D1D5DB' },
+const STATUS_COLORS = {
+  new:       { color: '#DC2626', bg: '#FEF2F2', border: '#FECDD3', labelKey: 'adminPage.statusNew' },
+  reviewed:  { color: '#D97706', bg: '#FFFBEB', border: '#FDE68A', labelKey: 'adminPage.statusReviewed' },
+  resolved:  { color: '#059669', bg: '#ECFDF5', border: '#A7F3D0', labelKey: 'adminPage.statusResolved' },
+  dismissed: { color: '#6B7280', bg: '#F3F4F6', border: '#D1D5DB', labelKey: 'adminPage.statusDismissed' },
 }
 
-const GAME_LABELS = {
-  quiz:     { icon: '🎯', label: 'Quiz' },
-  famous:   { icon: '🌟', label: 'Famous People' },
-  places:   { icon: '🏛️', label: 'Famous Places' },
-  economy:  { icon: '💶', label: 'Economy' },
-  geo:      { icon: '🗺️', label: 'Géo' },
-  admin:    { icon: '📋', label: 'Admin/Life' },
-  spelling: { icon: '📝', label: 'Spelling' },
-  unknown:  { icon: '❓', label: 'Unknown' },
+const GAME_ICONS = {
+  quiz:     { icon: '🎯', labelKey: 'adminPage.gameQuiz' },
+  famous:   { icon: '🌟', labelKey: 'adminPage.gameFamous' },
+  places:   { icon: '🏛️', labelKey: 'adminPage.gamePlaces' },
+  economy:  { icon: '💶', labelKey: 'adminPage.gameEconomy' },
+  geo:      { icon: '🗺️', labelKey: 'adminPage.gameGeo' },
+  admin:    { icon: '📋', labelKey: 'adminPage.gameAdmin' },
+  spelling: { icon: '📝', labelKey: 'adminPage.gameSpelling' },
+  unknown:  { icon: '❓', labelKey: 'adminPage.gameUnknown' },
 }
 
 export default function AdminErrorReports() {
+  const { t } = useTranslation()
   const [reports, setReports] = useState([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter]   = useState('all') // all | new | reviewed | resolved | dismissed
@@ -64,7 +66,7 @@ export default function AdminErrorReports() {
   }
 
   const deleteReport = async (id) => {
-    if (!window.confirm('Delete this report permanently?')) return
+    if (!window.confirm(t('adminPage.deleteConfirm'))) return
     try {
       await fetch(`/api/error-reports/${id}`, {
         method: 'DELETE',
@@ -80,7 +82,7 @@ export default function AdminErrorReports() {
   const newCount = reports.filter(r => r.status === 'new').length
 
   if (loading) {
-    return <div style={{ textAlign: 'center', padding: 40, color: '#6B7280' }}>Loading reports…</div>
+    return <div style={{ textAlign: 'center', padding: 40, color: '#6B7280' }}>{t('adminPage.loadingReports')}</div>
   }
 
   return (
@@ -89,10 +91,10 @@ export default function AdminErrorReports() {
       <div style={{
         display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap',
       }}>
-        <SummaryCard label="Total" value={reports.length} color="#374151" />
-        <SummaryCard label="New" value={newCount} color="#DC2626" highlight={newCount > 0} />
-        <SummaryCard label="Reviewed" value={reports.filter(r => r.status === 'reviewed').length} color="#D97706" />
-        <SummaryCard label="Resolved" value={reports.filter(r => r.status === 'resolved').length} color="#059669" />
+        <SummaryCard label={t('adminPage.summaryTotal')} value={reports.length} color="#374151" />
+        <SummaryCard label={t('adminPage.summaryNew')} value={newCount} color="#DC2626" highlight={newCount > 0} />
+        <SummaryCard label={t('adminPage.summaryReviewed')} value={reports.filter(r => r.status === 'reviewed').length} color="#D97706" />
+        <SummaryCard label={t('adminPage.summaryResolved')} value={reports.filter(r => r.status === 'resolved').length} color="#059669" />
       </div>
 
       {/* Filter bar */}
@@ -127,8 +129,8 @@ export default function AdminErrorReports() {
           color: '#9CA3AF', fontSize: '0.95rem',
         }}>
           {reports.length === 0
-            ? '🎉 No error reports yet. Users will see a "Report an error" link on answer screens.'
-            : 'No reports match this filter.'}
+            ? `🎉 ${t('adminPage.noReportsYet')}`
+            : t('adminPage.noReportsMatch')}
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -138,6 +140,7 @@ export default function AdminErrorReports() {
               report={report}
               onUpdateStatus={updateStatus}
               onDelete={deleteReport}
+              t={t}
             />
           ))}
         </div>
@@ -162,9 +165,9 @@ function SummaryCard({ label, value, color, highlight }) {
   )
 }
 
-function ReportCard({ report, onUpdateStatus, onDelete }) {
-  const status = STATUS_LABELS[report.status] || STATUS_LABELS.new
-  const game = GAME_LABELS[report.gameType] || GAME_LABELS.unknown
+function ReportCard({ report, onUpdateStatus, onDelete, t }) {
+  const statusDef = STATUS_COLORS[report.status] || STATUS_COLORS.new
+  const gameDef = GAME_ICONS[report.gameType] || GAME_ICONS.unknown
   const date = new Date(report.timestamp)
   const dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
   const timeStr = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
@@ -173,7 +176,7 @@ function ReportCard({ report, onUpdateStatus, onDelete }) {
     <div style={{
       background: '#FFFFFF',
       border: `1px solid ${report.status === 'new' ? '#FECDD3' : '#E5E7EB'}`,
-      borderLeft: `4px solid ${status.color}`,
+      borderLeft: `4px solid ${statusDef.color}`,
       borderRadius: 12,
       padding: '18px 20px',
       boxShadow: report.status === 'new' ? '0 2px 8px rgba(220,38,38,0.08)' : 'none',
@@ -186,18 +189,18 @@ function ReportCard({ report, onUpdateStatus, onDelete }) {
           background: '#F3F4F6', borderRadius: 6, padding: '3px 10px',
           fontSize: '0.75rem', fontWeight: 600, color: '#374151',
         }}>
-          {game.icon} {game.label}
+          {gameDef.icon} {t(gameDef.labelKey)}
         </span>
 
         {/* Status badge */}
         <span style={{
           display: 'inline-flex', alignItems: 'center', gap: 4,
-          background: status.bg, border: `1px solid ${status.border}`,
+          background: statusDef.bg, border: `1px solid ${statusDef.border}`,
           borderRadius: 999, padding: '2px 12px',
-          fontSize: '0.7rem', fontWeight: 700, color: status.color,
+          fontSize: '0.7rem', fontWeight: 700, color: statusDef.color,
           textTransform: 'uppercase', letterSpacing: '0.06em',
         }}>
-          {report.status === 'new' && '●'} {status.label}
+          {report.status === 'new' && '●'} {t(statusDef.labelKey)}
         </span>
 
         {/* Date */}
@@ -213,9 +216,9 @@ function ReportCard({ report, onUpdateStatus, onDelete }) {
         fontSize: '0.82rem', color: '#374151', lineHeight: 1.55,
       }}>
         <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>
-          Question · ID: {report.questionId}
+          {t('adminPage.questionLabel')} · ID: {report.questionId}
         </div>
-        {report.questionText || '(No question text recorded)'}
+        {report.questionText || t('adminPage.noQuestionText')}
       </div>
 
       {/* User message */}
@@ -231,13 +234,13 @@ function ReportCard({ report, onUpdateStatus, onDelete }) {
       {/* Actions */}
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {report.status !== 'reviewed' && (
-          <ActionBtn label="Mark Reviewed" color="#D97706" onClick={() => onUpdateStatus(report.id, 'reviewed')} />
+          <ActionBtn label={t('adminPage.markReviewed')} color="#D97706" onClick={() => onUpdateStatus(report.id, 'reviewed')} />
         )}
         {report.status !== 'resolved' && (
-          <ActionBtn label="Mark Resolved" color="#059669" onClick={() => onUpdateStatus(report.id, 'resolved')} />
+          <ActionBtn label={t('adminPage.markResolved')} color="#059669" onClick={() => onUpdateStatus(report.id, 'resolved')} />
         )}
         {report.status !== 'dismissed' && (
-          <ActionBtn label="Dismiss" color="#6B7280" onClick={() => onUpdateStatus(report.id, 'dismissed')} />
+          <ActionBtn label={t('adminPage.dismiss')} color="#6B7280" onClick={() => onUpdateStatus(report.id, 'dismissed')} />
         )}
         <button
           onClick={() => onDelete(report.id)}
@@ -249,7 +252,7 @@ function ReportCard({ report, onUpdateStatus, onDelete }) {
             opacity: 0.6,
           }}
         >
-          🗑 Delete
+          🗑 {t('adminPage.delete')}
         </button>
       </div>
     </div>

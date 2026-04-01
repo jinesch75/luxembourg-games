@@ -28,7 +28,18 @@
     "startGamesBtn": "Começar os jogos",
     "quizCardDesc": "Perguntas de escolha múltipla sobre história, cultura, língua e muito mais.",
     "mapCardDesc": "Marque locais no mapa e ganhe pontos com base na sua precisão.",
-    "startPlaying": "Jogar →"
+    "startPlaying": "Jogar →",
+    "game1Title": "Jogo 1: Quiz",
+    "game2Title": "Jogo 2: Jogo do Mapa",
+    "game3Title": "Jogo 3: Pessoas Famosas",
+    "game4Title": "Jogo 4: Lugares Famosos",
+    "game5Title": "Jogo 5: Viver no Luxemburgo",
+    "game6Title": "Jogo 6: Economia",
+    "famousCardDesc": "Reconheça os rostos famosos do Luxemburgo",
+    "placesCardDesc": "Identifique os marcos icónicos do Luxemburgo",
+    "adminCardDesc": "Domine a vida quotidiana, a administração e as instituições",
+    "economyCardDesc": "Explore a economia e o setor financeiro do Luxemburgo",
+    "languageGameLink": "Jogo de Língua"
   },
   "quiz": {
     "title": "Quiz",
@@ -693,6 +704,82 @@
       "o3": "Chocolate",
       "e": "O vale do Mosela luxemburguês produz excelentes vinhos brancos, especialmente Riesling, Rivaner (Müller-Thurgau), Auxerrois e Crémant de Luxembourg espumante. A região estende-se de Schengen a Wasserbillig."
     }
+  },
+  "famous": {
+    "title": "Luxemburgueses famosos",
+    "noPhoto": "Sem foto disponível",
+    "whoIsThis": "Quem é esta pessoa?"
+  },
+  "places": {
+    "title": "Lugares famosos",
+    "noPhoto": "Sem foto disponível",
+    "whatIsThis": "Que lugar é este?"
+  },
+  "admin": {
+    "title": "Viver no Luxemburgo"
+  },
+  "economy": {
+    "title": "Economia do Luxemburgo",
+    "levelNames": {
+      "starter": "Iniciante",
+      "analyst": "Analista",
+      "strategist": "Estrategista",
+      "expert": "Especialista",
+      "economist": "Economista"
+    }
+  },
+  "spelling": {
+    "title": "Ortografia",
+    "gameWord": "Jogo"
+  },
+  "adminPage": {
+    "headerTitle": "Beautiful Luxembourg — Admin",
+    "headerSub": "Gerir conteúdo dos jogos e ver estatísticas de visitantes",
+    "signOut": "Terminar sessão",
+    "accessTitle": "Acesso de administrador",
+    "accessSubtitle": "Introduza a palavra-passe de administrador para continuar",
+    "password": "Palavra-passe",
+    "incorrectPassword": "Palavra-passe incorreta. Tente novamente.",
+    "signIn": "Entrar →",
+    "infoHubVisible": "Info Hub está VISÍVEL para os utilizadores",
+    "infoHubHidden": "Info Hub está OCULTO para os utilizadores",
+    "infoHubVisibleDesc": "A secção Info Hub aparece na navegação e está acessível.",
+    "infoHubHiddenDesc": "O separador Info Hub não é mostrado no menu. Clique para reativar a qualquer momento.",
+    "hideInfoHub": "Ocultar Info Hub",
+    "showInfoHub": "Mostrar Info Hub",
+    "tabStatistics": "Estatísticas",
+    "tabQuizQuestions": "Perguntas do Quiz",
+    "tabGeoLocations": "Localizações Geo",
+    "tabInfoContent": "Conteúdo Info",
+    "tabFamousPeople": "Pessoas famosas",
+    "tabFamousPlaces": "Lugares famosos",
+    "tabErrorReports": "Relatórios de erros",
+    "deleteConfirm": "Eliminar este relatório permanentemente?",
+    "loadingReports": "A carregar relatórios…",
+    "summaryTotal": "Total",
+    "summaryNew": "Novo",
+    "summaryReviewed": "Revisto",
+    "summaryResolved": "Resolvido",
+    "noReportsYet": "Ainda sem relatórios de erros. Os utilizadores verão um link \"Reportar um erro\" nos ecrãs de resposta.",
+    "noReportsMatch": "Nenhum relatório corresponde a este filtro.",
+    "questionLabel": "Pergunta",
+    "noQuestionText": "(Sem texto de pergunta registado)",
+    "markReviewed": "Marcar como revisto",
+    "markResolved": "Marcar como resolvido",
+    "dismiss": "Rejeitar",
+    "delete": "Eliminar",
+    "statusNew": "Novo",
+    "statusReviewed": "Revisto",
+    "statusResolved": "Resolvido",
+    "statusDismissed": "Rejeitado",
+    "gameQuiz": "Quiz",
+    "gameFamous": "Pessoas famosas",
+    "gamePlaces": "Lugares famosos",
+    "gameEconomy": "Economia",
+    "gameGeo": "Geo",
+    "gameAdmin": "Admin/Vida",
+    "gameSpelling": "Ortografia",
+    "gameUnknown": "Desconhecido"
   },
   "report": {
     "linkText": "Reportar um erro",

@@ -29,7 +29,18 @@
     "startGamesBtn": "Spiele starten",
     "quizCardDesc": "Lustige Multiple-Choice-Fragen zu Geschichte, Kultur, Sprache und mehr.",
     "mapCardDesc": "Markiere Orte auf der Karte und verdiene Punkte je nach deiner Genauigkeit.",
-    "startPlaying": "Spielen →"
+    "startPlaying": "Spielen →",
+    "game1Title": "Spiel 1: Quiz",
+    "game2Title": "Spiel 2: Kartenspiel",
+    "game3Title": "Spiel 3: Berühmte Persönlichkeiten",
+    "game4Title": "Spiel 4: Berühmte Orte",
+    "game5Title": "Spiel 5: Leben in Luxemburg",
+    "game6Title": "Spiel 6: Wirtschaft",
+    "famousCardDesc": "Erkennen Sie Luxemburgs berühmte Gesichter",
+    "placesCardDesc": "Identifizieren Sie Luxemburgs berühmte Wahrzeichen",
+    "adminCardDesc": "Meistern Sie den Alltag, die Verwaltung und die Institutionen",
+    "economyCardDesc": "Entdecken Sie Luxemburgs Wirtschaft und Finanzsektor",
+    "languageGameLink": "Sprachspiel"
   },
   "quiz": {
     "title": "Quiz",
@@ -788,6 +799,82 @@
     "passwordPlaceholder": "Passwort",
     "enterBtn": "Eintreten",
     "wrongPassword": "Falsches Passwort. Bitte versuchen Sie es erneut."
+  },
+  "famous": {
+    "title": "Berühmte Luxemburger",
+    "noPhoto": "Kein Foto verfügbar",
+    "whoIsThis": "Wer ist diese Person?"
+  },
+  "places": {
+    "title": "Berühmte Orte",
+    "noPhoto": "Kein Foto verfügbar",
+    "whatIsThis": "Was ist dieser Ort?"
+  },
+  "admin": {
+    "title": "Leben in Luxemburg"
+  },
+  "economy": {
+    "title": "Luxemburger Wirtschaft",
+    "levelNames": {
+      "starter": "Einsteiger",
+      "analyst": "Analyst",
+      "strategist": "Stratege",
+      "expert": "Experte",
+      "economist": "Ökonom"
+    }
+  },
+  "spelling": {
+    "title": "Rechtschreibung",
+    "gameWord": "Spiel"
+  },
+  "adminPage": {
+    "headerTitle": "Beautiful Luxembourg — Admin",
+    "headerSub": "Spielinhalte verwalten und Besucherstatistiken einsehen",
+    "signOut": "Abmelden",
+    "accessTitle": "Admin-Zugang",
+    "accessSubtitle": "Geben Sie das Admin-Passwort ein, um fortzufahren",
+    "password": "Passwort",
+    "incorrectPassword": "Falsches Passwort. Versuchen Sie es erneut.",
+    "signIn": "Anmelden →",
+    "infoHubVisible": "Info Hub ist SICHTBAR für Benutzer",
+    "infoHubHidden": "Info Hub ist AUSGEBLENDET für Benutzer",
+    "infoHubVisibleDesc": "Der Info Hub-Bereich erscheint in der Navigation und ist zugänglich.",
+    "infoHubHiddenDesc": "Der Info Hub-Tab wird nicht im Menü angezeigt. Klicken Sie, um ihn jederzeit wieder zu aktivieren.",
+    "hideInfoHub": "Info Hub ausblenden",
+    "showInfoHub": "Info Hub anzeigen",
+    "tabStatistics": "Statistiken",
+    "tabQuizQuestions": "Quiz-Fragen",
+    "tabGeoLocations": "Geo-Standorte",
+    "tabInfoContent": "Info-Inhalt",
+    "tabFamousPeople": "Berühmte Persönlichkeiten",
+    "tabFamousPlaces": "Berühmte Orte",
+    "tabErrorReports": "Fehlermeldungen",
+    "deleteConfirm": "Diese Meldung dauerhaft löschen?",
+    "loadingReports": "Meldungen werden geladen…",
+    "summaryTotal": "Gesamt",
+    "summaryNew": "Neu",
+    "summaryReviewed": "Überprüft",
+    "summaryResolved": "Gelöst",
+    "noReportsYet": "Noch keine Fehlermeldungen. Benutzer sehen einen Link \"Fehler melden\" auf den Antwortbildschirmen.",
+    "noReportsMatch": "Keine Meldungen entsprechen diesem Filter.",
+    "questionLabel": "Frage",
+    "noQuestionText": "(Kein Fragetext aufgezeichnet)",
+    "markReviewed": "Als überprüft markieren",
+    "markResolved": "Als gelöst markieren",
+    "dismiss": "Ablehnen",
+    "delete": "Löschen",
+    "statusNew": "Neu",
+    "statusReviewed": "Überprüft",
+    "statusResolved": "Gelöst",
+    "statusDismissed": "Abgelehnt",
+    "gameQuiz": "Quiz",
+    "gameFamous": "Berühmte Persönlichkeiten",
+    "gamePlaces": "Berühmte Orte",
+    "gameEconomy": "Wirtschaft",
+    "gameGeo": "Geo",
+    "gameAdmin": "Admin/Leben",
+    "gameSpelling": "Rechtschreibung",
+    "gameUnknown": "Unbekannt"
   },
   "report": {
     "linkText": "Fehler melden",

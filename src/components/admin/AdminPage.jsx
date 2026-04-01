@@ -9,6 +9,7 @@
  */
 
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import AdminStats     from './AdminStats'
 import AdminQuestions from './AdminQuestions'
 import AdminLocations from './AdminLocations'
@@ -20,14 +21,14 @@ import { useFeatureFlags } from '../../contexts/FeatureFlagsContext'
 
 const ADMIN_PASSWORD = 'biergerpakt'
 
-const TABS = [
-  { id: 'stats',     icon: '📊', label: 'Statistics' },
-  { id: 'questions', icon: '🎯', label: 'Quiz Questions' },
-  { id: 'locations', icon: '🗺️', label: 'Geo Locations' },
-  { id: 'info',      icon: '📝', label: 'Info Content' },
-  { id: 'famous',    icon: '🌟', label: 'Famous People' },
-  { id: 'places',    icon: '🏛️', label: 'Famous Places' },
-  { id: 'errors',    icon: '⚑', label: 'Error Reports' },
+const TAB_KEYS = [
+  { id: 'stats',     icon: '📊', labelKey: 'adminPage.tabStatistics' },
+  { id: 'questions', icon: '🎯', labelKey: 'adminPage.tabQuizQuestions' },
+  { id: 'locations', icon: '🗺️', labelKey: 'adminPage.tabGeoLocations' },
+  { id: 'info',      icon: '📝', labelKey: 'adminPage.tabInfoContent' },
+  { id: 'famous',    icon: '🌟', labelKey: 'adminPage.tabFamousPeople' },
+  { id: 'places',    icon: '🏛️', labelKey: 'adminPage.tabFamousPlaces' },
+  { id: 'errors',    icon: '⚑', labelKey: 'adminPage.tabErrorReports' },
 ]
 
 // ── Styles ─────────────────────────────────────────────────────────────────
@@ -87,7 +88,7 @@ const S = {
 }
 
 // ── Password gate ──────────────────────────────────────────────────────────
-function LoginGate({ onAuth }) {
+function LoginGate({ onAuth, t }) {
   const [pw, setPw]       = useState('')
   const [error, setError] = useState(false)
   const [show, setShow]   = useState(false)
@@ -122,9 +123,9 @@ function LoginGate({ onAuth }) {
         textAlign: 'center',
       }}>
         <div style={{ fontSize: '3rem', marginBottom: 12 }}>🔐</div>
-        <h2 style={{ margin: '0 0 6px', fontSize: '1.3rem' }}>Admin Access</h2>
+        <h2 style={{ margin: '0 0 6px', fontSize: '1.3rem' }}>{t('adminPage.accessTitle')}</h2>
         <p style={{ color: '#64748B', fontSize: '0.88rem', margin: '0 0 24px' }}>
-          Enter the admin password to continue
+          {t('adminPage.accessSubtitle')}
         </p>
 
         <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -133,7 +134,7 @@ function LoginGate({ onAuth }) {
               type={show ? 'text' : 'password'}
               value={pw}
               onChange={e => setPw(e.target.value)}
-              placeholder="Password"
+              placeholder={t('adminPage.password')}
               autoFocus
               style={{
                 width: '100%',
@@ -162,7 +163,7 @@ function LoginGate({ onAuth }) {
 
           {error && (
             <div style={{ color: '#EF4444', fontSize: '0.85rem', fontWeight: 600 }}>
-              Incorrect password. Try again.
+              {t('adminPage.incorrectPassword')}
             </div>
           )}
 
@@ -179,7 +180,7 @@ function LoginGate({ onAuth }) {
               cursor: 'pointer',
             }}
           >
-            Sign in →
+            {t('adminPage.signIn')}
           </button>
         </form>
       </div>
@@ -188,7 +189,7 @@ function LoginGate({ onAuth }) {
 }
 
 // ── Info Hub toggle banner ─────────────────────────────────────────────────
-function InfoHubToggleBanner() {
+function InfoHubToggleBanner({ t }) {
   const { infoHubEnabled, toggleInfoHub } = useFeatureFlags()
   const [busy, setBusy] = useState(false)
 
@@ -226,12 +227,12 @@ function InfoHubToggleBanner() {
 
       <div style={{ flex: 1 }}>
         <div style={{ color: 'white', fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.02em' }}>
-          {infoHubEnabled ? '✅ Info Hub is VISIBLE to users' : '⚠️ Info Hub is HIDDEN from users'}
+          {infoHubEnabled ? `✅ ${t('adminPage.infoHubVisible')}` : `⚠️ ${t('adminPage.infoHubHidden')}`}
         </div>
         <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.78rem', marginTop: 2 }}>
           {infoHubEnabled
-            ? 'The Info Hub section appears in the navigation and is accessible.'
-            : 'The ℹ️ Info Hub tab is not shown in the menu. Click to re-enable it at any time.'}
+            ? t('adminPage.infoHubVisibleDesc')
+            : t('adminPage.infoHubHiddenDesc')}
         </div>
       </div>
 
@@ -255,7 +256,7 @@ function InfoHubToggleBanner() {
           boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
         }}
       >
-        {busy ? '...' : infoHubEnabled ? '🙈 Hide Info Hub' : '👁 Show Info Hub'}
+        {busy ? '...' : infoHubEnabled ? `🙈 ${t('adminPage.hideInfoHub')}` : `👁 ${t('adminPage.showInfoHub')}`}
       </button>
 
       <style>{`
@@ -270,13 +271,14 @@ function InfoHubToggleBanner() {
 
 // ── Main component ─────────────────────────────────────────────────────────
 export default function AdminPage() {
+  const { t } = useTranslation()
   const [authed, setAuthed] = useState(
     () => sessionStorage.getItem('admin-auth') === '1'
   )
   const [activeTab, setActiveTab] = useState('stats')
 
   if (!authed) {
-    return <LoginGate onAuth={() => setAuthed(true)} />
+    return <LoginGate onAuth={() => setAuthed(true)} t={t} />
   }
 
   const logout = () => {
@@ -290,7 +292,7 @@ export default function AdminPage() {
       <div style={S.header}>
         <div style={S.headerTitle}>
           <span>🇱🇺</span>
-          <span>Beautiful Luxembourg — Admin</span>
+          <span>{t('adminPage.headerTitle')}</span>
           <button
             onClick={logout}
             style={{
@@ -305,27 +307,27 @@ export default function AdminPage() {
               cursor: 'pointer',
             }}
           >
-            Sign out
+            {t('adminPage.signOut')}
           </button>
         </div>
         <div style={S.headerSub}>
-          Manage game content and view visitor statistics
+          {t('adminPage.headerSub')}
         </div>
       </div>
 
       {/* Info Hub visibility toggle — always visible regardless of active tab */}
-      <InfoHubToggleBanner />
+      <InfoHubToggleBanner t={t} />
 
       {/* Tab bar */}
       <div style={S.tabBar}>
-        {TABS.map(tab => (
+        {TAB_KEYS.map(tab => (
           <button
             key={tab.id}
             style={S.tab(activeTab === tab.id)}
             onClick={() => setActiveTab(tab.id)}
           >
             <span style={S.tabIcon}>{tab.icon}</span>
-            {tab.label}
+            {t(tab.labelKey)}
           </button>
         ))}
       </div>
