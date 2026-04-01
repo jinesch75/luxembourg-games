@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { PLACES as STATIC_PLACES, getSubLevelPlaces } from './data/places'
 import { trackGameEvent } from '../../utils/analytics'
+import ReportErrorLink from '../../components/ReportErrorLink'
 
 // ─── Category colours (visual only — not used for progression) ───────────────
 const CAT_COLORS = {
@@ -901,6 +902,12 @@ export default function PlacesGame() {
                   </span>
                   <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
                 </button>
+
+                <ReportErrorLink
+                  gameType="places"
+                  questionId={p.id}
+                  questionText={p.question}
+                />
               </div>
             </div>
           )}

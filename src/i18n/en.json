@@ -402,5 +402,16 @@
     "passwordPlaceholder": "Password",
     "enterBtn": "Enter",
     "wrongPassword": "Incorrect password. Please try again."
+  },
+  "report": {
+    "linkText": "Report an error",
+    "title": "Report an error",
+    "question": "Question",
+    "placeholder": "Describe the error (e.g., wrong answer, typo, incorrect explanation…)",
+    "thankYou": "Thank you! Your report has been submitted.",
+    "error": "Something went wrong. Please try again.",
+    "cancel": "Cancel",
+    "submit": "Submit Report",
+    "sending": "Sending…"
   }
 }

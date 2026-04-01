@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { PEOPLE as STATIC_PEOPLE, getSubLevelPeople } from './data/people'
 import { trackGameEvent } from '../../utils/analytics'
+import ReportErrorLink from '../../components/ReportErrorLink'
 
 // ─── Category colours (visual only — not used for progression) ───────────────
 const CAT_COLORS = {
@@ -900,6 +901,12 @@ export default function FamousGame() {
                   </span>
                   <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
                 </button>
+
+                <ReportErrorLink
+                  gameType="famous"
+                  questionId={p.id}
+                  questionText={p.question}
+                />
               </div>
             </div>
           )}

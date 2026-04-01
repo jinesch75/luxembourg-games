@@ -788,5 +788,16 @@
     "passwordPlaceholder": "Passwuert",
     "enterBtn": "Aloggen",
     "wrongPassword": "Falscht Passwuert. Probéiert et nach eng Kéier."
+  },
+  "report": {
+    "linkText": "E Feeler mellen",
+    "title": "E Feeler mellen",
+    "question": "Fro",
+    "placeholder": "Beschreift de Feeler (z.B. falsch Äntwert, Tippfeeler, falsch Erklärung…)",
+    "thankYou": "Merci! Är Meldung gouf geschéckt.",
+    "error": "Eppes ass schifgelaf. Probéiert et nach eng Kéier.",
+    "cancel": "Ofbriechen",
+    "submit": "Meldung schécken",
+    "sending": "Gëtt geschéckt…"
   }
 }

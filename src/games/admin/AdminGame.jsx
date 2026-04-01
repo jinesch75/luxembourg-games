@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { SCENARIOS as STATIC_SCENARIOS, getSubLevelScenarios } from './data/scenarios'
 import { trackGameEvent } from '../../utils/analytics'
+import ReportErrorLink from '../../components/ReportErrorLink'
 
 // ─── Category colours (visual only — not used for progression) ───────────────
 const CAT_COLORS = {
@@ -816,6 +817,12 @@ export default function AdminGame() {
                   </span>
                   <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
                 </button>
+
+                <ReportErrorLink
+                  gameType="admin"
+                  questionId={s.id}
+                  questionText={s.question}
+                />
               </div>
             </div>
           )}

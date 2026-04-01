@@ -788,5 +788,16 @@
     "passwordPlaceholder": "Passwort",
     "enterBtn": "Eintreten",
     "wrongPassword": "Falsches Passwort. Bitte versuchen Sie es erneut."
+  },
+  "report": {
+    "linkText": "Fehler melden",
+    "title": "Fehler melden",
+    "question": "Frage",
+    "placeholder": "Beschreiben Sie den Fehler (z.B. falsche Antwort, Tippfehler, falsche Erklärung…)",
+    "thankYou": "Vielen Dank! Ihre Meldung wurde gesendet.",
+    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "cancel": "Abbrechen",
+    "submit": "Meldung senden",
+    "sending": "Wird gesendet…"
   }
 }

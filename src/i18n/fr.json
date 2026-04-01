@@ -788,5 +788,16 @@
     "passwordPlaceholder": "Mot de passe",
     "enterBtn": "Entrer",
     "wrongPassword": "Mot de passe incorrect. Veuillez réessayer."
+  },
+  "report": {
+    "linkText": "Signaler une erreur",
+    "title": "Signaler une erreur",
+    "question": "Question",
+    "placeholder": "Décrivez l'erreur (par ex. : mauvaise réponse, faute de frappe, explication incorrecte…)",
+    "thankYou": "Merci ! Votre signalement a été envoyé.",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "cancel": "Annuler",
+    "submit": "Envoyer le signalement",
+    "sending": "Envoi en cours…"
   }
 }

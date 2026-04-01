@@ -7,6 +7,7 @@ import { getSubLevelLocations, calcDistance, distanceToScore, LOCATIONS, LEVEL_O
 import { useGameContent } from '../../hooks/useGameContent'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { trackGameEvent } from '../../utils/analytics'
+import ReportErrorLink from '../../components/ReportErrorLink'
 
 // Fix leaflet default icons
 delete L.Icon.Default.prototype._getIconUrl
@@ -368,6 +369,12 @@ export default function GeoGame() {
               >
                 {roundIdx + 1 >= locations.length ? t('geo.finish') : t('geo.nextRound')} →
               </button>
+
+              <ReportErrorLink
+                gameType="geo"
+                questionId={loc.id}
+                questionText={loc.clue}
+              />
             </div>
           )}
           {resultCollapsed && (

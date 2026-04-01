@@ -15,6 +15,7 @@ import AdminLocations from './AdminLocations'
 import AdminInfo      from './AdminInfo'
 import AdminFamous    from './AdminFamous'
 import AdminPlaces    from './AdminPlaces'
+import AdminErrorReports from './AdminErrorReports'
 import { useFeatureFlags } from '../../contexts/FeatureFlagsContext'
 
 const ADMIN_PASSWORD = 'biergerpakt'
@@ -26,6 +27,7 @@ const TABS = [
   { id: 'info',      icon: '📝', label: 'Info Content' },
   { id: 'famous',    icon: '🌟', label: 'Famous People' },
   { id: 'places',    icon: '🏛️', label: 'Famous Places' },
+  { id: 'errors',    icon: '⚑', label: 'Error Reports' },
 ]
 
 // ── Styles ─────────────────────────────────────────────────────────────────
@@ -336,6 +338,7 @@ export default function AdminPage() {
         {activeTab === 'info'      && <AdminInfo />}
         {activeTab === 'famous'    && <AdminFamous />}
         {activeTab === 'places'    && <AdminPlaces />}
+        {activeTab === 'errors'    && <AdminErrorReports />}
       </div>
     </div>
   )

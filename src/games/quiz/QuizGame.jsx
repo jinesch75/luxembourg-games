@@ -6,6 +6,7 @@ import { QUESTIONS, getSubLevelQuestions } from './data/questions'
 import { useGameContent } from '../../hooks/useGameContent'
 import { trackGameEvent } from '../../utils/analytics'
 import { getField, getArrayField } from '../../utils/contentLang'
+import ReportErrorLink from '../../components/ReportErrorLink'
 
 const CAT_COLORS = {
   language:     { bg: '#F3E8FF', text: '#7C3AED', icon: '🗣️' },
@@ -537,6 +538,12 @@ export default function QuizGame() {
               </span>
               <span style={{ opacity: 0.55, fontSize: '1.1rem' }}>→</span>
             </button>
+
+            <ReportErrorLink
+              gameType="quiz"
+              questionId={q.id}
+              questionText={qText(q)}
+            />
 
           </div>
         </div>

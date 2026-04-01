@@ -693,5 +693,16 @@
       "o3": "Chocolate",
       "e": "O vale do Mosela luxemburguês produz excelentes vinhos brancos, especialmente Riesling, Rivaner (Müller-Thurgau), Auxerrois e Crémant de Luxembourg espumante. A região estende-se de Schengen a Wasserbillig."
     }
+  },
+  "report": {
+    "linkText": "Reportar um erro",
+    "title": "Reportar um erro",
+    "question": "Pergunta",
+    "placeholder": "Descreva o erro (por ex.: resposta errada, erro de digitação, explicação incorreta…)",
+    "thankYou": "Obrigado! O seu relatório foi enviado.",
+    "error": "Algo correu mal. Por favor, tente novamente.",
+    "cancel": "Cancelar",
+    "submit": "Enviar relatório",
+    "sending": "A enviar…"
   }
 }

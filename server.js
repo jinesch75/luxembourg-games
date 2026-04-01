@@ -8,6 +8,10 @@
  *   PUT  /api/content        — admin: save content overrides (password required)
  *   GET  /api/photos         — public: get photo mapping (id → filename)
  *   POST /api/photos/fetch   — admin: download all photos from Wikipedia
+ *   POST /api/report-error   — public: submit an error report for a question
+ *   GET  /api/error-reports   — admin: list all error reports
+ *   PUT  /api/error-reports/:id — admin: update report status
+ *   DELETE /api/error-reports/:id — admin: delete a report
  *   /photos/*                — public: serve downloaded photo files
  *
  * Data is persisted to ./data/ on the server filesystem.
@@ -36,12 +40,14 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true })
 }
 
-const ANALYTICS_FILE = path.join(DATA_DIR, 'analytics.json')
-const CONTENT_FILE   = path.join(DATA_DIR, 'content.json')
+const ANALYTICS_FILE    = path.join(DATA_DIR, 'analytics.json')
+const CONTENT_FILE      = path.join(DATA_DIR, 'content.json')
+const ERROR_REPORTS_FILE = path.join(DATA_DIR, 'error-reports.json')
 
 // ── Load persisted data ────────────────────────────────────────────────────
 let analyticsData = { visits: [], gameEvents: [] }
 let contentOverrides = {}
+let errorReports = []
 
 try {
   if (fs.existsSync(ANALYTICS_FILE)) {
@@ -57,6 +63,13 @@ try {
   }
 } catch (e) { console.error('Could not load content overrides:', e.message) }
 
+try {
+  if (fs.existsSync(ERROR_REPORTS_FILE)) {
+    errorReports = JSON.parse(fs.readFileSync(ERROR_REPORTS_FILE, 'utf-8'))
+    if (!Array.isArray(errorReports)) errorReports = []
+  }
+} catch (e) { console.error('Could not load error reports:', e.message) }
+
 function persist(file, data) {
   try { fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf-8') }
   catch (e) { console.error('Save error:', e.message) }
@@ -68,7 +81,7 @@ app.use(express.json({ limit: '1mb' }))
 // CORS for local dev
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,OPTIONS')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,x-admin-password')
   if (req.method === 'OPTIONS') return res.sendStatus(204)
   next()
@@ -234,6 +247,111 @@ app.post('/api/place-photos/fetch', adminAuth, async (req, res) => {
     placePhotoFetchInProgress = false
   }
 })
+
+// ── Error Reports — submit a report (public) ─────────────────────────────
+app.post('/api/report-error', (req, res) => {
+  const { gameType, questionId, questionText, message } = req.body
+  if (!message || !message.trim()) {
+    return res.status(400).json({ error: 'Message is required' })
+  }
+
+  const report = {
+    id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+    gameType: gameType || 'unknown',
+    questionId: questionId || 'unknown',
+    questionText: questionText || '',
+    message: message.trim(),
+    status: 'new',           // new | reviewed | resolved | dismissed
+    timestamp: new Date().toISOString(),
+  }
+
+  errorReports.push(report)
+  persist(ERROR_REPORTS_FILE, errorReports)
+
+  // Send email notification (fire-and-forget, don't block the response)
+  sendErrorReportEmail(report).catch(e =>
+    console.error('Error sending report email:', e.message)
+  )
+
+  res.json({ ok: true, id: report.id })
+})
+
+// ── Error Reports — list all reports (admin) ─────────────────────────────
+app.get('/api/error-reports', adminAuth, (req, res) => {
+  res.json(errorReports)
+})
+
+// ── Error Reports — update report status (admin) ─────────────────────────
+app.put('/api/error-reports/:id', adminAuth, (req, res) => {
+  const report = errorReports.find(r => r.id === req.params.id)
+  if (!report) return res.status(404).json({ error: 'Report not found' })
+
+  if (req.body.status) report.status = req.body.status
+  if (req.body.adminNote !== undefined) report.adminNote = req.body.adminNote
+  report.updatedAt = new Date().toISOString()
+
+  persist(ERROR_REPORTS_FILE, errorReports)
+  res.json({ ok: true })
+})
+
+// ── Error Reports — delete a report (admin) ──────────────────────────────
+app.delete('/api/error-reports/:id', adminAuth, (req, res) => {
+  const idx = errorReports.findIndex(r => r.id === req.params.id)
+  if (idx === -1) return res.status(404).json({ error: 'Report not found' })
+  errorReports.splice(idx, 1)
+  persist(ERROR_REPORTS_FILE, errorReports)
+  res.json({ ok: true })
+})
+
+// ── Email helper for error reports ───────────────────────────────────────
+async function sendErrorReportEmail(report) {
+  // Use nodemailer if available, otherwise log to console
+  try {
+    const nodemailer = require('nodemailer')
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST || 'smtp-mail.outlook.com',
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER || 'beautiful_luxembourg@hotmail.com',
+        pass: process.env.SMTP_PASS || '',
+      },
+    })
+
+    if (!process.env.SMTP_PASS) {
+      console.log('[Error Report] Email not sent (SMTP_PASS not configured). Report:', JSON.stringify(report, null, 2))
+      return
+    }
+
+    await transporter.sendMail({
+      from: process.env.SMTP_USER || 'beautiful_luxembourg@hotmail.com',
+      to: 'beautiful_luxembourg@hotmail.com',
+      subject: `[Lëtz Play] Error Report — ${report.gameType} game — ${report.questionId}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px;">
+          <h2 style="color: #DC2626;">⚑ New Error Report</h2>
+          <table style="border-collapse: collapse; width: 100%;">
+            <tr><td style="padding: 8px; font-weight: bold; color: #374151;">Game</td><td style="padding: 8px;">${report.gameType}</td></tr>
+            <tr><td style="padding: 8px; font-weight: bold; color: #374151;">Question ID</td><td style="padding: 8px;">${report.questionId}</td></tr>
+            <tr><td style="padding: 8px; font-weight: bold; color: #374151;">Question</td><td style="padding: 8px;">${report.questionText}</td></tr>
+            <tr><td style="padding: 8px; font-weight: bold; color: #374151;">User Message</td><td style="padding: 8px; color: #DC2626;">${report.message}</td></tr>
+            <tr><td style="padding: 8px; font-weight: bold; color: #374151;">Time</td><td style="padding: 8px;">${report.timestamp}</td></tr>
+          </table>
+          <p style="margin-top: 20px; color: #6B7280; font-size: 13px;">
+            Review this report in the <a href="${process.env.APP_URL || 'https://luxembourggames.com'}/admin">Admin Panel</a> → Error Reports tab.
+          </p>
+        </div>
+      `,
+    })
+    console.log('[Error Report] Email sent for report:', report.id)
+  } catch (e) {
+    if (e.code === 'MODULE_NOT_FOUND') {
+      console.log('[Error Report] nodemailer not installed. Report logged:', JSON.stringify(report, null, 2))
+    } else {
+      throw e
+    }
+  }
+}
 
 // ── Serve Vite build ───────────────────────────────────────────────────────
 app.use(express.static(DIST_DIR))

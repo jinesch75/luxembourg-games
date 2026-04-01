@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ReportErrorLink from '../../components/ReportErrorLink'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ZLS Attribution — Referenced at every stage of the game
@@ -808,6 +809,11 @@ function ExerciseScreen({ chapter, exerciseIdx, selected, showResult, onSelect, 
               >
                 {exerciseIdx + 1 < total ? 'Next Question →' : 'See Results 🏆'}
               </button>
+              <ReportErrorLink
+                gameType="spelling"
+                questionId={`ch${chapter.id}-ex${exerciseIdx}`}
+                questionText={exercise.question}
+              />
             </div>
           )}
 
