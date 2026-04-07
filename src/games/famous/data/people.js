@@ -165,7 +165,7 @@ const NEWCOMER = [
     wikiTitle: 'Paulette_Lenert',
     options: ['Paulette Lenert', 'Lydia Mutsch', 'Corinne Cahen', 'Simone Beissel'],
     answer: 0,
-    hint: 'She became the most popular politician in Luxembourg during the COVID-19 pandemic.',
+    hint: 'She became one of Luxembourg\'s most recognised politicians during the COVID-19 pandemic.',
     explanation: 'Paulette Lenert served as Minister of Health and later Deputy Prime Minister. She gained widespread recognition for her calm, competent leadership during the pandemic.',
   },
   {
@@ -174,7 +174,7 @@ const NEWCOMER = [
     wikiTitle: 'Francesco_Tristano',
     options: ['Francesco Tristano', 'Gast Waltzing', 'Sascha Ley', 'Jeff Herr'],
     answer: 0,
-    hint: 'He is a world-famous pianist who blends classical music with electronic/techno.',
+    hint: 'He is an internationally acclaimed pianist who blends classical music with electronic/techno.',
     explanation: 'Francesco Tristano is a Luxembourgish pianist and composer known for blending Bach and classical piano with electronic and techno music. He has performed at major concert halls and clubs worldwide.',
   },
   {
@@ -183,8 +183,8 @@ const NEWCOMER = [
     wikiTitle: 'Gilles_Müller',
     options: ['Gilles Muller', 'Andy Schleck', 'Charel Grethen', 'Luc Holtz'],
     answer: 0,
-    hint: 'He was Luxembourg\'s top tennis player, famous for his big serve.',
-    explanation: 'Gilles Muller reached the quarterfinals at Wimbledon in 2017 after a legendary win over Rafael Nadal. He is the most successful tennis player in Luxembourg\'s history.',
+    hint: 'He was one of Luxembourg\'s top tennis players, famous for his big serve.',
+    explanation: 'Gilles Muller reached the quarterfinals at Wimbledon in 2017 after a legendary win over Rafael Nadal. He is one of the most successful tennis players in Luxembourg\'s history.',
   },
   {
     id: 'f-sumei', level: 'newcomer', category: 'culture',
@@ -202,8 +202,8 @@ const NEWCOMER = [
     wikiTitle: 'Christine_Majerus',
     options: ['Christine Majerus', 'Ni Xia Lian', 'Sarah De Nutte', 'Charel Grethen'],
     answer: 0,
-    hint: 'She is Luxembourg\'s most decorated female cyclist.',
-    explanation: 'Christine Majerus is a Luxembourgish professional road and cyclo-cross cyclist. She has been Luxembourg\'s national champion more than 20 times across disciplines and competed at multiple Olympics.',
+    hint: 'She is one of Luxembourg\'s most decorated female cyclists.',
+    explanation: 'Christine Majerus is a Luxembourgish professional road and cyclo-cross cyclist. She has been national champion more than 20 times across disciplines and competed at multiple Olympics.',
   },
   // sub-level 5
   {
@@ -212,8 +212,8 @@ const NEWCOMER = [
     wikiTitle: 'Guillaume,_Hereditary_Grand_Duke_of_Luxembourg',
     options: ['Grand Duke Guillaume', 'Grand Duke Henri', 'Grand Duke Jean', 'Prince Félix'],
     answer: 0,
-    hint: 'He is the current reigning Grand Duke of Luxembourg and married Countess Stéphanie de Lannoy.',
-    explanation: 'Grand Duke Guillaume is the current reigning Grand Duke of Luxembourg. The eldest son of Grand Duke Henri, he acceded to the throne on 3 October 2025 following his father\'s abdication. He married Belgian Countess Stéphanie de Lannoy in 2012.',
+    hint: 'He became the reigning Grand Duke of Luxembourg in 2025 and married Countess Stéphanie de Lannoy.',
+    explanation: 'Grand Duke Guillaume became the reigning Grand Duke of Luxembourg on 3 October 2025. The eldest son of Grand Duke Henri, he acceded to the throne following his father\'s abdication. He married Belgian Countess Stéphanie de Lannoy in 2012.',
   },
   {
     id: 'f-bech', level: 'newcomer', category: 'history',
@@ -230,8 +230,8 @@ const NEWCOMER = [
     wikiTitle: 'Joseph_Kutter',
     options: ['Joseph Kutter', 'Edward Steichen', 'Michel Majerus', 'Théo Kerg'],
     answer: 0,
-    hint: 'He is considered the greatest Luxembourgish expressionist painter.',
-    explanation: 'Joseph Kutter (1894–1941) is regarded as Luxembourg\'s most important painter. His bold expressionist style, especially his famous "Clown" series, made him an icon of Luxembourgish art.',
+    hint: 'He is considered one of Luxembourg\'s most important expressionist painters.',
+    explanation: 'Joseph Kutter (1894–1941) is regarded as one of Luxembourg\'s most important painters. His bold expressionist style, especially his famous "Clown" series, made him an icon of Luxembourgish art.',
   },
   {
     id: 'f-santer', level: 'newcomer', category: 'politics',
@@ -262,8 +262,8 @@ const EXPLORER = [
     wikiTitle: 'Anise_Koltz',
     options: ['Anise Koltz', 'Batty Weber', 'Edmond de la Fontaine', 'Roger Manderscheid'],
     answer: 0,
-    hint: 'She was Luxembourg\'s greatest poet and wrote in French, German and Luxembourgish.',
-    explanation: 'Anise Koltz (1928–2023) was Luxembourg\'s most celebrated poet. Writing in French and German, she published over 30 collections and received numerous international awards including the Goncourt de Poésie.',
+    hint: 'She was one of Luxembourg\'s most celebrated poets and wrote in French, German and Luxembourgish.',
+    explanation: 'Anise Koltz (1928–2023) was one of Luxembourg\'s most celebrated poets. Writing in French and German, she published over 30 collections and received numerous international awards including the Goncourt de Poésie.',
   },
   {
     id: 'f-thorn', level: 'explorer', category: 'history',
@@ -282,7 +282,7 @@ const EXPLORER = [
     options: ['Charel Grethen', 'Bob Jungels', 'Andy Schleck', 'Gilles Muller'],
     answer: 0,
     hint: 'He is a middle-distance runner who represented Luxembourg at the Olympics.',
-    explanation: 'Charel Grethen is Luxembourg\'s top middle-distance runner, competing in the 1500m at the Olympic Games. He holds multiple national records and has represented the country at World Championships.',
+    explanation: 'Charel Grethen became one of Luxembourg\'s leading middle-distance runners, competing in the 1500m at the Olympic Games. He holds multiple national records and has represented the country at World Championships.',
   },
   {
     id: 'f-waltzing', level: 'explorer', category: 'music',
@@ -320,7 +320,7 @@ const EXPLORER = [
     options: ['Sarah De Nutte', 'Ni Xia Lian', 'Christine Majerus', 'Charel Grethen'],
     answer: 0,
     hint: 'She is a Luxembourgish table tennis player who has competed at the European Championships.',
-    explanation: 'Sarah De Nutte is a Luxembourgish table tennis player who has been national champion multiple times. She continues the strong table tennis tradition alongside Ni Xia Lian.',
+    explanation: 'Sarah De Nutte is a Luxembourgish table tennis player who has been national champion multiple times. She became a leading figure in Luxembourg\'s strong table tennis tradition alongside Ni Xia Lian.',
   },
   {
     id: 'f-cahen', level: 'explorer', category: 'politics',
@@ -348,7 +348,7 @@ const EXPLORER = [
     options: ['Bob Jungels', 'Andy Schleck', 'Fränk Schleck', 'Ben Gastauer'],
     answer: 0,
     hint: 'He is a Luxembourgish cyclist who won a stage at the Tour de France and Liège–Bastogne–Liège.',
-    explanation: 'Bob Jungels is a professional cyclist who won Liège–Bastogne–Liège in 2022 and a Tour de France stage. He has been Luxembourg national champion and is one of the country\'s top modern riders.',
+    explanation: 'Bob Jungels is a professional cyclist who won Liège–Bastogne–Liège in 2022 and a Tour de France stage. He has been Luxembourg national champion and became one of the country\'s top modern riders.',
   },
   // sub-level 3
   {
@@ -367,7 +367,7 @@ const EXPLORER = [
     options: ['Camillo Felgen', 'Gast Waltzing', 'Francesco Tristano', 'Jeff Herr'],
     answer: 0,
     hint: 'He was a beloved Luxembourgish singer who represented Luxembourg at the Eurovision Song Contest.',
-    explanation: 'Camillo Felgen (1920–2005) was Luxembourg\'s most famous singer and radio presenter. He represented Luxembourg at the Eurovision Song Contest in 1962 and 1966, and was a household name across the country for decades.',
+    explanation: 'Camillo Felgen (1920–2005) was one of Luxembourg\'s most famous singers and radio presenters. He represented Luxembourg at the Eurovision Song Contest in 1962 and 1966, and was a household name across the country for decades.',
   },
   {
     id: 'f-bofferding', level: 'explorer', category: 'politics',
@@ -385,7 +385,7 @@ const EXPLORER = [
     options: ['Michel Rodange', 'Edmond de la Fontaine', 'Batty Weber', 'Nicolas Ries'],
     answer: 0,
     hint: 'He wrote the Luxembourgish national epic poem "Renert" (The Fox).',
-    explanation: 'Michel Rodange (1827–1876) wrote "De Renert", an epic poem in Luxembourgish based on the Reynard the Fox tradition. It is considered the masterpiece of Luxembourgish literature.',
+    explanation: 'Michel Rodange (1827–1876) wrote "De Renert", an epic poem in Luxembourgish based on the Reynard the Fox tradition. It is considered one of the masterpieces of Luxembourgish literature.',
   },
   {
     id: 'f-kirchen', level: 'explorer', category: 'sport',
@@ -413,8 +413,8 @@ const EXPLORER = [
     wikiTitle: 'Luc_Holtz',
     options: ['Luc Holtz', 'Gilles Muller', 'Jeff Saibene', 'Bob Jungels'],
     answer: 0,
-    hint: 'He is the long-serving head coach of the Luxembourg national football team.',
-    explanation: 'Luc Holtz has been the head coach of the Luxembourg national football team since 2010, making him one of the longest-serving national team coaches in European football.',
+    hint: 'He became head coach of the Luxembourg national football team in 2010.',
+    explanation: 'Luc Holtz became head coach of the Luxembourg national football team in 2010, making him one of the longest-serving national team coaches in European football.',
   },
   {
     id: 'f-josephine-charlotte', level: 'explorer', category: 'royalty',
@@ -440,8 +440,8 @@ const EXPLORER = [
     wikiTitle: 'Andy_Bausch',
     options: ['Andy Bausch', 'Michel Majerus', 'Joseph Kutter', 'Su-Mei Tse'],
     answer: 0,
-    hint: 'He is Luxembourg\'s most famous film director, known for pioneering Luxembourgish-language cinema.',
-    explanation: 'Andy Bausch (born 1959) is a Luxembourgish film director who has been the driving force behind Luxembourg\'s film industry for over 30 years. His notable films include "A Wopbobaloobop a Lopbamboom" (1989) and "Rusty Boys" (2017).',
+    hint: 'He is one of Luxembourg\'s most prominent film directors, known for pioneering Luxembourgish-language cinema.',
+    explanation: 'Andy Bausch (born 1959) is a Luxembourgish film director who has been a driving force behind Luxembourg\'s film industry for over 30 years. His notable films include "A Wopbobaloobop a Lopbamboom" (1989) and "Rusty Boys" (2017).',
   },
   // sub-level 5
   {
@@ -450,8 +450,8 @@ const EXPLORER = [
     wikiTitle: 'Claude_Wiseler',
     options: ['Claude Wiseler', 'Luc Frieden', 'Xavier Bettel', 'Jean-Claude Juncker'],
     answer: 0,
-    hint: 'He is the current President of the Luxembourg Chamber of Deputies.',
-    explanation: 'Claude Wiseler is a Luxembourgish CSV politician who serves as President of the Chamber of Deputies (Parliament). He previously served as Minister of Public Works and led the CSV as prime minister candidate in the 2018 elections.',
+    hint: 'He became President of the Luxembourg Chamber of Deputies in 2023.',
+    explanation: 'Claude Wiseler is a Luxembourgish CSV politician who became President of the Chamber of Deputies (Parliament) in 2023. He previously served as Minister of Public Works and led the CSV as prime minister candidate in the 2018 elections.',
   },
   {
     id: 'f-gastauer', level: 'explorer', category: 'sport',
@@ -470,7 +470,7 @@ const EXPLORER = [
     imageUrl: 'https://upload.wikimedia.org/wikipedia/lb/c/c1/VanWervekeThierry.jpg',
     options: ['Thierry van Werveke', 'Andy Bausch', 'Michel Majerus', 'Edward Steichen'],
     answer: 0,
-    hint: 'He was Luxembourg\'s most beloved actor, known internationally for his role in "Knockin\' on Heaven\'s Door".',
+    hint: 'He was one of Luxembourg\'s most celebrated actors, known internationally for his role in "Knockin\' on Heaven\'s Door".',
     explanation: 'Thierry van Werveke (1958–2009) was a Luxembourgish actor who appeared in over 60 films. He starred in Andy Bausch\'s films and became internationally known for "Knockin\' on Heaven\'s Door." He won the Adolf-Grimme-Preis in 2008.',
   },
   {
@@ -512,7 +512,7 @@ const RESIDENT = [
     options: ['Yuriko Backes', 'Taina Bofferding', 'Paulette Lenert', 'Corinne Cahen'],
     answer: 0,
     hint: 'She became Luxembourg\'s first female Minister of Finance in 2021.',
-    explanation: 'Yuriko Backes is a Luxembourgish politician who made history in 2021 as the country\'s first female Minister of Finance. She currently serves as Minister for Gender Equality and Diversity in the Frieden government.',
+    explanation: 'Yuriko Backes is a Luxembourgish politician who made history in 2021 as the country\'s first female Minister of Finance. She was appointed Minister for Gender Equality and Diversity in the Frieden government in 2023.',
   },
   {
     id: 'f-minella', level: 'resident', category: 'sport',
@@ -529,8 +529,8 @@ const RESIDENT = [
     wikiTitle: 'Marc_Angel',
     options: ['Marc Angel', 'Xavier Bettel', 'Félix Braz', 'Jean Asselborn'],
     answer: 0,
-    hint: 'He is a Luxembourgish LSAP politician who serves as a Member of the European Parliament.',
-    explanation: 'Marc Angel is a Luxembourgish socialist politician who has been a Member of the European Parliament since 2019. He served as one of its Vice-Presidents from 2023 to 2024, and is a prominent voice on social affairs and equality.',
+    hint: 'He is a Luxembourgish LSAP politician who became a Member of the European Parliament in 2019.',
+    explanation: 'Marc Angel is a Luxembourgish socialist politician who became a Member of the European Parliament in 2019. He served as one of its Vice-Presidents from 2023 to 2024, and became a prominent voice on social affairs and equality.',
   },
   {
     id: 'f-noppeney', level: 'resident', category: 'history',
@@ -624,11 +624,11 @@ const RESIDENT = [
     wikiTitle: 'Charly_Gaul',
     options: ['Charly Gaul', 'Josy Barthel', 'Charel Grethen', 'Bob Jungels'],
     answer: 0,
-    hint: 'He was one of Luxembourg\'s greatest cyclists, winning the Tour de France and Giro d\'Italia.',
-    explanation: 'Charly Gaul (1932–2005), known as "The Angel of the Mountains", was a legendary Luxembourgish cyclist. He won the 1958 Tour de France, the 1956 Giro d\'Italia, and dominated mountain stages throughout his career.',
+    hint: 'He was one of Luxembourg\'s most celebrated cyclists, winning the Tour de France and Giro d\'Italia.',
+    explanation: 'Charly Gaul (1932–2005), known as "The Angel of the Mountains", was a celebrated Luxembourgish cyclist. He won the 1958 Tour de France, the 1956 Giro d\'Italia, and dominated mountain stages throughout his career.',
   },
   {
-    id: 'f-jacobs', level: 'resident', category: 'science',
+    id: 'f-jacobs', level: 'citizen', category: 'science',
     name: 'Michel Lucius',
     wikiTitle: 'Michel_Lucius',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/lb/3/3c/Lucius.jpg',
@@ -645,7 +645,7 @@ const RESIDENT = [
     options: ['Princess Alexandra', 'Princess Stéphanie', 'Grand Duchess Maria Teresa', 'Grand Duchess Charlotte'],
     answer: 0,
     hint: 'She is the only daughter of Grand Duke Henri and Grand Duchess Maria Teresa.',
-    explanation: 'Princess Alexandra is the only daughter and fourth child of Grand Duke Henri and Grand Duchess Maria Teresa. She studied psychology and philosophy and is increasingly involved in public duties.',
+    explanation: 'Princess Alexandra is the only daughter and fourth child of Grand Duke Henri and Grand Duchess Maria Teresa. She studied psychology and philosophy and has taken on an increasing number of public duties.',
   },
   {
     id: 'f-thilmany', level: 'resident', category: 'culture',
@@ -664,7 +664,7 @@ const RESIDENT = [
     options: ['Fernand Bentgen', 'Batty Weber', 'Désirée Nosbusch', 'Mike Koedinger'],
     answer: 0,
     hint: 'He was a pioneering Luxembourgish television and radio broadcaster.',
-    explanation: 'Fernand Bentgen was a legendary Luxembourgish broadcaster who was instrumental in establishing television broadcasting in Luxembourg. He helped shape the country\'s media landscape as a pioneering television personality and journalist.',
+    explanation: 'Fernand Bentgen was a pioneering Luxembourgish broadcaster who was instrumental in establishing television broadcasting in Luxembourg. He helped shape the country\'s media landscape as a pioneering television personality and journalist.',
   },
   {
     id: 'f-hein', level: 'resident', category: 'sport',
@@ -731,8 +731,8 @@ const RESIDENT = [
     wikiTitle: 'Nicolas_Frantz',
     options: ['Nicolas Frantz', 'Gabriel Lippmann', 'Hugo Gernsback', 'Yves Mersch'],
     answer: 0,
-    hint: 'He was one of the greatest cyclists of the 1920s, winning the Tour de France twice.',
-    explanation: 'Nicolas Frantz (1904–1985) was a legendary Luxembourgish cyclist who won the Tour de France twice (1927, 1928). He was also World Road Race Champion and is remembered as one of cycling\'s early champions.',
+    hint: 'He was one of the most successful cyclists of the 1920s, winning the Tour de France twice.',
+    explanation: 'Nicolas Frantz (1904–1985) was a celebrated Luxembourgish cyclist who won the Tour de France twice (1927, 1928). He was also World Road Race Champion and is remembered as one of cycling\'s early champions.',
   },
 ]
 
@@ -755,7 +755,7 @@ const CITIZEN = [
     wikiTitle: 'Jeff_Strasser',
     options: ['Jeff Strasser', 'Jeff Saibene', 'Laurent Jans', 'Mario Mutsch'],
     answer: 0,
-    hint: 'He played in the French Ligue 1 and German Bundesliga, and is now manager of the Luxembourg national team.',
+    hint: 'He played in the French Ligue 1 and German Bundesliga, and became manager of the Luxembourg national team in 2025.',
     explanation: 'Jeff Strasser (born 1974) is a Luxembourgish former professional footballer who played for FC Metz, 1. FC Kaiserslautern, and Borussia Mönchengladbach. With 98 caps for Luxembourg, he became manager of the national team in 2025.',
   },
   {
@@ -765,7 +765,7 @@ const CITIZEN = [
     wikiTitle: 'Jempy_Drucker',
     options: ['Jempy Drucker', 'Charly Gaul', 'Andy Schleck', 'François Faber'],
     answer: 0,
-    hint: 'He is a legendary Luxembourgish cyclist and sports figure known for his roles in cycling.',
+    hint: 'He is a prominent Luxembourgish cyclist and sports figure known for his roles in cycling.',
     explanation: 'Jempy Drucker is a prominent Luxembourgish sports personality known for his cycling achievements and contributions to cycling development and management in Luxembourg.',
   },
   {
@@ -783,8 +783,8 @@ const CITIZEN = [
     wikiTitle: 'Lucien_Wercollier',
     options: ['Lucien Wercollier', 'Théo Kerg', 'Joseph Kutter', 'Michel Majerus'],
     answer: 0,
-    hint: 'He was Luxembourg\'s most renowned sculptor, with works in museums across the world.',
-    explanation: 'Lucien Wercollier (1908–2002) was Luxembourg\'s greatest sculptor, working in bronze, marble, and stone. His works include the "Ascension" at the Kennedy Center in Washington, D.C. Arrested during WWII for resisting the Nazi occupation, his legacy is honored in the Wercollier Cloister at Neumünster Abbey.',
+    hint: 'He was one of Luxembourg\'s most renowned sculptors, with works in museums across the world.',
+    explanation: 'Lucien Wercollier (1908–2002) was one of Luxembourg\'s most renowned sculptors, working in bronze, marble, and stone. His works include the "Ascension" at the Kennedy Center in Washington, D.C. Arrested during WWII for resisting the Nazi occupation, his legacy is honored in the Wercollier Cloister at Neumünster Abbey.',
   },
   // sub-level 2
   {
@@ -931,7 +931,7 @@ const CITIZEN = [
   },
   // sub-level 5
   {
-    id: 'f-prince-seb', level: 'citizen', category: 'royalty',
+    id: 'f-prince-seb', level: 'resident', category: 'royalty',
     name: 'Prince Sébastien',
     wikiTitle: 'Prince_Sébastien_of_Luxembourg',
     options: ['Prince Sébastien', 'Prince Félix', 'Prince Louis', 'Prince Guillaume'],
@@ -960,7 +960,7 @@ const CITIZEN = [
     explanation: 'Jenny Warling is a Luxembourgish karateka who competed at the Tokyo 2020 Olympic Games where karate made its debut. She has won multiple European championship medals.',
   },
   {
-    id: 'f-noppeney', level: 'citizen', category: 'culture',
+    id: 'f-noppeney', level: 'ambassador', category: 'culture',
     name: 'Marcel Noppeney',
     wikiTitle: 'Marcel_Noppeney',
     options: ['Marcel Noppeney', 'Anise Koltz', 'Batty Weber', 'Roger Manderscheid'],
@@ -1007,7 +1007,7 @@ const AMBASSADOR = [
     options: ['Sigefroi', 'Grand Duke Adolphe', 'Grand Duke Guillaume IV', 'Grand Duchess Charlotte'],
     answer: 0,
     hint: 'He acquired the castle of Lucilinburhuc in 963, founding what would become Luxembourg.',
-    explanation: 'Sigefroi (Siegfried, c. 922–998) was Count of the Ardennes who acquired the Roman fortification of Lucilinburhuc in 963, an act regarded as the founding of Luxembourg City. His descendants formed the House of Luxembourg and became its counts and dukes.',
+    explanation: 'Sigefroi (Siegfried, c. 922–998) was Count of the Ardennes who acquired the Roman fortification of Lucilinburhuc in 963, an act traditionally regarded as the founding of Luxembourg City. His descendants formed the House of Luxembourg and became its counts and dukes.',
   },
   {
     id: 'f-clement', level: 'ambassador', category: 'sport',
@@ -1015,8 +1015,8 @@ const AMBASSADOR = [
     wikiTitle: 'Marc_Girardelli',
     options: ['Marc Girardelli', 'Charel Grethen', 'Josy Barthel', 'Tom Habscheid'],
     answer: 0,
-    hint: 'He was one of the greatest alpine skiers, winning multiple world championships and Olympic medals.',
-    explanation: 'Marc Girardelli is a legendary Luxembourgish alpine skier who won multiple World Championships and Olympic medals in the 1980s and 1990s. He is one of the most successful skiers from a non-traditional skiing nation.',
+    hint: 'He was one of the most successful alpine skiers, winning multiple world championships and Olympic medals.',
+    explanation: 'Marc Girardelli is a highly decorated Luxembourgish alpine skier who won multiple World Championships and Olympic medals in the 1980s and 1990s. He is one of the most successful skiers from a non-traditional skiing nation.',
   },
   {
     id: 'f-linden', level: 'ambassador', category: 'politics',
@@ -1045,7 +1045,7 @@ const AMBASSADOR = [
     options: ['Fausti', 'Camillo Felgen', 'Gast Waltzing', 'Francesco Tristano'],
     answer: 0,
     hint: 'He was a beloved Luxembourgish entertainer known for his music, impressions, and humor over seven decades.',
-    explanation: 'Fausti (Faustino Cima, 1940–2021) was a legendary Luxembourgish musician and entertainer who performed for almost seven decades. He played drums for Udo Jürgens at the 1966 Eurovision and was a fixture at Luxembourg events like carnival parties and the Päischtcroisière cruise.',
+    explanation: 'Fausti (Faustino Cima, 1940–2021) was a beloved Luxembourgish musician and entertainer who performed for almost seven decades. He played drums for Udo Jürgens at the 1966 Eurovision and was a fixture at Luxembourg events like carnival parties and the Päischtcroisière cruise.',
   },
   {
     id: 'f-metzler', level: 'ambassador', category: 'history',
@@ -1132,7 +1132,7 @@ const AMBASSADOR = [
     explanation: 'Romain Schneider (born 1962) is a Luxembourgish LSAP politician who served as Minister of Agriculture, Viticulture and Rural Development and Minister of Social Security. He was also mayor of Wiltz from 2000 to 2009 and spent over 12 years in government.',
   },
   {
-    id: 'f-prince-charles', level: 'ambassador', category: 'royalty',
+    id: 'f-prince-charles', level: 'citizen', category: 'royalty',
     name: 'Prince Charles',
     wikiTitle: 'Prince_Charles_of_Luxembourg',
     noPhoto: true,
@@ -1152,12 +1152,12 @@ const AMBASSADOR = [
   },
   {
     id: 'f-scholer', level: 'ambassador', category: 'science',
-    name: 'Jean-Pierre Sauvage',
-    wikiTitle: 'Jean-Pierre_Sauvage',
-    options: ['Jean-Pierre Sauvage', 'Gabriel Lippmann', 'Hugo Gernsback', 'Henri Tudor'],
+    name: 'Jules Hoffmann',
+    wikiTitle: 'Jules_A._Hoffmann',
+    options: ['Jules Hoffmann', 'Gabriel Lippmann', 'Hugo Gernsback', 'Henri Tudor'],
     answer: 0,
-    hint: 'He is a Nobel Prize-winning chemist with ties to the Luxembourg border region.',
-    explanation: 'Jean-Pierre Sauvage, born in Paris, won the Nobel Prize in Chemistry in 2016 for his work on molecular machines. He spent his career at the University of Strasbourg in neighbouring France. A street in Luxembourg City\'s Kirchberg district is named after him.',
+    hint: 'Born in Echternach, he won the Nobel Prize in Physiology or Medicine in 2011.',
+    explanation: 'Jules Hoffmann (born 1941 in Echternach, Luxembourg) is a Luxembourg-born French biologist who won the Nobel Prize in Physiology or Medicine in 2011 for his discoveries concerning the activation of innate immunity. He is the second Nobel laureate with Luxembourg roots, after Gabriel Lippmann.',
   },
   {
     id: 'f-jacoby', level: 'ambassador', category: 'politics',

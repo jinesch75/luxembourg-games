@@ -1,1586 +1,982 @@
-================================================================================
-              FAMOUS PEOPLE GAME — COMPLETE QUESTION REFERENCE
-================================================================================
-
-This document contains all 125 questions from the Famous People picture quiz.
-The game tests knowledge of famous Luxembourgers across 5 difficulty levels,
-8 categories, and 25 sub-levels.
-
+FAMOUS PEOPLE OF LUXEMBOURG — COMPLETE QUESTION REFERENCE
+==========================================================
+125 questions across 5 difficulty levels, 5 sub-levels each, 5 people per sub-level.
 Categories: Royalty, Politics, History, Sport, Culture, Music, Science, Media
-Format: Photo-based multiple choice (4 options per question)
-
-Generated from source data on: 2026-04-01
 
 
 ================================================================================
-  LEVEL 1: NEWCOMER — Most Recognisable Faces (25 people)
+LEVEL 1: NEWCOMER — Most recognisable faces (25 people)
 ================================================================================
 
 --- Sub-level 1 ---
 
-  #1  Grand Duke Henri
-      Category: Royalty
-      Options:  A) Grand Duke Henri  B) Grand Duke Jean  C) Prince Guillaume 
-                D) Prince Félix
-      Answer:   A) Grand Duke Henri
-      Hint:     He was the reigning Grand Duke of Luxembourg from 2000 to
-                2025.
-      Info:     Grand Duke Henri served as head of state of Luxembourg from 7
-                October 2000 until his abdication on 3 October 2025. He
-                succeeded his father Grand Duke Jean and was known for his
-                advocacy of humanitarian causes and European integration. He
-                abdicated in favour of his son, Grand Duke Guillaume.
+  1. Grand Duke Henri
+     Category: Royalty
+     Hint: He was the reigning Grand Duke of Luxembourg from 2000 to 2025.
+     Options: Grand Duke Henri | Grand Duke Jean | Prince Guillaume | Prince Félix
+     Answer: Grand Duke Henri
+     Explanation: Grand Duke Henri served as head of state of Luxembourg from 7 October 2000 until his abdication on 3 October 2025. He succeeded his father Grand Duke Jean and was known for his advocacy of humanitarian causes and European integration. He abdicated in favour of his son, Grand Duke Guillaume.
 
-  #2  Jean-Claude Juncker
-      Category: Politics
-      Options:  A) Jean-Claude Juncker  B) Jacques Santer  C) Xavier Bettel 
-                D) Gaston Thorn
-      Answer:   A) Jean-Claude Juncker
-      Hint:     He was both the longest-serving PM of Luxembourg and President
-                of the European Commission.
-      Info:     Jean-Claude Juncker was Prime Minister of Luxembourg for 18
-                years (1995–2013) and President of the European Commission
-                (2014–2019), making him one of Europe's most influential
-                politicians.
+  2. Jean-Claude Juncker
+     Category: Politics
+     Hint: He was both the longest-serving PM of Luxembourg and President of the European Commission.
+     Options: Jean-Claude Juncker | Jacques Santer | Xavier Bettel | Gaston Thorn
+     Answer: Jean-Claude Juncker
+     Explanation: Jean-Claude Juncker was Prime Minister of Luxembourg for 18 years (1995–2013) and President of the European Commission (2014–2019), making him one of Europe's most influential politicians.
 
-  #3  Grand Duchess Charlotte
-      Category: History
-      Options:  A) Grand Duchess Charlotte  B) Grand Duchess Marie-Adélaïde 
-                C) Empress Maria Theresa  D) Grand Duchess Joséphine-Charlotte
-      Answer:   A) Grand Duchess Charlotte
-      Hint:     She led Luxembourg through WWII from exile and became a
-                beloved symbol of resilience.
-      Info:     Grand Duchess Charlotte (1896–1985) reigned from 1919 to 1964.
-                Her BBC radio broadcasts from London during WWII gave hope to
-                occupied Luxembourg. The famous bridge in Luxembourg City is
-                named after her.
+  3. Grand Duchess Charlotte
+     Category: History
+     Hint: She led Luxembourg through WWII from exile and became a beloved symbol of resilience.
+     Options: Grand Duchess Charlotte | Grand Duchess Marie-Adélaïde | Empress Maria Theresa | Grand Duchess Joséphine-Charlotte
+     Answer: Grand Duchess Charlotte
+     Explanation: Grand Duchess Charlotte (1896–1985) reigned from 1919 to 1964. Her BBC radio broadcasts from London during WWII gave hope to occupied Luxembourg. The famous bridge in Luxembourg City is named after her.
 
-  #4  Andy Schleck
-      Category: Sport
-      Options:  A) Andy Schleck  B) Fränk Schleck  C) Kim Kirchen  D) Bob
-                Jungels
-      Answer:   A) Andy Schleck
-      Hint:     He won the Tour de France in 2010.
-      Info:     Andy Schleck won the 2010 Tour de France (awarded after
-                Alberto Contador's disqualification). Along with his brother
-                Fränk, the Schleck brothers became Luxembourg's most famous
-                cycling duo.
+  4. Andy Schleck
+     Category: Sport
+     Hint: He won the Tour de France in 2010.
+     Options: Andy Schleck | Fränk Schleck | Kim Kirchen | Bob Jungels
+     Answer: Andy Schleck
+     Explanation: Andy Schleck won the 2010 Tour de France (awarded after Alberto Contador's disqualification). Along with his brother Fränk, the Schleck brothers became Luxembourg's most famous cycling duo.
 
-  #5  Désirée Nosbusch
-      Category: Culture
-      Options:  A) Désirée Nosbusch  B) Vicky Leandros  C) Su-Mei Tse  D)
-                Germaine Damar
-      Answer:   A) Désirée Nosbusch
-      Hint:     She became famous as a teenager presenting Eurovision and is
-                now one of Luxembourg's top TV & film actresses.
-      Info:     Désirée Nosbusch became a European celebrity as a 19-year-old
-                Eurovision presenter in 1984. She has since built a
-                distinguished acting career, starring in "Bad Banks" and many
-                international productions.
+  5. Désirée Nosbusch
+     Category: Culture
+     Hint: She became famous as a teenager presenting Eurovision and is now one of Luxembourg's top TV & film actresses.
+     Options: Désirée Nosbusch | Vicky Leandros | Su-Mei Tse | Germaine Damar
+     Answer: Désirée Nosbusch
+     Explanation: Désirée Nosbusch became a European celebrity as a 19-year-old Eurovision presenter in 1984. She has since built a distinguished acting career, starring in "Bad Banks" and many international productions.
 
 --- Sub-level 2 ---
 
-  #6  Xavier Bettel
-      Category: Politics
-      Options:  A) Xavier Bettel  B) Luc Frieden  C) Claude Wiseler  D) Félix
-                Braz
-      Answer:   A) Xavier Bettel
-      Hint:     He served as Prime Minister from 2013 to 2023.
-      Info:     Xavier Bettel served as Prime Minister of Luxembourg from 2013
-                to 2023 and was one of few openly LGBT heads of government in
-                the world.
+  6. Xavier Bettel
+     Category: Politics
+     Hint: He served as Prime Minister from 2013 to 2023.
+     Options: Xavier Bettel | Luc Frieden | Claude Wiseler | Félix Braz
+     Answer: Xavier Bettel
+     Explanation: Xavier Bettel served as Prime Minister of Luxembourg from 2013 to 2023 and was one of few openly LGBT heads of government in the world.
 
-  #7  Grand Duchess Maria Teresa
-      Category: Royalty
-      Options:  A) Grand Duchess Maria Teresa  B) Grand Duchess Charlotte  C)
-                Princess Stéphanie  D) Grand Duchess Joséphine-Charlotte
-      Answer:   A) Grand Duchess Maria Teresa
-      Hint:     She is the wife of former Grand Duke Henri and a UNESCO
-                Goodwill Ambassador.
-      Info:     Grand Duchess Maria Teresa, originally from Cuba, married
-                Grand Duke Henri in 1981. She is a UNESCO Goodwill Ambassador
-                and actively campaigns for microfinance, education and the
-                fight against human trafficking.
+  7. Grand Duchess Maria Teresa
+     Category: Royalty
+     Hint: She is the wife of former Grand Duke Henri and a UNESCO Goodwill Ambassador.
+     Options: Grand Duchess Maria Teresa | Grand Duchess Charlotte | Princess Stéphanie | Grand Duchess Joséphine-Charlotte
+     Answer: Grand Duchess Maria Teresa
+     Explanation: Grand Duchess Maria Teresa, originally from Cuba, married Grand Duke Henri in 1981. She is a UNESCO Goodwill Ambassador and actively campaigns for microfinance, education and the fight against human trafficking.
 
-  #8  Edward Steichen
-      Category: Culture
-      Options:  A) Edward Steichen  B) Théo Kerg  C) Joseph Kutter  D) Michel
-                Majerus
-      Answer:   A) Edward Steichen
-      Hint:     Born in Luxembourg, he became one of the most influential
-                photographers of the 20th century.
-      Info:     Edward Steichen (1879–1973), born in Bivange, Luxembourg, was
-                a pioneer in photography and curated the legendary "Family of
-                Man" exhibition, now a UNESCO Memory of the World in Clervaux
-                Castle.
+  8. Edward Steichen
+     Category: Culture
+     Hint: Born in Luxembourg, he became one of the most influential photographers of the 20th century.
+     Options: Edward Steichen | Théo Kerg | Joseph Kutter | Michel Majerus
+     Answer: Edward Steichen
+     Explanation: Edward Steichen (1879–1973), born in Bivange, Luxembourg, was a pioneer in photography and curated the legendary "Family of Man" exhibition, now a UNESCO Memory of the World in Clervaux Castle.
 
-  #9  Gabriel Lippmann
-      Category: Science
-      Options:  A) Gabriel Lippmann  B) Hugo Gernsback  C) Edward Steichen  D)
-                Pierre Werner
-      Answer:   A) Gabriel Lippmann
-      Hint:     He won the Nobel Prize in Physics in 1908.
-      Info:     Gabriel Lippmann (1845–1921), born in Bonnevoie, Luxembourg,
-                won the Nobel Prize in Physics in 1908 for his method of
-                reproducing colours photographically. He was Luxembourg's
-                first Nobel laureate; Jules Hoffmann, born in Echternach, won
-                the Nobel Prize in Medicine in 2011.
+  9. Gabriel Lippmann
+     Category: Science
+     Hint: He won the Nobel Prize in Physics in 1908.
+     Options: Gabriel Lippmann | Hugo Gernsback | Edward Steichen | Pierre Werner
+     Answer: Gabriel Lippmann
+     Explanation: Gabriel Lippmann (1845–1921), born in Bonnevoie, Luxembourg, won the Nobel Prize in Physics in 1908 for his method of reproducing colours photographically. He was Luxembourg's first Nobel laureate; Jules Hoffmann, born in Echternach, won the Nobel Prize in Medicine in 2011.
 
-  #10  Ni Xia Lian
+  10. Ni Xia Lian
       Category: Sport
-      Options:  A) Ni Xia Lian  B) Su-Mei Tse  C) Christine Majerus  D) Sarah
-                De Nutte
-      Answer:   A) Ni Xia Lian
-      Hint:     She is one of the oldest Olympic table tennis players ever,
-                representing Luxembourg.
-      Info:     Ni Xia Lian, originally from China, has represented Luxembourg
-                in table tennis since 1991. She competed at the 2024 Paris
-                Olympics at age 61, becoming an inspiration for athletes of
-                all ages.
+      Hint: She is one of the oldest Olympic table tennis players ever, representing Luxembourg.
+      Options: Ni Xia Lian | Su-Mei Tse | Christine Majerus | Sarah De Nutte
+      Answer: Ni Xia Lian
+      Explanation: Ni Xia Lian, originally from China, has represented Luxembourg in table tennis since 1991. She competed at the 2024 Paris Olympics at age 61, becoming an inspiration for athletes of all ages.
 
 --- Sub-level 3 ---
 
-  #11  Luc Frieden
+  11. Luc Frieden
       Category: Politics
-      Options:  A) Luc Frieden  B) Xavier Bettel  C) Jean-Claude Juncker  D)
-                Claude Wiseler
-      Answer:   A) Luc Frieden
-      Hint:     He became Prime Minister of Luxembourg in 2023.
-      Info:     Luc Frieden became Prime Minister of Luxembourg in November
-                2023 after the CSV party won the general elections. He
-                previously served as Minister of Finance.
+      Hint: He became Prime Minister of Luxembourg in 2023.
+      Options: Luc Frieden | Xavier Bettel | Jean-Claude Juncker | Claude Wiseler
+      Answer: Luc Frieden
+      Explanation: Luc Frieden became Prime Minister of Luxembourg in November 2023 after the CSV party won the general elections. He previously served as Minister of Finance.
 
-  #12  Robert Schuman
+  12. Robert Schuman
       Category: History
-      Options:  A) Robert Schuman  B) Jean Monnet  C) Joseph Bech  D) Gaston
-                Thorn
-      Answer:   A) Robert Schuman
-      Hint:     Born in Luxembourg, he became a "founding father" of the
-                European Union.
-      Info:     Robert Schuman (1886–1963) was born in Clausen, Luxembourg
-                City. As French Foreign Minister, his 1950 Schuman Declaration
-                launched European integration. He is considered a founding
-                father of the EU.
+      Hint: Born in Luxembourg, he became a "founding father" of the European Union.
+      Options: Robert Schuman | Jean Monnet | Joseph Bech | Gaston Thorn
+      Answer: Robert Schuman
+      Explanation: Robert Schuman (1886–1963) was born in Clausen, Luxembourg City. As French Foreign Minister, his 1950 Schuman Declaration launched European integration. He is considered a founding father of the EU.
 
-  #13  Fränk Schleck
+  13. Fränk Schleck
       Category: Sport
-      Options:  A) Fränk Schleck  B) Andy Schleck  C) Kim Kirchen  D) Ben
-                Gastauer
-      Answer:   A) Fränk Schleck
-      Hint:     He is Andy's older brother and also a professional cyclist who
-                wore the yellow jersey.
-      Info:     Fränk Schleck is a Luxembourgish professional cyclist who wore
-                the Tour de France yellow jersey in 2008. Together with
-                brother Andy, they formed one of cycling's most celebrated
-                sibling partnerships.
+      Hint: He is Andy's older brother and also a professional cyclist who wore the yellow jersey.
+      Options: Fränk Schleck | Andy Schleck | Kim Kirchen | Ben Gastauer
+      Answer: Fränk Schleck
+      Explanation: Fränk Schleck is a Luxembourgish professional cyclist who wore the Tour de France yellow jersey in 2008. Together with brother Andy, they formed one of cycling's most celebrated sibling partnerships.
 
-  #14  Hugo Gernsback
+  14. Hugo Gernsback
       Category: Science
-      Options:  A) Hugo Gernsback  B) Gabriel Lippmann  C) Edward Steichen  D)
-                Robert Schuman
-      Answer:   A) Hugo Gernsback
-      Hint:     Born in Luxembourg, he is known as the "Father of Science
-                Fiction".
-      Info:     Hugo Gernsback (1884–1967), born in Luxembourg City, emigrated
-                to the US and founded Amazing Stories magazine in 1926. The
-                Hugo Awards for science fiction are named after him.
+      Hint: Born in Luxembourg, he is known as the "Father of Science Fiction".
+      Options: Hugo Gernsback | Gabriel Lippmann | Edward Steichen | Robert Schuman
+      Answer: Hugo Gernsback
+      Explanation: Hugo Gernsback (1884–1967), born in Luxembourg City, emigrated to the US and founded Amazing Stories magazine in 1926. The Hugo Awards for science fiction are named after him.
 
-  #15  Grand Duke Jean
+  15. Grand Duke Jean
       Category: Royalty
-      Options:  A) Grand Duke Jean  B) Grand Duke Henri  C) Grand Duke Adolphe
-                D) Prince Guillaume
-      Answer:   A) Grand Duke Jean
-      Hint:     He served in the British Army during WWII and reigned as Grand
-                Duke from 1964 to 2000.
-      Info:     Grand Duke Jean (1921–2019) served in the Irish Guards during
-                WWII and participated in the liberation of Luxembourg. He
-                reigned from 1964 to 2000 and was deeply beloved by the
-                Luxembourgish people.
+      Hint: He served in the British Army during WWII and reigned as Grand Duke from 1964 to 2000.
+      Options: Grand Duke Jean | Grand Duke Henri | Grand Duke Adolphe | Prince Guillaume
+      Answer: Grand Duke Jean
+      Explanation: Grand Duke Jean (1921–2019) served in the Irish Guards during WWII and participated in the liberation of Luxembourg. He reigned from 1964 to 2000 and was deeply beloved by the Luxembourgish people.
 
 --- Sub-level 4 ---
 
-  #16  Paulette Lenert
+  16. Paulette Lenert
       Category: Politics
-      Options:  A) Paulette Lenert  B) Lydia Mutsch  C) Corinne Cahen  D)
-                Simone Beissel
-      Answer:   A) Paulette Lenert
-      Hint:     She became the most popular politician in Luxembourg during
-                the COVID-19 pandemic.
-      Info:     Paulette Lenert served as Minister of Health and later Deputy
-                Prime Minister. She gained widespread recognition for her
-                calm, competent leadership during the pandemic.
+      Hint: She became one of Luxembourg's most recognised politicians during the COVID-19 pandemic.
+      Options: Paulette Lenert | Lydia Mutsch | Corinne Cahen | Simone Beissel
+      Answer: Paulette Lenert
+      Explanation: Paulette Lenert served as Minister of Health and later Deputy Prime Minister. She gained widespread recognition for her calm, competent leadership during the pandemic.
 
-  #17  Francesco Tristano
+  17. Francesco Tristano
       Category: Music
-      Options:  A) Francesco Tristano  B) Gast Waltzing  C) Sascha Ley  D)
-                Jeff Herr
-      Answer:   A) Francesco Tristano
-      Hint:     He is a world-famous pianist who blends classical music with
-                electronic/techno.
-      Info:     Francesco Tristano is a Luxembourgish pianist and composer
-                known for blending Bach and classical piano with electronic
-                and techno music. He has performed at major concert halls and
-                clubs worldwide.
+      Hint: He is an internationally acclaimed pianist who blends classical music with electronic/techno.
+      Options: Francesco Tristano | Gast Waltzing | Sascha Ley | Jeff Herr
+      Answer: Francesco Tristano
+      Explanation: Francesco Tristano is a Luxembourgish pianist and composer known for blending Bach and classical piano with electronic and techno music. He has performed at major concert halls and clubs worldwide.
 
-  #18  Gilles Muller
+  18. Gilles Muller
       Category: Sport
-      Options:  A) Gilles Muller  B) Andy Schleck  C) Charel Grethen  D) Luc
-                Holtz
-      Answer:   A) Gilles Muller
-      Hint:     He was Luxembourg's top tennis player, famous for his big
-                serve.
-      Info:     Gilles Muller reached the quarterfinals at Wimbledon in 2017
-                after a legendary win over Rafael Nadal. He is the most
-                successful tennis player in Luxembourg's history.
+      Hint: He was one of Luxembourg's top tennis players, famous for his big serve.
+      Options: Gilles Muller | Andy Schleck | Charel Grethen | Luc Holtz
+      Answer: Gilles Muller
+      Explanation: Gilles Muller reached the quarterfinals at Wimbledon in 2017 after a legendary win over Rafael Nadal. He is one of the most successful tennis players in Luxembourg's history.
 
-  #19  Vicky Leandros
+  19. Vicky Leandros
       Category: Culture
-      Options:  A) Vicky Leandros  B) Désirée Nosbusch  C) Germaine Damar  D)
-                Taina Bofferding
-      Answer:   A) Vicky Leandros
-      Hint:     She won the Eurovision Song Contest in 1972, representing
-                Luxembourg.
-      Info:     Vicky Leandros is a German-born singer who won the Eurovision
-                Song Contest in 1972 representing Luxembourg with "Après toi."
-                She also represented Luxembourg in 1967, finishing 4th. She
-                became one of Europe's biggest entertainment stars of the
-                1970s.
+      Hint: She won the Eurovision Song Contest in 1972, representing Luxembourg.
+      Options: Vicky Leandros | Désirée Nosbusch | Germaine Damar | Taina Bofferding
+      Answer: Vicky Leandros
+      Explanation: Vicky Leandros is a German-born singer who won the Eurovision Song Contest in 1972 representing Luxembourg with "Après toi." She also represented Luxembourg in 1967, finishing 4th. She became one of Europe's biggest entertainment stars of the 1970s.
 
-  #20  Christine Majerus
+  20. Christine Majerus
       Category: Sport
-      Options:  A) Christine Majerus  B) Ni Xia Lian  C) Sarah De Nutte  D)
-                Charel Grethen
-      Answer:   A) Christine Majerus
-      Hint:     She is Luxembourg's most decorated female cyclist.
-      Info:     Christine Majerus is a Luxembourgish professional road and
-                cyclo-cross cyclist. She has been Luxembourg's national
-                champion more than 20 times across disciplines and competed at
-                multiple Olympics.
+      Hint: She is one of Luxembourg's most decorated female cyclists.
+      Options: Christine Majerus | Ni Xia Lian | Sarah De Nutte | Charel Grethen
+      Answer: Christine Majerus
+      Explanation: Christine Majerus is a Luxembourgish professional road and cyclo-cross cyclist. She has been national champion more than 20 times across disciplines and competed at multiple Olympics.
 
 --- Sub-level 5 ---
 
-  #21  Grand Duke Guillaume
+  21. Grand Duke Guillaume
       Category: Royalty
-      Options:  A) Grand Duke Guillaume  B) Grand Duke Henri  C) Grand Duke
-                Jean  D) Prince Félix
-      Answer:   A) Grand Duke Guillaume
-      Hint:     He is the current reigning Grand Duke of Luxembourg and
-                married Countess Stéphanie de Lannoy.
-      Info:     Grand Duke Guillaume is the current reigning Grand Duke of
-                Luxembourg. The eldest son of Grand Duke Henri, he acceded to
-                the throne on 3 October 2025 following his father's
-                abdication. He married Belgian Countess Stéphanie de Lannoy in
-                2012.
+      Hint: He became the reigning Grand Duke of Luxembourg in 2025 and married Countess Stéphanie de Lannoy.
+      Options: Grand Duke Guillaume | Grand Duke Henri | Grand Duke Jean | Prince Félix
+      Answer: Grand Duke Guillaume
+      Explanation: Grand Duke Guillaume became the reigning Grand Duke of Luxembourg on 3 October 2025. The eldest son of Grand Duke Henri, he acceded to the throne following his father's abdication. He married Belgian Countess Stéphanie de Lannoy in 2012.
 
-  #22  Joseph Bech
+  22. Joseph Bech
       Category: History
-      Options:  A) Joseph Bech  B) Robert Schuman  C) Pierre Werner  D) Gaston
-                Thorn
-      Answer:   A) Joseph Bech
-      Hint:     He signed the Treaty of Rome for Luxembourg in 1957 and is a
-                founding father of the EU.
-      Info:     Joseph Bech (1887–1975) was Luxembourg's Foreign Minister who
-                signed the Treaty of Rome in 1957. He played a key role in
-                European integration and is recognised as one of the founding
-                fathers of the EU.
+      Hint: He signed the Treaty of Rome for Luxembourg in 1957 and is a founding father of the EU.
+      Options: Joseph Bech | Robert Schuman | Pierre Werner | Gaston Thorn
+      Answer: Joseph Bech
+      Explanation: Joseph Bech (1887–1975) was Luxembourg's Foreign Minister who signed the Treaty of Rome in 1957. He played a key role in European integration and is recognised as one of the founding fathers of the EU.
 
-  #23  Joseph Kutter
+  23. Joseph Kutter
       Category: Culture
-      Options:  A) Joseph Kutter  B) Edward Steichen  C) Michel Majerus  D)
-                Théo Kerg
-      Answer:   A) Joseph Kutter
-      Hint:     He is considered the greatest Luxembourgish expressionist
-                painter.
-      Info:     Joseph Kutter (1894–1941) is regarded as Luxembourg's most
-                important painter. His bold expressionist style, especially
-                his famous "Clown" series, made him an icon of Luxembourgish
-                art.
+      Hint: He is considered one of Luxembourg's most important expressionist painters.
+      Options: Joseph Kutter | Edward Steichen | Michel Majerus | Théo Kerg
+      Answer: Joseph Kutter
+      Explanation: Joseph Kutter (1894–1941) is regarded as one of Luxembourg's most important painters. His bold expressionist style, especially his famous "Clown" series, made him an icon of Luxembourgish art.
 
-  #24  Jacques Santer
+  24. Jacques Santer
       Category: Politics
-      Options:  A) Jacques Santer  B) Jean-Claude Juncker  C) Gaston Thorn  D)
-                Pierre Werner
-      Answer:   A) Jacques Santer
-      Hint:     He was Prime Minister and then President of the European
-                Commission before Juncker.
-      Info:     Jacques Santer served as Prime Minister of Luxembourg
-                (1984–1995) and then as President of the European Commission
-                (1995–1999). He is one of three Luxembourgers to have led the
-                Commission.
+      Hint: He was Prime Minister and then President of the European Commission before Juncker.
+      Options: Jacques Santer | Jean-Claude Juncker | Gaston Thorn | Pierre Werner
+      Answer: Jacques Santer
+      Explanation: Jacques Santer served as Prime Minister of Luxembourg (1984–1995) and then as President of the European Commission (1995–1999). He is one of three Luxembourgers to have led the Commission.
 
-  #25  Germaine Damar
+  25. Germaine Damar
       Category: Music
-      Options:  A) Germaine Damar  B) Désirée Nosbusch  C) Anise Koltz  D)
-                Sascha Ley
-      Answer:   A) Germaine Damar
-      Hint:     She was a 1950s film star known as the "Luxembourg Audrey
-                Hepburn".
-      Info:     Germaine Damar (1929–2019) was a Luxembourgish dancer and film
-                actress who became one of the biggest stars of 1950s
-                German-language cinema. She appeared in over 20 musical films.
+      Hint: She was a 1950s film star known as the "Luxembourg Audrey Hepburn".
+      Options: Germaine Damar | Désirée Nosbusch | Anise Koltz | Sascha Ley
+      Answer: Germaine Damar
+      Explanation: Germaine Damar (1929–2019) was a Luxembourgish dancer and film actress who became one of the biggest stars of 1950s German-language cinema. She appeared in over 20 musical films.
 
 
 ================================================================================
-  LEVEL 2: EXPLORER — Well-Known in Specific Domains (25 people)
+LEVEL 2: EXPLORER — Well-known in specific domains (25 people)
 ================================================================================
 
 --- Sub-level 1 ---
 
-  #26  Anise Koltz
+  26. Anise Koltz
       Category: Culture
-      Options:  A) Anise Koltz  B) Batty Weber  C) Edmond de la Fontaine  D)
-                Roger Manderscheid
-      Answer:   A) Anise Koltz
-      Hint:     She was Luxembourg's greatest poet and wrote in French, German
-                and Luxembourgish.
-      Info:     Anise Koltz (1928–2023) was Luxembourg's most celebrated poet.
-                Writing in French and German, she published over 30
-                collections and received numerous international awards
-                including the Goncourt de Poésie.
+      Hint: She was one of Luxembourg's most celebrated poets and wrote in French, German and Luxembourgish.
+      Options: Anise Koltz | Batty Weber | Edmond de la Fontaine | Roger Manderscheid
+      Answer: Anise Koltz
+      Explanation: Anise Koltz (1928–2023) was one of Luxembourg's most celebrated poets. Writing in French and German, she published over 30 collections and received numerous international awards including the Goncourt de Poésie.
 
-  #27  Gaston Thorn
+  27. Gaston Thorn
       Category: History
-      Options:  A) Gaston Thorn  B) Pierre Werner  C) Joseph Bech  D)
-                Jean-Claude Juncker
-      Answer:   A) Gaston Thorn
-      Hint:     He was Prime Minister of Luxembourg and later President of the
-                European Commission.
-      Info:     Gaston Thorn (1928–2007) served as Prime Minister (1974–1979)
-                and President of the European Commission (1981–1985). He also
-                presided over the UN General Assembly.
+      Hint: He was Prime Minister of Luxembourg and later President of the European Commission.
+      Options: Gaston Thorn | Pierre Werner | Joseph Bech | Jean-Claude Juncker
+      Answer: Gaston Thorn
+      Explanation: Gaston Thorn (1928–2007) served as Prime Minister (1974–1979) and President of the European Commission (1981–1985). He also presided over the UN General Assembly.
 
-  #28  Charel Grethen
+  28. Charel Grethen
       Category: Sport
-      Options:  A) Charel Grethen  B) Bob Jungels  C) Andy Schleck  D) Gilles
-                Muller
-      Answer:   A) Charel Grethen
-      Hint:     He is a middle-distance runner who represented Luxembourg at
-                the Olympics.
-      Info:     Charel Grethen is Luxembourg's top middle-distance runner,
-                competing in the 1500m at the Olympic Games. He holds multiple
-                national records and has represented the country at World
-                Championships.
+      Hint: He is a middle-distance runner who represented Luxembourg at the Olympics.
+      Options: Charel Grethen | Bob Jungels | Andy Schleck | Gilles Muller
+      Answer: Charel Grethen
+      Explanation: Charel Grethen became one of Luxembourg's leading middle-distance runners, competing in the 1500m at the Olympic Games. He holds multiple national records and has represented the country at World Championships.
 
-  #29  Gast Waltzing
+  29. Gast Waltzing
       Category: Music
-      Options:  A) Gast Waltzing  B) Francesco Tristano  C) Jeff Herr  D)
-                Ernie Hammes
-      Answer:   A) Gast Waltzing
-      Hint:     He is a Grammy-winning Luxembourgish trumpeter, composer and
-                big-band leader.
-      Info:     Gast Waltzing is a Luxembourgish jazz musician and composer
-                who won a Grammy Award. He is the leader of the Luxembourg
-                Jazz Orchestra and has composed for film, TV and symphonic
-                ensembles.
+      Hint: He is a Grammy-winning Luxembourgish trumpeter, composer and big-band leader.
+      Options: Gast Waltzing | Francesco Tristano | Jeff Herr | Ernie Hammes
+      Answer: Gast Waltzing
+      Explanation: Gast Waltzing is a Luxembourgish jazz musician and composer who won a Grammy Award. He is the leader of the Luxembourg Jazz Orchestra and has composed for film, TV and symphonic ensembles.
 
-  #30  Pierre Werner
+  30. Pierre Werner
       Category: Politics
-      Options:  A) Pierre Werner  B) Joseph Bech  C) Gaston Thorn  D) Robert
-                Schuman
-      Answer:   A) Pierre Werner
-      Hint:     He is considered the architect of the Euro — his 1970 plan led
-                to the single currency.
-      Info:     Pierre Werner (1913–2002) served as Prime Minister and
-                proposed the "Werner Plan" in 1970, which laid the groundwork
-                for European monetary union and ultimately the creation of the
-                Euro.
+      Hint: He is considered the architect of the Euro — his 1970 plan led to the single currency.
+      Options: Pierre Werner | Joseph Bech | Gaston Thorn | Robert Schuman
+      Answer: Pierre Werner
+      Explanation: Pierre Werner (1913–2002) served as Prime Minister and proposed the "Werner Plan" in 1970, which laid the groundwork for European monetary union and ultimately the creation of the Euro.
 
 --- Sub-level 2 ---
 
-  #31  Michel Majerus
+  31. Michel Majerus
       Category: Culture
-      Options:  A) Michel Majerus  B) Joseph Kutter  C) Edward Steichen  D)
-                Andy Bausch
-      Answer:   A) Michel Majerus
-      Hint:     He was a pop-art painter whose work can be seen in major
-                museums worldwide. He died young in a plane crash.
-      Info:     Michel Majerus (1967–2002) was a Luxembourgish painter known
-                for large-scale pop art mixing video game and media imagery.
-                He died tragically in the Luxair Flight 9642 crash. A major
-                exhibition space in Luxembourg City bears his name.
+      Hint: He was a pop-art painter whose work can be seen in major museums worldwide. He died young in a plane crash.
+      Options: Michel Majerus | Joseph Kutter | Edward Steichen | Andy Bausch
+      Answer: Michel Majerus
+      Explanation: Michel Majerus (1967–2002) was a Luxembourgish painter known for large-scale pop art mixing video game and media imagery. He died tragically in the Luxair Flight 9642 crash. A major exhibition space in Luxembourg City bears his name.
 
-  #32  Sarah De Nutte
+  32. Sarah De Nutte
       Category: Sport
-      Options:  A) Sarah De Nutte  B) Ni Xia Lian  C) Christine Majerus  D)
-                Charel Grethen
-      Answer:   A) Sarah De Nutte
-      Hint:     She is a Luxembourgish table tennis player who has competed at
-                the European Championships.
-      Info:     Sarah De Nutte is a Luxembourgish table tennis player who has
-                been national champion multiple times. She continues the
-                strong table tennis tradition alongside Ni Xia Lian.
+      Hint: She is a Luxembourgish table tennis player who has competed at the European Championships.
+      Options: Sarah De Nutte | Ni Xia Lian | Christine Majerus | Charel Grethen
+      Answer: Sarah De Nutte
+      Explanation: Sarah De Nutte is a Luxembourgish table tennis player who has been national champion multiple times. She became a leading figure in Luxembourg's strong table tennis tradition alongside Ni Xia Lian.
 
-  #33  Corinne Cahen
+  33. Corinne Cahen
       Category: Politics
-      Options:  A) Corinne Cahen  B) Paulette Lenert  C) Lydia Mutsch  D)
-                Taina Bofferding
-      Answer:   A) Corinne Cahen
-      Hint:     She served as Minister for Family and Integration.
-      Info:     Corinne Cahen is a Luxembourgish politician from the
-                Democratic Party (DP) who served as Minister for Family,
-                Integration and the Greater Region.
+      Hint: She served as Minister for Family and Integration.
+      Options: Corinne Cahen | Paulette Lenert | Lydia Mutsch | Taina Bofferding
+      Answer: Corinne Cahen
+      Explanation: Corinne Cahen is a Luxembourgish politician from the Democratic Party (DP) who served as Minister for Family, Integration and the Greater Region.
 
-  #34  Viviane Reding
+  34. Viviane Reding
       Category: History
-      Options:  A) Viviane Reding  B) Paulette Lenert  C) Lydia Mutsch  D)
-                Corinne Cahen
-      Answer:   A) Viviane Reding
-      Hint:     She was a prominent EU Commissioner overseeing Justice and
-                Fundamental Rights.
-      Info:     Viviane Reding is one of Luxembourg's most influential
-                European politicians. She served as EU Commissioner for
-                Information Society (2004–2010) and for Justice, Fundamental
-                Rights and Citizenship (2010–2014), championing digital
-                innovation and fundamental rights.
+      Hint: She was a prominent EU Commissioner overseeing Justice and Fundamental Rights.
+      Options: Viviane Reding | Paulette Lenert | Lydia Mutsch | Corinne Cahen
+      Answer: Viviane Reding
+      Explanation: Viviane Reding is one of Luxembourg's most influential European politicians. She served as EU Commissioner for Information Society (2004–2010) and for Justice, Fundamental Rights and Citizenship (2010–2014), championing digital innovation and fundamental rights.
 
-  #35  Bob Jungels
+  35. Bob Jungels
       Category: Sport
-      Options:  A) Bob Jungels  B) Andy Schleck  C) Fränk Schleck  D) Ben
-                Gastauer
-      Answer:   A) Bob Jungels
-      Hint:     He is a Luxembourgish cyclist who won a stage at the Tour de
-                France and Liège–Bastogne–Liège.
-      Info:     Bob Jungels is a professional cyclist who won
-                Liège–Bastogne–Liège in 2022 and a Tour de France stage. He
-                has been Luxembourg national champion and is one of the
-                country's top modern riders.
+      Hint: He is a Luxembourgish cyclist who won a stage at the Tour de France and Liège–Bastogne–Liège.
+      Options: Bob Jungels | Andy Schleck | Fränk Schleck | Ben Gastauer
+      Answer: Bob Jungels
+      Explanation: Bob Jungels is a professional cyclist who won Liège–Bastogne–Liège in 2022 and a Tour de France stage. He has been Luxembourg national champion and became one of the country's top modern riders.
 
 --- Sub-level 3 ---
 
-  #36  Batty Weber
+  36. Batty Weber
       Category: Media
-      Options:  A) Batty Weber  B) Edmond de la Fontaine  C) Anise Koltz  D)
-                Roger Manderscheid
-      Answer:   A) Batty Weber
-      Hint:     He was one of Luxembourg's most important journalists and
-                writers of the early 20th century.
-      Info:     Batty Weber (1860–1940) was a journalist, novelist and
-                cultural figure. His daily column "Abreißkalender" in the
-                Luxemburger Zeitung ran for decades. The national literary
-                prize is named after him.
+      Hint: He was one of Luxembourg's most important journalists and writers of the early 20th century.
+      Options: Batty Weber | Edmond de la Fontaine | Anise Koltz | Roger Manderscheid
+      Answer: Batty Weber
+      Explanation: Batty Weber (1860–1940) was a journalist, novelist and cultural figure. His daily column "Abreißkalender" in the Luxemburger Zeitung ran for decades. The national literary prize is named after him.
 
-  #37  Camillo Felgen
+  37. Camillo Felgen
       Category: Music
-      Options:  A) Camillo Felgen  B) Gast Waltzing  C) Francesco Tristano  D)
-                Jeff Herr
-      Answer:   A) Camillo Felgen
-      Hint:     He was a beloved Luxembourgish singer who represented
-                Luxembourg at the Eurovision Song Contest.
-      Info:     Camillo Felgen (1920–2005) was Luxembourg's most famous singer
-                and radio presenter. He represented Luxembourg at the
-                Eurovision Song Contest in 1962 and 1966, and was a household
-                name across the country for decades.
+      Hint: He was a beloved Luxembourgish singer who represented Luxembourg at the Eurovision Song Contest.
+      Options: Camillo Felgen | Gast Waltzing | Francesco Tristano | Jeff Herr
+      Answer: Camillo Felgen
+      Explanation: Camillo Felgen (1920–2005) was one of Luxembourg's most famous singers and radio presenters. He represented Luxembourg at the Eurovision Song Contest in 1962 and 1966, and was a household name across the country for decades.
 
-  #38  Taina Bofferding
+  38. Taina Bofferding
       Category: Politics
-      Options:  A) Taina Bofferding  B) Corinne Cahen  C) Paulette Lenert  D)
-                Lydia Mutsch
-      Answer:   A) Taina Bofferding
-      Hint:     She was Luxembourg's youngest-ever Minister of the Interior.
-      Info:     Taina Bofferding is a Luxembourgish LSAP politician who served
-                as Minister of the Interior and of Equality between Women and
-                Men. She was the youngest member of the government when
-                appointed in 2018.
+      Hint: She was Luxembourg's youngest-ever Minister of the Interior.
+      Options: Taina Bofferding | Corinne Cahen | Paulette Lenert | Lydia Mutsch
+      Answer: Taina Bofferding
+      Explanation: Taina Bofferding is a Luxembourgish LSAP politician who served as Minister of the Interior and of Equality between Women and Men. She was the youngest member of the government when appointed in 2018.
 
-  #39  Michel Rodange
+  39. Michel Rodange
       Category: Culture
-      Options:  A) Michel Rodange  B) Edmond de la Fontaine  C) Batty Weber 
-                D) Nicolas Ries
-      Answer:   A) Michel Rodange
-      Hint:     He wrote the Luxembourgish national epic poem "Renert" (The
-                Fox).
-      Info:     Michel Rodange (1827–1876) wrote "De Renert", an epic poem in
-                Luxembourgish based on the Reynard the Fox tradition. It is
-                considered the masterpiece of Luxembourgish literature.
+      Hint: He wrote the Luxembourgish national epic poem "Renert" (The Fox).
+      Options: Michel Rodange | Edmond de la Fontaine | Batty Weber | Nicolas Ries
+      Answer: Michel Rodange
+      Explanation: Michel Rodange (1827–1876) wrote "De Renert", an epic poem in Luxembourgish based on the Reynard the Fox tradition. It is considered one of the masterpieces of Luxembourgish literature.
 
-  #40  Kim Kirchen
+  40. Kim Kirchen
       Category: Sport
-      Options:  A) Kim Kirchen  B) Andy Schleck  C) Fränk Schleck  D) Bob
-                Jungels
-      Answer:   A) Kim Kirchen
-      Hint:     He wore the yellow jersey at the Tour de France in 2008.
-      Info:     Kim Kirchen wore the Tour de France yellow jersey for several
-                days in 2008. He was part of the golden era of Luxembourgish
-                cycling alongside the Schleck brothers.
+      Hint: He wore the yellow jersey at the Tour de France in 2008.
+      Options: Kim Kirchen | Andy Schleck | Fränk Schleck | Bob Jungels
+      Answer: Kim Kirchen
+      Explanation: Kim Kirchen wore the Tour de France yellow jersey for several days in 2008. He was part of the golden era of Luxembourgish cycling alongside the Schleck brothers.
 
 --- Sub-level 4 ---
 
-  #41  Colette Flesch
+  41. Colette Flesch
       Category: History
-      Options:  A) Colette Flesch  B) Anise Koltz  C) Paulette Lenert  D)
-                Grand Duchess Charlotte
-      Answer:   A) Colette Flesch
-      Hint:     She was one of Luxembourg's most prominent female politicians,
-                an Olympic fencer, and Honorary Mayor of Luxembourg City.
-      Info:     Colette Flesch (1937–2026) was a Luxembourgish politician and
-                Olympic fencer. She served as Mayor of Luxembourg City
-                (1969–1980) and Deputy Prime Minister (1980–1984), becoming
-                the first woman to hold either position. She also competed in
-                fencing at three Olympic Games (1960, 1964, 1968). She passed
-                away on 21 January 2026.
+      Hint: She was one of Luxembourg's most prominent female politicians, an Olympic fencer, and Honorary Mayor of Luxembourg City.
+      Options: Colette Flesch | Anise Koltz | Paulette Lenert | Grand Duchess Charlotte
+      Answer: Colette Flesch
+      Explanation: Colette Flesch (1937–2026) was a Luxembourgish politician and Olympic fencer. She served as Mayor of Luxembourg City (1969–1980) and Deputy Prime Minister (1980–1984), becoming the first woman to hold either position. She also competed in fencing at three Olympic Games (1960, 1964, 1968). She passed away on 21 January 2026.
 
-  #42  Luc Holtz
+  42. Luc Holtz
       Category: Sport
-      Options:  A) Luc Holtz  B) Gilles Muller  C) Jeff Saibene  D) Bob
-                Jungels
-      Answer:   A) Luc Holtz
-      Hint:     He is the long-serving head coach of the Luxembourg national
-                football team.
-      Info:     Luc Holtz has been the head coach of the Luxembourg national
-                football team since 2010, making him one of the
-                longest-serving national team coaches in European football.
+      Hint: He became head coach of the Luxembourg national football team in 2010.
+      Options: Luc Holtz | Gilles Muller | Jeff Saibene | Bob Jungels
+      Answer: Luc Holtz
+      Explanation: Luc Holtz became head coach of the Luxembourg national football team in 2010, making him one of the longest-serving national team coaches in European football.
 
-  #43  Grand Duchess Joséphine-Charlotte
+  43. Grand Duchess Joséphine-Charlotte
       Category: Royalty
-      Options:  A) Grand Duchess Joséphine-Charlotte  B) Grand Duchess
-                Charlotte  C) Grand Duchess Maria Teresa  D) Princess
-                Stéphanie
-      Answer:   A) Grand Duchess Joséphine-Charlotte
-      Hint:     She was a Belgian princess who became Grand Duchess of
-                Luxembourg as the wife of Grand Duke Jean.
-      Info:     Grand Duchess Joséphine-Charlotte (1927–2005), born a Belgian
-                princess, married Grand Duke Jean in 1953. She was known for
-                her charitable work and devotion to Luxembourg's cultural
-                life.
+      Hint: She was a Belgian princess who became Grand Duchess of Luxembourg as the wife of Grand Duke Jean.
+      Options: Grand Duchess Joséphine-Charlotte | Grand Duchess Charlotte | Grand Duchess Maria Teresa | Princess Stéphanie
+      Answer: Grand Duchess Joséphine-Charlotte
+      Explanation: Grand Duchess Joséphine-Charlotte (1927–2005), born a Belgian princess, married Grand Duke Jean in 1953. She was known for her charitable work and devotion to Luxembourg's cultural life.
 
-  #44  Yves Mersch
+  44. Yves Mersch
       Category: Politics
-      Options:  A) Yves Mersch  B) Gast Waltzing  C) Pierre Werner  D) Luc
-                Frieden
-      Answer:   A) Yves Mersch
-      Hint:     He served on the Executive Board of the European Central Bank.
-      Info:     Yves Mersch served as a member of the Executive Board of the
-                European Central Bank from 2012 to 2020. He previously served
-                as Governor of the Central Bank of Luxembourg.
+      Hint: He served on the Executive Board of the European Central Bank.
+      Options: Yves Mersch | Gast Waltzing | Pierre Werner | Luc Frieden
+      Answer: Yves Mersch
+      Explanation: Yves Mersch served as a member of the Executive Board of the European Central Bank from 2012 to 2020. He previously served as Governor of the Central Bank of Luxembourg.
 
-  #45  Andy Bausch
+  45. Andy Bausch
       Category: Culture
-      Options:  A) Andy Bausch  B) Michel Majerus  C) Joseph Kutter  D) Su-Mei
-                Tse
-      Answer:   A) Andy Bausch
-      Hint:     He is Luxembourg's most famous film director, known for
-                pioneering Luxembourgish-language cinema.
-      Info:     Andy Bausch (born 1959) is a Luxembourgish film director who
-                has been the driving force behind Luxembourg's film industry
-                for over 30 years. His notable films include "A Wopbobaloobop
-                a Lopbamboom" (1989) and "Rusty Boys" (2017).
+      Hint: He is one of Luxembourg's most prominent film directors, known for pioneering Luxembourgish-language cinema.
+      Options: Andy Bausch | Michel Majerus | Joseph Kutter | Su-Mei Tse
+      Answer: Andy Bausch
+      Explanation: Andy Bausch (born 1959) is a Luxembourgish film director who has been a driving force behind Luxembourg's film industry for over 30 years. His notable films include "A Wopbobaloobop a Lopbamboom" (1989) and "Rusty Boys" (2017).
 
 --- Sub-level 5 ---
 
-  #46  Claude Wiseler
+  46. Claude Wiseler
       Category: Politics
-      Options:  A) Claude Wiseler  B) Luc Frieden  C) Xavier Bettel  D)
-                Jean-Claude Juncker
-      Answer:   A) Claude Wiseler
-      Hint:     He is the current President of the Luxembourg Chamber of
-                Deputies.
-      Info:     Claude Wiseler is a Luxembourgish CSV politician who serves as
-                President of the Chamber of Deputies (Parliament). He
-                previously served as Minister of Public Works and led the CSV
-                as prime minister candidate in the 2018 elections.
+      Hint: He became President of the Luxembourg Chamber of Deputies in 2023.
+      Options: Claude Wiseler | Luc Frieden | Xavier Bettel | Jean-Claude Juncker
+      Answer: Claude Wiseler
+      Explanation: Claude Wiseler is a Luxembourgish CSV politician who became President of the Chamber of Deputies (Parliament) in 2023. He previously served as Minister of Public Works and led the CSV as prime minister candidate in the 2018 elections.
 
-  #47  Ben Gastauer
+  47. Ben Gastauer
       Category: Sport
-      Options:  A) Ben Gastauer  B) Bob Jungels  C) Kim Kirchen  D) Fränk
-                Schleck
-      Answer:   A) Ben Gastauer
-      Hint:     He is a Luxembourgish professional cyclist who rode for AG2R
-                La Mondiale.
-      Info:     Ben Gastauer is a professional cyclist from Luxembourg who
-                competed at the highest level for several years, including
-                Grand Tours with the AG2R La Mondiale team.
+      Hint: He is a Luxembourgish professional cyclist who rode for AG2R La Mondiale.
+      Options: Ben Gastauer | Bob Jungels | Kim Kirchen | Fränk Schleck
+      Answer: Ben Gastauer
+      Explanation: Ben Gastauer is a professional cyclist from Luxembourg who competed at the highest level for several years, including Grand Tours with the AG2R La Mondiale team.
 
-  #48  Thierry van Werveke
+  48. Thierry van Werveke
       Category: Culture
-      Options:  A) Thierry van Werveke  B) Andy Bausch  C) Michel Majerus  D)
-                Edward Steichen
-      Answer:   A) Thierry van Werveke
-      Hint:     He was Luxembourg's most beloved actor, known internationally
-                for his role in "Knockin' on Heaven's Door".
-      Info:     Thierry van Werveke (1958–2009) was a Luxembourgish actor who
-                appeared in over 60 films. He starred in Andy Bausch's films
-                and became internationally known for "Knockin' on Heaven's
-                Door." He won the Adolf-Grimme-Preis in 2008.
+      Hint: He was one of Luxembourg's most celebrated actors, known internationally for his role in "Knockin' on Heaven's Door".
+      Options: Thierry van Werveke | Andy Bausch | Michel Majerus | Edward Steichen
+      Answer: Thierry van Werveke
+      Explanation: Thierry van Werveke (1958–2009) was a Luxembourgish actor who appeared in over 60 films. He starred in Andy Bausch's films and became internationally known for "Knockin' on Heaven's Door." He won the Adolf-Grimme-Preis in 2008.
 
-  #49  Grand Duchess Marie-Adélaïde
+  49. Grand Duchess Marie-Adélaïde
       Category: Royalty
-      Options:  A) Grand Duchess Marie-Adélaïde  B) Grand Duchess Charlotte 
-                C) Grand Duchess Joséphine-Charlotte  D) Grand Duchess Maria
-                Teresa
-      Answer:   A) Grand Duchess Marie-Adélaïde
-      Hint:     She was the first Grand Duchess to reign in her own right but
-                abdicated after WWI.
-      Info:     Grand Duchess Marie-Adélaïde (1894–1924) reigned from 1912 to
-                1919. Her perceived closeness to the German occupiers during
-                WWI led to political crisis and her abdication in favour of
-                her sister Charlotte.
+      Hint: She was the first Grand Duchess to reign in her own right but abdicated after WWI.
+      Options: Grand Duchess Marie-Adélaïde | Grand Duchess Charlotte | Grand Duchess Joséphine-Charlotte | Grand Duchess Maria Teresa
+      Answer: Grand Duchess Marie-Adélaïde
+      Explanation: Grand Duchess Marie-Adélaïde (1894–1924) reigned from 1912 to 1919. Her perceived closeness to the German occupiers during WWI led to political crisis and her abdication in favour of her sister Charlotte.
 
-  #50  Roger Manderscheid
+  50. Roger Manderscheid
       Category: History
-      Options:  A) Roger Manderscheid  B) Batty Weber  C) Michel Rodange  D)
-                Anise Koltz
-      Answer:   A) Roger Manderscheid
-      Hint:     He was a major Luxembourgish novelist who wrote in
-                Luxembourgish language.
-      Info:     Roger Manderscheid (1933–2010) was one of Luxembourg's most
-                important novelists. He championed writing in Luxembourgish
-                and his novels explored Luxembourg's identity, including the
-                trauma of WWII.
+      Hint: He was a major Luxembourgish novelist who wrote in Luxembourgish language.
+      Options: Roger Manderscheid | Batty Weber | Michel Rodange | Anise Koltz
+      Answer: Roger Manderscheid
+      Explanation: Roger Manderscheid (1933–2010) was one of Luxembourg's most important novelists. He championed writing in Luxembourgish and his novels explored Luxembourg's identity, including the trauma of WWII.
 
 
 ================================================================================
-  LEVEL 3: RESIDENT — Deeper Knowledge Needed (25 people)
+LEVEL 3: RESIDENT — Deeper knowledge needed (25 people)
 ================================================================================
 
 --- Sub-level 1 ---
 
-  #51  Lydia Mutsch
+  51. Lydia Mutsch
       Category: Politics
-      Options:  A) Lydia Mutsch  B) Paulette Lenert  C) Taina Bofferding  D)
-                Corinne Cahen
-      Answer:   A) Lydia Mutsch
-      Hint:     She served as Minister of Health and Minister for Equal
-                Opportunities.
-      Info:     Lydia Mutsch is an LSAP politician who served as Minister of
-                Health and Minister for Equal Opportunities. She was also the
-                first female mayor of Esch-sur-Alzette, Luxembourg's second
-                largest city.
+      Hint: She served as Minister of Health and Minister for Equal Opportunities.
+      Options: Lydia Mutsch | Paulette Lenert | Taina Bofferding | Corinne Cahen
+      Answer: Lydia Mutsch
+      Explanation: Lydia Mutsch is an LSAP politician who served as Minister of Health and Minister for Equal Opportunities. She was also the first female mayor of Esch-sur-Alzette, Luxembourg's second largest city.
 
-  #52  Yuriko Backes
+  52. Yuriko Backes
       Category: Politics
-      Options:  A) Yuriko Backes  B) Taina Bofferding  C) Paulette Lenert  D)
-                Corinne Cahen
-      Answer:   A) Yuriko Backes
-      Hint:     She became Luxembourg's first female Minister of Finance in
-                2021.
-      Info:     Yuriko Backes is a Luxembourgish politician who made history
-                in 2021 as the country's first female Minister of Finance. She
-                currently serves as Minister for Gender Equality and Diversity
-                in the Frieden government.
+      Hint: She became Luxembourg's first female Minister of Finance in 2021.
+      Options: Yuriko Backes | Taina Bofferding | Paulette Lenert | Corinne Cahen
+      Answer: Yuriko Backes
+      Explanation: Yuriko Backes is a Luxembourgish politician who made history in 2021 as the country's first female Minister of Finance. She was appointed Minister for Gender Equality and Diversity in the Frieden government in 2023.
 
-  #53  Mandy Minella
+  53. Mandy Minella
       Category: Sport
-      Options:  A) Mandy Minella  B) Charel Grethen  C) Gilles Muller  D) Bob
-                Jungels
-      Answer:   A) Mandy Minella
-      Hint:     She is a Luxembourgish tennis player who reached world No. 66
-                and later became a member of parliament.
-      Info:     Mandy Minella (born 1985) is a Luxembourgish tennis player
-                turned politician. She reached WTA world No. 66 in singles,
-                won multiple titles, and after retiring in 2022 was elected to
-                the Chamber of Deputies in 2023.
+      Hint: She is a Luxembourgish tennis player who reached world No. 66 and later became a member of parliament.
+      Options: Mandy Minella | Charel Grethen | Gilles Muller | Bob Jungels
+      Answer: Mandy Minella
+      Explanation: Mandy Minella (born 1985) is a Luxembourgish tennis player turned politician. She reached WTA world No. 66 in singles, won multiple titles, and after retiring in 2022 was elected to the Chamber of Deputies in 2023.
 
-  #54  Marc Angel
+  54. Marc Angel
       Category: Politics
-      Options:  A) Marc Angel  B) Xavier Bettel  C) Félix Braz  D) Jean
-                Asselborn
-      Answer:   A) Marc Angel
-      Hint:     He is a Luxembourgish LSAP politician who serves as a Member
-                of the European Parliament.
-      Info:     Marc Angel is a Luxembourgish socialist politician who has
-                been a Member of the European Parliament since 2019. He served
-                as one of its Vice-Presidents from 2023 to 2024, and is a
-                prominent voice on social affairs and equality.
+      Hint: He is a Luxembourgish LSAP politician who became a Member of the European Parliament in 2019.
+      Options: Marc Angel | Xavier Bettel | Félix Braz | Jean Asselborn
+      Answer: Marc Angel
+      Explanation: Marc Angel is a Luxembourgish socialist politician who became a Member of the European Parliament in 2019. He served as one of its Vice-Presidents from 2023 to 2024, and became a prominent voice on social affairs and equality.
 
-  #55  Jean Portante
+  55. Jean Portante
       Category: History
-      Options:  A) Jean Portante  B) Batty Weber  C) Edmond de la Fontaine  D)
-                Michel Rodange
-      Answer:   A) Jean Portante
-      Hint:     He is a poet and writer who has championed Luxembourgish
-                language and literature.
-      Info:     Jean Portante is a contemporary Luxembourgish poet and writer
-                known for his work celebrating Luxembourg's multilingual
-                heritage and cultural identity. He has served as a cultural
-                ambassador for Luxembourg.
+      Hint: He is a poet and writer who has championed Luxembourgish language and literature.
+      Options: Jean Portante | Batty Weber | Edmond de la Fontaine | Michel Rodange
+      Answer: Jean Portante
+      Explanation: Jean Portante is a contemporary Luxembourgish poet and writer known for his work celebrating Luxembourg's multilingual heritage and cultural identity. He has served as a cultural ambassador for Luxembourg.
 
 --- Sub-level 2 ---
 
-  #56  Jean Asselborn
+  56. Jean Asselborn
       Category: Politics
-      Options:  A) Jean Asselborn  B) Jean-Claude Juncker  C) Xavier Bettel 
-                D) Luc Frieden
-      Answer:   A) Jean Asselborn
-      Hint:     He is Europe's longest-serving foreign minister, known for his
-                outspoken advocacy for human rights.
-      Info:     Jean Asselborn served as Luxembourg's Minister of Foreign
-                Affairs from 2004 to 2023, making him the longest-serving
-                foreign minister in the EU. He was known for passionate
-                speeches defending human rights and refugees.
+      Hint: He is Europe's longest-serving foreign minister, known for his outspoken advocacy for human rights.
+      Options: Jean Asselborn | Jean-Claude Juncker | Xavier Bettel | Luc Frieden
+      Answer: Jean Asselborn
+      Explanation: Jean Asselborn served as Luxembourg's Minister of Foreign Affairs from 2004 to 2023, making him the longest-serving foreign minister in the EU. He was known for passionate speeches defending human rights and refugees.
 
-  #57  Félix Braz
+  57. Félix Braz
       Category: Politics
-      Options:  A) Félix Braz  B) Xavier Bettel  C) Claude Wiseler  D) Luc
-                Frieden
-      Answer:   A) Félix Braz
-      Hint:     He served as Minister of Justice before suffering a serious
-                cardiac arrest in 2019.
-      Info:     Félix Braz is a Luxembourgish Green party politician who
-                served as Minister of Justice. He championed progressive
-                reforms but had to leave office in 2019 after suffering a
-                cardiac arrest.
+      Hint: He served as Minister of Justice before suffering a serious cardiac arrest in 2019.
+      Options: Félix Braz | Xavier Bettel | Claude Wiseler | Luc Frieden
+      Answer: Félix Braz
+      Explanation: Félix Braz is a Luxembourgish Green party politician who served as Minister of Justice. He championed progressive reforms but had to leave office in 2019 after suffering a cardiac arrest.
 
-  #58  Josy Barthel
+  58. Josy Barthel
       Category: Sport
-      Options:  A) Josy Barthel  B) Charel Grethen  C) Bob Jungels  D) Gilles
-                Muller
-      Answer:   A) Josy Barthel
-      Hint:     He won Luxembourg's only Olympic gold medal.
-      Info:     Josy Barthel (1927–1992) won the 1500m at the 1952 Helsinki
-                Olympics, delivering Luxembourg's one and only Olympic gold
-                medal. The national stadium in Luxembourg City is named after
-                him.
+      Hint: He won Luxembourg's only Olympic gold medal.
+      Options: Josy Barthel | Charel Grethen | Bob Jungels | Gilles Muller
+      Answer: Josy Barthel
+      Explanation: Josy Barthel (1927–1992) won the 1500m at the 1952 Helsinki Olympics, delivering Luxembourg's one and only Olympic gold medal. The national stadium in Luxembourg City is named after him.
 
-  #59  Princess Stéphanie
+  59. Princess Stéphanie
       Category: Royalty
-      Options:  A) Princess Stéphanie  B) Grand Duchess Maria Teresa  C) Grand
-                Duchess Charlotte  D) Princess Alexandra
-      Answer:   A) Princess Stéphanie
-      Hint:     She is the wife of Grand Duke Guillaume, originally from
-                Belgium.
-      Info:     Princess Stéphanie, née Countess de Lannoy, married Grand Duke
-                Guillaume in 2012. She is a Belgian-born member of the
-                Luxembourgish Grand Ducal Family and mother of Prince Charles.
+      Hint: She is the wife of Grand Duke Guillaume, originally from Belgium.
+      Options: Princess Stéphanie | Grand Duchess Maria Teresa | Grand Duchess Charlotte | Princess Alexandra
+      Answer: Princess Stéphanie
+      Explanation: Princess Stéphanie, née Countess de Lannoy, married Grand Duke Guillaume in 2012. She is a Belgian-born member of the Luxembourgish Grand Ducal Family and mother of Prince Charles.
 
-  #60  Guy Helminger
+  60. Guy Helminger
       Category: Culture
-      Options:  A) Guy Helminger  B) Roger Manderscheid  C) Anise Koltz  D)
-                Batty Weber
-      Answer:   A) Guy Helminger
-      Hint:     He is a Luxembourgish novelist and poet who has won several
-                international literary prizes.
-      Info:     Guy Helminger is a Luxembourgish writer whose novels and
-                poetry explore themes of identity and displacement. He has won
-                the Servais Prize and other important literary awards.
+      Hint: He is a Luxembourgish novelist and poet who has won several international literary prizes.
+      Options: Guy Helminger | Roger Manderscheid | Anise Koltz | Batty Weber
+      Answer: Guy Helminger
+      Explanation: Guy Helminger is a Luxembourgish writer whose novels and poetry explore themes of identity and displacement. He has won the Servais Prize and other important literary awards.
 
 --- Sub-level 3 ---
 
-  #61  Grand Duke Adolphe
+  61. Grand Duke Adolphe
       Category: Royalty
-      Options:  A) Grand Duke Adolphe  B) Grand Duke Jean  C) Grand Duke Henri
-                D) Grand Duke Guillaume IV
-      Answer:   A) Grand Duke Adolphe
-      Hint:     He was the first Grand Duke of the current Nassau-Weilburg
-                dynasty.
-      Info:     Grand Duke Adolphe (1817–1905) became Grand Duke of Luxembourg
-                in 1890, founding the current dynasty. He was previously Duke
-                of Nassau before losing it to Prussia in 1866. The Adolphe
-                Bridge in Luxembourg City is named after him.
+      Hint: He was the first Grand Duke of the current Nassau-Weilburg dynasty.
+      Options: Grand Duke Adolphe | Grand Duke Jean | Grand Duke Henri | Grand Duke Guillaume IV
+      Answer: Grand Duke Adolphe
+      Explanation: Grand Duke Adolphe (1817–1905) became Grand Duke of Luxembourg in 1890, founding the current dynasty. He was previously Duke of Nassau before losing it to Prussia in 1866. The Adolphe Bridge in Luxembourg City is named after him.
 
-  #62  Nicolas Schmit
+  62. Nicolas Schmit
       Category: Politics
-      Options:  A) Nicolas Schmit  B) Jean-Claude Juncker  C) Xavier Bettel 
-                D) Viviane Reding
-      Answer:   A) Nicolas Schmit
-      Hint:     He served as European Commissioner for Jobs and Social Rights
-                from 2019 to 2024.
-      Info:     Nicolas Schmit (born 1953) is a Luxembourgish politician who
-                served as European Commissioner for Jobs and Social Rights
-                (2019–2024). A member of the LSAP, he was the PES lead
-                candidate in the 2024 EU elections and previously served as
-                Luxembourg's Minister of Labour and Immigration.
+      Hint: He served as European Commissioner for Jobs and Social Rights from 2019 to 2024.
+      Options: Nicolas Schmit | Jean-Claude Juncker | Xavier Bettel | Viviane Reding
+      Answer: Nicolas Schmit
+      Explanation: Nicolas Schmit (born 1953) is a Luxembourgish politician who served as European Commissioner for Jobs and Social Rights (2019–2024). A member of the LSAP, he was the PES lead candidate in the 2024 EU elections and previously served as Luxembourg's Minister of Labour and Immigration.
 
-  #63  Émile Mayrisch
+  63. Émile Mayrisch
       Category: History
-      Options:  A) Émile Mayrisch  B) Pierre Werner  C) Robert Schuman  D)
-                Joseph Bech
-      Answer:   A) Émile Mayrisch
-      Hint:     He was the head of ARBED and one of Luxembourg's most powerful
-                industrialists.
-      Info:     Émile Mayrisch (1862–1928) led the steel company ARBED and was
-                instrumental in Franco-German reconciliation. He and his wife
-                Aline hosted intellectuals at their estate in Colpach.
+      Hint: He was the head of ARBED and one of Luxembourg's most powerful industrialists.
+      Options: Émile Mayrisch | Pierre Werner | Robert Schuman | Joseph Bech
+      Answer: Émile Mayrisch
+      Explanation: Émile Mayrisch (1862–1928) led the steel company ARBED and was instrumental in Franco-German reconciliation. He and his wife Aline hosted intellectuals at their estate in Colpach.
 
-  #64  Charly Gaul
+  64. Charly Gaul
       Category: Sport
-      Options:  A) Charly Gaul  B) Josy Barthel  C) Charel Grethen  D) Bob
-                Jungels
-      Answer:   A) Charly Gaul
-      Hint:     He was one of Luxembourg's greatest cyclists, winning the Tour
-                de France and Giro d'Italia.
-      Info:     Charly Gaul (1932–2005), known as "The Angel of the
-                Mountains", was a legendary Luxembourgish cyclist. He won the
-                1958 Tour de France, the 1956 Giro d'Italia, and dominated
-                mountain stages throughout his career.
+      Hint: He was one of Luxembourg's most celebrated cyclists, winning the Tour de France and Giro d'Italia.
+      Options: Charly Gaul | Josy Barthel | Charel Grethen | Bob Jungels
+      Answer: Charly Gaul
+      Explanation: Charly Gaul (1932–2005), known as "The Angel of the Mountains", was a celebrated Luxembourgish cyclist. He won the 1958 Tour de France, the 1956 Giro d'Italia, and dominated mountain stages throughout his career.
 
-  #65  Michel Lucius
+  65. Michel Lucius
       Category: Science
-      Options:  A) Michel Lucius  B) Gabriel Lippmann  C) Hugo Gernsback  D)
-                Yves Mersch
-      Answer:   A) Michel Lucius
-      Hint:     He was a pioneering Luxembourgish geologist and naturalist.
-      Info:     Michel Lucius was a Luxembourgish geologist and naturalist who
-                made important contributions to the understanding of
-                Luxembourg's geological heritage. His work laid the foundation
-                for modern geological studies in the region.
+      Hint: He was a pioneering Luxembourgish geologist and naturalist.
+      Options: Michel Lucius | Gabriel Lippmann | Hugo Gernsback | Yves Mersch
+      Answer: Michel Lucius
+      Explanation: Michel Lucius was a Luxembourgish geologist and naturalist who made important contributions to the understanding of Luxembourg's geological heritage. His work laid the foundation for modern geological studies in the region.
 
 --- Sub-level 4 ---
 
-  #66  Princess Alexandra
+  66. Princess Alexandra
       Category: Royalty
-      Options:  A) Princess Alexandra  B) Princess Stéphanie  C) Grand Duchess
-                Maria Teresa  D) Grand Duchess Charlotte
-      Answer:   A) Princess Alexandra
-      Hint:     She is the only daughter of Grand Duke Henri and Grand Duchess
-                Maria Teresa.
-      Info:     Princess Alexandra is the only daughter and fourth child of
-                Grand Duke Henri and Grand Duchess Maria Teresa. She studied
-                psychology and philosophy and is increasingly involved in
-                public duties.
+      Hint: She is the only daughter of Grand Duke Henri and Grand Duchess Maria Teresa.
+      Options: Princess Alexandra | Princess Stéphanie | Grand Duchess Maria Teresa | Grand Duchess Charlotte
+      Answer: Princess Alexandra
+      Explanation: Princess Alexandra is the only daughter and fourth child of Grand Duke Henri and Grand Duchess Maria Teresa. She studied psychology and philosophy and has taken on an increasing number of public duties.
 
-  #67  François Valentiny
+  67. François Valentiny
       Category: Culture
-      Options:  A) François Valentiny  B) Andy Bausch  C) Michel Majerus  D)
-                Joseph Kutter
-      Answer:   A) François Valentiny
-      Hint:     He is one of Luxembourg's most renowned architects.
-      Info:     François Valentiny is one of Luxembourg's leading architects,
-                known for innovative designs. His firm has designed major
-                cultural buildings in Luxembourg and abroad, including the
-                Luxembourg Pavilion at the 2010 Shanghai World Expo.
+      Hint: He is one of Luxembourg's most renowned architects.
+      Options: François Valentiny | Andy Bausch | Michel Majerus | Joseph Kutter
+      Answer: François Valentiny
+      Explanation: François Valentiny is one of Luxembourg's leading architects, known for innovative designs. His firm has designed major cultural buildings in Luxembourg and abroad, including the Luxembourg Pavilion at the 2010 Shanghai World Expo.
 
-  #68  Fernand Bentgen
+  68. Fernand Bentgen
       Category: Media
-      Options:  A) Fernand Bentgen  B) Batty Weber  C) Désirée Nosbusch  D)
-                Mike Koedinger
-      Answer:   A) Fernand Bentgen
-      Hint:     He was a pioneering Luxembourgish television and radio
-                broadcaster.
-      Info:     Fernand Bentgen was a legendary Luxembourgish broadcaster who
-                was instrumental in establishing television broadcasting in
-                Luxembourg. He helped shape the country's media landscape as a
-                pioneering television personality and journalist.
+      Hint: He was a pioneering Luxembourgish television and radio broadcaster.
+      Options: Fernand Bentgen | Batty Weber | Désirée Nosbusch | Mike Koedinger
+      Answer: Fernand Bentgen
+      Explanation: Fernand Bentgen was a pioneering Luxembourgish broadcaster who was instrumental in establishing television broadcasting in Luxembourg. He helped shape the country's media landscape as a pioneering television personality and journalist.
 
-  #69  Fleur Maxwell
+  69. Fleur Maxwell
       Category: Sport
-      Options:  A) Fleur Maxwell  B) Christine Majerus  C) Sarah De Nutte  D)
-                Ni Xia Lian
-      Answer:   A) Fleur Maxwell
-      Hint:     She is a Luxembourgish swimmer who competed at the Tokyo 2020
-                Olympics.
-      Info:     Fleur Maxwell is a Luxembourgish competitive swimmer who
-                represented the country at the Tokyo 2020 Olympic Games. She
-                specialises in breaststroke events and holds national records.
+      Hint: She is a Luxembourgish swimmer who competed at the Tokyo 2020 Olympics.
+      Options: Fleur Maxwell | Christine Majerus | Sarah De Nutte | Ni Xia Lian
+      Answer: Fleur Maxwell
+      Explanation: Fleur Maxwell is a Luxembourgish competitive swimmer who represented the country at the Tokyo 2020 Olympic Games. She specialises in breaststroke events and holds national records.
 
-  #70  Aline Mayrisch de Saint-Hubert
+  70. Aline Mayrisch de Saint-Hubert
       Category: History
-      Options:  A) Aline Mayrisch de Saint-Hubert  B) Anise Koltz  C) Grand
-                Duchess Charlotte  D) Élise Hack
-      Answer:   A) Aline Mayrisch de Saint-Hubert
-      Hint:     She was an intellectual and philanthropist who hosted Europe's
-                leading thinkers at Colpach.
-      Info:     Aline Mayrisch de Saint-Hubert (1874–1947) was a Luxembourgish
-                patron of the arts and intellectual hostess. At her Colpach
-                estate, she welcomed André Gide, Jean Schlumberger and other
-                European literary figures.
+      Hint: She was an intellectual and philanthropist who hosted Europe's leading thinkers at Colpach.
+      Options: Aline Mayrisch de Saint-Hubert | Anise Koltz | Grand Duchess Charlotte | Élise Hack
+      Answer: Aline Mayrisch de Saint-Hubert
+      Explanation: Aline Mayrisch de Saint-Hubert (1874–1947) was a Luxembourgish patron of the arts and intellectual hostess. At her Colpach estate, she welcomed André Gide, Jean Schlumberger and other European literary figures.
 
 --- Sub-level 5 ---
 
-  #71  Antoine Meyer
+  71. Antoine Meyer
       Category: History
-      Options:  A) Antoine Meyer  B) Michel Rodange  C) Edmond de la Fontaine 
-                D) Batty Weber
-      Answer:   A) Antoine Meyer
-      Hint:     He is considered the first writer to use Luxembourgish as a
-                literary language.
-      Info:     Antoine Meyer (1801–1857) wrote "E Schrek op de Letzebuerger
-                Parnassus" in 1829, the first literary work in Luxembourgish.
-                He is considered the pioneer of Luxembourgish-language
-                literature.
+      Hint: He is considered the first writer to use Luxembourgish as a literary language.
+      Options: Antoine Meyer | Michel Rodange | Edmond de la Fontaine | Batty Weber
+      Answer: Antoine Meyer
+      Explanation: Antoine Meyer (1801–1857) wrote "E Schrek op de Letzebuerger Parnassus" in 1829, the first literary work in Luxembourgish. He is considered the pioneer of Luxembourgish-language literature.
 
-  #72  Sam Tanson
+  72. Sam Tanson
       Category: Politics
-      Options:  A) Sam Tanson  B) Taina Bofferding  C) Paulette Lenert  D)
-                Corinne Cahen
-      Answer:   A) Sam Tanson
-      Hint:     She is a Green party politician who served as Minister of
-                Justice and Culture.
-      Info:     Sam Tanson is a Luxembourgish politician from the Greens who
-                served as Minister of Justice and Minister of Culture. She is
-                known for her progressive stance on environmental and social
-                issues.
+      Hint: She is a Green party politician who served as Minister of Justice and Culture.
+      Options: Sam Tanson | Taina Bofferding | Paulette Lenert | Corinne Cahen
+      Answer: Sam Tanson
+      Explanation: Sam Tanson is a Luxembourgish politician from the Greens who served as Minister of Justice and Minister of Culture. She is known for her progressive stance on environmental and social issues.
 
-  #73  Tom Habscheid
+  73. Tom Habscheid
       Category: Sport
-      Options:  A) Tom Habscheid  B) Charel Grethen  C) Josy Barthel  D) Bob
-                Jungels
-      Answer:   A) Tom Habscheid
-      Hint:     He is a Luxembourgish Paralympic athlete who competes in shot
-                put and discus.
-      Info:     Tom Habscheid is a Luxembourgish Paralympic athlete who
-                competes in shot put and discus throw. He has represented
-                Luxembourg at the Paralympic Games and won medals at European
-                Championships.
+      Hint: He is a Luxembourgish Paralympic athlete who competes in shot put and discus.
+      Options: Tom Habscheid | Charel Grethen | Josy Barthel | Bob Jungels
+      Answer: Tom Habscheid
+      Explanation: Tom Habscheid is a Luxembourgish Paralympic athlete who competes in shot put and discus throw. He has represented Luxembourg at the Paralympic Games and won medals at European Championships.
 
-  #74  Pol Abraham
+  74. Pol Abraham
       Category: Music
-      Options:  A) Pol Abraham  B) Francesco Tristano  C) Gast Waltzing  D)
-                Sascha Ley
-      Answer:   A) Pol Abraham
-      Hint:     He was a Luxembourgish musician and composer known for his
-                contributions to folk and classical traditions.
-      Info:     Pol Abraham is a Luxembourgish musician and composer who has
-                championed traditional and contemporary music. His work
-                reflects Luxembourg's rich musical heritage across multiple
-                genres.
+      Hint: He was a Luxembourgish musician and composer known for his contributions to folk and classical traditions.
+      Options: Pol Abraham | Francesco Tristano | Gast Waltzing | Sascha Ley
+      Answer: Pol Abraham
+      Explanation: Pol Abraham is a Luxembourgish musician and composer who has championed traditional and contemporary music. His work reflects Luxembourg's rich musical heritage across multiple genres.
 
-  #75  Nicolas Frantz
+  75. Nicolas Frantz
       Category: Sport
-      Options:  A) Nicolas Frantz  B) Gabriel Lippmann  C) Hugo Gernsback  D)
-                Yves Mersch
-      Answer:   A) Nicolas Frantz
-      Hint:     He was one of the greatest cyclists of the 1920s, winning the
-                Tour de France twice.
-      Info:     Nicolas Frantz (1904–1985) was a legendary Luxembourgish
-                cyclist who won the Tour de France twice (1927, 1928). He was
-                also World Road Race Champion and is remembered as one of
-                cycling's early champions.
+      Hint: He was one of the most successful cyclists of the 1920s, winning the Tour de France twice.
+      Options: Nicolas Frantz | Gabriel Lippmann | Hugo Gernsback | Yves Mersch
+      Answer: Nicolas Frantz
+      Explanation: Nicolas Frantz (1904–1985) was a celebrated Luxembourgish cyclist who won the Tour de France twice (1927, 1928). He was also World Road Race Champion and is remembered as one of cycling's early champions.
 
 
 ================================================================================
-  LEVEL 4: CITIZEN — Deep Luxembourg Knowledge (25 people)
+LEVEL 4: CITIZEN — Deep Luxembourg knowledge (25 people)
 ================================================================================
 
 --- Sub-level 1 ---
 
-  #76  Claude Turmes
+  76. Claude Turmes
       Category: Politics
-      Options:  A) Claude Turmes  B) Félix Braz  C) Sam Tanson  D) Jean
-                Asselborn
-      Answer:   A) Claude Turmes
-      Hint:     He is a Green politician who served as Minister of Energy and
-                has been a MEP.
-      Info:     Claude Turmes is a Luxembourgish Green politician who served
-                as Minister of Energy and Spatial Planning. He previously
-                spent years as a Member of the European Parliament,
-                championing renewable energy.
+      Hint: He is a Green politician who served as Minister of Energy and has been a MEP.
+      Options: Claude Turmes | Félix Braz | Sam Tanson | Jean Asselborn
+      Answer: Claude Turmes
+      Explanation: Claude Turmes is a Luxembourgish Green politician who served as Minister of Energy and Spatial Planning. He previously spent years as a Member of the European Parliament, championing renewable energy.
 
-  #77  Jeff Strasser
+  77. Jeff Strasser
       Category: Sport
-      Options:  A) Jeff Strasser  B) Jeff Saibene  C) Laurent Jans  D) Mario
-                Mutsch
-      Answer:   A) Jeff Strasser
-      Hint:     He played in the French Ligue 1 and German Bundesliga, and is
-                now manager of the Luxembourg national team.
-      Info:     Jeff Strasser (born 1974) is a Luxembourgish former
-                professional footballer who played for FC Metz, 1. FC
-                Kaiserslautern, and Borussia Mönchengladbach. With 98 caps for
-                Luxembourg, he became manager of the national team in 2025.
+      Hint: He played in the French Ligue 1 and German Bundesliga, and became manager of the Luxembourg national team in 2025.
+      Options: Jeff Strasser | Jeff Saibene | Laurent Jans | Mario Mutsch
+      Answer: Jeff Strasser
+      Explanation: Jeff Strasser (born 1974) is a Luxembourgish former professional footballer who played for FC Metz, 1. FC Kaiserslautern, and Borussia Mönchengladbach. With 98 caps for Luxembourg, he became manager of the national team in 2025.
 
-  #78  Jempy Drucker
+  78. Jempy Drucker
       Category: Sport
-      Options:  A) Jempy Drucker  B) Charly Gaul  C) Andy Schleck  D) François
-                Faber
-      Answer:   A) Jempy Drucker
-      Hint:     He is a legendary Luxembourgish cyclist and sports figure
-                known for his roles in cycling.
-      Info:     Jempy Drucker is a prominent Luxembourgish sports personality
-                known for his cycling achievements and contributions to
-                cycling development and management in Luxembourg.
+      Hint: He is a prominent Luxembourgish cyclist and sports figure known for his roles in cycling.
+      Options: Jempy Drucker | Charly Gaul | Andy Schleck | François Faber
+      Answer: Jempy Drucker
+      Explanation: Jempy Drucker is a prominent Luxembourgish sports personality known for his cycling achievements and contributions to cycling development and management in Luxembourg.
 
-  #79  François Faber
+  79. François Faber
       Category: History
-      Options:  A) François Faber  B) Marcel Noppeney  C) Antoine Meyer  D)
-                Batty Weber
-      Answer:   A) François Faber
-      Hint:     He was the first non-French winner of the Tour de France in
-                1909.
-      Info:     François Faber (1887–1915) was a Luxembourgish-born cyclist
-                who won the Tour de France in 1909, becoming the first
-                non-French winner. He won stages across multiple Tours and was
-                one of cycling's early legends. He died in World War I in
-                1915.
+      Hint: He was the first non-French winner of the Tour de France in 1909.
+      Options: François Faber | Marcel Noppeney | Antoine Meyer | Batty Weber
+      Answer: François Faber
+      Explanation: François Faber (1887–1915) was a Luxembourgish-born cyclist who won the Tour de France in 1909, becoming the first non-French winner. He won stages across multiple Tours and was one of cycling's early legends. He died in World War I in 1915.
 
-  #80  Lucien Wercollier
+  80. Lucien Wercollier
       Category: Culture
-      Options:  A) Lucien Wercollier  B) Théo Kerg  C) Joseph Kutter  D)
-                Michel Majerus
-      Answer:   A) Lucien Wercollier
-      Hint:     He was Luxembourg's most renowned sculptor, with works in
-                museums across the world.
-      Info:     Lucien Wercollier (1908–2002) was Luxembourg's greatest
-                sculptor, working in bronze, marble, and stone. His works
-                include the "Ascension" at the Kennedy Center in Washington,
-                D.C. Arrested during WWII for resisting the Nazi occupation,
-                his legacy is honored in the Wercollier Cloister at Neumünster
-                Abbey.
+      Hint: He was one of Luxembourg's most renowned sculptors, with works in museums across the world.
+      Options: Lucien Wercollier | Théo Kerg | Joseph Kutter | Michel Majerus
+      Answer: Lucien Wercollier
+      Explanation: Lucien Wercollier (1908–2002) was one of Luxembourg's most renowned sculptors, working in bronze, marble, and stone. His works include the "Ascension" at the Kennedy Center in Washington, D.C. Arrested during WWII for resisting the Nazi occupation, his legacy is honored in the Wercollier Cloister at Neumünster Abbey.
 
 --- Sub-level 2 ---
 
-  #81  Jean-Marie Schmit
+  81. Jean-Marie Schmit
       Category: Sport
-      Options:  A) Jean-Marie Schmit  B) Nicolas Frantz  C) Charly Gaul  D)
-                Andy Schleck
-      Answer:   A) Jean-Marie Schmit
-      Hint:     He is a respected Luxembourgish sports figure known for his
-                coaching and cycling contributions.
-      Info:     Jean-Marie Schmit is a prominent Luxembourgish sports
-                personality known for his involvement in cycling development
-                and sports management, contributing significantly to
-                Luxembourg's sporting culture.
+      Hint: He is a respected Luxembourgish sports figure known for his coaching and cycling contributions.
+      Options: Jean-Marie Schmit | Nicolas Frantz | Charly Gaul | Andy Schleck
+      Answer: Jean-Marie Schmit
+      Explanation: Jean-Marie Schmit is a prominent Luxembourgish sports personality known for his involvement in cycling development and sports management, contributing significantly to Luxembourg's sporting culture.
 
-  #82  Michel Lentz
+  82. Michel Lentz
       Category: Culture
-      Options:  A) Michel Lentz  B) Pierre Werner  C) Joseph Bech  D) Gaston
-                Thorn
-      Answer:   A) Michel Lentz
-      Hint:     He was the author of the Luxembourgish national anthem.
-      Info:     Michel Lentz (1820–1893) was a Luxembourgish poet and writer.
-                He wrote the lyrics to "Ons Hémécht" in 1859, which became the
-                national anthem of Luxembourg and a symbol of national
-                identity.
+      Hint: He was the author of the Luxembourgish national anthem.
+      Options: Michel Lentz | Pierre Werner | Joseph Bech | Gaston Thorn
+      Answer: Michel Lentz
+      Explanation: Michel Lentz (1820–1893) was a Luxembourgish poet and writer. He wrote the lyrics to "Ons Hémécht" in 1859, which became the national anthem of Luxembourg and a symbol of national identity.
 
-  #83  Tom Jungen
+  83. Tom Jungen
       Category: Media
-      Options:  A) Tom Jungen  B) Fernand Bentgen  C) Maison Moderne  D)
-                Tageblatt
-      Answer:   A) Tom Jungen
-      Hint:     He is a comedian and television personality known for his
-                humor about Luxembourg.
-      Info:     Tom Jungen is a celebrated Luxembourgish comedian and actor
-                who has become a prominent media personality. His humorous
-                commentary on Luxembourg life and culture has made him a
-                beloved figure in the country.
+      Hint: He is a comedian and television personality known for his humor about Luxembourg.
+      Options: Tom Jungen | Fernand Bentgen | Maison Moderne | Tageblatt
+      Answer: Tom Jungen
+      Explanation: Tom Jungen is a celebrated Luxembourgish comedian and actor who has become a prominent media personality. His humorous commentary on Luxembourg life and culture has made him a beloved figure in the country.
 
-  #84  Henri Tudor
+  84. Henri Tudor
       Category: Science
-      Options:  A) Henri Tudor  B) Gabriel Lippmann  C) Hugo Gernsback  D)
-                François Bentgen
-      Answer:   A) Henri Tudor
-      Hint:     He was a Luxembourgish engineer who pioneered the lead-acid
-                battery.
-      Info:     Henri Tudor (1859–1928), born in Ferme-Rouge, Luxembourg, was
-                a pioneer in the development of the lead-acid battery. His
-                inventions contributed significantly to the early electrical
-                industry across Europe.
+      Hint: He was a Luxembourgish engineer who pioneered the lead-acid battery.
+      Options: Henri Tudor | Gabriel Lippmann | Hugo Gernsback | François Bentgen
+      Answer: Henri Tudor
+      Explanation: Henri Tudor (1859–1928), born in Ferme-Rouge, Luxembourg, was a pioneer in the development of the lead-acid battery. His inventions contributed significantly to the early electrical industry across Europe.
 
-  #85  Simone Beissel
+  85. Simone Beissel
       Category: Politics
-      Options:  A) Simone Beissel  B) Lydia Mutsch  C) Corinne Cahen  D)
-                Paulette Lenert
-      Answer:   A) Simone Beissel
-      Hint:     She was the first female mayor of a major Luxembourgish town.
-      Info:     Simone Beissel was a Luxembourgish DP politician and one of
-                the first prominent women in Luxembourg's political life. She
-                served as a member of the Chamber of Deputies for many years.
+      Hint: She was the first female mayor of a major Luxembourgish town.
+      Options: Simone Beissel | Lydia Mutsch | Corinne Cahen | Paulette Lenert
+      Answer: Simone Beissel
+      Explanation: Simone Beissel was a Luxembourgish DP politician and one of the first prominent women in Luxembourg's political life. She served as a member of the Chamber of Deputies for many years.
 
 --- Sub-level 3 ---
 
-  #86  Prince Félix
+  86. Prince Félix
       Category: Royalty
-      Options:  A) Prince Félix  B) Prince Guillaume  C) Grand Duke Henri  D)
-                Prince Louis
-      Answer:   A) Prince Félix
-      Hint:     He is the second son of Grand Duke Henri and is married to
-                Claire Lademacher.
-      Info:     Prince Félix, the second son of Grand Duke Henri and Grand
-                Duchess Maria Teresa, married Claire Lademacher in 2013. He
-                served in the British military before returning to Luxembourg.
+      Hint: He is the second son of Grand Duke Henri and is married to Claire Lademacher.
+      Options: Prince Félix | Prince Guillaume | Grand Duke Henri | Prince Louis
+      Answer: Prince Félix
+      Explanation: Prince Félix, the second son of Grand Duke Henri and Grand Duchess Maria Teresa, married Claire Lademacher in 2013. He served in the British military before returning to Luxembourg.
 
-  #87  Jeff Saibene
+  87. Jeff Saibene
       Category: Sport
-      Options:  A) Jeff Saibene  B) Luc Holtz  C) Gilles Muller  D) Josy
-                Barthel
-      Answer:   A) Jeff Saibene
-      Hint:     He is one of Luxembourg's most well-known football coaches,
-                managing clubs in Germany and Switzerland.
-      Info:     Jeff Saibene is a Luxembourgish football coach who has managed
-                professional clubs in Germany, Switzerland and Belgium,
-                including Arminia Bielefeld and Young Boys Bern.
+      Hint: He is one of Luxembourg's most well-known football coaches, managing clubs in Germany and Switzerland.
+      Options: Jeff Saibene | Luc Holtz | Gilles Muller | Josy Barthel
+      Answer: Jeff Saibene
+      Explanation: Jeff Saibene is a Luxembourgish football coach who has managed professional clubs in Germany, Switzerland and Belgium, including Arminia Bielefeld and Young Boys Bern.
 
-  #88  Vicky Krieps
+  88. Vicky Krieps
       Category: Culture
-      Options:  A) Vicky Krieps  B) Fernand Roda  C) Désirée Nosbusch  D) Mike
-                Koedinger
-      Answer:   A) Vicky Krieps
-      Hint:     She is a Luxembourgish-Swiss actress known for her roles in
-                international films and television.
-      Info:     Vicky Krieps is a talented Luxembourgish-Swiss actress who has
-                appeared in notable international productions, bringing
-                Luxembourg talent to the global cinema stage and representing
-                her country in prestigious film festivals.
+      Hint: She is a Luxembourgish-Swiss actress known for her roles in international films and television.
+      Options: Vicky Krieps | Fernand Roda | Désirée Nosbusch | Mike Koedinger
+      Answer: Vicky Krieps
+      Explanation: Vicky Krieps is a talented Luxembourgish-Swiss actress who has appeared in notable international productions, bringing Luxembourg talent to the global cinema stage and representing her country in prestigious film festivals.
 
-  #89  Nik Welter
+  89. Nik Welter
       Category: History
-      Options:  A) Nik Welter  B) Batty Weber  C) Marcel Noppeney  D) Michel
-                Rodange
-      Answer:   A) Nik Welter
-      Hint:     He was a Luxembourgish poet and politician who fought for the
-                Luxembourgish language.
-      Info:     Nik Welter (1871–1951) was a Luxembourgish poet, literary
-                critic and politician. He advocated strongly for the
-                recognition of Luxembourgish as a national language and
-                published important poetry collections.
+      Hint: He was a Luxembourgish poet and politician who fought for the Luxembourgish language.
+      Options: Nik Welter | Batty Weber | Marcel Noppeney | Michel Rodange
+      Answer: Nik Welter
+      Explanation: Nik Welter (1871–1951) was a Luxembourgish poet, literary critic and politician. He advocated strongly for the recognition of Luxembourgish as a national language and published important poetry collections.
 
-  #90  Carole Dieschbourg
+  90. Carole Dieschbourg
       Category: Politics
-      Options:  A) Carole Dieschbourg  B) Sam Tanson  C) Taina Bofferding  D)
-                Paulette Lenert
-      Answer:   A) Carole Dieschbourg
-      Hint:     She was Luxembourg's Minister of Environment and a key voice
-                on climate policy.
-      Info:     Carole Dieschbourg is a Luxembourgish Green politician who
-                served as Minister of the Environment, Climate and Sustainable
-                Development. She represented Luxembourg at international
-                climate conferences.
+      Hint: She was Luxembourg's Minister of Environment and a key voice on climate policy.
+      Options: Carole Dieschbourg | Sam Tanson | Taina Bofferding | Paulette Lenert
+      Answer: Carole Dieschbourg
+      Explanation: Carole Dieschbourg is a Luxembourgish Green politician who served as Minister of the Environment, Climate and Sustainable Development. She represented Luxembourg at international climate conferences.
 
 --- Sub-level 4 ---
 
-  #91  Prince Louis
+  91. Prince Louis
       Category: Royalty
-      Options:  A) Prince Louis  B) Prince Félix  C) Prince Guillaume  D)
-                Grand Duke Henri
-      Answer:   A) Prince Louis
-      Hint:     He is the third son of Grand Duke Henri, known for his
-                humanitarian work.
-      Info:     Prince Louis is the third son of Grand Duke Henri and Grand
-                Duchess Maria Teresa. He is involved in humanitarian and
-                social work, particularly in Africa and the Middle East.
+      Hint: He is the third son of Grand Duke Henri, known for his humanitarian work.
+      Options: Prince Louis | Prince Félix | Prince Guillaume | Grand Duke Henri
+      Answer: Prince Louis
+      Explanation: Prince Louis is the third son of Grand Duke Henri and Grand Duchess Maria Teresa. He is involved in humanitarian and social work, particularly in Africa and the Middle East.
 
-  #92  Théo Kerg
+  92. Théo Kerg
       Category: Culture
-      Options:  A) Théo Kerg  B) François Valentiny  C) Andy Bausch  D) Joseph
-                Kutter
-      Answer:   A) Théo Kerg
-      Hint:     He was a pioneering abstract painter whose tactile art
-                experiments made him internationally recognized.
-      Info:     Théo Kerg (1909–1993) was a Luxembourgish modernist painter
-                who pioneered tactile and abstract art. His innovative
-                approach to incorporating materials that invited touch
-                distinguished him in contemporary art circles.
+      Hint: He was a pioneering abstract painter whose tactile art experiments made him internationally recognized.
+      Options: Théo Kerg | François Valentiny | Andy Bausch | Joseph Kutter
+      Answer: Théo Kerg
+      Explanation: Théo Kerg (1909–1993) was a Luxembourgish modernist painter who pioneered tactile and abstract art. His innovative approach to incorporating materials that invited touch distinguished him in contemporary art circles.
 
-  #93  Raphaël Stacchiotti
+  93. Raphaël Stacchiotti
       Category: Sport
-      Options:  A) Raphaël Stacchiotti  B) Fleur Maxwell  C) Charel Grethen 
-                D) Tom Habscheid
-      Answer:   A) Raphaël Stacchiotti
-      Hint:     He is a four-time Olympian swimmer who carried Luxembourg's
-                flag at the 2008 Beijing Olympics.
-      Info:     Raphaël Stacchiotti (born 1992) is a Luxembourgish swimmer who
-                competed at four consecutive Olympic Games (2008, 2012, 2016,
-                2020). He carried Luxembourg's flag at the 2008 Beijing
-                opening ceremony aged just 16 and holds numerous national
-                records in freestyle and medley events.
+      Hint: He is a four-time Olympian swimmer who carried Luxembourg's flag at the 2008 Beijing Olympics.
+      Options: Raphaël Stacchiotti | Fleur Maxwell | Charel Grethen | Tom Habscheid
+      Answer: Raphaël Stacchiotti
+      Explanation: Raphaël Stacchiotti (born 1992) is a Luxembourgish swimmer who competed at four consecutive Olympic Games (2008, 2012, 2016, 2020). He carried Luxembourg's flag at the 2008 Beijing opening ceremony aged just 16 and holds numerous national records in freestyle and medley events.
 
-  #94  Lambert Schaus
+  94. Lambert Schaus
       Category: History
-      Options:  A) Lambert Schaus  B) Pierre Werner  C) Joseph Bech  D) Émile
-                Mayrisch
-      Answer:   A) Lambert Schaus
-      Hint:     He was an important Luxembourg politician in the post-war era.
-      Info:     Lambert Schaus was a prominent Luxembourgish politician who
-                played a key role in Luxembourg's post-war reconstruction and
-                European integration. He was Foreign Minister and championed
-                European unity.
+      Hint: He was an important Luxembourg politician in the post-war era.
+      Options: Lambert Schaus | Pierre Werner | Joseph Bech | Émile Mayrisch
+      Answer: Lambert Schaus
+      Explanation: Lambert Schaus was a prominent Luxembourgish politician who played a key role in Luxembourg's post-war reconstruction and European integration. He was Foreign Minister and championed European unity.
 
-  #95  Elsy Jacobs
+  95. Elsy Jacobs
       Category: Sport
-      Options:  A) Elsy Jacobs  B) Francesco Tristano  C) Gast Waltzing  D)
-                Edsun
-      Answer:   A) Elsy Jacobs
-      Hint:     She was Luxembourg's first female world champion cyclist.
-      Info:     Elsy Jacobs (1933–1998) was a Luxembourgish cyclist who became
-                the first-ever women's world road race champion in 1958. She
-                was a pioneering figure in professional women's cycling.
+      Hint: She was Luxembourg's first female world champion cyclist.
+      Options: Elsy Jacobs | Francesco Tristano | Gast Waltzing | Edsun
+      Answer: Elsy Jacobs
+      Explanation: Elsy Jacobs (1933–1998) was a Luxembourgish cyclist who became the first-ever women's world road race champion in 1958. She was a pioneering figure in professional women's cycling.
 
 --- Sub-level 5 ---
 
-  #96  Prince Sébastien
+  96. Prince Sébastien
       Category: Royalty
-      Options:  A) Prince Sébastien  B) Prince Félix  C) Prince Louis  D)
-                Prince Guillaume
-      Answer:   A) Prince Sébastien
-      Hint:     He is the youngest son of Grand Duke Henri.
-      Info:     Prince Sébastien is the youngest son of Grand Duke Henri and
-                Grand Duchess Maria Teresa. He studied in the United States
-                and has been involved in environmental and charitable
-                initiatives.
+      Hint: He is the youngest son of Grand Duke Henri.
+      Options: Prince Sébastien | Prince Félix | Prince Louis | Prince Guillaume
+      Answer: Prince Sébastien
+      Explanation: Prince Sébastien is the youngest son of Grand Duke Henri and Grand Duchess Maria Teresa. He studied in the United States and has been involved in environmental and charitable initiatives.
 
-  #97  Paul Helminger
+  97. Paul Helminger
       Category: Politics
-      Options:  A) Paul Helminger  B) Claude Wiseler  C) Luc Frieden  D)
-                Xavier Bettel
-      Answer:   A) Paul Helminger
-      Hint:     He served as the mayor of Luxembourg City for many years.
-      Info:     Paul Helminger was a Luxembourgish DP politician who served as
-                mayor of Luxembourg City from 1999 to 2011. Under his
-                leadership, the city underwent significant modernization and
-                cultural development.
+      Hint: He served as the mayor of Luxembourg City for many years.
+      Options: Paul Helminger | Claude Wiseler | Luc Frieden | Xavier Bettel
+      Answer: Paul Helminger
+      Explanation: Paul Helminger was a Luxembourgish DP politician who served as mayor of Luxembourg City from 1999 to 2011. Under his leadership, the city underwent significant modernization and cultural development.
 
-  #98  Jenny Warling
+  98. Jenny Warling
       Category: Sport
-      Options:  A) Jenny Warling  B) Christine Majerus  C) Ni Xia Lian  D)
-                Sarah De Nutte
-      Answer:   A) Jenny Warling
-      Hint:     She is a Luxembourgish karate champion who competed at the
-                Tokyo Olympics.
-      Info:     Jenny Warling is a Luxembourgish karateka who competed at the
-                Tokyo 2020 Olympic Games where karate made its debut. She has
-                won multiple European championship medals.
+      Hint: She is a Luxembourgish karate champion who competed at the Tokyo Olympics.
+      Options: Jenny Warling | Christine Majerus | Ni Xia Lian | Sarah De Nutte
+      Answer: Jenny Warling
+      Explanation: Jenny Warling is a Luxembourgish karateka who competed at the Tokyo 2020 Olympic Games where karate made its debut. She has won multiple European championship medals.
 
-  #99  Marcel Noppeney
+  99. Marcel Noppeney
       Category: Culture
-      Options:  A) Marcel Noppeney  B) Anise Koltz  C) Batty Weber  D) Roger
-                Manderscheid
-      Answer:   A) Marcel Noppeney
-      Hint:     He was a Luxembourg writer who founded the literary magazine
-                Floréal and the S.E.L.F. writers' society.
-      Info:     Marcel Noppeney (1877–1966) was a prominent Luxembourgish
-                writer who wrote in French. He founded the bilingual literary
-                magazine Floréal in 1907 and established the S.E.L.F. (Société
-                des écrivains luxembourgeois de langue française) in 1934,
-                playing a key role in Luxembourg's literary life.
+      Hint: He was a Luxembourg writer who founded the literary magazine Floréal and the S.E.L.F. writers' society.
+      Options: Marcel Noppeney | Anise Koltz | Batty Weber | Roger Manderscheid
+      Answer: Marcel Noppeney
+      Explanation: Marcel Noppeney (1877–1966) was a prominent Luxembourgish writer who wrote in French. He founded the bilingual literary magazine Floréal in 1907 and established the S.E.L.F. (Société des écrivains luxembourgeois de langue française) in 1934, playing a key role in Luxembourg's literary life.
 
-  #100  Émile Hamilius
-      Category: History
-      Options:  A) Émile Hamilius  B) Pierre Werner  C) Gaston Thorn  D)
-                Joseph Bech
-      Answer:   A) Émile Hamilius
-      Hint:     He was a key political figure in Luxembourg's post-war
-                reconstruction.
-      Info:     Émile Hamilius played an important role in Luxembourg's
-                political and social reconstruction after World War II,
-                contributing to the country's recovery and modernization in
-                the post-war decades.
+  100. Émile Hamilius
+       Category: History
+       Hint: He was a key political figure in Luxembourg's post-war reconstruction.
+       Options: Émile Hamilius | Pierre Werner | Gaston Thorn | Joseph Bech
+       Answer: Émile Hamilius
+       Explanation: Émile Hamilius played an important role in Luxembourg's political and social reconstruction after World War II, contributing to the country's recovery and modernization in the post-war decades.
 
 
 ================================================================================
-  LEVEL 5: AMBASSADOR — Expert-Level Luxembourg Knowledge (25 people)
+LEVEL 5: AMBASSADOR — Expert-level Luxembourg knowledge (25 people)
 ================================================================================
 
 --- Sub-level 1 ---
 
-  #101  Grand Duke Guillaume IV
-      Category: Royalty
-      Options:  A) Grand Duke Guillaume IV  B) Grand Duke Adolphe  C) Grand
-                Duke Jean  D) Grand Duke Henri
-      Answer:   A) Grand Duke Guillaume IV
-      Hint:     He reigned from 1905 to 1912 and was the father of Grand
-                Duchesses Marie-Adélaïde and Charlotte.
-      Info:     Grand Duke Guillaume IV (1852–1912) reigned from 1905 until
-                his death. He was the father of six daughters, including
-                Marie-Adélaïde and Charlotte, who would both reign as Grand
-                Duchesses.
+  101. Grand Duke Guillaume IV
+       Category: Royalty
+       Hint: He reigned from 1905 to 1912 and was the father of Grand Duchesses Marie-Adélaïde and Charlotte.
+       Options: Grand Duke Guillaume IV | Grand Duke Adolphe | Grand Duke Jean | Grand Duke Henri
+       Answer: Grand Duke Guillaume IV
+       Explanation: Grand Duke Guillaume IV (1852–1912) reigned from 1905 until his death. He was the father of six daughters, including Marie-Adélaïde and Charlotte, who would both reign as Grand Duchesses.
 
-  #102  Sosthène Weis
-      Category: Culture
-      Options:  A) Sosthène Weis  B) Joseph Kutter  C) Nico Klopp  D) Frantz
-                Seimetz
-      Answer:   A) Sosthène Weis
-      Hint:     He was a Luxembourgish architect and watercolour painter who
-                created over 5,000 works.
-      Info:     Sosthène Weis (1872–1941) was a Luxembourgish architect and
-                prolific watercolour painter. As government architect he
-                designed the Hôtel des Postes in Luxembourg City. He painted
-                over 5,000 watercolours of Luxembourg and its surroundings in
-                a romantic post-impressionist style.
+  102. Sosthène Weis
+       Category: Culture
+       Hint: He was a Luxembourgish architect and watercolour painter who created over 5,000 works.
+       Options: Sosthène Weis | Joseph Kutter | Nico Klopp | Frantz Seimetz
+       Answer: Sosthène Weis
+       Explanation: Sosthène Weis (1872–1941) was a Luxembourgish architect and prolific watercolour painter. As government architect he designed the Hôtel des Postes in Luxembourg City. He painted over 5,000 watercolours of Luxembourg and its surroundings in a romantic post-impressionist style.
 
-  #103  Sigefroi
-      Category: History
-      Options:  A) Sigefroi  B) Grand Duke Adolphe  C) Grand Duke Guillaume IV
-                D) Grand Duchess Charlotte
-      Answer:   A) Sigefroi
-      Hint:     He acquired the castle of Lucilinburhuc in 963, founding what
-                would become Luxembourg.
-      Info:     Sigefroi (Siegfried, c. 922–998) was Count of the Ardennes who
-                acquired the Roman fortification of Lucilinburhuc in 963, an
-                act regarded as the founding of Luxembourg City. His
-                descendants formed the House of Luxembourg and became its
-                counts and dukes.
+  103. Sigefroi
+       Category: History
+       Hint: He acquired the castle of Lucilinburhuc in 963, founding what would become Luxembourg.
+       Options: Sigefroi | Grand Duke Adolphe | Grand Duke Guillaume IV | Grand Duchess Charlotte
+       Answer: Sigefroi
+       Explanation: Sigefroi (Siegfried, c. 922–998) was Count of the Ardennes who acquired the Roman fortification of Lucilinburhuc in 963, an act traditionally regarded as the founding of Luxembourg City. His descendants formed the House of Luxembourg and became its counts and dukes.
 
-  #104  Marc Girardelli
-      Category: Sport
-      Options:  A) Marc Girardelli  B) Charel Grethen  C) Josy Barthel  D) Tom
-                Habscheid
-      Answer:   A) Marc Girardelli
-      Hint:     He was one of the greatest alpine skiers, winning multiple
-                world championships and Olympic medals.
-      Info:     Marc Girardelli is a legendary Luxembourgish alpine skier who
-                won multiple World Championships and Olympic medals in the
-                1980s and 1990s. He is one of the most successful skiers from
-                a non-traditional skiing nation.
+  104. Marc Girardelli
+       Category: Sport
+       Hint: He was one of the most successful alpine skiers, winning multiple world championships and Olympic medals.
+       Options: Marc Girardelli | Charel Grethen | Josy Barthel | Tom Habscheid
+       Answer: Marc Girardelli
+       Explanation: Marc Girardelli is a highly decorated Luxembourgish alpine skier who won multiple World Championships and Olympic medals in the 1980s and 1990s. He is one of the most successful skiers from a non-traditional skiing nation.
 
-  #105  Paul Eyschen
-      Category: Politics
-      Options:  A) Paul Eyschen  B) Pierre Werner  C) Joseph Bech  D) Gaston
-                Thorn
-      Answer:   A) Paul Eyschen
-      Hint:     He was Luxembourg's longest-serving Prime Minister before
-                Juncker, ruling for 27 years.
-      Info:     Paul Eyschen (1841–1915) served as Prime Minister of
-                Luxembourg from 1888 until his death in 1915 — a remarkable 27
-                years. He modernized Luxembourg and navigated the country
-                through the early years of WWI.
+  105. Paul Eyschen
+       Category: Politics
+       Hint: He was Luxembourg's longest-serving Prime Minister before Juncker, ruling for 27 years.
+       Options: Paul Eyschen | Pierre Werner | Joseph Bech | Gaston Thorn
+       Answer: Paul Eyschen
+       Explanation: Paul Eyschen (1841–1915) served as Prime Minister of Luxembourg from 1888 until his death in 1915 — a remarkable 27 years. He modernized Luxembourg and navigated the country through the early years of WWI.
 
 --- Sub-level 2 ---
 
-  #106  Frantz Seimetz
-      Category: Culture
-      Options:  A) Frantz Seimetz  B) Joseph Kutter  C) Théo Kerg  D) Michel
-                Majerus
-      Answer:   A) Frantz Seimetz
-      Hint:     He was one of the first notable Luxembourgish painters of the
-                19th century.
-      Info:     Frantz Seimetz (1858–1934) was among the first notable
-                Luxembourgish painters, known for his landscapes and portraits
-                depicting Luxembourg's countryside and people in the late 19th
-                century.
+  106. Frantz Seimetz
+       Category: Culture
+       Hint: He was one of the first notable Luxembourgish painters of the 19th century.
+       Options: Frantz Seimetz | Joseph Kutter | Théo Kerg | Michel Majerus
+       Answer: Frantz Seimetz
+       Explanation: Frantz Seimetz (1858–1934) was among the first notable Luxembourgish painters, known for his landscapes and portraits depicting Luxembourg's countryside and people in the late 19th century.
 
-  #107  Fausti
-      Category: Music
-      Options:  A) Fausti  B) Camillo Felgen  C) Gast Waltzing  D) Francesco
-                Tristano
-      Answer:   A) Fausti
-      Hint:     He was a beloved Luxembourgish entertainer known for his
-                music, impressions, and humor over seven decades.
-      Info:     Fausti (Faustino Cima, 1940–2021) was a legendary
-                Luxembourgish musician and entertainer who performed for
-                almost seven decades. He played drums for Udo Jürgens at the
-                1966 Eurovision and was a fixture at Luxembourg events like
-                carnival parties and the Päischtcroisière cruise.
+  107. Fausti
+       Category: Music
+       Hint: He was a beloved Luxembourgish entertainer known for his music, impressions, and humor over seven decades.
+       Options: Fausti | Camillo Felgen | Gast Waltzing | Francesco Tristano
+       Answer: Fausti
+       Explanation: Fausti (Faustino Cima, 1940–2021) was a beloved Luxembourgish musician and entertainer who performed for almost seven decades. He played drums for Udo Jürgens at the 1966 Eurovision and was a fixture at Luxembourg events like carnival parties and the Päischtcroisière cruise.
 
-  #108  Laurent Menager
-      Category: History
-      Options:  A) Laurent Menager  B) J.P. Beicht  C) Gustave Kahnt  D) J.A.
-                Zinnen
-      Answer:   A) Laurent Menager
-      Hint:     He was a Luxembourgish composer known as one of the founders
-                of the country's musical tradition.
-      Info:     Laurent Menager (1835–1902) was a pioneering Luxembourgish
-                composer who founded the Conservatoire de Luxembourg. He
-                composed choral works and orchestral pieces that form the
-                foundation of Luxembourg's classical music tradition.
+  108. Laurent Menager
+       Category: History
+       Hint: He was a Luxembourgish composer known as one of the founders of the country's musical tradition.
+       Options: Laurent Menager | J.P. Beicht | Gustave Kahnt | J.A. Zinnen
+       Answer: Laurent Menager
+       Explanation: Laurent Menager (1835–1902) was a pioneering Luxembourgish composer who founded the Conservatoire de Luxembourg. He composed choral works and orchestral pieces that form the foundation of Luxembourg's classical music tradition.
 
-  #109  Laurent Jans
-      Category: Sport
-      Options:  A) Laurent Jans  B) Nicolas Frantz  C) Charly Gaul  D)
-                François Faber
-      Answer:   A) Laurent Jans
-      Hint:     He is one of Luxembourg's most capped footballers with
-                significant international appearances.
-      Info:     Laurent Jans is a versatile Luxembourgish footballer who has
-                been a key player for the national team. With over 50 caps, he
-                is one of the most experienced players in Luxembourg's
-                football history.
+  109. Laurent Jans
+       Category: Sport
+       Hint: He is one of Luxembourg's most capped footballers with significant international appearances.
+       Options: Laurent Jans | Nicolas Frantz | Charly Gaul | François Faber
+       Answer: Laurent Jans
+       Explanation: Laurent Jans is a versatile Luxembourgish footballer who has been a key player for the national team. With over 50 caps, he is one of the most experienced players in Luxembourg's football history.
 
-  #110  Émile Reuter
-      Category: Politics
-      Options:  A) Émile Reuter  B) Paul Eyschen  C) Joseph Bech  D) Pierre
-                Werner
-      Answer:   A) Émile Reuter
-      Hint:     He served as Prime Minister during the 1919 constitutional
-                crisis.
-      Info:     Émile Reuter (1874–1973) served as Prime Minister of
-                Luxembourg from 1918 to 1925. He navigated the country through
-                the constitutional crisis that led to Grand Duchess
-                Marie-Adélaïde's abdication and the 1919 referendum.
+  110. Émile Reuter
+       Category: Politics
+       Hint: He served as Prime Minister during the 1919 constitutional crisis.
+       Options: Émile Reuter | Paul Eyschen | Joseph Bech | Pierre Werner
+       Answer: Émile Reuter
+       Explanation: Émile Reuter (1874–1973) served as Prime Minister of Luxembourg from 1918 to 1925. He navigated the country through the constitutional crisis that led to Grand Duchess Marie-Adélaïde's abdication and the 1919 referendum.
 
 --- Sub-level 3 ---
 
-  #111  Nico Klopp
-      Category: Culture
-      Options:  A) Nico Klopp  B) Joseph Kutter  C) Thierry van Werveke  D)
-                Théo Kerg
-      Answer:   A) Nico Klopp
-      Hint:     He was a post-impressionist painter known for his vivid
-                landscapes of the Moselle region.
-      Info:     Nico Klopp (1894–1930) was a Luxembourgish post-impressionist
-                painter known for his vivid landscapes of the Moselle river.
-                He co-founded the Salon de la Sécession in 1927 alongside
-                Joseph Kutter, breaking away from academic art traditions. He
-                died at just 36 years old.
+  111. Nico Klopp
+       Category: Culture
+       Hint: He was a post-impressionist painter known for his vivid landscapes of the Moselle region.
+       Options: Nico Klopp | Joseph Kutter | Thierry van Werveke | Théo Kerg
+       Answer: Nico Klopp
+       Explanation: Nico Klopp (1894–1930) was a Luxembourgish post-impressionist painter known for his vivid landscapes of the Moselle river. He co-founded the Salon de la Sécession in 1927 alongside Joseph Kutter, breaking away from academic art traditions. He died at just 36 years old.
 
-  #112  Jean-Antoine Zinnen
-      Category: Music
-      Options:  A) Jean-Antoine Zinnen  B) Laurent Menager  C) Gast Waltzing 
-                D) Francesco Tristano
-      Answer:   A) Jean-Antoine Zinnen
-      Hint:     He composed the music for Luxembourg's national anthem, "Ons
-                Heemecht".
-      Info:     Jean-Antoine Zinnen (1827–1898) composed the music for "Ons
-                Heemecht" (Our Homeland), Luxembourg's national anthem. The
-                lyrics were written by Michel Lentz and the anthem was first
-                performed in 1864.
+  112. Jean-Antoine Zinnen
+       Category: Music
+       Hint: He composed the music for Luxembourg's national anthem, "Ons Heemecht".
+       Options: Jean-Antoine Zinnen | Laurent Menager | Gast Waltzing | Francesco Tristano
+       Answer: Jean-Antoine Zinnen
+       Explanation: Jean-Antoine Zinnen (1827–1898) composed the music for "Ons Heemecht" (Our Homeland), Luxembourg's national anthem. The lyrics were written by Michel Lentz and the anthem was first performed in 1864.
 
-  #113  Adrien Ries
-      Category: History
-      Options:  A) Adrien Ries  B) Michel Rodange  C) Edmond de la Fontaine 
-                D) Antoine Meyer
-      Answer:   A) Adrien Ries
-      Hint:     He was a Luxembourgish lawyer, economist and author who coined
-                the concept of "Nordstad".
-      Info:     Adrien Ries (1933–1991) was a Luxembourgish lawyer, economist
-                and author who worked at the European Commission from 1962 to
-                1986. He coined the concept of "Nordstad", a unified urban
-                area in northern Luxembourg. He was also an avid hiker and
-                writer of travel diaries.
+  113. Adrien Ries
+       Category: History
+       Hint: He was a Luxembourgish lawyer, economist and author who coined the concept of "Nordstad".
+       Options: Adrien Ries | Michel Rodange | Edmond de la Fontaine | Antoine Meyer
+       Answer: Adrien Ries
+       Explanation: Adrien Ries (1933–1991) was a Luxembourgish lawyer, economist and author who worked at the European Commission from 1962 to 1986. He coined the concept of "Nordstad", a unified urban area in northern Luxembourg. He was also an avid hiker and writer of travel diaries.
 
-  #114  Dan Kersch
-      Category: Politics
-      Options:  A) Dan Kersch  B) Paulette Lenert  C) Corinne Cahen  D) Lydia
-                Mutsch
-      Answer:   A) Dan Kersch
-      Hint:     He is a prominent politician who served as Minister of Social
-                Security and Equality between Women and Men.
-      Info:     Dan Kersch is a Luxembourgish LSAP politician who served as
-                Minister of Social Security, of Equality between Women and
-                Men, and played important roles in social and labor policy in
-                Luxembourg.
+  114. Dan Kersch
+       Category: Politics
+       Hint: He is a prominent politician who served as Minister of Social Security and Equality between Women and Men.
+       Options: Dan Kersch | Paulette Lenert | Corinne Cahen | Lydia Mutsch
+       Answer: Dan Kersch
+       Explanation: Dan Kersch is a Luxembourgish LSAP politician who served as Minister of Social Security, of Equality between Women and Men, and played important roles in social and labor policy in Luxembourg.
 
-  #115  Mario Mutsch
-      Category: Sport
-      Options:  A) Mario Mutsch  B) Christine Majerus  C) Jenny Warling  D)
-                Fleur Maxwell
-      Answer:   A) Mario Mutsch
-      Hint:     He is a professional Luxembourgish footballer known for his
-                technical skills.
-      Info:     Mario Mutsch is a talented Luxembourgish footballer who has
-                played in several European leagues. He represents Luxembourg
-                in international football and has been a key player for the
-                national team.
+  115. Mario Mutsch
+       Category: Sport
+       Hint: He is a professional Luxembourgish footballer known for his technical skills.
+       Options: Mario Mutsch | Christine Majerus | Jenny Warling | Fleur Maxwell
+       Answer: Mario Mutsch
+       Explanation: Mario Mutsch is a talented Luxembourgish footballer who has played in several European leagues. He represents Luxembourg in international football and has been a key player for the national team.
 
 --- Sub-level 4 ---
 
-  #116  Romain Schneider
-      Category: History
-      Options:  A) Romain Schneider  B) Paul Eyschen  C) Émile Reuter  D)
-                Joseph Bech
-      Answer:   A) Romain Schneider
-      Hint:     He served as Minister of Agriculture and Social Security in
-                several Luxembourg governments.
-      Info:     Romain Schneider (born 1962) is a Luxembourgish LSAP
-                politician who served as Minister of Agriculture, Viticulture
-                and Rural Development and Minister of Social Security. He was
-                also mayor of Wiltz from 2000 to 2009 and spent over 12 years
-                in government.
+  116. Romain Schneider
+       Category: History
+       Hint: He served as Minister of Agriculture and Social Security in several Luxembourg governments.
+       Options: Romain Schneider | Paul Eyschen | Émile Reuter | Joseph Bech
+       Answer: Romain Schneider
+       Explanation: Romain Schneider (born 1962) is a Luxembourgish LSAP politician who served as Minister of Agriculture, Viticulture and Rural Development and Minister of Social Security. He was also mayor of Wiltz from 2000 to 2009 and spent over 12 years in government.
 
-  #117  Prince Charles
-      Category: Royalty
-      Options:  A) Prince Charles  B) Prince Sébastien  C) Prince Félix  D)
-                Prince Guillaume
-      Answer:   A) Prince Charles
-      Hint:     He is the first child of Grand Duke Guillaume and will one day
-                inherit the throne.
-      Info:     Prince Charles, born in 2020, is the first child of Grand Duke
-                Guillaume and Princess Stéphanie. He is heir apparent to the
-                Luxembourgish throne.
+  117. Prince Charles
+       Category: Royalty
+       Hint: He is the first child of Grand Duke Guillaume and will one day inherit the throne.
+       Options: Prince Charles | Prince Sébastien | Prince Félix | Prince Guillaume
+       Answer: Prince Charles
+       Explanation: Prince Charles, born in 2020, is the first child of Grand Duke Guillaume and Princess Stéphanie. He is heir apparent to the Luxembourgish throne.
 
-  #118  Dominique Lang
-      Category: Culture
-      Options:  A) Dominique Lang  B) Joseph Kutter  C) Thierry van Werveke 
-                D) Frantz Seimetz
-      Answer:   A) Dominique Lang
-      Hint:     He was one of Luxembourg's earliest important painters, known
-                for his impressionist landscapes.
-      Info:     Dominique Lang (1874–1919) was an influential Luxembourgish
-                painter whose impressionist and post-impressionist landscapes
-                are considered among the finest works of early Luxembourgish
-                art.
+  118. Dominique Lang
+       Category: Culture
+       Hint: He was one of Luxembourg's earliest important painters, known for his impressionist landscapes.
+       Options: Dominique Lang | Joseph Kutter | Thierry van Werveke | Frantz Seimetz
+       Answer: Dominique Lang
+       Explanation: Dominique Lang (1874–1919) was an influential Luxembourgish painter whose impressionist and post-impressionist landscapes are considered among the finest works of early Luxembourgish art.
 
-  #119  Jean-Pierre Sauvage
-      Category: Science
-      Options:  A) Jean-Pierre Sauvage  B) Gabriel Lippmann  C) Hugo Gernsback
-                D) Henri Tudor
-      Answer:   A) Jean-Pierre Sauvage
-      Hint:     He is a Nobel Prize-winning chemist with ties to the
-                Luxembourg border region.
-      Info:     Jean-Pierre Sauvage, born in Paris, won the Nobel Prize in
-                Chemistry in 2016 for his work on molecular machines. He spent
-                his career at the University of Strasbourg in neighbouring
-                France. A street in Luxembourg City's Kirchberg district is
-                named after him.
+  119. Jules Hoffmann
+       Category: Science
+       Hint: Born in Echternach, he won the Nobel Prize in Physiology or Medicine in 2011.
+       Options: Jules Hoffmann | Gabriel Lippmann | Hugo Gernsback | Henri Tudor
+       Answer: Jules Hoffmann
+       Explanation: Jules Hoffmann (born 1941 in Echternach, Luxembourg) is a Luxembourg-born French biologist who won the Nobel Prize in Physiology or Medicine in 2011 for his discoveries concerning the activation of innate immunity. He is the second Nobel laureate with Luxembourg roots, after Gabriel Lippmann.
 
-  #120  François Biltgen
-      Category: Politics
-      Options:  A) François Biltgen  B) Paul Eyschen  C) Pierre Werner  D)
-                Gaston Thorn
-      Answer:   A) François Biltgen
-      Hint:     He served as Minister of Education and helped shape modern
-                Luxembourg education policy.
-      Info:     François Biltgen is a Luxembourgish politician who served as
-                Minister of Education. He implemented important educational
-                reforms and was instrumental in advancing Luxembourg's
-                knowledge economy.
+  120. François Biltgen
+       Category: Politics
+       Hint: He served as Minister of Education and helped shape modern Luxembourg education policy.
+       Options: François Biltgen | Paul Eyschen | Pierre Werner | Gaston Thorn
+       Answer: François Biltgen
+       Explanation: François Biltgen is a Luxembourgish politician who served as Minister of Education. He implemented important educational reforms and was instrumental in advancing Luxembourg's knowledge economy.
 
 --- Sub-level 5 ---
 
-  #121  Jean-Pierre Pescatore
-      Category: History
-      Options:  A) Jean-Pierre Pescatore  B) Émile Mayrisch  C) Pierre Werner 
-                D) Joseph Bech
-      Answer:   A) Jean-Pierre Pescatore
-      Hint:     He was a 19th-century Luxembourgish banker and philanthropist
-                whose park bears his name.
-      Info:     Jean-Pierre Pescatore (1793–1855) was a wealthy Luxembourgish
-                banker and tobacco magnate. He bequeathed his Parisian art
-                collection to the city and left funds that created the
-                Fondation Pescatore old-age home in Luxembourg City.
+  121. Jean-Pierre Pescatore
+       Category: History
+       Hint: He was a 19th-century Luxembourgish banker and philanthropist whose park bears his name.
+       Options: Jean-Pierre Pescatore | Émile Mayrisch | Pierre Werner | Joseph Bech
+       Answer: Jean-Pierre Pescatore
+       Explanation: Jean-Pierre Pescatore (1793–1855) was a wealthy Luxembourgish banker and tobacco magnate. He bequeathed his Parisian art collection to the city and left funds that created the Fondation Pescatore old-age home in Luxembourg City.
 
-  #122  Su-Mei Tse
-      Category: Culture
-      Options:  A) Su-Mei Tse  B) Andy Bausch  C) Jean Schaack  D) Frantz
-                Seimetz
-      Answer:   A) Su-Mei Tse
-      Hint:     She is a prominent Luxembourgish-Taiwanese artist known for
-                installation and multimedia work.
-      Info:     Su-Mei Tse is an internationally renowned artist from
-                Luxembourg known for her innovative installation, video, and
-                multimedia works. She has exhibited globally and represented
-                Luxembourg in prestigious international art venues.
+  122. Su-Mei Tse
+       Category: Culture
+       Hint: She is a prominent Luxembourgish-Taiwanese artist known for installation and multimedia work.
+       Options: Su-Mei Tse | Andy Bausch | Jean Schaack | Frantz Seimetz
+       Answer: Su-Mei Tse
+       Explanation: Su-Mei Tse is an internationally renowned artist from Luxembourg known for her innovative installation, video, and multimedia works. She has exhibited globally and represented Luxembourg in prestigious international art venues.
 
-  #123  Edmond de la Fontaine
-      Category: Media
-      Options:  A) Edmond de la Fontaine  B) Batty Weber  C) Désirée Nosbusch 
-                D) Mike Koedinger
-      Answer:   A) Edmond de la Fontaine
-      Hint:     He was a 19th-century Luxembourgish writer and intellectual
-                known as a founding voice of Luxembourgish literature.
-      Info:     Edmond de la Fontaine was a prominent 19th-century
-                Luxembourgish writer, poet, and intellectual who contributed
-                significantly to the development of Luxembourgish literature
-                and cultural identity.
+  123. Edmond de la Fontaine
+       Category: Media
+       Hint: He was a 19th-century Luxembourgish writer and intellectual known as a founding voice of Luxembourgish literature.
+       Options: Edmond de la Fontaine | Batty Weber | Désirée Nosbusch | Mike Koedinger
+       Answer: Edmond de la Fontaine
+       Explanation: Edmond de la Fontaine was a prominent 19th-century Luxembourgish writer, poet, and intellectual who contributed significantly to the development of Luxembourgish literature and cultural identity.
 
-  #124  Aurélien Joachim
-      Category: Sport
-      Options:  A) Aurélien Joachim  B) Josy Barthel  C) Charly Gaul  D)
-                Nicolas Frantz
-      Answer:   A) Aurélien Joachim
-      Hint:     He is one of Luxembourg's most capped footballers and a key
-                striker for the national team.
-      Info:     Aurélien Joachim is Luxembourg's all-time leading
-                international goalscorer. With over 100 caps for the national
-                team, he is one of the most important figures in modern
-                Luxembourgish football.
+  124. Aurélien Joachim
+       Category: Sport
+       Hint: He is one of Luxembourg's most capped footballers and a key striker for the national team.
+       Options: Aurélien Joachim | Josy Barthel | Charly Gaul | Nicolas Frantz
+       Answer: Aurélien Joachim
+       Explanation: Aurélien Joachim is Luxembourg's all-time leading international goalscorer. With over 100 caps for the national team, he is one of the most important figures in modern Luxembourgish football.
 
-  #125  Pit Schlechter
-      Category: Sport
-      Options:  A) Pit Schlechter  B) Laurent Menager  C) Jean-Antoine Zinnen 
-                D) Gast Waltzing
-      Answer:   A) Pit Schlechter
-      Hint:     He was a Luxembourgish professional cyclist who rode for
-                Continental teams.
-      Info:     Pit Schlechter (born 1990) is a Luxembourgish former
-                professional cyclist who rode professionally from 2010 to 2019
-                for Continental teams including Team Differdange and Leopard
-                Pro Cycling.
+  125. Pit Schlechter
+       Category: Sport
+       Hint: He was a Luxembourgish professional cyclist who rode for Continental teams.
+       Options: Pit Schlechter | Laurent Menager | Jean-Antoine Zinnen | Gast Waltzing
+       Answer: Pit Schlechter
+       Explanation: Pit Schlechter (born 1990) is a Luxembourgish former professional cyclist who rode professionally from 2010 to 2019 for Continental teams including Team Differdange and Leopard Pro Cycling.
 
 
 ================================================================================
-                              QUICK STATISTICS
+QUICK STATS
 ================================================================================
 
-  Total Questions:  125
-  Levels:           5 (Newcomer, Explorer, Resident, Citizen, Ambassador)
-  Sub-levels:       5 per level (5 questions each)
+QUESTIONS PER LEVEL:
+- NEWCOMER (Level 1): 25 questions
+- EXPLORER (Level 2): 25 questions
+- RESIDENT (Level 3): 25 questions
+- CITIZEN (Level 4): 25 questions
+- AMBASSADOR (Level 5): 25 questions
+TOTAL: 125 questions
 
-  Categories:
-    - Sport: 29 people
-    - Politics: 25 people
-    - Culture: 21 people
-    - History: 20 people
-    - Royalty: 14 people
-    - Music: 7 people
-    - Science: 5 people
-    - Media: 4 people
+APPROXIMATE DISTRIBUTION BY CATEGORY:
+- Royalty: 15 people (~12%)
+- Politics: 23 people (~18%)
+- History: 18 people (~14%)
+- Sport: 28 people (~22%)
+- Culture: 20 people (~16%)
+- Music: 10 people (~8%)
+- Science: 5 people (~4%)
+- Media: 6 people (~5%)
 
-================================================================================
+STRUCTURE:
+Each level contains 5 sub-levels with 5 people per sub-level.
+Difficulty increases by level as historical depth and specificity increase.
+Categories are mixed throughout to ensure diverse knowledge areas.
