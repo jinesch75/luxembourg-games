@@ -27,7 +27,7 @@ const FeatureFlagsContext = createContext({
   toggleFlag: async () => {},
 })
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 export function FeatureFlagsProvider({ children }) {
   const [content, setContent] = useState({})

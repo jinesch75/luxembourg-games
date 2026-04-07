@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { LOCATIONS } from '../../games/geo/data/locations'
 import LangTabs from './LangTabs'
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 // Locations use multilingual objects for name/clue/fact — extract English (or raw string)
 const str = (val) => typeof val === 'object' && val !== null ? (val.en || '') : (val || '')

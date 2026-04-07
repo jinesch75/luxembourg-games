@@ -5,7 +5,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 const STATUS_COLORS = {
   new:       { color: '#DC2626', bg: '#FEF2F2', border: '#FECDD3', labelKey: 'adminPage.statusNew' },

@@ -26,7 +26,7 @@ function withTrans(item, fields) {
   return ensureTranslations(item, fields)
 }
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 // ── Shared helpers ──────────────────────────────────────────────────────────
 function inputStyle(multiline = false) {

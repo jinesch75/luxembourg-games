@@ -7,7 +7,7 @@
 import { useState, useEffect } from 'react'
 import { PEOPLE } from '../../games/famous/data/people'
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 const LEVELS = ['newcomer', 'explorer', 'resident', 'citizen', 'ambassador']
 const LEVEL_META = {

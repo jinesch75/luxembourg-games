@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react'
 import { HelpCircle, MapPin } from 'lucide-react'
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function countryFlag(code) {

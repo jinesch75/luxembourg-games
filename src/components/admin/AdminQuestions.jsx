@@ -11,7 +11,7 @@ import { ensureTranslations } from '../../utils/contentLang'
 
 const TRANS_LANGS = ['fr']
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 const CAT_COLORS = {
   language:     { bg: '#F3E8FF', text: '#7C3AED', icon: '🗣️' },
