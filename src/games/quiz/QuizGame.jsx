@@ -362,7 +362,7 @@ export default function QuizGame() {
       {/* Answer Reveal — bottom-sheet panel, homepage dark aesthetic */}
       {revealed && (
         <div style={{
-          position: 'fixed', inset: 0, zIndex: 1000,
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000,
           background: 'rgba(0,0,0,0.65)',
           display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
           animation: 'fadeIn 0.2s ease'
@@ -372,6 +372,7 @@ export default function QuizGame() {
             borderRadius: '24px 24px 0 0',
             padding: '28px 20px calc(36px + env(safe-area-inset-bottom, 0px))',
             maxWidth: 520, width: '100%',
+            boxSizing: 'border-box',
             maxHeight: '90vh',
             overflowY: 'auto',
             boxShadow: '0 -4px 32px rgba(0,0,0,0.14)',
