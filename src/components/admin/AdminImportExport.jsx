@@ -178,7 +178,7 @@ export default function AdminImportExport() {
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = 'Quiz Questions.xlsx'
+      a.download = 'Quiz Questions.csv'
       document.body.appendChild(a)
       a.click()
       a.remove()
@@ -193,7 +193,7 @@ export default function AdminImportExport() {
 
   // ── Import handlers ──
   const handleFile = (f) => {
-    if (f && f.name.match(/\.xlsx?$/i)) {
+    if (f && f.name.match(/\.csv$/i)) {
       setFile(f)
       setImportResult(null)
     }
@@ -344,7 +344,7 @@ export default function AdminImportExport() {
             <input
               ref={fileInputRef}
               type="file"
-              accept=".xlsx,.xls"
+              accept=".csv"
               style={{ display: 'none' }}
               onChange={(e) => { if (e.target.files[0]) handleFile(e.target.files[0]) }}
             />

@@ -395,9 +395,17 @@ app.get('/api/admin/quiz-status', adminAuth, (req, res) => {
   res.json({ hasOverride, count })
 })
 
-/** Convert a questions array into xlsx rows */
-function questionsToXlsx(questions) {
-  const XLSX = require('xlsx')
+/** Escape a CSV field value (wrap in quotes if needed) */
+function csvEscape(val) {
+  const s = String(val == null ? '' : val)
+  if (s.includes('"') || s.includes(',') || s.includes('\n') || s.includes('\r')) {
+    return '"' + s.replace(/"/g, '""') + '"'
+  }
+  return s
+}
+
+/** Convert a questions array into a CSV string */
+function questionsToCsv(questions) {
   const headers = [
     'ID', 'Level', 'Category', 'Question',
     'Option A', 'Option B', 'Option C', 'Option D',
@@ -405,11 +413,11 @@ function questionsToXlsx(questions) {
     'FR Question', 'FR Option A', 'FR Option B', 'FR Option C', 'FR Option D',
     'FR Explanation',
   ]
-  const data = [headers]
+  const rows = [headers.map(csvEscape).join(',')]
   for (const q of questions) {
     const fr = q.translations?.fr || {}
     const frOpts = fr.options || ['', '', '', '']
-    data.push([
+    rows.push([
       q.id, q.level, q.category, q.question,
       q.options[0] || '', q.options[1] || '', q.options[2] || '', q.options[3] || '',
       q.options[q.answer] || '',
@@ -417,83 +425,98 @@ function questionsToXlsx(questions) {
       fr.question || '',
       frOpts[0] || '', frOpts[1] || '', frOpts[2] || '', frOpts[3] || '',
       fr.explanation || '',
-    ])
+    ].map(csvEscape).join(','))
   }
-  const ws = XLSX.utils.aoa_to_sheet(data)
-  ws['!cols'] = [
-    { wch: 12 }, { wch: 12 }, { wch: 14 }, { wch: 55 },
-    { wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 },
-    { wch: 30 }, { wch: 55 }, { wch: 40 },
-    { wch: 55 }, { wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 },
-    { wch: 55 },
-  ]
-  const wb = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(wb, ws, 'Quiz Questions')
-  return XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' })
+  return rows.join('\r\n')
 }
 
-/** Export active quiz questions as .xlsx download */
+/** Export active quiz questions as .csv download */
 app.get('/api/admin/export-quiz', adminAuth, (req, res) => {
   try {
     const { questions } = getActiveQuestions()
-    const buf = questionsToXlsx(questions)
-    res.setHeader('Content-Disposition', 'attachment; filename="Quiz Questions.xlsx"')
-    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    res.send(buf)
+    const csv = questionsToCsv(questions)
+    res.setHeader('Content-Disposition', 'attachment; filename="Quiz Questions.csv"')
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8')
+    res.send('\uFEFF' + csv) // BOM for Excel compatibility
   } catch (e) {
     console.error('Export error:', e)
     res.status(500).json({ error: e.message })
   }
 })
 
-/** Parse xlsx buffer into an array of question objects + warnings */
-function parseQuizXlsx(buffer) {
-  const XLSX = require('xlsx')
-  const wb = XLSX.read(buffer, { type: 'buffer' })
-  const ws = wb.Sheets['Quiz Questions']
-  if (!ws) throw new Error('Sheet "Quiz Questions" not found in the uploaded file.')
-  const rows = XLSX.utils.sheet_to_json(ws)
-  if (rows.length === 0) throw new Error('The sheet is empty.')
+/** Parse a CSV buffer into an array of question objects + warnings */
+function parseQuizCsv(buffer) {
+  const text = buffer.toString('utf8').replace(/^\uFEFF/, '') // strip BOM if present
+  const lines = text.split(/\r?\n/).filter(l => l.trim() !== '')
+  if (lines.length < 2) throw new Error('The CSV file is empty or has no data rows.')
+
+  // Parse a single CSV line respecting quoted fields
+  function parseLine(line) {
+    const fields = []
+    let cur = ''
+    let inQuotes = false
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i]
+      if (inQuotes) {
+        if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++ }
+        else if (ch === '"') { inQuotes = false }
+        else { cur += ch }
+      } else {
+        if (ch === '"') { inQuotes = true }
+        else if (ch === ',') { fields.push(cur); cur = '' }
+        else { cur += ch }
+      }
+    }
+    fields.push(cur)
+    return fields
+  }
+
+  const headers = parseLine(lines[0])
+  const col = (row, name) => {
+    const idx = headers.indexOf(name)
+    return idx === -1 ? '' : (row[idx] || '')
+  }
 
   const LEVEL_ORDER = ['newcomer', 'explorer', 'resident', 'citizen', 'ambassador']
   const questions = []
   const warnings = []
 
-  for (const row of rows) {
-    const level = (row['Level'] || '').toLowerCase().trim()
+  for (let i = 1; i < lines.length; i++) {
+    const row = parseLine(lines[i])
+    const level = col(row, 'Level').toLowerCase().trim()
     if (!LEVEL_ORDER.includes(level)) {
-      warnings.push(`Unknown level "${row['Level']}" for ID "${row['ID']}", skipped.`)
+      warnings.push(`Unknown level "${col(row, 'Level')}" for ID "${col(row, 'ID')}", skipped.`)
       continue
     }
     const options = [
-      row['Option A'] || '', row['Option B'] || '',
-      row['Option C'] || '', row['Option D'] || '',
+      col(row, 'Option A'), col(row, 'Option B'),
+      col(row, 'Option C'), col(row, 'Option D'),
     ].map(String)
 
-    const correctLabel = String(row['Correct Answer'] || '')
+    const correctLabel = String(col(row, 'Correct Answer'))
     let answerIdx = options.findIndex(o => o === correctLabel)
     if (answerIdx === -1) {
-      warnings.push(`Correct answer not found in options for "${row['ID']}". Defaulting to A.`)
+      warnings.push(`Correct answer not found in options for "${col(row, 'ID')}". Defaulting to A.`)
       answerIdx = 0
     }
 
-    const frQ = row['FR Question'] || ''
+    const frQ = col(row, 'FR Question')
     const frOpts = [
-      row['FR Option A'] || '', row['FR Option B'] || '',
-      row['FR Option C'] || '', row['FR Option D'] || '',
+      col(row, 'FR Option A'), col(row, 'FR Option B'),
+      col(row, 'FR Option C'), col(row, 'FR Option D'),
     ].map(String)
-    const frExp = row['FR Explanation'] || ''
+    const frExp = col(row, 'FR Explanation')
     const hasFr = frQ || frOpts.some(o => o) || frExp
 
     const q = {
-      id: String(row['ID'] || ''),
+      id: String(col(row, 'ID')),
       level,
-      category: (row['Category'] || '').toLowerCase().trim(),
-      question: String(row['Question'] || ''),
+      category: col(row, 'Category').toLowerCase().trim(),
+      question: String(col(row, 'Question')),
       options,
       answer: answerIdx,
-      explanation: String(row['Explanation'] || ''),
-      link: String(row['Link'] || ''),
+      explanation: String(col(row, 'Explanation')),
+      link: String(col(row, 'Link')),
     }
     if (hasFr) {
       q.translations = { fr: { question: String(frQ), options: frOpts, explanation: String(frExp) } }
@@ -503,10 +526,10 @@ function parseQuizXlsx(buffer) {
   return { questions, warnings }
 }
 
-/** Import quiz questions from uploaded .xlsx → saves to content overrides (live instantly) */
+/** Import quiz questions from uploaded .csv → saves to content overrides (live instantly) */
 app.post('/api/admin/import-quiz', adminAuth, express.raw({ type: '*/*', limit: '10mb' }), (req, res) => {
   try {
-    const { questions, warnings } = parseQuizXlsx(req.body)
+    const { questions, warnings } = parseQuizCsv(req.body)
 
     // Save to content overrides — the quiz game picks this up immediately
     contentOverrides = { ...contentOverrides, questions }
