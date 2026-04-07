@@ -22,6 +22,7 @@
 const express = require('express')
 const fs      = require('fs')
 const path    = require('path')
+const vm      = require('vm')
 
 const app  = express()
 const PORT = process.env.PORT || 8080
@@ -352,6 +353,189 @@ async function sendErrorReportEmail(report) {
     }
   }
 }
+
+// ── Quiz Import/Export ────────────────────────────────────────────────────
+// Uses the content override system so changes are live immediately —
+// no rebuild or redeploy needed. The quiz game's useGameContent hook
+// picks up the 'questions' key from /api/content automatically.
+// ──────────────────────────────────────────────────────────────────────────
+const QUESTIONS_FILE = path.join(__dirname, 'src', 'games', 'quiz', 'data', 'questions.js')
+
+/** Read bundled questions.js and return an array of question objects */
+function readBundledQuestions() {
+  const src = fs.readFileSync(QUESTIONS_FILE, 'utf8')
+    .replace(/\bconst\b/g, 'var')
+    .replace(/^export /gm, '')
+    .replace(/export \{[^}]*\}/g, '')
+    .replace(/export function[\s\S]*$/m, '')
+  const sandbox = {}
+  vm.createContext(sandbox)
+  vm.runInContext(src, sandbox)
+  return [
+    ...(sandbox.NEWCOMER || []),
+    ...(sandbox.EXPLORER || []),
+    ...(sandbox.RESIDENT || []),
+    ...(sandbox.CITIZEN || []),
+    ...(sandbox.AMBASSADOR || []),
+  ]
+}
+
+/** Return the currently active questions (overrides first, then bundled) */
+function getActiveQuestions() {
+  if (contentOverrides.questions && Array.isArray(contentOverrides.questions) && contentOverrides.questions.length > 0) {
+    return { questions: contentOverrides.questions, isOverride: true }
+  }
+  return { questions: readBundledQuestions(), isOverride: false }
+}
+
+/** Check whether custom questions are currently active */
+app.get('/api/admin/quiz-status', adminAuth, (req, res) => {
+  const hasOverride = Array.isArray(contentOverrides.questions) && contentOverrides.questions.length > 0
+  const count = hasOverride ? contentOverrides.questions.length : 0
+  res.json({ hasOverride, count })
+})
+
+/** Convert a questions array into xlsx rows */
+function questionsToXlsx(questions) {
+  const XLSX = require('xlsx')
+  const headers = [
+    'ID', 'Level', 'Category', 'Question',
+    'Option A', 'Option B', 'Option C', 'Option D',
+    'Correct Answer', 'Explanation', 'Link',
+    'FR Question', 'FR Option A', 'FR Option B', 'FR Option C', 'FR Option D',
+    'FR Explanation',
+  ]
+  const data = [headers]
+  for (const q of questions) {
+    const fr = q.translations?.fr || {}
+    const frOpts = fr.options || ['', '', '', '']
+    data.push([
+      q.id, q.level, q.category, q.question,
+      q.options[0] || '', q.options[1] || '', q.options[2] || '', q.options[3] || '',
+      q.options[q.answer] || '',
+      q.explanation || '', q.link || '',
+      fr.question || '',
+      frOpts[0] || '', frOpts[1] || '', frOpts[2] || '', frOpts[3] || '',
+      fr.explanation || '',
+    ])
+  }
+  const ws = XLSX.utils.aoa_to_sheet(data)
+  ws['!cols'] = [
+    { wch: 12 }, { wch: 12 }, { wch: 14 }, { wch: 55 },
+    { wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 },
+    { wch: 30 }, { wch: 55 }, { wch: 40 },
+    { wch: 55 }, { wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 },
+    { wch: 55 },
+  ]
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, 'Quiz Questions')
+  return XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' })
+}
+
+/** Export active quiz questions as .xlsx download */
+app.get('/api/admin/export-quiz', adminAuth, (req, res) => {
+  try {
+    const { questions } = getActiveQuestions()
+    const buf = questionsToXlsx(questions)
+    res.setHeader('Content-Disposition', 'attachment; filename="Quiz Questions.xlsx"')
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    res.send(buf)
+  } catch (e) {
+    console.error('Export error:', e)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+/** Parse xlsx buffer into an array of question objects + warnings */
+function parseQuizXlsx(buffer) {
+  const XLSX = require('xlsx')
+  const wb = XLSX.read(buffer, { type: 'buffer' })
+  const ws = wb.Sheets['Quiz Questions']
+  if (!ws) throw new Error('Sheet "Quiz Questions" not found in the uploaded file.')
+  const rows = XLSX.utils.sheet_to_json(ws)
+  if (rows.length === 0) throw new Error('The sheet is empty.')
+
+  const LEVEL_ORDER = ['newcomer', 'explorer', 'resident', 'citizen', 'ambassador']
+  const questions = []
+  const warnings = []
+
+  for (const row of rows) {
+    const level = (row['Level'] || '').toLowerCase().trim()
+    if (!LEVEL_ORDER.includes(level)) {
+      warnings.push(`Unknown level "${row['Level']}" for ID "${row['ID']}", skipped.`)
+      continue
+    }
+    const options = [
+      row['Option A'] || '', row['Option B'] || '',
+      row['Option C'] || '', row['Option D'] || '',
+    ].map(String)
+
+    const correctLabel = String(row['Correct Answer'] || '')
+    let answerIdx = options.findIndex(o => o === correctLabel)
+    if (answerIdx === -1) {
+      warnings.push(`Correct answer not found in options for "${row['ID']}". Defaulting to A.`)
+      answerIdx = 0
+    }
+
+    const frQ = row['FR Question'] || ''
+    const frOpts = [
+      row['FR Option A'] || '', row['FR Option B'] || '',
+      row['FR Option C'] || '', row['FR Option D'] || '',
+    ].map(String)
+    const frExp = row['FR Explanation'] || ''
+    const hasFr = frQ || frOpts.some(o => o) || frExp
+
+    const q = {
+      id: String(row['ID'] || ''),
+      level,
+      category: (row['Category'] || '').toLowerCase().trim(),
+      question: String(row['Question'] || ''),
+      options,
+      answer: answerIdx,
+      explanation: String(row['Explanation'] || ''),
+      link: String(row['Link'] || ''),
+    }
+    if (hasFr) {
+      q.translations = { fr: { question: String(frQ), options: frOpts, explanation: String(frExp) } }
+    }
+    questions.push(q)
+  }
+  return { questions, warnings }
+}
+
+/** Import quiz questions from uploaded .xlsx → saves to content overrides (live instantly) */
+app.post('/api/admin/import-quiz', adminAuth, express.raw({ type: '*/*', limit: '10mb' }), (req, res) => {
+  try {
+    const { questions, warnings } = parseQuizXlsx(req.body)
+
+    // Save to content overrides — the quiz game picks this up immediately
+    contentOverrides = { ...contentOverrides, questions }
+    persist(CONTENT_FILE, contentOverrides)
+
+    // Build per-level summary
+    const LEVEL_ORDER = ['newcomer', 'explorer', 'resident', 'citizen', 'ambassador']
+    const summary = {}
+    LEVEL_ORDER.forEach(l => { summary[l] = questions.filter(q => q.level === l).length })
+
+    res.json({ ok: true, total: questions.length, summary, warnings })
+  } catch (e) {
+    console.error('Import error:', e)
+    res.status(500).json({ error: e.message })
+  }
+})
+
+/** Revert to bundled questions (remove override) */
+app.delete('/api/admin/import-quiz', adminAuth, (req, res) => {
+  try {
+    delete contentOverrides.questions
+    persist(CONTENT_FILE, contentOverrides)
+    const bundled = readBundledQuestions()
+    res.json({ ok: true, total: bundled.length })
+  } catch (e) {
+    console.error('Revert error:', e)
+    res.status(500).json({ error: e.message })
+  }
+})
 
 // ── Serve Vite build ───────────────────────────────────────────────────────
 app.use(express.static(DIST_DIR))

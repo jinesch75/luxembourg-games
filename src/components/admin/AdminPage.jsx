@@ -17,6 +17,7 @@ import AdminInfo      from './AdminInfo'
 import AdminFamous    from './AdminFamous'
 import AdminPlaces    from './AdminPlaces'
 import AdminErrorReports from './AdminErrorReports'
+import AdminImportExport from './AdminImportExport'
 import { useFeatureFlags } from '../../contexts/FeatureFlagsContext'
 
 const ADMIN_PASSWORD = 'biergerpakt'
@@ -29,6 +30,7 @@ const TAB_KEYS = [
   { id: 'famous',    icon: '🌟', labelKey: 'adminPage.tabFamousPeople' },
   { id: 'places',    icon: '🏛️', labelKey: 'adminPage.tabFamousPlaces' },
   { id: 'errors',    icon: '⚑', labelKey: 'adminPage.tabErrorReports' },
+  { id: 'importexport', icon: '📦', labelKey: 'adminPage.tabImportExport' },
 ]
 
 // ── Styles ─────────────────────────────────────────────────────────────────
@@ -383,7 +385,8 @@ export default function AdminPage() {
         {activeTab === 'info'      && <AdminInfo />}
         {activeTab === 'famous'    && <AdminFamous />}
         {activeTab === 'places'    && <AdminPlaces />}
-        {activeTab === 'errors'    && <AdminErrorReports />}
+        {activeTab === 'errors'       && <AdminErrorReports />}
+        {activeTab === 'importexport' && <AdminImportExport />}
       </div>
     </div>
   )
