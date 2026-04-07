@@ -188,83 +188,126 @@ function LoginGate({ onAuth, t }) {
   )
 }
 
-// ── Info Hub toggle banner ─────────────────────────────────────────────────
-function InfoHubToggleBanner({ t }) {
-  const { infoHubEnabled, toggleInfoHub } = useFeatureFlags()
-  const [busy, setBusy] = useState(false)
-
-  const handleToggle = async () => {
-    setBusy(true)
-    await toggleInfoHub()
-    setBusy(false)
-  }
-
+// ── Single toggle row ──────────────────────────────────────────────────────
+function ToggleRow({ label, description, enabled, onToggle, busy }) {
   return (
     <div style={{
-      background: infoHubEnabled
-        ? 'linear-gradient(135deg, #065F46 0%, #047857 100%)'
-        : 'linear-gradient(135deg, #7C2D12 0%, #B45309 100%)',
-      padding: '14px 20px',
       display: 'flex',
       alignItems: 'center',
       gap: 12,
-      flexWrap: 'wrap',
-      borderBottom: infoHubEnabled ? '3px solid #10B981' : '3px solid #F59E0B',
+      padding: '10px 20px',
+      borderBottom: '1px solid rgba(255,255,255,0.12)',
     }}>
-      {/* Pulsing status dot */}
       <span style={{
         display: 'inline-block',
-        width: 14,
-        height: 14,
+        width: 10,
+        height: 10,
         borderRadius: '50%',
-        background: infoHubEnabled ? '#10B981' : '#F59E0B',
-        boxShadow: infoHubEnabled
-          ? '0 0 0 4px rgba(16,185,129,0.3)'
-          : '0 0 0 4px rgba(245,158,11,0.3)',
+        background: enabled ? '#10B981' : '#F59E0B',
+        boxShadow: enabled
+          ? '0 0 0 3px rgba(16,185,129,0.3)'
+          : '0 0 0 3px rgba(245,158,11,0.3)',
         flexShrink: 0,
-        animation: !infoHubEnabled ? 'pulse 2s infinite' : 'none',
       }} />
-
-      <div style={{ flex: 1 }}>
-        <div style={{ color: 'white', fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.02em' }}>
-          {infoHubEnabled ? `✅ ${t('adminPage.infoHubVisible')}` : `⚠️ ${t('adminPage.infoHubHidden')}`}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ color: 'white', fontWeight: 700, fontSize: '0.88rem' }}>
+          {enabled ? '✅' : '⚠️'} {label}
         </div>
-        <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.78rem', marginTop: 2 }}>
-          {infoHubEnabled
-            ? t('adminPage.infoHubVisibleDesc')
-            : t('adminPage.infoHubHiddenDesc')}
-        </div>
+        {description && (
+          <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.72rem', marginTop: 1 }}>
+            {description}
+          </div>
+        )}
       </div>
-
       <button
-        onClick={handleToggle}
+        onClick={onToggle}
         disabled={busy}
         style={{
-          background: infoHubEnabled ? 'rgba(239,68,68,0.9)' : 'rgba(16,185,129,0.9)',
+          background: enabled ? 'rgba(239,68,68,0.85)' : 'rgba(16,185,129,0.85)',
           color: 'white',
-          border: '2px solid rgba(255,255,255,0.4)',
-          borderRadius: 8,
-          padding: '10px 20px',
-          fontSize: '0.88rem',
-          fontWeight: 800,
+          border: '1.5px solid rgba(255,255,255,0.35)',
+          borderRadius: 6,
+          padding: '7px 14px',
+          fontSize: '0.78rem',
+          fontWeight: 700,
           cursor: busy ? 'not-allowed' : 'pointer',
-          letterSpacing: '0.03em',
           textTransform: 'uppercase',
+          letterSpacing: '0.03em',
           whiteSpace: 'nowrap',
-          opacity: busy ? 0.7 : 1,
+          opacity: busy ? 0.6 : 1,
           transition: 'all 0.2s',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
         }}
       >
-        {busy ? '...' : infoHubEnabled ? `🙈 ${t('adminPage.hideInfoHub')}` : `👁 ${t('adminPage.showInfoHub')}`}
+        {busy ? '...' : enabled ? '🙈 Hide' : '👁 Show'}
       </button>
+    </div>
+  )
+}
 
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { box-shadow: 0 0 0 4px rgba(245,158,11,0.3); }
-          50% { box-shadow: 0 0 0 8px rgba(245,158,11,0.1); }
-        }
-      `}</style>
+// ── Feature visibility panel ──────────────────────────────────────────────
+function FeatureVisibilityPanel({ t }) {
+  const flags = useFeatureFlags()
+  const [busy, setBusy] = useState(null) // tracks which flag is currently toggling
+
+  const handleToggle = async (flagKey, toggleFn) => {
+    setBusy(flagKey)
+    if (toggleFn) {
+      await toggleFn()
+    } else {
+      await flags.toggleFlag(flagKey)
+    }
+    setBusy(null)
+  }
+
+  const rows = [
+    { key: 'infoHubEnabled',      label: t('adminPage.infoHubToggleLabel'),      desc: t('adminPage.infoHubToggleDesc'),      toggleFn: flags.toggleInfoHub },
+    { key: 'famousGameEnabled',   label: t('adminPage.famousGameToggleLabel'),   desc: t('adminPage.famousGameToggleDesc') },
+    { key: 'placesGameEnabled',   label: t('adminPage.placesGameToggleLabel'),   desc: t('adminPage.placesGameToggleDesc') },
+    { key: 'adminGameEnabled',    label: t('adminPage.adminGameToggleLabel'),    desc: t('adminPage.adminGameToggleDesc') },
+    { key: 'economyGameEnabled',  label: t('adminPage.economyGameToggleLabel'),  desc: t('adminPage.economyGameToggleDesc') },
+    { key: 'spellingGameEnabled', label: t('adminPage.spellingGameToggleLabel'), desc: t('adminPage.spellingGameToggleDesc') },
+  ]
+
+  const enabledCount = rows.filter(r => flags[r.key]).length
+
+  return (
+    <div style={{
+      background: 'linear-gradient(135deg, #1E293B 0%, #334155 100%)',
+      borderBottom: '3px solid #475569',
+    }}>
+      <div style={{
+        padding: '12px 20px 6px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 8,
+      }}>
+        <span style={{ fontSize: '1.1rem' }}>🎛️</span>
+        <span style={{ color: 'white', fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.02em' }}>
+          {t('adminPage.visibilityPanelTitle')}
+        </span>
+        <span style={{
+          marginLeft: 'auto',
+          background: 'rgba(255,255,255,0.15)',
+          color: 'rgba(255,255,255,0.7)',
+          borderRadius: 12,
+          padding: '2px 10px',
+          fontSize: '0.72rem',
+          fontWeight: 600,
+        }}>
+          {enabledCount}/{rows.length} {t('adminPage.visibilityActive')}
+        </span>
+      </div>
+      {rows.map(row => (
+        <ToggleRow
+          key={row.key}
+          label={row.label}
+          description={row.desc}
+          enabled={flags[row.key]}
+          busy={busy === row.key}
+          onToggle={() => handleToggle(row.key, row.toggleFn)}
+        />
+      ))}
+      <div style={{ height: 6 }} />
     </div>
   )
 }
@@ -315,8 +358,8 @@ export default function AdminPage() {
         </div>
       </div>
 
-      {/* Info Hub visibility toggle — always visible regardless of active tab */}
-      <InfoHubToggleBanner t={t} />
+      {/* Feature visibility toggles — always visible regardless of active tab */}
+      <FeatureVisibilityPanel t={t} />
 
       {/* Tab bar */}
       <div style={S.tabBar}>

@@ -9,7 +9,7 @@ import { QUESTIONS } from '../../games/quiz/data/questions'
 import LangTabs from './LangTabs'
 import { ensureTranslations } from '../../utils/contentLang'
 
-const TRANS_LANGS = ['fr', 'de', 'lb']
+const TRANS_LANGS = ['fr']
 
 const ADMIN_PASSWORD = 'biergerpakt'
 

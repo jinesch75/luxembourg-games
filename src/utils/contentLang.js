@@ -2,15 +2,15 @@
  * contentLang — helpers for resolving multilingual content fields.
  *
  * Content items may carry a `translations` object, e.g.:
- *   { question: '...', translations: { fr: { question: '...' }, de: { ... }, lb: { ... } } }
+ *   { question: '...', translations: { fr: { question: '...' } } }
  *
  * Usage:
  *   getField(item, 'question', 'fr')       → fr translation or English fallback
- *   getArrayField(item, 'options', 'de')   → de options array or English fallback
+ *   getArrayField(item, 'options', 'fr')   → fr options array or English fallback
  *   ensureTranslations(item)               → item with at least empty translation stubs
  */
 
-const LANGS = ['fr', 'de', 'lb']
+const LANGS = ['fr']
 
 /**
  * Resolve a single string field from an item, using the given language.
@@ -41,7 +41,7 @@ export function getArrayField(item, fieldName, lang) {
 }
 
 /**
- * Return an item guaranteed to have a `translations` object with stubs for fr/de/lb.
+ * Return an item guaranteed to have a `translations` object with stubs for fr.
  * Does not mutate the original item.
  */
 export function ensureTranslations(item, fields = []) {

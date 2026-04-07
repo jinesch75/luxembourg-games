@@ -1,17 +1,30 @@
 /**
  * FeatureFlagsContext — manages feature visibility flags
- * Currently controls: Info Hub section (infoHubEnabled)
+ * Controls: Info Hub, individual game visibility (games 3-6, spelling)
  *
  * Flags are persisted server-side in content.json via PUT /api/content.
  * Defaults to hidden (false) until server confirms otherwise.
+ *
+ * Game flags:
+ *   famousGameEnabled   — Game 3: Famous Luxembourgers
+ *   placesGameEnabled   — Game 4: Famous Places
+ *   adminGameEnabled    — Game 5: Lëtz Admin
+ *   economyGameEnabled  — Game 6: Lëtz Economy
+ *   spellingGameEnabled — Language / Spelling game
  */
 
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 
 const FeatureFlagsContext = createContext({
   infoHubEnabled: false,
+  famousGameEnabled: false,
+  placesGameEnabled: false,
+  adminGameEnabled: false,
+  economyGameEnabled: false,
+  spellingGameEnabled: false,
   loading: true,
   toggleInfoHub: async () => {},
+  toggleFlag: async () => {},
 })
 
 const ADMIN_PASSWORD = 'biergerpakt'
@@ -36,11 +49,11 @@ export function FeatureFlagsProvider({ children }) {
 
   useEffect(() => { loadContent() }, [loadContent])
 
-  const toggleInfoHub = useCallback(async () => {
-    // Always fetch latest content to avoid overwriting other settings
+  /* Toggle any boolean flag by key name */
+  const toggleFlag = useCallback(async (flagKey) => {
     const current = await loadContent()
-    const newEnabled = !(current.infoHubEnabled === true)
-    const merged = { ...current, infoHubEnabled: newEnabled }
+    const newEnabled = !(current[flagKey] === true)
+    const merged = { ...current, [flagKey]: newEnabled }
 
     await fetch('/api/content', {
       method: 'PUT',
@@ -55,11 +68,19 @@ export function FeatureFlagsProvider({ children }) {
     return newEnabled
   }, [loadContent])
 
+  const toggleInfoHub = useCallback(() => toggleFlag('infoHubEnabled'), [toggleFlag])
+
   return (
     <FeatureFlagsContext.Provider value={{
       infoHubEnabled: content.infoHubEnabled === true,
+      famousGameEnabled: content.famousGameEnabled === true,
+      placesGameEnabled: content.placesGameEnabled === true,
+      adminGameEnabled: content.adminGameEnabled === true,
+      economyGameEnabled: content.economyGameEnabled === true,
+      spellingGameEnabled: content.spellingGameEnabled === true,
       loading,
       toggleInfoHub,
+      toggleFlag,
     }}>
       {children}
     </FeatureFlagsContext.Provider>

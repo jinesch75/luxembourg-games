@@ -4,8 +4,6 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 
 import en from './en.json'
 import fr from './fr.json'
-import de from './de.json'
-import lb from './lb.json'
 
 i18n
   .use(LanguageDetector)
@@ -13,12 +11,10 @@ i18n
   .init({
     resources: {
       en: { translation: en },
-      fr: { translation: fr },
-      de: { translation: de },
-      lb: { translation: lb }
+      fr: { translation: fr }
     },
     fallbackLng: 'en',
-    supportedLngs: ['en', 'fr', 'de', 'lb'],
+    supportedLngs: ['en', 'fr'],
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
@@ -32,8 +28,6 @@ i18n
 export default i18n
 
 export const LANGUAGES = [
-  { code: 'en', label: 'English',        flag: '🇬🇧' },
-  { code: 'fr', label: 'Français',       flag: '🇫🇷' },
-  { code: 'de', label: 'Deutsch',        flag: '🇩🇪' },
-  { code: 'lb', label: 'Lëtzebuergesch', flag: '🇱🇺' }
+  { code: 'en', label: 'English',  flag: '🇬🇧' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' }
 ]

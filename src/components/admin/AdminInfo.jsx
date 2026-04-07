@@ -5,7 +5,7 @@
  *   • Biergerpakt info cards        (title + body text)
  *   • Intercultural activity categories (title + tip list)
  *   • Stats                         (icon + label + value + source)
- *   • Language phrases              (meaning + lb + fr + de)
+ *   • Language phrases              (meaning + fr)
  *   • Reliable sources              (category groups with source links)
  */
 
@@ -20,7 +20,7 @@ import {
 import LangTabs from './LangTabs'
 import { ensureTranslations } from '../../utils/contentLang'
 
-const TRANS_LANGS = ['fr', 'de', 'lb']
+const TRANS_LANGS = ['fr']
 // Ensure an item has translation stubs for a given set of fields
 function withTrans(item, fields) {
   return ensureTranslations(item, fields)
@@ -218,11 +218,7 @@ function PhraseRow({ phrase, onEdit, onDelete }) {
     <RowBox>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#475569', marginBottom: 4 }}>{phrase.meaning}</div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6 }}>
-          <div style={{ fontSize: '0.78rem' }}><span style={{ fontSize: '0.9rem' }}>🇱🇺</span> {phrase.lb}</div>
-          <div style={{ fontSize: '0.78rem' }}><span style={{ fontSize: '0.9rem' }}>🇫🇷</span> {phrase.fr}</div>
-          <div style={{ fontSize: '0.78rem' }}><span style={{ fontSize: '0.9rem' }}>🇩🇪</span> {phrase.de}</div>
-        </div>
+        <div style={{ fontSize: '0.78rem' }}><span style={{ fontSize: '0.9rem' }}>🇫🇷</span> {phrase.fr}</div>
       </div>
       <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
         {editBtn(onEdit)}{deleteBtn(onDelete)}
@@ -235,10 +231,8 @@ function PhraseEditor({ phrase, onSave, onCancel }) {
   return (
     <EditorBox>
       <div style={{ marginBottom: 8 }}><Label>Meaning (English)</Label><input value={d.meaning} onChange={e => setD(p => ({ ...p, meaning: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 10 }}>
-        <div><Label>🇱🇺 Luxembourgish</Label><input value={d.lb} onChange={e => setD(p => ({ ...p, lb: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
-        <div><Label>🇫🇷 French</Label><input value={d.fr} onChange={e => setD(p => ({ ...p, fr: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
-        <div><Label>🇩🇪 German</Label><input value={d.de} onChange={e => setD(p => ({ ...p, de: e.target.value }))} style={{ ...inputStyle(), height: 36 }} /></div>
+      <div style={{ marginBottom: 10 }}>
+        <Label>🇫🇷 French</Label><input value={d.fr} onChange={e => setD(p => ({ ...p, fr: e.target.value }))} style={{ ...inputStyle(), height: 36 }} />
       </div>
       <SaveCancelRow onSave={() => onSave(d)} onCancel={onCancel} />
     </EditorBox>
@@ -420,7 +414,7 @@ export default function AdminInfo() {
     setLanguagePhrases(list); saveToServer({ languagePhrases: list })
   }
   const addPhrase = () => {
-    const list = [...languagePhrases, { meaning: 'New phrase', lb: '', fr: '', de: '' }]
+    const list = [...languagePhrases, { meaning: 'New phrase', fr: '' }]
     setLanguagePhrases(list); setEditingPhrase(list.length - 1)
   }
 

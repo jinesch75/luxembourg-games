@@ -116,8 +116,8 @@ function LocationCard({ loc, onEdit, onDelete }) {
 // ── Location editor ────────────────────────────────────────────────────────
 // Ensures the multilingual field is an object with all 4 lang keys
 function ensureMultiLang(val) {
-  if (typeof val === 'object' && val !== null) return { en: '', fr: '', de: '', lb: '', ...val }
-  return { en: val || '', fr: '', de: '', lb: '' }
+  if (typeof val === 'object' && val !== null) return { en: '', fr: '', ...val }
+  return { en: val || '', fr: '' }
 }
 
 function LocationEditor({ loc, onSave, onCancel }) {
@@ -133,7 +133,7 @@ function LocationEditor({ loc, onSave, onCancel }) {
   const set = (key, val) => setDraft(d => ({ ...d, [key]: val }))
   const setML = (key, val) => setDraft(d => ({ ...d, [key]: { ...d[key], [editLang]: val } }))
 
-  const missingFor = ['fr', 'de', 'lb'].filter(l => !draft.name[l])
+  const missingFor = ['fr'].filter(l => !draft.name[l])
 
   return (
     <div style={{

@@ -1,6 +1,6 @@
 /**
  * LangTabs — language tab bar for admin content editors.
- * Renders EN / FR / DE / LB tabs and highlights the active one.
+ * Renders EN / FR tabs and highlights the active one.
  * Props:
  *   lang       — currently selected language code
  *   onChange   — callback(newLang)
@@ -10,8 +10,6 @@
 const TABS = [
   { code: 'en', flag: '🇬🇧', label: 'EN' },
   { code: 'fr', flag: '🇫🇷', label: 'FR' },
-  { code: 'de', flag: '🇩🇪', label: 'DE' },
-  { code: 'lb', flag: '🇱🇺', label: 'LB' },
 ]
 
 export default function LangTabs({ lang, onChange, missingFor = [] }) {

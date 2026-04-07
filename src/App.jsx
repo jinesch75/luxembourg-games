@@ -24,7 +24,15 @@ function ScrollToTop() {
 }
 
 function AppRoutes() {
-  const { infoHubEnabled } = useFeatureFlags()
+  const {
+    infoHubEnabled,
+    famousGameEnabled,
+    placesGameEnabled,
+    adminGameEnabled,
+    economyGameEnabled,
+    spellingGameEnabled,
+  } = useFeatureFlags()
+
   return (
     <Routes>
       <Route path="/"      element={<HomePage />} />
@@ -32,12 +40,11 @@ function AppRoutes() {
       <Route path="/geo"   element={<GeoGame />} />
       <Route path="/info"  element={infoHubEnabled ? <InfoHub /> : <Navigate to="/" replace />} />
       <Route path="/admin" element={<AdminPage />} />
-      {/* Hidden preview routes — not linked from homepage */}
-      <Route path="/spelling" element={<SpellingGame />} />
-      <Route path="/famous" element={<FamousGame />} />
-      <Route path="/places" element={<PlacesGame />} />
-      <Route path="/life" element={<AdminGame />} />
-      <Route path="/economy" element={<EconomyGame />} />
+      <Route path="/spelling" element={spellingGameEnabled ? <SpellingGame /> : <Navigate to="/" replace />} />
+      <Route path="/famous"   element={famousGameEnabled   ? <FamousGame />   : <Navigate to="/" replace />} />
+      <Route path="/places"   element={placesGameEnabled   ? <PlacesGame />   : <Navigate to="/" replace />} />
+      <Route path="/life"     element={adminGameEnabled    ? <AdminGame />    : <Navigate to="/" replace />} />
+      <Route path="/economy"  element={economyGameEnabled  ? <EconomyGame />  : <Navigate to="/" replace />} />
     </Routes>
   )
 }

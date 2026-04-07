@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { HelpCircle, MapPin, Camera, Building, ClipboardList, TrendingUp } from 'lucide-react'
+import { useFeatureFlags } from '../contexts/FeatureFlagsContext'
 
 export default function HomePage() {
   const { t } = useTranslation()
+  const {
+    famousGameEnabled,
+    placesGameEnabled,
+    adminGameEnabled,
+    economyGameEnabled,
+    spellingGameEnabled,
+  } = useFeatureFlags()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - var(--nav-height))', marginBottom: '-80px', background: '#F6F5F1' }}>
@@ -34,34 +42,42 @@ export default function HomePage() {
                   <small>{t('home.mapCardDesc')}</small>
                 </span>
               </Link>
-              <Link to="/famous" className="btn-hero-game btn-hero-game-famous">
-                <span className="btn-hero-game-icon"><Camera size={26} strokeWidth={1.75} /></span>
-                <span className="btn-hero-game-text">
-                  <strong>{t('home.game3Title')}</strong>
-                  <small>{t('home.famousCardDesc')}</small>
-                </span>
-              </Link>
-              <Link to="/places" className="btn-hero-game btn-hero-game-places">
-                <span className="btn-hero-game-icon"><Building size={26} strokeWidth={1.75} /></span>
-                <span className="btn-hero-game-text">
-                  <strong>{t('home.game4Title')}</strong>
-                  <small>{t('home.placesCardDesc')}</small>
-                </span>
-              </Link>
-              <Link to="/life" className="btn-hero-game btn-hero-game-admin">
-                <span className="btn-hero-game-icon"><ClipboardList size={26} strokeWidth={1.75} /></span>
-                <span className="btn-hero-game-text">
-                  <strong>{t('home.game5Title')}</strong>
-                  <small>{t('home.adminCardDesc')}</small>
-                </span>
-              </Link>
-              <Link to="/economy" className="btn-hero-game btn-hero-game-economy">
-                <span className="btn-hero-game-icon"><TrendingUp size={26} strokeWidth={1.75} /></span>
-                <span className="btn-hero-game-text">
-                  <strong>{t('home.game6Title')}</strong>
-                  <small>{t('home.economyCardDesc')}</small>
-                </span>
-              </Link>
+              {famousGameEnabled && (
+                <Link to="/famous" className="btn-hero-game btn-hero-game-famous">
+                  <span className="btn-hero-game-icon"><Camera size={26} strokeWidth={1.75} /></span>
+                  <span className="btn-hero-game-text">
+                    <strong>{t('home.game3Title')}</strong>
+                    <small>{t('home.famousCardDesc')}</small>
+                  </span>
+                </Link>
+              )}
+              {placesGameEnabled && (
+                <Link to="/places" className="btn-hero-game btn-hero-game-places">
+                  <span className="btn-hero-game-icon"><Building size={26} strokeWidth={1.75} /></span>
+                  <span className="btn-hero-game-text">
+                    <strong>{t('home.game4Title')}</strong>
+                    <small>{t('home.placesCardDesc')}</small>
+                  </span>
+                </Link>
+              )}
+              {adminGameEnabled && (
+                <Link to="/life" className="btn-hero-game btn-hero-game-admin">
+                  <span className="btn-hero-game-icon"><ClipboardList size={26} strokeWidth={1.75} /></span>
+                  <span className="btn-hero-game-text">
+                    <strong>{t('home.game5Title')}</strong>
+                    <small>{t('home.adminCardDesc')}</small>
+                  </span>
+                </Link>
+              )}
+              {economyGameEnabled && (
+                <Link to="/economy" className="btn-hero-game btn-hero-game-economy">
+                  <span className="btn-hero-game-icon"><TrendingUp size={26} strokeWidth={1.75} /></span>
+                  <span className="btn-hero-game-text">
+                    <strong>{t('home.game6Title')}</strong>
+                    <small>{t('home.economyCardDesc')}</small>
+                  </span>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -71,13 +87,15 @@ export default function HomePage() {
       <div className="home-bridge-section" />
 
       {/* ── Small link to test/preview games ── */}
-      <div style={{ textAlign: 'center', padding: '12px 16px 20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
-          <Link to="/spelling" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
-            {t('home.languageGameLink')}
-          </Link>
+      {spellingGameEnabled && (
+        <div style={{ textAlign: 'center', padding: '12px 16px 20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
+            <Link to="/spelling" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
+              {t('home.languageGameLink')}
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
 
     </div>
   )
