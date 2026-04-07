@@ -89,7 +89,7 @@ app.use((req, res, next) => {
 })
 
 // ── Admin auth ─────────────────────────────────────────────────────────────
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'biergerpakt'
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'xxx'
 
 function adminAuth(req, res, next) {
   if (req.headers['x-admin-password'] !== ADMIN_PASSWORD) {

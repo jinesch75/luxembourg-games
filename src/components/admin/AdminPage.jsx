@@ -20,7 +20,7 @@ import AdminErrorReports from './AdminErrorReports'
 import AdminImportExport from './AdminImportExport'
 import { useFeatureFlags } from '../../contexts/FeatureFlagsContext'
 
-const ADMIN_PASSWORD = 'biergerpakt'
+const ADMIN_PASSWORD = 'xxx'
 
 const TAB_KEYS = [
   { id: 'stats',     icon: '📊', labelKey: 'adminPage.tabStatistics' },

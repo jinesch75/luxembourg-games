@@ -87,15 +87,18 @@ export default function HomePage() {
       <div className="home-bridge-section" />
 
       {/* ── Small link to test/preview games ── */}
-      {spellingGameEnabled && (
-        <div style={{ textAlign: 'center', padding: '12px 16px 20px' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
+      <div style={{ textAlign: 'center', padding: '12px 16px 20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
+          {spellingGameEnabled && (
             <Link to="/spelling" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
               {t('home.languageGameLink')}
             </Link>
-          </div>
+          )}
+          <Link to="/admin" style={{ fontSize: 10, color: '#B0AFA8', textDecoration: 'none' }}>
+            Admin
+          </Link>
         </div>
-      )}
+      </div>
 
     </div>
   )
