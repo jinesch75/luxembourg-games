@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from 'react'
-import { MapPin, RefreshCw } from 'lucide-react'
+import { MapPin, RefreshCw, X } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { MapContainer, TileLayer, Marker, useMapEvents, Circle, Polyline, useMap } from 'react-leaflet'
 import L from 'leaflet'
@@ -138,6 +139,7 @@ function LevelMapBadges({ progress }) {
 // ─── Main Component ────────────────────────────────────────────────────────────
 export default function GeoGame() {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
   const lang = (i18n.language || 'en').split('-')[0]
   const loc_t = (field) => {
     if (!field) return ''
@@ -277,9 +279,28 @@ export default function GeoGame() {
             <span style={{
               fontSize: '0.6rem', fontWeight: 700, color: '#1e3a8a',
               textTransform: 'uppercase', letterSpacing: '0.08em',
+              flex: 1,
             }}>
               {t('geo.clue')} {roundIdx + 1}/{locations.length}
             </span>
+            <button
+              onClick={() => navigate('/')}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 4,
+                background: 'none', border: '1px solid var(--border)',
+                borderRadius: 6, padding: '3px 8px',
+                cursor: 'pointer', fontFamily: 'var(--font)',
+                fontSize: '0.65rem', fontWeight: 600,
+                color: 'var(--text-muted)',
+                transition: 'background 0.15s ease',
+                flexShrink: 0,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--gray-100)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'none' }}
+            >
+              <X size={12} strokeWidth={2.5} />
+              {t('nav.home')}
+            </button>
           </div>
           <p style={{ fontSize: '0.855rem', color: 'var(--gray-700)', lineHeight: 1.45, margin: 0 }}>
             {loc_t(loc.clue)}
@@ -327,16 +348,40 @@ export default function GeoGame() {
           flexShrink: 0,
           boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
         }}>
-          <button onClick={() => setResultCollapsed(c => !c)} style={{
-            width: '100%', padding: '7px 16px',
-            background: 'var(--gray-50)', border: 'none',
+          <div style={{
+            display: 'flex', alignItems: 'center',
+            padding: '7px 16px',
+            background: 'var(--gray-50)',
             borderBottom: resultCollapsed ? 'none' : '1px solid var(--border)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-            cursor: 'pointer', fontSize: '0.65rem', fontWeight: 700,
-            color: 'var(--gray-400)', letterSpacing: '0.07em', textTransform: 'uppercase',
           }}>
-            {resultCollapsed ? `▲ ${t('geo.showResults')}` : `▼ ${t('geo.minimise')}`}
-          </button>
+            <button onClick={() => setResultCollapsed(c => !c)} style={{
+              flex: 1, padding: 0,
+              background: 'none', border: 'none',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              cursor: 'pointer', fontSize: '0.65rem', fontWeight: 700,
+              color: 'var(--gray-400)', letterSpacing: '0.07em', textTransform: 'uppercase',
+            }}>
+              {resultCollapsed ? `▲ ${t('geo.showResults')}` : `▼ ${t('geo.minimise')}`}
+            </button>
+            <button
+              onClick={() => navigate('/')}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 4,
+                background: 'none', border: '1px solid var(--border)',
+                borderRadius: 6, padding: '3px 8px',
+                cursor: 'pointer', fontFamily: 'var(--font)',
+                fontSize: '0.6rem', fontWeight: 600,
+                color: 'var(--text-muted)',
+                transition: 'background 0.15s ease',
+                flexShrink: 0,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--gray-100)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'none' }}
+            >
+              <X size={11} strokeWidth={2.5} />
+              {t('nav.home')}
+            </button>
+          </div>
           {!resultCollapsed && (
             <div style={{ padding: '16px 16px 20px' }}>
               {/* Score + location row */}

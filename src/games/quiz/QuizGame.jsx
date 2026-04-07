@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
-import { HelpCircle } from 'lucide-react'
+import { HelpCircle, X } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { QUESTIONS, getSubLevelQuestions } from './data/questions'
@@ -123,6 +124,7 @@ function shuffleQuestionOptions(q) {
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function QuizGame() {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
   const lang = (i18n.language || 'en').split('-')[0]
 
   const [quizProgress, setQuizProgress] = useLocalStorage('letz-quiz-progress-v2', {
@@ -280,6 +282,27 @@ export default function QuizGame() {
 
   return (
     <div className="container" style={{ paddingTop: 20 }}>
+      {/* Exit button */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 8 }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 5,
+            background: 'none', border: '1px solid var(--border)',
+            borderRadius: 8, padding: '5px 12px',
+            cursor: 'pointer', fontFamily: 'var(--font)',
+            fontSize: '0.75rem', fontWeight: 600,
+            color: 'var(--text-muted)',
+            transition: 'background 0.15s ease, color 0.15s ease',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'var(--gray-100)'; e.currentTarget.style.color = 'var(--text)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-muted)' }}
+        >
+          <X size={14} strokeWidth={2.5} />
+          {t('nav.home')}
+        </button>
+      </div>
+
       {/* Progress bar */}
       <div style={{ marginBottom: 20 }}>
         <div className="game-progress-row">
