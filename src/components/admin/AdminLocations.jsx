@@ -36,23 +36,50 @@ function Label({ children }) {
 }
 
 // ── Location view card ─────────────────────────────────────────────────────
-function LocationCard({ loc, onEdit, onDelete }) {
+function LocationCard({ loc, onEdit, onDelete, onToggleValidated }) {
   const [expanded, setExpanded] = useState(false)
   const [confirmDel, setConfirmDel] = useState(false)
+  const hasFr = !!(typeof loc.name === 'object' ? loc.name.fr : loc.translations?.fr?.name)
   return (
     <div style={{
       background: 'white', borderRadius: 10, padding: '14px 16px',
       boxShadow: '0 1px 3px rgba(0,0,0,0.07)', marginBottom: 10,
+      borderLeft: loc.validated ? '4px solid #059669' : '4px solid transparent',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
         <span style={{ fontSize: '1.5rem' }}>{loc.emoji}</span>
         <div style={{ flex: 1 }}>
-          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{str(loc.name)}</div>
+          <div style={{ fontWeight: 700, fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+            {str(loc.name)}
+            {hasFr && (
+              <span style={{ background: '#EFF6FF', color: '#1D4ED8', borderRadius: 999, padding: '1px 6px', fontSize: '0.65rem', fontWeight: 700 }}>🇫🇷 FR</span>
+            )}
+            {loc.validated && (
+              <span style={{ background: '#D1FAE5', color: '#065F46', borderRadius: 999, padding: '1px 6px', fontSize: '0.65rem', fontWeight: 700 }}>✓ Validated</span>
+            )}
+          </div>
           <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>
             {loc.region} · {loc.coords[0].toFixed(4)}, {loc.coords[1].toFixed(4)} · {loc.id}
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center' }}>
+          <label style={{
+            display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer',
+            padding: '4px 8px', borderRadius: 6,
+            background: loc.validated ? '#D1FAE5' : '#F8FAFC',
+            border: loc.validated ? '1px solid #A7F3D0' : '1px solid #E2E8F0',
+            fontSize: '0.72rem', fontWeight: 600,
+            color: loc.validated ? '#065F46' : '#64748B',
+            userSelect: 'none',
+          }}>
+            <input
+              type="checkbox"
+              checked={!!loc.validated}
+              onChange={() => onToggleValidated(loc.id)}
+              style={{ width: 13, height: 13, cursor: 'pointer', accentColor: '#059669' }}
+            />
+            Validated
+          </label>
           <button
             onClick={() => setExpanded(e => !e)}
             style={{
@@ -145,7 +172,33 @@ function LocationEditor({ loc, onSave, onCancel }) {
         ✏️ Editing — {loc.id}
       </div>
 
-      <LangTabs lang={editLang} onChange={setEditLang} missingFor={missingFor} />
+      <div style={{ marginBottom: 12 }}>
+        <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginBottom: 6 }}>
+          Switch to the 🇫🇷 FR tab below to edit French translations
+        </div>
+        <LangTabs lang={editLang} onChange={setEditLang} missingFor={missingFor} />
+      </div>
+
+      {/* Validated checkbox */}
+      <div style={{ marginBottom: 12 }}>
+        <label style={{
+          display: 'inline-flex', alignItems: 'center', gap: 7, cursor: 'pointer',
+          padding: '7px 12px', borderRadius: 7,
+          background: draft.validated ? '#D1FAE5' : '#F8FAFC',
+          border: draft.validated ? '1.5px solid #A7F3D0' : '1.5px solid #E2E8F0',
+          fontSize: '0.82rem', fontWeight: 600,
+          color: draft.validated ? '#065F46' : '#64748B',
+          userSelect: 'none',
+        }}>
+          <input
+            type="checkbox"
+            checked={!!draft.validated}
+            onChange={e => set('validated', e.target.checked)}
+            style={{ width: 15, height: 15, cursor: 'pointer', accentColor: '#059669' }}
+          />
+          {draft.validated ? '✓ Validated — this location has been reviewed' : 'Mark as validated (reviewed)'}
+        </label>
+      </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
         <div>
@@ -255,6 +308,7 @@ export default function AdminLocations() {
   const [saved, setSaved]         = useState(false)
   const [error, setError]         = useState(null)
   const [isOverride, setIsOverride] = useState(false)
+  const [validatedFilter, setValidatedFilter] = useState('all') // 'all' | 'validated' | 'unvalidated'
 
   useEffect(() => {
     fetch('/api/content')
@@ -310,6 +364,17 @@ export default function AdminLocations() {
     saveToServer(list)
   }
 
+  const handleToggleValidated = (id) => {
+    const list = locations.map(l => l.id === id ? { ...l, validated: !l.validated } : l)
+    setLocations(list)
+    saveToServer(list)
+  }
+
+  const validatedCount = locations.filter(l => l.validated).length
+
+  const filteredLocations = locations
+    .filter(l => validatedFilter === 'all' || (validatedFilter === 'validated' ? l.validated : !l.validated))
+
   const resetToDefaults = async () => {
     if (!confirm('Reset ALL locations to the original defaults?')) return
     const r = await fetch('/api/content').then(r => r.json()).catch(() => ({}))
@@ -357,6 +422,35 @@ export default function AdminLocations() {
         </div>
       )}
 
+      {/* Validated filter */}
+      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 14, alignItems: 'center' }}>
+        <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#94A3B8' }}>
+          Review status ({validatedCount}/{locations.length} validated):
+        </span>
+        {[
+          { key: 'all', label: 'All' },
+          { key: 'validated', label: '✓ Validated' },
+          { key: 'unvalidated', label: '○ Not yet reviewed' },
+        ].map(({ key, label }) => (
+          <button
+            key={key}
+            onClick={() => setValidatedFilter(key)}
+            style={{
+              padding: '4px 10px', borderRadius: 99, border: 'none', cursor: 'pointer',
+              fontSize: '0.73rem', fontWeight: 600,
+              background: validatedFilter === key
+                ? (key === 'validated' ? '#D1FAE5' : key === 'unvalidated' ? '#FEF3C7' : '#1E293B')
+                : '#F1F5F9',
+              color: validatedFilter === key
+                ? (key === 'validated' ? '#065F46' : key === 'unvalidated' ? '#B45309' : 'white')
+                : '#64748B',
+            }}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
       {addingNew && newDraft && (
         <div style={{ marginBottom: 16 }}>
           <div style={{ fontWeight: 700, fontSize: '0.82rem', color: '#059669', marginBottom: 8 }}>➕ New location</div>
@@ -364,10 +458,10 @@ export default function AdminLocations() {
         </div>
       )}
 
-      {locations.map(loc => (
+      {filteredLocations.map(loc => (
         editingId === loc.id
           ? <LocationEditor key={loc.id} loc={loc} onSave={handleSave} onCancel={() => setEditingId(null)} />
-          : <LocationCard key={loc.id} loc={loc} onEdit={() => setEditingId(loc.id)} onDelete={() => handleDelete(loc.id)} />
+          : <LocationCard key={loc.id} loc={loc} onEdit={() => setEditingId(loc.id)} onDelete={() => handleDelete(loc.id)} onToggleValidated={handleToggleValidated} />
       ))}
     </div>
   )

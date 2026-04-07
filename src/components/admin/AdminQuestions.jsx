@@ -52,9 +52,10 @@ function inputStyle(multiline = false) {
 }
 
 // ── Question card in view mode ─────────────────────────────────────────────
-function QuestionCard({ q, onEdit, onDelete }) {
+function QuestionCard({ q, onEdit, onDelete, onToggleValidated }) {
   const cat = CAT_COLORS[q.category] || CAT_COLORS.culture
   const [confirmDel, setConfirmDel] = useState(false)
+  const hasFr = !!(q.translations?.fr?.question)
 
   return (
     <div style={{
@@ -63,11 +64,24 @@ function QuestionCard({ q, onEdit, onDelete }) {
       padding: '14px 16px',
       boxShadow: '0 1px 3px rgba(0,0,0,0.07)',
       marginBottom: 10,
+      borderLeft: q.validated ? '4px solid #059669' : '4px solid transparent',
     }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: 8 }}>
-        <span style={labelStyle(cat.bg, cat.text)}>
-          {cat.icon} {q.category}
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+          <span style={labelStyle(cat.bg, cat.text)}>
+            {cat.icon} {q.category}
+          </span>
+          {hasFr && (
+            <span style={{ background: '#EFF6FF', color: '#1D4ED8', borderRadius: 999, padding: '2px 7px', fontSize: '0.68rem', fontWeight: 700 }}>
+              🇫🇷 FR
+            </span>
+          )}
+          {q.validated && (
+            <span style={{ background: '#D1FAE5', color: '#065F46', borderRadius: 999, padding: '2px 7px', fontSize: '0.68rem', fontWeight: 700 }}>
+              ✓ Validated
+            </span>
+          )}
+        </div>
         <span style={{ fontSize: '0.7rem', color: '#94A3B8', flexShrink: 0 }}>{q.id}</span>
       </div>
 
@@ -110,7 +124,24 @@ function QuestionCard({ q, onEdit, onDelete }) {
         </p>
       )}
 
-      <div style={{ display: 'flex', gap: 8 }}>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <label style={{
+          display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer',
+          padding: '6px 10px', borderRadius: 6,
+          background: q.validated ? '#D1FAE5' : '#F8FAFC',
+          border: q.validated ? '1px solid #A7F3D0' : '1px solid #E2E8F0',
+          fontSize: '0.78rem', fontWeight: 600,
+          color: q.validated ? '#065F46' : '#64748B',
+          userSelect: 'none',
+        }}>
+          <input
+            type="checkbox"
+            checked={!!q.validated}
+            onChange={() => onToggleValidated(q.id)}
+            style={{ width: 14, height: 14, cursor: 'pointer', accentColor: '#059669' }}
+          />
+          Validated
+        </label>
         <button
           onClick={onEdit}
           style={{
@@ -209,7 +240,33 @@ function QuestionEditor({ q, onSave, onCancel }) {
         ✏️ Editing — {q.id}
       </div>
 
-      <LangTabs lang={editLang} onChange={setEditLang} missingFor={missingFor} />
+      <div style={{ marginBottom: 12 }}>
+        <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginBottom: 6 }}>
+          Switch to the 🇫🇷 FR tab below to edit French translations
+        </div>
+        <LangTabs lang={editLang} onChange={setEditLang} missingFor={missingFor} />
+      </div>
+
+      {/* Validated checkbox */}
+      <div style={{ marginBottom: 12 }}>
+        <label style={{
+          display: 'inline-flex', alignItems: 'center', gap: 7, cursor: 'pointer',
+          padding: '7px 12px', borderRadius: 7,
+          background: draft.validated ? '#D1FAE5' : '#F8FAFC',
+          border: draft.validated ? '1.5px solid #A7F3D0' : '1.5px solid #E2E8F0',
+          fontSize: '0.82rem', fontWeight: 600,
+          color: draft.validated ? '#065F46' : '#64748B',
+          userSelect: 'none',
+        }}>
+          <input
+            type="checkbox"
+            checked={!!draft.validated}
+            onChange={e => set('validated', e.target.checked)}
+            style={{ width: 15, height: 15, cursor: 'pointer', accentColor: '#059669' }}
+          />
+          {draft.validated ? '✓ Validated — this question has been reviewed' : 'Mark as validated (reviewed)'}
+        </label>
+      </div>
 
       {/* Category — only on English tab */}
       {editLang === 'en' && (
@@ -360,6 +417,7 @@ export default function AdminQuestions() {
   const [saved, setSaved]         = useState(false)
   const [error, setError]         = useState(null)
   const [filter, setFilter]       = useState('all')
+  const [validatedFilter, setValidatedFilter] = useState('all') // 'all' | 'validated' | 'unvalidated'
   const [isOverride, setIsOverride] = useState(false)
 
   // Load server overrides on mount
@@ -442,7 +500,17 @@ export default function AdminQuestions() {
     setIsOverride(false)
   }
 
-  const filtered = filter === 'all' ? questions : questions.filter(q => q.category === filter)
+  const handleToggleValidated = (id) => {
+    const updated = questions.map(q => q.id === id ? { ...q, validated: !q.validated } : q)
+    setQuestions(updated)
+    saveToServer(updated)
+  }
+
+  const validatedCount = questions.filter(q => q.validated).length
+
+  const filtered = questions
+    .filter(q => filter === 'all' || q.category === filter)
+    .filter(q => validatedFilter === 'all' || (validatedFilter === 'validated' ? q.validated : !q.validated))
 
   return (
     <div>
@@ -499,6 +567,35 @@ export default function AdminQuestions() {
         </div>
       )}
 
+      {/* Validated filter */}
+      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 10, alignItems: 'center' }}>
+        <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#94A3B8' }}>
+          Review status ({validatedCount}/{questions.length} validated):
+        </span>
+        {[
+          { key: 'all', label: 'All' },
+          { key: 'validated', label: '✓ Validated' },
+          { key: 'unvalidated', label: '○ Not yet reviewed' },
+        ].map(({ key, label }) => (
+          <button
+            key={key}
+            onClick={() => setValidatedFilter(key)}
+            style={{
+              padding: '4px 10px', borderRadius: 99, border: 'none', cursor: 'pointer',
+              fontSize: '0.73rem', fontWeight: 600,
+              background: validatedFilter === key
+                ? (key === 'validated' ? '#D1FAE5' : key === 'unvalidated' ? '#FEF3C7' : '#1E293B')
+                : '#F1F5F9',
+              color: validatedFilter === key
+                ? (key === 'validated' ? '#065F46' : key === 'unvalidated' ? '#B45309' : 'white')
+                : '#64748B',
+            }}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
       {/* Category filter */}
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 16 }}>
         {['all', ...CATEGORIES].map(cat => {
@@ -543,7 +640,7 @@ export default function AdminQuestions() {
       {filtered.map(q => (
         editingId === q.id
           ? <QuestionEditor key={q.id} q={q} onSave={handleSave} onCancel={() => setEditingId(null)} />
-          : <QuestionCard key={q.id} q={q} onEdit={() => setEditingId(q.id)} onDelete={() => handleDelete(q.id)} />
+          : <QuestionCard key={q.id} q={q} onEdit={() => setEditingId(q.id)} onDelete={() => handleDelete(q.id)} onToggleValidated={handleToggleValidated} />
       ))}
     </div>
   )
